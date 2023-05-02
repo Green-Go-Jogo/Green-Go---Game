@@ -138,6 +138,7 @@
                                            
                             <nav>
                                 <div class="form-group" id="imagemreg">
+                                </div>
                                 <a id="carregueimagemtexto"> Carregue uma imagem</a> <br>
                                 <label class="picture align-content-center" for="picture__input" tabIndex="0">
                                 <span class="picture__image">
