@@ -5,11 +5,13 @@ include_once(__DIR__ . "/../connection/Connection.php");
 include_once(__DIR__ . "/../models/zona.php");
 
 class zonaDAO {
-    private const SQL_ZONA = "SELECT idZona, zona.nomeZona , COUNT(planta.idPlanta) AS qntPlantas, SUM(planta.pontuacaoPlanta) 
-    AS pontoZona FROM zona LEFT JOIN planta ON zona.idZona = planta.idZona GROUP BY zona.idZona;";
+    private const SQL_ZONA = "SELECT z.*, s.nomeZona AS nomeZona FROM zona z".
+    "JOIN zona s ON s.idZona= z.idZona";
+
     private function mapZonas($resultSql) {
         $zonas = array();
         foreach ($resultSql as $reg):
+
             $zona = new Zona();
             $zona->setIdZona($reg['idZona']);
             $zona->setNomeZona($reg['nomeZona']);
@@ -25,7 +27,11 @@ class zonaDAO {
     public function list() {
         $conn = conectar_db();
 
-        $sql = "SELECT * FROM zona ORDER BY idZona";
+        $sql = "SELECT z.idZona, z.nomeZona, COUNT(p.idPlanta) AS qntPlantas, SUM(p.pontuacaoPlanta) AS pontoZona
+        FROM zona z 
+        LEFT JOIN planta p ON z.idZona = p.idZona 
+        GROUP BY z.idZona, z.nomeZona
+        ORDER BY z.idZona";
         $stm = $conn->prepare($sql);    
         $stm->execute();
         $result = $stm->fetchAll();

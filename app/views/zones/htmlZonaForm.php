@@ -12,7 +12,7 @@ class ZonaHTMLForm {
             if($zona->getIdZona() == $idZonaSelec)
                 echo " selected ";
 
-            echo ">". $zona->getNomeZona()." (Quantidade de Plantas: ".")</option>";
+            echo ">". $zona->getNomeZona()." (Quantidade de Plantas: ". $zona->getQntdPlanta(). ")"."</option>";
         endforeach;
 
         echo "</select>";
