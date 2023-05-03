@@ -13,8 +13,8 @@
     echo "<h5 class='card-title'>". $zona->getNomeZona() ."</h5>";
     echo "<p class='card-text'>".$zona->getQntdPlanta()."<br>".$zona->getPontosTotais()."</p>";
     echo "<br>";
-    echo "<a href='editarPlanta.php?id=".$zona->getIdZona()."' class='btn btn-primary'>Editar</a>";
-    echo "<a href='deletarPlanta.php?id=".$zona->getIdZona()."' onclick='return confirm(\"Confirma a exclusão da Planta?\");' class='btn btn-alert'>Excluir</a>";
+    echo "<a href='editarZona.php?id=".$zona->getIdZona()."' class='btn btn-primary'>Editar</a>";
+    echo "<a href='deletarZona.php?id=".$zona->getIdZona()."' onclick='return confirm(\"Confirma a exclusão da Zona? Todas as plantas associadas a essa zona também serão excluídas!\");' class='btn btn-alert'>Excluir</a>";
     echo "</div>";
     echo "</div>";
     echo "</div>";

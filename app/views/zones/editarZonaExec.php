@@ -14,7 +14,7 @@ $zona->setNomeZona($nomeZona);
 
 //Chamar o controler para salvar a zona
 $zonaCont = new ZonaController();
-$zonaCont->salvar($zona);
+$zonaCont->atualizar($zona);
 
 //Redireciona para o início
 header("location: listZonas.php");

@@ -91,7 +91,7 @@
                                 <h1 id="primeirotextoreg"> Adicione uma Zona!</h1>
 
 
-                            <form action="adicionarZonaExec.php" method="POST" enctype="multipart/form-data">
+                            <form action="editarZonaExec.php" method="POST" enctype="multipart/form-data">
                             <div class="container" id="reg1">
                             <div class="row">
                             <div class="col-sm">
@@ -101,7 +101,7 @@
 
                             <label for="formtexto" id="txtNome">Nome da Zona</label>
                             <div class="w-100"></div>
-                            <input type="text" name="Nome_Zona" class="form-control" id="txtNomeZona" aria-describedby="nome-cadastro">
+                            <input type="text" name="Nome_Zona" class="form-control" id="txtNomeZona" aria-describedby="nome-cadastro" value="<?php echo $zona->getNomeZona(); ?>">
                             <div class="w-100"></div>
                             
 
@@ -110,6 +110,8 @@
                             <button type="reset" class="btn btn-secondary btn-lg" id="botoeslimpar"> <a id="limpar"> Limpar</a>
                             </button>
                             </div>
+
+                            <input type="hidden" name="id_planta" value="<?php echo $zona->getIdZona(); ?>" />
 
 
                             </form>
