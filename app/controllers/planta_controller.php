@@ -1,7 +1,7 @@
 <?php
 #Classe de controller para planta
 
-include_once(__DIR__."/../dao/planta_dao.php");
+include_once(__DIR__."/../dao/PlantaDAO.php");
 
 class PlantaController {
 

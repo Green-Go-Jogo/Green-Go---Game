@@ -5,7 +5,7 @@
     </span>
 <?php endif ?>
 <?php include_once("../../controllers/zona_controller.php");
-      include_once("../zones/htmlZona.php");
+      include_once("../zones/htmlZonaForm.php");
 ?>
 
 
@@ -125,7 +125,7 @@
                             $zonaCont = new ZonaController();
                             $zonas = $zonaCont->listar();
 
-                             ZonaHTML::desenhaSelect($zonas, "zona_planta", "SomPlanta");
+                             ZonaHTMLForm::desenhaSelect($zonas, "zona_planta", "SomPlanta");
                             ?>
                             </div> </a>
                             

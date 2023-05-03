@@ -20,7 +20,7 @@
                         <a class="nav-item nav-link" id="projeto-menu" href="../views/projetoADM.php"> Projeto </a>
                         <a class="nav-item nav-link" id="mapa-menu" href="..\controllers\EspecieControllerADM.php?action=EspeciesMapa"> Mapa</a>
                         <a class="nav-item nav-link" id="itemmenu" href="../views/plantas/listPlantas.php"> Plantas </a>
-                        <a class="nav-item nav-link" id="zonas-menu" href="./ZonaController.php?action=findZonas"> Zonas </a>
+                        <a class="nav-item nav-link" id="zonas-menu" href="../views/zones/listZonas.php"> Zonas </a>
                         <a class="nav-item nav-link" id="especies-menu" href="./EspecieControllerADM.php?action=findAll"> Espécies </a>
                         <a class="nav-item nav-link" id="usuarios-menu" href="./UserController.php?action=findAll"> Usuários </a>
                         <a class="nav-item nav-link" id="perfil-menu" href="./perfil.php"> Perfil </a>

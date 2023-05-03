@@ -5,7 +5,7 @@
     echo "<div class='container'>";
     
         foreach ($plantas as $planta):
-            echo "<div class='row'>";
+    echo "<div class='row'>";
     echo "<div class='col-sm-3'>";
     echo "<div class='card' style='width: 18rem;'>";
     echo "<img src='".$planta->getImagemPlanta()."' style='width: 200px; height: 200px;'class='card-img-top' alt='...'>";

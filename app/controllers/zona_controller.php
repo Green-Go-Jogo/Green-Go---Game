@@ -1,7 +1,7 @@
 <?php
 #Classe de controller para Zona
 
-include_once(__DIR__ . "/../dao/zona_dao.php");
+include_once(__DIR__ . "/../dao/ZonaDAO.php");
 
 class ZonaController {
 

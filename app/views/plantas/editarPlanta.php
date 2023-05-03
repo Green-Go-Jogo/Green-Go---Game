@@ -7,7 +7,7 @@
 <?php 
       include_once("../../controllers/planta_controller.php");
       include_once("../../controllers/zona_controller.php");
-      include_once("../zones/htmlZona.php");
+      include_once("../zones/htmlZonaForm.php");
       
       
       $id = $_GET['id'];
@@ -137,7 +137,7 @@
                             $zonaCont = new ZonaController();
                             $zonas = $zonaCont->listar();
 
-                             ZonaHTML::desenhaSelect($zonas, "zona_planta", "SomPlanta", $planta->getZona()->getIdZona());
+                             ZonaHTMLForm::desenhaSelect($zonas, "zona_planta", "SomPlanta", $planta->getZona()->getIdZona());
                             ?>        
 
                             </div></div>
