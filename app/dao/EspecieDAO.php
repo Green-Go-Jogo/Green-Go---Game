@@ -12,8 +12,7 @@ class EspecieDAO {
             $especies = array();
             foreach ($resultSql as $reg):
             
-            $especie = new Especie();  
-            $planta->setIdPlanta($reg['idPlanta']);
+            $especie = new Especie(); 
             $especie->setIdEspecie($reg['idEspecie']);
             $especie->setNomePopular($reg['nomePop']);
             $especie->setNomeCientifico($reg['nomeCie']);
