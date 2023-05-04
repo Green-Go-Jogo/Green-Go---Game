@@ -4,8 +4,9 @@
 #Classe DAO para o model de Personagem
 
 include_once(__DIR__."/../connection/Connection.php");
-include_once(__DIR__."/../models/zona.php");
-include_once(__DIR__."/../models/planta.php");
+include_once(__DIR__."/../models/EspecieModel.php");
+include_once(__DIR__."/../models/ZonaModel.php");
+include_once(__DIR__."/../models/PlantaModel.php");
 
 class PlantaDAO {
 

@@ -2,11 +2,11 @@
 ##Classe DAO para o model de zona
 
 include_once(__DIR__ . "/../connection/Connection.php");
-include_once(__DIR__ . "/../models/zona.php");
+include_once(__DIR__ . "/../models/ZonaModel.php");
 
 class zonaDAO {
     private const SQL_ZONA = "SELECT z.*, s.nomeZona AS nomeZona FROM zona z".
-    "JOIN zona s ON s.idZona= z.idZona";
+    " JOIN zona s ON s.idZona= z.idZona";
 
     private function mapZonas($resultSql) {
         $zonas = array();
@@ -50,7 +50,7 @@ class zonaDAO {
         $conn = conectar_db();
 
         $sql = zonaDAO::SQL_ZONA . 
-                " WHERE s.idZona = ?";
+                " WHERE z.idZona = ?";
 
         $stmt = $conn->prepare($sql);
         $stmt->execute([$idZona]);

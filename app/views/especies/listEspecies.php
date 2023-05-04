@@ -1,7 +1,7 @@
 <?php
 include_once(__DIR__."/../../connection/Connection.php");
-include_once(__DIR__."/../../controllers/PlantaController.php");
-include_once(__DIR__."/htmlPlanta.php");
+include_once(__DIR__."/../../controllers/EspecieController.php");
+include_once(__DIR__."/htmlEspecie.php");
 ?>
 
 <!DOCTYPE html>
@@ -10,7 +10,7 @@ include_once(__DIR__."/htmlPlanta.php");
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Espécies</title>
 
     <!--FAVICON-->
     <link rel="icon" href="../public/favicon.svg">
@@ -37,18 +37,18 @@ include_once(__DIR__."/htmlPlanta.php");
 </head>
 <body>
     
-  <h3 class="text-center">PLANTA</h3>
+  <h3 class="text-center">ESPÉCIE</h3>
    
     <div style="margin: 40px 10px 0px 10px;">
-        <a class="btn btn-outline-success" href="adicionarPlanta.php">Incluir Nova Planta</a><br><br><br>
+        <a class="btn btn-outline-success" href="adicionarEspecie.php">Incluir Nova Espécie</a><br><br><br>
     
-        <p style="font-weight: bold;">RELAÇÃO DAS PLANTAS CADASTRADAS</p>
+        <p style="font-weight: bold;">RELAÇÃO DAS ESPÉCIES CADASTRADAS</p>
         
         <?php
-            $plantaCont = new PlantaController();
-            $plantas = $plantaCont->listar(); 
+            $especieCont = new EspecieController();
+            $especies = $especieCont->listar(); 
             
-            PlantaHTML::desenhaPlanta($plantas);
+            EspecieHTML::desenhaEspecie($especies);
         ?>
         </div>  
 

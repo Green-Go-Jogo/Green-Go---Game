@@ -4,7 +4,7 @@
         <?= $_SESSION['msg_erro'] ?>
     </span>
 <?php endif ?>
-<?php include_once("../../controllers/zona_controller.php");
+<?php include_once("../../controllers/ZonaController.php");
       include_once("../zones/htmlZonaForm.php");
 ?>
 

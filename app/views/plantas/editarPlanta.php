@@ -5,8 +5,8 @@
     </span>
 <?php endif ?>
 <?php 
-      include_once("../../controllers/planta_controller.php");
-      include_once("../../controllers/zona_controller.php");
+      include_once("../../controllers/PlantaController.php");
+      include_once("../../controllers/ZonaController.php");
       include_once("../zones/htmlZonaForm.php");
       
       

@@ -1,106 +1,177 @@
 <?php
-class PlantaModel{
-	private $idPlanta;
-	private $idZona;
-	private $idEspecie;
-	private $codNumerico;
-	private $nomeSocial;
-	private $historia;
-	private $imagemPlanta;
 
-	public function getIdZona(): int
-	{
-		return $this->idZona;
-	}
+Class Planta {
 
-	public function setIdZona(int $idZona)
-	{
-		$this->idZona = $idZona;
+    private $IdPlanta;
+    private $NomeSocial;
+    private $Pontos;
+    private $CodNumerico;
+    private $Especie;
+    private $ImagemPlanta;
+    private $zona;
+    private $PlantaHistoria;
 
-		return $this;
-	}
 
-	public function getIdEspecie(): int
-	{
-		return $this->idEspecie;
-	}
+    public function __toString() {
+        return $this->ImagemPlanta;
+    }
+    /**
+     * Get the value of IdPlanta
+     */ 
+    public function getIdPlanta()
+    {
+        return $this->IdPlanta;
+    }
 
-	public function setIdEspecie(int $idEspecie)
-	{
-		$this->idEspecie = $idEspecie;
+    /**
+     * Set the value of IdPlanta
+     *
+     * @return  self
+     */ 
+    public function setIdPlanta($IdPlanta)
+    {
+        $this->IdPlanta = $IdPlanta;
 
-		return $this;
-	}
-	public function getCodQR(): string
-	{
-		return $this->codQR;
-	}
+        return $this;
+    }
 
-	public function setCodQR(string $codQR)
-	{
-		$this->codQR = $codQR;
+    /**
+     * Get the value of NomeSocial
+     */ 
+    public function getNomeSocial()
+    {
+        return $this->NomeSocial;
+    }
 
-		return $this;
-	}
- 
-	public function getCodNumerico(): int
-	{
-		return $this->codNumerico;
-	}
+    /**
+     * Set the value of NomeSocial
+     *
+     * @return  self
+     */ 
+    public function setNomeSocial($NomeSocial)
+    {
+        $this->NomeSocial = $NomeSocial;
 
-	public function setCodNumerico(int $codNumerico)
-	{
-		$this->codNumerico = $codNumerico;
+        return $this;
+    }
 
-		return $this;
-	}
+    /**
+     * Get the value of CodNumerico
+     */ 
+    public function getCodNumerico()
+    {
+        return $this->CodNumerico;
+    }
 
-	public function getNomeSocial(): string
-	{
-		return $this->nomeSocial;
-	}
+    /**
+     * Set the value of CodNumerico
+     *
+     * @return  self
+     */ 
+    public function setCodNumerico($CodNumerico)
+    {
+        $this->CodNumerico = $CodNumerico;
 
-	public function setNomeSocial(string $nomeSocial)
-	{
-		$this->nomeSocial = $nomeSocial;
+        return $this;
+    }
 
-		return $this;
-	}
+    /**
+     * Get the value of Especie
+     */ 
+    public function getEspecie()
+    {
+        return $this->Especie;
+    }
 
-	public function getHistoria(): string
-	{
-		return $this->historia;
-	}
+    /**
+     * Set the value of Especie
+     *
+     * @return  self
+     */ 
+    public function setEspecie($Especie)
+    {
+        $this->Especie = $Especie;
 
-	public function setHistoria(string $historia)
-	{
-		$this->historia = $historia;
+        return $this;
+    }
 
-		return $this;
-	}
+    /**
+     * Get the value of zona
+     */ 
+    public function getZona()
+    {
+        return $this->zona;
+    }
 
-	public function getIdPlanta(): int 
-	{
-		return $this->idPlanta;
-	}
+    /**
+     * Set the value of zona
+     *
+     * @return  self
+     */ 
+    public function setZona($zona)
+    {
+        $this->zona = $zona;
 
-	public function setIdPlanta(int $idPlanta)
-	{
-		$this->idPlanta = $idPlanta;
+        return $this;
+    }
 
-		return $this;
-	}
+    /**
+     * Get the value of PlantaHistoria
+     */ 
+    public function getPlantaHistoria()
+    {
+        return $this->PlantaHistoria;
+    }
 
-	public function getImagemPlanta()
-	{
-		return $this->imagemPlanta;
-	}
+    /**
+     * Set the value of PlantaHistoria
+     *
+     * @return  self
+     */ 
+    public function setPlantaHistoria($PlantaHistoria)
+    {
+        $this->PlantaHistoria = $PlantaHistoria;
 
-	
-	public function setImagemPlanta($imagemPlanta)
-	{
-		$this->imagemPlanta = $imagemPlanta;
+        return $this;
+    }
 
-		return $this;
-	}
+    /**
+     * Get the value of Pontos
+     */ 
+    public function getPontos()
+    {
+        return $this->Pontos;
+    }
+
+    /**
+     * Set the value of Pontos
+     *
+     * @return  self
+     */ 
+    public function setPontos($Pontos)
+    {
+        $this->Pontos = $Pontos;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of ImagemPlanta
+     */ 
+    public function getImagemPlanta()
+    {
+        return $this->ImagemPlanta;
+    }
+
+    /**
+     * Set the value of ImagemPlanta
+     *
+     * @return  self
+     */ 
+    public function setImagemPlanta($ImagemPlanta)
+    {
+        $this->ImagemPlanta = $ImagemPlanta;
+
+        return $this;
+    }
 }

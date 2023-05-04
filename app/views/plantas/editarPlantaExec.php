@@ -1,9 +1,9 @@
 <?php
 #Arquivo para executar a inclusão de um personagem
 
-include_once(__DIR__."/../../models/planta.php");
-include_once(__DIR__."/../../models/zona.php");
-include_once(__DIR__."/../../controllers/planta_controller.php");
+include_once(__DIR__."/../../models/PlantaModel.php");
+include_once(__DIR__."/../../models/ZonaMode.php");
+include_once(__DIR__."/../../controllers/PlantaController.php");
 
 //Capturar os valores vindos do formulário
 $id = $_POST["id_planta"];

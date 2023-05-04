@@ -1,7 +1,7 @@
 <?php
 #Arquivo para executar a exclusão de um Personagem
 
-include_once("../../controllers/planta_controller.php");
+include_once("../../controllers/PlantaController.php");
 
 $idPlanta = $_GET["id"];
 

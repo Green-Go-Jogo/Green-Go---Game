@@ -4,7 +4,18 @@
         <?= $_SESSION['msg_erro'] ?>
     </span>
 <?php endif ?>
-<?php include_once("../../controllers/zona_controller.php");
+<?php include_once("../../controllers/ZonaController.php");
+
+$id = $_GET['id'];
+
+      $zonaCont = new ZonaController();
+      $zona = $zonaCont->buscarPorId($id);
+      
+      if($zona == null) {
+          echo "Zona não encontrado!<br>";
+          echo "<a href='listZonas.php'>Voltar</a>";
+          exit;
+      } 
 ?>
 
 
@@ -111,7 +122,7 @@
                             </button>
                             </div>
 
-                            <input type="hidden" name="id_planta" value="<?php echo $zona->getIdZona(); ?>" />
+                            <input type="hidden" name="id_zona" value="<?php echo $zona->getIdZona(); ?>" />
 
 
                             </form>

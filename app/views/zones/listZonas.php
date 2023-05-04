@@ -1,6 +1,6 @@
 <?php
 include_once(__DIR__."/../../connection/Connection.php");
-include_once(__DIR__."/../../controllers/zona_controller.php");
+include_once(__DIR__."/../../controllers/ZonaController.php");
 include_once(__DIR__."/htmlZona.php");
 ?>
 

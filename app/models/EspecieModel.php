@@ -1,111 +1,215 @@
 <?php
 class EspecieModel{
-	private $idEspecie;
-	private $imagem;
-	private $descricao;
-	private $pontoEsp;
-	private $nomePop;
-	private $nomeCie;
-	private $frutifera;
-	private $toxidade;
-	private $exotica;
-	private $raridade;
-	private $medicinal;
-	private $comestivel;
+	private $IdEspecie;
+	private $ImagemEspecie;
+	private $Descricao;
+	private $NomePopular;
+	private $NomeCientifico;
+	private $Frutifera;
+	private $Toxidade;
+	private $Exotica;
+	private $Raridade;
+	private $Medicinal;
+	private $Comestivel;
 	
-	public function getIdEspecie(): int{
-		return $this->idEspecie;
-	}
-	
-	public function setIdEspecie(int $idEspecie){
-		$this->idEspecie = $idEspecie;
-	}	
-	
-	public function getImagem(): string{
-		return $this->imagem;
-	}
-	
-	public function setImagem(string $img){
-		$this->imagem = $img;
+
+	public function getIdEspecie()
+	{
+		return $this->IdEspecie;
 	}
 
-	public function getDescricao(): string{
-		return $this->descricao;
-	}
 	
-	public function setDescricao(string $des){
-		$this->descricao = $des;
+	public function setIdEspecie($IdEspecie)
+	{
+		$this->IdEspecie = $IdEspecie;
+
+		return $this;
 	}
 
-	public function getPontoEsp(): int{
-		return $this->pontoEsp;
-	}
-	
-	public function setPontoEsp(int $pe){
-		$this->pontoEsp = $pe;
+
+	public function getImagemEspecie()
+	{
+		return $this->ImagemEspecie;
 	}
 
-	public function getNomePop(): string{
-		return $this->nomePop;
-	}
-	
-	public function setNomePop(string $np){
-		$this->nomePop = $np;
+
+	public function setImagemEspecie($ImagemEspecie)
+	{
+		$this->ImagemEspecie = $ImagemEspecie;
+
+		return $this;
 	}
 
-	public function getNomeCie(): string{
-		return $this->nomeCie;
-	}
-	
-	public function setNomeCie(string $nc){
-		$this->nomeCie = $nc;
+
+	public function getDescricao()
+	{
+		return $this->Descricao;
 	}
 
-	public function getFrutifera(): int{
-		return $this->frutifera;
-	}
-	
-	public function setFrutifera(int $fru){
-		$this->frutifera = $fru;
+	public function setDescricao($Descricao)
+	{
+		$this->Descricao = $Descricao;
+
+		return $this;
 	}
 
-	public function getToxidade(): int{
-		return $this->toxidade;
-	}
-	
-	public function setToxidade(int $tox){
-		$this->toxidade = $tox;
-	}
-
-	public function getExotica(): int{
-		return $this->exotica;
-	}
-	
-	public function setExotica(int $exo){
-		$this->exotica = $exo;
+	/**
+	 * Get the value of NomePopular
+	 */ 
+	public function getNomePopular()
+	{
+		return $this->NomePopular;
 	}
 
-	public function getRaridade(): int{
-		return $this->raridade;
-	}
-	
-	public function setRaridade(int $rar){
-		$this->raridade = $rar;
+	/**
+	 * Set the value of NomePopular
+	 *
+	 * @return  self
+	 */ 
+	public function setNomePopular($NomePopular)
+	{
+		$this->NomePopular = $NomePopular;
+
+		return $this;
 	}
 
-	public function getMedicinal(): int{
-		return $this->medicinal;
-	}
-	
-	public function setMedicinal(int $med){
-		$this->medicinal = $med;
+	/**
+	 * Get the value of NomeCientifico
+	 */ 
+	public function getNomeCientifico()
+	{
+		return $this->NomeCientifico;
 	}
 
-	public function getComestivel(): int{
-		return $this->comestivel;
+	/**
+	 * Set the value of NomeCientifico
+	 *
+	 * @return  self
+	 */ 
+	public function setNomeCientifico($NomeCientifico)
+	{
+		$this->NomeCientifico = $NomeCientifico;
+
+		return $this;
 	}
-	
-	public function setComestivel(int $com){
-		$this->comestivel = $com;
+
+	/**
+	 * Get the value of Frutifera
+	 */ 
+	public function getFrutifera()
+	{
+		return $this->Frutifera;
+	}
+
+	/**
+	 * Set the value of Frutifera
+	 *
+	 * @return  self
+	 */ 
+	public function setFrutifera($Frutifera)
+	{
+		$this->Frutifera = $Frutifera;
+
+		return $this;
+	}
+
+	/**
+	 * Get the value of Toxidade
+	 */ 
+	public function getToxidade()
+	{
+		return $this->Toxidade;
+	}
+
+	/**
+	 * Set the value of Toxidade
+	 *
+	 * @return  self
+	 */ 
+	public function setToxidade($Toxidade)
+	{
+		$this->Toxidade = $Toxidade;
+
+		return $this;
+	}
+
+	/**
+	 * Get the value of Exotica
+	 */ 
+	public function getExotica()
+	{
+		return $this->Exotica;
+	}
+
+	/**
+	 * Set the value of Exotica
+	 *
+	 * @return  self
+	 */ 
+	public function setExotica($Exotica)
+	{
+		$this->Exotica = $Exotica;
+
+		return $this;
+	}
+
+	/**
+	 * Get the value of Raridade
+	 */ 
+	public function getRaridade()
+	{
+		return $this->Raridade;
+	}
+
+	/**
+	 * Set the value of Raridade
+	 *
+	 * @return  self
+	 */ 
+	public function setRaridade($Raridade)
+	{
+		$this->Raridade = $Raridade;
+
+		return $this;
+	}
+
+	/**
+	 * Get the value of Medicinal
+	 */ 
+	public function getMedicinal()
+	{
+		return $this->Medicinal;
+	}
+
+	/**
+	 * Set the value of Medicinal
+	 *
+	 * @return  self
+	 */ 
+	public function setMedicinal($Medicinal)
+	{
+		$this->Medicinal = $Medicinal;
+
+		return $this;
+	}
+
+	/**
+	 * Get the value of Comestivel
+	 */ 
+	public function getComestivel()
+	{
+		return $this->Comestivel;
+	}
+
+	/**
+	 * Set the value of Comestivel
+	 *
+	 * @return  self
+	 */ 
+	public function setComestivel($Comestivel)
+	{
+		$this->Comestivel = $Comestivel;
+
+		return $this;
 	}
 }

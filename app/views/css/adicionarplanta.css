@@ -299,6 +299,13 @@ a {
     margin-top: 10px;
 }
 
+#txtNomeZona {
+    margin-left: 0%;
+    font-family: Poppins-semibold;
+    color: var(--principal);
+    margin-top: 10px;
+}
+
 #txtCodigo {
     margin-left: 0%;
     font-family: Poppins-semibold;
@@ -564,6 +571,10 @@ a {
 }
 
 #txtNomeForm{
+    width: 428px;
+}
+
+#txtNomeZona{
     width: 428px;
 }
 

@@ -1,53 +1,108 @@
 <?php
+#Arquivo com a declaração da classe Stand
 
-class ZonaModel
-{
+class Zona {
 
-    private $idZona;
-    private $idPlanta;
-    private $nomeZona;
-    private int $pontoZona;
+    private $IdZona;
+    private $NomeZona;
+    private $QntdPlanta;
+    private $PontosTotais;
+
+    //Construtor da classe
+    public function __construct($id="",$nome="", $qntP="", $pontosT=0)
+    {
+        $this->IdZona = $id;
+        $this->NomeZona = $nome;
+        $this->QntdPlanta = $qntP;
+        $this->PontosTotais = $pontosT;
+    }
     
-    public function setIdZona(int $idZona)
+    public function __toString() {
+        return $this->NomeZona;
+    }
+    /**
+     * Get the value of IdZona
+     */ 
+    public function getIdZona()
     {
-        $this->idZona = $idZona;
+        return $this->IdZona;
     }
 
-    public function getIdZona(): int
+    /**
+     * Set the value of IdZona
+     *
+     * @return  self
+     */ 
+    public function setIdZona($IdZona)
     {
-        return $this->idZona;
-    }
-
-    public function setIdPlanta($idPlanta)
-    {
-        $this->idPlanta = $idPlanta;
+        $this->IdZona = $IdZona;
 
         return $this;
     }
-    public function getIdPlanta()
+
+    /**
+     * Get the value of QntdPlanta
+     */ 
+    public function getQntdPlanta()
     {
-        return $this->idPlanta;
-    }
-   
-    public function setNomeZona(string $nomeZona)
-    {
-        $this->nomeZona = $nomeZona;
+        return $this->QntdPlanta;
     }
 
+    /**
+     * Set the value of QntdPlanta
+     *
+     * @return  self
+     */ 
+    public function setQntdPlanta($QntdPlanta)
+    {
+        $this->QntdPlanta = $QntdPlanta;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of NomeZona
+     */ 
     public function getNomeZona()
     {
-        return $this->nomeZona;
+        return $this->NomeZona;
     }
 
-    public function setPontoZona(string $pontoZona)
+    /**
+     * Set the value of NomeZona
+     *
+     * @return  self
+     */ 
+    public function setNomeZona($NomeZona)
     {
-        $this->pontoZona = $pontoZona;
+        $this->NomeZona = $NomeZona;
+
+        return $this;
     }
 
-    public function getPontoZona()
+    /**
+     * Get the value of PontosTotais
+     */ 
+    public function getPontosTotais()
     {
-        return $this->pontoZona;
+        return $this->PontosTotais;
     }
-    
+
+    /**
+     * Set the value of PontosTotais
+     *
+     * @return  self
+     */ 
+    public function setPontosTotais($PontosTotais)
+    {
+        $this->PontosTotais = $PontosTotais;
+
+        return $this;
+    }
+    }
+    /**
+     * Get the value of idStand
+     */ 
    
-}
+
+?>
