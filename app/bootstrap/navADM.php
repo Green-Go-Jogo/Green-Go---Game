@@ -3,7 +3,7 @@
     <div id="itensmenu">
 
             <nav class="navbar navbar-expand-lg " id="menu">
-                <a href="../views/indexADM.php" class="nav-brand">
+                <a href="../indexADM.php" class="nav-brand">
                     <div class="row justify-content-md-left">
                         <div id="imgmenu">
                             <img class="img-responsive"  id="logo" >
