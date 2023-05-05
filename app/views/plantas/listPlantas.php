@@ -19,7 +19,7 @@ include_once(__DIR__."/htmlPlanta.php");
     <!--BOOTSTRAP-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="../views/css/listPlanta.css">
+    <link rel="stylesheet" href="../css/listPlanta.css">
     <!--scripts-->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -35,6 +35,14 @@ include_once(__DIR__."/htmlPlanta.php");
     <script src="https://cdn.jsdelivr.net/parallax.js/1.4.2/parallax.min.js"></script>
 
 </head>
+
+<nav>
+
+    <?php include_once("../../bootstrap/navADM.php");?>
+    <br>
+    
+</nav>
+
 <body>
     
   <h3 class="text-center">PLANTA</h3>
@@ -44,6 +52,7 @@ include_once(__DIR__."/htmlPlanta.php");
     
         <p style="font-weight: bold;">RELAÇÃO DAS PLANTAS CADASTRADAS</p>
         
+
         <?php
             $plantaCont = new PlantaController();
             $plantas = $plantaCont->listar(); 
