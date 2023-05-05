@@ -35,6 +35,11 @@ include_once(__DIR__."/htmlZona.php");
     <script src="https://cdn.jsdelivr.net/parallax.js/1.4.2/parallax.min.js"></script>
 
 </head>
+<nav>
+
+    <?php include_once("../../bootstrap/navADM.php");?>
+    
+</nav>
 <body>
     
   <h3 class="text-center">Zona</h3>
