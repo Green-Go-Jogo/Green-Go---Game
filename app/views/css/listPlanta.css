@@ -119,8 +119,11 @@ body {
 }
 
 img.mais {
-    height: 60px !important;
+    height: 225px !important;
     transition: 0.3s ease;
+    align-content: center;
+    margin-top: 20px;
+    margin-left: 10px;
 }
 
 .mais:hover {
@@ -230,7 +233,7 @@ a.editar:disabled {
     font-family: Poppins-medium;
     font-size: 18px;
     transition: 0.3s ease;
-
+    margin-left: 15px;
     display: inline-block;
 }
 
@@ -245,24 +248,18 @@ a.excluir:hover {
     border: 2px solid var(--cinza);
 }
 
-.qrcode {
-    color: var(--branco);
-    background-color: var(--destaque);
-    border: 2px solid var(--destaque);
-    border-radius: 5px;
-    width: 120%;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    font-family: Poppins-medium;
-    font-size: 16px;
-    transition: 0.3s ease;
+.primeirotextoreg {
+    color: #338A5F;
+    margin-bottom: 50px;
+    font-family: Poppins;
     margin-top: 10px;
-    text-align: center;
+    font-size: 60px;
 
-    display: inline-block;
 }
 
-.qrcode:hover {
-    color: var(--branco);
-    transform: scale(1.05);
+.nome-texto    {
+    font-family: Poppins-semibold;
+    font-size: 20px;
+    color:#f58c95;
+    margin-bottom: 25px;
 }

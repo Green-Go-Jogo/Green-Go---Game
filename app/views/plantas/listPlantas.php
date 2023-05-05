@@ -40,17 +40,16 @@ include_once(__DIR__."/htmlPlanta.php");
 
     <?php include_once("../../bootstrap/navADM.php");?>
     <br>
-    
+
 </nav>
 
 <body>
     
-  <h3 class="text-center">PLANTA</h3>
+<a id="primeirotextoreg">
+  <h1 class="text-center primeirotextoreg">PLANTAS</h1> </a>
    
     <div style="margin: 40px 10px 0px 10px;">
         <a class="btn btn-outline-success" href="adicionarPlanta.php">Incluir Nova Planta</a><br><br><br>
-    
-        <p style="font-weight: bold;">RELAÇÃO DAS PLANTAS CADASTRADAS</p>
         
 
         <?php
