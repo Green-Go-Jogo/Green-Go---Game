@@ -5,7 +5,9 @@
     </span>
 <?php endif ?>
 <?php include_once("../../controllers/ZonaController.php");
+      include_once("../../controllers/EspecieController.php");
       include_once("../zones/htmlZonaForm.php");
+      include_once("../especies/htmlEspecieForm.php");
 ?>
 
 
@@ -101,6 +103,17 @@
                             ?>
                             </div> </a>
                             
+                            <div class="form-group">
+                            <label for="selectStand" id="txtNome">Espécie:</label>
+                            <div class="w-100"></div>
+                            <a id="txtNomeForm">
+                            <?php
+                            $especieCont = new EspecieController();
+                            $especies = $especieCont->listar();
+
+                             EspecieHTMLForm::desenhaSelect($especies, "especie_planta", "nome_especie");
+                            ?>
+                            </div> </a>
                                             
                             <label for="formtexto" id="txtPontos">Pontuação</label>
                             <div class="w-100"> </div>

@@ -5,8 +5,8 @@ include_once(__DIR__."/../models/EspecieModel.php");
 
 class EspecieDAO {
 
-    private const SQL_ESPECIE = "SELECT p.*, e.nomePop FROM planta p".
-    " JOIN especie e ON e.idEspecie = p.idEspecie";
+    private const SQL_ESPECIE = "SELECT n.*, e.nomePop FROM especie n".
+    " JOIN especie e ON e.idEspecie = n.idEspecie";
 
     private function mapEspecies($resultSql) {
             $especies = array();
@@ -48,7 +48,7 @@ class EspecieDAO {
         $conn = conectar_db();
 
         $sql = EspecieDAO::SQL_ESPECIE . 
-                " WHERE p.idEspecie = ?";
+                " WHERE n.idEspecie = ?";
 
         $stmt = $conn->prepare($sql);
         $stmt->execute([$idEspecie]);

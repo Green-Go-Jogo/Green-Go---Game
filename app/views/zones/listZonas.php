@@ -17,12 +17,10 @@ include_once(__DIR__."/htmlZona.php");
 </nav>
 <body>
     
-  <h3 class="text-center">Zona</h3>
+  <h3 class="text-center primeirotextoreg">ZONAS</h3>
    
     <div style="margin: 40px 10px 0px 10px;">
         <a class="btn btn-outline-success" href="adicionarZona.php">Incluir Nova Zona</a><br><br><br>
-    
-        <p style="font-weight: bold;">RELAÇÃO DAS ZONAS CADASTRADAS</p>
         
         <?php
             $zonaCont = new ZonaController();

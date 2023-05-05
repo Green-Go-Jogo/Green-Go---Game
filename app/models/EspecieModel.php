@@ -1,5 +1,5 @@
 <?php
-class EspecieModel{
+class Especie {
 	private $IdEspecie;
 	private $ImagemEspecie;
 	private $Descricao;
@@ -12,6 +12,19 @@ class EspecieModel{
 	private $Medicinal;
 	private $Comestivel;
 	
+
+	//Construtor da classe
+    public function __construct($id="",$nomep="", $nomec="")
+    {
+        $this->IdEspecie = $id;
+        $this->NomePopular = $nomep;
+        $this->NomeCientifico = $nomec;
+    }
+
+	public function __toString() {
+        return $this->NomePopular;
+		return $this->NomeCientifico;
+    }
 
 	public function getIdEspecie()
 	{

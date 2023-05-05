@@ -18,6 +18,7 @@ $caminho_imagem = "../../public/plantas/" . $nome_imagem;
 move_uploaded_file($imagem["tmp_name"], $caminho_imagem);
             
 $id_zona = $_POST['zona_planta'];
+$id_especie = $_POST['especie_planta'];
 
 //Criar o objeto personagem
 $planta = new Planta();
@@ -29,6 +30,9 @@ $planta->setImagemPlanta($caminho_imagem);
 
 $zona = new Zona($id_zona);
 $planta->setZona($zona);
+
+$especie = new Especie($id_especie);
+$planta->setEspecie($especie);
 
 //Chamar o controler para salvar o planta
 $plantaCont = new PlantaController();

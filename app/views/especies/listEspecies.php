@@ -34,15 +34,24 @@ include_once(__DIR__."/htmlEspecie.php");
     <!-- Parallax -->
     <script src="https://cdn.jsdelivr.net/parallax.js/1.4.2/parallax.min.js"></script>
 
+    <head>
+
+<?php include_once("../../bootstrap/header.php");?>
+
 </head>
 <body>
+<nav>
+
+<?php include_once("../../bootstrap/navADM.php");?>
+<br>
+
+</nav>
     
-  <h3 class="text-center">ESPÉCIE</h3>
+  <h3 class="text-center primeirotextoreg">ESPÉCIES</h3>
    
     <div style="margin: 40px 10px 0px 10px;">
         <a class="btn btn-outline-success" href="adicionarEspecie.php">Incluir Nova Espécie</a><br><br><br>
     
-        <p style="font-weight: bold;">RELAÇÃO DAS ESPÉCIES CADASTRADAS</p>
         
         <?php
             $especieCont = new EspecieController();

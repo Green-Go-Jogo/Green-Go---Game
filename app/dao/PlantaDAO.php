@@ -10,8 +10,8 @@ include_once(__DIR__."/../models/PlantaModel.php");
 
 class PlantaDAO {
 
-    private const SQL_PLANTA = "SELECT p.*, z.nomeZona FROM planta p".
-    " JOIN zona z ON z.idZona = p.idZona";
+    private const SQL_PLANTA = "SELECT p.*, e.idEspecie, e.nomePop, z.nomeZona FROM planta p".
+    " JOIN zona z ON z.idZona = p.idZona". " JOIN especie e ON e.idEspecie = p.idEspecie";
 
     private function mapPlantas($resultSql) {
             $plantas = array();
@@ -24,6 +24,9 @@ class PlantaDAO {
             $planta->setImagemPlanta($reg['imagemPlanta']);
             $planta->setCodNumerico($reg['codNumerico']);
             $planta->setPlantaHistoria($reg['historia']);
+
+            $especie = new Especie($reg['idEspecie'], $reg['nomePop']);
+            $planta->setEspecie($especie);
 
             $zona = new Zona($reg['idZona'], $reg['nomeZona']);
             $planta->setZona($zona);
@@ -72,20 +75,20 @@ class PlantaDAO {
     public function save(Planta $planta) {
         $conn = conectar_db();
 
-        $sql = "INSERT INTO planta (nomeSocial, codNumerico, pontuacaoPlanta, historia, imagemPlanta, idZona)".
-        " VALUES (?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO planta (nomeSocial, codNumerico, pontuacaoPlanta, historia, imagemPlanta, idZona, idEspecie)".
+        " VALUES (?, ?, ?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
         $stmt->execute([$planta->getNomeSocial(), $planta->getCodNumerico(), 
-                        $planta->getPontos(), $planta->getPlantaHistoria(), $planta->getImagemPlanta(), $planta->getZona()->getIdZona()]);
+                        $planta->getPontos(), $planta->getPlantaHistoria(), $planta->getImagemPlanta(), $planta->getZona()->getIdZona(), $planta->getEspecie()->getIdEspecie()]);
     }
 
     public function update(Planta $planta) {
         $conn = conectar_db();
     
-        $sql = "UPDATE planta SET nomeSocial = ?, codNumerico = ?, pontuacaoPlanta = ?, historia = ?, imagemPlanta = ?, idZona = ? WHERE idPlanta = ?";
+        $sql = "UPDATE planta SET nomeSocial = ?, codNumerico = ?, pontuacaoPlanta = ?, historia = ?, imagemPlanta = ?, idZona = ?, idEspecie = ? WHERE idPlanta = ?";
         $stmt = $conn->prepare($sql);
         $stmt->execute([$planta->getNomeSocial(), $planta->getCodNumerico(), 
-        $planta->getPontos(), $planta->getPlantaHistoria(), $planta->getImagemPlanta(), $planta->getZona()->getIdZona(), $planta->getIdPlanta()]);
+        $planta->getPontos(), $planta->getPlantaHistoria(), $planta->getImagemPlanta(), $planta->getZona()->getIdZona(), $planta->getEspecie()->getIdEspecie(), $planta->getIdPlanta()]);
     }
 
     

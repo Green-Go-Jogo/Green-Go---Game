@@ -2,8 +2,65 @@
 <?php if (isset($_SESSION['msg_erro'])): ?>
     <span>
         <?= $_SESSION['msg_erro'] ?>
-    </span>
-<?php endif ?>
+    </span> 
+  <?php endif ?> 
+    
+  <?php    include_once("../../controllers/EspecieController.php");
+      
+      $id = $_GET['id'];
+
+$especieCont = new EspecieController();
+$especie = $especieCont->buscarPorId($id);
+
+if($especie == null) {
+    echo "Especie não encontrado!<br>";
+    echo "<a href='listEspecies.php'>Voltar</a>";
+    exit;
+} 
+
+$frutifera = $especie->getFrutifera();
+            if ($frutifera == 1) { 
+                $frut = "checked";
+            } else { 
+                $frut = "";
+            };
+
+            $exotica = $especie->getExotica();
+            if ($exotica == 1) { 
+                $exot = "checked";
+            } else { 
+                $exot = "";
+            };
+
+            $raridade = $especie->getRaridade();
+            if ($raridade == 1) { 
+                $rara = "checked";
+            } else { 
+                $rara = "";
+            };
+
+            $toxidade = $especie->getToxidade();
+            if ($toxidade == 1) { 
+                $tox = "checked";
+            } else { 
+                $tox = "";
+            };
+
+            $medicinal = $especie->getMedicinal();
+            if ($medicinal == 1) { 
+                $med = "checked";
+            } else { 
+                $med = "";
+            };
+
+            $comestivel = $especie->getComestivel();
+            if ($comestivel == 1) { 
+                $come = "checked";
+            } else { 
+                $come = "";
+            };
+            ?>
+
 
 
 <!DOCTYPE html>
@@ -37,8 +94,6 @@
     <script src="js/progressbar.min.js"></script>
     <!-- Parallax -->
     <script src="https://cdn.jsdelivr.net/parallax.js/1.4.2/parallax.min.js"></script>
-    <script src="js/registro.js"></script>
-    <link rel="stylesheet" href="views/js/registro.js">
     <link rel="stylesheet" href="css/editorwys.css" type="text/css" media="all" />
     <script type="text/javascript" src="js/script.js"></script>
 </head>
@@ -87,15 +142,15 @@
 
                 <div class="col">
                     <div class="form-row align-items-left">
-                        <form action="adicionarEspecieExec.php" method="POST" enctype="multipart/form-data">
+                        <form action="editarEspecieExec.php" method="POST" enctype="multipart/form-data">
 
-                        <label for="formtexto" id="txtNome">Nome Popular</label>
+                            <label for="formtexto" id="txtNome">Nome Popular</label>
                             <div class="w-100"></div>
-                            <input type="text" name="Nome_Popular" class="form-control" id="txtNomeForm" aria-describedby="nome-cadastro">
+                            <input type="text" name="Nome_Popular" class="form-control" id="txtNomeForm" aria-describedby="nome-cadastro" value="<?php echo $especie->getNomePopular(); ?>">
                             <div class="w-100"></div>
                             <label for="formtexto" id="txtCodigo">Nome Cientifico</label>
                             <div class="w-100"></div>
-                            <input type="text" name="Nome_Cientifico" class="form-control" id="txtCodigoForm" aria-describedby="nome-cadastro">
+                            <input type="text" name="Nome_Cientifico" class="form-control" id="txtCodigoForm" aria-describedby="nome-cadastro" value="<?php echo $especie->getNomeCientifico(); ?>">
                             <div class="w-100"> <br>
                         <div>
                         <div class="container" id="container-checkbox">
@@ -109,42 +164,42 @@
                                         </div>
                                         <div class="form-group form-check" id="formcome">
                                             <input type="checkbox" name="comestivel" class="form-check-input"
-                                                id="botaocheck1" value="1">
+                                                id="botaocheck1" value="1" <?php echo $come; ?> >
 
                                             <label class="form-check-label" for="botaocheck1"
                                                 id="texto-checkbox">Comestível</label>
                                         </div>
                                         <div class="form-group form-check" id="formexo">
                                             <input type="checkbox" name="exotica" class="form-check-input"
-                                                id="botaocheck2" value="1">
+                                                id="botaocheck2" value="1" <?php echo $exot; ?> >
                                             
                                             <label class="form-check-label" for="botaocheck2"
                                                 id="texto-checkbox">Exótica</label>
                                         </div>
                                         <div class="form-group form-check" id="formfrut">
                                             <input type="checkbox" name="frutifera" class="form-check-input"
-                                                id="botaocheck3" value="1">
+                                                id="botaocheck3" value="1" <?php echo $frut; ?> >
                                         
                                             <label class="form-check-label" for="botaocheck3"
                                                 id="texto-checkbox">Frutífera</label>
                                         </div>
                                         <div class="form-group form-check" id="formmed">
                                             <input type="checkbox" name="medicinal" class="form-check-input"
-                                                id="botaocheck4" value="1">
+                                                id="botaocheck4" value="1" <?php echo $med; ?>>
                                             
                                             <label class="form-check-label" for="botaocheck4"
                                                 id="texto-checkbox">Medicinal</label>
                                         </div>
                                         <div class="form-group form-check" id="formrara">
                                             <input type="checkbox" name="raridade" class="form-check-input"
-                                                id="botaocheck5" value="1">
+                                                id="botaocheck5" value="1" <?php echo $rara; ?>>
                                             
                                             <label class="form-check-label" for="botaocheck5"
                                                 id="texto-checkbox">Rara</label>
                                         </div>
                                         <div class="form-group form-check" id="formtoxi">
                                             <input type="checkbox" name="toxidade" class="form-check-input"
-                                                id="botaocheck6" value="1">
+                                                id="botaocheck6" value="1" <?php echo $tox; ?>>
                                         
                                             <label class="form-check-label" for="botaocheck6"
                                                 id="texto-checkbox">Tóxica</label>
@@ -175,7 +230,7 @@
                             <div class="w-100"></div>
                             <div class="container" id="caixadetexto">
                             <a id="textodescritivo">Descrição</a>
-                            <textarea id="txtHistoria" name="Descricao" ></textarea>
+                            <textarea id="txtHistoria" name="Historia" value="<?php echo $especie->getDescricao()?>"></textarea>
 
                             <script src="../ckeditor/build/ckeditor.js"></script>
                             <script>ClassicEditor.create(document.querySelector('#txtHistoria'), {licenseKey: '',}).then(editor => {window.editor = editor;
@@ -196,6 +251,8 @@
                             <button type="reset" class="btn btn-secondary btn-lg" id="botoeslimpar"> <a id="limpar"> Limpar</a>
                             </button>
                             </div>
+
+                            <input type="hidden" name="id_especie" value="<?php echo $especie->getIdEspecie(); ?>" />
 
 
                             </form>

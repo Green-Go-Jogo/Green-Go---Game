@@ -7,8 +7,9 @@
 <?php 
       include_once("../../controllers/PlantaController.php");
       include_once("../../controllers/ZonaController.php");
+      include_once("../../controllers/EspecieController.php");
       include_once("../zones/htmlZonaForm.php");
-      
+      include_once("../especies/htmlEspecieForm.php");
       
       $id = $_GET['id'];
 
@@ -111,6 +112,18 @@
 
                              ZonaHTMLForm::desenhaSelect($zonas, "zona_planta", "SomPlanta", $planta->getZona()->getIdZona());
                             ?>        
+
+                            <div class="form-group">
+                            <label for="selectStand" id="txtNome">Espécie:</label>
+                            <div class="w-100"></div>
+                            <a id="txtNomeForm">
+                            <?php
+                            $especieCont = new EspecieController();
+                            $especies = $especieCont->listar();
+
+                             EspecieHTMLForm::desenhaSelect($especies, "especie_planta", "nome_especie", $planta->getEspecie()->getIdEspecie());
+                            ?>
+                            </div> </a>
 
                             </div></div>
                             <div class="w-100"></div>

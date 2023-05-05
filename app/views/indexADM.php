@@ -2,7 +2,8 @@
 <html lang="pt-br">
 
 <head>
-
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/cabecalho.css">
     <?php include_once("../bootstrap/header.php");?>
 
 </head> 
@@ -54,8 +55,7 @@
                         <h1><br><br>Aprenda <br> com trilhas <br> ecológicas! </h1>
                         <div class="row">
                             <div class="col">
-                                <a class="btn btn-secondary jogar" href="../Controllers/PlantaControllerADM.php?action=formIdentificarPlanta">JOGAR</a>
-
+                               
                                 <!--SÓ HÁ UM MODO DE JOGO POR HORA
                                 <div class="dropdown">
                                     <button class="btn btn-secondary dropdown-toggle" type="button"

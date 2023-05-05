@@ -2,7 +2,8 @@
 #Arquivo para executar a inclusão de um personagem
 
 include_once(__DIR__."/../../models/PlantaModel.php");
-include_once(__DIR__."/../../models/ZonaMode.php");
+include_once(__DIR__."/../../models/ZonaModel.php");
+include_once(__DIR__."/../../models/EspecieModel.php");
 include_once(__DIR__."/../../controllers/PlantaController.php");
 
 //Capturar os valores vindos do formulário
@@ -19,6 +20,7 @@ $caminho_imagem = "../../public/plantas/" . $nome_imagem;
 move_uploaded_file($imagem["tmp_name"], $caminho_imagem);
 
 $id_zona = $_POST['zona_planta'];
+$id_especie = $_POST['especie_planta'];
 
 //Criar o objeto personagem
 $planta = new Planta();
@@ -28,6 +30,9 @@ $planta->setCodNumerico($Cod_Numerico);
 $planta->setImagemPlanta($caminho_imagem);
 $planta->setPontos($pontuacao);
 $planta->setPlantaHistoria($historia);
+
+$especie = new Especie($id_especie);
+$planta->setEspecie($especie);
 
 $zona = new Zona($id_zona);
 $planta->setZona($zona);

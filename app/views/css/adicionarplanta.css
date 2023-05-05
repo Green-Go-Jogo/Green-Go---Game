@@ -551,6 +551,53 @@ a {
     background-color: #ebf0f1;
 }
 
+#texto-checkbox {
+    font-family: Poppins-regular;
+    color: #338A5F;
+}
+
+input[type=checkbox] {
+    position: relative;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+input[type=checkbox]:before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 0;
+    left: 0;
+    background-color: var(--rosinha);
+}
+
+input[type=checkbox]:checked:before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 0;
+    left: 0;
+    background-color: var(--destaque);
+}
+
+input[type=checkbox]:checked:after {
+    content: "";
+    display: block;
+    width: 5px;
+    height: 10px;
+    border: solid var(--branco);
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    position: absolute;
+    top: 4.5px;
+    left: 7.5px;
+}
 #form2 {
     background-color: var(--rosinha);
     height: 45px;

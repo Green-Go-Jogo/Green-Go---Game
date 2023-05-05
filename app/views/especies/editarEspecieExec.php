@@ -5,6 +5,7 @@ include_once(__DIR__."/../../models/EspecieModel.php");
 include_once(__DIR__."/../../controllers/EspecieController.php");
 
 //Capturar os valores vindos do formulário
+$id = $_POST["id_especie"];
 $nomePopular = $_POST["Nome_Popular"];
 $nomeCientifico = $_POST['Nome_Cientifico'];
 $descricao = $_POST['Descricao'];
@@ -23,6 +24,7 @@ move_uploaded_file($imagem["tmp_name"], $caminho_imagem);
 
 //Criar o objeto personagem
 $especie = new Especie();
+$especie->setIdEspecie($id);
 $especie->setNomePopular($nomePopular);
 $especie->setNomeCientifico($nomeCientifico);
 $especie->setDescricao($descricao);
@@ -36,7 +38,7 @@ $especie->setExotica($exotica);
 
 //Chamar o controler para salvar o planta
 $especieCont = new EspecieController();
-$especieCont->salvar($especie);
+$especieCont->atualizar($especie);
 
 //Redireciona para o início
 header("location: listEspecies.php");
