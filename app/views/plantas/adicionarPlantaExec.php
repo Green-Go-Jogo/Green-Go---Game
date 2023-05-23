@@ -20,7 +20,7 @@ move_uploaded_file($imagem["tmp_name"], $caminho_imagem);
 $id_zona = $_POST['zona_planta'];
 $id_especie = $_POST['especie_planta'];
 
-//Criar o objeto personagem
+//Criar o objeto planta
 $planta = new Planta();
 $planta->setNomeSocial($nomeSocial);
 $planta->setCodNumerico($Cod_Numerico);

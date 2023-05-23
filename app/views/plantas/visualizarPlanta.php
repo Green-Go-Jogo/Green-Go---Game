@@ -3,49 +3,81 @@
 
 
 <?php
+ include_once("../../controllers/PlantaController.php");
+ include_once("../../controllers/ZonaController.php");
+ include_once("../../controllers/EspecieController.php");
+ include_once("../zones/htmlZonaForm.php");
+ include_once("../especies/htmlEspecie.php");
+ 
+ $ide = $_GET['ide'];
+ $idp = $_GET['idp'];
 
+ $especieCont = new EspecieController();
+ $especie = $especieCont->buscarPorId($ide);
 
+ $plantaCont = new PlantaController();
+ $planta = $plantaCont->buscarPorId($idp);
 
+     $frutifera = $especie->getFrutifera();
+            if ($frutifera == 1) { 
+                $frut = "<br>"."Frutífera";
+            } else { 
+                $frut = "";
+            };
 
-//include_once __DIR__ . "/../helpers/mensagem.php";
-//$caminho = __DIR__ . "/../helpers/mensagem.php";
-//print_r($caminho); 
+            $exotica = $especie->getExotica();
+            if ($exotica == 1) { 
+                $exot = "<br>"."Exótica";
+            } else { 
+                $exot = "";
+            };
+
+            $raridade = $especie->getRaridade();
+            if ($raridade == 1) { 
+                $rara = "<br>"."Rara";
+            } else { 
+                $rara = "";
+            };
+
+            $toxidade = $especie->getToxidade();
+            if ($toxidade == 1) { 
+                $tox = "<br>"."Toxíca";
+            } else { 
+                $tox = "";
+            };
+
+            $medicinal = $especie->getMedicinal();
+            if ($medicinal == 1) { 
+                $med = "<br>"."Medicinal";
+            } else { 
+                $med = "";
+            };
+
+            $comestivel = $especie->getComestivel();
+            if ($comestivel == 1) { 
+                $come = "<br>"."Comestível";
+            } else { 
+                $come = "";
+            };
+ 
+ if($planta == null) {
+    echo "Planta não encontrado!<br>";
+    echo "<a href='listPlantas.php'>Voltar</a>";
+    exit;
+ }
 ?>
 
-<?php foreach ($data['plantas'] as $planta): ?>
 
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>
-
             <?= $planta->getNomeSocial() ?>
         </title>
 
-        <!--FAVICON-->
-        <link rel="icon" href="../public/favicon.svg">
-        <!-- Fonte -->
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet">
-        <!--BOOTSTRAP-->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-            integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-        <link rel="stylesheet" href="../views/css/planta.css">
-        <link rel="stylesheet" href="../views/css/cabecalho.css">
-        <!--scripts-->
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-            crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-            crossorigin="anonymous"></script>
-        <!-- Progress bar -->
-        <script src="js/progressbar.min.js"></script>
-        <!-- Parallax -->
-        <script src="https://cdn.jsdelivr.net/parallax.js/1.4.2/parallax.min.js"></script>
-
+       <?php include_once("../../bootstrap/header.php");?>
+       <link rel="stylesheet" href="../css/planta.css">
     </head>
 
     <nav>
@@ -54,43 +86,60 @@
 
     <body>
 
-        <div class="container">
+    <div class="container">
 
-            <div class="titulo">
-                <div class="row justify-content-between">
-                    <h2 class="nome">
-                        <?= $planta->getNomeSocial() ?>
-                    </h2>
+<div class="titulo">
+    <div class="row justify-content-between">
+        <h2 class="nome">
+            <?= $planta->getNomeSocial() ?>
+        </h2>
 
-                    <span class="cod align-self-center" href="./EspecieController.php?action=loadFormNew">
-                        <?= $planta->getCodNumerico() ?>
-                    </span>
-                </div>
-            </div>
+        <span class="cod align-self-center" href="./EspecieController.php?action=loadFormNew">
+            <?= $planta->getCodNumerico() ?>
+        </span>
+    </div>
+</div>
 
-            <div>
-                <p class="descricao">
-                    <?=$planta->getHistoria(); ?>
-                </p>
+<div class="img-responsive">
+        <img src="<?php echo $planta->getImagemPlanta(); ?>"/>
+    </div>
 
-                <div class="caixa">
-                    <a href="">
-                        Espécie
-                        <?= $planta->getIdEspecie() ?>
-                    </a>
-                </div>
+<div>
+    <p class="descricao">
+        <?=$planta->getPlantaHistoria(); ?>
+    </p>
 
-                <div class="caixa">
-                    <a href="./PlantaController.php?action=verZona&idZona=<?= $planta->getIdZona() ?>">
-                        Zona <?= $planta->getIdZona() ?>
-                    </a>
-                </div>
+    <p class="descricao">
+        <?php echo $tox; ?>
+   
+        <?php echo $med; ?>
+   
+        <?php echo $come; ?>
+   
+        <?php echo $exot; ?>
+   
+        <?php echo $frut; ?>
 
-                <div class="qrcode">
-                    
-                </div>
-            </div>
+        <?php echo $rara; ?>
+    </p>
 
+    <div class="caixa">
+        <a href="">
+            Espécie
+            <?= $planta->getEspecie() ?>
+        </a>
+    </div>
+
+    <div class="caixa">
+        <a href="">
+           <?= $planta->getZona() ?>
+        </a>
+    </div>
+
+    <div class="qrcode">
+        
+    </div>
+</div>
             <div class="row justify-content-start botoes">
                 <!--A PARTIR DAQUI, QUANDO CLICADO PARA VER DETALHES (VALE PARA TODOS OS USUARIOS!!)
                 <div class="col-auto min-content">
@@ -103,6 +152,5 @@
             <br><br>
         </div>
     </body>
-<?php endforeach; ?>
 
 </html>

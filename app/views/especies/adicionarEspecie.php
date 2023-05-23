@@ -38,6 +38,7 @@
     <!-- Parallax -->
     <script src="https://cdn.jsdelivr.net/parallax.js/1.4.2/parallax.min.js"></script>
     <script src="js/registro.js"></script>
+    <script src="../../ajax/ajax.js"></script>
     <link rel="stylesheet" href="views/js/registro.js">
     <link rel="stylesheet" href="css/editorwys.css" type="text/css" media="all" />
     <script type="text/javascript" src="js/script.js"></script>
@@ -89,8 +90,8 @@
                     <div class="form-row align-items-left">
                         <form action="adicionarEspecieExec.php" method="POST" enctype="multipart/form-data">
 
-                        <label for="formtexto" id="txtNome">Nome Popular</label>
-                            <div class="w-100"></div>
+                        <label for="formtexto" id="txtNome" onblur="ValidarDados('nomeEsp', document.getElementById('txtNome').value, 'validacaoespecie.php');">Nome Popular</label>
+                            <div class="w-100" id="campo_nomeEsp"></div>
                             <input type="text" name="Nome_Popular" class="form-control" id="txtNomeForm" aria-describedby="nome-cadastro">
                             <div class="w-100"></div>
                             <label for="formtexto" id="txtCodigo">Nome Cientifico</label>

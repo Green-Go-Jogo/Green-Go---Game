@@ -1,7 +1,7 @@
 //Variavél que recebe o objeto XMLHttpRequest
 var requisicao;
 
-function ValidarDados(campo, valor) {
+function ValidarDados(campo, valor, php) {
 
 
     //Verfiicação do Browser no caso de Chrome, Firefox, Safari:
@@ -16,7 +16,7 @@ function ValidarDados(campo, valor) {
 
     //Envio do campo e valor para verificação no arquivo PHP via método GET
 
-    var url = "ajax/validacao.php?campo="+campo+"&valor"+valor;
+    var url = php+"?campo="+campo+"&valor"+valor;
 
     //Processar a requisição usando Open
 

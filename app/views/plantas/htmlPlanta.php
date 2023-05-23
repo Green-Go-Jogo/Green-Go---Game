@@ -18,6 +18,7 @@ Class PlantaHTML {
             echo "<p class='card-text nome-texto'>Código: ".$planta->getCodNumerico()."<br>Pontuação: ".$planta->getPontos()."<br>".$planta->getZona()."</p>";
             echo "<a href='editarPlanta.php?id=".$planta->getIdPlanta()."' class='btn btn-primary editar'>Editar</a>";
             echo "<a href='deletarPlanta.php?id=".$planta->getIdPlanta()."' onclick='return confirm('Confirma a exclusão da Planta?');' class='btn btn-alert excluir'>Excluir</a>";
+            echo "<a href='visualizarPlanta.php?idp=".$planta->getIdPlanta()."&ide=".$planta->getEspecie()->getIdEspecie()."' class='btn btn-primary editar'>Detalhes</a>";
             echo "<br>";
             echo "</div>";
             echo "</div>";
