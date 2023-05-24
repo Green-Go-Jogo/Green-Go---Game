@@ -9,62 +9,73 @@
  include_once("../zones/htmlZonaForm.php");
  include_once("../especies/htmlEspecie.php");
  
- $ide = $_GET['ide'];
- $idp = $_GET['idp'];
+ $cod = isset($_GET['cod']) ? $_GET['cod'] : null;
+ $ide = isset($_GET['ide']) ? $_GET['ide'] : null;
+ $idp = isset($_GET['idp']) ? $_GET['idp'] : null;
 
+ if ($ide !== null) {
  $especieCont = new EspecieController();
  $especie = $especieCont->buscarPorId($ide);
+ }
 
- $plantaCont = new PlantaController();
- $planta = $plantaCont->buscarPorId($idp);
+ if ($idp !== null) {
+    $plantaCont = new PlantaController();
+    $planta = $plantaCont->buscarPorId($idp);
+}
 
-     $frutifera = $especie->getFrutifera();
-            if ($frutifera == 1) { 
-                $frut = "<br>"."Frutífera";
-            } else { 
-                $frut = "";
-            };
+ if ($cod !== null) {
+    $plantaCont = new PlantaController();
+    $planta = $plantaCont->buscarPorCodigo($cod);
+}
 
-            $exotica = $especie->getExotica();
-            if ($exotica == 1) { 
-                $exot = "<br>"."Exótica";
-            } else { 
-                $exot = "";
-            };
+ $frutifera = $especie->getFrutifera();
+ if ($frutifera == 1) { 
+     $frut = "<br>"."Frutífera";
+ } else { 
+     $frut = "";
+ };
 
-            $raridade = $especie->getRaridade();
-            if ($raridade == 1) { 
-                $rara = "<br>"."Rara";
-            } else { 
-                $rara = "";
-            };
+ $exotica = $especie->getExotica();
+ if ($exotica == 1) { 
+     $exot = "<br>"."Exótica";
+ } else { 
+     $exot = "";
+ };
 
-            $toxidade = $especie->getToxidade();
-            if ($toxidade == 1) { 
-                $tox = "<br>"."Toxíca";
-            } else { 
-                $tox = "";
-            };
+ $raridade = $especie->getRaridade();
+ if ($raridade == 1) { 
+     $rara = "<br>"."Rara";
+ } else { 
+     $rara = "";
+ };
 
-            $medicinal = $especie->getMedicinal();
-            if ($medicinal == 1) { 
-                $med = "<br>"."Medicinal";
-            } else { 
-                $med = "";
-            };
+ $toxidade = $especie->getToxidade();
+ if ($toxidade == 1) { 
+     $tox = "<br>"."Toxíca";
+ } else { 
+     $tox = "";
+ };
 
-            $comestivel = $especie->getComestivel();
-            if ($comestivel == 1) { 
-                $come = "<br>"."Comestível";
-            } else { 
-                $come = "";
-            };
+ $medicinal = $especie->getMedicinal();
+ if ($medicinal == 1) { 
+     $med = "<br>"."Medicinal";
+ } else { 
+     $med = "";
+ };
+
+ $comestivel = $especie->getComestivel();
+ if ($comestivel == 1) { 
+     $come = "<br>"."Comestível";
+ } else { 
+     $come = "";
+ };
  
  if($planta == null) {
     echo "Planta não encontrado!<br>";
     echo "<a href='listPlantas.php'>Voltar</a>";
     exit;
  }
+ 
 ?>
 
 
@@ -106,20 +117,18 @@
 
 <div>
     <p class="descricao">
-        <?=$planta->getPlantaHistoria(); ?>
+       historia: <?php echo $planta->getPlantaHistoria(); ?>
     </p>
 
     <p class="descricao">
+       pontução <?=$planta->getPontos(); ?>
+    </p>
+    <p class="descricao">
         <?php echo $tox; ?>
-   
         <?php echo $med; ?>
-   
         <?php echo $come; ?>
-   
         <?php echo $exot; ?>
-   
         <?php echo $frut; ?>
-
         <?php echo $rara; ?>
     </p>
 

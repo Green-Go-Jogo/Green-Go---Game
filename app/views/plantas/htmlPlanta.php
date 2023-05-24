@@ -12,13 +12,12 @@ Class PlantaHTML {
             echo "<div class='col-md-4'>";
             echo "<br>";
             echo "<div class='card' style='width: 22rem;'>";
-            echo "<img src='".$planta->getImagemPlanta()."' style='width: 95%; height: 95%;'class='card-img-top mais' alt='...'>";
+            echo "<a href='visualizarPlanta.php?idp=".$planta->getIdPlanta()."&ide=".$planta->getEspecie()->getIdEspecie()."'><img src='".$planta->getImagemPlanta()."' style='width: 95%; height: 95%;'class='card-img-top mais' alt='...'></a>";
             echo "<div class='card-body'>";
             echo "<h5 class='card-title nome-soc'>". $planta->getNomeSocial() ."</h5>";
             echo "<p class='card-text nome-texto'>Código: ".$planta->getCodNumerico()."<br>Pontuação: ".$planta->getPontos()."<br>".$planta->getZona()."</p>";
             echo "<a href='editarPlanta.php?id=".$planta->getIdPlanta()."' class='btn btn-primary editar'>Editar</a>";
-            echo "<a href='deletarPlanta.php?id=".$planta->getIdPlanta()."' onclick='return confirm('Confirma a exclusão da Planta?');' class='btn btn-alert excluir'>Excluir</a>";
-            echo "<a href='visualizarPlanta.php?idp=".$planta->getIdPlanta()."&ide=".$planta->getEspecie()->getIdEspecie()."' class='btn btn-primary editar'>Detalhes</a>";
+            echo "<a href='deletarPlanta.php?id=".$planta->getIdPlanta()."' onclick='return confirm(\"Confirma a exclusão da Planta?\");' class='btn btn-alert excluir'>Excluir</a>";
             echo "<br>";
             echo "</div>";
             echo "</div>";

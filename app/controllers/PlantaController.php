@@ -19,6 +19,10 @@ class PlantaController {
         return $this->plantaDAO->findById($idPlanta);
     }
 
+    public function buscarPorCodigo($CodNumerico) {
+        return $this->plantaDAO->findByCod($CodNumerico);
+    }
+
     public function salvar($planta) {
         $this->plantaDAO->save($planta);
     }

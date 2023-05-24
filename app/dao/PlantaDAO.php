@@ -49,6 +49,7 @@ class PlantaDAO {
         return $this->mapPlantas($result);
     }
 
+
     public function findById($idPlanta) {
         $conn = conectar_db();
 
@@ -67,8 +68,30 @@ class PlantaDAO {
         elseif(count($plantas) == 0)
             return null;
 
-        die("PersonagemDAO.findById - Erro: mais de um personagem".
+        die("PlantaDAO.findById - Erro: mais de uma planta".
                 " encontrado para o ID ".$idPlanta);
+    }
+
+    public function findByCod($CodNumerico) {
+        $conn = conectar_db();
+
+        $sql = PlantaDAO::SQL_PLANTA . 
+                " WHERE p.codNumerico = ?";
+
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([$CodNumerico]);
+        $result = $stmt->fetchAll();
+
+        //Criar o objeto Codigos
+        $plantas = $this->mapPlantas($result);
+
+        if(count($plantas) == 1)
+            return $plantas[0];
+        elseif(count($plantas) == 0)
+            return null;
+
+        die("PlantaDAO.findByCod - Erro: mais de um codigo".
+                " encontrado para o ID ".$CodNumerico);
     }
 
 
