@@ -4,6 +4,8 @@
 <head>
 
 <?php include_once("../bootstrap/header.php");?>
+<link rel="stylesheet" href="css/index.css">
+<link rel="stylesheet" href="css/cabecalho.css">
 
 </head>
 
@@ -14,7 +16,7 @@
         <div id="itensmenu">
 
             <nav class="navbar navbar-expand-lg " id="menu">
-                <a href="index.html" class="nav-brand">
+                <a href="index.php" class="nav-brand">
                     <div class="row justify-content-md-left">
                         <div id="imgmenu">
                             <img class="img-responsive" src="../public/logo-green.svg" alt="">

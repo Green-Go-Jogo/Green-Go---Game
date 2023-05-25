@@ -40,6 +40,9 @@ error_reporting(E_ALL);
     <script src="js/progressbar.min.js"></script>
     <!-- Parallax -->
     <script src="https://cdn.jsdelivr.net/parallax.js/1.4.2/parallax.min.js"></script>
+    <?php include_once("../../bootstrap/header.php");?>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/cabecalho.css">
 
 </head>
 

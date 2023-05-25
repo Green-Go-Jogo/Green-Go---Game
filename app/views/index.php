@@ -2,8 +2,9 @@
 <html lang="pt-br">
 
 <head>
-
     <?php include_once("../bootstrap/header.php");?>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/cabecalho.css">
 
 </head> 
 <nav>
