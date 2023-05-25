@@ -24,6 +24,7 @@ class PlantaDAO {
             $planta->setImagemPlanta($reg['imagemPlanta']);
             $planta->setCodNumerico($reg['codNumerico']);
             $planta->setPlantaHistoria($reg['historia']);
+            $planta->setQrCode($reg['codQR']);
 
             $especie = new Especie($reg['idEspecie'], $reg['nomePop']);
             $planta->setEspecie($especie);
@@ -98,19 +99,19 @@ class PlantaDAO {
     public function save(Planta $planta) {
         $conn = conectar_db();
 
-        $sql = "INSERT INTO planta (nomeSocial, codNumerico, pontuacaoPlanta, historia, imagemPlanta, idZona, idEspecie)".
-        " VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO planta (nomeSocial, codQR, codNumerico, pontuacaoPlanta, historia, imagemPlanta, idZona, idEspecie)".
+        " VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
-        $stmt->execute([$planta->getNomeSocial(), $planta->getCodNumerico(), 
+        $stmt->execute([$planta->getNomeSocial(), $planta->getQrCode(), $planta->getCodNumerico(), 
                         $planta->getPontos(), $planta->getPlantaHistoria(), $planta->getImagemPlanta(), $planta->getZona()->getIdZona(), $planta->getEspecie()->getIdEspecie()]);
     }
 
     public function update(Planta $planta) {
         $conn = conectar_db();
     
-        $sql = "UPDATE planta SET nomeSocial = ?, codNumerico = ?, pontuacaoPlanta = ?, historia = ?, imagemPlanta = ?, idZona = ?, idEspecie = ? WHERE idPlanta = ?";
+        $sql = "UPDATE planta SET nomeSocial = ?, codQR = ?, codNumerico = ?, pontuacaoPlanta = ?, historia = ?, imagemPlanta = ?, idZona = ?, idEspecie = ? WHERE idPlanta = ?";
         $stmt = $conn->prepare($sql);
-        $stmt->execute([$planta->getNomeSocial(), $planta->getCodNumerico(), 
+        $stmt->execute([$planta->getNomeSocial(), $planta->getQrCode(), $planta->getCodNumerico(), 
         $planta->getPontos(), $planta->getPlantaHistoria(), $planta->getImagemPlanta(), $planta->getZona()->getIdZona(), $planta->getEspecie()->getIdEspecie(), $planta->getIdPlanta()]);
     }
 
@@ -123,6 +124,10 @@ class PlantaDAO {
     $arquivo_del = $planta->getImagemPlanta();
     if (file_exists($arquivo_del)) {
         unlink($arquivo_del);
+    }
+    $qrcode_del = $planta->getQrCode();
+    if (file_exists($qrcode_del)) {
+        unlink($qrcode_del);
     }
     $stmt = $conn->prepare($sql);
     $stmt->execute([$planta->getIdPlanta()]);

@@ -132,6 +132,10 @@
         <?php echo $rara; ?>
     </p>
 
+    <div class="img-responsive">
+        <img src="<?php echo $planta->getQrCode(); ?>"/>
+    </div>
+
     <div class="caixa">
         <a href="">
             Espécie

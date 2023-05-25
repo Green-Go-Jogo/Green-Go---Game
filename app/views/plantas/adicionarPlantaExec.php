@@ -33,6 +33,7 @@ $planta->setCodNumerico($Cod_Numerico);
 $planta->setPontos($pontuacao);
 $planta->setPlantaHistoria($historia);
 $planta->setImagemPlanta($caminho_imagem);
+$planta->setQrCode($qrCodeArq);
 
 $zona = new Zona($id_zona);
 $planta->setZona($zona);

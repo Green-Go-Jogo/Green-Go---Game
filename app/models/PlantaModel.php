@@ -5,6 +5,7 @@ Class Planta {
     private $IdPlanta;
     private $NomeSocial;
     private $Pontos;
+    private $QrCode;
     private $CodNumerico;
     private $Especie;
     private $ImagemPlanta;
@@ -171,6 +172,26 @@ Class Planta {
     public function setImagemPlanta($ImagemPlanta)
     {
         $this->ImagemPlanta = $ImagemPlanta;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of QrCode
+     */ 
+    public function getQrCode()
+    {
+        return $this->QrCode;
+    }
+
+    /**
+     * Set the value of QrCode
+     *
+     * @return  self
+     */ 
+    public function setQrCode($QrCode)
+    {
+        $this->QrCode = $QrCode;
 
         return $this;
     }
