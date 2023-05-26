@@ -42,7 +42,7 @@
     <div class="col-md-6 justify-content-end formulario">
       <h1 class="titulo">Criar conta</h1>
 
-      <form method="post" action="../../controllers/UserController.php?action=create">
+      <form method="post" action="cadastroExec.php">
         <div class="row form-row align-items-left">
           <div class="col-sm">
             <label for="nome-cadastro">Nome</label>
@@ -62,9 +62,9 @@
             <br>
             <select name="field_genero" class="custom-select mr-sm-2" id="caixinha-cad" required>
               <option selected></option>
-              <option value="feminino">Feminino</option>
-              <option value="masculino">Masculino</option>
-              <option value="outro">Outro</option>
+              <option value="Feminino">Feminino</option>
+              <option value="Masculino">Masculino</option>
+              <option value="Outro">Outro</option>
             </select>
             <br>
             <br>

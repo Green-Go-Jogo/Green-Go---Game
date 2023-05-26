@@ -4,11 +4,11 @@
 #Classe DAO para o model de Personagem
 
 include_once(__DIR__."/../connection/Connection.php");
-include_once(__DIR__."/../models/UserModel.php");
+include_once(__DIR__."/../models/UsuarioModel.php");
 
 class UsuarioDAO {
 
-    private const SQL_USUARIO = "SELECT * FROM myuser u"
+    private const SQL_USUARIO = "SELECT * FROM usuario u";
 
 
     private function mapUsuarios($resultSql) {
@@ -16,7 +16,7 @@ class UsuarioDAO {
             foreach ($resultSql as $reg):
             
             $usuario = new Usuario();  
-            $usuario->setId($reg['id']);
+            $usuario->setIdUsuario($reg['idUsario']);
             $usuario->setNomeUsuario($reg['nomeUsuario']);
             $usuario->setGenero($reg['genero']);
             $usuario->setEmail($reg['email']);
@@ -25,7 +25,7 @@ class UsuarioDAO {
 
 
             array_push($usuarios, $usuario);
-        endforeach;
+    endforeach;
 
         return $usuarios;
     
@@ -44,14 +44,14 @@ class UsuarioDAO {
     }
 
 
-    public function findById($id) {
+    public function findById($idUsuario) {
         $conn = conectar_db();
 
         $sql = UsuarioDAO::SQL_USUARIO . 
-                " WHERE u.id = ?";
+                " WHERE u.idUsuario = ?";
 
         $stmt = $conn->prepare($sql);
-        $stmt->execute([$id]);
+        $stmt->execute([$idUsuario]);
         $result = $stmt->fetchAll();
 
         //Criar o objeto Planta
@@ -63,7 +63,7 @@ class UsuarioDAO {
             return null;
 
         die("UsuarioDAO.findById - Erro: mais de um usuario".
-                " encontrado para o ID ".$id);
+                " encontrado para o ID ".$idUsuario);
     }
 
     public function findByEmail($email) {
@@ -92,7 +92,7 @@ class UsuarioDAO {
     public function save(Usuario $usuario) {
         $conn = conectar_db();
 
-        $sql = "INSERT INTO myuser (nomeUsuario, senha, email, genero, tipoUsuario, escolaridade)".
+        $sql = "INSERT INTO usuario (nomeUsuario, senha, email, genero, tipoUsuario, escolaridade)".
         " VALUES (?, ?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
         $stmt->execute([$usuario->getNomeUsuario(), $usuario->getSenha(), $usuario->getEmail(), 
@@ -102,10 +102,10 @@ class UsuarioDAO {
     public function update(Usuario $usuario) {
         $conn = conectar_db();
     
-        $sql = "UPDATE myuser SET nomeUsuario = ?, senha = ?, email = ?, genero = ?, tipoUsuario = ?, escolaridade = ?";
+        $sql = "UPDATE usuario SET nomeUsuario = ?, senha = ?, email = ?, genero = ?, tipoUsuario = ?, escolaridade = ? WHERE idUsuario = ?";
         $stmt = $conn->prepare($sql);
-        $stmt->execute([$usuario->getNomeUsuario(), $usuario->getSenha(), $planta->getEmail(), 
-        $usuario->getPontos(), $planta->getPlantaHistoria(), $planta->getImagemPlanta(), $planta->getZona()->getIdZona(), $planta->getEspecie()->getIdEspecie(), $planta->getIdPlanta()]);
+        $stmt->execute([$usuario->getNomeUsuario(), $usuario->getSenha(), $usuario->getEmail(), 
+        $usuario->getGenero(), $usuario->getTipoUsuario(), $usuario->getEscolaridade(), $usuario->getIdUsuario()]);
     }
 
     
@@ -113,17 +113,10 @@ class UsuarioDAO {
     $conn = conectar_db();
     
 
-    $sql = "DELETE FROM myuser WHERE id = ?";
-    $arquivo_del = $usuario->getImagemPlanta();
-    if (file_exists($arquivo_del)) {
-        unlink($arquivo_del);
-    }
-    $qrcode_del = $planta->getQrCode();
-    if (file_exists($qrcode_del)) {
-        unlink($qrcode_del);
-    }
+    $sql = "DELETE FROM usuario WHERE idUsuario = ?";
+
     $stmt = $conn->prepare($sql);
-    $stmt->execute([$planta->getIdPlanta()]);
+    $stmt->execute([$usuario->getIdUsuario()]);
 }
     
 }

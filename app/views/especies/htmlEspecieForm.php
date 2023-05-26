@@ -4,7 +4,7 @@
 class EspecieHTMLForm {
 
     public static function desenhaSelect($especies, $name, $id, $idEspecieSelec=0) {
-        echo "<select class='form-control' style='width: 428px; color: #ebf0f1; background-color: #f0b6bc; font-family: Poppins-semibold;' name='" . $name ."' id='". $id ."'>";
+        echo "<select class='form-control' style='width: 428px; margin-top: 1px; color: #ebf0f1; background-color: #f0b6bc; font-family: Poppins-semibold;' name='". $name ."' id='". $id ."'>";
 
         foreach($especies as $especie):
             echo "<option value='" .$especie->getIdEspecie(). "'";
