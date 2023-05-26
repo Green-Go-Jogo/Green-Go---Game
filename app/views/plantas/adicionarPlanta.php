@@ -42,6 +42,8 @@
     <!-- Parallax -->
     <script src="https://cdn.jsdelivr.net/parallax.js/1.4.2/parallax.min.js"></script>
     <link rel="stylesheet" href="../css/adicionarplanta.css">
+    <link rel="stylesheet" href="../css/listPlanta.css">
+    
     <?php include_once("../../bootstrap/header.php");?>
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/cabecalho.css">
@@ -49,13 +51,7 @@
     <link rel="stylesheet" href="css/editorwys.css" type="text/css" media="all" />
     <script type="text/javascript" src="../js/script.js"></script>
 
-    <style>
-        .ck-editor__editable_inline {
-            min-height: 400px;
-        }
-    </style>
 </head>
-
 
 <nav>
 
@@ -83,17 +79,17 @@
 
                             <div class="form-row align-items-left">
 
-                            <label for="formtexto" id="txtNome">Nome Social da Planta</label>
+                            <label for="formtexto" id="txtNome">Nome Social da Planta:</label>
                             <div class="w-100"></div>
                             <input type="text" name="Nome_Social" class="form-control" id="txtNomeForm" aria-describedby="nome-cadastro">
                             <div class="w-100"></div>
-                            <label for="formtexto" id="txtCodigo">Código numérico</label>
+                            <label for="formtexto" id="txtCodigo">Código numérico:</label>
                             <div class="w-100"></div>
                             <input type="number" name="Cod_Numerico" class="form-control" id="txtCodigoForm" aria-describedby="nome-cadastro">
                             <div class="w-100"> <br>
                                            
                             
-                            <div class="form-group">
+                            <div class="form-group" style="color: #f0b6bc;">
                             <label for="selectStand" id="txtNome">Zona:</label>
                             <div class="w-100"></div>
                             <a id="txtNomeForm">
@@ -117,7 +113,7 @@
                             ?>
                             </div> </a>
                                             
-                            <label for="formtexto" id="txtPontos">Pontuação</label>
+                            <label for="formtexto" id="txtPontos">Pontuação:</label>
                             <div class="w-100"> </div>
                             <input type="number" name="Pontuacao" class="form-control" id="number" aria-describedby="nome-cadastro">
                             <div class="w-100"> </div>
@@ -126,7 +122,7 @@
                             <nav>
                                 <div class="form-group" id="imagemreg">
                                 </div>
-                                <a id="carregueimagemtexto"> Carregue uma imagem</a> <br>
+                                <a id="carregueimagemtexto"> Carregue uma imagem:</a> <br>
                                 <label class="picture align-content-center" for="picture__input" tabIndex="0">
                                 <span class="picture__image">
                                 <img class="img-camera" src="/img/d8ca819f5feac5192c31cb17633e1f1f.png">

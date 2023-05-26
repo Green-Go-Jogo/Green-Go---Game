@@ -665,3 +665,22 @@ input[type=text]:focus {
 button[type=submit]::after{
     border: none;
 }
+
+.ck-editor__editable_inline {
+    min-height: 400px;
+}
+
+#txtCodigoForm {
+    background-color: #f0b6bc;
+    color: #ebf0f1;
+    margin-top: 1px;
+    font-family: Poppins-semibold;
+}
+
+#txtNomeForm {
+    color: #ebf0f1;
+    background-color: #f0b6bc;
+    margin-top: 1px;
+    font-family: Poppins-semibold;
+}
+
