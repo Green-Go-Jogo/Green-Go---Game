@@ -42,42 +42,25 @@
     <link rel="stylesheet" href="views/js/registro.js">
     <link rel="stylesheet" href="css/editorwys.css" type="text/css" media="all" />
     <script type="text/javascript" src="js/script.js"></script>
+
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/cabecalho.css">
+
 </head>
 
 
-<!--------------ADMIN-------------->
+<style>
+        .ck-editor__editable_inline {
+            min-height: 400px;
+        }
+    </style>
+</head>
+
 
 <nav>
-    <div class="col-xs-12" id="nav-container">
-        <div id="itensmenu">
-            <nav class="navbar navbar-expand-lg " id="menu">
-                <a href="../views/indexADM.php" class="nav-brand">
-                    <div class="row justify-content-md-left">
-                        <div id="imgmenu">
-                        <img class="img-responsive" src="../public/logo-green.svg"  id="logo" >
-                        </div>
-                    </div>
-                </a>
 
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-links"
-                    aria-controls="navbar-links" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"> <img src="../public/menu.svg" id="menuicon"></span>
-                </button>
-                <div class="collapse navbar-collapse justify-content-end" id="navbar-links">
-                    <div class="navbar-nav">
+    <?php include_once("../../bootstrap/navADM.php");?>
 
-                        <a class="nav-item nav-link" id="projeto-menu" href="../views/projetoADM.php"> Projeto </a>
-                        <a class="nav-item nav-link" id="mapa-menu" href="..\controllers\EspecieControllerADM.php?action=EspeciesMapa"> Mapa</a>
-                        <!--<a class="nav-item nav-link" id="itemmenu" href="./PlantaController.php?action=formIdentificarPlanta"> Jogar </a>-->
-                        <a class="nav-item nav-link" id="zonas-menu" href="./ZonaController.php?action=findAll"> Zonas </a>
-                        <a class="nav-item nav-link" id="especies-menu" href="./EspecieControllerADM.php?action=findAll"> Espécies </a>
-                        <a class="nav-item nav-link" id="usuarios-menu" href="./UserController.php?action=findAll"> Usuários </a>
-                        <a class="nav-item nav-link" id="botaoentrar" href="../controllers/UserController.php?action=sair"> Sair  </a>
-                    </div>
-                </div>
-            </nav>
-        </div>
-    </div>
 </nav>
 
 <body>
