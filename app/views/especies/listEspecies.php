@@ -41,6 +41,19 @@ include_once(__DIR__."/htmlEspecie.php");
         text-decoration: none;
     }
 
+        a.editar:hover {
+            color: #ebf0f1 !important;
+            background-color: #04574d; }
+
+            a.editar{
+            color: #ebf0f1 !important;
+            background-color: #338a5f; }
+
+            a.excluir:hover {
+            color: var(--branco);
+            background-color: #f0b6bc !important;
+            border-radius: 5px; }
+
     </style>
 
     <head>

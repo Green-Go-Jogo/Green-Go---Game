@@ -142,7 +142,8 @@ a.editar {
 }
 
 a.editar:hover {
-    color: #04574d;
+    color: #ebf0f1 !important;
+    background-color: #04574d;
     transform: scale(1.05);
 }
 
