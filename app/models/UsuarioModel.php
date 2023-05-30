@@ -1,35 +1,18 @@
 <?php 
 
+require_once(__DIR__ . "/enum/UsuarioPapel.php");
+
     class Usuario {
 
-        private $id;
+        private $idUsuario;
         private $nomeUsuario;
         private $email;
+        private $login;
         private $senha;
         private $genero;
         private $escolaridade;
         private $tipoUsuario;
 
-
-        /**
-         * Get the value of id
-         */ 
-        public function getId()
-        {
-                return $this->id;
-        }
-
-        /**
-         * Set the value of id
-         *
-         * @return  self
-         */ 
-        public function setId($id)
-        {
-                $this->id = $id;
-
-                return $this;
-        }
 
         /**
          * Get the value of nomeUsuario
@@ -147,6 +130,64 @@
         public function setTipoUsuario($tipoUsuario)
         {
                 $this->tipoUsuario = $tipoUsuario;
+
+                return $this;
+        }
+
+        public function getPapeisAsArray() {
+                if($this->papeis) 
+                    return explode(UsuarioPapel::$SEPARADOR, $this->papeis);
+                
+                return array();    
+            }
+        
+            public function setPapeisAsArray($array) {
+                if($array)
+                    $this->papeis = implode(UsuarioPapel::$SEPARADOR, $array);
+                else
+                    $this->papeis = NULL;
+            }
+        
+            public function getPapeisStr() {
+                return str_replace(UsuarioPapel::$SEPARADOR, ", ", $this->papeis);
+            }
+
+        /**
+         * Get the value of idUsuario
+         */ 
+        public function getIdUsuario()
+        {
+                return $this->idUsuario;
+        }
+
+        /**
+         * Set the value of idUsuario
+         *
+         * @return  self
+         */ 
+        public function setIdUsuario($idUsuario)
+        {
+                $this->idUsuario = $idUsuario;
+
+                return $this;
+        }
+
+        /**
+         * Get the value of login
+         */ 
+        public function getLogin()
+        {
+                return $this->login;
+        }
+
+        /**
+         * Set the value of login
+         *
+         * @return  self
+         */ 
+        public function setLogin($login)
+        {
+                $this->login = $login;
 
                 return $this;
         }

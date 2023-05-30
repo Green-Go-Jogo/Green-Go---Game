@@ -16,7 +16,8 @@ class UsuarioDAO {
             foreach ($resultSql as $reg):
             
             $usuario = new Usuario();  
-            $usuario->setIdUsuario($reg['idUsario']);
+            $usuario->setIdUsuario($reg['idUsuario']);
+            $usuario->setLogin($reg['loginUsuario']);
             $usuario->setNomeUsuario($reg['nomeUsuario']);
             $usuario->setGenero($reg['genero']);
             $usuario->setEmail($reg['email']);
@@ -66,45 +67,44 @@ class UsuarioDAO {
                 " encontrado para o ID ".$idUsuario);
     }
 
-    public function findByEmail($email) {
+    public function findByLoginSenha(string $login, string $senha) {
         $conn = conectar_db();
 
         $sql = UsuarioDAO::SQL_USUARIO . 
-                " WHERE u.email = ?";
+                " WHERE u.loginUsuario = ? AND u.senha = ?";
 
         $stmt = $conn->prepare($sql);
-        $stmt->execute([$email]);
+        $stmt->execute([$login, $senha]);
         $result = $stmt->fetchAll();
 
         //Criar o objeto Codigos
-        $usuarios = $this->mapPlantas($result);
+        $usuarios = $this->mapUsuarios($result);
 
         if(count($usuarios) == 1)
             return $usuarios[0];
         elseif(count($usuarios) == 0)
             return null;
 
-        die("UsuarioDAO.findByEmail - Erro: mais de um email".
-                " encontrado para o ID ".$email);
+        die("UsuarioDAO.findByLoginSenha - Erro: mais de um usuário");
     }
 
 
     public function save(Usuario $usuario) {
         $conn = conectar_db();
 
-        $sql = "INSERT INTO usuario (nomeUsuario, senha, email, genero, tipoUsuario, escolaridade)".
-        " VALUES (?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO usuario (nomeUsuario, loginUsuario, senha, email, genero, tipoUsuario, escolaridade)".
+        " VALUES (?, ?, ?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
-        $stmt->execute([$usuario->getNomeUsuario(), $usuario->getSenha(), $usuario->getEmail(), 
+        $stmt->execute([$usuario->getNomeUsuario(),$usuario->getLogin(), $usuario->getSenha(), $usuario->getEmail(), 
                         $usuario->getGenero(), $usuario->getTipoUsuario(), $usuario->getEscolaridade()]);
     }
 
     public function update(Usuario $usuario) {
         $conn = conectar_db();
     
-        $sql = "UPDATE usuario SET nomeUsuario = ?, senha = ?, email = ?, genero = ?, tipoUsuario = ?, escolaridade = ? WHERE idUsuario = ?";
+        $sql = "UPDATE usuario SET nomeUsuario = ?, loginUsuario = ?, senha = ?, email = ?, genero = ?, tipoUsuario = ?, escolaridade = ? WHERE idUsuario = ?";
         $stmt = $conn->prepare($sql);
-        $stmt->execute([$usuario->getNomeUsuario(), $usuario->getSenha(), $usuario->getEmail(), 
+        $stmt->execute([$usuario->getNomeUsuario(), $usuario->getLogin(), $usuario->getSenha(), $usuario->getEmail(), 
         $usuario->getGenero(), $usuario->getTipoUsuario(), $usuario->getEscolaridade(), $usuario->getIdUsuario()]);
     }
 

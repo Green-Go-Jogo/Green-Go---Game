@@ -19,6 +19,7 @@
                     <div class="navbar-nav" id="navbar-links">
                         <a class="nav-item nav-link" id="projeto-menu" href="../projetoADM.php"> Projeto </a>
                         <a class="nav-item nav-link" id="mapa-menu" href="..\controllers\EspecieControllerADM.php?action=EspeciesMapa"> Mapa</a>
+                        <a class="nav-item nav-link" id="equipe-menu" href="../equipes/listEquipes.php"> Equipes</a>
                         <a class="nav-item nav-link" id="itemmenu" href="../plantas/listPlantas.php"> Plantas </a>
                         <a class="nav-item nav-link" id="zonas-menu" href="../zones/listZonas.php"> Zonas </a>
                         <a class="nav-item nav-link" id="especies-menu" href="../especies/listEspecies.php"> Espécies </a>

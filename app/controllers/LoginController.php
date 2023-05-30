@@ -1,38 +1,84 @@
-<?php
-#Classe de controller para especie
+<?php 
+#Classe controller para a Logar do sistema
+require_once(__DIR__ . "/Controller.php");
+require_once(__DIR__ . "/../dao/UsuarioDAO.php");
+require_once(__DIR__ . "/../service/LoginService.php");
+require_once(__DIR__ . "/../models/UsuarioModel.php");
 
-include_once(__DIR__."/../dao/UsuarioDAO.php");
+class LoginController extends Controller {
 
-class LoginController {
-
-    private $usuarioDAO;
+    private LoginService $loginService;
+    private UsuarioDAO $usuarioDao;
 
     public function __construct() {
-        $this->usuarioDAO = new UsuarioDAO();
+        $this->loginService = new LoginService();
+        $this->usuarioDao = new UsuarioDAO();
+        
+        //Seta uma action padrão caso a mesmo não tenha sido enviada por parâmetro
+        $this->setActionDefault("login");
+        
+        $this->handleAction();
     }
 
-    public function listar() {
-        return $this->usuarioDAO->list();
+    protected function login() {
+        $this->loadView("/users/login.php", []);
     }
 
-    public function buscarPorId($idUsuario) {
-        return $this->usuarioDAO->findById($idUsuario);
+    /* Método para logar um usuário a partir dos dados informados no formulário */
+    protected function logon() {
+        $login = isset($_POST['login']) ? trim($_POST['login']) : null;
+        $senha = isset($_POST['senha']) ? trim($_POST['senha']) : null;
+
+        //Validar os campos
+        $erros = $this->loginService->validarCampos($login, $senha);
+        if(empty($erros)) {
+            //Valida o login a partir do banco de dados
+            $usuario = $this->usuarioDao->findByLoginSenha($login, $senha);
+            if($usuario) {
+                //Se encontrou o usuário, salva a sessão e redireciona para a HOME do sistema
+                //$this->salvarUsuarioSessao($usuario);
+
+                header("location: " . HOME_PAGE_ALUNO);
+                exit;
+            } else {
+                $erros = ["Login ou senha informados são inválidos!"];
+            }
+        }
+
+        //Se há erros, volta para o formulário            
+        $msg = implode("<br>", $erros);
+        $dados["login"] = $login;
+        $dados["senha"] = $senha;
+
+        $this->loadView("/users/login.php", $dados, $msg);
     }
 
-    public function salvar($usuario) {
-        $this->usuarioDAO->save($usuario);
+     /* Método para logar um usuário a partir dos dados informados no formulário */
+    protected function logout() {
+        $this->removerUsuarioSessao();
+
+        $this->loadView("../views/users/login.php", [], "", "Usuário deslogado com suscesso!");
     }
 
-    public function atualizar($usuario) {
-        $this->usuarioDAO->update($usuario);
+    private function salvarUsuarioSessao(Usuario $usuario) {
+        //Habilitar o recurso de sessão no PHP nesta página
+        session_start();
+
+        //Setar usuário na sessão do PHP
+        $_SESSION[SESSAO_USUARIO_ID]   = $usuario->getIdUsuario();
+        $_SESSION[SESSAO_USUARIO_NOME] = $usuario->getNomeUsuario();
+        $_SESSION[SESSAO_USUARIO_PAPEIS] = $usuario->getPapeisAsArray();
     }
 
-    public function excluir($usuario) {
-        $this->usuarioDAO->delete($usuario);
+    private function removerUsuarioSessao() {
+        //Habilitar o recurso de sessão no PHP nesta página
+        session_start();
+
+        //Destroi a sessão 
+        session_destroy();
     }
 }
 
-?>
 
-
-
+#Criar objeto da classe
+$loginCont = new LoginController();

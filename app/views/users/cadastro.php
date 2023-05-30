@@ -45,9 +45,13 @@
       <form method="post" action="cadastroExec.php">
         <div class="row form-row align-items-left">
           <div class="col-sm">
-            <label for="nome-cadastro">Nome</label>
+            <label for="nome-cadastro">Nome Completo</label>
             <br>
             <input type="text" class="form-control" id="nome-cadastro" name='field_nome' required>
+            
+            <label for="email-cadastro">Login</label>
+            <br>
+            <input type="text" class="form-control" id="login-cadastro" name='field_login' required>
 
             <label for="email-cadastro">E-mail</label>
             <br>

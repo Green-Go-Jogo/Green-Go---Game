@@ -42,31 +42,15 @@
                 </h2>
 
                 <form class="form-login" id="loginform" name="loginform" method="post"
-                    action="../../controllers/UserController.php?action=logar">
+                    action="../../controllers/LoginController.php?action=logon">
                     <label for="email-login">E-mail</label>
                     <br>
-                    <input type="email" class="form-control" id="email-login" name='field_email' required>
+                    <input type="text" class="form-control" id="email-login" name='login' value="<?php echo isset($dados['login']) ? $dados['login'] : ''?>" >
 
                     <label for="senha-login">Senha</label>
                     <br>
-                    <input type="password" class="form-control" id="senha-login" name="field_password" required>
-
-                    <!-- FUNÇÃO PARA O FUTURO
-                        <a class="restaurar-senha-form" href="#link-restauracao-de-senha">Esqueceu sua senha?</a>
-                    -->
-
-                    <?php if (isset($_SESSION['msg_erro'])): ?>
+                    <input type="password" class="form-control" id="senha-login" name="senha" value="<?php echo isset($dados['senha']) ? $dados['senha'] : ''?>" >
                         <br>
-
-                        <div class="justify-content-between align-content-center mensagem">
-                            <img class="img-erro align-items-center" src="../../public/exclamation.svg">
-
-                            <span class="mensagem-erro align-items-center">
-                                O campo de email ou senha está incorreto
-                                <?= $_SESSION['msg_erro'] ?>
-                            </span>
-                        </div>
-                    <?php endif ?>
                     <br>
 
                     <div class="row justify-content-beetween align-items-center">
@@ -81,6 +65,10 @@
                     </div>
                 </form>
             </div>
+
+            <div class="">
+            <?php include_once(__DIR__ . "/../../bootstrap/msg.php") ?>
+        </div>
 
             <div class="col align-self-start">
                 <a href="../index.php">
