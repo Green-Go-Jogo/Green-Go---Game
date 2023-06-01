@@ -56,6 +56,12 @@
 
 </nav>
 
+<style>
+#txtNomeZona {
+    border-radius: 5px;
+}
+</style>
+
 <body>
     <main>
         <nav id="primeirotextoindex">
