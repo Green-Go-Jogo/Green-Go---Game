@@ -12,12 +12,12 @@ Class EquipeHTML {
             echo "<div class='col-md-4'>";
             echo "<br>";
             echo "<div class='card' style='width: 22rem;'>";
-            echo "<a href='visualizarPlanta.php?idp=".$equipe->getIdEquipe()."&ide=".$planta->getEspecie()->getIdEspecie()."'><img src='".$planta->getImagemPlanta()."' style='width: 95%; height: 95%;'class='card-img-top mais' alt='...'></a>";
+            echo "<a href='visualizarEquipe.php?ideq=".$equipe->getIdEquipe()."'><img src='".$equipe->getIconeEquipe()."' style='width: 95%; height: 95%;'class='card-img-top mais' alt='...'></a>";
             echo "<div class='card-body'>";
-            echo "<h5 class='card-title nome-soc'>". $planta->getNomeSocial() ."</h5>";
-            echo "<p class='card-text nome-texto'>Código: ".$planta->getCodNumerico()."<br>Pontuação: ".$planta->getPontos()."<br>".$planta->getZona()."</p>";
-            echo "<a href='editarPlanta.php?id=".$planta->getIdPlanta()."' class='btn btn-primary editar'>Editar</a>";
-            echo "<a href='deletarPlanta.php?id=".$planta->getIdPlanta()."' onclick='return confirm(\"Confirma a exclusão da Planta?\");' class='btn btn-alert excluir'>Excluir</a>";
+            echo "<h5 class='card-title nome-soc'>". $equipe->getNomeEquipe() ."</h5>";
+            echo "<p class='card-text nome-texto'>Código: ".$equipe->getCodEntrada()."</p>";
+            echo "<a href='editarEquipe.php?id=".$equipe->getIdequipe()."' class='btn btn-primary editar'>Editar</a>";
+            echo "<a href='deletarEquipe.php?id=".$equipe->getIdequipe()."' onclick='return confirm(\"Confirma a exclusão da equipe?\");' class='btn btn-alert excluir'>Excluir</a>";
             echo "<br>";
             echo "</div>";
             echo "</div>";
