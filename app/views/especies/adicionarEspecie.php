@@ -58,6 +58,18 @@
         #txtNomeForm {
     border-radius: 5px;
 }
+
+    #botoesregistrar {
+        background-color: #338a5f !important;
+        color: #ebf0f1;
+}
+
+#botoesregistrar:hover {
+    color: #f58c95;
+    background-color: #04574d !important;
+    transform: scale(1.05);
+}
+
 </style>
     </style>
 </head>
