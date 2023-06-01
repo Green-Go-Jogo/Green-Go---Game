@@ -16,17 +16,17 @@ include_once(__DIR__."/htmlPlanta.php");
     .btn:hover {
         color:#f58c95;
         transform: scale(1.05);
-        text-decoration: none; 
-    }
+        text-decoration: none; }
+
         a.editar:hover {
             color: #ebf0f1 !important;
             background-color: #04574d; }
 
-            a.editar{
+        a.editar{
             color: #ebf0f1 !important;
             background-color: #338a5f; }
 
-            a.excluir:hover {
+        a.excluir:hover {
             color: var(--branco);
             background-color: #f0b6bc !important;
             border-radius: 5px; }

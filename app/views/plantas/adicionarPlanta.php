@@ -58,6 +58,17 @@
     <?php include_once("../../bootstrap/navADM.php");?>
 
 </nav>
+
+<style>
+#txtNomeForm {
+    border-radius: 5px;
+}
+
+#txtPontos {
+    border-radius: 5px;
+}
+</style>
+
 <body>
     <main>
         <nav id="primeirotextoindex">
@@ -115,7 +126,7 @@
                                             
                             <label for="formtexto" id="txtPontos">Pontuação:</label>
                             <div class="w-100"> </div>
-                            <input type="number" name="Pontuacao" class="form-control" id="number" aria-describedby="nome-cadastro">
+                            <input type="number" name="Pontuacao" class="form-control" id="txtCodigoForm" aria-describedby="nome-cadastro">
                             <div class="w-100"> </div>
 
                                            

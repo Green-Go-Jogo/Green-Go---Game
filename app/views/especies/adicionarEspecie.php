@@ -53,6 +53,12 @@
         .ck-editor__editable_inline {
             min-height: 400px;
         }
+
+
+        #txtNomeForm {
+    border-radius: 5px;
+}
+</style>
     </style>
 </head>
 
@@ -79,7 +85,7 @@
                             <div class="w-100"></div>
                             <label for="formtexto" id="txtCodigo">Nome Cientifico</label>
                             <div class="w-100"></div>
-                            <input type="text" name="Nome_Cientifico" class="form-control" id="txtCodigoForm" aria-describedby="nome-cadastro">
+                            <input type="text" name="Nome_Cientifico" class="form-control" id="txtNomeForm" aria-describedby="nome-cadastro">
                             <div class="w-100"> <br>
                         <div>
                         <div class="container" id="container-checkbox">
