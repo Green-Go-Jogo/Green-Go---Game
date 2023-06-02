@@ -50,7 +50,7 @@
     <link rel="stylesheet" href="views/js/registro.js">
     <link rel="stylesheet" href="css/editorwys.css" type="text/css" media="all" />
     <script type="text/javascript" src="js/script.js"></script>
-    
+    <script src="../js/icon.js"></script>
 
 
 </head>
@@ -112,32 +112,22 @@
 
                             <label for="formtexto" id="txtCodigo">Cor da Equipe: </label>
                             <div class="w-100"></div>
-                            <input type="color" name="Cod_Equipe" class="form-control" id="txtCodigoForm" aria-describedby="nome-cadastro">
+                            <input type="color" name="Cor_Equipe" class="form-control" id="txtCodigoForm" aria-describedby="nome-cadastro">
                             <div class="w-100"> <br>
 
-                            <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                            Escolher Icone
-                            </button>
-
-                            <!-- Modal -->
-                            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                            <div class="modal-content">
-                            <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                             ...
-                            </div>
-                            <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Understood</button>
-                            </div>
-                            </div>
-                            </div>
-                            </div>
+                            <label id="txtCodigo" for="imagem">Escolha o Icone da Equipe:</label>
+                            <br>
+                            <select name="imagem" id="imagem" class='form-control' style='width: 130px; margin-top: 1px; color: #ebf0f1; background-color: #f0b6bc; font-family: Poppins-semibold;' onchange="atualizarImagem()">
+                            <option value="../../public/icon/arvore_icon.png" data-imagem="../../public/icon/arvore_icon.png">Árvore</option>
+                            <option value="../../public/icon/cacto_icon.png" data-imagem="../../public/icon/cacto_icon.png">Cacto</option>
+                            <option value="../../public/icon/flor_icon.png" data-imagem="../../public/icon/flor_icon.png">Flor</option>
+                            <option value="../../public/icon/samambaia_icon.png" data-imagem="../../public/icon/samambaia_icon.png">Samambaia</option>
+                            </select>
+                            <br>
+                            <br>
+                            <div id="imagemSelecionada">
+                            <h3>Icone da Equipe:</h3>
+                            <img src="../../public/icon/arvore_icon.png" alt="" id="previewImagem" style="width: 300px; height: 300px">
                             <div class="container">
                             <button type="submit" class="btn btn-primary btn-lg" id="botoesregistrar"><a>Adicionar</a> </button>
                             <button type="reset" class="btn btn-secondary btn-lg" id="botoeslimpar"> <a id="limpar"> Limpar</a>
