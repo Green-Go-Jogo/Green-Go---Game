@@ -13,10 +13,10 @@ class EquipeDAO {
             
             $equipe = new Equipe(); 
             $equipe->setIdEquipe($reg['idEquipe']);
-            $equipe->setNomePopular($reg['nomeEquipe']);
-            $equipe->setNomeCientifico($reg['codEntrada']);
-            $equipe->setDescricao($reg['cor']);
-            $equipe->setImagemequipe($reg['icone']);
+            $equipe->setNomeEquipe($reg['nomeEquipe']);
+            $equipe->setCodEntrada($reg['codEntrada']);
+            $equipe->setCorEquipe($reg['cor']);
+            $equipe->setIconeEquipe($reg['icone']);
            
             array_push($equipes, $equipe);
         endforeach;

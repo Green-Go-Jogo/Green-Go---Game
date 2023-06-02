@@ -47,6 +47,7 @@
     <?php include_once("../../bootstrap/header.php");?>
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/cabecalho.css">
+    <script src="../js/icon.js"></script>
     
 
 
@@ -92,31 +93,22 @@
 
                             <label for="formtexto" id="txtCodigo">Cor da Equipe</label>
                             <div class="w-100"></div>
-                            <input type="color" name="Cod_Equipe" class="form-control" id="txtCodigoForm" aria-describedby="nome-cadastro">
+                            <input type="color" name="Cor_Equipe" class="form-control" id="txtCodigoForm" aria-describedby="nome-cadastro">
                             <div class="w-100"> <br>
 
-                            <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                            Escolher Icone
-                            </button>
-
-                            <!-- Modal -->
-                            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                            <div class="modal-content">
-                            <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                             ...
-                            </div>
-                            <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Understood</button>
-                            </div>
-                            </div>
-                            </div>
+                            <label id="txtCodigo" for="imagem">Escolha o Icone da Equipe:</label>
+                            <br>
+                            <select name="imagem" id="imagem" class='form-control' style='width: 130px; margin-top: 1px; color: #ebf0f1; background-color: #f0b6bc; font-family: Poppins-semibold;' onchange="atualizarImagem()">
+                            <option value="../../public/icon/arvore_icon.png" data-imagem="../../public/icon/arvore_icon.png">Árvore</option>
+                            <option value="../../public/icon/cacto_icon.png" data-imagem="../../public/icon/cacto_icon.png">Cacto</option>
+                            <option value="../../public/icon/flor_icon.png" data-imagem="../../public/icon/flor_icon.png">Flor</option>
+                            <option value="../../public/icon/samambaia_icon.png" data-imagem="../../public/icon/samambaia_icon.png">Samambaia</option>
+                            </select>
+                            <br>
+                            <br>
+                            <div id="imagemSelecionada">
+                            <h3>Icone da Equipe:</h3>
+                            <img src="../../public/icon/arvore_icon.png" alt="" id="previewImagem" style="width: 300px; height: 300px">
                             </div>
                             <div class="container">
                             <button type="submit" class="btn btn-primary btn-lg" id="botoesregistrar"><a>Adicionar</a> </button>
@@ -133,6 +125,9 @@
     <script src="assets/js/grayscale.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+
+</script>
 </body>
 
 </html>
