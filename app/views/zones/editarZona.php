@@ -50,6 +50,7 @@ $id = $_GET['id'];
     <!-- Parallax -->
     <script src="https://cdn.jsdelivr.net/parallax.js/1.4.2/parallax.min.js"></script>
     <link rel="stylesheet" href="../css/adicionarplanta.css">
+    <link rel="stylesheet" href="../css/plantas.css">
     <link rel="stylesheet" href="../css/cabecalho.css">
 
 

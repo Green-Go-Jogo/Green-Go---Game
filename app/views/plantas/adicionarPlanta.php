@@ -42,6 +42,7 @@
     <!-- Parallax -->
     <script src="https://cdn.jsdelivr.net/parallax.js/1.4.2/parallax.min.js"></script>
     <link rel="stylesheet" href="../css/adicionarplanta.css">
+    <link rel="stylesheet" href="../css/plantas.css">
     <link rel="stylesheet" href="../css/listPlanta.css">
     
     <?php include_once("../../bootstrap/header.php");?>
@@ -67,6 +68,11 @@
 #txtPontos {
     border-radius: 5px;
 }
+
+#carregueimagemtexto {
+    margin-bottom: 5px;
+}
+
 </style>
 
 <body>
@@ -149,7 +155,7 @@
                             <br>
                             <div class="w-100"></div>
                             <div class="container" id="caixadetexto">
-                            <a id="textodescritivo">História</a>
+                            <a id="textodescritivo">História:</a>
                             <textarea id="txtHistoria" name="Historia" ></textarea>
 
                             <script src="../ckeditor/build/ckeditor.js"></script>

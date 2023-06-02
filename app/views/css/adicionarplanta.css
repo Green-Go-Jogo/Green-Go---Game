@@ -420,7 +420,6 @@ a {
 
 #botoeslimpar {
     background-color: var(--branquinho);
-    border-color: var(--principal);
     border-radius: 5px;
     border-width: 2px;
     width: 110px;
