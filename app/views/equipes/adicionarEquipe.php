@@ -46,10 +46,14 @@
     <script src="js/progressbar.min.js"></script>
     <!-- Parallax -->
     <script src="https://cdn.jsdelivr.net/parallax.js/1.4.2/parallax.min.js"></script>
-    <script src="../../ajax/ajax.js"></script>
-    <link rel="stylesheet" href="views/js/registro.js">
-    <link rel="stylesheet" href="css/editorwys.css" type="text/css" media="all" />
-    <script type="text/javascript" src="js/script.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+
+
+    <link rel="stylesheet" href="../css/adicionarplanta.css">
+    <?php include_once("../../bootstrap/header.php");?>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/cabecalho.css">
     
 
 
@@ -108,7 +112,7 @@
 
                             <label for="formtexto" id="txtCodigo">Cor da Equipe: </label>
                             <div class="w-100"></div>
-                            <input type="color" name="Cod_Equipe" class="form-control" id="txtCorForm" aria-describedby="nome-cadastro">
+                            <input type="color" name="Cod_Equipe" class="form-control" id="txtCodigoForm" aria-describedby="nome-cadastro">
                             <div class="w-100"> <br>
 
                             <!-- Button trigger modal -->
@@ -130,9 +134,10 @@
                             <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             <button type="button" class="btn btn-primary">Understood</button>
-
-                            </div> </div> </div> </div> 
-
+                            </div>
+                            </div>
+                            </div>
+                            </div>
                             <div class="container">
                             <button type="submit" class="btn btn-primary btn-lg" id="botoesregistrar"><a>Adicionar</a> </button>
                             <button type="reset" class="btn btn-secondary btn-lg" id="botoeslimpar"> <a id="limpar"> Limpar</a>
@@ -151,6 +156,6 @@
     <script src="assets/js/grayscale.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+</body>
 
 </html>

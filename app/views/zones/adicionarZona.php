@@ -84,10 +84,13 @@
 
                             <div class="form-row align-items-left">
 
-                            <label for="formtexto" id="txtNome">Nome da Zona</label>
+                            <label for="formtexto" id="txtNome">Nome da Zona <br> <span id="resultzona"></span></label>
                             <div class="w-100"></div>
                             <input type="text" name="Nome_Zona" class="form-control" id="txtNomeZona" aria-describedby="nome-cadastro">
-                            <div class="w-100"></div>
+                            
+                            <div class="w-100" ></div>
+                            
+                            
                             
 
                             <div class="container">
@@ -101,6 +104,8 @@
 
 
     </main>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="../js/validacao.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/grayscale.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
