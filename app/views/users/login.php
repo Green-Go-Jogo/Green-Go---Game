@@ -42,14 +42,14 @@
                 </h2>
 
                 <form class="form-login" id="loginform" name="loginform" method="post"
-                    action="../../controllers/LoginController.php?action=logon">
+                    action="../../controllers/LoginController.php?action=logar">
                     <label for="email-login">E-mail</label>
                     <br>
-                    <input type="text" class="form-control" id="email-login" name='login' value="<?php echo isset($dados['login']) ? $dados['login'] : ''?>" >
+                    <input type="text" class="form-control" id="email-login" name='field_email' value="<?php echo isset($dados['login']) ? $dados['login'] : ''?>" >
 
                     <label for="senha-login">Senha</label>
                     <br>
-                    <input type="password" class="form-control" id="senha-login" name="senha" value="<?php echo isset($dados['senha']) ? $dados['senha'] : ''?>" >
+                    <input type="password" class="form-control" id="senha-login" name="field_password" value="<?php echo isset($dados['senha']) ? $dados['senha'] : ''?>" >
                         <br>
                     <br>
 

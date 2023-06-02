@@ -1,84 +1,65 @@
-<?php 
-#Classe controller para a Logar do sistema
-require_once(__DIR__ . "/Controller.php");
-require_once(__DIR__ . "/../dao/UsuarioDAO.php");
-require_once(__DIR__ . "/../service/LoginService.php");
-require_once(__DIR__ . "/../models/UsuarioModel.php");
+<?php
 
-class LoginController extends Controller {
+// Exibe os erros em uma página web (DEVERIA ESTAR AQUI?).
 
-    private LoginService $loginService;
-    private UsuarioDAO $usuarioDao;
 
-    public function __construct() {
-        $this->loginService = new LoginService();
-        $this->usuarioDao = new UsuarioDAO();
+include_once (__DIR__ . "/../dao/UsuarioDAO.php");
+//require_once __DIR__ . "/Controller.php";
+
+function logar()
+{
+    $email    = $_POST['field_email'];
+    $password = $_POST['field_password'];
+
+    $usuarioDAO = new UsuarioDAO();
+
+    $user = $usuarioDAO->findUserByEmail($email);
+
+    var_dump($user);
+    if( $user == false){
+        $_SESSION['msg_erro'] =  "usuário não cadastrado";
+        header("location: ../views/login.php?msg=outramensagem");
         
-        //Seta uma action padrão caso a mesmo não tenha sido enviada por parâmetro
-        $this->setActionDefault("login");
+    } else if(!password_verify($password, $user->getSenha())){
+            $_SESSION['msg_erro'] =  "senha incorreta";
+            header("location: ../views/login.php");
+
+            
+    } else {
         
-        $this->handleAction();
+       
+        print_r($_SESSION['user']->getEmail());
+        header("location: ./UsuarioDAO.php?action=findAll"); 
     }
 
-    protected function login() {
-        $this->loadView("/users/login.php", []);
-    }
 
-    /* Método para logar um usuário a partir dos dados informados no formulário */
-    protected function logon() {
-        $login = isset($_POST['login']) ? trim($_POST['login']) : null;
-        $senha = isset($_POST['senha']) ? trim($_POST['senha']) : null;
+}
 
-        //Validar os campos
-        $erros = $this->loginService->validarCampos($login, $senha);
-        if(empty($erros)) {
-            //Valida o login a partir do banco de dados
-            $usuario = $this->usuarioDao->findByLoginSenha($login, $senha);
-            if($usuario) {
-                //Se encontrou o usuário, salva a sessão e redireciona para a HOME do sistema
-                //$this->salvarUsuarioSessao($usuario);
+function sair()
+{
+    session_start(); 
+    session_destroy(); 
+    //header("Location: index.php");
+    exit;
+}
 
-                header("location: " . HOME_PAGE_ALUNO);
-                exit;
-            } else {
-                $erros = ["Login ou senha informados são inválidos!"];
-            }
-        }
+function verificaLogado()
+{
+    if (!isset($_SESSION)) session_start();
 
-        //Se há erros, volta para o formulário            
-        $msg = implode("<br>", $erros);
-        $dados["login"] = $login;
-        $dados["senha"] = $senha;
-
-        $this->loadView("/users/login.php", $dados, $msg);
-    }
-
-     /* Método para logar um usuário a partir dos dados informados no formulário */
-    protected function logout() {
-        $this->removerUsuarioSessao();
-
-        $this->loadView("../views/users/login.php", [], "", "Usuário deslogado com suscesso!");
-    }
-
-    private function salvarUsuarioSessao(Usuario $usuario) {
-        //Habilitar o recurso de sessão no PHP nesta página
-        session_start();
-
-        //Setar usuário na sessão do PHP
-        $_SESSION[SESSAO_USUARIO_ID]   = $usuario->getIdUsuario();
-        $_SESSION[SESSAO_USUARIO_NOME] = $usuario->getNomeUsuario();
-        $_SESSION[SESSAO_USUARIO_PAPEIS] = $usuario->getPapeisAsArray();
-    }
-
-    private function removerUsuarioSessao() {
-        //Habilitar o recurso de sessão no PHP nesta página
-        session_start();
-
-        //Destroi a sessão 
+    // Verifica se não há a variável da sessão que identifica o usuário
+    if (!isset($_SESSION['id'])) {
+        // Destrói a sessão por segurança
         session_destroy();
+        // Redireciona o visitante de volta pro login
+        header("Location: index.php"); exit;
     }
 }
 
 
-#Criar objeto da classe
-$loginCont = new LoginController();
+
+function preventDefault()
+{
+   // print "call preventDefault() no LoginController";
+    //Controller::loadView("users/preventDefault.php", $data);
+}

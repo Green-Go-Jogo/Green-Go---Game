@@ -1,124 +1,162 @@
-<?php
-#Classe DAO para o model de personagem
+<?php 
 
-#Classe DAO para o model de Personagem
+    require_once __DIR__ . "/../connection/Connection.php";
+    require_once __DIR__ . "/../models/UsuarioModel.php";
 
-include_once(__DIR__."/../connection/Connection.php");
-include_once(__DIR__."/../models/UsuarioModel.php");
+    class UsuarioDAO {
 
-class UsuarioDAO {
+        public PDO $conn;
 
-    private const SQL_USUARIO = "SELECT * FROM usuario u";
+        function __construct()
+        {
+            $this->conn = conectar_db();
+        }
 
+        public function create(UsuarioModel $user):int {
+         try {
 
-    private function mapUsuarios($resultSql) {
-            $usuarios = array();
-            foreach ($resultSql as $reg):
+                $query = "INSERT INTO usuario (nomeUsuario, email, loginUsuario, senha, genero, escolaridade, tipoUsuario) VALUES (:nomeUsuario, :email, , :loginUsuario, :senha, :genero, :escolaridade, :tipoUsuario)";
+                $prepare = $this->conn->prepare($query);
+                $prepare->bindValue(":nomeUsuario", $user->getNomeUsuario());
+                $prepare->bindValue(":loginUsuario", $user->getLogin());
+                $prepare->bindValue(":email", $user->getEmail());
+                $prepare->bindValue(":senha",md5($user->getSenha()));
+                $prepare->bindValue(":genero", $user->getGenero());
+                $prepare->bindValue(":escolaridade", $user->getEscolaridade());
+                $prepare->bindValue(":tipoUsuario", 1);
+
+                $prepare->execute();
+                
+
+                return $this->conn->lastInsertId();
+                
+                
+            } catch(Exception $e) {
+                    print("Erro ao inserir usuário no banco de dados");
+            }
+         }
+    
+       
+        public function findAll(): array {
+
+            $table = $this->conn->query("SELECT * FROM usuario");
+            //$usuarios  = $table->fetchAll(PDO::FETCH_ASSOC);
+            $usuarios  = $table->fetchAll(PDO::FETCH_CLASS, "UsuarioModel");
+
+            return $usuarios;
+        }
+
+        public function findUserById(int $id) {
+
+            $query = "SELECT * FROM usuario WHERE usuario.id = ?";
             
-            $usuario = new Usuario();  
-            $usuario->setIdUsuario($reg['idUsuario']);
-            $usuario->setLogin($reg['loginUsuario']);
-            $usuario->setNomeUsuario($reg['nomeUsuario']);
-            $usuario->setGenero($reg['genero']);
-            $usuario->setEmail($reg['email']);
-            $usuario->setSenha($reg['senha']);
-            $usuario->setTipoUsuario($reg['tipoUsuario']);
+            $prepare = $this->conn->prepare($query);
+            $prepare->bindParam(1, $id, PDO::PARAM_INT);
 
+            if($prepare->execute()){
+            
+                $usuario  = $prepare->fetchObject("UsuarioModel");
+            
+            } else {
+                $usuario = null;
+            }
 
-            array_push($usuarios, $usuario);
-    endforeach;
+            return $usuario;
+        }
 
-        return $usuarios;
-    
-}
+        public function findUserByEmail(string $email) {
 
-    public function list() {
-        $conn = conectar_db();
+            $query = "SELECT * FROM usuario WHERE usuario.email = ?";
+            
+            $prepare = $this->conn->prepare($query);
+            $prepare->bindParam(1, $email, PDO::PARAM_STR);
 
-        $sql = UsuarioDAO::SQL_USUARIO . 
-                " ORDER BY u.nomeUsuario";
-        $stm = $conn->prepare($sql);    
-        $stm->execute();
-        $result = $stm->fetchAll();
+            if($prepare->execute()){
+                $usuario  = $prepare->fetchObject("UsuarioModel");
+            } else {
+                $usuario = null;
+            }
 
-        return $this->mapUsuarios($result);
+            return $usuario;
+        }
+        
+        public function genero (string $genero) {
+
+            $query = "SELECT * FROM usuario WHERE usuario.genero = ?";
+            
+            $prepare = $this->conn->prepare($query);
+            $prepare->bindParam(1, $genero, PDO::PARAM_STR);
+
+            if($genero == "outro"){
+                return "indefinido"; } 
+            else {
+                return $genero;
+            }
+        }
+
+        public function Logar (string $email, string $senha) {
+            $query = "SELECT tipoUsuario FROM usuario WHERE usuario.email = ? and usuario.senha = ?";
+            $prepare = $this->conn->prepare($query);
+            $prepare->bindValue(1, $email);
+            $prepare->bindValue(2, $senha);
+            $result = $prepare->execute();
+            if($prepare->execute()){
+                $usuario  = $prepare->fetchObject("UsuarioModel");
+            } else {
+                $usuario = null;
+            }
+            return $usuario;
+            var_dump($result);
     }
 
+        public function update(UsuarioModel $user){
 
-    public function findById($idUsuario) {
-        $conn = conectar_db();
+            $query = "UPDATE usuario SET nomeUsuario = ?, email = ?, senha = ?, genero = ?, escolaridade = ?, loginUsuario = ? WHERE id = ?";
+            $prepare = $this->conn->prepare($query);
+            $prepare->bindValue(1, $user->getNomeUsuario());
+            $prepare->bindValue(2, $user->getEmail());
+            $prepare->bindValue(3, md5($user->getSenha()));
+            $prepare->bindValue(4, $user->getGenero());
+            $prepare->bindValue(5, $user->getEscolaridade());
+            $prepare->bindValue(6, $user->getLogin());
+            $prepare->bindValue(7, $user->getIdUsuario());
+            
+            $result = $prepare->execute();
+            //$resultU= $prepare->rowCount();
+            //var_dump($resultU);
+            return $result;
+            if($prepare->execute()){
+                $usuario  = $prepare->fetchObject("UsuarioModel");
+            } else {
+                $usuario = null;
+            }
 
-        $sql = UsuarioDAO::SQL_USUARIO . 
-                " WHERE u.idUsuario = ?";
+            return $usuario;
 
-        $stmt = $conn->prepare($sql);
-        $stmt->execute([$idUsuario]);
-        $result = $stmt->fetchAll();
+        }
 
-        //Criar o objeto Planta
-        $usuarios = $this->mapPlantas($result);
+        public function deleteById( int $id) :int{ 
+            $query = "DELETE FROM usuario WHERE id = :id";
 
-        if(count($usuarios) == 1)
-            return $usuarios[0];
-        elseif(count($usuarios) == 0)
-            return null;
+            $prepare = $this->conn->prepare($query);
+            $prepare->bindValue(":id", $id);
+            $prepare->execute();
+            $result = $prepare->rowCount();
+            //var_dump($result);
+            return $result;
+            
+        }
 
-        die("UsuarioDAO.findById - Erro: mais de um usuario".
-                " encontrado para o ID ".$idUsuario);
+        public function adm(int $id){
+
+            $query = "UPDATE usuario SET tipoUsuario = :tipoUsuario WHERE id = :id";
+            
+            $prepare = $this->conn->prepare($query);
+            $prepare->bindValue(":tipoUsuario", 2, PDO::PARAM_INT);
+            $prepare->bindValue(":id", $id, PDO::PARAM_INT);
+            $prepare->execute();
+            $result = $prepare->rowCount();
+
+            return $result;
+        }
     }
-
-    public function findByLoginSenha(string $login, string $senha) {
-        $conn = conectar_db();
-
-        $sql = UsuarioDAO::SQL_USUARIO . 
-                " WHERE u.loginUsuario = ? AND u.senha = ?";
-
-        $stmt = $conn->prepare($sql);
-        $stmt->execute([$login, $senha]);
-        $result = $stmt->fetchAll();
-
-        //Criar o objeto Codigos
-        $usuarios = $this->mapUsuarios($result);
-
-        if(count($usuarios) == 1)
-            return $usuarios[0];
-        elseif(count($usuarios) == 0)
-            return null;
-
-        die("UsuarioDAO.findByLoginSenha - Erro: mais de um usuário");
-    }
-
-
-    public function save(Usuario $usuario) {
-        $conn = conectar_db();
-
-        $sql = "INSERT INTO usuario (nomeUsuario, loginUsuario, senha, email, genero, tipoUsuario, escolaridade)".
-        " VALUES (?, ?, ?, ?, ?, ?, ?)";
-        $stmt = $conn->prepare($sql);
-        $stmt->execute([$usuario->getNomeUsuario(),$usuario->getLogin(), $usuario->getSenha(), $usuario->getEmail(), 
-                        $usuario->getGenero(), $usuario->getTipoUsuario(), $usuario->getEscolaridade()]);
-    }
-
-    public function update(Usuario $usuario) {
-        $conn = conectar_db();
-    
-        $sql = "UPDATE usuario SET nomeUsuario = ?, loginUsuario = ?, senha = ?, email = ?, genero = ?, tipoUsuario = ?, escolaridade = ? WHERE idUsuario = ?";
-        $stmt = $conn->prepare($sql);
-        $stmt->execute([$usuario->getNomeUsuario(), $usuario->getLogin(), $usuario->getSenha(), $usuario->getEmail(), 
-        $usuario->getGenero(), $usuario->getTipoUsuario(), $usuario->getEscolaridade(), $usuario->getIdUsuario()]);
-    }
-
-    
-    public function delete(Usuario $usuario) {
-    $conn = conectar_db();
-    
-
-    $sql = "DELETE FROM usuario WHERE idUsuario = ?";
-
-    $stmt = $conn->prepare($sql);
-    $stmt->execute([$usuario->getIdUsuario()]);
-}
-    
-}
-
-?>
