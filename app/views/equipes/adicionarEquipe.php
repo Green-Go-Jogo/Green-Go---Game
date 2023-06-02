@@ -75,8 +75,9 @@
     background-color: #f0b6bc;
     margin-top: 1px;
     font-family: Poppins-semibold;
-    border-radius: 5px;
-    width: 428px;
+    border-radius: 100px;
+    width: 70px;
+    height: 70px;
 }
 
 </style>
@@ -99,6 +100,10 @@
                         <h1 id="primeirotextoreg"> Adicione uma Equipe!</h1>
                             <form action="adicionarEquipeExec.php" method="POST" enctype="multipart/form-data">
 
+                            <div class="container" id="reg1">
+                            <div class="row">
+                            <div class="col-sm">
+                            <div class="form-row align-items-left">
 
                             <label for="formtexto" id="txtNome">Nome da Equipe:</label>
                             <div class="w-100"></div>
@@ -112,12 +117,12 @@
 
                             <label for="formtexto" id="txtCodigo">Cor da Equipe: </label>
                             <div class="w-100"></div>
-                            <input type="color" name="Cor_Equipe" class="form-control" id="txtCodigoForm" aria-describedby="nome-cadastro">
+                            <input type="color" name="Cor_Equipe" class="form-control" id="txtCorForm" aria-describedby="nome-cadastro">
                             <div class="w-100"> <br>
 
                             <label id="txtCodigo" for="imagem">Escolha o Icone da Equipe:</label>
                             <br>
-                            <select name="imagem" id="imagem" class='form-control' style='width: 130px; margin-top: 1px; color: #ebf0f1; background-color: #f0b6bc; font-family: Poppins-semibold;' onchange="atualizarImagem()">
+                            <select name="imagem" id="imagem" class='form-control' style='width: 200px; margin-top: 1px; color: #ebf0f1; background-color: #f0b6bc; font-family: Poppins-semibold;' onchange="atualizarImagem()">
                             <option value="../../public/icon/arvore_icon.png" data-imagem="../../public/icon/arvore_icon.png">Árvore</option>
                             <option value="../../public/icon/cacto_icon.png" data-imagem="../../public/icon/cacto_icon.png">Cacto</option>
                             <option value="../../public/icon/flor_icon.png" data-imagem="../../public/icon/flor_icon.png">Flor</option>
@@ -126,7 +131,6 @@
                             <br>
                             <br>
                             <div id="imagemSelecionada">
-                            <h3>Icone da Equipe:</h3>
                             <img src="../../public/icon/arvore_icon.png" alt="" id="previewImagem" style="width: 300px; height: 300px">
                             <div class="container">
                             <button type="submit" class="btn btn-primary btn-lg" id="botoesregistrar"><a>Adicionar</a> </button>
