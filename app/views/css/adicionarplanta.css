@@ -386,6 +386,7 @@ a {
 
     #botoesregistrar {
         color:#f58c95;
+        background-color: #04574d;
         margin-top: 60px;
         border-radius: 5px;
         border-width: 2px;
@@ -413,7 +414,7 @@ a {
 
 
 #botoesregistrar:hover {
-    color: var(--branco);
+    color: #f58c95;
     transform: scale(1.05);
 }
 
