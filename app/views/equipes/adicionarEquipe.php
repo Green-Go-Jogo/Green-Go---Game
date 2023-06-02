@@ -46,14 +46,14 @@
     <script src="js/progressbar.min.js"></script>
     <!-- Parallax -->
     <script src="https://cdn.jsdelivr.net/parallax.js/1.4.2/parallax.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="../../ajax/ajax.js"></script>
+    <link rel="stylesheet" href="views/js/registro.js">
+    <link rel="stylesheet" href="css/editorwys.css" type="text/css" media="all" />
+    <script type="text/javascript" src="js/script.js"></script>
+    
 
 
-
-    <link rel="stylesheet" href="../css/adicionarplanta.css">
-    <?php include_once("../../bootstrap/header.php");?>
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/cabecalho.css">
+</head>
     
 
 
