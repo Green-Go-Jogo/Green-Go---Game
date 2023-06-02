@@ -41,7 +41,7 @@ class EquipeDAO {
         $conn = conectar_db();
 
         $sql = EquipeDAO::SQL_EQUIPE . 
-                "";
+                " WHERE e.idEquipe = ?";
 
         $stmt = $conn->prepare($sql);
         $stmt->execute([$idEquipe]);
