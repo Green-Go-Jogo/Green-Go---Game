@@ -5,10 +5,38 @@
     <?php include_once("../bootstrap/header.php");?>
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/cabecalho.css">
+    <style>
+        /* Adicione estilos personalizados aqui, se necessário */
+        body {
+            overflow-x: hidden;
+        }
+        @media (max-width: 50%) {
 
-</head> 
-<nav>
+            .row.justify-content-md-left {
+                justify-content: center;
+                align-items: center;
+            }
 
+            .quadrado p {
+                text-align: center !important;
+            }
+
+
+            h1 {
+                font-size: 24px;
+            }
+
+
+            #imagem-celular {
+                width: 80%;
+                height: auto;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
 <div class="col-xs-12" id="nav-container">
         <div id="itensmenu">
             <nav class="navbar navbar-expand-lg " id="menu">
@@ -24,60 +52,38 @@
                     aria-controls="navbar-links" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"> <img src="../public/menu.svg" id="menuicon"></span>
                 </button>
-                <div class="collapse navbar-collapse justify-content-end" id="navbar-links">
-                    <div class="navbar-nav">
 
-                        <a class="nav-item nav-link" id="projeto-menu" href="../views/projeto.php"> Projeto </a>
-                        <!-- <a class="nav-item nav-link" id="itemmenu" href="index.php"> Jogar </a> -->
-                        <a class="nav-item nav-link" id="botaoentrar" href="users/login.php"> Entrar </a>
-                    </div>
-                </div>
-            </nav>
-        </div>
+        <div class="collapse navbar-collapse" id="navbar-links">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a class="nav-link" href="../views/projeto.php">Projeto</a></li>
+            <li class="nav-item"><a class="nav-link" href="users/login.php">Entrar</a></li>
+        </ul>
     </div>
-
 </nav>
 
-<body>
     <div class="container">
         <div class="row justify-content-md-left">
-            <div id="about-area">
+            <div id="about-area" class="col-md-6">
                 <div class="row">
                     <div class="col" id="textoindex">
-
                         <h1><br><br>Aprenda <br> com trilhas <br> ecológicas! </h1>
                         <div class="row">
                             <div class="col">
-                                <!-- <a class="btn btn-secondary jogar" href="index.php">JOGAR</a>-->
-
-                                <!--SÓ HÁ UM MODO DE JOGO POR HORA
-                                <div class="dropdown">
-                                    <button class="btn btn-secondary dropdown-toggle" type="button"
-                                        id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true">
-                                        JOGAR
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-
-                                        <a class="dropdown-item" href="modosolo">Modo solo</a>
-                                        <a class="dropdown-item" href="emequipe">Em equipe</a>
-                                    </div>
-                                </div>
-                                -->
+                                <!--<a class="btn btn-secondary jogar" href="index.php">JOGAR</a>-->
                             </div>
                         </div>
                     </div>
-                    
-                    
-                        <div href="mapa.php" id="divmapa"><img src="../public/mapa 1.svg" class="img-fluid" alt="logo-index"
-                                id="mapa-da-home"></div>
-                    
                 </div>
+            </div>
+            <div class="col-md-6">
+                <a href="mapa.php" id="divmapa"><img src="../public/mapa 1.svg" class="img-fluid" alt="logo-index"
+                        id="mapa-da-home"></a>
             </div>
         </div>
     </div>
 
     <div class="container">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center align-items-center">
             <div class="col quadrado">
                 <img src="../public/projeto.svg" alt="" id="imagenscaixas">
                 <p>Projeto de extensão <br> desenvolvido por alunas do IFPR</p>
@@ -88,26 +94,28 @@
             </div>
             <div class="col quadrado">
                 <img src="../public/codigo.svg" alt="" id="imagenscaixas">
-                <p>Plataforma web <br>com código aberto e muito amor</p>
+                <p>Plataforma web <br> com código aberto e muito amor</p>
             </div>
         </div>
+    </div>
 
-
-        <div class="finalhome" id="ultimo-cont-index">
-            <div class="row justify-content-md-left">
-
-                <div class="col">
-                    <img class="img-fluid" src="../public/Group 52.svg" alt="celular-greengo" id="imagem-celular">
-                </div>
+    <div class="container">
+        <div class="row justify-content-md-left">
+            <div class="col">
+                <img class="img-fluid" src="../public/Group 52.svg" alt="celular-greengo" id="imagem-celular">
             </div>
         </div>
     </div>
 
     <br><br><br>
-</body>
 
+    
+    </div>
     <div class="container-fluid" id="rodape">
             
-    </div>
+            </div>
+    <!-- Importe os scripts do Bootstrap no final do body -->
+    <script src="../bootstrap/bootstrap.min.js"></script>
+</body>
 
 </html>
