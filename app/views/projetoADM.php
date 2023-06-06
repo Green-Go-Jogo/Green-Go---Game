@@ -63,13 +63,14 @@ a.page-link:hover {
 
 <body>
 
-    <div class="container">
+    <div class="container" >
         <div id="sobre">
-            <h2 class="titulo">
+            <h2 class="titulo" style="text-align: center;">
                 O que é o <img src="../public/isologo-greengo-verde.svg" width="95%" class="isologo">
             </h2>
 
-            <p> É o resultado dos avanços de um projeto de extensão denominado <b>Green Go: Gamificação da Identificação
+            <p> É o resultado dos avanços de um projeto de extensão denominado <b>Green Go: Jogo Educacional Sobre a 
+                Etnobotânica da Identificação
                     de
                     Plantas do IFPR</b>,
                 do Instituto Federal do Paraná Campus Foz do Iguaçu. Ele envolve estudantes de dois cursos, Meio
@@ -86,7 +87,7 @@ a.page-link:hover {
                 Buscando conhecer mais a área verde que nos envolve, o projeto desenvolve, em atividades de extensão
                 voltadas
                 para a educação ambiental,
-                um sistema gamificado de identificação da flora arbórea e arborescente (árvores), bem como o conjunto
+                um jogo de identificação da flora arbórea e arborescente (árvores), bem como o conjunto
                 amplo
                 de
                 plantas alimentícias não
