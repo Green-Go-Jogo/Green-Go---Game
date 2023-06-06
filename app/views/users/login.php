@@ -57,12 +57,12 @@
                         <div class="col-auto">
                             <button class="btn btn-primary" id="botaologin" type="submit">Entrar</button>
 
-                        </div>
+                       <!-- </div>
 
                         <div class="col-auto align-items-center novoporaqui">
                             <p>Novo por aqui? <a id="cadastro" href="cadastro.php">Cadastrar</a></p>
                         </div>
-                    </div>
+                    </div> -->
 <br>
                     <?php
 if (isset($_GET['aviso'])) {

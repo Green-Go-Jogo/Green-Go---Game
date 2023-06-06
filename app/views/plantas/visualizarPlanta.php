@@ -194,8 +194,8 @@
 
         <div class="collapse navbar-collapse" id="navbar-links">
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item"><a class="nav-link" href="../projetoADM.php">Projeto</a></li>
-            <li class="nav-item"><a class="nav-link" href="../controllers/UserController.php?action=sair">Sair</a></li>
+            <li class="nav-item"><a class="nav-link" href="../projeto.php">Projeto</a></li>
+            <li class="nav-item"><a class="nav-link" href="../users/login.php">Entrar</a></li>
         </ul>
     </div>
 </nav>
