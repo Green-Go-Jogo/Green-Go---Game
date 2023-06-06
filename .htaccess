@@ -1,1 +1,4 @@
-DirectoryIndex app/views/index.php
+RewriteEngine On
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} !^www\. [NC]
+RewriteRule ^ https://www.greengoifpr.com.br/app/views/index.php [L,R=301]
