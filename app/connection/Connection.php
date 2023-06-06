@@ -4,7 +4,7 @@
 
 /*Verificar as variáveis globais abaixo para configurar 
 a conexão com o banco de dados compatível com a sua máquina*/
-$HOST = "mysql";
+$HOST = "mysql.greengoifpr.com.br";
 $NOME_BANCO = "greengoifpr";
 $USUARIO = "greengoifpr";
 $SENHA = "GreenGoDB21";
