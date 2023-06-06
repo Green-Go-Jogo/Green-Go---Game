@@ -6,8 +6,8 @@
 a conexão com o banco de dados compatível com a sua máquina*/
 $HOST = "mysql";
 $NOME_BANCO = "greengoifpr";
-$USUARIO = "root";
-$SENHA = "";
+$USUARIO = "greengoifpr";
+$SENHA = "GreenGoDB21";
 
 function conectar_db() {
     global $HOST, $NOME_BANCO, $USUARIO, $SENHA;
