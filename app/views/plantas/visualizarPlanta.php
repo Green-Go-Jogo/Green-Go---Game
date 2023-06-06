@@ -1,7 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-
 <?php
  include_once("../../controllers/PlantaController.php");
  include_once("../../controllers/ZonaController.php");
@@ -78,52 +74,171 @@
  
 ?>
 
+<!DOCTYPE html>
+<html lang="pt-br">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>
             <?= $planta->getNomeSocial() ?>
         </title>
 
-       <?php include_once("../../bootstrap/header.php");?>
-       <link rel="stylesheet" href="../css/planta.css">
-    </head>
+        <head>
+    <?php include_once("../../bootstrap/header.php");?>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/cabecalho.css">
 
-    <nav>
-    <?php include_once("../../bootstrap/nav.php");?>
-    </nav>
+</head> 
+<nav>
+
+<style>
+
+#nomePlanta {
+    height: 10%;
+    width: 55% ;
+    margin-left: 3%;
+    border-radius: 5px;
+    background-color: #04574d;
+    color: #FFFFFF; 
+    text-align: center !important;
+}
+
+#nomeUm {
+    font-size: 40%; 
+    height: 10%;
+    width: 70% ;
+    margin-left: 3%;
+    margin-top: 3%;
+    color: #C05367; 
+}
+
+#nomeDois {
+    font-size: 40%; 
+    height: 10%;
+    width: 100% ;
+    margin-left: 3%;
+    color: #C05367; 
+}
+
+#codigoPlanta {
+    margin-left: 60%;
+    color: #f58c95;
+    font-size: 100%; 
+}
+
+#imagemPlanta {
+    height: auto;
+    width: 100% ;
+}
+
+#imagem1Planta {
+    height: auto;
+    width: 100%;
+}
+
+#logo {
+    height: 63%;
+    width: auto;
+    margin-left: 2px;
+}
+
+#pontos {
+    size: 50%;
+    margin-top: 3%;
+    margin-left: 16%;
+    background-color: #f0b6bc;
+    color: #FFFFFF;
+    border-radius: 5px;
+    width: 70%;
+    font-size: 60%; 
+    text-align: center !important;
+}
+
+#atributos {
+    size: 50%;
+    margin-left: 34%;
+    margin-bottom: 10%;
+    color: #C05367;
+    border-radius: 5px;
+    width: 35%;
+    font-size: 35%; 
+    text-align: center !important;
+}
+
+#historiaplanta {
+    margin-left: 25%;
+    margin-bottom: 60px;
+    width: 70%;
+    color: #04574d;
+    border-radius: 5px;
+    text-decoration: #338a5f underline;
+    width: 50%;
+    text-align: center !important;
+}
+
+</style>
+
+<div class="col-xs-12" id="nav-container">
+        <div id="itensmenu">
+            <nav class="navbar navbar-expand-lg " id="menu">
+                <a href="index.php" class="nav-brand">
+                    <div class="row justify-content-md-left">
+                        <div id="imgmenu">
+                        <img class="img-responsive" src="../public/logo-green.svg"  id="logo" >
+                        </div>
+                    </div>
+                </a>
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-links"
+                    aria-controls="navbar-links" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"> <img src="../../public/menu.svg" id="menuicon"></span>
+                </button>
+
+        <div class="collapse navbar-collapse" id="navbar-links">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a class="nav-link" href="../projetoADM.php">Projeto</a></li>
+            <li class="nav-item"><a class="nav-link" href="../controllers/UserController.php?action=sair">Sair</a></li>
+        </ul>
+    </div>
+</nav>
 
     <body>
 
     <div class="container">
 
 <div class="titulo">
-    <div class="row justify-content-between">
-        <h2 class="nome">
+    <div class="row">
+        <h1 class="nome" id="nomePlanta">
             <?= $planta->getNomeSocial() ?>
-        </h2>
+        </h1>
 
-        <span class="cod align-self-center" href="./EspecieController.php?action=loadFormNew">
+        <h1 class="nome" id="nomeUm">
+            <?= $especie->getNomePopular() ?>
+        </h1>
+
+        <h1 class="nome" id="nomeDois">
+            <?= $especie->getNomeCientifico() ?>
+        </h1>
+
+        <p class="codigo" id="codigoPlanta" href="./EspecieController.php?action=loadFormNew">
             <?= $planta->getCodNumerico() ?>
-        </span>
-    </div>
+        </p>
+
 </div>
 
-<div class="img-responsive">
-        <img src="<?php echo $planta->getImagemPlanta(); ?>"/>
-    </div>
+<div class="img-responsive" id="imagem1Planta">
+        <img id="imagemPlanta" src="<?php echo $planta->getImagemPlanta(); ?>"/>
+    </div> <br>
 
-<div>
-    <p class="descricao">
-       historia: <?php echo $planta->getPlantaHistoria(); ?>
+<div> 
+
+    <h1 class="descricao" id="historiaplanta" style="font-size: 40%; " >
+    <?= $planta->getPlantaHistoria() ?>
+    </h1>
+
+    <p class="descricao" id="pontos">
+    Pontos: <?=$planta->getPontos(); ?>
     </p>
 
-    <p class="descricao">
-       pontução <?=$planta->getPontos(); ?>
-    </p>
-    <p class="descricao">
+    <p class="descricao" id="atributos">
         <?php echo $tox; ?>
         <?php echo $med; ?>
         <?php echo $come; ?>
@@ -132,26 +247,7 @@
         <?php echo $rara; ?>
     </p>
 
-    <div class="img-responsive">
-        <img src="<?php echo $planta->getQrCode(); ?>"/>
-    </div>
-
-    <div class="caixa">
-        <a href="">
-            Espécie
-            <?= $planta->getEspecie() ?>
-        </a>
-    </div>
-
-    <div class="caixa">
-        <a href="">
-           <?= $planta->getZona() ?>
-        </a>
-    </div>
-
-    <div class="qrcode">
         
-    </div>
 </div>
             <div class="row justify-content-start botoes">
                 <!--A PARTIR DAQUI, QUANDO CLICADO PARA VER DETALHES (VALE PARA TODOS OS USUARIOS!!)
