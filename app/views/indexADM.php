@@ -1,6 +1,20 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+<?php 
 
+session_start();
+
+if(isset($_SESSION['adm'])){
+    $nomeADM = $_SESSION['adm'];
+} 
+else if(isset($_SESSION['normal'])){
+    header("location: users/login.php");
+}
+else if (!isset($_SESSION['adm']) && !isset($_SESSION['normal'])) {
+    header("Location: users/login.php");
+    exit;
+}
+?>
 <head>
     <?php include_once("../bootstrap/header.php");?>
     <link rel="stylesheet" href="css/index.css">
@@ -37,7 +51,7 @@
                         <a class="nav-item nav-link" id="especies-menu" href="../views/especies/listEspecies.php"> Espécies </a>
                        <!--  <a class="nav-item nav-link" id="usuarios-menu" href="./UserController.php?action=findAll"> Usuários </a>
                         <a class="nav-item nav-link" id="perfil-menu" href="./perfil.php"> Perfil </a> -->
-                        <a class="nav-item nav-link" id="botaoentrar" href="../controllers/UserController.php?action=sair"> Sair  </a>
+                        <a class="nav-item nav-link" id="botaoentrar" href="users/sair.php"> <?php echo $nomeADM; ?> </a>
                     </div>
                 </div>
             </nav>

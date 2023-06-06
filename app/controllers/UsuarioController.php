@@ -7,6 +7,16 @@ class UsuarioController {
 
     private $usuarioDAO;
 
+    protected function handleAction() {
+        //Captura a ação do parâmetro GET
+        $action = NULL;
+        if(isset($_GET['action']))
+            $action = $_GET['action'];
+        
+        //Chama a ação
+        $this->callAction($action);
+    }
+
     public function __construct() {
         $this->usuarioDAO = new UsuarioDAO();
     }
@@ -18,6 +28,23 @@ class UsuarioController {
     public function buscarPorId($idUsuario) {
         return $this->usuarioDAO->findById($idUsuario);
     }
+
+    public function manterSessaoADM($nomeADM) {
+        $this->usuarioDAO->manterSessaoADM($nomeADM);
+    }
+
+    public function logar($usuario) {
+        $this->usuarioDAO->logon($usuario);
+    }
+
+    public function sair($nomeADM) {
+        $this->usuarioDAO->logout($nomeADM);
+    }
+
+    public function sairInd($nomeADM) {
+        $this->usuarioDAO->logoutInd($nomeADM);
+    }
+
 
     public function salvar($usuario) {
         $this->usuarioDAO->create($usuario);
