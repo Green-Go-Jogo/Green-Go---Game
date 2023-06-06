@@ -31,13 +31,13 @@
                 <div class="collapse navbar-collapse justify-content-end" id="navbar-links">
                     <div class="navbar-nav" id="navbar-links">
                         <a class="nav-item nav-link" id="projeto-menu" href="../views/projetoADM.php"> Projeto </a>
-                        <a class="nav-item nav-link" id="mapa-menu" href="..\controllers\EspecieControllerADM.php?action=EspeciesMapa"> Mapa</a>
+                        <!-- <a class="nav-item nav-link" id="mapa-menu" href="..\controllers\EspecieControllerADM.php?action=EspeciesMapa"> Mapa</a> -->
                         <a class="nav-item nav-link" id="zonas-menu" href="..\views\equipes\listEquipes.php"> Equipes </a>
                         <a class="nav-item nav-link" id="itemmenu" href="../views/plantas/listPlantas.php"> Plantas </a>
                         <a class="nav-item nav-link" id="zonas-menu" href="../views/zones/listZonas.php"> Zonas </a>
                         <a class="nav-item nav-link" id="especies-menu" href="../views/especies/listEspecies.php"> Espécies </a>
-                        <a class="nav-item nav-link" id="usuarios-menu" href="./UserController.php?action=findAll"> Usuários </a>
-                        <a class="nav-item nav-link" id="perfil-menu" href="./perfil.php"> Perfil </a>
+                        <!--  <a class="nav-item nav-link" id="usuarios-menu" href="./UserController.php?action=findAll"> Usuários </a>
+                        <a class="nav-item nav-link" id="perfil-menu" href="./perfil.php"> Perfil </a> -->
                         <a class="nav-item nav-link" id="botaoentrar" href="../controllers/UserController.php?action=sair"> Sair  </a>
                     </div>
                 </div>
