@@ -4,8 +4,8 @@
 
 /*Verificar as variáveis globais abaixo para configurar 
 a conexão com o banco de dados compatível com a sua máquina*/
-$HOST = "localhost";
-$NOME_BANCO = "greengo";
+$HOST = "mysql";
+$NOME_BANCO = "greengoifpr";
 $USUARIO = "root";
 $SENHA = "";
 
