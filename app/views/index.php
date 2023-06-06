@@ -28,8 +28,8 @@
                     <div class="navbar-nav">
 
                         <a class="nav-item nav-link" id="projeto-menu" href="../views/projeto.php"> Projeto </a>
-                        <a class="nav-item nav-link" id="itemmenu" href="./PlantaController.php?action=formIdentificarPlanta"> Jogar </a>
-                        <a class="nav-item nav-link" id="botaoentrar" href="../views/users/login.php"> Entrar </a>
+                        <a class="nav-item nav-link" id="itemmenu" href="index.php"> Jogar </a>
+                        <a class="nav-item nav-link" id="botaoentrar" href="users/login.php"> Entrar </a>
                     </div>
                 </div>
             </nav>
@@ -48,7 +48,7 @@
                         <h1><br><br>Aprenda <br> com trilhas <br> ecológicas! </h1>
                         <div class="row">
                             <div class="col">
-                                <a class="btn btn-secondary jogar" href="../Controllers/PlantaController.php?action=formIdentificarPlanta">JOGAR</a>
+                                <a class="btn btn-secondary jogar" href="index.php">JOGAR</a>
 
                                 <!--SÓ HÁ UM MODO DE JOGO POR HORA
                                 <div class="dropdown">

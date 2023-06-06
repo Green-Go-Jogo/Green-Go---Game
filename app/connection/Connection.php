@@ -4,10 +4,10 @@
 
 /*Verificar as variáveis globais abaixo para configurar 
 a conexão com o banco de dados compatível com a sua máquina*/
-$HOST = "localhost";
-$NOME_BANCO = "greengo";
-$USUARIO = "root";
-$SENHA = "";
+$HOST = "mysql.greengoifpr.com.br";
+$NOME_BANCO = "greengoifpr";
+$USUARIO = "greengoifpr";
+$SENHA = "GreenGoDB21";
 
 function conectar_db() {
     global $HOST, $NOME_BANCO, $USUARIO, $SENHA;
