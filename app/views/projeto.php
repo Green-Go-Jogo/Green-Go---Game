@@ -328,7 +328,7 @@ a.page-link:hover {
 <div class="row justify-content-md-left">
     <div class="d-flex justify-content-start">
         <div class="img-coord">
-            <img src="../public/rayssa.jpg" class="coordenador">
+            <img src="../public/rayssa.jpeg" class="coordenador">
         </div>
     </div>
 
