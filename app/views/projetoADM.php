@@ -70,7 +70,7 @@ a.page-link:hover {
             <li class="nav-item"><a class="nav-link" href="../views/plantas/listPlantas.php">Plantas</a></li>
             <li class="nav-item"><a class="nav-link" href="../views/zones/listZonas.php">Zonas</a></li>
             <li class="nav-item"><a class="nav-link" href="../views/especies/listEspecies.php">Espécies</a></li>
-            <li class="nav-item"><a class="nav-link" href="../controllers/UserController.php?action=sair">Sair</a></li>
+            <li class="nav-item"><a class="nav-item nav-link" id="botaoentrar" href="../users/sair.php"> <?php echo $nomeADM; ?> </a></li>
         </ul>
     </div>
 </nav>
