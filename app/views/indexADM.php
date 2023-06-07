@@ -99,7 +99,7 @@ else if (!isset($_SESSION['adm']) && !isset($_SESSION['normal'])) {
         <div class="row justify-content-center">
             <div class="col quadrado">
                 <img src="../public/projeto.svg" alt="" id="imagenscaixas">
-                <p>Projeto de extensão <br> desenvolvido por alunos do IFPR</p>
+                <p>Projeto de extensão <br> desenvolvido por estudantes do IFPR</p>
             </div>
             <div class="col quadrado">
                 <img src="../public/metodologias.svg" alt="" id="imagenscaixas">

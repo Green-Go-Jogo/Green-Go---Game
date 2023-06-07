@@ -89,7 +89,7 @@ a.page-link:hover {
                     Plantas do IFPR</b>,
                 do Instituto Federal do Paraná Campus Foz do Iguaçu. Ele envolve estudantes de dois cursos, Meio
                 Ambiente e
-                Informática, colaborando
+                Informática/Desenvolvimento de Sistemas, colaborando
                 na integração na comunidade local entre si e com seu meio.
             </p>
 
@@ -190,7 +190,7 @@ a.page-link:hover {
     <div class="txt-coord align-self-center">
         <span>
             <b>HUMBERTO MARTINS BENEDUZZI</b> <br>
-            Coordenador da Equipe de Informática <br>
+            Ex-Coorientador da Equipe de Informática  <br>
             <small>humberto.beneduzzi@ifpr.edu.br</small>
         </span>
     </div>

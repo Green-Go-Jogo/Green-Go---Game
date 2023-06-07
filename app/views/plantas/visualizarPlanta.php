@@ -47,7 +47,7 @@
 
  $toxidade = $especie->getToxidade();
  if ($toxidade == 1) { 
-     $tox = "<br>"."Toxíca";
+     $tox = "<br>"."Tóxica";
  } else { 
      $tox = "";
  };
