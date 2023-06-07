@@ -47,7 +47,7 @@ class UsuarioController {
 
 
     public function salvar($usuario) {
-        $this->usuarioDAO->create($usuario);
+        $this->usuarioDAO->save($usuario);
     }
 
     public function atualizar($usuario) {
