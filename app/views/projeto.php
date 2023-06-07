@@ -345,7 +345,7 @@ a.page-link:hover {
 <div class="row justify-content-md-left">
     <div class="d-flex justify-content-start">
         <div class="img-coord">
-            <img src="../public/juliana.jpg" class="coordenador">
+            <img src="../public/juliana.jpeg" class="coordenador">
         </div>
     </div>
 
@@ -362,7 +362,7 @@ a.page-link:hover {
 <div class="row justify-content-md-left">
     <div class="d-flex justify-content-start">
         <div class="img-coord">
-            <img src="../public/nura.jpg" class="coordenador">
+            <img src="../public/nura.jpeg" class="coordenador">
         </div>
     </div>
 
