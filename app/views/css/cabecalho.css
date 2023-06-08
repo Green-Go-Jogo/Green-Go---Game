@@ -41,6 +41,10 @@
     margin-top: 0%;
 }
 
+.img-responsive {
+    width: 130px;
+}
+
 #botaoentrar {
     font-weight: 700;
     cursor: pointer;
