@@ -83,8 +83,8 @@
 
         <head>
     <?php include_once("../../bootstrap/header.php");?>
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/cabecalho.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/cabecalho.css">
 
 </head> 
 <style>
@@ -186,7 +186,7 @@
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-links"
         aria-controls="navbar-links" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"><img src="../public/menu.svg" id="menuicon"></span>
+        <span class="navbar-toggler-icon"><img src="../../public/menu.svg" id="menuicon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbar-links">
