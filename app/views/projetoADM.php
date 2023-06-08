@@ -131,12 +131,12 @@ a.page-link:hover {
 
 
             <nav aria-label="...">
-  <ul class="pagination pagination-lg justify-content-center flex-wrap">
-  <li class="page-item" onclick="ativar(this)"><a class="page-link" href="#" data-target="div-orientadores">Orientadores</a></li>
-  <li class="page-item" onclick="ativar(this)"><a class="page-link" href="#" data-target="div-modulo-website">Módulo Website</a></li>
-  <div class="w-100 d-md-none"></div>
-  <li class="page-item" onclick="ativar(this)"><a class="page-link" href="#" data-target="div-modulo-jogo">Módulo Jogo</a></li>
-  <li class="page-item" onclick="ativar(this)"><a class="page-link" href="#" data-target="div-modulo-quiz">Módulo Quiz</a></li>
+  <ul class="pagination pagination-lg justify-content-center flex-wrap flex-column flex-md-row">
+    <li class="page-item" onclick="ativar(this)"><a class="page-link" href="#" data-target="div-orientadores">Orientadores</a></li>
+    <li class="page-item" onclick="ativar(this)"><a class="page-link" href="#" data-target="div-modulo-website">Módulo Website</a></li>
+    <li class="page-item d-md-none"><hr></li>
+    <li class="page-item" onclick="ativar(this)"><a class="page-link" href="#" data-target="div-modulo-jogo">Módulo Jogo</a></li>
+    <li class="page-item" onclick="ativar(this)"><a class="page-link" href="#" data-target="div-modulo-quiz">Módulo Quiz</a></li>
   </ul>
 </nav>
 

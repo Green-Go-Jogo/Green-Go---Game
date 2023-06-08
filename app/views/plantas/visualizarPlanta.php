@@ -87,8 +87,6 @@
     <link rel="stylesheet" href="css/cabecalho.css">
 
 </head> 
-<nav>
-
 <style>
 
 #nomePlanta {
@@ -175,24 +173,23 @@
 }
 
 </style>
+<nav>
 
-<div class="col-xs-12" id="nav-container">
-        <div id="itensmenu">
-            <nav class="navbar navbar-expand-lg " id="menu">
-                <a href="index.php" class="nav-brand">
-                    <div class="row justify-content-md-left">
-                        <div id="imgmenu">
-                        <img class="img-responsive" src="../public/logo-green.svg"  id="logo" >
-                        </div>
-                    </div>
-                </a>
+<nav class="navbar navbar-expand-lg">
+    <a href="index.php" class="navbar-brand">
+        <div class="row align-items-center">
+            <div id="imgmenu">
+                <img class="img-responsive" id="logo">
+            </div>
+        </div>
+    </a>
 
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-links"
-                    aria-controls="navbar-links" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"> <img src="../../public/menu.svg" id="menuicon"></span>
-                </button>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-links"
+        aria-controls="navbar-links" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"><img src="../public/menu.svg" id="menuicon"></span>
+    </button>
 
-        <div class="collapse navbar-collapse" id="navbar-links">
+    <div class="collapse navbar-collapse" id="navbar-links">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item"><a class="nav-link" href="../projeto.php">Projeto</a></li>
             <li class="nav-item"><a class="nav-link" href="../users/login.php">Entrar</a></li>
@@ -218,7 +215,7 @@
             <?= $especie->getNomeCientifico() ?>
         </h1>
 
-        <p class="codigo" id="codigoPlanta" href="./EspecieController.php?action=loadFormNew">
+        <p class="codigo" id="codigoPlanta">
             <?= $planta->getCodNumerico() ?>
         </p>
 
