@@ -47,11 +47,7 @@ a.page-link:hover {
 
             body {
             overflow-x: hidden;
-                 }
-
-        .page-item {
-            border-radius: 20px; /* ajuste o valor conforme necessário */
-            }
+        }
 </style>    
 <nav class="navbar navbar-expand-lg">
     <a href="indexADM.php" class="navbar-brand">
