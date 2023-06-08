@@ -82,6 +82,8 @@
         </title>
 
         <head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php include_once("../../bootstrap/header.php");?>
     <link rel="stylesheet" type="text/css" href="../css/index.css">
     <link rel="stylesheet" type="text/css" href="../css/cabecalho.css">
