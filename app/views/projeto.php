@@ -35,6 +35,7 @@ a.page-link:hover {
             overflow-x: hidden !important;
              }
 </style>    
+
 <nav class="navbar navbar-expand-lg">
     <a href="index.php" class="navbar-brand">
         <div class="row align-items-center">
