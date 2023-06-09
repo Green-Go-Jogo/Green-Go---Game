@@ -26,7 +26,8 @@
 
 if ($ide == 24 && $cod == 1206) {
     $ide = 25;
-
+    $cod = 1206;
+    
     $plantaCont = new PlantaController();
     $planta = $plantaCont->buscarPorCodigo($cod);
 
