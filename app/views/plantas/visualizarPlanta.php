@@ -139,12 +139,6 @@
     width: 100%;
 }
 
-#logo {
-    height: 63%;
-    width: auto;
-    margin-left: 2px;
-}
-
 #pontos {
     size: 50%;
     margin-top: 3%;
