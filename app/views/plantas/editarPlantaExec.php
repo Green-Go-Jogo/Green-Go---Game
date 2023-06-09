@@ -22,6 +22,11 @@ move_uploaded_file($imagem["tmp_name"], $caminho_imagem);
 $id_zona = $_POST['zona_planta'];
 $id_especie = $_POST['especie_planta'];
 
+$qrCodeTexto = "https://www.greengoifpr.com.br/app/views/plantas/visualizarPlanta.php?cod=" . urlencode($Cod_Numerico) . "&ide=". urlencode($id_especie);
+$qrCodeArq = "../../public/qrcode/qrcode_". $Cod_Numerico . ".png"; 
+QRcode::png($qrCodeTexto, $qrCodeArq, QR_ECLEVEL_L, 10); 
+
+
 //Criar o objeto personagem
 $planta = new Planta();
 $planta->setIdPlanta($id);
