@@ -75,7 +75,7 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <a href="mapa.php" id="divmapa"><img src="../public/mapa 1.svg" class="img-fluid" alt="logo-index"
+                <img src="../public/mapa 1.svg" class="img-fluid" alt="logo-index"
                         id="mapa-da-home"></a>
             </div>
         </div>
