@@ -1,6 +1,7 @@
 <?php
 #Arquivo para executar a inclusão de um personagem
 
+require __DIR__."/../../api/phpqrcode/qrlib.php";
 include_once(__DIR__."/../../models/PlantaModel.php");
 include_once(__DIR__."/../../models/ZonaModel.php");
 include_once(__DIR__."/../../models/EspecieModel.php");
