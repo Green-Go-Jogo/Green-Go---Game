@@ -36,6 +36,7 @@ $planta->setCodNumerico($Cod_Numerico);
 $planta->setImagemPlanta($caminho_imagem);
 $planta->setPontos($pontuacao);
 $planta->setPlantaHistoria($historia);
+$planta->setQrCode($qrCodeArq);
 
 $especie = new Especie($id_especie);
 $planta->setEspecie($especie);
