@@ -24,6 +24,17 @@
     $planta = $plantaCont->buscarPorCodigo($cod);
 }
 
+if ($ide == 24 && $cod == 1206) {
+    $ide = 25;
+
+    $plantaCont = new PlantaController();
+    $planta = $plantaCont->buscarPorCodigo($cod);
+
+    $especieCont = new EspecieController();
+    $especie = $especieCont->buscarPorId($ide);
+    }
+   
+
  $frutifera = $especie->getFrutifera();
  if ($frutifera == 1) { 
      $frut = "<br>"."Frutífera";
