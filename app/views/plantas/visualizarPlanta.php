@@ -27,7 +27,7 @@
 if ($ide == 24 && $cod == 1206) {
     $ide = 25;
     $cod = 1206;
-    
+
     $plantaCont = new PlantaController();
     $planta = $plantaCont->buscarPorCodigo($cod);
 
@@ -110,7 +110,7 @@ if ($ide == 24 && $cod == 1206) {
 
 #nomePlanta {
     height: 10%;
-    width: 55% ;
+    width: 80% ;
     margin-left: 3%;
     border-radius: 5px;
     background-color: #04574d;
@@ -175,15 +175,17 @@ if ($ide == 24 && $cod == 1206) {
 }
 
 #historiaplanta {
-    margin-left: 25%;
-    margin-bottom: 60px;
+    margin: 0 auto;
     width: 70%;
     color: #04574d;
-    border-radius: 5px;
-    text-decoration: #338a5f underline;
-    width: 50%;
-    text-align: center !important;
+    text-align: left;
 }
+
+.descricao {
+    font-size: 40%;
+    line-height: 1.5;
+}-align: center !important;
+
 
 body {
     overflow-x: hidden !important;
@@ -243,14 +245,15 @@ body {
 
 <div> 
 
-    <h1 class="descricao" id="historiaplanta" style="font-size: 40%; " >
+<h1 class="descricao" id="historiaplanta">
     <?= $planta->getPlantaHistoria() ?>
-    </h1>
+</h1>
 
     <p class="descricao" id="pontos">
     Pontos: <?=$planta->getPontos(); ?>
     </p>
 
+    
     <p class="descricao" id="atributos">
         <?php echo $tox; ?>
         <?php echo $med; ?>
