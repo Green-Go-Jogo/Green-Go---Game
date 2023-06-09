@@ -195,6 +195,40 @@ a.page-link:hover {
         </span>
     </div>
 </div>
+<!--JEFFERSON-->
+<div class="row justify-content-md-left">
+    <div class="d-flex justify-content-start">
+        <div class="img-coord">
+            <img src="../public/.jpg" class="coordenador">
+        </div>
+    </div>
+
+    <div class="txt-coord align-self-center">
+        <span>
+            <b>JEFERSON OLIVEIRA CHAVES</b> <br>
+            Orientador da Equipe de Desenvolvimento de Sistemas<br>
+            <small>---@ifpr.edu.br</small>
+        </span>
+    </div>
+</div>
+
+<!--DANIEL-->
+<div class="row justify-content-md-left">
+    <div class="d-flex justify-content-start">
+        <div class="img-coord">
+            <img src="../public/.jpg" class="coordenador">
+        </div>
+    </div>
+
+    <div class="txt-coord align-self-center">
+        <span>
+            <b>DANIEL DI DOMENICO</b> <br>
+            Orientador da Equipe de Desenvolvimento de Sistemas<br>
+            <small>---@ifpr.edu.br</small>
+        </span>
+    </div>
+</div>
+
 </div>
 </div>
 
@@ -387,7 +421,7 @@ a.page-link:hover {
     <div class="txt-coord align-self-center">
         <span>
             <b>NURA SALEH</b> <br>
-            Desenvolvedor Front-end & Modeladora do Sistema<br>
+            Desenvolvedora Front-end & Modeladora do Sistema<br>
             <small>nura@greengoifpr.com.br</small>
         </span>
     </div>
