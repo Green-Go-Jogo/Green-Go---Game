@@ -44,6 +44,10 @@ else if (!isset($_SESSION['adm']) && !isset($_SESSION['normal'])) {
             color: var(--branco);
             background-color: #f0b6bc !important;
             border-radius: 5px; }
+
+            body {
+        background-color: #ebf0f1;
+    }
     </style>
 
 

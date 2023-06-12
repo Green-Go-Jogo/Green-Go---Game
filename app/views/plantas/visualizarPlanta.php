@@ -124,7 +124,7 @@ if ($ide == 24 && $cod == 1206) {
     width: 70% ;
     margin-left: 3%;
     margin-top: 3%;
-    color: #C05367; 
+    color: #f58c95; 
 }
 
 #nomeDois {
@@ -132,13 +132,15 @@ if ($ide == 24 && $cod == 1206) {
     height: 10%;
     width: 90% ;
     margin-left: 3%;
-    color: #C05367; 
+    margin-bottom: 4%;
+    color: #f58c95; 
 }
 
 #codigoPlanta {
-    margin-left: 60%;
-    color: #f58c95;
-    font-size: 100%; 
+    flex-basis: 92%;
+    text-align: right;
+    color: #338a5f;
+    font-size: 70%; 
 }
 
 #imagemPlanta {
@@ -153,7 +155,7 @@ if ($ide == 24 && $cod == 1206) {
 
 #pontos {
     size: 50%;
-    margin-top: 3%;
+    margin-top: 6%;
     margin-left: 16%;
     background-color: #f0b6bc;
     color: #FFFFFF;
@@ -167,6 +169,7 @@ if ($ide == 24 && $cod == 1206) {
     size: 50%;
     margin-left: 34%;
     margin-bottom: 10%;
+    margin-top: 3%;
     color: #C05367;
     border-radius: 5px;
     width: 35%;
@@ -176,15 +179,15 @@ if ($ide == 24 && $cod == 1206) {
 
 #historiaplanta {
     margin: 0 auto;
-    width: 70%;
+    width: 93%;
     color: #04574d;
     text-align: left;
 }
 
 .descricao {
     font-size: 40%;
-    line-height: 1.5;
-}-align: center !important;
+    line-height: 1.3;
+}
 
 
 body {
@@ -226,15 +229,15 @@ body {
         </h1>
 
         <h1 class="nome" id="nomeUm">
-            <?= $especie->getNomePopular() ?>
+            <a style="color: #C05367;"> Nome Popular: </a> <?= $especie->getNomePopular() ?>
         </h1>
 
         <h1 class="nome" id="nomeDois">
-            <?= $especie->getNomeCientifico() ?>
+            <a style="color: #C05367;"> Nome Científico: </a> <?= $especie->getNomeCientifico() ?>
         </h1>
 
         <p class="codigo" id="codigoPlanta">
-            <?= $planta->getCodNumerico() ?>
+            Código: <?= $planta->getCodNumerico() ?>
         </p>
 
 </div>
@@ -276,6 +279,7 @@ body {
 
             <br><br>
         </div>
+        <script src="../bootstrap/bootstrap.min.js"></script>
     </body>
 
 </html>

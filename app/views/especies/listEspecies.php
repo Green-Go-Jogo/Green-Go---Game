@@ -55,6 +55,10 @@ else if (!isset($_SESSION['adm']) && !isset($_SESSION['normal'])) {
         text-decoration: none;
     }
 
+    body {
+        background-color: #ebf0f1;
+    }
+
     </style>
 
 <head>
@@ -64,7 +68,7 @@ else if (!isset($_SESSION['adm']) && !isset($_SESSION['normal'])) {
 <link rel="stylesheet" href="css/cabecalho.css">
 
 </head>
-<body>
+<body style="background-color: #ebf0f1;">
 <nav>
 
 <?php include_once("../../bootstrap/navADM.php");?>

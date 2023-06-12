@@ -91,7 +91,7 @@
                 <img src="../public/metodologias.svg" alt="" id="imagenscaixas">
                 <p>Educação ambiental <br> através de metodologias ativas</p>
             </div>
-            <div class="col quadrado">
+           <div class="col quadrado">
                 <img src="../public/codigo.svg" alt="" id="imagenscaixas">
                 <p>Plataforma web <br> com código aberto e muito amor</p>
             </div>

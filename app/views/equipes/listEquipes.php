@@ -33,6 +33,10 @@ else if (!isset($_SESSION['adm']) && !isset($_SESSION['normal'])) {
         text-decoration: none;
     }
 
+    body {
+        background-color: #ebf0f1;
+    }
+
     </style>
 
 

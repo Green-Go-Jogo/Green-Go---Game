@@ -16,6 +16,7 @@
             color: #ebf0f1 !important;
             background-color: #338a5f; }
 
+
         a.excluir {
             color: #f0b6bc;
             border-color: #f0b6bc;
