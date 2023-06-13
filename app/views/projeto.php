@@ -189,9 +189,9 @@ a.page-link:hover {
 
     <div class="txt-coord align-self-center">
         <span>
-            <b>JEFERSON OLIVEIRA CHAVES</b> <br>
+            <b>JEFFERSON OLIVEIRA CHAVES</b> <br>
             Orientador da Equipe de Desenvolvimento de Sistemas<br>
-            <small>---@ifpr.edu.br</small>
+            <small>jefferson.chaves@ifpr.edu.br</small>
         </span>
     </div>
 </div>
@@ -208,7 +208,7 @@ a.page-link:hover {
         <span>
             <b>DANIEL DI DOMENICO</b> <br>
             Orientador da Equipe de Desenvolvimento de Sistemas<br>
-            <small>---@ifpr.edu.br</small>
+            <small>daniel.domenico@ifpr.edu.br</small>
         </span>
     </div>
 </div>
@@ -289,7 +289,7 @@ a.page-link:hover {
 <div class="row justify-content-md-left">
     <div class="d-flex justify-content-start">
         <div class="img-coord">
-            <img src="../public/annye.jpg" class="coordenador">
+            <img src="../public/annye.jpeg" class="coordenador">
         </div>
     </div>
 
