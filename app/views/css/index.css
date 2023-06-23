@@ -218,3 +218,15 @@ body {
     height: 70px;
 
 }
+
+#navdropdown {
+    display: flex;
+    margin-left: 10px;
+    color: var(--principal);
+    text-decoration: none;
+    cursor: pointer;
+    height: min-content;
+    font-family: Poppins-regular;
+    font-size: 18px;
+    font-weight: bold;
+}

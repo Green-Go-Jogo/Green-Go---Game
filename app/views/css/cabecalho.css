@@ -88,3 +88,16 @@ button::before {
 #menuicon {
     width: 40px;
 }
+
+#dropdown {
+    display: flex;
+    margin-left: 50px;
+    color: var(--principal);
+    text-decoration: none;
+    padding-top: 0.3em;
+    cursor: pointer;
+    height: min-content;
+    font-family: Poppins-regular;
+    font-size: 19px;
+    font-weight: bold;
+}
