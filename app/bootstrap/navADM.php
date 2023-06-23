@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg">
-    <a href="indexADM.php" class="navbar-brand">
+    <a href="../indexADM.php" class="navbar-brand">
         <div class="row align-items-center">
             <div id="imgmenu">
                 <img class="img-responsive" id="logo">
