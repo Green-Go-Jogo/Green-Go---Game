@@ -56,6 +56,29 @@ else if (!isset($_SESSION['adm']) && !isset($_SESSION['normal'])) {
         text-decoration: none;
     }
 
+    .navbar-nav .dropdown {
+    background-color: transparent;
+  }
+  
+  /* Estilo para os itens do dropdown */
+  .navbar-nav .dropdown-menu {
+    background-color: transparent;
+  }
+  
+  /* Estilo para os itens do dropdown quando o mouse passa por cima */
+  .navbar-nav .dropdown-menu .dropdown-item:hover {
+    background-color: transparent;
+  }
+
+  .custom-button {
+    background-color: transparent;
+    border: none;
+  }
+  
+  .custom-dropdown {
+  width: auto !important;
+  white-space: nowrap;
+}
     </style>
 
 <head>
