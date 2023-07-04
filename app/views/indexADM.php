@@ -45,6 +45,11 @@ else if (!isset($_SESSION['adm']) && !isset($_SESSION['normal'])) {
     background-color: transparent;
     border: none;
   }
+  
+  .custom-dropdown {
+  width: auto !important;
+  white-space: nowrap;
+}
 
 </style>
 
@@ -71,16 +76,19 @@ else if (!isset($_SESSION['adm']) && !isset($_SESSION['normal'])) {
             <li class="nav-item"><a class="nav-link" href="../views/zones/listZonas.php">Zonas</a></li>
             <li class="nav-item"><a class="nav-link" href="../views/especies/listEspecies.php">Espécies</a></li>
 
-            <div class="btn-group">
-  <button type="button" class="btn btn-secondary dropdown-toggle custom-button" id="navdropdown" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-    Conta
-  </button>
-  <ul class="dropdown-menu dropdown-menu-start">
-    <li class="nav-item"><a class="nav-item nav-link" id="botaoentrar" href="users/sair.php"> <?php echo $nomeADM; ?> </a></li>
-    <li class="nav-item"><a class="nav-item nav-link" id="botaoentrar" href="#">perfil</a></li>
-    <li class="nav-item"><a class="nav-item nav-link" id="botaoentrar" href="users/sair.php">Sair</a></li>
-  </ul>
+            <div class="btn-group d-flex align-items-center">
+    <button type="button" class="btn btn-secondary dropdown-toggle custom-button" id="navdropdown" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+        Conta
+    </button>
+    <ul class="dropdown-menu dropdown-menu-start text-center custom-dropdown">
+        <li class="nav-item"><a class="nav-item nav-link" id="botaoentrar" href="users/sair.php"><?php echo $nomeADM; ?></a></li>
+        <li class="nav-item"><a class="nav-item nav-link" id="botaoentrar" href="#">perfil</a></li>
+        <li class="nav-item"><a class="nav-item nav-link" id="botaoentrar" href="users/sair.php">Sair</a></li>
+    </ul>
 </div>
+
+
+
         </ul>
     </div>
 </nav>
