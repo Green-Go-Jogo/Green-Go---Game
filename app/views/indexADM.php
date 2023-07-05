@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <?php 
 
 session_start();
@@ -26,133 +27,140 @@ else if (!isset($_SESSION['adm']) && !isset($_SESSION['normal'])) {
 
 
     <style>
-  /* Estilo para o dropdown */
-  .navbar-nav .dropdown {
-    background-color: transparent;
-  }
-  
-  /* Estilo para os itens do dropdown */
-  .navbar-nav .dropdown-menu {
-    background-color: transparent;
-  }
-  
-  /* Estilo para os itens do dropdown quando o mouse passa por cima */
-  .navbar-nav .dropdown-menu .dropdown-item:hover {
-    background-color: transparent;
-  }
 
-  .custom-button {
-    background-color: transparent;
-    border: none;
-  }
-  
-  .custom-dropdown {
-  width: auto !important;
-  white-space: nowrap;
+#titulo {
+    font-size: 400%;
+    margin-left: 25.5%;
+    text-align: center !important;
+    color: #338a5f;
+    font-family: Poppins;
+}
+
+#projeto {
+    font-size: 340%;
+    margin-left: 17%;
+    border-radius: 5px;
+    color: #FFFFFF; 
+    background-color: #f0b6bc;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-left: 4%;
+    padding-right: 4%;
+    border-style: dashed;
+    border-color: #f58c95;
+    font-family: Poppins-semibold;
+}
+
+#zona {
+    font-size: 340%;
+    margin-left: 1.5%;
+    margin-right: 1.5%;
+    border-radius: 5px;
+    color: #FFFFFF; 
+    background-color: #f0b6bc;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-left: 3.5%;
+    padding-right: 3.5%;
+    border-style: dashed;
+    border-color: #f58c95;
+    font-family: Poppins-semibold;
+}
+
+#especie {
+    font-size: 340%;
+
+    border-radius: 5px;
+    color: #FFFFFF; 
+    background-color: #f0b6bc;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-left: 2.9%;
+    padding-right: 2.9%;
+    border-style: dashed;
+    border-color: #f58c95;
+    font-family: Poppins-semibold;
+}
+
+#planta {
+    font-size: 340%;
+    margin-left: 17%;
+    border-radius: 5px;
+    color: #FFFFFF; 
+    background-color: #f0b6bc;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-left: 3.9%;
+    padding-right: 3%;
+    border-style: dashed;
+    border-color: #f58c95;
+    font-family: Poppins-semibold;
+}
+
+#equipe {
+    font-size: 340%;
+    margin-left: 1.5%;
+    margin-right: 1.5%;
+    border-radius: 5px;
+    color: #FFFFFF; 
+    background-color: #f0b6bc;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-left: 2%;
+    padding-right: 2%;
+    border-style: dashed;
+    border-color: #f58c95;
+    font-family: Poppins-semibold;
+}
+
+#conta {
+    font-size: 340%;
+
+    border-radius: 5px;
+    color: #FFFFFF; 
+    background-color: #f0b6bc;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-left: 6.3%;
+    padding-right: 6.3%;
+    border-style: dashed;
+    border-color: #f58c95;
+    font-family: Poppins-semibold;
+}
+
+#partida {
+    font-size: 340%;
+    margin-left: 24%;
+    border-radius: 5px;
+    color: #FFFFFF; 
+    background-color: #04574d;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-left: 10%;
+    padding-right: 10%;
+    border-style: double;
+    border-color: #338a5f;
+    font-family: Poppins-semibold;
 }
 
 </style>
 
-
-<nav class="navbar navbar-expand-lg">
-    <a href="indexADM.php" class="navbar-brand">
-        <div class="row align-items-center">
-            <div id="imgmenu">
-                <img class="img-responsive" id="logo">
-            </div>
-        </div>
-    </a>
-
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-links"
-        aria-controls="navbar-links" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"><img src="../public/menu.svg" id="menuicon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbar-links">
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item"><a class="nav-link" href="../views/projetoADM.php">Projeto</a></li>
-            <li class="nav-item"><a class="nav-link" href="../views/equipes/listEquipes.php">Equipes</a></li>
-            <li class="nav-item"><a class="nav-link" href="../views/plantas/listPlantas.php">Plantas</a></li>
-            <li class="nav-item"><a class="nav-link" href="../views/zones/listZonas.php">Zonas</a></li>
-            <li class="nav-item"><a class="nav-link" href="../views/especies/listEspecies.php">Espécies</a></li>
-
-            <div class="btn-group d-flex align-items-center">
-    <button type="button" class="btn btn-secondary dropdown-toggle custom-button" id="navdropdown" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-        Conta
-    </button>
-    <ul class="dropdown-menu dropdown-menu-start text-center custom-dropdown">
-        <li class="nav-item"><a class="nav-item nav-link" id="botaoentrar" href="users/sair.php"><?php echo $nomeADM; ?></a></li>
-        <li class="nav-item"><a class="nav-item nav-link" id="botaoentrar" href="#">perfil</a></li>
-        <li class="nav-item"><a class="nav-item nav-link" id="botaoentrar" href="users/sair.php">Sair</a></li>
-    </ul>
-</div>
-
-
-
-        </ul>
-    </div>
-</nav>
-
-
 <body>
-    <div class="container">
-        <div class="row justify-content-md-left">
-            <div id="about-area">
-                <div class="row">
-                    <div class="col" id="textoindex">
-                        <h1><br><br>Aprenda <br> com trilhas <br> ecológicas! </h1>
-                        <div class="row">
-                            <div class="col">
-                               
-                                <!--SÓ HÁ UM MODO DE JOGO POR HORA
-                                <div class="dropdown">
-                                    <button class="btn btn-secondary dropdown-toggle" type="button"
-                                        id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true">
-                                        JOGAR
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item" href="modosolo">Modo solo</a>
-                                        <a class="dropdown-item" href="emequipe">Em equipe</a>
-                                    </div>
-                                </div>
-                                -->
-                                
-                            </div>
-                        </div>
-                    </div>
-                    <div class="img-responsive">
-                        <a href="..\controllers\EspecieControllerADM.php?action=EspeciesMapa"><img src="../public/mapa 1.svg" class="img-fluid" alt="logo-index"
-                                id="mapa-da-home"></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col quadrado">
-                <img src="../public/projeto.svg" alt="" id="imagenscaixas">
-                <p>Projeto de extensão <br> desenvolvido por estudantes do IFPR</p>
-            </div>
-            <div class="col quadrado">
-                <img src="../public/metodologias.svg" alt="" id="imagenscaixas">
-                <p>Educação ambiental <br> através de metodologias ativas</p>
-            </div>
-            <div class="col quadrado">
-                <img src="../public/codigo.svg" alt="" id="imagenscaixas">
-                <p>Plataforma web <br>com código aberto e muito amor</p>
-            </div>
-        </div>
-        <div class="finalhome" id="ultimo-cont-index">
-            <div class="row justify-content-md-left">
-                <div class="col">
-                    <img class="img-fluid" src="../public/Group 52.svg" alt="celular-greengo" id="imagem-celular">
-                </div>
-            </div>
-        </div>
-    </div>
-    <br><br><br>
+
+<br>
+
+<a id="titulo"> PORTAL DO PROFESSOR </a> <br><br><br><br>
+
+<a href="../views/projetoADM.php" id="projeto">Projeto</a>
+<a href="../views/zones/listZonas.php" id="zona">Zonas</a>
+<a href="../views/especies/listEspecies.php" id="especie">Espécies</a> <br><br><br>
+<a href="../views/plantas/listPlantas.php" id="planta">Plantas</a>
+<a href="../views/equipes/listEquipes.php" id="equipe">Equipes</a>
+<a href="../views/users/perfil.php" id="conta">Perfil</a> <br><br><br><br><br>
+<a href="INSERIR CAMINHO DA PARTIDA" id="partida">Cadastrar Partida</a> <br><br><br><br>
+
 </body>
+
 <div class="container-fluid" id="rodape">
             
             </div>
