@@ -73,6 +73,43 @@
     margin-bottom: 5px;
 }
 
+.container > :is(.preview-image, .form) {
+  width: 100%;
+}
+
+.container > .preview-image > img {
+  width: 100%;
+  object-fit: contain;
+}
+
+.container > .form {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.container > .form > input {
+  width: 100%;
+  border: 1px solid rgba(200, 200, 200, 1);
+  padding: 8px;
+  font-size: 16px;
+  border-radius: 4px;
+}
+.container > .form > input::-webkit-file-upload-button {
+  font-size: 12px;
+  font-family: "Space Grotesk";
+  border: 1px solid rgba(200, 200, 200, 1);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.container > .form > button {
+  padding: 8px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  border: 1px solid rgba(200, 200, 200, 1);
+  border-radius: 4px;
+}
 </style>
 
 <body>
@@ -137,15 +174,13 @@
 
                                            
                             <nav>
-                                <div class="form-group" id="imagemreg">
-                                </div>
-                                <a id="carregueimagemtexto"> Carregue uma imagem:</a> <br>
-                                <label class="picture align-content-center" for="picture__input" tabIndex="0">
-                                <span class="picture__image">
-                                <img class="img-camera" src="/img/d8ca819f5feac5192c31cb17633e1f1f.png">
-                                </span>
-                                </label>  
-                                <input type="file" required name="imagem" id="picture__input" accept=".png, .jpg, .jpeg"/>
+                            <div class="preview-image">
+        
+                            <img data-image-preview />
+      
+                            </div>
+                            
+                                <input type="file" name="imagem" required accept="image/*" data-image-input accept=".png, .jpg, .jpeg"/>
                                 <a id="carregueimagemtexto2"> .png .jpg ou .jpeg tamanho mínimo: 2MB tamanho máximo: 5MB </a>
                                 </div>
                                 </div> </div> </div> </div> </div> </div> </div> </div> </nav>
@@ -186,6 +221,7 @@
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/grayscale.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/imagem.js" defer></script>
 </body>
 
 </html>
