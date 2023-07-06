@@ -7,11 +7,12 @@ include_once(__DIR__."/../connection/Connection.php");
 include_once(__DIR__."/../models/EspecieModel.php");
 include_once(__DIR__."/../models/ZonaModel.php");
 include_once(__DIR__."/../models/PlantaModel.php");
+include_once(__DIR__."/../models/UsuarioModel.php");
 
 class PlantaDAO {
 
-    private const SQL_PLANTA = "SELECT p.*, e.idEspecie, e.nomePop, z.nomeZona FROM planta p".
-    " JOIN zona z ON z.idZona = p.idZona". " JOIN especie e ON e.idEspecie = p.idEspecie";
+    private const SQL_PLANTA = "SELECT p.*, e.idEspecie, e.nomePop, z.nomeZona, u.idUsuario, u.nomeUsuario FROM planta p".
+    " JOIN zona z ON z.idZona = p.idZona". " JOIN especie e ON e.idEspecie = p.idEspecie". " JOIN usuario u ON u.idUsuario = p.idUsuario";
 
     private function mapPlantas($resultSql) {
             $plantas = array();
@@ -31,6 +32,10 @@ class PlantaDAO {
 
             $zona = new Zona($reg['idZona'], $reg['nomeZona']);
             $planta->setZona($zona);
+
+            $usuario = new Usuario($reg['idUsuario'], $reg['nomeUsuario']);
+            $planta->setUsuario($usuario);
+
             array_push($plantas, $planta);
         endforeach;
 
@@ -95,24 +100,47 @@ class PlantaDAO {
                 " encontrado para o ID ".$CodNumerico);
     }
 
+    public function gerarCodigoAleatorio() {
+        $conn = conectar_db();
+
+        $sql = PlantaDAO::SQL_PLANTA . 
+        " WHERE codNumerico = :codNumerico";
+
+        $numeros = mt_rand(1000, 9999); // Gera um número aleatório de 4 dígitos
+    
+        // Verifica se o número já existe no banco de dados
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':codNumerico', $numeros);
+        $stmt->execute();
+    
+        $count = $stmt->fetchColumn();
+    
+        if ($count > 0) {
+          // Se o número já existir, gera um novo número chamando recursivamente a função
+          return self::gerarCodigoAleatorio();
+        }
+    
+        return $numeros;
+      }
+    
 
     public function save(Planta $planta) {
         $conn = conectar_db();
 
-        $sql = "INSERT INTO planta (nomeSocial, codQR, codNumerico, pontuacaoPlanta, historia, imagemPlanta, idZona, idEspecie)".
-        " VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO planta (nomeSocial, codQR, codNumerico, pontuacaoPlanta, historia, imagemPlanta, idZona, idEspecie, idUsuario)".
+        " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
         $stmt->execute([$planta->getNomeSocial(), $planta->getQrCode(), $planta->getCodNumerico(), 
-                        $planta->getPontos(), $planta->getPlantaHistoria(), $planta->getImagemPlanta(), $planta->getZona()->getIdZona(), $planta->getEspecie()->getIdEspecie()]);
+                        $planta->getPontos(), $planta->getPlantaHistoria(), $planta->getImagemPlanta(), $planta->getZona()->getIdZona(), $planta->getEspecie()->getIdEspecie(), $planta->getUsuario()->getIdUsuario()]);
     }
 
     public function update(Planta $planta) {
         $conn = conectar_db();
     
-        $sql = "UPDATE planta SET nomeSocial = ?, codQR = ?, codNumerico = ?, pontuacaoPlanta = ?, historia = ?, imagemPlanta = ?, idZona = ?, idEspecie = ? WHERE idPlanta = ?";
+        $sql = "UPDATE planta SET nomeSocial = ?, codQR = ?, codNumerico = ?, pontuacaoPlanta = ?, historia = ?, imagemPlanta = ?, idZona = ?, idEspecie = ?, idUsuario = ? WHERE idPlanta = ?";
         $stmt = $conn->prepare($sql);
         $stmt->execute([$planta->getNomeSocial(), $planta->getQrCode(), $planta->getCodNumerico(), 
-        $planta->getPontos(), $planta->getPlantaHistoria(), $planta->getImagemPlanta(), $planta->getZona()->getIdZona(), $planta->getEspecie()->getIdEspecie(), $planta->getIdPlanta()]);
+        $planta->getPontos(), $planta->getPlantaHistoria(), $planta->getImagemPlanta(), $planta->getZona()->getIdZona(), $planta->getEspecie()->getIdEspecie(), $planta->getUsuario()->getIdUsuario(), $planta->getIdPlanta()]);
     }
 
     

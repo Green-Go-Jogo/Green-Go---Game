@@ -23,6 +23,10 @@ class PlantaController {
         return $this->plantaDAO->findByCod($CodNumerico);
     }
 
+    public function gerarCodigo() {
+        return $this->plantaDAO->gerarCodigoAleatorio();
+    }
+
     public function salvar($planta) {
         $this->plantaDAO->save($planta);
     }

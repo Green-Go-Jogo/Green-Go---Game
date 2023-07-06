@@ -13,6 +13,16 @@ require_once(__DIR__ . "/enum/UsuarioPapel.php");
         private $escolaridade;
         private $tipoUsuario;
 
+         //Construtor da classe
+    public function __construct($id="",$nome="")
+    {
+        $this->idUsuario = $id;
+        $this->nomeUsuario = $nome;
+    }
+    
+        public function __toString() {
+                return $this->nomeUsuario;
+            }
 
         /**
          * Get the value of nomeUsuario

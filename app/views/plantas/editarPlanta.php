@@ -10,6 +10,7 @@
       include_once("../../controllers/EspecieController.php");
       include_once("../zones/htmlZonaForm.php");
       include_once("../especies/htmlEspecieForm.php");
+      include_once("../users/sessions.php");
       
       $id = $_GET['id'];
 
@@ -182,6 +183,7 @@
                             </div>
 
                             <input type="hidden" name="id_planta" value="<?php echo $planta->getIdPlanta(); ?>" />
+                            <input type="hidden" name="id_usuario" value="<?php echo $idADM ?>" />
 
 
                             </form>

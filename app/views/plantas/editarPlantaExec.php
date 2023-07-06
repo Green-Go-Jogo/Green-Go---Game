@@ -14,14 +14,15 @@ $Cod_Numerico = $_POST['Cod_Numerico'];
 $pontuacao = $_POST['Pontuacao'];
 $historia = $_POST['Historia'];
 $imagem = $_FILES['imagem'];
+$id_zona = $_POST['zona_planta'];
+$id_especie = $_POST['especie_planta'];
+$id_usuario = $_POST['id_usuario'];
 
 $extensao = pathinfo($imagem['name'], PATHINFO_EXTENSION);
 $nome_imagem = md5(uniqid($imagem['name'])).".".$extensao;
 $caminho_imagem = "../../public/plantas/" . $nome_imagem;
 move_uploaded_file($imagem["tmp_name"], $caminho_imagem);
 
-$id_zona = $_POST['zona_planta'];
-$id_especie = $_POST['especie_planta'];
 
 $qrCodeTexto = "https://www.greengoifpr.com.br/app/views/plantas/visualizarPlanta.php?cod=" . urlencode($Cod_Numerico) . "&ide=". urlencode($id_especie);
 $qrCodeArq = "../../public/qrcode/qrcode_". $Cod_Numerico . ".png"; 
@@ -43,6 +44,9 @@ $planta->setEspecie($especie);
 
 $zona = new Zona($id_zona);
 $planta->setZona($zona);
+
+$usuario = new Usuario($id_usuario);
+$planta->setUsuario($usuario);
 
 //Chamar o controler para salvar o planta
 $plantaCont = new PlantaController();

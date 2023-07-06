@@ -11,6 +11,7 @@ Class Planta {
     private $ImagemPlanta;
     private $zona;
     private $PlantaHistoria;
+    private $Usuario;
 
 
     public function __toString() {
@@ -192,6 +193,26 @@ Class Planta {
     public function setQrCode($QrCode)
     {
         $this->QrCode = $QrCode;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of Usuario
+     */ 
+    public function getUsuario()
+    {
+        return $this->Usuario;
+    }
+
+    /**
+     * Set the value of Usuario
+     *
+     * @return  self
+     */ 
+    public function setUsuario($Usuario)
+    {
+        $this->Usuario = $Usuario;
 
         return $this;
     }

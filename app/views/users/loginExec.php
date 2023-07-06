@@ -21,9 +21,11 @@ if(isset($_POST['email']) && isset($_POST['senha'])) {
             // Manipule os dados conforme necessário
             $tipo = $percorrer['tipoUsuario'];
             $nome = $percorrer['nomeUsuario'];
+            $id = $percorrer['idUsuario'];
 
             session_start();
             if($tipo == 2){
+                $_SESSION['id'] = $id;
                 $_SESSION['adm'] = $nome;
                 header("location: ../indexADM.php");
             }

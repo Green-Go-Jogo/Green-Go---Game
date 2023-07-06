@@ -1,4 +1,3 @@
-<?php session_start(); ?>
 <?php if (isset($_SESSION['msg_erro'])): ?>
     <span>
         <?= $_SESSION['msg_erro'] ?>
@@ -6,9 +5,16 @@
 <?php endif ?>
 <?php include_once("../../controllers/ZonaController.php");
       include_once("../../controllers/EspecieController.php");
+      include_once("../../controllers/PlantaController.php");
       include_once("../zones/htmlZonaForm.php");
       include_once("../especies/htmlEspecieForm.php");
+      include_once("../users/sessions.php");
+
+      $plantaCont = new PlantaController();
+$codigo = $plantaCont->gerarCodigo();
+      
 ?>
+
 
 
 <!DOCTYPE html>
@@ -135,11 +141,14 @@
 
                             <label for="formtexto" id="txtNome">Nome Social da Planta:</label>
                             <div class="w-100"></div>
-                            <input type="text" name="Nome_Social" class="form-control" id="txtNomeForm" aria-describedby="nome-cadastro">
+                            <input type="text" name="Nome_Social" class="form-control" id="txtNomeForm" aria-describedby="nome-cadastro" value="<?php echo isset($_POST['Nome_Social']) ? $_POST['Nome_Social'] : ''; ?>">
+                            <?php if (isset($errors) && !empty($errors) && isset($errors['Nome_Social'])) { ?>
+                            <div class="alert alert-warning"><?php echo $errors['Nome_Social']; ?></div>
+                            <?php } ?>
                             <div class="w-100"></div>
-                            <label for="formtexto" id="txtCodigo">Código numérico:</label>
+                            <label for="formtexto" id="txtCodigo" >Código numérico:</label>
                             <div class="w-100"></div>
-                            <input type="number" name="Cod_Numerico" class="form-control" id="txtCodigoForm" aria-describedby="nome-cadastro">
+                            <input readonly type="number" name="Cod_Numerico" class="form-control" id="txtCodigoForm" aria-describedby="nome-cadastro" value="<?php echo $codigo;  ?>">
                             <div class="w-100"> <br>
                                            
                             
@@ -213,6 +222,7 @@
                             </button>
                             </div>
 
+                            <input type="hidden" name="id_usuario" value="<?php echo $idADM ?>" />
 
                             </form>
 

@@ -25,9 +25,9 @@
         Conta
     </button>
     <ul class="dropdown-menu dropdown-menu-start text-center custom-dropdown">
-        <li class="nav-item"><a class="nav-item nav-link" id="botaoentrar" href="users/sair.php"><?php echo $nomeADM; ?></a></li>
+        <li class="nav-item"><a class="nav-item nav-link" id="botaoentrar" href="../users/sair.php"><?php echo $nomeADM; ?></a></li>
         <li class="nav-item"><a class="nav-item nav-link" id="botaoentrar" href="#">perfil</a></li>
-        <li class="nav-item"><a class="nav-item nav-link" id="botaoentrar" href="users/sair.php">Sair</a></li>
+        <li class="nav-item"><a class="nav-item nav-link" id="botaoentrar" href="../users/sair.php">Sair</a></li>
     </ul>
 </div>
         </ul>
