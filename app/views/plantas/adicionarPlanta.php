@@ -43,7 +43,14 @@ $codigo = $plantaCont->gerarCodigo();
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
-    <!-- Progress bar -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js" integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="anonymous"></script>
+        <script>  $(document).ready(function() {
+  $('select').addClass('custom-selectize').selectize({
+    sortField: 'text'
+  });
+}); </script>
+        <!-- Progress bar -->
     <script src="js/progressbar.min.js"></script>
     <!-- Parallax -->
     <script src="https://cdn.jsdelivr.net/parallax.js/1.4.2/parallax.min.js"></script>
@@ -116,6 +123,46 @@ $codigo = $plantaCont->gerarCodigo();
   border: 1px solid rgba(200, 200, 200, 1);
   border-radius: 4px;
 }
+
+/* Estilos para o campo de texto do Selectize.js */
+.selectize-control.single .selectize-input,
+.selectize-control.single .selectize-input:focus, 
+.selectize-control.single .selectize-input.full {
+  width: 500px;
+  margin-top: 1px;
+  color: #ebf0f1;
+  background-color: #f0b6bc;
+  font-family: Poppins-semibold;
+}
+
+/* Estilos para o dropdown do Selectize.js */
+.selectize-dropdown-content .option {
+  color: #ebf0f1;
+  background-color: #f0b6bc;
+  font-family: Poppins-semibold;
+}
+
+.selectize-dropdown-content .option:hover {
+  background-color: #ec737c;
+}
+
+
+
+/* Estilos para o item selecionado no Selectize.js */
+.selectize-control.single .item {
+  background-color: #f0b6bc;
+  color: #ebf0f1;
+  font-family: Poppins-semibold;
+}
+
+/* Estilos para o item selecionado quando o dropdown está ativo */
+.selectize-input.active {
+  background-color: #f0b6bc;
+  color: #ebf0f1;
+  font-family: Poppins-semibold;
+}
+
+
 </style>
 
 <body>
@@ -162,6 +209,7 @@ $codigo = $plantaCont->gerarCodigo();
 
                              ZonaHTMLForm::desenhaSelect($zonas, "zona_planta", "SomPlanta");
                             ?>
+                            
                             </div> </a>
                             
                             <div class="form-group">
@@ -230,7 +278,6 @@ $codigo = $plantaCont->gerarCodigo();
     </main>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/grayscale.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript" src="../js/imagem.js" defer></script>
 </body>
 
