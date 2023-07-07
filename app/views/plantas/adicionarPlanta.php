@@ -46,10 +46,10 @@ $codigo = $plantaCont->gerarCodigo();
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js" integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="anonymous"></script>
         <script>  $(document).ready(function() {
-  $('select').addClass('custom-selectize').selectize({
-    sortField: 'text'
-  });
-}); </script>
+                     $('select').addClass('custom-selectize').selectize({
+                    sortField: 'text'
+                    });
+        }); </script>
         <!-- Progress bar -->
     <script src="js/progressbar.min.js"></script>
     <!-- Parallax -->
@@ -74,6 +74,12 @@ $codigo = $plantaCont->gerarCodigo();
 </nav>
 
 <style>
+
+img {
+    width: 30%;
+    height: auto;
+}
+
 #txtNomeForm {
     border-radius: 5px;
 }
@@ -185,18 +191,21 @@ $codigo = $plantaCont->gerarCodigo();
 
 
                             <div class="form-row align-items-left">
-
+                            <div class="w-100">
                             <label for="formtexto" id="txtNome">Nome Social da Planta:</label>
                             <div class="w-100"></div>
                             <input type="text" name="Nome_Social" class="form-control" id="txtNomeForm" aria-describedby="nome-cadastro" value="<?php echo isset($_POST['Nome_Social']) ? $_POST['Nome_Social'] : ''; ?>">
-                            <?php if (isset($errors) && !empty($errors) && isset($errors['Nome_Social'])) { ?>
-                            <div class="alert alert-warning"><?php echo $errors['Nome_Social']; ?></div>
-                            <?php } ?>
                             <div class="w-100"></div>
-                            <label for="formtexto" id="txtCodigo" >Código numérico:</label>
+                            <br>
+                            <?php if (isset($errors) && !empty($errors) && isset($errors['Nome_Social'])) { ?>
+                            <div class="alert alert-warning" style="position: left;"><?php echo $errors['Nome_Social']; ?></div>
+                            <?php } ?>
+                            
+                            <div class="w-100"></div>
+                            <label for="formtexto" id="txtCodigo">Código numérico:</label>
                             <div class="w-100"></div>
                             <input readonly type="number" name="Cod_Numerico" class="form-control" id="txtCodigoForm" aria-describedby="nome-cadastro" value="<?php echo $codigo;  ?>">
-                            <div class="w-100"> <br>
+                             <br>
                                            
                             
                             <div class="form-group" style="color: #f0b6bc;">
@@ -209,8 +218,11 @@ $codigo = $plantaCont->gerarCodigo();
 
                              ZonaHTMLForm::desenhaSelect($zonas, "zona_planta", "SomPlanta");
                             ?>
-                            
+                        
                             </div> </a>
+                            <?php if (isset($errors) && !empty($errors) && isset($errors['zona_planta'])) { ?>
+                            <div class="alert alert-warning"><?php echo $errors['zona_planta']; ?></div>
+                            <?php } ?>
                             
                             <div class="form-group">
                             <label for="selectStand" id="txtNome">Espécie:</label>
@@ -223,11 +235,19 @@ $codigo = $plantaCont->gerarCodigo();
                              EspecieHTMLForm::desenhaSelect($especies, "especie_planta", "nome_especie");
                             ?>
                             </div> </a>
-                                            
+
+                            <?php if (isset($errors) && !empty($errors) && isset($errors['especie_planta'])) { ?>
+                            <div class="alert alert-warning"><?php echo $errors['especie_planta']; ?></div>
+                            <?php } ?>
+
                             <label for="formtexto" id="txtPontos">Pontuação:</label>
                             <div class="w-100"> </div>
-                            <input type="number" name="Pontuacao" class="form-control" id="txtCodigoForm" aria-describedby="nome-cadastro">
+                            <input type="number" name="Pontuacao" class="form-control" id="txtCodigoForm" aria-describedby="nome-cadastro" value="<?php echo isset($_POST['Pontuacao']) ? $_POST['Pontuacao'] : ''; ?>">
                             <div class="w-100"> </div>
+                            <br>
+                            <?php if (isset($errors) && !empty($errors) && isset($errors['Pontuacao'])) { ?>
+                            <div class="alert alert-warning"><?php echo $errors['Pontuacao']; ?></div>
+                            <?php } ?>
 
                                            
                             <nav>
@@ -237,7 +257,7 @@ $codigo = $plantaCont->gerarCodigo();
       
                             </div>
                             
-                                <input type="file" name="imagem" required accept="image/*" data-image-input accept=".png, .jpg, .jpeg"/>
+                                <input type="file" name="imagem" required data-image-input accept=".png, .jpg, .jpeg"/>
                                 <a id="carregueimagemtexto2"> .png .jpg ou .jpeg tamanho mínimo: 2MB tamanho máximo: 5MB </a>
                                 </div>
                                 </div> </div> </div> </div> </div> </div> </div> </div> </nav>
@@ -249,7 +269,6 @@ $codigo = $plantaCont->gerarCodigo();
                             <div class="container" id="caixadetexto">
                             <a id="textodescritivo">História:</a>
                             <textarea id="txtHistoria" name="Historia" ></textarea>
-
                             <script src="../ckeditor/build/ckeditor.js"></script>
                             <script>ClassicEditor.create(document.querySelector('#txtHistoria'), {licenseKey: '',}).then(editor => {window.editor = editor;
                         }).catch(error => {
@@ -259,8 +278,12 @@ $codigo = $plantaCont->gerarCodigo();
                             console.error(error);
                         });
                             </script>
-
+                            <br>
+                            <?php if (isset($errors) && !empty($errors) && isset($errors['Historia'])) { ?>
+                            <div class="alert alert-warning"><?php echo $errors['Historia']; ?></div>
+                            <?php } ?>
                             </div>
+                            
 
                             </nav>
 
@@ -268,6 +291,8 @@ $codigo = $plantaCont->gerarCodigo();
                             <button type="submit" class="btn btn-primary btn-lg" id="botoesregistrar"><a>Adicionar</a> </button>
                             <button type="reset" class="btn btn-secondary btn-lg" id="botoeslimpar"> <a id="limpar"> Limpar</a>
                             </button>
+                            <br>
+                            <br>
                             </div>
 
                             <input type="hidden" name="id_usuario" value="<?php echo $idADM ?>" />

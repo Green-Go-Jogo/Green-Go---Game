@@ -25,24 +25,34 @@ move_uploaded_file($imagem["tmp_name"], $caminho_imagem);
 //Validar dados
 $errors = array();
 
-//Nome Social
 if (empty($nomeSocial)) {
   $errors['Nome_Social'] = "O campo Nome Social é obrigatório.";
 } elseif (!preg_match('/^[a-zA-Z0-9\s]+$/', $nomeSocial)) {
   $errors['Nome_Social'] = "O campo Nome Social contém caracteres especiais.";
 }
 
+if (empty($id_zona)) {
+  $errors['zona_planta'] = "O campo Zona é obrigatório";
+} 
+
+if (empty($id_especie)) {
+  $errors['especie_planta'] = "O campo Espécie é obrigatório";
+} 
+
+if (empty($pontuacao)) {
+  $errors['Pontuacao'] = "O campo Pontuação é obrigatório!";
+} elseif (!preg_match('/^\d{2}$/', $pontuacao)) {
+  $errors['Pontuacao'] = "O campo Pontuação deve conter 2 ou menos dígitos!";
+}
+
+if (empty($historia)) {
+  $errors['Historia'] = "O campo História é obrigatório.";
+} 
+
 if (!empty($errors)) {
     require_once("adicionarPlanta.php");
     exit;
   }
-
-
-
-
-
-
-
 
 
 //Criar o objeto planta
