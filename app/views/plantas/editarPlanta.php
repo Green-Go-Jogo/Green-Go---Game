@@ -10,15 +10,24 @@
       include_once("../especies/htmlEspecieForm.php");
       include_once("../users/sessions.php");
 
-      $id = $_GET['id'];
-      $plantaCont = new PlantaController();
-      $planta = $plantaCont->buscarPorId($id);
-      
-      if($planta == null) {
-          echo "Planta não encontrado!<br>";
-          echo "<a href='listPlantas.php'>Voltar</a>";
-          exit;
-      } 
+      global $idEditarPlanta;
+      if (!isset($_GET['id'])) {
+        $id = null;
+    } else {
+        $id = $_GET['id'];
+    }
+
+      if ($id !== null) {
+        $plantaCont = new PlantaController();
+        $planta = $plantaCont->buscarPorId($id);
+    } else if ($idEditarPlanta !== null) {
+        $plantaCont = new PlantaController();
+        $planta = $plantaCont->buscarPorId($idEditarPlanta);
+    } else {
+        echo "Planta não encontrada!<br>";
+        echo "<a href='listPlantas.php'>Voltar</a>";
+        exit;
+    }
 ?>
 
 

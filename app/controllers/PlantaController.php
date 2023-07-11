@@ -38,6 +38,10 @@ class PlantaController {
     public function excluir($planta) {
         $this->plantaDAO->delete($planta);
     }
+
+    public function apagarImagem($idPlanta) {
+        $this->plantaDAO->deleteImage($idPlanta);
+    }
 }
 
 ?>

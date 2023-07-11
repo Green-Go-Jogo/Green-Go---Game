@@ -107,29 +107,30 @@
 
 
                             <div class="form-row align-items-left">
-
+                            <div class="w-100" >
                             <label for="formtexto" id="txtNome">Nome da Zona <br> <span id="resultzona"></span></label>
                             <div class="w-100"></div>
-                            <input type="text" name="Nome_Zona" class="form-control" id="txtNomeZona" aria-describedby="nome-cadastro">
-                            
+                            <input type="text" name="Nome_Zona" class="form-control" id="txtNomeZona" aria-describedby="nome-cadastro" value="<?php echo isset($_POST['Nome_Zona']) ? $_POST['Nome_Zona'] : ''; ?>">
+                            <?php if (isset($errors) && !empty($errors) && isset($errors['Nome_Zona'])) { ?>
+                            <div class="alert alert-warning" style="position: left;"><?php echo $errors['Nome_Zona']; ?></div>
+                            <?php } ?>
                             <div class="w-100" ></div>
                             
                             
-                            
+                            </div>
 
                             <div class="container">
                             <button type="submit" class="btn btn-primary btn-lg" id="botoesregistrar"><a>Adicionar</a> </button>
                             <button type="reset" class="btn btn-secondary btn-lg" id="botoeslimpar"> <a id="limpar"> Limpar</a>
                             </button>
                             </div>
-
+                            </div>
 
                             </form>
 
 
     </main>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="../js/validacao.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/grayscale.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

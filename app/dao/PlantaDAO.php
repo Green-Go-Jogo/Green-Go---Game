@@ -160,7 +160,16 @@ class PlantaDAO {
     $stmt = $conn->prepare($sql);
     $stmt->execute([$planta->getIdPlanta()]);
 }
+
+    public function deleteImage($idPlanta) {
+    $plantaCont = new PlantaController();
+    $planta = $plantaCont->buscarPorId($idPlanta);
     
+    $img_del = $planta->getImagemPlanta();
+    if (file_exists($img_del)) {
+        unlink($img_del);
+    }
+}
 }
 
 ?>

@@ -22,7 +22,7 @@ $errors = array();
 
 if (empty($nomeSocial)) {
   $errors['Nome_Social'] = "O campo Nome Social é obrigatório.";
-} elseif (!preg_match('/^[a-zA-Z0-9\s]+$/', $nomeSocial)) {
+} elseif (!preg_match('/^[a-zA-ZÀ-ÖØ-öø-ÿ0-9\s]+$/', $nomeSocial)) {
   $errors['Nome_Social'] = "O campo Nome Social contém caracteres especiais.";
 }
 
@@ -45,9 +45,9 @@ if (empty($historia)) {
 } 
 
 if (!empty($errors)) {
-    require_once("adicionarPlanta.php");
+    $idEditarPlanta = $id_planta; require_once ("editarPlanta.php");
     exit;
-  }
+}
 
 
 //Criar o objeto planta
@@ -64,7 +64,10 @@ $qrCodeTexto = "https://www.greengoifpr.com.br/app/views/plantas/visualizarPlant
 $qrCodeArq = "../../public/qrcode/qrcode_". $Cod_Numerico . ".png"; 
 QRcode::png($qrCodeTexto, $qrCodeArq, QR_ECLEVEL_L, 10); 
 
-$planta = new Planta();
+$plantaCont = new PlantaController();
+$plantaCont->apagarImagem($id_planta);
+
+$planta = new Planta();    
 $planta->setIdPlanta($id_planta);
 $planta->setNomeSocial($nomeSocial);
 $planta->setCodNumerico($Cod_Numerico);

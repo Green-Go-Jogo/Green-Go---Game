@@ -6,16 +6,24 @@
 <?php endif ?>
 <?php include_once("../../controllers/ZonaController.php");
 
-$id = $_GET['id'];
+global $idEditarZona;
+      if (!isset($_GET['id'])) {
+        $id = null;
+    } else {
+        $id = $_GET['id'];
+    }
 
-      $zonaCont = new ZonaController();
-      $zona = $zonaCont->buscarPorId($id);
-      
-      if($zona == null) {
-          echo "Zona não encontrado!<br>";
-          echo "<a href='listZonas.php'>Voltar</a>";
-          exit;
-      } 
+      if ($id !== null) {
+        $zonaCont = new ZonaController();
+        $zona = $zonaCont->buscarPorId($id);
+    } else if ($idEditarZona !== null) {
+        $zonaCont = new ZonaController();
+        $zona = $zonaCont->buscarPorId($idEditarZona);
+    } else {
+        echo "Zona não encontrada!<br>";
+        echo "<a href='listZonas.php'>Voltar</a>";
+        exit;
+    }
 ?>
 
 
@@ -26,7 +34,7 @@ $id = $_GET['id'];
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adicionar Zona</title>
+    <title>Editar Zona</title>
 
     <!--FAVICON-->
     <link rel="icon" href="../public/favicon.svg">
@@ -72,7 +80,7 @@ $id = $_GET['id'];
 
                         <div class="row">
                             <div class="col">
-                                <h1 id="primeirotextoreg"> Adicione uma Zona!</h1>
+                                <h1 id="primeirotextoreg"> Edite uma Zona!</h1>
 
 
                             <form action="editarZonaExec.php" method="POST" enctype="multipart/form-data">
@@ -85,12 +93,14 @@ $id = $_GET['id'];
 
                             <label for="formtexto" id="txtNome">Nome da Zona</label>
                             <div class="w-100"></div>
-                            <input type="text" name="Nome_Zona" class="form-control" id="txtNomeZona" aria-describedby="nome-cadastro" value="<?php echo $zona->getNomeZona(); ?>">
+                            <input type="text" name="Nome_Zona" class="form-control" id="txtNomeZona" aria-describedby="nome-cadastro" value="<?php echo isset($_POST['Nome_Zona']) ? $_POST['Nome_Zona'] : $zona->getNomeZona(); ?>">
+                            <?php if (isset($errors) && !empty($errors) && isset($errors['Nome_Zona'])) { ?>
+                            <div class="alert alert-warning" style="position: left;"><?php echo $errors['Nome_Zona']; ?></div>
+                            <?php } ?>
                             <div class="w-100"></div>
-                            
 
                             <div class="container">
-                            <button type="submit" class="btn btn-primary btn-lg" id="botoesregistrar"><a>Adicionar</a> </button>
+                            <button type="submit" class="btn btn-primary btn-lg" id="botoesregistrar"><a>Editar</a> </button>
                             <button type="reset" class="btn btn-secondary btn-lg" id="botoeslimpar"> <a id="limpar"> Limpar</a>
                             </button>
                             </div>
