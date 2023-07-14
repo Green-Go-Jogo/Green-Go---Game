@@ -7,16 +7,25 @@
     
   <?php    include_once("../../controllers/EspecieController.php");
       
-      $id = $_GET['id'];
+      global $idEditarEspecie;
 
-$especieCont = new EspecieController();
-$especie = $especieCont->buscarPorId($id);
+      if (!isset($_GET['id'])) {
+        $id = null;
+    } else {
+        $id = $_GET['id'];
+    }
 
-if($especie == null) {
-    echo "Especie não encontrado!<br>";
-    echo "<a href='listEspecies.php'>Voltar</a>";
-    exit;
-} 
+      if ($id !== null) {
+        $especieCont = new EspecieController();
+        $especie = $especieCont->buscarPorId($id);
+    } else if ($idEditarEspecie !== null) {
+        $especieCont = new EspecieController();
+        $especie = $especieCont->buscarPorId($idEditarEspecie);
+    } else {
+        echo "Especie não encontrado!<br>";
+        echo "<a href='listEspecies.php'>Voltar</a>";
+        exit;
+    }
 
 $frutifera = $especie->getFrutifera();
             if ($frutifera == 1) { 
@@ -83,6 +92,7 @@ $frutifera = $especie->getFrutifera();
     <link rel="stylesheet" href="../css/plantas.css">
     <link rel="stylesheet" href="../css/cabecalho.css">
     <!--scripts-->
+    <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
@@ -99,7 +109,11 @@ $frutifera = $especie->getFrutifera();
     <script type="text/javascript" src="js/script.js"></script>
 </head>
 
-
+<style>
+      .cke_resizer {
+        display: none !important;
+      }
+    </style>
 <!--------------ADMIN-------------->
 
 <nav>
@@ -147,12 +161,18 @@ $frutifera = $especie->getFrutifera();
 
                             <label for="formtexto" id="txtNome">Nome Popular</label>
                             <div class="w-100"></div>
-                            <input type="text" name="Nome_Popular" class="form-control" id="txtNomeForm" aria-describedby="nome-cadastro" value="<?php echo $especie->getNomePopular(); ?>">
+                            <input type="text" name="Nome_Popular" class="form-control" id="txtNomeForm" aria-describedby="nome-cadastro" value="<?php echo isset($_POST['Nome_Popular']) ? $_POST['Nome_Popular'] : $especie->getNomePopular(); ?>">
                             <div class="w-100"></div>
+                            <?php if (isset($errors) && !empty($errors) && isset($errors['Nome_Popular'])) { ?>
+                            <div class="alert alert-warning" style="position: left;"><?php echo $errors['Nome_Popular']; ?></div>
+                            <?php } ?>
                             <label for="formtexto" id="txtCodigo">Nome Cientifico</label>
                             <div class="w-100"></div>
-                            <input type="text" name="Nome_Cientifico" class="form-control" id="txtCodigoForm" aria-describedby="nome-cadastro" value="<?php echo $especie->getNomeCientifico(); ?>">
+                            <input type="text" name="Nome_Cientifico" class="form-control" id="txtCodigoForm" aria-describedby="nome-cadastro" value="<?php echo isset($_POST['Nome_Cientifico']) ? $_POST['Nome_Cientifico'] : $especie->getNomeCientifico(); ?>">
                             <div class="w-100"> <br>
+                            <?php if (isset($errors) && !empty($errors) && isset($errors['Nome_Cientifico'])) { ?>
+                            <div class="alert alert-warning" style="position: left;"><?php echo $errors['Nome_Cientifico']; ?></div>
+                            <?php } ?>
                         <div>
                         <div class="container" id="container-checkbox">
                             <div class="row">
@@ -231,18 +251,22 @@ $frutifera = $especie->getFrutifera();
                             <div class="w-100"></div>
                             <div class="container" id="caixadetexto">
                             <a id="textodescritivo">Descrição</a>
-                            <textarea id="txtHistoria" name="Historia" value="<?php echo $especie->getDescricao()?>"></textarea>
-
-                            <script src="../ckeditor/build/ckeditor.js"></script>
-                            <script>ClassicEditor.create(document.querySelector('#txtHistoria'), {licenseKey: '',}).then(editor => {window.editor = editor;
-                        }).catch(error => {
-                            console.error('Oops, something went wrong!');
-                            console.error('Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:');
-                            console.warn('Build id: mnx0o2etqvuk-d6hv5tpaevt5');
-                            console.error(error);
-                        });
+                            <textarea id="editor" name="Descricao" value="<?php echo $especie->getDescricao()?>"></textarea>
+                            <script>
+                            CKEDITOR.replace('editor', {
+                            contentsCss: ['../css/adicionarPlanta.css'],
+                            removePlugins: 'elementspath',
+                            toolbar: [
+                            { name: 'clipboard', items: [ 'Cut', 'Copy' ] },
+                            { name: 'undo', items: [ 'Undo', 'Redo' ] },
+                            { name: 'basicstyles', items: [ 'Italic', 'Bold', 'Strike', 'Underline' ] },
+                            { name: 'links', items: [ 'Link' ] }
+                            ]
+                            });
                             </script>
-
+                            <?php if (isset($errors) && !empty($errors) && isset($errors['Descricao'])) { ?>
+                            <div class="alert alert-warning"><?php echo $errors['Descricao']; ?></div>
+                            <?php } ?>
                             </div>
 
                             </nav>

@@ -51,6 +51,7 @@
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
     <!--scripts-->
+    <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
@@ -94,6 +95,10 @@
 img {
     width: 30%;
     height: auto;
+}
+
+.cke_resizer {
+display: none !important;
 }
 
 #txtNomeForm {
@@ -284,15 +289,18 @@ img {
                             <div class="w-100"></div>
                             <div class="container" id="caixadetexto">
                             <a id="textodescritivo">História:</a>
-                            <textarea id="txtHistoria" name="Historia" ></textarea>
-                            <script src="../ckeditor/build/ckeditor.js"></script>
-                            <script>ClassicEditor.create(document.querySelector('#txtHistoria'), {licenseKey: '',}).then(editor => {window.editor = editor;
-                        }).catch(error => {
-                            console.error('Oops, something went wrong!');
-                            console.error('Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:');
-                            console.warn('Build id: mnx0o2etqvuk-d6hv5tpaevt5');
-                            console.error(error);
-                        });
+                            <textarea id="editor" name="Historia"></textarea>
+                            <script>
+                            CKEDITOR.replace('editor', {
+                            contentsCss: ['../css/adicionarPlanta.css'],
+                            removePlugins: 'elementspath',
+                            toolbar: [
+                            { name: 'clipboard', items: [ 'Cut', 'Copy' ] },
+                            { name: 'undo', items: [ 'Undo', 'Redo' ] },
+                            { name: 'basicstyles', items: [ 'Italic', 'Bold', 'Strike', 'Underline' ] },
+                            { name: 'links', items: [ 'Link' ] }
+                            ]
+                            });
                             </script>
                             <br>
                             <?php if (isset($errors) && !empty($errors) && isset($errors['Historia'])) { ?>

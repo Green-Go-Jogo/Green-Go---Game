@@ -1,5 +1,5 @@
 <?php
-#Arquivo para executar a inclusão de um personagem
+#Arquivo para executar a inclusão de uma espécie
 
 include_once(__DIR__."/../../models/EspecieModel.php");
 include_once(__DIR__."/../../controllers/EspecieController.php");
@@ -16,12 +16,38 @@ $toxidade = isset($_POST['toxidade']) && !empty($_POST['toxidade']) ? $_POST['to
 $exotica = isset($_POST['exotica']) && !empty($_POST['exotica']) ? $_POST['exotica'] : 0;
 $imagem = $_FILES['imagem'];
 
+
+//Validar dados
+$errors = array();
+
+if (empty($nomePopular)) {
+  $errors['Nome_Popular'] = "O campo Nome Popular é obrigatório.";
+} elseif (!preg_match('/^[a-zA-ZÀ-ÖØ-öø-ÿ0-9\s\-]+$/', $nomePopular)) {
+  $errors['Nome_Popular'] = "O campo Nome Popular contém caracteres especiais.";
+}
+
+if (empty($nomeCientifico)) {
+    $errors['Nome_Cientifico'] = "O campo Nome Científico é obrigatório.";
+  } elseif (!preg_match('/^[a-zA-ZÀ-ÖØ-öø-ÿ0-9\s\-]+$/', $nomeCientifico)) {
+    $errors['Nome_Cientifico'] = "O campo Nome Científíco contém caracteres especiais.";
+  }
+
+  if (empty($descricao)) {
+    $errors['Descricao'] = "O campo Descrição é obrigatório.";
+  } 
+
+if (!empty($errors)) {
+    require_once("adicionarEspecie.php");
+    exit;
+  }
+
+//Criar o objeto espécie
 $extensao = pathinfo($imagem['name'], PATHINFO_EXTENSION);
 $nome_imagem = md5(uniqid($imagem['name'])).".".$extensao;
 $caminho_imagem = "../../public/especies/" . $nome_imagem;
 move_uploaded_file($imagem["tmp_name"], $caminho_imagem);
 
-//Criar o objeto personagem
+
 $especie = new Especie();
 $especie->setNomePopular($nomePopular);
 $especie->setNomeCientifico($nomeCientifico);
@@ -34,7 +60,7 @@ $especie->setMedicinal($medicinal);
 $especie->setToxidade($toxidade);
 $especie->setExotica($exotica);
 
-//Chamar o controler para salvar o planta
+//Chamar o controler para salvar a espécie
 $especieCont = new EspecieController();
 $especieCont->salvar($especie);
 

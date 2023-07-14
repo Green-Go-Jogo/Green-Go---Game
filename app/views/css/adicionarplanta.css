@@ -219,7 +219,12 @@ a {
     background-color: #EEE;
 }
 
-#Editor {
+.cke_placeholder {
+    color: #999;
+    font-style: italic;
+  }
+  
+.cke_editor {
     border: 1px solid #111;
     max-width: 1028px;
     width: 100%;

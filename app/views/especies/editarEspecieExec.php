@@ -17,6 +17,34 @@ $toxidade = isset($_POST['toxidade']) && !empty($_POST['toxidade']) ? $_POST['to
 $exotica = isset($_POST['exotica']) && !empty($_POST['exotica']) ? $_POST['exotica'] : 0;
 $imagem = $_FILES['imagem'];
 
+
+
+//Validar dados
+$errors = array();
+
+if (empty($nomePopular)) {
+  $errors['Nome_Popular'] = "O campo Nome Popular é obrigatório.";
+} elseif (!preg_match('/^[a-zA-ZÀ-ÖØ-öø-ÿ0-9\s\-]+$/', $nomePopular)) {
+  $errors['Nome_Popular'] = "O campo Nome Popular contém caracteres especiais.";
+}
+
+if (empty($nomeCientifico)) {
+    $errors['Nome_Cientifico'] = "O campo Nome Científico é obrigatório.";
+  } elseif (!preg_match('/^[a-zA-ZÀ-ÖØ-öø-ÿ0-9\s\-]+$/', $nomeCientifico)) {
+    $errors['Nome_Cientifico'] = "O campo Nome Científíco contém caracteres especiais.";
+  }
+
+  if (empty($descricao)) {
+    $errors['Descricao'] = "O campo Descrição é obrigatório.";
+  } 
+
+if (!empty($errors)) {
+    $idEditarEspecie = $id;
+    require_once("editarEspecie.php");
+    exit;
+  }
+
+
 $extensao = pathinfo($imagem['name'], PATHINFO_EXTENSION);
 $nome_imagem = md5(uniqid($imagem['name'])).".".$extensao;
 $caminho_imagem = "../../public/especies/" . $nome_imagem;

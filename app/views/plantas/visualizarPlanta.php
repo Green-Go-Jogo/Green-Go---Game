@@ -233,7 +233,7 @@ body {
         </h1>
 
         <h1 class="nome" id="nomeDois">
-            <a style="color: #C05367;"> Nome Científico: </a> <?= $especie->getNomeCientifico() ?>
+            <a style="color: #C05367;"> Nome Científico: </a>><i> <?= $especie->getNomeCientifico() ?></i>
         </h1>
 
         <p class="codigo" id="codigoPlanta">
