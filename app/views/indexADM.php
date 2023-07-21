@@ -83,7 +83,7 @@ else if (!isset($_SESSION['adm']) && !isset($_SESSION['normal'])) {
 </ul> <br><br>
 
 <ul class="pagination pagination-lg justify-content-center flex-wrap flex-column flex-md-row">
-<li class="container" onclick="ativar(this)"> <a href="INSERIR CAMINHO DA PARTIDA" id="partida">Cadastrar Partida</a></li>
+<li class="container" onclick="ativar(this)"> <a href="../views/partidas/adicionarPartida.php" id="partida">Cadastrar Partida</a></li>
 </ul> <br><br>
 
 </body>
