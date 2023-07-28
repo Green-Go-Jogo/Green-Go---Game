@@ -6,6 +6,7 @@
     <?php include_once("../bootstrap/header.php");?>
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/cabecalho.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
 </head> 
 
@@ -42,7 +43,27 @@
     </div>
     
 </nav>
+<style> 
+.footer {
+  background-color: #338a5f;
+  color: #fff;
+  padding: 20px;
+}
 
+.footer .container {
+  text-align: center;
+}
+
+.custom-color {
+  color: #f0b6bc;
+}
+.custom-size {
+  font-size: 24px;
+}
+
+
+
+</style>
 <body>
     <div class="container">
         <div class="row justify-content-md-left">
@@ -102,5 +123,26 @@
         </div>
     </div>
     <br><br><br>
+    <footer class="footer">
+    <div class="container">
+  <div class="row">
+    <div class="col-auto">
+      <a href="https://www.instagram.com/projetogreengo" target="_blank">
+        <i class="fab fa-instagram custom-color custom-size"> projetogreengo</i>
+      </a></div>
+      <div class="col-auto">
+        <i class="fas fa-phone custom-color custom-size"><a style="font-family: arial; font-size:18px"> 45984062620</a></i>
+      </a>
+    </div>
+    <div class="col-auto">
+        <i class="far fa-envelope custom-color custom-size"> contato@greengo.ipfr</i>
+      </a>
+    </div>
+    <div class="col text-center">
+      <span style="font-family: arial" class="text">Todos os direitos reservados. 2023 - GreenGO</span>
+    </div>
+  </div>
+</div>
+  </footer>
 </body>
 </html>
