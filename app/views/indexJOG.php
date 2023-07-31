@@ -122,27 +122,6 @@
             </div>
         </div>
     </div>
-    <br><br><br>
-    <footer class="footer">
-    <div class="container">
-  <div class="row">
-    <div class="col-auto">
-      <a href="https://www.instagram.com/projetogreengo" target="_blank">
-        <i class="fab fa-instagram custom-color custom-size"> projetogreengo</i>
-      </a></div>
-      <div class="col-auto">
-        <i class="fas fa-phone custom-color custom-size"><a style="font-family: arial; font-size:18px"> 45984062620</a></i>
-      </a>
-    </div>
-    <div class="col-auto">
-        <i class="far fa-envelope custom-color custom-size"> contato@greengo.ipfr</i>
-      </a>
-    </div>
-    <div class="col text-center">
-      <span style="font-family: arial" class="text">Todos os direitos reservados. 2023 - GreenGO</span>
-    </div>
-  </div>
-</div>
-  </footer>
+    <?php include_once("../bootstrap/footer.php");?>
 </body>
 </html>
