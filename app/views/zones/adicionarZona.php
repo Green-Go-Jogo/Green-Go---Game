@@ -42,11 +42,9 @@
     <!-- Parallax -->
     <script src="https://cdn.jsdelivr.net/parallax.js/1.4.2/parallax.min.js"></script>
 
-
-    <link rel="stylesheet" href="../css/adicionarplanta.css">
     <?php include_once("../../bootstrap/header.php");?>
     <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="../css/plantas.css">
+    <link rel="stylesheet" href="../csscheer/zona.css">
 
 
 </head>
@@ -58,35 +56,7 @@
 
 </nav>
 
-<style>
-#txtNomeZona {
-    border-radius: 5px;
-}
 
-.navbar-nav .dropdown {
-    background-color: transparent;
-  }
-  
-  /* Estilo para os itens do dropdown */
-  .navbar-nav .dropdown-menu {
-    background-color: transparent;
-  }
-  
-  /* Estilo para os itens do dropdown quando o mouse passa por cima */
-  .navbar-nav .dropdown-menu .dropdown-item:hover {
-    background-color: transparent;
-  }
-
-  .custom-button {
-    background-color: transparent;
-    border: none;
-  }
-  
-  .custom-dropdown {
-  width: auto !important;
-  white-space: nowrap;
-}
-</style>
 
 <body>
     <main>
@@ -109,7 +79,7 @@
 
                             <div class="form-row align-items-left">
                             <div class="w-100" >
-                            <label for="formtexto" id="txtNome">Nome da Zona <br> <span id="resultzona"></span></label>
+                            <label for="formtexto" id="txtNome">Nome da Zona: <br> <span id="resultzona"></span></label>
                             <div class="w-100"></div>
                             <input type="text" name="Nome_Zona" class="form-control" id="txtNomeZona" aria-describedby="nome-cadastro" value="<?php echo isset($_POST['Nome_Zona']) ? $_POST['Nome_Zona'] : ''; ?>">
                             <?php if (isset($errors) && !empty($errors) && isset($errors['Nome_Zona'])) { ?>

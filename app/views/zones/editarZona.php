@@ -59,8 +59,8 @@ global $idEditarZona;
     <script src="js/progressbar.min.js"></script>
     <!-- Parallax -->
     <script src="https://cdn.jsdelivr.net/parallax.js/1.4.2/parallax.min.js"></script>
-    <link rel="stylesheet" href="../css/adicionarplanta.css">
-    <link rel="stylesheet" href="../css/plantas.css">
+
+    <link rel="stylesheet" href="../csscheer/zona.css">
 
 
 </head>
@@ -92,7 +92,7 @@ global $idEditarZona;
 
                             <div class="form-row align-items-left">
 
-                            <label for="formtexto" id="txtNome">Nome da Zona</label>
+                            <label for="formtexto" id="txtNome">Nome da Zona: </label>
                             <div class="w-100"></div>
                             <input type="text" name="Nome_Zona" class="form-control" id="txtNomeZona" aria-describedby="nome-cadastro" value="<?php echo isset($_POST['Nome_Zona']) ? $_POST['Nome_Zona'] : $zona->getNomeZona(); ?>">
                             <?php if (isset($errors) && !empty($errors) && isset($errors['Nome_Zona'])) { ?>
