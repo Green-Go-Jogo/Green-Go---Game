@@ -1,0 +1,75 @@
+.footer {
+    background-color: #338a5f;
+    color: #fff;
+    padding: 20px;
+    font-family: Poppins-regular, Roboto;
+  }
+  
+  .footer .container {
+    text-align: center;
+  }
+  
+  .custom-size {
+    font-size: 24px;
+  }
+  
+  .direitos {
+    font-family: Poppins-regular, Roboto;
+    font-size: 15.7px;
+    text-align: center !important;
+    font-family: Poppins-regular, Roboto;
+  }
+  
+  .contatos {
+    text-align: left;
+    font-family: Poppins-regular, Roboto;
+    text-decoration: none;
+    font-size: 19px;
+    margin-bottom: 10px;
+    display: flex; 
+    justify-content: center; 
+  }
+  
+  .contatos > * {
+    margin-right: 20px;
+  }
+  
+  .instagram {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 19px;
+  }
+  
+  .instagram:hover,
+  .email:hover,
+  .telefone:hover {
+    color: #f0b6bc;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  
+  @media screen and (max-width: 768px) {
+    .footer {
+      padding: 10px;
+    }
+  
+    .custom-size {
+      font-size: 18px;
+    }
+  
+    .direitos {
+      text-align: center;
+      font-size: 14px;
+    }
+  
+    .contatos {
+      text-align: center; 
+      flex-direction: column;
+    }
+  
+    .contatos > * {
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
+  }

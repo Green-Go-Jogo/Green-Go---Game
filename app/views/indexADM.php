@@ -21,6 +21,8 @@ else if (!isset($_SESSION['adm']) && !isset($_SESSION['normal'])) {
 <head>
     <?php include_once("../bootstrap/header.php");?>
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="csscheer/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
 </head> 
 
@@ -83,7 +85,8 @@ else if (!isset($_SESSION['adm']) && !isset($_SESSION['normal'])) {
 
 <ul class="pagination pagination-lg justify-content-center flex-wrap flex-column flex-md-row">
 <li class="container" onclick="ativar(this)"> <a href="../views/partidas/adicionarPartida.php" id="partida">Cadastrar Partida</a></li>
-</ul> <br><br>
+</ul> 
+<?php include_once("../bootstrap/footer.php");?>
 
 </body>
 

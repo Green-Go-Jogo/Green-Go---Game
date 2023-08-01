@@ -24,6 +24,8 @@ else if (!isset($_SESSION['adm']) && !isset($_SESSION['normal'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../csscheer/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <title>Zonas</title>
 
     <!--FAVICON-->
@@ -114,5 +116,6 @@ else if (!isset($_SESSION['adm']) && !isset($_SESSION['normal'])) {
         </div>  
 
 </div>
+<?php include_once("../../bootstrap/footer.php");?>
 </body>
 </html>

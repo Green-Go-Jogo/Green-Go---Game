@@ -5,6 +5,7 @@
 
     <?php include_once("../bootstrap/header.php");?>
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="csscheer/footer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
 </head> 
@@ -42,27 +43,7 @@
     </div>
     
 </nav>
-<style> 
-.footer {
-  background-color: #338a5f;
-  color: #fff;
-  padding: 20px;
-}
 
-.footer .container {
-  text-align: center;
-}
-
-.custom-color {
-  color: #f0b6bc;
-}
-.custom-size {
-  font-size: 24px;
-}
-
-
-
-</style>
 <body>
     <div class="container">
         <div class="row justify-content-md-left">
