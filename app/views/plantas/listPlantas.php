@@ -24,8 +24,7 @@ else if (!isset($_SESSION['adm']) && !isset($_SESSION['normal'])) {
 
     <?php include_once("../../bootstrap/header.php");?>
     <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/cabecalho.css">
-
+    
     <style>
     .btn:hover {
         color:#f58c95;

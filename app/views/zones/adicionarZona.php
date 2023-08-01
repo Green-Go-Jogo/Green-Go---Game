@@ -45,7 +45,6 @@
     <?php include_once("../../bootstrap/header.php");?>
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="../css/plantas.css">
-    <link rel="stylesheet" href="css/cabecalho.css">
 
 
 </head>

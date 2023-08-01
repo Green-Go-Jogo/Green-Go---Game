@@ -16,7 +16,6 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
     integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <link rel="stylesheet" href="../views/css/listUser.css">
-  <link rel="stylesheet" href="../views/css/cabecalho.css">
 
   <!--scripts-->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"

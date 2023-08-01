@@ -40,7 +40,7 @@
     
     <?php include_once("../../bootstrap/header.php");?>
     <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/cabecalho.css">
+
 
     <link rel="stylesheet" href="css/editorwys.css" type="text/css" media="all" />
     <script type="text/javascript" src="../js/script.js"></script>

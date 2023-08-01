@@ -25,7 +25,6 @@ error_reporting(E_ALL);
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="../views/css/listPlanta.css">
-    <link rel="stylesheet" href="../views/css/cabecalho.css">
 
     <!--scripts-->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
@@ -42,7 +41,6 @@ error_reporting(E_ALL);
     <script src="https://cdn.jsdelivr.net/parallax.js/1.4.2/parallax.min.js"></script>
     <?php include_once("../../bootstrap/header.php");?>
     <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/cabecalho.css">
 
 </head>
 
