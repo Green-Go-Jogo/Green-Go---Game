@@ -35,27 +35,6 @@ a.page-link:hover {
              }
 </style>    
 
-<nav class="navbar navbar-expand-lg">
-    <a href="index.php" class="navbar-brand">
-        <div class="row align-items-center">
-            <div id="imgmenu">
-                <img class="img-responsive" id="logo">
-            </div>
-        </div>
-    </a>
-
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-links"
-        aria-controls="navbar-links" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"><img src="../public/menu.svg" id="menuicon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbar-links">
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item"><a class="nav-link" href="projeto.php">Projeto</a></li>
-            <li class="nav-item"><a class="nav-link" href="users/login.php">Entrar</a></li>
-        </ul>
-    </div>
-</nav>
 
 <body>
 

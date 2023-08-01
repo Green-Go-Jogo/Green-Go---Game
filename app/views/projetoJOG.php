@@ -5,56 +5,52 @@
 
     <?php include_once("../bootstrap/header.php");?>
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/projeto.css">
 
-</head> 
+</head>
 
-<nav> 
+<style>
 
-<div class="col-xs-12" id="nav-container">
-        <div id="itensmenu">
-            <nav class="navbar navbar-expand-lg " id="menu">
-                <a href="indexJOG.php" class="nav-brand">
-                    <div class="row justify-content-md-left">
-                        <div id="imgmenu">
-                        <img class="img-responsive" src="../public/logo-green.svg"  id="logo" >
-                        </div>
-                    </div>
-                </a>
+a.page-link:hover {
+            color: #ebf0f1 !important;
+            background-color: #f58c95; }
 
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-links"
-                    aria-controls="navbar-links" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"> <img src="../public/menu.svg" id="menuicon"></span>
-                </button>
+        a.page-link{
+            color: #ebf0f1 !important;
+            background-color: #f58c95; }
+   
+        a.page-link:hover,
+            .page-item.active a.page-link {
+            color: #ebf0f1 !important;
+            background-color: #C05367;
+            }
 
-                <div class="collapse navbar-collapse justify-content-end" id="navbar-links">
-                    <div class="navbar-nav">
+        a.excluir:hover {
+            color: var(--branco);
+            background-color: #f0b6bc !important;
+            border-radius: 5px; }
 
-                    <a class="nav-item nav-link" id="projeto-menu" href="../views/projeto.php"> Projeto </a>
-                    <a class="nav-item nav-link" id="mapa-menu" href="..\controllers\EspecieController.php?action=EspeciesMapa"> Mapa</a>
-                    <a class="nav-item nav-link" id="itemmenu" href="./PlantaController.php?action=formIdentificarPlanta"> Jogar </a>
-                    <a class="nav-item nav-link" id="botaoentrar" href="./UserController.php?action=findUserById"> Eu </a>
-                    </div>
-                </div>
-            </nav>
-        </div>
-    </div>
+            body {
+            overflow-x: hidden !important;
+             }
+</style>    
 
-</nav>
 
 <body>
 
-    <div class="container">
+    <div class="container" >
         <div id="sobre">
-            <h2 class="titulo">
-                O que é o <img src="../public/isologo-greengo-verde.svg" class="isologo">?
+            <h2 class="titulo" style="text-align: center;">
+                O que é o <img src="../public/isologo-greengo-verde.svg" width="95%" class="isologo">
             </h2>
 
-            <p> É o resultado dos avanços de um projeto de extensão denominado <b>Green Go: Gamificação da Identificação
+            <p> É o resultado dos avanços de um projeto de extensão denominado <b>Green Go: Jogo Educacional Sobre a 
+                Etnobotânica da Identificação
                     de
                     Plantas do IFPR</b>,
                 do Instituto Federal do Paraná Campus Foz do Iguaçu. Ele envolve estudantes de dois cursos, Meio
                 Ambiente e
-                Informática, colaborando
+                Informática/Desenvolvimento de Sistemas, colaborando
                 na integração na comunidade local entre si e com seu meio.
             </p>
 
@@ -66,7 +62,7 @@
                 Buscando conhecer mais a área verde que nos envolve, o projeto desenvolve, em atividades de extensão
                 voltadas
                 para a educação ambiental,
-                um jogo de identificação da flora arbórea e arborescente (árvores), bem como o conjunto
+                um sistema gamificado de identificação da flora arbórea e arborescente (árvores), bem como o conjunto
                 amplo
                 de
                 plantas alimentícias não
@@ -94,63 +90,115 @@
                 Quem somos nós?
             </h3>
 
-            <div class="container">
 
-                <!--MARCELA-->
-                <div class="row justify-content-md-left">
-                    <div class="d-flex justify-content-start">
-                        <div class="img-coord">
-                            <img src="../public/marcela.jpg" class="coordenador">
-                        </div>
-                    </div>
+            <nav aria-label="...">
+  <ul class="pagination pagination-lg justify-content-center flex-wrap flex-column flex-md-row">
+    <li class="page-item" onclick="ativar(this)"><a class="page-link" href="#" data-target="div-orientadores">Orientadores</a></li>
+    <li class="page-item" onclick="ativar(this)"><a class="page-link" href="#" data-target="div-modulo-website">Módulo Website</a></li>
+    <li class="page-item d-md-none"><hr></li>
+    <li class="page-item" onclick="ativar(this)"><a class="page-link" href="#" data-target="div-modulo-jogo">Módulo Jogo</a></li>
+    <li class="page-item" onclick="ativar(this)"><a class="page-link" href="#" data-target="div-modulo-quiz">Módulo Quiz</a></li>
+  </ul>
+</nav>
 
-                    <div class="txt-coord align-self-center">
-                        <span>
-                            <b>MARCELA TURIM KOSCHEVIC</b> <br>
-                            Coordenadora da Equipe de Informática <br>
-                            <small>marcela.turim@ifpr.edu.br</small>
-                        </span>
-                    </div>
-                </div>
+<div id="div-orientadores" class="content-div" style="display: none;">
 
+<div class="container">
 
-                <!--FRANCO-->
-                <div class="row justify-content-md-left">
-                    <div class="d-flex justify-content-start">
-                        <div class="img-coord">
-                            <img src="../public/franco.jpg" class="coordenador">
-                        </div>
-                    </div>
-
-                    <div class="txt-coord align-self-center">
-                        <span>
-                            <b>FRANCO HARLOS EZEQUIEL</b> <br>
-                            Coordenador da Equipe de Meio Ambiente <br>
-                            <small>franco.harlos@ifpr.edu.br</small>
-                        </span>
-                    </div>
-                </div>
-
-                <!--HUMBERTO-->
-                <div class="row justify-content-md-left">
-                    <div class="d-flex justify-content-start">
-                        <div class="img-coord">
-                            <img src="../public/humberto.jpg" class="coordenador">
-                        </div>
-                    </div>
-
-                    <div class="txt-coord align-self-center">
-                        <span>
-                            <b>HUMBERTO MARTINS BENEDUZZI</b> <br>
-                            Coordenador da Equipe de Informática <br>
-                            <small>humberto.beneduzzi@ifpr.edu.br</small>
-                        </span>
-                    </div>
-                </div>
-            </div>
+<!--MARCELA-->
+<div class="row justify-content-md-left">
+    <div class="d-flex justify-content-start">
+        <div class="img-coord">
+            <img src="../public/marcela.jpg" class="coordenador">
         </div>
+    </div>
 
-        <div id="nois">
+    <div class="txt-coord align-self-center">
+        <span>
+            <b>MARCELA TURIM KOSCHEVIC</b> <br>
+            Coordenadora da Equipe de Informática <br>
+            <small>marcela.turim@ifpr.edu.br</small>
+        </span>
+    </div>
+</div>
+
+
+<!--FRANCO-->
+<div class="row justify-content-md-left">
+    <div class="d-flex justify-content-start">
+        <div class="img-coord">
+            <img src="../public/franco.jpg" class="coordenador">
+        </div>
+    </div>
+
+    <div class="txt-coord align-self-center">
+        <span>
+            <b>FRANCO HARLOS EZEQUIEL</b> <br>
+            Coordenador da Equipe de Meio Ambiente <br>
+            <small>franco.harlos@ifpr.edu.br</small>
+        </span>
+    </div>
+</div>
+
+<!--HUMBERTO-->
+<div class="row justify-content-md-left">
+    <div class="d-flex justify-content-start">
+        <div class="img-coord">
+            <img src="../public/humberto.jpg" class="coordenador">
+        </div>
+    </div>
+
+    <div class="txt-coord align-self-center">
+        <span>
+            <b>HUMBERTO MARTINS BENEDUZZI</b> <br>
+            Ex-Coorientador da Equipe de Informática <br>
+            <small>humberto.beneduzzi@ifpr.edu.br</small>
+        </span>
+    </div>
+</div>
+
+<!--JEFFERSON-->
+<div class="row justify-content-md-left">
+    <div class="d-flex justify-content-start">
+        <div class="img-coord">
+            <img src="../public/.jpg" class="coordenador">
+        </div>
+    </div>
+
+    <div class="txt-coord align-self-center">
+        <span>
+            <b>JEFFERSON OLIVEIRA CHAVES</b> <br>
+            Orientador da Equipe de Desenvolvimento de Sistemas<br>
+            <small>jefferson.chaves@ifpr.edu.br</small>
+        </span>
+    </div>
+</div>
+
+<!--DANIEL-->
+<div class="row justify-content-md-left">
+    <div class="d-flex justify-content-start">
+        <div class="img-coord">
+            <img src="../public/.jpg" class="coordenador">
+        </div>
+    </div>
+
+    <div class="txt-coord align-self-center">
+        <span>
+            <b>DANIEL DI DOMENICO</b> <br>
+            Orientador da Equipe de Desenvolvimento de Sistemas<br>
+            <small>daniel.domenico@ifpr.edu.br</small>
+        </span>
+    </div>
+</div>
+
+</div>
+</div>
+
+</div> <!-- Fim div Orientadores -->
+
+<div id="div-modulo-website" class="content-div" style="display: none;">
+
+<div id="nois">
             <img src="../public/nois.jpg" class="img-fluid alunas">
 
             <div class="membro">
@@ -191,6 +239,161 @@
             </p>
         </div>
 
+</div> <!-- Fim div website -->
+
+<div id="div-modulo-jogo" class="content-div" style="display: none;">
+ 
+<div class="container">
+
+<!--AMANDA-->
+<div class="row justify-content-md-left">
+    <div class="d-flex justify-content-start">
+        <div class="img-coord">
+            <img src="../public/amanda.jpeg" class="coordenador">
+        </div>
+    </div>
+
+    <div class="txt-coord align-self-center">
+        <span>
+            <b>AMANDA PROCOPIO SCHEER 🦔</b> <br>
+            Designer UI/UX & Desenvolvedora Front-End <br>
+            <small>amandapscheer@greengoifpr.com.br</small>
+        </span>
+    </div>
+</div>
+
+
+<!--ANNYE-->
+<div class="row justify-content-md-left">
+    <div class="d-flex justify-content-start">
+        <div class="img-coord">
+            <img src="../public/annye.jpeg" class="coordenador">
+        </div>
+    </div>
+
+    <div class="txt-coord align-self-center">
+        <span>
+            <b>ANNYE MIYUKI FURUTI 🦄</b> <br>
+            Documentadora e Modeladora do Sistema<br>
+            <small>annye@greengoifpr.com.br</small>
+        </span>
+    </div>
+</div>
+
+<!--GABRIEL-->
+<div class="row justify-content-md-left">
+    <div class="d-flex justify-content-start">
+        <div class="img-coord">
+            <img src="../public/gabriel.jpeg" class="coordenador">
+        </div>
+    </div>
+
+    <div class="txt-coord align-self-center">
+        <span>
+            <b>GABRIEL MANDELLI CARDOSO 🦁</b> <br>
+            Desenvolvedor Back-end & Desenvolvedor Front-end<br>
+            <small>mandelli@greengoifpr.com.br</small>
+        </span>
+    </div>
+</div>
+
+<div class="row justify-content-md-left">
+    <div class="d-flex justify-content-start">
+        <div class="img-coord">
+            <img src="../public/nikolas.jpeg" class="coordenador">
+        </div>
+    </div>
+
+    <div class="txt-coord align-self-center">
+        <span>
+            <b>NIKOLAS OLIVEIRA DE ARAUJO 🦝</b> <br>
+            Desenvolvedor Front-end & Modelador do Sistema<br>
+            <small>nikolas@greengoifpr.com.br</small>
+        </span>
+    </div>
+</div>
+
+</div>
+
+</div> <!-- Fim jogo -->
+
+<div id="div-modulo-quiz" class="content-div" style="display: none;">
+<div class="container">
+
+<!--RAFAELA-->
+<div class="row justify-content-md-left">
+    <div class="d-flex justify-content-start">
+        <div class="img-coord">
+            <img src="../public/rafaela.jpg" class="coordenador">
+        </div>
+    </div>
+
+    <div class="txt-coord align-self-center">
+        <span>
+            <b>RAFAELA FONTANA</b> <br>
+            Desenvolvedora Back-end & Desenvolvedora Front-End <br>
+            <small>rafaela@greengoifpr.com.br</small>
+        </span>
+    </div>
+</div>
+
+
+<!--RAYSSA-->
+<div class="row justify-content-md-left">
+    <div class="d-flex justify-content-start">
+        <div class="img-coord">
+            <img src="../public/rayssa.jpeg" class="coordenador">
+        </div>
+    </div>
+
+    <div class="txt-coord align-self-center">
+        <span>
+            <b>RAYSSA DE FREITAS</b> <br>
+            Desenvolvedora Back-end<br>
+            <small>rayssa@greengoifpr.com.br</small>
+        </span>
+    </div>
+</div>
+
+<!--JULIANA-->
+<div class="row justify-content-md-left">
+    <div class="d-flex justify-content-start">
+        <div class="img-coord">
+            <img src="../public/juliana.jpeg" class="coordenador">
+        </div>
+    </div>
+
+    <div class="txt-coord align-self-center">
+        <span>
+            <b>JULIANA SANTANA</b> <br>
+            Designer UI/UX & Desenvolvedora Front-end<br>
+            <small>juliana@greengoifpr.com.br</small>
+        </span>
+    </div>
+</div>
+
+<!--NURA-->
+<div class="row justify-content-md-left">
+    <div class="d-flex justify-content-start">
+        <div class="img-coord">
+            <img src="../public/nura.jpeg" class="coordenador">
+        </div>
+    </div>
+
+    <div class="txt-coord align-self-center">
+        <span>
+            <b>NURA SALEH</b> <br>
+            Desenvolvedora Front-end & Modeladora do Sistema<br>
+            <small>nura@greengoifpr.com.br</small>
+        </span>
+    </div>
+</div>
+
+</div>
+</div>
+
+        <br>
+        <br>
         <div id="apoio">
             <h3 class="subtitulo">
                 Com o apoio de
@@ -214,3 +417,28 @@
 </body>
 
 </html>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+  $('.page-item a').click(function(e) {
+    e.preventDefault();
+    var targetDivId = $(this).data('target');
+    $('#' + targetDivId).show(); // Exibe a div correspondente
+    $('.content-div').not('#' + targetDivId).hide(); // Esconde as outras divs
+    
+    // Caso você queira rolar a página automaticamente para a div exibida, descomente a linha abaixo
+    // $('html, body').animate({scrollTop: $('#' + targetDivId).offset().top}, 800);
+  });
+});
+</script>
+
+<script>
+    const ativar=(elemento)=>{
+        let itens=document.getElementsByClassName("page-item");
+        for(i=0;i<itens.length;i++){
+            itens[i].classList.remove("active");
+        }
+        elemento.classList.add("active");
+    }
+</script>
