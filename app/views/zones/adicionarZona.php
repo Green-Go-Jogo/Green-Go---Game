@@ -73,7 +73,6 @@
 </nav>
 
 
-
 <body>
     <main>
         <nav id="primeirotextoindex">
@@ -115,7 +114,6 @@
 
                             </form>
 
-
     </main>
     <?php include_once("../../bootstrap/footer.php");?>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -124,6 +122,20 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </body>
+<style> 
+    html, body {
+        height: 100%;
+    }
 
+    body {
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        padding: 0;
+    }
 
+    main {
+        flex: 1;
+    }
+</style>
 </html>

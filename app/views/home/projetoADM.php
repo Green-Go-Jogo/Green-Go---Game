@@ -16,11 +16,10 @@ else if (!isset($_SESSION['adm']) && !isset($_SESSION['normal'])) {
 }
 ?>
 <head>
-
-    <?php include_once("../bootstrap/header.php");?>
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/projeto.css">
-    <link rel="stylesheet" href="csscheer/footer.css">
+    <?php include_once("../../bootstrap/header.php");?>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/projeto.css">
+    <link rel="stylesheet" href="../csscheer/footer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
 </head>
@@ -52,11 +51,12 @@ a.page-link:hover {
 </style>    
 
 <body>
+    <?php include_once("../../bootstrap/navADM.php");?>
 
     <div class="container" >
         <div id="sobre">
             <h2 class="titulo" style="text-align: center;">
-                O que é o <img src="../public/isologo-greengo-verde.svg" width="95%" class="isologo">
+                O que é o <img src="../../public/isologo-greengo-verde.svg" width="95%" class="isologo">
             </h2>
 
             <p> É o resultado dos avanços de um projeto de extensão denominado <b>Green Go: Jogo Educacional Sobre a 
@@ -124,7 +124,7 @@ a.page-link:hover {
 <div class="row justify-content-md-left">
     <div class="d-flex justify-content-start">
         <div class="img-coord">
-            <img src="../public/marcela.jpg" class="coordenador">
+            <img src="../../public/marcela.jpg" class="coordenador">
         </div>
     </div>
 
@@ -142,7 +142,7 @@ a.page-link:hover {
 <div class="row justify-content-md-left">
     <div class="d-flex justify-content-start">
         <div class="img-coord">
-            <img src="../public/franco.jpg" class="coordenador">
+            <img src="../../public/franco.jpg" class="coordenador">
         </div>
     </div>
 
@@ -159,7 +159,7 @@ a.page-link:hover {
 <div class="row justify-content-md-left">
     <div class="d-flex justify-content-start">
         <div class="img-coord">
-            <img src="../public/humberto.jpg" class="coordenador">
+            <img src="../../public/humberto.jpg" class="coordenador">
         </div>
     </div>
 
@@ -175,7 +175,7 @@ a.page-link:hover {
 <div class="row justify-content-md-left">
     <div class="d-flex justify-content-start">
         <div class="img-coord">
-            <img src="../public/.jpg" class="coordenador">
+            <img src="../../public/.jpg" class="coordenador">
         </div>
     </div>
 
@@ -192,7 +192,7 @@ a.page-link:hover {
 <div class="row justify-content-md-left">
     <div class="d-flex justify-content-start">
         <div class="img-coord">
-            <img src="../public/.jpg" class="coordenador">
+            <img src="../../public/.jpg" class="coordenador">
         </div>
     </div>
 
@@ -213,7 +213,7 @@ a.page-link:hover {
 <div id="div-modulo-website" class="content-div" style="display: none;">
 
 <div id="nois">
-            <img src="../public/nois.jpg" class="img-fluid alunas">
+            <img src="../../public/nois.jpg" class="img-fluid alunas">
 
             <div class="membro">
                 <b>MARIA EDUARDA HECK SOUZA BENEDITO</b> <br>
@@ -245,7 +245,7 @@ a.page-link:hover {
                 Somos medalhistas!
             </h3>
 
-            <img class="img-medalha img-fluid" src="../public/medalhistas.png">
+            <img class="img-medalha img-fluid" src="../../public/medalhistas.png">
 
             <p>
                 3º Lugar na categoria Ciências Exatas e da Terra na XI Feira de Inovação das Ciências e Engenharias
@@ -263,7 +263,7 @@ a.page-link:hover {
 <div class="row justify-content-md-left">
     <div class="d-flex justify-content-start">
         <div class="img-coord">
-            <img src="../public/amanda.jpeg" class="coordenador">
+            <img src="../../public/amanda.jpeg" class="coordenador">
         </div>
     </div>
 
@@ -281,7 +281,7 @@ a.page-link:hover {
 <div class="row justify-content-md-left">
     <div class="d-flex justify-content-start">
         <div class="img-coord">
-            <img src="../public/annye.jpeg" class="coordenador">
+            <img src="../../public/annye.jpeg" class="coordenador">
         </div>
     </div>
 
@@ -298,7 +298,7 @@ a.page-link:hover {
 <div class="row justify-content-md-left">
     <div class="d-flex justify-content-start">
         <div class="img-coord">
-            <img src="../public/gabriel.jpeg" class="coordenador">
+            <img src="../../public/gabriel.jpeg" class="coordenador">
         </div>
     </div>
 
@@ -314,7 +314,7 @@ a.page-link:hover {
 <div class="row justify-content-md-left">
     <div class="d-flex justify-content-start">
         <div class="img-coord">
-            <img src="../public/nikolas.jpeg" class="coordenador">
+            <img src="../../public/nikolas.jpeg" class="coordenador">
         </div>
     </div>
 
@@ -338,7 +338,7 @@ a.page-link:hover {
 <div class="row justify-content-md-left">
     <div class="d-flex justify-content-start">
         <div class="img-coord">
-            <img src="../public/rafaela.jpg" class="coordenador">
+            <img src="../../public/rafaela.jpg" class="coordenador">
         </div>
     </div>
 
@@ -356,7 +356,7 @@ a.page-link:hover {
 <div class="row justify-content-md-left">
     <div class="d-flex justify-content-start">
         <div class="img-coord">
-            <img src="../public/rayssa.jpeg" class="coordenador">
+            <img src="../../public/rayssa.jpeg" class="coordenador">
         </div>
     </div>
 
@@ -373,7 +373,7 @@ a.page-link:hover {
 <div class="row justify-content-md-left">
     <div class="d-flex justify-content-start">
         <div class="img-coord">
-            <img src="../public/juliana.jpeg" class="coordenador">
+            <img src="../../public/juliana.jpeg" class="coordenador">
         </div>
     </div>
 
@@ -390,7 +390,7 @@ a.page-link:hover {
 <div class="row justify-content-md-left">
     <div class="d-flex justify-content-start">
         <div class="img-coord">
-            <img src="../public/nura.jpeg" class="coordenador">
+            <img src="../../public/nura.jpeg" class="coordenador">
         </div>
     </div>
 
@@ -416,18 +416,18 @@ a.page-link:hover {
             <div class="container">
                 <div class="row  d-flex justify-content-around">
                     <div class="col">
-                        <a href="https://foz.ifpr.edu.br/" target="_blank"><img id="ifpr" src="../public/foz-horizontal.png"></a>
+                        <a href="https://foz.ifpr.edu.br/" target="_blank"><img id="ifpr" src="../../public/foz-horizontal.png"></a>
                     </div>
 
                     <div class="col">
-                        <a href="https://foz.ifpr.edu.br/iftech-apresentara-prototipos-e-produtos-desenvolvidos-por-diferentes-cursos-do-campus/" target="_blank"><img id="nit" src="../public/nit.png"></a>
+                        <a href="https://foz.ifpr.edu.br/iftech-apresentara-prototipos-e-produtos-desenvolvidos-por-diferentes-cursos-do-campus/" target="_blank"><img id="nit" src="../../public/nit.png"></a>
                         
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <?php include_once("../bootstrap/footer.php");?>
+    <?php include_once("../../bootstrap/footer.php");?>
 </body>
 
 </html>
