@@ -5,7 +5,6 @@
     </span>
 <?php endif ?>
 
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -24,12 +23,8 @@
     <!--BOOTSTRAP-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/adicionarplanta.css">
-    <link rel="stylesheet" href="../css/plantas.css">
 
-    <?php include_once("../../bootstrap/header.php");?>
 
-    <link rel="stylesheet" href="./css/index.css">
 
 
     <!--scripts-->
@@ -51,36 +46,9 @@
     <link rel="stylesheet" href="views/js/registro.js">
     <link rel="stylesheet" href="css/editorwys.css" type="text/css" media="all" />
     <script type="text/javascript" src="js/script.js"></script>
-
+    <link rel="stylesheet" href="../csscheer/especie.css">
 
 </head>
-
-
-<style>
-        .ck-editor__editable_inline {
-            min-height: 400px;
-        }
-
-
-        #txtNomeForm {
-    border-radius: 5px;
-}
-
-    #botoesregistrar {
-        background-color: #338a5f !important;
-        color: #ebf0f1;
-}
-
-#botoesregistrar:hover {
-    color: #f58c95;
-    background-color: #04574d !important;
-    transform: scale(1.05);
-}
-
-
-</style>
-
-
 
 <nav>
 
@@ -96,7 +64,7 @@
 
                 <div class="row">
                 <div class="col">
-                <h1 id="primeirotextoreg"> Registre uma espécie!</h1>
+                <h1 id="primeirotextoreg"> Adicione uma espécie!</h1>
                         <form action="adicionarEspecieExec.php" method="POST" enctype="multipart/form-data">
 
                         <label for="formtexto" id="txtNome">Nome Popular:</label>
@@ -118,7 +86,7 @@
                             <div class="row">
                                 <div class="col-md">
                                     <div class="form-group form-check">
-                                        <div id="txtNome">
+                                        <div id="txtNomeAtributo">
                                             <a>Atributos específicos:</a>
                                             <div class="w-100"></div>
                                             <br>
@@ -171,12 +139,13 @@
                         </div>
                     </div>
                 </div>
+                <br><br>
 
                 <div class="col-sm" id="imagemreg">
 
                     <div class="form-group" id="imagemreg">
                                 </div></div>
-                                <a id="carregueimagemtexto"> Carregue uma imagem:</a> <br>
+                                <a id="carregueimagemtexto"> Carregue uma imagem:</a> <br><br>
                                 <label class="picture align-content-center" for="picture__input" tabIndex="0">
                                 <span class="picture__image">
                                 <img class="img-camera" src="/img/d8ca819f5feac5192c31cb17633e1f1f.png">
@@ -189,12 +158,12 @@
                                 
                             <br>
                             <div class="w-100"></div>
-                            <div class="container" id="caixadetexto">
-                            <a id="textodescritivo">Descrição:</a>
+                            <div class="container" id="caixadetexto"> <br><br><br>
+                            <a id="textodescritivo">Descrição:</a> <br><br>
                             <textarea id="editor" name="Descricao" value=""></textarea>
                             <script>
                             CKEDITOR.replace('editor', {
-                            contentsCss: ['../css/adicionarPlanta.css'],
+                            contentsCss: ['../csscheer/especie.css'],
                             removePlugins: 'elementspath',
                             toolbar: [
                             { name: 'clipboard', items: [ 'Cut', 'Copy' ] },
@@ -204,13 +173,13 @@
                             ]
                             });
                             </script>
-                            <br>
+                            
                             <?php if (isset($errors) && !empty($errors) && isset($errors['Descricao'])) { ?>
                             <div class="alert alert-warning"><?php echo $errors['Descricao']; ?></div>
                             <?php } ?>
                             </div>
 
-                            <div class="container">
+                            <div class="container"> <br><br>
                             <button type="submit" class="btn btn-primary btn-lg" id="botoesregistrar"><a>Adicionar</a> </button>
                             <button type="reset" class="btn btn-secondary btn-lg" id="botoeslimpar"> <a id="limpar"> Limpar</a>
                             </button>

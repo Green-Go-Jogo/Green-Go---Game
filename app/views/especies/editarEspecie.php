@@ -81,7 +81,7 @@ $frutifera = $especie->getFrutifera();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../csscheer/footer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <title>Registro</title>
+    <title>Editar Especie</title>
 
     <!--FAVICON-->
     <link rel="icon" href="../public/favicon.svg">
@@ -90,8 +90,6 @@ $frutifera = $especie->getFrutifera();
     <!--BOOTSTRAP-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/adicionarplanta.css">
-    <link rel="stylesheet" href="../css/plantas.css">
 
     <!--scripts-->
     <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
@@ -109,66 +107,34 @@ $frutifera = $especie->getFrutifera();
     <script src="https://cdn.jsdelivr.net/parallax.js/1.4.2/parallax.min.js"></script>
     <link rel="stylesheet" href="css/editorwys.css" type="text/css" media="all" />
     <script type="text/javascript" src="js/script.js"></script>
+    <link rel="stylesheet" href="../csscheer/especie.css">
 </head>
 
-<style>
-      .cke_resizer {
-        display: none !important;
-      }
-    </style>
-<!--------------ADMIN-------------->
 
 <nav>
-    <div class="col-xs-12" id="nav-container">
-        <div id="itensmenu">
-            <nav class="navbar navbar-expand-lg " id="menu">
-                <a href="../views/indexADM.php" class="nav-brand">
-                    <div class="row justify-content-md-left">
-                        <div id="imgmenu">
-                        <img class="img-responsive" src="../public/logo-green.svg"  id="logo" >
-                        </div>
-                    </div>
-                </a>
-
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-links"
-                    aria-controls="navbar-links" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"> <img src="../public/menu.svg" id="menuicon"></span>
-                </button>
-                <div class="collapse navbar-collapse justify-content-end" id="navbar-links">
-                    <div class="navbar-nav">
-
-                        <a class="nav-item nav-link" id="projeto-menu" href="../views/projetoADM.php"> Projeto </a>
-                        <a class="nav-item nav-link" id="mapa-menu" href="..\controllers\EspecieControllerADM.php?action=EspeciesMapa"> Mapa</a>
-                        <!--<a class="nav-item nav-link" id="itemmenu" href="./PlantaController.php?action=formIdentificarPlanta"> Jogar </a>-->
-                        <a class="nav-item nav-link" id="zonas-menu" href="./ZonaController.php?action=findAll"> Zonas </a>
-                        <a class="nav-item nav-link" id="especies-menu" href="./EspecieControllerADM.php?action=findAll"> Espécies </a>
-                        <a class="nav-item nav-link" id="usuarios-menu" href="./UserController.php?action=findAll"> Usuários </a>
-                        <a class="nav-item nav-link" id="botaoentrar" href="../controllers/UserController.php?action=sair"> Sair  </a>
-                    </div>
-                </div>
-            </nav>
-        </div>
-    </div>
+<?php include_once("../../bootstrap/navADM.php");?>
 </nav>
 
 <body>
     <main>
+    <nav id="primeirotextoindex">
         <div class="container">
-            <div class="row">
-                <h1 id="titulo"> Registre uma espécie!</h1>
+            <div class="row justify-content-md-left">
 
+                <div class="row">
                 <div class="col">
-                    <div class="form-row align-items-left">
+                <h1 id="primeirotextoreg"> Editar uma espécie!</h1>
+
                         <form action="editarEspecieExec.php" method="POST" enctype="multipart/form-data">
 
-                            <label for="formtexto" id="txtNome">Nome Popular</label>
+                            <label for="formtexto" id="txtNome">Nome Popular:</label>
                             <div class="w-100"></div>
                             <input type="text" name="Nome_Popular" class="form-control" id="txtNomeForm" aria-describedby="nome-cadastro" value="<?php echo isset($_POST['Nome_Popular']) ? $_POST['Nome_Popular'] : $especie->getNomePopular(); ?>">
                             <div class="w-100"></div>
                             <?php if (isset($errors) && !empty($errors) && isset($errors['Nome_Popular'])) { ?>
                             <div class="alert alert-warning" style="position: left;"><?php echo $errors['Nome_Popular']; ?></div>
                             <?php } ?>
-                            <label for="formtexto" id="txtCodigo">Nome Cientifico</label>
+                            <label for="formtexto" id="txtCodigo">Nome Cientifico:</label>
                             <div class="w-100"></div>
                             <input type="text" name="Nome_Cientifico" class="form-control" id="txtCodigoForm" aria-describedby="nome-cadastro" value="<?php echo isset($_POST['Nome_Cientifico']) ? $_POST['Nome_Cientifico'] : $especie->getNomeCientifico(); ?>">
                             <div class="w-100"> <br>
@@ -180,8 +146,8 @@ $frutifera = $especie->getFrutifera();
                             <div class="row">
                                 <div class="col-md">
                                     <div class="form-group form-check">
-                                        <div id="txtNome">
-                                            <a>Atributos específicos</a>
+                                        <div id="txtNomeAtributo">
+                                            <a>Atributos específicos:</a>
                                             <div class="w-100"></div>
                                             <br>
                                         </div>
@@ -233,12 +199,13 @@ $frutifera = $especie->getFrutifera();
                         </div>
                     </div>
                 </div>
+                <br><br>
 
                 <div class="col-sm" id="imagemreg">
 
                     <div class="form-group" id="imagemreg">
                                 </div></div>
-                                <a id="carregueimagemtexto"> Carregue uma imagem</a> <br>
+                                <a id="carregueimagemtexto"> Carregue uma imagem:</a> <br><br>
                                 <label class="picture align-content-center" for="picture__input" tabIndex="0">
                                 <span class="picture__image">
                                 <img class="img-camera" src="/img/d8ca819f5feac5192c31cb17633e1f1f.png">
@@ -248,15 +215,15 @@ $frutifera = $especie->getFrutifera();
                                 <a id="carregueimagemtexto2"> .png .jpg ou .jpeg tamanho mínimo: 2MB tamanho máximo: 5MB </a>
                                 </div> </div> 
 
-                                <nav id="primeirotextoindex">
+
                             <br>
                             <div class="w-100"></div>
-                            <div class="container" id="caixadetexto">
-                            <a id="textodescritivo">Descrição</a>
+                            <div class="container" id="caixadetexto"> <br><br><br>  
+                            <a id="textodescritivo">Descrição:</a> <br><br>
                             <textarea id="editor" name="Descricao" value="<?php echo $especie->getDescricao()?>"></textarea>
                             <script>
                             CKEDITOR.replace('editor', {
-                            contentsCss: ['../css/adicionarPlanta.css'],
+                            contentsCss: ['../csscheer/especie.css'],
                             removePlugins: 'elementspath',
                             toolbar: [
                             { name: 'clipboard', items: [ 'Cut', 'Copy' ] },
@@ -273,7 +240,7 @@ $frutifera = $especie->getFrutifera();
 
                             </nav>
 
-                            <div class="container">
+                            <div class="container"> <br><br>
                             <button type="submit" class="btn btn-primary btn-lg" id="botoesregistrar"><a>Adicionar</a> </button>
                             <button type="reset" class="btn btn-secondary btn-lg" id="botoeslimpar"> <a id="limpar"> Limpar</a>
                             </button>

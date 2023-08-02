@@ -4,6 +4,7 @@
     --branco: #ebf0f1;
     --destaque: #f58c95;
     --rosinha: #f0b6bc;
+    --rosão: #C05367;
     --cinza: #586660;
     --cinzinha: #d3dadb;
     --branquinho #ffffff;
@@ -48,6 +49,7 @@ body {
     font-family: Poppins;
     margin-left: 11px;
     margin-top: 35px;
+    font-size: 45px;
 }
 
 #txtNome {
@@ -55,6 +57,7 @@ body {
     font-family: Poppins-semibold;
     margin-top: 40px;
     margin-bottom: 10px;
+    font-size: 20px;
 }
 
 #txtNomeZona {
