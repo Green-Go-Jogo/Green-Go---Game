@@ -2,9 +2,9 @@
 <html lang="pt-br">
 
 <head>
-    <?php include_once("../bootstrap/header.php");?>
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="csscheer/footer.css">
+    <?php include_once("../../bootstrap/header.php");?>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../csscheer/footer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
         /* Adicione estilos personalizados aqui, se necessário */
@@ -39,27 +39,7 @@
 
 <body>
 
-<nav class="navbar navbar-expand-lg">
-    <a href="index.php" class="navbar-brand">
-        <div class="row align-items-center">
-            <div id="imgmenu">
-                <img class="img-responsive" id="logo">
-            </div>
-        </div>
-    </a>
-
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-links"
-        aria-controls="navbar-links" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"><img src="../public/menu.svg" id="menuicon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbar-links">
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item"><a class="nav-link" href="projeto.php">Projeto</a></li>
-            <li class="nav-item"><a class="nav-link" href="users/login.php">Entrar</a></li>
-        </ul>
-    </div>
-</nav>
+<?php include_once("../../bootstrap/nav.php") ?>
 
     <div class="container">
         <div class="row justify-content-md-left">
@@ -76,7 +56,7 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <img src="../public/mapa 1.svg" class="img-fluid" alt="logo-index"
+                <img src="../../public/mapa 1.svg" class="img-fluid" alt="logo-index"
                         id="mapa-da-home"></a>
             </div>
         </div>
@@ -85,15 +65,15 @@
     <div class="container">
         <div class="row justify-content-center align-items-center">
             <div class="col quadrado">
-                <img src="../public/projeto.svg" alt="" id="imagenscaixas">
+                <img src="../../public/projeto.svg" alt="" id="imagenscaixas">
                 <p>Projeto de extensão <br> desenvolvido por estudantes do IFPR</p>
             </div>
             <div class="col quadrado">
-                <img src="../public/metodologias.svg" alt="" id="imagenscaixas">
+                <img src="../../public/metodologias.svg" alt="" id="imagenscaixas">
                 <p>Educação ambiental <br> através de metodologias ativas</p>
             </div>
            <div class="col quadrado">
-                <img src="../public/codigo.svg" alt="" id="imagenscaixas">
+                <img src="../../public/codigo.svg" alt="" id="imagenscaixas">
                 <p>Plataforma web <br> com código aberto e muito amor</p>
             </div>
         </div>
@@ -102,13 +82,13 @@
     <div class="container">
         <div class="row justify-content-md-left">
             <div class="col">
-                <img class="img-fluid" src="../public/Group 52.svg" alt="celular-greengo" id="imagem-celular">
+                <img class="img-fluid" src="../../public/Group 52.svg" alt="celular-greengo" id="imagem-celular">
             </div>
         </div>
     </div>
-    <?php include_once("../bootstrap/footer.php");?>
+    <?php include_once("../../bootstrap/footer.php");?>
     <!-- Importe os scripts do Bootstrap no final do body -->
-    <script src="../bootstrap/bootstrap.min.js"></script>
+    <script src="../../bootstrap/bootstrap.min.js"></script>
 </body>
 
 </html>

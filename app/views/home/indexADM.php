@@ -19,9 +19,9 @@ else if (!isset($_SESSION['adm']) && !isset($_SESSION['normal'])) {
 
 
 <head>
-    <?php include_once("../bootstrap/header.php");?>
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="csscheer/footer.css">
+    <?php include_once("../../bootstrap/header.php");?>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../csscheer/footer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
 </head> 
@@ -75,18 +75,18 @@ else if (!isset($_SESSION['adm']) && !isset($_SESSION['normal'])) {
 <div class="w-100">
     
 <ul class="pagination pagination-lg justify-content-center flex-wrap flex-column flex-md-row">
-    <li class="container" onclick="ativar(this)"> <a href="../views/projetoADM.php" id="projeto"> <img src="../views/img/logo.png" style="width: 30px; margin-right: 5px;">Projeto</a></li> <br>
-    <li class="container" onclick="ativar(this)"> <a href="../views/zones/listZonas.php" id="projeto"> <img src="../views/img/logo.png" style="width: 30px; margin-right: 5px;">Zonas</a></li> <br>
-    <li class="container" onclick="ativar(this)"> <a href="../views/especies/listEspecies.php" id="projeto"> <img src="../views/img/logo.png" style="width: 30px; margin-right: 5px;">Espécies</a></li> <br>
-    <li class="container" onclick="ativar(this)"> <a href="../views/plantas/listPlantas.php" id="projeto"> <img src="../views/img/logo.png" style="width: 30px; margin-right: 5px;">Plantas</a></li> <br>
-    <li class="container" onclick="ativar(this)"> <a href="../views/equipes/listEquipes.php" id="projeto"> <img src="../views/img/logo.png" style="width: 30px; margin-right: 5px;">Equipes</a></li> <br>
-    <li class="container" onclick="ativar(this)"> <a href="../views/users/perfil.php" id="projeto"> <img src="../views/img/logo.png" style="width: 30px; margin-right: 5px;">Perfil</a></li>
+    <li class="container" onclick="ativar(this)"> <a href="../home/projetoADM.php" id="projeto"> <img src="../../img/logo.png" style="width: 30px; margin-right: 5px;">Projeto</a></li> <br>
+    <li class="container" onclick="ativar(this)"> <a href="../zones/listZonas.php" id="projeto"> <img src="../../img/logo.png" style="width: 30px; margin-right: 5px;">Zonas</a></li> <br>
+    <li class="container" onclick="ativar(this)"> <a href="../especies/listEspecies.php" id="projeto"> <img src="../../img/logo.png" style="width: 30px; margin-right: 5px;">Espécies</a></li> <br>
+    <li class="container" onclick="ativar(this)"> <a href="../plantas/listPlantas.php" id="projeto"> <img src="../../img/logo.png" style="width: 30px; margin-right: 5px;">Plantas</a></li> <br>
+    <li class="container" onclick="ativar(this)"> <a href="../equipes/listEquipes.php" id="projeto"> <img src="../../img/logo.png" style="width: 30px; margin-right: 5px;">Equipes</a></li> <br>
+    <li class="container" onclick="ativar(this)"> <a href="../users/perfil.php" id="projeto"> <img src="../../img/logo.png" style="width: 30px; margin-right: 5px;">Perfil</a></li>
 </ul> <br><br>
 
 <ul class="pagination pagination-lg justify-content-center flex-wrap flex-column flex-md-row">
-<li class="container" onclick="ativar(this)"> <a href="../views/partidas/adicionarPartida.php" id="partida">Cadastrar Partida</a></li>
+<li class="container" onclick="ativar(this)"> <a href="../partidas/adicionarPartida.php" id="partida">Cadastrar Partida</a></li>
 </ul> 
-<?php include_once("../bootstrap/footer.php");?>
+<?php include_once("../../bootstrap/footer.php");?>
 
 </body>
 

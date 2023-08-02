@@ -27,11 +27,11 @@ if(isset($_POST['email']) && isset($_POST['senha'])) {
             if($tipo == 2){
                 $_SESSION['id'] = $id;
                 $_SESSION['adm'] = $nome;
-                header("location: ../indexADM.php");
+                header("location: ../home/indexADM.php");
             }
             else if($tipo == 1){
                 $_SESSION['normal'] = $nome;
-                header("location: ../indexJOG.php");
+                header("location: ../home/indexJOG.php");
             }
             else if($tipo == 3){
                 echo "professor";

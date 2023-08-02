@@ -11,7 +11,7 @@
 
 <head>
 
-<?php include_once("../bootstrap/header.php");?>
+<?php include_once("../../bootstrap/header.php");?>
 
 </head>
 
@@ -23,7 +23,7 @@
                 <a href="index.php" class="nav-brand">
                     <div class="row justify-content-md-left">
                         <div id="imgmenu">
-                        <img class="img-responsive" src="../public/logo-green.svg"  id="logo" >
+                        <img class="img-responsive" src="../../public/logo-green.svg"  id="logo" >
                         </div>
                     </div>
                 </a>

@@ -8,6 +8,15 @@ Class Equipe {
     private $corEquipe;
     private $iconeEquipe;
 
+
+    //Construtor da classe
+    public function __construct($id="",$nome="",$icone="")
+    {
+        $this->IdEquipe = $id;
+        $this->nomeEquipe = $nome;
+        $this->iconeEquipe = $icone;  
+    }
+
     /**
      * Get the value of idEquipe
      */ 

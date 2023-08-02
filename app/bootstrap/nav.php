@@ -57,24 +57,12 @@
             <div class="collapse navbar-collapse" id="navbarLinks">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" style="color: #338a5f;" font-style="" href="../projetoADM.php">Projeto</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" style="color: #338a5f;" href="../equipes/listEquipes.php">Equipes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" style="color: #338a5f;" href="../plantas/listPlantas.php">Plantas</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" style="color: #338a5f;" href="../zones/listZonas.php">Zonas</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" style="color: #338a5f;" href="../especies/listEspecies.php">Espécies</a>
+                        <a class="nav-link" style="color: #338a5f;" font-style="" href="../home/projeto.php">Projeto</a>
                     </li>
                 </ul>
                 <div class="ml-auto">
-                    <a href="#" class="btn btn-outline btn-custom mr-2">Iniciar Sessão</a>
-                    <a href="#" class="btn btn-jogar">Jogar Agora</a>
+                    <a href="../users/login.php" class="btn btn-outline btn-custom mr-2">Iniciar Sessão</a>
+                    <a href="../users/login.php" class="btn btn-jogar">Jogar Agora</a>
                 </div>
             </div>
         </div>

@@ -4,7 +4,7 @@
 class ZonaHTMLForm {
 
     public static function desenhaSelect($zonas, $name, $id, $idZonaSelec=0) {
-        echo "<select id='select-state' placeholder='' class='form-control'  name='". $name ."' id='". $id ."'>";
+        echo "<select id='select-state' placeholder='' class='form-control addZona'  name='". $name ."' id='". $id ."'>";
 
         echo "<option value=''>Escolha uma Zona...</option>";
         foreach($zonas as $zona):
