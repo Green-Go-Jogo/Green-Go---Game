@@ -53,7 +53,6 @@ Class EquipeHTML {
             echo "<a href='visualizarEquipe.php?ideq=".$equipe->getIdEquipe()."'><img src='".$equipe->getIconeEquipe()."' style='width: 55%; height: 50%;'class='card-img-top mais' alt='...'></a>";
             echo "<div class='card-body' style='background-color:" .$equipe->getCorEquipe()."'>";
             echo "<h5 class='card-title nome-soc' id='nomeEquipe'>". $equipe->getNomeEquipe() ."</h5>";
-            echo "<p class='card-text nome-texto' id='codigoEquipe'>Código: ".$equipe->getCodEntrada()."</p>";
             echo "<a href='editarEquipe.php?id=".$equipe->getIdequipe()."' class='btn btn-primary editar' >Editar</a>";
             echo "<a href='deletarEquipe.php?id=".$equipe->getIdequipe()."' onclick='return confirm(\"Confirma a exclusão da equipe?\");' class='btn btn-alert excluir' >Excluir</a>";
             echo "<br>";

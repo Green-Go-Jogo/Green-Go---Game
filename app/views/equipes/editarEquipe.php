@@ -118,11 +118,6 @@ if($equipe == null) {
                             <input type="text" name="Nome_Equipe" class="form-control" id="txtNomeEquipe" value="<?php echo $equipe->getNomeEquipe(); ?>" $ aria-describedby="nome-cadastro">
                             <div class="w-100"></div>
 
-                            <label for="formtexto" id="txtCodigo">Código da Equipe:</label>
-                            <div class="w-100"></div>
-                            <input type="number" value="<?php echo $equipe->getCodEntrada(); ?>" name="Cod_Equipe" class="form-control" id="txtCodigoForm" aria-describedby="nome-cadastro">
-                            <div class="w-100"> <br>
-
                             <label for="formtexto" id="txtCodigo">Cor da Equipe: </label>
                             <div class="w-100"></div>
                             <input type="color" value="<?php echo $equipe->getCorEquipe(); ?>" name="Cor_Equipe" class="form-control" id="txtCodigoForm" aria-describedby="nome-cadastro">

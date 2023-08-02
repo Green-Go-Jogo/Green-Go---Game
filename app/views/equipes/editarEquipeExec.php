@@ -7,7 +7,6 @@ include_once(__DIR__."/../../controllers/EquipeController.php");
 //Capturar os valores vindos do formulário
 $idEquipe = $_POST["id_equipe"];
 $nomeEquipe = $_POST["Nome_Equipe"];
-$codEquipe = $_POST["Cod_Equipe"];
 $corEquipe = $_POST["Cor_Equipe"];
 $iconeEquipe = $_POST["imagem"];
 
@@ -15,7 +14,6 @@ $iconeEquipe = $_POST["imagem"];
 $equipe = new Equipe();
 $equipe->setIdEquipe($idEquipe);
 $equipe->setNomeEquipe($nomeEquipe);
-$equipe->setCodEntrada($codEquipe);
 $equipe->setCorEquipe($corEquipe);
 $equipe->setIconeEquipe($iconeEquipe);
 
