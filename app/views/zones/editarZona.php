@@ -65,6 +65,23 @@ global $idEditarZona;
 
 </head>
 
+<style>
+    html, body {
+        height: 100%;
+    }
+
+    body {
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        padding: 0;
+    }
+
+    main {
+        flex: 1;
+    }
+</style>
+
 
 <nav>
 
