@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+
 <?php if (isset($_SESSION['msg_erro'])): ?>
     <span>
         <?= $_SESSION['msg_erro'] ?>

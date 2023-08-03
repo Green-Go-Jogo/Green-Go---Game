@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+
 <?php if (isset($_SESSION['msg_erro'])): ?>
     <span>
         <?= $_SESSION['msg_erro'] ?>
@@ -40,7 +40,7 @@ global $idEditarZona;
     <title>Editar Zona</title>
 
     <!--FAVICON-->
-    <link rel="icon" href="../public/favicon.svg">
+    <link rel="icon" href="../../public/favicon.svg">
     <!-- Fonte -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet">
     <!--BOOTSTRAP-->

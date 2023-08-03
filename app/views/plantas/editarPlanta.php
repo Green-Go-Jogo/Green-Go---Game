@@ -30,7 +30,7 @@
     }
 ?>
 
-
+<link rel="stylesheet" href="../csscheer/planta.css">
 
 
 <!DOCTYPE html>
@@ -73,16 +73,15 @@
     <script src="js/progressbar.min.js"></script>
     <!-- Parallax -->
     <script src="https://cdn.jsdelivr.net/parallax.js/1.4.2/parallax.min.js"></script>
-    <link rel="stylesheet" href="../css/adicionarplanta.css">
-    <link rel="stylesheet" href="../css/plantas.css">
-    <link rel="stylesheet" href="../css/listPlanta.css">
     
     <?php include_once("../../bootstrap/header.php");?>
-    <link rel="stylesheet" href="css/index.css">
 
     <link rel="stylesheet" href="css/editorwys.css" type="text/css" media="all" />
     <script type="text/javascript" src="../js/script.js"></script>
 
+    <?php include_once("../../bootstrap/header.php");?>
+    <link rel="stylesheet" href="../csscheer/planta.css">
+    
 </head>
 
 <nav>
@@ -91,107 +90,7 @@
 
 </nav>
 
-<style>
 
-img {
-    width: 30%;
-    height: auto;
-}
-
-.cke_resizer {
-display: none !important;
-}
-
-#txtNomeForm {
-    border-radius: 5px;
-}
-
-#txtPontos {
-    border-radius: 5px;
-}
-
-#carregueimagemtexto {
-    margin-bottom: 5px;
-}
-
-.container > :is(.preview-image, .form) {
-  width: 100%;
-}
-
-.container > .preview-image > img {
-  width: 100%;
-  object-fit: contain;
-}
-
-.container > .form {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
-.container > .form > input {
-  width: 100%;
-  border: 1px solid rgba(200, 200, 200, 1);
-  padding: 8px;
-  font-size: 16px;
-  border-radius: 4px;
-}
-.container > .form > input::-webkit-file-upload-button {
-  font-size: 12px;
-  font-family: "Space Grotesk";
-  border: 1px solid rgba(200, 200, 200, 1);
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.container > .form > button {
-  padding: 8px 16px;
-  font-size: 16px;
-  cursor: pointer;
-  border: 1px solid rgba(200, 200, 200, 1);
-  border-radius: 4px;
-}
-
-/* Estilos para o campo de texto do Selectize.js */
-.selectize-control.single .selectize-input,
-.selectize-control.single .selectize-input:focus, 
-.selectize-control.single .selectize-input.full {
-  width: 500px;
-  margin-top: 1px;
-  color: #ebf0f1;
-  background-color: #f0b6bc;
-  font-family: Poppins-semibold;
-}
-
-/* Estilos para o dropdown do Selectize.js */
-.selectize-dropdown-content .option {
-  color: #ebf0f1;
-  background-color: #f0b6bc;
-  font-family: Poppins-semibold;
-}
-
-.selectize-dropdown-content .option:hover {
-  background-color: #ec737c;
-}
-
-
-
-/* Estilos para o item selecionado no Selectize.js */
-.selectize-control.single .item {
-  background-color: #f0b6bc;
-  color: #ebf0f1;
-  font-family: Poppins-semibold;
-}
-
-/* Estilos para o item selecionado quando o dropdown está ativo */
-.selectize-input.active {
-  background-color: #f0b6bc;
-  color: #ebf0f1;
-  font-family: Poppins-semibold;
-}
-
-
-</style>
 
 <body>
     <main>
@@ -227,13 +126,12 @@ display: none !important;
                             <label for="formtexto" id="txtCodigo">Código numérico:</label>
                             <div class="w-100"></div>
                             <input readonly type="number" name="Cod_Numerico" class="form-control" id="txtCodigoForm" aria-describedby="nome-cadastro" value="<?php echo $planta->getCodNumerico(); ?>">
-                             <br>
                                            
-                            
-                            <div class="form-group" style="color: #f0b6bc;">
+
+                            <div class="form-group">
                             <label for="selectStand" id="txtNome">Zona:</label>
                             <div class="w-100"></div>
-                            <a id="txtNomeForm">
+                            <a id="txtZonaForm">
                             <?php
                             $zonaCont = new ZonaController();
                             $zonas = $zonaCont->listar();
@@ -243,7 +141,7 @@ display: none !important;
                         
                             </div> </a>
                             <?php if (isset($errors) && !empty($errors) && isset($errors['zona_planta'])) { ?>
-                            <div class="alert alert-warning"><?php echo $errors['zona_planta']; ?></div>
+                            <div class="alert alert-warning"> <?php echo $errors['zona_planta']; ?></div>
                             <?php } ?>
                             
                             <div class="form-group">
@@ -271,59 +169,58 @@ display: none !important;
                             <div class="alert alert-warning"><?php echo $errors['Pontuacao']; ?></div>
                             <?php } ?>
 
-                                           
-                            <nav>
-                            <div class="preview-image">
-        
-                            <img data-image-preview />
-      
-                            </div>
-                            
-                                <input type="file" name="imagem" required data-image-input accept=".png, .jpg, .jpeg"/>
-                                <a id="carregueimagemtexto2"> .png .jpg ou .jpeg tamanho mínimo: 2MB tamanho máximo: 5MB </a>
-                                </div>
-                                </div> </div> </div> </div> </div> </div> </div> </div> </nav>
+                            <br><br>
+
+<div class="col-sm" id="imagemreg">
+
+    <div class="form-group" id="imagemreg">
+                </div></div>
+                <a id="carregueimagemtexto"> Carregue uma imagem:</a> <br><br>
+                <label class="picture align-content-center" for="picture__input" tabIndex="0">
+                <span class="picture__image">
+                <img class="img-camera" src="/img/d8ca819f5feac5192c31cb17633e1f1f.png">
+                </span>
+                </label>  
+                <input type="file" required name="imagem" id="picture__input" accept=".png, .jpg, .jpeg"/>
+                <a id="carregueimagemtexto2"> .png .jpg ou .jpeg tamanho mínimo: 2MB tamanho máximo: 5MB </a>
+                </div> </div> 
+
+                
+            <br>
+            <div class="w-100"></div>
+            <div class="container" id="caixadetexto"> <br><br><br>
+            <a id="textodescritivo">Descrição:</a> <br><br>
+            <textarea id="editor" name="Descricao" value=""></textarea>
+            <script>
+            CKEDITOR.replace('editor', {
+            contentsCss: ['../csscheer/especie.css'],
+            removePlugins: 'elementspath',
+            toolbar: [
+            { name: 'clipboard', items: [ 'Cut', 'Copy' ] },
+            { name: 'undo', items: [ 'Undo', 'Redo' ] },
+            { name: 'basicstyles', items: [ 'Italic', 'Bold', 'Strike', 'Underline' ] },
+            { name: 'links', items: [ 'Link' ] }
+            ]
+            });
+            </script>
+            
+            <?php if (isset($errors) && !empty($errors) && isset($errors['Descricao'])) { ?>
+            <div class="alert alert-warning"><?php echo $errors['Descricao']; ?></div>
+            <?php } ?>
+            </div>
+
+            <div class="container"> <br><br>
+            <button type="submit" class="btn btn-primary btn-lg" id="botoesregistrar"><a>Adicionar</a> </button>
+            <button type="reset" class="btn btn-secondary btn-lg" id="botoeslimpar"> <a id="limpar"> Limpar</a>
+            </button>
+            </div>
 
 
-                            <nav id="primeirotextoindex">
-                            <br>
-                            <div class="w-100"></div>
-                            <div class="container" id="caixadetexto">
-                            <a id="textodescritivo">História:</a>
-                            <textarea id="editor" name="Historia"></textarea>
-                            <script>
-                            CKEDITOR.replace('editor', {
-                            contentsCss: ['../css/adicionarPlanta.css'],
-                            removePlugins: 'elementspath',
-                            toolbar: [
-                            { name: 'clipboard', items: [ 'Cut', 'Copy' ] },
-                            { name: 'undo', items: [ 'Undo', 'Redo' ] },
-                            { name: 'basicstyles', items: [ 'Italic', 'Bold', 'Strike', 'Underline' ] },
-                            { name: 'links', items: [ 'Link' ] }
-                            ]
-                            });
-                            </script>
-                            <br>
-                            <?php if (isset($errors) && !empty($errors) && isset($errors['Historia'])) { ?>
-                            <div class="alert alert-warning"><?php echo $errors['Historia']; ?></div>
-                            <?php } ?>
-                            </div>
-                            
+            </form>
 
-                            </nav>
-
-                            <div class="container">
-                            <button type="submit" class="btn btn-primary btn-lg" id="botoesregistrar"><a>Atualizar</a> </button>
-                            <button type="reset" class="btn btn-secondary btn-lg" id="botoeslimpar"> <a id="limpar"> Limpar</a>
-                            </button>
-                            <br>
-                            <br>
-                            </div>
-
-                            <input type="hidden" name="id_planta" value="<?php echo $planta->getIdPlanta(); ?>" />
-                            <input type="hidden" name="id_usuario" value="<?php echo $idADM ?>" />
-
-                            </form>
+</div>
+</div>
+<br><br>
 
 
     </main>
