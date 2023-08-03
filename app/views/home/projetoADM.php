@@ -305,7 +305,7 @@ a.page-link:hover {
     <div class="txt-coord align-self-center">
         <span>
             <b>GABRIEL MANDELLI CARDOSO 🦁</b> <br>
-            Desenvolvedor Back-end & Desenvolvedor Front-end<br>
+            Desenvolvedor Full-Stack<br>
             <small>mandelli@greengoifpr.com.br</small>
         </span>
     </div>
@@ -345,7 +345,7 @@ a.page-link:hover {
     <div class="txt-coord align-self-center">
         <span>
             <b>RAFAELA FONTANA</b> <br>
-            Desenvolvedora Back-end & Desenvolvedora Front-End <br>
+            Desenvolvedora Full-Stack <br>
             <small>rafaela@greengoifpr.com.br</small>
         </span>
     </div>

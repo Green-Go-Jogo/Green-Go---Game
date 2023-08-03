@@ -14,7 +14,6 @@ class EquipeDAO {
             $equipe = new Equipe(); 
             $equipe->setIdEquipe($reg['idEquipe']);
             $equipe->setNomeEquipe($reg['nomeEquipe']);
-            $equipe->setCodEntrada($reg['codEntrada']);
             $equipe->setCorEquipe($reg['cor']);
             $equipe->setIconeEquipe($reg['icone']);
            
@@ -63,18 +62,18 @@ class EquipeDAO {
     public function save(Equipe $equipe) {
         $conn = conectar_db();
 
-        $sql = "INSERT INTO equipe (nomeEquipe, codEntrada, cor, icone)".
-        " VALUES (?, ?, ?, ?)";
+        $sql = "INSERT INTO equipe (nomeEquipe, cor, icone)".
+        " VALUES (?, ?, ?)";
         $stmt = $conn->prepare($sql);
-        $stmt->execute([$equipe->getNomeEquipe(), $equipe->getCodEntrada(), $equipe->getCorEquipe(), $equipe->getIconeEquipe()]);
+        $stmt->execute([$equipe->getNomeEquipe(), $equipe->getCorEquipe(), $equipe->getIconeEquipe()]);
     }
 
     public function update(Equipe $equipe) {
         $conn = conectar_db();
     
-        $sql = "UPDATE equipe SET nomeEquipe = ?, codEntrada = ?, cor = ?, icone = ? WHERE idEquipe = ?";
+        $sql = "UPDATE equipe SET nomeEquipe = ?, cor = ?, icone = ? WHERE idEquipe = ?";
         $stmt = $conn->prepare($sql);
-        $stmt->execute([$equipe->getNomeEquipe(), $equipe->getCodEntrada(), $equipe->getCorEquipe(), $equipe->getIconeEquipe(), $equipe->getIdEquipe()]);
+        $stmt->execute([$equipe->getNomeEquipe(), $equipe->getCorEquipe(), $equipe->getIconeEquipe(), $equipe->getIdEquipe()]);
     }
 
     

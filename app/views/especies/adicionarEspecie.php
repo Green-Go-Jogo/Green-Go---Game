@@ -1,4 +1,5 @@
-<?php session_start(); ?>
+<?php 
+include_once("../users/sessions.php");?>
 <?php if (isset($_SESSION['msg_erro'])): ?>
     <span>
         <?= $_SESSION['msg_erro'] ?>

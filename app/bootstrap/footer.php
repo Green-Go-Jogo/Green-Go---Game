@@ -8,7 +8,7 @@
         <i class="fab fa-instagram custom-size"></i> projetogreengo
       </a>
         <div class="div email">
-      <i class="far fa-envelope custom-size"></i> contato@greengo.ipfr
+      <i class="far fa-envelope custom-size"></i> contato@greengoifpr.com.br
     </div>
       <div class="div telefone"><i class="fa fa-phone custom-size"></i> 45999999999</div>
         </div>

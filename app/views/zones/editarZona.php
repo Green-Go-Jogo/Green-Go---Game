@@ -5,6 +5,7 @@
     </span>
 <?php endif ?>
 <?php include_once("../../controllers/ZonaController.php");
+      include_once("../users/sessions.php");
 
 global $idEditarZona;
       if (!isset($_GET['id'])) {

@@ -4,7 +4,7 @@
     <title>Green Go</title>
 
     <!--FAVICON-->
-    <link rel="icon" href="../public/favicon.svg">
+    <link rel="icon" href="../../public/favicon.ico">
     <!-- Fonte -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet">
     <!--BOOTSTRAP-->
