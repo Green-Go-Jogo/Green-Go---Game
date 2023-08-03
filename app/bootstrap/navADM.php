@@ -3,7 +3,7 @@
              /* Cor de fundo desejada para a Navbar */
  
             font-size: 16px; /* Tamanho da fonte */
-            font-family: Poppins-regular, Roboto;
+            font-family: Poppins-regular;
         }
 
 .nav-item {
