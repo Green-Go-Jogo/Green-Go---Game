@@ -33,11 +33,17 @@ $codigo = $plantaCont->gerarCodigo();
                     sortField: 'text'
                     });
         }); </script>
-    
+        <!-- Progress bar -->
+    <script src="js/progressbar.min.js"></script>
+    <!-- Parallax -->
+    <script src="https://cdn.jsdelivr.net/parallax.js/1.4.2/parallax.min.js"></script>
     <link rel="stylesheet" href="../css/adicionarplanta.css">
     <link rel="stylesheet" href="../css/plantas.css">
     <link rel="stylesheet" href="../css/listPlanta.css">
+    
+    <?php include_once("../../bootstrap/header.php");?>
     <link rel="stylesheet" href="css/index.css">
+
     <link rel="stylesheet" href="css/editorwys.css" type="text/css" media="all" />
     <script type="text/javascript" src="../js/script.js"></script>
 
@@ -49,109 +55,6 @@ $codigo = $plantaCont->gerarCodigo();
 
 </nav>
 
-<style>
-
-img {
-    width: 30%;
-    height: auto;
-}
-
-.cke_resizer {
-display: none !important;
-}
-
-      
-
-#txtNomeForm {
-    border-radius: 5px;
-}
-
-#txtPontos {
-    border-radius: 5px;
-}
-
-#carregueimagemtexto {
-    margin-bottom: 5px;
-}
-
-.container > :is(.preview-image, .form) {
-  width: 100%;
-}
-
-.container > .preview-image > img {
-  width: 100%;
-  object-fit: contain;
-}
-
-.container > .form {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
-.container > .form > input {
-  width: 100%;
-  border: 1px solid rgba(200, 200, 200, 1);
-  padding: 8px;
-  font-size: 16px;
-  border-radius: 4px;
-}
-.container > .form > input::-webkit-file-upload-button {
-  font-size: 12px;
-  font-family: "Space Grotesk";
-  border: 1px solid rgba(200, 200, 200, 1);
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.container > .form > button {
-  padding: 8px 16px;
-  font-size: 16px;
-  cursor: pointer;
-  border: 1px solid rgba(200, 200, 200, 1);
-  border-radius: 4px;
-}
-
-/* Estilos para o campo de texto do Selectize.js */
-.selectize-control.single .selectize-input,
-.selectize-control.single .selectize-input:focus, 
-.selectize-control.single .selectize-input.full {
-  width: 500px;
-  margin-top: 1px;
-  color: #ebf0f1;
-  background-color: #f0b6bc;
-  font-family: Poppins-semibold;
-}
-
-/* Estilos para o dropdown do Selectize.js */
-.selectize-dropdown-content .option {
-  color: #ebf0f1;
-  background-color: #f0b6bc;
-  font-family: Poppins-semibold;
-}
-
-.selectize-dropdown-content .option:hover {
-  background-color: #ec737c;
-}
-
-
-
-/* Estilos para o item selecionado no Selectize.js */
-.selectize-control.single .item {
-  background-color: #f0b6bc;
-  color: #ebf0f1;
-  font-family: Poppins-semibold;
-}
-
-/* Estilos para o item selecionado quando o dropdown está ativo */
-.selectize-input.active {
-  background-color: #f0b6bc;
-  color: #ebf0f1;
-  font-family: Poppins-semibold;
-}
-
-
-</style>
 
 <body>
     <main>
