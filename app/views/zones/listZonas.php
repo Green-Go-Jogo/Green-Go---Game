@@ -24,6 +24,7 @@ else if (!isset($_SESSION['adm']) && !isset($_SESSION['normal'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../csscheer/listzona.css">
     <link rel="stylesheet" href="../csscheer/footer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <title style= "color: #04574d;">Zonas</title>
@@ -51,38 +52,6 @@ else if (!isset($_SESSION['adm']) && !isset($_SESSION['normal'])) {
     <script src="https://cdn.jsdelivr.net/parallax.js/1.4.2/parallax.min.js"></script>
 
 
-<style>
-    .btn:hover {
-        color:#f58c95;
-        transform: scale(1.05);
-        text-decoration: none;
-    }
-
-    .navbar-nav .dropdown {
-    background-color: transparent;
-  }
-  
-  /* Estilo para os itens do dropdown */
-  .navbar-nav .dropdown-menu {
-    background-color: transparent;
-  }
-  
-  /* Estilo para os itens do dropdown quando o mouse passa por cima */
-  .navbar-nav .dropdown-menu .dropdown-item:hover {
-    background-color: transparent;
-  }
-
-  .custom-button {
-    background-color: transparent;
-    border: none;
-  }
-  
-  .custom-dropdown {
-  width: auto !important;
-  white-space: nowrap;
-}
-    </style>
-
 <head>
 
 <?php include_once("../../bootstrap/header.php");?>
@@ -96,16 +65,16 @@ else if (!isset($_SESSION['adm']) && !isset($_SESSION['normal'])) {
     
 </nav>
     
-  <h3 class="text-center primeirotextoreg">ZONAS</h3>
-   
-  <div style="margin: 40px 10px 0px 10px;">
-    <div style="float: right; padding-right: 70px;">
-        <a class="btn incluir" href="adicionarZona.php"> 
-
+<h1 class="text-center primeirotextoreg titulo-zonas">ZONAS</h1>
+   <main>
+   <div class="lista-zonas">
+  <div class="text-right" style="padding-right: 10px;">
+    <a class="btn incluir" href="adicionarZona.php">
         <svg xmlns="http://www.w3.org/2000/svg" width="90" height="60" fill="#04574d" viewBox="0 0 16 16">
-        <path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01-.622-.636zM8.5 6v1.5H10a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 1 0z"/> </svg>
-
-    </a> </div></div> <br> <br> <br> <br>
+        <path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01-.622-.636zM8.5 6v1.5H10a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 1 0z"/>
+        </svg>
+    </a>
+</div></div> <br> <br> <br> <br>
         
         <?php
             $zonaCont = new ZonaController();
@@ -116,6 +85,7 @@ else if (!isset($_SESSION['adm']) && !isset($_SESSION['normal'])) {
         </div>  
 
 </div>
+</main>
 <?php include_once("../../bootstrap/footer.php");?>
 </body>
 </html>

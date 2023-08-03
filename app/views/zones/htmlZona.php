@@ -30,6 +30,52 @@
             border-radius: 20px;
             transform: scale(1.05);
         }
+/* Estilos para todos os tamanhos de tela */
+.row.row-cols-4 {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.col-md-4 {
+    flex-basis: calc(25% - 20px);
+    margin-bottom: 20px;
+    padding: 10px; /* Adicionamos padding para criar espaçamento interno */
+}
+
+/* Estilos para telas menores que 768px (dispositivos móveis) */
+@media (max-width: 767px) {
+    .col-md-4 {
+        flex-basis: calc(50% - 20px);
+    }
+
+    .container.text-center {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+    }
+
+    .row.row-cols-4 {
+        justify-content: center;
+    }
+}
+
+/* Estilos para telas entre 768px e 991px (tablets) */
+@media (min-width: 768px) and (max-width: 991px) {
+    .col-md-4 {
+        flex-basis: calc(50% - 20px);
+    }
+}
+
+/* Estilos para telas maiores que 991px (desktops) */
+@media (min-width: 992px) {
+    .col-md-4 {
+        flex-basis: calc(25% - 20px);
+    }
+}
+
+
 
 </style>
 </html>
