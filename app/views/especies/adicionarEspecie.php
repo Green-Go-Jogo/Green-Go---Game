@@ -49,7 +49,6 @@ include_once("../users/sessions.php");?>
     <script type="text/javascript" src="js/script.js"></script>
     <link rel="stylesheet" href="../csscheer/especie.css">
 
-    <?php include_once("../../bootstrap/header.php");?>
 </head>
 
 <nav>
