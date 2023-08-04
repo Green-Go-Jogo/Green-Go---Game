@@ -48,26 +48,7 @@
 
 }
 
-#navbar-links {
-    margin-right: 90px;
 
-}
-
-#navbar-links a:hover {
-    -webkit-transform: scale(1.1);
-    -ms-transform: scale(1.1);
-    transform: scale(1.1);
-    height: min-content;
-
-}
-
-#logo {
-    max-width: 100%;
-    height: auto;
-    margin-top: 20px;
-    margin-left: 15px;
-
-}
 
 button,
 button:focus,
@@ -203,10 +184,6 @@ body {
     font-weight: bold;
 }
 
-#menuicon {
-    width: 40px;
-
-}
 
 body {
     overflow-x: hidden;
