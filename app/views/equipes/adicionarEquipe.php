@@ -14,41 +14,16 @@ include_once("../users/sessions.php");?>
 <html lang="pt-br">
 
 <head>
-    <?php include_once("../../bootstrap/header.php");?>
-    <title>Adicionar Equipe</title>
-    <link rel="stylesheet" href="../css/adicionarplanta.css">
-    <link rel="stylesheet" href="../css/plantas.css">
-    <script src="../js/icon.js"></script>
+
+<title>Adicionar Equipe</title>  
+
+<?php include_once("../../bootstrap/header.php");?>
+<link rel="stylesheet" href="../csscheer/equipe.css">
+
+<script src="../js/icon.js"></script>
 
 </head>
     
-
-
-</head>
-
-<style>
-
-#txtNomeEquipe {
-    color: #ebf0f1;
-    background-color: #f0b6bc;
-    margin-top: 1px;
-    font-family: Poppins-semibold;
-    border-radius: 5px;
-    width: 428px;
-}
-
-#txtCorForm {
-    color: #ebf0f1;
-    background-color: #f0b6bc;
-    margin-top: 1px;
-    font-family: Poppins-semibold;
-    border-radius: 100px;
-    width: 70px;
-    height: 70px;
-}
-
-</style>
-
 
 <nav>
 
@@ -75,12 +50,12 @@ include_once("../users/sessions.php");?>
                             <label for="formtexto" id="txtNome">Nome da Equipe:</label>
                             <div class="w-100"></div>
                             <input type="text" name="Nome_Equipe" class="form-control" id="txtNomeEquipe" aria-describedby="nome-cadastro">
-                            <div class="w-100"></div>
+                            <div class="w-100"></div><br>
 
                             <label for="formtexto" id="txtCodigo">Cor da Equipe: </label>
                             <div class="w-100"></div>
                             <input type="color" name="Cor_Equipe" class="form-control" id="txtCorForm" aria-describedby="nome-cadastro">
-                            <div class="w-100"> <br>
+                            <div class="w-100"><br><br>
 
                             <label id="txtCodigo" for="imagem">Escolha o Icone da Equipe:</label>
                             <br>
@@ -90,16 +65,15 @@ include_once("../users/sessions.php");?>
                             <option value="../../public/icon/flor_icon.png" data-imagem="../../public/icon/flor_icon.png">Flor</option>
                             <option value="../../public/icon/samambaia_icon.png" data-imagem="../../public/icon/samambaia_icon.png">Caladium</option>
                             </select>
-                            <br>
-                            <br>
+                            <br><br>
                             <div id="imagemSelecionada">
-                            <img src="../../public/icon/arvore_icon.png" alt="" id="previewImagem" style="width: 300px; height: 300px">
+                            <img src="../../public/icon/arvore_icon.png" alt="" id="previewImagem" style="width: 300px; height: 300px"> <br><br>
                             <div class="container">
                             <button type="submit" class="btn btn-primary btn-lg" id="botoesregistrar"><a>Adicionar</a> </button>
                             <button type="reset" class="btn btn-secondary btn-lg" id="botoeslimpar"> <a id="limpar"> Limpar</a>
                             </button>
                             </div>
-                            <br> <br>
+                            <br><br>
 
 
 
