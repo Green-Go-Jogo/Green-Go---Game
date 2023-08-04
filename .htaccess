@@ -1,7 +1,0 @@
-RewriteEngine On
-RewriteCond %{HTTPS} off [OR]
-RewriteCond %{HTTP_HOST} !^www\. [NC]
-RewriteRule ^ https://www.greengoifpr.com.br/app/views/home/index.php [L,R=301]
-
-RewriteCond %{HTTP_HOST} ^www\.greengoifpr\.com\.br$ [NC]
-RewriteRule ^$ https://www.greengoifpr.com.br/app/views/home/index.php [L,R=301]=301]
