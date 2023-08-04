@@ -21,11 +21,11 @@
 
         a.excluir:hover {
             color: var(--branco);
-            background-color: #f0b6bc ;
+            background-color: #f0b6bc;
             border-radius: 5px; }
 
         #NomeZona {
-            background-color: #C05367 !important;
+            background-color: #C05367;
             color: #FFFFFF !important;
             border-radius: 20px;
             transform: scale(1.05);

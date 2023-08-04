@@ -1,6 +1,59 @@
+:root {
+        /* Modo Escuro */
+        --principal: #078071;
+        --verdao: #04574d;
+        --cinzinha: #ebf0f1;
+        --destaque: #ED8E96;
+        --rosinha: #f0b6bc;
+        --rosão: #C05367;
+        --branquinho: #ffffff;
+        --verdinho: #7EC4BB;
+        --cinzaclaro: #272626;
+        --cinza: #1B1B1B;
+
+    width: 100%;
+    height: 100%;
+
+    font-family: Poppins-regular, Roboto;
+}
+
+    @font-face {
+        font-family: 'Cooper';
+        src: url('../fontes/cooperhewitt-heavy.otf');
+    }
+    
+    @font-face {
+        font-family: 'Poppins';
+        src: url('../fontes/Poppins-ExtraBold.ttf');
+    }
+    
+    @font-face {
+        font-family: 'Poppins-regular';
+        src: url('../fontes/Poppins-Regular.ttf');
+    }
+    
+    @font-face {
+        font-family: 'Poppins-semibold';
+        src: url('../fontes/Poppins-SemiBold.ttf');
+    }
+    
+    @font-face {
+        font-family: 'Poppins-medium';
+        src: url('../fontes/Poppins-Medium.ttf');
+    }
+
+
 body {
     background-color: #ebf0f1;
 }
+.text-center{
+    color: #04574d;
+}
+
+a.excluir:hover {
+    color: var(--branco);
+    background-color: #f0b6bc;
+    border-radius: 5px; }
 
 .modo-escuro{
     background-color: #1B1B1B;
@@ -11,9 +64,14 @@ body {
     background-color: #121212;
 }
 
+.modo-escuro a.excluir {
+    color: #C05367;
+    border-color: #C05367;
+    border-radius: 5px;
+}
 
 .modo-escuro a.excluir:hover {
-    color: #f0b6bc;
+    color: #C05367;
     background-color: #272626;
     border-radius: 5px;
 }
@@ -23,7 +81,7 @@ body {
 }
 
 .modo-escuro a.editar:hover{
-    background-color: #078071
+    background-color: #078071;
 }
 
 .modo-escuro .btn-jogar{
@@ -31,11 +89,15 @@ body {
     }
 
     .modo-escuro .btn-jogar:hover{
-        background-color: #078071
+        background-color: #078071;
     }
 
     .modo-escuro h1{
-        color: #078071
+        color: #078071 !important;
+    }
+
+    .modo-escuro h5{
+        background-color: #C05367 !important;
     }
 
     .modo-escuro .btn-custom{
@@ -55,6 +117,11 @@ body {
         color:#7EC4BB !important;
     }
 
-    .modo-escuro p{
-        color: #04574d;
+    .modo-escuro p.nome-texto {
+        color: #f0b6bc;
     }
+    
+    .modo-escuro  a.incluir{
+        color: #7EC4BB !important;
+    }
+

@@ -50,7 +50,7 @@ else if (!isset($_SESSION['adm']) && !isset($_SESSION['normal'])) {
 
 </nav>
     
-  <h3 class="text-center primeirotextoreg">ESPÉCIES</h3>
+  <h1 class="text-center primeirotextoreg">ESPÉCIES</h1>
    
     <div style="margin: 40px 10px 0px 10px;">
     <div class="text-right" style="padding-right: 10px;">

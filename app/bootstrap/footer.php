@@ -10,8 +10,10 @@
         <div class="div email">
       <i class="far fa-envelope custom-size"></i> contato@greengoifpr.com.br
     </div>
-      <div class="div localizacao"><a href="https://goo.gl/maps/Xc5RmJ4SV1EgZdnU8" class="localizacao"><i class="fa-solid fa-location-dot" style="color: #ffffff;"></i>  IFPR – Campus Foz do Iguaçu </a></div>
-        </div>
+    <a href="https://goo.gl/maps/Xc5RmJ4SV1EgZdnU8" target="_blank" class="instagram">
+        <i class="fa-solid fa-location-dot"></i> IFPR – Campus Foz do Iguaçu
+      </a>
+
 </div>
     <div class="direitos">
 

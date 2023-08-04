@@ -50,7 +50,7 @@
   
   .instagram:hover,
   .email:hover,
-  .telefone:hover {
+  .localizacao:hover {
     color: #f0b6bc;
     text-decoration: none;
     cursor: pointer;

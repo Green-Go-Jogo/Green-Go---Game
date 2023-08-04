@@ -71,7 +71,7 @@
 }
 
 .btn-jogar{
-  background-color:#338a5f;
+  background-color:#078071;
   color: #fff;
 }
 .btn-jogar:hover {
