@@ -21,7 +21,7 @@
 
         a.excluir:hover {
             color: var(--branco);
-            background-color: #f0b6bc !important;
+            background-color: #f0b6bc ;
             border-radius: 5px; }
 
         #NomeZona {

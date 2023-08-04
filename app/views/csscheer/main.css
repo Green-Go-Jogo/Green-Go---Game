@@ -1,12 +1,57 @@
+body {
+    background-color: #ebf0f1;
+}
 .modo-escuro{
-    background-color: black;
+    background-color: #1B1B1B;
     color: gray;
 }
 
-.modo-escuro .text-center{
-    color: gray;
+
+
+.modo-escuro .card{
+    background-color: #121212;
 }
 
-body{
-    overflow-x: hidden;
+
+.modo-escuro a.excluir:hover {
+    color: #f0b6bc;
+    background-color: #272626;
+    border-radius: 5px;
 }
+
+.modo-escuro a.editar{
+    background-color: #04574d;
+}
+
+.modo-escuro a.editar:hover{
+    background-color: #078071
+}
+
+.modo-escuro .btn-jogar{
+    background-color: #04574d;
+    }
+
+    .modo-escuro .btn-jogar:hover{
+        background-color: #078071
+    }
+
+    .modo-escuro h1{
+        color: #078071
+    }
+
+    .modo-escuro .btn-custom{
+        border-color:#f0b6bc ;
+        color:#f0b6bc;
+    }
+    .modo-escuro .btn-custom:hover {
+        color: #f0b6bc;
+        background-color: #121212;
+        border-radius: 5px;
+    }
+    .modo-escuro footer.footer {
+        background-color: #04574d;
+    }
+
+    .modo-escuro a.nav-link{
+        color:#7EC4BB !important;
+    }

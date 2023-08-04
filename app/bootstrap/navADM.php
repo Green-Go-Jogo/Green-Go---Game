@@ -34,7 +34,6 @@
 
 .btn-jogar{
   background-color:#338a5f;
-  border-color: #338a5f;
   color: #fff;
 }
 .btn-jogar:hover {
@@ -65,11 +64,11 @@ color:#fff;
 }
 </style>
 
-<body onload="carregar_modo()" style="background-color: #ebf0f1;">
+<body onload="carregar_modo()">
 <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
         <a href="../home/indexADM.php" class="navbar-brand">
-            <img src="../../public/logo-green.svg" alt="Logo" height="30">
+            <img  id="logo" src="../../public/logo-green.svg" alt="Logo" height="30">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarLinks"
             aria-controls="navbarLinks" aria-expanded="false" aria-label="Toggle navigation">

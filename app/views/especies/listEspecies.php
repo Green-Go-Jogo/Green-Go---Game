@@ -42,7 +42,7 @@ else if (!isset($_SESSION['adm']) && !isset($_SESSION['normal'])) {
     </style>
 
 </head>
-<body style="background-color: #ebf0f1;">
+<body >
 <nav>
 
 <?php include_once("../../bootstrap/navADM.php");?>
