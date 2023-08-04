@@ -77,8 +77,9 @@ $frutifera = $especie->getFrutifera();
 <html lang="pt-br">
 
 <head>
-    <?php include_once("../../bootstrap/header.php");?>
+    
     <title>Adicionar Especie</title>
+    <?php include_once("../../bootstrap/header.php");?>
     <link rel="stylesheet" href="../csscheer/especie.css">
 
 </head>

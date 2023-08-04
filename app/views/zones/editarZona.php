@@ -32,6 +32,8 @@ global $idEditarZona;
 <html lang="pt-br">
 
 <head>
+
+    <title>Editar Zona</title>
     <?php include_once("../../bootstrap/header.php");?>
     <link rel="stylesheet" href="../csscheer/zona.css">
 
@@ -83,7 +85,7 @@ global $idEditarZona;
 
                             <label for="formtexto" id="txtNome">Nome da Zona: </label>
                             <div class="w-100"></div>
-                            <input type="text" name="Nome_Zona" class="form-control" id="txtNomeZona" aria-describedby="nome-cadastro" value="<?php echo isset($_POST['Nome_Zona']) ? $_POST['Nome_Zona'] : $zona->getNomeZona(); ?>">
+                            <input type="text" name="Nome_Zona" class="form-control" id="txtNomeZona" style="width: 80%;" aria-describedby="nome-cadastro" value="<?php echo isset($_POST['Nome_Zona']) ? $_POST['Nome_Zona'] : $zona->getNomeZona(); ?>">
                             <?php if (isset($errors) && !empty($errors) && isset($errors['Nome_Zona'])) { ?>
                             <div class="alert alert-warning" style="position: left;"><?php echo $errors['Nome_Zona']; ?></div>
                             <?php } ?>
