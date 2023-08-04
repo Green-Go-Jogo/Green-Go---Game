@@ -79,15 +79,7 @@
   border-color: #04574d;
   color: #fff !important;
 }
-.navbar-toggler-icon-custom {
-  background-image: url("../../public/menu.svg");
-  width: 30px; 
-  height: 30px; 
-  background-size: contain;
-  background-repeat: no-repeat; 
-  display: 
-  
-}
+
 .dropdown-menu{
  border-color: #f0b6bc; 
 
@@ -101,6 +93,17 @@ background-color: #f0b6bc;
 color:#fff;
 }
 
+#menu {
+    width: auto;
+    height: 20px;
+}
+
+.navbar-toggler {
+    box-shadow: none;
+    border: none;
+    outline: none;
+}
+
 
 </style>
 
@@ -112,7 +115,7 @@ color:#fff;
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarLinks"
             aria-controls="navbarLinks" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon-custom"></span>
+            <img id="menu" src="../../public/menu.svg" alt="">
         </button>
 
         <div class="collapse navbar-collapse" id="navbarLinks">
