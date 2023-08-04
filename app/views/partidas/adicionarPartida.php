@@ -172,7 +172,7 @@ display: none !important;
                             $zonaCont = new ZonaController();
                             $zonas = $zonaCont->listar();
 
-                             ZonaHTMLForm::desenhaSelect($zonas, "zona_partida", "SomPlanta");
+                             ZonaHTMLForm::desenhaSelect($zonas, "partida_zona", "SomPlanta");
                             ?>
 
                             <div class="form-group">
@@ -188,7 +188,7 @@ display: none !important;
                             $equipeCont = new EquipeController();
                             $equipes = $equipeCont->listar();
 
-                             EquipeHTMLForm::desenhaSelect($equipes, "equipe_partida", "nome_equipe");
+                             EquipeHTMLForm::desenhaSelect($equipes, "partida_equipe", "nome_equipe");
                             ?>
                             </a>
                             
@@ -199,7 +199,8 @@ display: none !important;
                             <input type="number" name="Limite_Jogadores" class="form-control" id="txtNomeForm" aria-describedby="nome-cadastro" value="<?php echo isset($_POST['Limite_Jogadores']) ? $_POST['Limite_Jogadores'] : ''; ?>">
                             <div class="w-100"></div>  
 
-                            <label for="formtexto" id="txtNome">Tempo de Partida:</label>
+                            <br>
+                            <label for="formtexto" id="txtNome">Tempo de Partida (Minutos):</label>
                             <div class="w-100"></div>
                             <input type="number" name="Tempo_Partida" class="form-control" id="txtNomeForm" aria-describedby="nome-cadastro" value="<?php echo isset($_POST['Tempo_Partida']) ? $_POST['Tempo_Partida'] : ''; ?>">
                             <div class="w-100"></div>

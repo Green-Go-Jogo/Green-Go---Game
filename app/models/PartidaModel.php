@@ -8,6 +8,9 @@ Class Partida {
     private $LimiteJogadores;
     private $Zonas;
     private $Equipes;
+    private $Senha;
+    private $TempoPartida;
+    private $NomePartida;
     private $PontuacaoEquipe;
     private $PontuacaoUsuario;
 
@@ -170,6 +173,66 @@ Class Partida {
     public function setPontuacaoUsuario($PontuacaoUsuario)
     {
         $this->PontuacaoUsuario = $PontuacaoUsuario;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of Senha
+     */ 
+    public function getSenha()
+    {
+        return $this->Senha;
+    }
+
+    /**
+     * Set the value of Senha
+     *
+     * @return  self
+     */ 
+    public function setSenha($Senha)
+    {
+        $this->Senha = $Senha;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of TempoPartida
+     */ 
+    public function getTempoPartida()
+    {
+        return $this->TempoPartida;
+    }
+
+    /**
+     * Set the value of TempoPartida
+     *
+     * @return  self
+     */ 
+    public function setTempoPartida($TempoPartida)
+    {
+        $this->TempoPartida = $TempoPartida;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of NomePartida
+     */ 
+    public function getNomePartida()
+    {
+        return $this->NomePartida;
+    }
+
+    /**
+     * Set the value of NomePartida
+     *
+     * @return  self
+     */ 
+    public function setNomePartida($NomePartida)
+    {
+        $this->NomePartida = $NomePartida;
 
         return $this;
     }

@@ -118,15 +118,19 @@ class PartidaDAO {
       }
     
 
-    public function savePartida(Planta $planta) {
+      public function savePartida(Partida $partida) {
         $conn = conectar_db();
-
-        $sql = "INSERT INTO partida (nomeSocial, codQR, codNumerico, pontuacaoPlanta, historia, imagemPlanta, idZona, idEspecie, idUsuario)".
-        " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    
+        $sql = "INSERT INTO partida (nomePartida, limiteJogadores, senhaPartida, tempoPartida) VALUES (?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
-        $stmt->execute([$planta->getNomeSocial(), $planta->getQrCode(), $planta->getCodNumerico(), 
-                        $planta->getPontos(), $planta->getPlantaHistoria(), $planta->getImagemPlanta(), $planta->getZona()->getIdZona(), $planta->getEspecie()->getIdEspecie(), $planta->getUsuario()->getIdUsuario()]);
+        $stmt->execute([
+            $partida->getNomePartida(),
+            $partida->getLimiteJogadores(),
+            $partida->getSenha(),
+            $partida->getTempoPartida()
+        ]);
     }
+   
 
     public function update(Planta $planta) {
         $conn = conectar_db();

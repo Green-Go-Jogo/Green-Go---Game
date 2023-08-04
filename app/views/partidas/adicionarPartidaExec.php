@@ -5,83 +5,42 @@ include_once(__DIR__."/../../models/EquipeModel.php");
 include_once(__DIR__."/../../controllers/PartidaController.php");
 
 //Capturar os valores vindos do formulário
-$nomeSocial = $_POST["Nome_Social"];
-$Cod_Numerico = $_POST['Cod_Numerico'];
-$pontuacao = $_POST['Pontuacao'];
-$historia = $_POST['Historia'];
-$imagem = $_FILES['imagem'];
-$id_zona = $_POST['zona_planta'];
-$id_especie = $_POST['especie_planta'];
-$id_usuario = $_POST['id_usuario'];
+$nomePartida = $_POST["Nome_Partida"];
+$limiteJogadores = $_POST['Limite_Jogadores'];
+$tempoPartida = $_POST['Tempo_Partida'];
+$senhaSala = $_POST['Senha_Sala'];
+$senhaSalaConf = $_POST['ConfSenha_Sala'];
 
-//Tratar a imagem
-$extensao = pathinfo($imagem['name'], PATHINFO_EXTENSION);
-$nome_imagem = md5(uniqid($imagem['name'])).".".$extensao;
-$caminho_imagem = "../../public/plantas/" . $nome_imagem;
-move_uploaded_file($imagem["tmp_name"], $caminho_imagem);
+$zonas = array();
+$equipes = array();
 
-//Validar dados
-$errors = array();
-
-if (empty($nomeSocial)) {
-  $errors['Nome_Social'] = "O campo Nome Social é obrigatório.";
-} elseif (!preg_match('/^[a-zA-ZÀ-ÖØ-öø-ÿ0-9\s\-]+$/', $nomeSocial)) {
-  $errors['Nome_Social'] = "O campo Nome Social contém caracteres especiais.";
-}
-
-if (empty($id_zona)) {
-  $errors['zona_planta'] = "O campo Zona é obrigatório";
-} 
-
-if (empty($id_especie)) {
-  $errors['especie_planta'] = "O campo Espécie é obrigatório";
-} 
-
-if (empty($pontuacao)) {
-  $errors['Pontuacao'] = "O campo Pontuação é obrigatório!";
-} elseif (!preg_match('/^\d{2}$/', $pontuacao)) {
-  $errors['Pontuacao'] = "O campo Pontuação deve conter 2 ou menos dígitos!";
-}
-
-if (empty($historia)) {
-  $errors['Historia'] = "O campo História é obrigatório.";
-} 
-
-if (!empty($errors)) {
-    require_once("adicionarPlanta.php");
-    exit;
+foreach ($_POST as $name => $value) {
+  if (strpos($name, 'zona_') === 0) {
+      $zonas[] = $value;
+  } elseif (strpos($name, 'equipe_') === 0) {
+      $equipes[] = $value;
   }
+}
 
+    print_r($zonas); 
+    print_r($equipes); 
+    echo $nomePartida;
+    echo $limiteJogadores;
+    echo $tempoPartida;
+    echo $senhaSala;
+    echo $senhaSalaConf;
 
-//Criar o objeto planta
+$partida = new Partida();
+$partida->setNomePartida($nomePartida);
+$partida->setLimiteJogadores($limiteJogadores);
+$partida->setSenha($senhaSala);
+$partida->setTempoPartida($tempoPartida);
 
-//Gerar o QR Code
-$qrCodeTexto = "https://www.greengoifpr.com.br/app/views/plantas/visualizarPlanta.php?cod=" . urlencode($Cod_Numerico) . "&ide=". urlencode($id_especie);
-$qrCodeArq = "../../public/qrcode/qrcode_". $Cod_Numerico . ".png"; 
-QRcode::png($qrCodeTexto, $qrCodeArq, QR_ECLEVEL_L, 10); 
-
-$planta = new Planta();
-$planta->setNomeSocial($nomeSocial);
-$planta->setCodNumerico($Cod_Numerico);
-$planta->setPontos($pontuacao);
-$planta->setPlantaHistoria($historia);
-$planta->setImagemPlanta($caminho_imagem);
-$planta->setQrCode($qrCodeArq);
-
-$zona = new Zona($id_zona);
-$planta->setZona($zona);
-
-$especie = new Especie($id_especie);
-$planta->setEspecie($especie);
-
-$usuario = new Usuario($id_usuario);
-$planta->setUsuario($usuario);
-
-//Chamar o controler para salvar o planta
-$plantaCont = new PlantaController();
-$plantaCont->salvar($planta);
+$partidaCont = new PartidaController();
+$partidaCont->salvarPartida($partida);
 
 //Redireciona para o início
 header("location: listPlantas.php");
 
-?>
+  
+    ?>
