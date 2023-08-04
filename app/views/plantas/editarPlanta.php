@@ -30,58 +30,24 @@
     }
 ?>
 
-<link rel="stylesheet" href="../csscheer/planta.css">
+
 
 
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../csscheer/footer.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <title>Editar planta</title>
 
-    <!--FAVICON-->
-    <link rel="icon" href="../public/favicon.svg">
-    <!-- Fonte -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet">
-    <!--BOOTSTRAP-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
-    <!--scripts-->
-    <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-        crossorigin="anonymous"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js" integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="anonymous"></script>
-        <script>  $(document).ready(function() {
+    <?php include_once("../../bootstrap/header.php");?>
+    <title>Adicionar planta</title>
+    <script>  $(document).ready(function() {
                      $('select').addClass('custom-selectize').selectize({
                     sortField: 'text'
                     });
-        }); </script>
-        <!-- Progress bar -->
-    <script src="js/progressbar.min.js"></script>
-    <!-- Parallax -->
-    <script src="https://cdn.jsdelivr.net/parallax.js/1.4.2/parallax.min.js"></script>
-    
-    <?php include_once("../../bootstrap/header.php");?>
-
-    <link rel="stylesheet" href="css/editorwys.css" type="text/css" media="all" />
-    <script type="text/javascript" src="../js/script.js"></script>
-
-    <?php include_once("../../bootstrap/header.php");?>
+    }); 
+    </script>  
     <link rel="stylesheet" href="../csscheer/planta.css">
-    
+
 </head>
 
 <nav>
@@ -190,7 +156,7 @@
             <div class="w-100"></div>
             <div class="container" id="caixadetexto"> <br><br><br>
             <a id="textodescritivo">Descrição:</a> <br><br>
-            <textarea id="editor" name="Descricao" value=""></textarea>
+            <textarea id="editor" name="Historia" value=""></textarea>
             <script>
             CKEDITOR.replace('editor', {
             contentsCss: ['../csscheer/especie.css'],
@@ -215,6 +181,9 @@
             </button>
             </div>
 
+            <input type="hidden" name="id_planta" value="<?php echo $planta->getIdPlanta(); ?>" />
+            <input type="hidden" name="id_usuario" value="<?php echo $idADM ?>" />
+
 
             </form>
 
@@ -226,7 +195,6 @@
     </main>
     <?php include_once("../../bootstrap/footer.php");?>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/js/grayscale.js"></script>
     <script type="text/javascript" src="../js/imagem.js" defer></script>
 </body>
 

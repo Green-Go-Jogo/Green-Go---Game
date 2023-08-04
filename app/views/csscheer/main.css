@@ -1,0 +1,12 @@
+.modo-escuro{
+    background-color: black;
+    color: gray;
+}
+
+.modo-escuro .text-center{
+    color: gray;
+}
+
+body{
+    overflow-x: hidden;
+}

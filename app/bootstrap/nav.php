@@ -46,7 +46,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
-            <a href="#" class="navbar-brand">
+            <a href="../home/index.php" class="navbar-brand">
                 <img src="../../public/logo-green.svg" alt="Logo" height="30">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarLinks"
@@ -69,5 +69,3 @@
     </nav>
  
 
-    <!-- Adicione o link para o Bootstrap JS -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

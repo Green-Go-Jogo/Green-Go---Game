@@ -1,61 +1,32 @@
-const controls = document.querySelectorAll(".control");
-let currentItem = 0;
-const items = document.querySelectorAll(".item");
-const maxItems = items.length;
+const body = document.body;
+  var darkButton = document.querySelector('#dark-mode');
 
-controls.forEach((control) => {
-  control.addEventListener("click", (e) => {
-    isLeft = e.target.classList.contains("arrow-left");
-
-    if (isLeft) {
-      currentItem -= 1;
-    } else {
-      currentItem += 1;
-    }
-
-    if (currentItem >= maxItems) {
-      currentItem = 0;
-    }
-
-    if (currentItem < 0) {
-      currentItem = maxItems - 1;
-    }
-
-    items.forEach((item) => item.classList.remove("current-item"));
-
-    items[currentItem].scrollIntoView({
-      behavior: "smooth",
-      inline: "center",
-      block: "nearest"
-    });
-
-    items[currentItem].classList.add("current-item");
-  });
-});
-
-
-var btnClose = document.querySelector('.close-preview-js');
-var output = document.getElementById("new");
-var loaderFile = function(event){
-var reader = new FileReader();
-  reader.onload = function() {
-    output.style.display = "block";
-    btnClose.style.display = "block";
-    output.style.backgroundImage = "url("+reader.result+")";
+darkButton.addEventListener('click', () => {
+  console.log("aaaaaaa");
+  body.classList.toggle('modo-escuro');
+  if(darkButton.getAttribute('class') == 'btn btn-darkmode-light'){
+    darkButton.removeAttribute('class');
+    darkButton.setAttribute('class', 'btn btn-light');
+    darkButton.style.color = 'black';
+    localStorage.setItem('modo-escuro', 'true');
   }
-  reader.readAsDataURL(event.target.files[0]);
+  else{
+    darkButton.removeAttribute('class');
+    darkButton.setAttribute('class', 'btn btn-darkmode-light');
+    darkButton.style.color = 'white';
+    localStorage.setItem('modo-escuro', 'false');
+  }
+});
+function carregar_modo(){
+  if(localStorage.getItem('modo-escuro') == 'true'){
+    body.classList.toggle('modo-escuro');
+    darkButton.removeAttribute('class');
+    darkButton.setAttribute('class', 'btn btn-light');
+    darkButton.style.color = 'black';
+  }
+  else{
+    darkButton.removeAttribute('class');
+    darkButton.setAttribute('class', 'btn btn-darkmode-light');
+    darkButton.style.color = 'white';
+  }
 }
-
-var editarAvatar = document.querySelector(".editar-content");
-var buttonFile = document.getElementById("file-preview-js");
-
-editarAvatar.addEventListener("click", function(){
-  buttonFile.click();
-});
-
-btnClose.addEventListener("click", function(){
-  btnClose.style.display = "none";
-  output.style.backgroundImage = "url('')";
-  document.getElementById("file-preview-js").value = "";
-});
-   

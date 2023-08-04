@@ -15,7 +15,17 @@
   color: #C05367; 
 }
 
-/
+.btn-darkmode {
+  border-style: none;
+  width: 35px;
+  height: 35px;
+}
+
+.fa-moon {
+
+    font-size: 21px;
+}
+
 .btn-custom:hover {
   background-color: #f0b6bc; 
   border-color: #f0b6bc;
@@ -55,7 +65,7 @@ color:#fff;
 }
 </style>
 
-
+<body onload="carregar_modo()" style="background-color: #ebf0f1;">
 <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
         <a href="../home/indexADM.php" class="navbar-brand">
@@ -84,6 +94,7 @@ color:#fff;
                     <a class="nav-link" style="color: #338a5f;" href="../especies/listEspecies.php">Espécies</a>
                 </li>
             </ul>
+            
             <div class="ml-auto">
               
                 <div class="nav-item dropdown">
@@ -95,6 +106,8 @@ color:#fff;
                         <a class="dropdown-item" href="../users/sair.php">Sair</a>
                     </div>
                     <a href="#" class="btn btn-jogar">Jogar Agora</a>
+                    <button type="button" id="dark-mode" class="btn btn-darkmode-light"><i class="fa-solid fa-moon"></i></button>
+                    
                 </div>
                 
             </div>
@@ -102,5 +115,3 @@ color:#fff;
     </div>
 </nav>
 
-<!-- Adicione o link para o Bootstrap JS -->
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

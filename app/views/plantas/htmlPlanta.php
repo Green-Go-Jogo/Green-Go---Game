@@ -45,7 +45,7 @@ Class PlantaHTML {
         foreach ($plantas as $planta):
             echo "<div class='col-md-4'>";
             echo "<br>";
-            echo "<div class='card' style='width: 22rem;'>";
+            echo "<div class='card' style=' width: 22rem;'>";
             echo "<a href='visualizarPlanta.php?idp=".$planta->getIdPlanta()."&ide=".$planta->getEspecie()->getIdEspecie()."'><img src='".$planta->getImagemPlanta()."' style='width: 90%; height: 90%; margin-right: 10px; border-radius: 5px;'class='card-img-top mais' alt='...'></a>";
             echo "<div class='card-body'>";
             echo "<h5 id='nomePlanta' class='card-title nome-soc'>". $planta->getNomeSocial() ."</h5>"."<br>"; 
