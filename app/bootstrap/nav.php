@@ -102,7 +102,7 @@ color:#fff;
 }
 </style>
 
-
+<body onload="carregar_modo()">
 <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
             <a href="../home/index.php" class="navbar-brand">
