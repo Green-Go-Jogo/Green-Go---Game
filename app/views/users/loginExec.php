@@ -1,46 +1,18 @@
 <?php
 
-include_once(__DIR__."/../../connection/Connection.php");
+include_once(__DIR__."/../../controllers/UsuarioController.php");
+include_once(__DIR__."/../../models/UsuarioModel.php");
 
-$conexao = conectar_db();
 
 $email = $_POST['email'];
 $senha = $_POST['senha'];
 
-if(isset($_POST['email']) && isset($_POST['senha'])) {
-    
-    
-    $query = "SELECT * FROM usuario WHERE email = '$email' AND senha = '$senha'";
-    $stmt = $conexao->prepare($query);
-    $stmt->execute();
+$usuario = new Usuario;
+$usuario->setLogin($email);
+$usuario->setSenha($senha);
 
-    $num = $stmt->rowCount();
-    
-    if($num == 1){
-        while ($percorrer = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            // Manipule os dados conforme necessário
-            $tipo = $percorrer['tipoUsuario'];
-            $nome = $percorrer['nomeUsuario'];
-            $id = $percorrer['idUsuario'];
+$usuarioCont = new UsuarioController;
+$usuarioCont->logar($usuario);
 
-            session_start();
-            if($tipo == 2){
-                $_SESSION['id'] = $id;
-                $_SESSION['adm'] = $nome;
-                header("location: ../home/indexADM.php");
-            }
-            else if($tipo == 1){
-                $_SESSION['normal'] = $nome;
-                header("location: ../home/indexJOG.php");
-            }
-            else if($tipo == 3){
-                echo "professor";
-            }
-        }
-    }
-    else {
-        $aviso = "E-mail ou Senha incorretos!!!";
-        header('location: login.php?aviso=' . urlencode($aviso));
-        exit;
-    }
-}
+?>
+

@@ -1,13 +1,8 @@
 <?php include_once("../../controllers/ZonaController.php"); ?>
 <?php include_once("../../controllers/EquipeController.php"); ?>
 
-<?php 
-include_once("../users/sessions.php");?>
-<?php if (isset($_SESSION['msg_erro'])): ?>
-    <span>
-        <?= $_SESSION['msg_erro'] ?>
-    </span>
-<?php endif ?>
+<?php include_once("../users/sessions.php");?>
+
 
 <?php
 $id = $_GET['id'];

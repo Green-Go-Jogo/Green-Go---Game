@@ -3,21 +3,8 @@ include_once(__DIR__."/../../connection/Connection.php");
 include_once(__DIR__."/../../controllers/EspecieController.php");
 include_once(__DIR__."/htmlEspecie.php");
 ?>
-<?php 
+<?php include_once("../users/sessions.php");?>
 
-session_start();
-
-if(isset($_SESSION['adm'])){
-    $nomeADM = $_SESSION['adm'];
-} 
-else if(isset($_SESSION['normal'])){
-    header("location: ../users/login.php");
-}
-else if (!isset($_SESSION['adm']) && !isset($_SESSION['normal'])) {
-    header("Location: ../users/login.php");
-    exit;
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

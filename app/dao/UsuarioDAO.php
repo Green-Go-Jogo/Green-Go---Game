@@ -5,6 +5,7 @@ include_once(__DIR__."/../connection/Connection.php");
 include_once(__DIR__."/../models/UsuarioModel.php");
 class UsuarioDAO {
     private const SQL_USUARIO = "SELECT * FROM usuario u";
+
     private function mapUsuarios($resultSql) {
             $usuarios = array();
             foreach ($resultSql as $reg):
@@ -66,15 +67,17 @@ class UsuarioDAO {
         die("UsuarioDAO.findByLoginSenha - Erro: mais de um usuário");
     }
 
-    public function logon(){
-
-        if(isset($_POST['email']) && isset($_POST['senha'])) {
+    public function logon(Usuario $usuario){
+            $conn = conectar_db();
+            $email_or_login = $usuario->getLogin();
+            $senha = $usuario->getSenha();
     
     
-            $query = "SELECT * FROM usuario WHERE email = '$email' AND senha = '$senha'";
-            $stmt = $conexao->prepare($query);
+            $sql = USUARIODAO::SQL_USUARIO . " WHERE (email = :email_or_login OR loginUsuario = :email_or_login) AND senha = :senha";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':email_or_login', $email_or_login);
+            $stmt->bindParam(':senha', $senha);
             $stmt->execute();
-        
             $num = $stmt->rowCount();
             
             if($num == 1){
@@ -82,30 +85,31 @@ class UsuarioDAO {
                     // Manipule os dados conforme necessário
                     $tipo = $percorrer['tipoUsuario'];
                     $nome = $percorrer['nomeUsuario'];
+                    $id = $percorrer['idUsuario'];
         
                     session_start();
                     if($tipo == 2){
-                        $_SESSION['adm'] = $nome;
-                        $this->manterSessaoADM($nome);
-                        header("location: ../indexADM.php");
+                        $_SESSION['ID'] = $id;
+                        $_SESSION['ADM'] = $nome;
+                        header("location: ../home/indexADM.php");
                     }
                     else if($tipo == 1){
-                        $_SESSION['normal'] = $nome;
-                        $this->manterSessaoADM($nome);
-                        header("location: ../indexJOG.php");
+                        $_SESSION['ALUNO'] = $nome;
+                        header("location: ../home/indexJOG.php");
                     }
                     else if($tipo == 3){
-                        echo "professor";
+                        $_SESSION['PROFESSOR'] = $nome;
+                        header("location: ../home/indexADM.php");
                     }
                 }
             }
             else {
                 $aviso = "E-mail ou Senha incorretos!!!";
-                header('location: login.php?aviso=' . urlencode($aviso));
+                header('location: ../users/login.php?aviso=' . urlencode($aviso));
                 exit;
             }
         }
-    }
+    
 
     public function manterSessaoADM($nomeADM){
         session_start();

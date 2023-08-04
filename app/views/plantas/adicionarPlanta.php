@@ -1,8 +1,4 @@
-<?php if (isset($_SESSION['msg_erro'])): ?>
-    <span>
-        <?= $_SESSION['msg_erro'] ?>
-    </span>
-<?php endif ?>
+
 <?php include_once("../../controllers/ZonaController.php");
       include_once("../../controllers/EspecieController.php");
       include_once("../../controllers/PlantaController.php");
