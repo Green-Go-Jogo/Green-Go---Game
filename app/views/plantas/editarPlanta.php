@@ -38,8 +38,8 @@
 
 <head>
 
-    <title>Adicionar planta</title>
     <?php include_once("../../bootstrap/header.php");?>
+    <title>Adicionar planta</title>
     <script>  $(document).ready(function() {
                      $('select').addClass('custom-selectize').selectize({
                     sortField: 'text'

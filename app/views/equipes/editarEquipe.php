@@ -27,9 +27,9 @@ if($equipe == null) {
 
 <head>
     
+<link rel="stylesheet" href="../csscheer/equipe.css">
 <title>Editar Equipe</title>  
 
-<link rel="stylesheet" href="../csscheer/equipe.css">
 <?php include_once("../../bootstrap/header.php");?>
 <script src="../js/icon.js"></script>
 
