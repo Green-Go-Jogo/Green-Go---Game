@@ -106,7 +106,7 @@ color:#fff;
 <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
             <a href="../home/index.php" class="navbar-brand">
-                <img src="../../public/logo-green.svg" alt="Logo" height="30">
+                <img id="logo" src="../../public/logo-green.svg" alt="Logo" width="30" height="30">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarLinks"
                 aria-controls="navbarLinks" aria-expanded="false" aria-label="Toggle navigation">
