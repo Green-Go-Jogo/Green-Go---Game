@@ -1,20 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php 
-
-session_start();
-
-if(isset($_SESSION['adm'])){
-    $nomeADM = $_SESSION['adm'];
-} 
-else if(isset($_SESSION['normal'])){
-    header("location: users/login.php");
-}
-else if (!isset($_SESSION['adm']) && !isset($_SESSION['normal'])) {
-    header("Location: users/login.php");
-    exit;
-}
-?>
+<?php include_once("../users/sessions.php");?>
 <head>
     <?php include_once("../../bootstrap/header.php");?>
     <link rel="stylesheet" href="../css/projeto.css">

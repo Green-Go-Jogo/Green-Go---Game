@@ -1,10 +1,6 @@
 <?php 
 include_once("../users/sessions.php");?>
-<?php if (isset($_SESSION['msg_erro'])): ?>
-    <span>
-        <?= $_SESSION['msg_erro'] ?>
-    </span>
-<?php endif ?>
+
 
 <!DOCTYPE html>
 <html lang="pt-br">

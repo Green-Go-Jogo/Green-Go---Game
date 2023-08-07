@@ -4,7 +4,6 @@ const body = document.body;
   var logoImage = document.querySelector('#logo');
 
 darkButton.addEventListener('click', () => {
-  console.log("aaaaaaa");
   body.classList.toggle('modo-escuro');
   if(darkButton.getAttribute('class') == 'btn btn-darkmode'){
     darkButton.removeAttribute('class');
