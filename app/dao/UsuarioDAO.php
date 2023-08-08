@@ -93,12 +93,12 @@ class UsuarioDAO {
 
                    
             if($tipo == 1){
-            header("location: http://localhost/php/Green-Go---Game/app/views/home/indexADM.php");
+            header("location: ../home/indexADM.php");
             }
 
             else{
             $_SESSION['TIPO'] = $usuario->getTipoUsuario();
-            header("location: http://localhost/php/Green-Go---Game/app/views/home/indexADM.php");
+            header("location: ../home/indexADM.php");
             }
                  
 
