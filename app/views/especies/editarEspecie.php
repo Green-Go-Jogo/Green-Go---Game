@@ -1,4 +1,6 @@
-
+<?php include_once("../../controllers/LoginController.php");
+LoginController::manterUsuario();
+?>
 <?php if (isset($_SESSION['msg_erro'])): ?>
     <span>
         <?= $_SESSION['msg_erro'] ?>
@@ -6,7 +8,7 @@
   <?php endif ?> 
     
   <?php    include_once("../../controllers/EspecieController.php");
-           include_once("../users/sessions.php");
+     
       
       global $idEditarEspecie;
 

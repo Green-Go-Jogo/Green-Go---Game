@@ -1,13 +1,16 @@
-
+<?php include_once("../../controllers/LoginController.php");
+LoginController::manterUsuario();
+?>
 <?php include_once("../../controllers/ZonaController.php");
       include_once("../../controllers/EspecieController.php");
       include_once("../../controllers/PlantaController.php");
       include_once("../zones/htmlZonaForm.php");
       include_once("../especies/htmlEspecieForm.php");
-      include_once("../users/sessions.php");
+   
 
-      $plantaCont = new PlantaController();
-$codigo = $plantaCont->gerarCodigo();
+
+    $plantaCont = new PlantaController();
+    $codigo = $plantaCont->gerarCodigo();
       
 ?>
 
@@ -170,7 +173,7 @@ $codigo = $plantaCont->gerarCodigo();
 </div>
 <br><br><br>
 
-  <input type="hidden" name="id_usuario" value="<?php echo $idADM ?>" />
+  <input type="hidden" name="id_usuario" value="<?php echo $_SESSION['ID']; ?>" />
   </form>
 
 

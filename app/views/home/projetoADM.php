@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php include_once("../users/sessions.php");?>
+<?php include_once("../../controllers/LoginController.php");
+LoginController::manterUsuario();
+?>
 <head>
     <?php include_once("../../bootstrap/header.php");?>
     <link rel="stylesheet" href="../css/projeto.css">

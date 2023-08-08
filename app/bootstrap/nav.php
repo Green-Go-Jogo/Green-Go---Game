@@ -6,9 +6,7 @@
             font-family: Poppins-regular;
         }
 
-.nav-item {
 
-}
 
 .btn-custom {
   border-color: #C05367;

@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+<?php include_once("../../controllers/LoginController.php");
+LoginController::manterUsuario();
+?>
 
-<?php include_once("../users/sessions.php");?>
 
 <head>
     <?php include_once("../../bootstrap/header.php");?>

@@ -1,11 +1,13 @@
-
+<?php include_once("../../controllers/LoginController.php");
+LoginController::manterUsuario();
+?>
 <?php if (isset($_SESSION['msg_erro'])): ?>
     <span>
         <?= $_SESSION['msg_erro'] ?>
     </span>
 <?php endif ?>
 <?php include_once("../../controllers/ZonaController.php");
-include_once("../users/sessions.php");
+
 ?>
 
 

@@ -3,7 +3,7 @@
 
 include_once(__DIR__."/../dao/UsuarioDAO.php");
 
-class UsuarioController {
+class LoginController {
 
     private $usuarioDAO;
 
@@ -11,25 +11,28 @@ class UsuarioController {
         $this->usuarioDAO = new UsuarioDAO();
     }
 
-    public function listar() {
-        return $this->usuarioDAO->list();
+    public function logar($usuario) {
+        $this->usuarioDAO->logon($usuario);
     }
 
-    public function buscarPorId($idUsuario) {
-        return $this->usuarioDAO->findById($idUsuario);
+    public static function manterUsuario() {
+
+    session_start();
+
+    $nomeADM = $_SESSION['NOME']; 
+    $idADM = $_SESSION['ID'];
+    $tipoUsuario = $_SESSION['TIPO'];
+    
     }
 
-    public function salvar($usuario) {
-        $this->usuarioDAO->create($usuario);
-    }
+    public static function sair() {
+        session_start();
 
-    public function atualizar($usuario) {
-        $this->usuarioDAO->update($usuario);
+session_destroy();
+header("Location: login.php");   
     }
-
-    public function excluir($usuario) {
-        $this->usuarioDAO->delete($usuario);
-    }
+    
+    
 }
 
 ?>
