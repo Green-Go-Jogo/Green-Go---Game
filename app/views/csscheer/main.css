@@ -65,6 +65,38 @@ a.excluir:hover {
     background-color: #121212;
 }
 
+
+
+.modo-escuro a#excluirEquipe {
+    color: #ffffff;
+    border-color: #ffffff;
+    border-radius: 5px;
+    background-color: #121212;
+}
+
+.modo-escuro a#excluirEquipe:hover {
+    color: #ffffff;
+    background-color: #272626;
+    border-radius: 5px;
+}
+
+.modo-escuro a#editarEquipe{
+    background-color: #121212;
+    border-color: #ffffff;
+    color: #ffffff;
+
+}
+
+.modo-escuro a#editarEquipe:hover{
+    background-color: #272626;
+    color: #ffffff;
+}
+
+.modo-escuro h5#nomeEquipe {
+    color: #272626;
+}
+
+
 .modo-escuro a.excluir {
     color: #C05367;
     border-color: #C05367;
@@ -79,11 +111,13 @@ a.excluir:hover {
 
 .modo-escuro a.editar{
     background-color: #04574d;
+    color: #ffffff;
 }
 
 .modo-escuro a.editar:hover{
     background-color: #078071;
 }
+
 
 .modo-escuro .btn-jogar{
     background-color: #04574d;
@@ -125,4 +159,44 @@ a.excluir:hover {
     .modo-escuro  a.incluir{
         color: #7EC4BB !important;
     }
+
+    .modo-escuro div.dropdown-menu{
+        background-color: #121212;
+        border-color: #f0b6bc; 
+        color: #f0b6bc;
+        
+       
+       }
+       .modo-escuro a.dropdown-item{
+       color: #f0b6bc;
+       
+       }
+       .modo-escuro a.dropdown-item:hover{
+       background-color: #C05367; 
+       color:#fff;
+       }
+
+       .modo-escuro h3.subtitulo {
+        color: #078071;
+       }
+
+       .modo-escuro a.page-link{
+        color: #f0b6bc !important ;
+        background-color: #121212;
+        border-color: #f0b6bc; }
+
+    .modo-escuro a.page-link:hover,
+        .page-item.active a.page-link {
+        color: #ebf0f1 ;
+        background-color: #C05367;
+        }
+
+    .modo-escuro b {
+        color: #C05367;
+    }
+
+    .modo-escuro p {
+        color: #ffffff;
+    }
+
 

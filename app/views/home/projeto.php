@@ -13,27 +13,23 @@
 
 <style>
 
-a.page-link:hover {
-            color: #ebf0f1 !important;
-            background-color: #f58c95; }
-
         a.page-link{
-            color: #ebf0f1 !important;
+            color: #ebf0f1 ;
             background-color: #f58c95; }
    
         a.page-link:hover,
             .page-item.active a.page-link {
-            color: #ebf0f1 !important;
+            color: #ebf0f1 ;
             background-color: #C05367;
             }
 
         a.excluir:hover {
             color: var(--branco);
-            background-color: #f0b6bc !important;
+            background-color: #f0b6bc ;
             border-radius: 5px; }
 
             body {
-            overflow-x: hidden !important;
+            overflow-x: hidden ;
              }
 </style>    
 
@@ -48,7 +44,7 @@ a.page-link:hover {
                 O que é o <img src="../../public/isologo-greengo-verde.svg" width="95%" class="isologo">
             </h2>
 
-            <p> É o resultado dos avanços de um projeto de extensão denominado <b>Green Go: Jogo Educacional Sobre a 
+            <p> É o resultado dos avanços de um projeto de extensão denominado <b> Green Go: Jogo Educacional Sobre a 
                 Etnobotânica da Identificação
                     de
                     Plantas do IFPR</b>,

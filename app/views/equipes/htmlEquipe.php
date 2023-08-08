@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="../css/listPlanta.css">
 <style>
     #nomeEquipe {
-        background-color: #FFFFFF;
+        background-color: #FFFFFF !important;
         color: #04574d;
         border-radius: 20px;
     }
@@ -15,25 +15,26 @@
         border-radius: 20px;
     }
 
-    .editar {
-        background-color: #FFFFFF !important;
-        color: #338a5f !important;
-    }
-
-    .excluir {
-        color: #338a5f !important;
-        background-color: #FFFFFF !important;
+    #editarEquipe {
+        background-color: #FFFFFF;
+        color: #338a5f ;
         
     }
 
-    .editar:hover {
-        color: #04574d !important;
-        background-color: #338a5f !important;
+    #excluirEquipe {
+        color: #338a5f ;
+        background-color: #FFFFFF ;
+        
     }
 
-    .excluir:hover {
-        color: #FFFFFF !important;
-        background-color: #f0b6bc !important;
+    #editarEquipe:hover {
+        color: #04574d ;
+        background-color: #338a5f ;
+    }
+
+    #excluirEquipe:hover {
+        color: #FFFFFF ;
+        background-color: #f0b6bc ;
         
     }
 
@@ -53,8 +54,8 @@ Class EquipeHTML {
             echo "<a href='visualizarEquipe.php?ideq=".$equipe->getIdEquipe()."'><img src='".$equipe->getIconeEquipe()."' style='width: 55%; height: 50%;'class='card-img-top mais' alt='...'></a>";
             echo "<div class='card-body' style='background-color:" .$equipe->getCorEquipe()."'>";
             echo "<h5 class='card-title nome-soc' id='nomeEquipe'>". $equipe->getNomeEquipe() ."</h5>";
-            echo "<a href='editarEquipe.php?id=".$equipe->getIdequipe()."' class='btn btn-primary editar' >Editar</a>";
-            echo "<a href='deletarEquipe.php?id=".$equipe->getIdequipe()."' onclick='return confirm(\"Confirma a exclusão da equipe?\");' class='btn btn-alert excluir' >Excluir</a>";
+            echo "<a href='editarEquipe.php?id=".$equipe->getIdequipe()."' class='btn btn-primary editar' id='editarEquipe' >Editar</a>";
+            echo "<a href='deletarEquipe.php?id=".$equipe->getIdequipe()."' onclick='return confirm(\"Confirma a exclusão da equipe?\");' class='btn btn-alert excluir' id='excluirEquipe' >Excluir</a>";
             echo "<br>";
             echo "</div>";
             echo "</div>";
