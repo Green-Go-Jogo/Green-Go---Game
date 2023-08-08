@@ -42,7 +42,7 @@ class UsuarioDAO {
         $stmt->execute([$idUsuario]);
         $result = $stmt->fetchAll();
         //Criar o objeto Planta
-        $usuarios = $this->mapPlantas($result);
+        $usuarios = $this->mapUsuarios($result);
         if(count($usuarios) == 1)
             return $usuarios[0];
         elseif(count($usuarios) == 0)
@@ -52,64 +52,57 @@ class UsuarioDAO {
     }
 
     public function findByLoginSenha(string $login, string $senha) {
-        $conn = conectar_db();
+        $conn = conectar_db(); {}
         $sql = UsuarioDAO::SQL_USUARIO . 
-                " WHERE u.loginUsuario = ? AND u.senha = ?";
+        " WHERE (email = ? OR loginUsuario = ?) AND senha = ?";
         $stmt = $conn->prepare($sql);
-        $stmt->execute([$login, $senha]);
+        $stmt->execute([$login, $login, $senha]);
         $result = $stmt->fetchAll();
         //Criar o objeto Codigos
         $usuarios = $this->mapUsuarios($result);
         if(count($usuarios) == 1)
             return $usuarios[0];
         elseif(count($usuarios) == 0)
-            return null;
-        die("UsuarioDAO.findByLoginSenha - Erro: mais de um usuário");
+            return null;;
     }
 
     public function logon(Usuario $usuario){
-            $conn = conectar_db();
             $email_or_login = $usuario->getLogin();
             $senha = $usuario->getSenha();
-    
-    
-            $sql = USUARIODAO::SQL_USUARIO . " WHERE (email = :email_or_login OR loginUsuario = :email_or_login) AND senha = :senha";
-            $stmt = $conn->prepare($sql);
-            $stmt->bindParam(':email_or_login', $email_or_login);
-            $stmt->bindParam(':senha', $senha);
-            $stmt->execute();
-            $num = $stmt->rowCount();
-            
-            if($num == 1){
-                while ($percorrer = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                    // Manipule os dados conforme necessário
-                    $tipo = $percorrer['tipoUsuario'];
-                    $nome = $percorrer['nomeUsuario'];
-                    $id = $percorrer['idUsuario'];
-        
-                    session_start();
-                    if($tipo == 2){
-                        $_SESSION['ID'] = $id;
-                        $_SESSION['ADM'] = $nome;
-                        header("location: ../home/indexADM.php");
-                    }
-                    else if($tipo == 1){
-                        $_SESSION['ALUNO'] = $nome;
-                        header("location: ../home/indexJOG.php");
-                    }
-                    else if($tipo == 3){
-                        $_SESSION['PROFESSOR'] = $nome;
-                        header("location: ../home/indexADM.php");
-                    }
-                }
+
+            $usuario = $this->findByLoginSenha($email_or_login, $senha);
+
+            if ($usuario == null) {
+                $aviso = "E-mail ou Senha incorretos!!!";
+                header('location: login.php?aviso=' . urlencode($aviso));
+                exit;
             }
             else {
-                $aviso = "E-mail ou Senha incorretos!!!";
-                header('location: ../users/login.php?aviso=' . urlencode($aviso));
-                exit;
+                $this->createSession($usuario);
             }
         }
     
+        public function createSession(Usuario $usuario) {
+
+             session_start();
+             $_SESSION['ID'] = $usuario->getIdUsuario();
+             $_SESSION['NOME'] = $usuario->getNomeUsuario();
+             $_SESSION['TIPO'] = $usuario->getTipoUsuario();
+
+             $tipo = $usuario->getTipoUsuario();
+
+                   
+            if($tipo == 1){
+            header("location: http://localhost/php/Green-Go---Game/app/views/home/indexADM.php");
+            }
+
+            else{
+            $_SESSION['TIPO'] = $usuario->getTipoUsuario();
+            header("location: http://localhost/php/Green-Go---Game/app/views/home/indexADM.php");
+            }
+                 
+
+        }
 
     public function manterSessaoADM($nomeADM){
         session_start();

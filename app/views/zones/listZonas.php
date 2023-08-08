@@ -3,7 +3,10 @@ include_once(__DIR__."/../../connection/Connection.php");
 include_once(__DIR__."/../../controllers/ZonaController.php");
 include_once(__DIR__."/htmlZona.php");
 ?>
-<?php include_once("../users/sessions.php");?>
+<?php include_once("../../controllers/LoginController.php");
+LoginController::manterUsuario();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

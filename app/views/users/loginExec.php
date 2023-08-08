@@ -1,6 +1,6 @@
 <?php
 
-include_once(__DIR__."/../../controllers/UsuarioController.php");
+include_once(__DIR__."/../../controllers/LoginController.php");
 include_once(__DIR__."/../../models/UsuarioModel.php");
 
 
@@ -11,8 +11,8 @@ $usuario = new Usuario;
 $usuario->setLogin($email);
 $usuario->setSenha($senha);
 
-$usuarioCont = new UsuarioController;
-$usuarioCont->logar($usuario);
+$loginCont = new LoginController;
+$loginCont->logar($usuario);
 
 ?>
 

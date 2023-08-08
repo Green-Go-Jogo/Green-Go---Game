@@ -6,9 +6,7 @@
             font-family: Poppins-regular;
         }
 
-.nav-item {
 
-}
 
 .btn-custom {
   border-color: #C05367;
@@ -141,11 +139,11 @@ color:#fff;
               
                 <div class="nav-item dropdown">
                     <a href="#" class="btn btn-outline btn-custom dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <?php echo $nomeADM; ?>
+                        <?php echo $_SESSION['NOME']; ?>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="#">Perfil</a>
-                        <a class="dropdown-item" href="../users/sair.php">Sair</a>
+                        <a class="dropdown-item" href="../users/sairExec.php">Sair</a>
                     </div>
                     <a href="#" class="btn btn-jogar">Jogar Agora</a>
                     <button type="button" id="dark-mode" class="btn btn-darkmode"><i id="logoDarkMode" class="fa-solid fa-moon"></i></button>                    

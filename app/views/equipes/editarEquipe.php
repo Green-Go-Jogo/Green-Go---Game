@@ -1,7 +1,8 @@
 <?php include_once("../../controllers/ZonaController.php"); ?>
 <?php include_once("../../controllers/EquipeController.php"); ?>
-
-<?php include_once("../users/sessions.php");?>
+<?php include_once("../../controllers/LoginController.php");
+LoginController::manterUsuario();
+?>
 
 
 <?php

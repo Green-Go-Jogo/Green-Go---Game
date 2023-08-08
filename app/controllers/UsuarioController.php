@@ -33,18 +33,10 @@ class UsuarioController {
         $this->usuarioDAO->manterSessaoADM($nomeADM);
     }
 
-    public function logar($usuario) {
-        $this->usuarioDAO->logon($usuario);
-    }
 
     public function sair($nomeADM) {
         $this->usuarioDAO->logout($nomeADM);
     }
-
-    public function sairInd($nomeADM) {
-        $this->usuarioDAO->logoutInd($nomeADM);
-    }
-
 
     public function salvar($usuario) {
         $this->usuarioDAO->save($usuario);

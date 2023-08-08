@@ -1,11 +1,10 @@
 <?php
-
 session_start();
 
-if(isset($_SESSION['ADM'])){
-    $nomeADM = $_SESSION['ADM'];
+if(isset($_SESSION['ID']) && $_SESSION['TIPO'] == 2){
+    $nomeADM = $_SESSION['NOME']; 
     $idADM = $_SESSION['ID'];
-} 
+}
 else if(isset($_SESSION['ALUNO'])){
     header("location: users/login.php");
 }
