@@ -2,6 +2,7 @@
 <?php include_once("../../controllers/EquipeController.php"); ?>
 <?php include_once("../../controllers/LoginController.php");
 LoginController::manterUsuario();
+LoginController::verificarAcesso([2, 3]);
 ?>
 
 

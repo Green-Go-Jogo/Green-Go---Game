@@ -28,10 +28,29 @@ class LoginController {
     public static function sair() {
         session_start();
 
-session_destroy();
-header("Location: login.php");   
+        session_destroy();
+        header("Location: login.php");   
     }
     
+    public static function verificarAcesso($allowedTypes) {
+
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+    
+        if (!isset($_SESSION['ID'])) { 
+            $nologin = "Você precisa se conectar primeiro!";
+            header('location: ../users/login.php?aviso=' . urlencode($nologin));;
+            exit;
+        }
+    
+        $tipoUsuario = $_SESSION['TIPO'];
+    
+        if (!in_array($tipoUsuario, $allowedTypes)) {
+            header("location: ../home/erro.php");
+            exit;
+        }
+    }
     
 }
 

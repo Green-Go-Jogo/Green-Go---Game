@@ -19,7 +19,7 @@
             <div class="col align-self-end">
                 <img class="img-top" src="../../public/imagem-top.svg">
             </div>
-
+                     
             <div class="col align-self-center centrao">
                 <h2 class="titulo">
                     Entrar na conta
@@ -48,6 +48,12 @@
                         </div> -->
                     </div>
 <br>
+<?php
+if (isset($_GET['nologin'])) {
+    $nologin = $_GET['nologin'];
+    echo '<div class="alert alert-warning">' . htmlspecialchars($nologin) . '</div>';
+}
+?>  
                     <?php
 if (isset($_GET['aviso'])) {
     $aviso = $_GET['aviso'];

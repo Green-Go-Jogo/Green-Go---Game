@@ -2,6 +2,7 @@
 <html lang="en">
 <?php include_once("../../controllers/LoginController.php");
 LoginController::manterUsuario();
+LoginController::verificarAcesso([2, 3]);
 ?>
 <head>
     <?php include_once("../../bootstrap/header.php");?>

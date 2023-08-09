@@ -1,6 +1,7 @@
 <?php include_once("../../controllers/ZonaController.php"); ?>
 <?php include_once("../../controllers/LoginController.php");
 LoginController::manterUsuario();
+LoginController::verificarAcesso([2, 3]);
 ?>
 
 <!DOCTYPE html>
