@@ -59,11 +59,6 @@ body {
     font-size: 25px;
 }
 
-.a {
-    display: inline-flex;
-    justify-content: center;
-}
-
 .card {
     background-color: #f0b6bc;
     border-style: dashed;
@@ -76,5 +71,10 @@ body {
     color: #04574d;
     font-size: 55px;
     font-family: Poppins;
-    padding-top: 20px;
+}
+
+#welcome {
+    color:#078071;
+    font-size: 20px;
+    font-family: Poppins-regular;
 }

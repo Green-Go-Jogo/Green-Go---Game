@@ -203,3 +203,12 @@ a.excluir:hover {
         color: #04574d;
     }
 
+    .modo-escuro #titulo {
+        color: #078071;
+    }
+
+    .modo-escuro #welcome {
+    color:#7EC4BB;
+}
+
+

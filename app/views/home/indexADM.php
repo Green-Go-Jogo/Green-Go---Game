@@ -10,47 +10,37 @@ LoginController::verificarAcesso([2,3]);
     <?php include_once("../../bootstrap/header.php");?>
     <link rel="stylesheet" href="../csscheer/dashboard.css">
     <link rel="stylesheet" href="../csscheer/footer.css">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
 </head> 
 
-<style>
-
-html, body {
-        height: 100%;
-    }
-
-    body {
-        display: flex;
-        flex-direction: column;
-        margin: 0;
-        padding: 0;
-    }
-
-    main {
-        flex: 1;
-    }
-
-</style>
-
 <body>
 
-<a class="container text-center" id="titulo"> PORTAL DO PROFESSOR </a> <br><br>
+<?php include_once("../../bootstrap/navProf.php") ?>
 
-<div class="row row-cols-4" id="card">
+<br>
+<div class="container text-center">
+<a id="titulo"> PORTAL DO PROFESSOR </a> <br>
+
+<c id="welcome"> Seja bem-vindo ao portal de administração do professor! </c> </div> <br><br>
+
+<<div class="container text-center">
+<div class="row" id="card">
+<div class="col">
 <div class="card container text-center" style="width: 20rem;">
   <div class="card-body">
   <i class="fa-solid fa-earth-americas" style="color: #ffffff;"></i>
     <a href="..\home\projeto.php" class="btn" style="color: #ffffff;"> Projeto </a>
-  </div>
-</div> <br>
+  </div> </div> </div> <br>
 
+<div class="col">
 <div class="card container text-center" style="width: 20rem;">
   <div class="card-body">
   <i class="fa-solid fa-users" style="color: #ffffff;"></i>
     <a href="..\equipes\listEquipes.php" class="btn" style="color: #ffffff;"> Equipes </a>
   </div>
-</div> </div> <br>
+</div> </div> </div> <br>
 
 <div class="row row-cols-4" id="card">
 <div class="card container text-center" style="width: 20rem;">
@@ -78,19 +68,10 @@ html, body {
 <div class="card container text-center" id="card" style="width: 20rem;">
   <div class="card-body">
   <i class="fa-solid fa-gamepad" style="color: #ffffff;"></i>
-    <a href="..\zones\listZonas.php" class="btn" style="color: #ffffff;"> Partida </a>
+    <a href="..\partidas\adicionarPartida.php" class="btn" style="color: #ffffff;"> Partida </a>
   </div>
-</div> </div> <br>
-
-<div class="row row-cols-4" id="card">
-<div class="card container text-center" id="card" style="width: 20rem;">
-  <div class="card-body">
-  <i class="fa-solid fa-user-gear" style="color: #ffffff;"></i>
-    <a href="..\zones\listZonas.php" class="btn" style="color: #ffffff;"> Usuários </a>
-  </div>
-</div> </div> <br>
+</div> </div> </div>
     
-
 <?php include_once("../../bootstrap/footer.php");?>
 
 </body>
