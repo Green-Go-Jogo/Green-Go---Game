@@ -203,6 +203,7 @@ a.excluir:hover {
         color: #04574d;
     }
 
+<<<<<<< HEAD
     .modo-escuro #titulo {
         color: #078071;
     }
@@ -212,3 +213,91 @@ a.excluir:hover {
 }
 
 
+=======
+    .modo-escuro button#botoesregistrar {
+        background-color: #04574d;
+        color: #ffffff;
+    }
+
+    .modo-escuro button#botoesregistrar:hover{
+        background-color: #078071;
+    }
+
+    .modo-escuro button#botoeslimpar {
+        color: #ED8E96;
+        background-color: #1B1B1B;
+        border-color: #ED8E96;
+        border-radius: 5px;
+    }
+    
+    .modo-escuro button#botoeslimpar:hover {
+        color: #ED8E96;
+        background-color: #121212;
+        border-radius: 5px;
+    }
+
+    .modo-escuro label {
+        color: #078071 !important;
+    }
+
+    .modo-escuro a#carregueimagemtexto {
+        color: #078071;
+    }
+
+    .modo-escuro a#carregueimagemtexto2 {
+        color: #f0b6bc;
+    }
+
+    .modo-escuro a#textodescritivo {
+        color: #078071;
+    }
+
+    .modo-escuro h1#primeirotextoreg {
+        color: #f0b6bc !important;
+    }
+
+
+    
+    .modo-escuro input#txtNomeForm,.modo-escuro input#txtNomeZona, .modo-escuro input#txtCodigoForm,
+    .modo-escuro input#txtNomeEquipe, .modo-escuro div.selectize-input, .modo-escuro input#txtCorForm {
+        background-color: #121212 !important;
+        border-color: #C05367 !important;
+        border-width: 3px;
+
+    }
+    
+    .modo-escuro select#imagem{
+        background-color: #121212 !important;
+        border-color: #C05367 !important;
+        border-width: 1px;
+
+    }
+
+
+    .modo-escuro .selectize-dropdown-content .option {
+        color: #ebf0f1;
+        background-color: #121212;
+        font-family: Poppins-semibold;
+      }
+      
+      .modo-escuro .selectize-dropdown-content .option:hover {
+        background-color: #C05367;
+      }
+      
+      
+      
+      
+      .modo-escuro .selectize-control.single .item {
+        background-color: #121212;
+        color: #ebf0f1;
+        font-family: Poppins-semibold;
+      }
+      
+      
+      .modo-escuro .selectize-input.active {
+          background-color: #121212;
+          color: #ebf0f1;
+          font-family: Poppins-semibold;
+        }
+
+>>>>>>> f49a072f9fcdb5fc1c7ec69933784799b90613fe
