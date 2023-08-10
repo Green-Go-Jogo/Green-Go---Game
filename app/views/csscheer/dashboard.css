@@ -78,3 +78,10 @@ body {
     font-size: 20px;
     font-family: Poppins-regular;
 }
+
+.door-icon {
+    color: #f0b6bc;
+  }
+  .door-icon:hover {
+    color: #C05367;
+  }

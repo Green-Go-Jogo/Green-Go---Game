@@ -21,11 +21,12 @@ LoginController::verificarAcesso([2,3]);
 
 <br>
 <div class="container text-center">
-<a id="titulo"> PORTAL DO PROFESSOR </a> <br>
+<a id="titulo"> PORTAL DO <?php if ($_SESSION["TIPO"] == 2) { echo "ADMINISTRADOR";} else {echo "PROFESSOR";} ?></a> <br>
 
-<c id="welcome"> Seja bem-vindo ao portal de administração do professor! </c> </div> <br><br>
+<c id="welcome"> Seja Bem vindo <?php echo $_SESSION['NOME']; ?>! </c> </div> <br><br>
 
-<<div class="container text-center">
+
+<div class="container text-center">
 <div class="row" id="card">
 <div class="col">
 <div class="card container text-center" style="width: 20rem;">
@@ -75,5 +76,15 @@ LoginController::verificarAcesso([2,3]);
 <?php include_once("../../bootstrap/footer.php");?>
 
 </body>
-
+<script>
+    $(document).ready(function() {
+      $("#doorIcon").mouseover(function() {
+        $(".door-icon").removeClass("fa-door-closed").addClass("fa-door-open");
+      });
+      
+      $("#doorIcon").mouseout(function() {
+        $(".door-icon").removeClass("fa-door-open").addClass("fa-door-closed");
+      });
+    });
+  </script>
 </html>
