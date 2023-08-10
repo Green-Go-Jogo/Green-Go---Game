@@ -1,0 +1,80 @@
+:root {
+    --principal: #338a5f;
+    --verdao: #04574d;
+    --branco: #ebf0f1;
+    --destaque: #f58c95;
+    --rosinha: #f0b6bc;
+    --rosão: #C05367;
+    --cinza: #586660;
+    --cinzinha: #d3dadb;
+    --branquinho #ffffff;
+
+    width: 100%;
+    height: 100%;
+
+    font-family: Poppins-regular, Roboto;
+}
+
+    @font-face {
+        font-family: 'Cooper';
+        src: url('../fontes/cooperhewitt-heavy.otf');
+    }
+    
+    @font-face {
+        font-family: 'Poppins';
+        src: url('../fontes/Poppins-ExtraBold.ttf');
+    }
+    
+    @font-face {
+        font-family: 'Poppins-regular';
+        src: url('../fontes/Poppins-Regular.ttf');
+    }
+    
+    @font-face {
+        font-family: 'Poppins-semibold';
+        src: url('../fontes/Poppins-SemiBold.ttf');
+    }
+    
+    @font-face {
+        font-family: 'Poppins-medium';
+        src: url('../fontes/Poppins-Medium.ttf');
+    }
+
+body {
+    background-color: #ebf0f1;;
+}
+
+.btn {
+    font-size: 35px;
+    font-family: Poppins;
+}
+
+.btn:hover {
+    color: #C05367 !important;
+    font-size: 35px;
+    font-family: Poppins;
+}
+
+.fa-solid {
+    font-size: 25px;
+}
+
+.a {
+    display: inline-flex;
+    justify-content: center;
+}
+
+.card {
+    background-color: #f0b6bc;
+    border-style: dashed;
+    border-width: 4px;
+    border-color: #C05367;
+}
+
+
+#titulo {
+    color: #04574d;
+    font-size: 55px;
+    font-family: Poppins;
+    padding-top: 20px;
+}
