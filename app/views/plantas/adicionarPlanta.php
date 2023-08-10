@@ -33,7 +33,47 @@ LoginController::verificarAcesso([2, 3]);
     <link rel="stylesheet" href="../csscheer/planta.css">
 
 </head>
+<style>
 
+.selectize-control.single .selectize-input,
+.selectize-control.single .selectize-input:focus, 
+.selectize-control.single .selectize-input.full {
+  width: 500px;
+  margin-top: 1px;
+  color: #ebf0f1;
+  background-color: #f0b6bc;
+  font-family: Poppins-semibold;
+}
+
+
+.selectize-dropdown-content .option {
+  color: #ebf0f1;
+  background-color: #f0b6bc;
+  font-family: Poppins-semibold;
+}
+
+.selectize-dropdown-content .option:hover {
+  background-color: #ec737c;
+}
+
+
+
+
+.selectize-control.single .item {
+  background-color: #f0b6bc;
+  color: #ebf0f1;
+  font-family: Poppins-semibold;
+}
+
+
+.selectize-input.active {
+  background-color: #f0b6bc;
+  color: #ebf0f1;
+  font-family: Poppins-semibold;
+}
+
+
+</style>
 <nav>
 
     <?php include_once("../../bootstrap/navADM.php");?>
