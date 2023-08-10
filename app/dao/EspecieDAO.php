@@ -22,7 +22,7 @@ class EspecieDAO {
             $especie->setComestivel($reg['comestivel']);
             $especie->setRaridade($reg['raridade']);
             $especie->setMedicinal($reg['medicinal']);
-            $especie->setToxidade($reg['toxidade']);
+            $especie->setToxidade($reg['toxicidade']);
             $especie->setExotica($reg['exotica']);
            
             array_push($especies, $especie);
@@ -70,7 +70,7 @@ class EspecieDAO {
     public function save(Especie $especie) {
         $conn = conectar_db();
 
-        $sql = "INSERT INTO especie (nomePop, nomeCie, descricao, imagemEspecie, frutifera, comestivel, raridade, medicinal, toxidade, exotica)".
+        $sql = "INSERT INTO especie (nomePop, nomeCie, descricao, imagemEspecie, frutifera, comestivel, raridade, medicinal, toxicidade, exotica)".
         " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
         $stmt->execute([$especie->getNomePopular(), $especie->getNomeCientifico(), $especie->getDescricao(), $especie->getImagemEspecie(),
@@ -80,7 +80,7 @@ class EspecieDAO {
     public function update(Especie $especie) {
         $conn = conectar_db();
     
-        $sql = "UPDATE especie SET nomePop = ?, nomeCie = ?, descricao = ?, imagemEspecie = ?, frutifera = ?, comestivel = ?, raridade = ?, medicinal = ?, toxidade = ?, exotica = ? WHERE idEspecie = ?";
+        $sql = "UPDATE especie SET nomePop = ?, nomeCie = ?, descricao = ?, imagemEspecie = ?, frutifera = ?, comestivel = ?, raridade = ?, medicinal = ?, toxicidade = ?, exotica = ? WHERE idEspecie = ?";
         $stmt = $conn->prepare($sql);
         $stmt->execute([$especie->getNomePopular(), $especie->getNomeCientifico(), $especie->getDescricao(), $especie->getImagemEspecie(),
         $especie->getFrutifera(), $especie->getComestivel(), $especie->getRaridade(), $especie->getMedicinal(), $especie->getToxidade(), $especie->getExotica(), $especie->getIdEspecie()]);
