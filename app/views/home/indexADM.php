@@ -16,21 +16,16 @@ LoginController::verificarAcesso([2,3]);
 </head> 
 
 <style>
-    body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    margin: 0;
-    padding: 0;
+   html, body {
+  height: 100%;
+  margin: 0;
 }
-
-main {
-    flex: 1;
+#nicolas-lindo {
+  height: 70%;
 }
 </style>
 
 <body>
-
 <?php include_once("../../bootstrap/navProf.php") ?>
 
 <br>
@@ -40,7 +35,7 @@ main {
 <c id="welcome"> Seja bem-vindo <?php echo $_SESSION['NOME']; ?>! </c> </div> <br><br>
 
 
-<div class="container text-center">
+<div class="container text-center" id="nicolas-lindo">
 <div class="row" id="card">
 <div class="col">
 <div class="card container text-center" style="width: 20rem;">
@@ -86,6 +81,6 @@ main {
     <a href="..\partidas\adicionarPartida.php" class="btn" style="color: #ffffff;"> Partida </a>
   </div>
 </div> </div> </div>
-   
+<div class="wrapper">
 <?php include_once("../../bootstrap/footer.php");?>
 </html>
