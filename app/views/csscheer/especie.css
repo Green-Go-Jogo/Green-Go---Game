@@ -207,3 +207,9 @@ input[type=checkbox]:checked:after {
 .ck-editor__editable_inline {
     min-height: 400px;
 }
+
+.fa-camera {
+    font-size: 33px;
+    color: #078071;
+  }
+  
