@@ -11,8 +11,10 @@ LoginController::verificarAcesso([2, 3]);
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+    <title>Espécies</title>
     <?php include_once("../../bootstrap/header.php");?>
-    <title>Adicionar Especie</title>
+
 
 </head>
 

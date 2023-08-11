@@ -1,4 +1,4 @@
-<html>
+
 <link rel="stylesheet" href="../css/listPlanta.css">
 <style>
 
@@ -78,7 +78,7 @@
 
 
 </style>
-</html>
+
 
 <?php
  Class ZonaHTML {
@@ -107,7 +107,7 @@
 }
 ?>
 
-<html>
+
 <link rel="stylesheet" href="../css/listPlanta.css">
-</html>
+
 

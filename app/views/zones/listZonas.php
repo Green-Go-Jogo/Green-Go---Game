@@ -12,10 +12,9 @@ LoginController::verificarAcesso([2, 3]);
 <html lang="en">
 <head>
 
-    <?php include_once("../../bootstrap/header.php");?>
-    <link rel="stylesheet" href="../csscheer/listzona.css">
-    <title>Zonas</title>
-
+<title>Zonas</title>
+<?php include_once("../../bootstrap/header.php");?>
+    
 </head>
 
 <nav>

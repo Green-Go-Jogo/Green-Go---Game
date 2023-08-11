@@ -1,6 +1,6 @@
-<html>
+
 <link rel="stylesheet" href="../css/listPlanta.css">
-</html>
+
 
 <style>
 
@@ -41,6 +41,51 @@
             border-radius: 20px;
             transform: scale(1.05);
         }
+
+        .row.row-cols-4 {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.col-md-4 {
+    flex-basis: calc(25% - 20px);
+    margin-bottom: 20px;
+    padding: 10px; 
+}
+
+
+@media (max-width: 767px) {
+    .col-md-4 {
+        flex-basis: calc(50% - 20px);
+    }
+
+    .container.text-center {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+    }
+
+    .row.row-cols-4 {
+        justify-content: center;
+    }
+}
+
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .col-md-4 {
+        flex-basis: calc(50% - 20px);
+    }
+}
+
+
+@media (min-width: 992px) {
+    .col-md-4 {
+        flex-basis: calc(25% - 20px);
+    }
+}
+
 </style>
 
 

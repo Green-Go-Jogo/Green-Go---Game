@@ -43,6 +43,15 @@
   height: 35px;
 }
 
+.btn-nav {
+  display: inline-flex; /* Para alinhar o ícone verticalmente com o texto */
+  align-items: center; /* Para alinhar o ícone verticalmente com o texto */
+  justify-content: center; 
+  border-style: none;
+  width: 35px;
+  height: 35px;
+}
+
 .btn-lightmode:hover {
     background-color: #1B1B1B; 
     border-color: #1B1B1B;
@@ -108,6 +117,15 @@ color:#fff;
   #usuario:hover {
     color: #078071;
   }
+  
+  .door-icon {
+    color: #f0b6bc;
+    margin-right: 5px;
+    font-size: 21px;
+  }
+  .door-icon:hover {
+    color: #C05367;
+  }
 
 
 </style>
@@ -121,11 +139,10 @@ color:#fff;
 
             <div class="ml-auto">
 
-                    <a href="../users/perfil.php"><i id="usuario" class="fa-solid fa-user-gear"></i></a>
-                    <a href="../users/sairExec.php"><i id="doorIcon" class="door-icon fa-solid fa-door-closed"></i></a>
+                    <a class="btn btn-nav" href="../users/perfil.php"><i id="usuario" class="fa-solid fa-user-gear"></i></a>
                     <button type="button" id="dark-mode" class="btn btn-darkmode"><i id="logoDarkMode" class="fa-solid fa-moon"></i></button>                    
-                </div>
-                
+                    <a class="btn btn-nav" href="../users/sairExec.php"><i id="doorIcon" class="door-icon fa-solid fa-door-closed"></i></a>
+                  </div>              
             </div>
         </div>
     </div>

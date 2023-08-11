@@ -188,7 +188,7 @@ LoginController::verificarAcesso([2, 3]);
             <textarea id="editor" name="Historia" value=""></textarea>
             <script>
             CKEDITOR.replace('editor', {
-            contentsCss: ['../csscheer/especie.css'],
+            contentsCss: ['../csscheer/planta.css'],
             removePlugins: 'elementspath',
             toolbar: [
             { name: 'clipboard', items: [ 'Cut', 'Copy' ] },

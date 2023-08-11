@@ -3,6 +3,16 @@ const body = document.body;
   var logoButton = document.querySelector('#logoDarkMode');
   var logoImage = document.querySelector('#logo');
 
+  $(document).ready(function() {
+    $("#doorIcon").mouseover(function() {
+      $(".door-icon").removeClass("fa-door-closed").addClass("fa-door-open");
+    });
+    
+    $("#doorIcon").mouseout(function() {
+      $(".door-icon").removeClass("fa-door-open").addClass("fa-door-closed");
+    });
+});
+
 darkButton.addEventListener('click', () => {
   body.classList.toggle('modo-escuro');
   if(darkButton.getAttribute('class') == 'btn btn-darkmode'){
@@ -43,3 +53,5 @@ function carregar_modo(){
     logoImage.setAttribute('src', '../../public/logo-green.svg');
   }
 }
+
+

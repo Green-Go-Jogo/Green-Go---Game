@@ -11,7 +11,7 @@ LoginController::verificarAcesso([2, 3]);
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
+    <title>Equipes</title>
     <?php include_once("../../bootstrap/header.php");?>
 
 

@@ -91,7 +91,7 @@
                             
 
                             <br>
-                            <label for="formtexto" id="txtNome">Limite de Jogadores:</label>
+                            <label for="formtexto" id="txtNome">Total de Jogadores (Divididos entre as equipes):</label>
                             <div class="w-100"></div>
                             <input type="number" name="Limite_Jogadores" class="form-control" id="txtNomeForm" aria-describedby="nome-cadastro" value="<?php echo isset($_POST['Limite_Jogadores']) ? $_POST['Limite_Jogadores'] : ''; ?>">
                             <div class="w-100"></div>  

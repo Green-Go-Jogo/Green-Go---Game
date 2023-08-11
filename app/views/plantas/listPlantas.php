@@ -11,6 +11,7 @@ LoginController::verificarAcesso([2, 3]);
 <html lang="en">
 <head>
 
+    <title>Plantas</title>
     <?php include_once("../../bootstrap/header.php");?>
 
     <style>
