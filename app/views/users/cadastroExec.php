@@ -11,14 +11,13 @@ $genero = $_POST['field_genero'];
 $escolaridade = $_POST['field_escolaridade'];
 $tipoUsuario = $_POST['aluno'];
 
-//$senhaEsconde = $senha;
-//$hashSenha = password_hash($senhaEsconde, PASSWORD_DEFAULT);
+$hashSenha = password_hash($senha, PASSWORD_DEFAULT);
 
 $usuario = new Usuario();
 $usuario->setNomeUsuario($nomeUsuario);
 $usuario->setLogin($login);
 $usuario->setEmail($email);
-$usuario->setSenha($senha);
+$usuario->setSenha($hashSenha);
 $usuario->setGenero($genero);
 $usuario->setEscolaridade($escolaridade);
 $usuario->setTipoUsuario($tipoUsuario);

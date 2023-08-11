@@ -21,6 +21,7 @@
     
         public function __toString() {
                 return $this->nomeUsuario;
+                return $this->escolaridade;
             }
 
         /**

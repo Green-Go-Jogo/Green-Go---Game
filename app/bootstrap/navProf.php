@@ -112,7 +112,7 @@ color:#fff;
                         <?php echo $_SESSION['NOME']; ?>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Perfil</a>
+                        <a class="dropdown-item" href="../users/perfil.php">Perfil</a>
                         <a href="../users/sairExec.php"><i id="doorIcon" class="door-icon fa-solid fa-door-closed"></i></a>
                     </div> 
                     <button type="button" id="dark-mode" class="btn btn-darkmode"><i id="logoDarkMode" class="fa-solid fa-moon"></i></button>                    

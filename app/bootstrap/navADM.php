@@ -142,7 +142,7 @@ color:#fff;
                         <?php echo $_SESSION['NOME']; ?>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Perfil</a>
+                        <a class="dropdown-item" href="../users/perfil.php">Perfil</a>
                         <a class="dropdown-item" href="../users/sairExec.php">Sair</a>
                     </div>
                     <a href="#" class="btn btn-jogar">Jogar Agora</a>

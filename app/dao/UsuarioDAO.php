@@ -16,6 +16,7 @@ class UsuarioDAO {
             $usuario->setNomeUsuario($reg['nomeUsuario']);
             $usuario->setGenero($reg['genero']);
             $usuario->setEmail($reg['email']);
+            $usuario->setEscolaridade($reg['escolaridade']);
             $usuario->setSenha($reg['senha']);
             $usuario->setTipoUsuario($reg['tipoUsuario']);
             array_push($usuarios, $usuario);
@@ -52,19 +53,22 @@ class UsuarioDAO {
     }
 
     public function findByLoginSenha(string $login, string $senha) {
-        $conn = conectar_db(); {}
-        $sql = UsuarioDAO::SQL_USUARIO . 
-        " WHERE (email = ? OR loginUsuario = ?) AND senha = ?";
+        $conn = conectar_db();
+        $sql = UsuarioDAO::SQL_USUARIO . " WHERE (email = ? OR loginUsuario = ?)";
         $stmt = $conn->prepare($sql);
-        $stmt->execute([$login, $login, $senha]);
+        $stmt->execute([$login, $login]);
         $result = $stmt->fetchAll();
-        //Criar o objeto Codigos
+        
         $usuarios = $this->mapUsuarios($result);
-        if(count($usuarios) == 1)
-            return $usuarios[0];
-        elseif(count($usuarios) == 0)
-            return null;;
-    }
+        foreach ($usuarios as $usuario) {
+            $hashSenhaArmazenada = $usuario->getSenha();
+            if (password_verify($senha, $hashSenhaArmazenada)) {
+                return $usuarios[0];
+            }
+            else {
+                return null;;
+            }
+        }}
 
     public function logon(Usuario $usuario){
             $email_or_login = $usuario->getLogin();
@@ -93,7 +97,7 @@ class UsuarioDAO {
 
                    
             if($tipo == 1){
-            header("location: ../home/indexADM.php");
+            header("location: ../home/index.php");
             }
 
             else{

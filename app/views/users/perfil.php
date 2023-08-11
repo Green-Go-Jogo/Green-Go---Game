@@ -1,3 +1,14 @@
+<?php include_once("../../controllers/LoginController.php");
+LoginController::manterUsuario();
+LoginController::verificarAcesso([2, 3]);
+?>
+
+<?php include_once("../../controllers/UsuarioController.php");
+$id = $_SESSION["ID"];
+$usuarioCont = new UsuarioController;
+$usuario = $usuarioCont->buscarPorId($id);
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -6,107 +17,142 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meu perfil</title>
-
-    <!--FAVICON-->
-    <link rel="icon" href="../public/favicon.svg">
-    <!-- Fonte -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet">
-    <!--BOOTSTRAP-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="../views/css/perfil.css">
-    <!--scripts-->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-        crossorigin="anonymous"></script>
-    <!-- Progress bar -->
-    <script src="js/progressbar.min.js"></script>
-    <!-- Parallax -->
-    <script src="https://cdn.jsdelivr.net/parallax.js/1.4.2/parallax.min.js"></script>
+    <link rel="stylesheet" href="../csscheer/main.css">
+    <?php include_once("../../bootstrap/header.php") ?>
 </head>
+<style>
+        .center-icon {
+            display: flex;
+            align-items: center; /* Centraliza verticalmente */
+            justify-content: center; /* Centraliza horizontalmente */
+            height: 100%; /* Ocupa a altura da tela */
+        }
 
+    
+        .fa-user{
+            font-size: 150px;  
+            color: #333; 
+        }
 
-<nav>
-    <div class="col-xs-12" id="nav-container">
+        .profile-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
 
-        <div id="itensmenu">
+        /* Estilos opcionais para o conteúdo */
+        .profile-info p {
+            margin: 0;
+            text-align: center;
+            justify-content: center;
+            color: #078071;
+        }
 
-            <nav class="navbar navbar-expand-lg " id="menu">
-                <a href="views/index.html" class="nav-brand">
-                    <div class="row justify-content-md-left">
-                        <div id="imgmenu">
-                            <img class="img-responsive" src="../public/logo-green.svg" alt="">
-                        </div>
-                    </div>
-                </a>
+        /* Defina a largura das colunas (50% para cada coluna) */
+        .profile-info .column {
+            width: calc(50% - 10px); /* Leva em consideração o espaço entre as colunas */
+        }
 
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-links"
-                    aria-controls="navbar-links" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse justify-content-end" id="navbar-links">
-                    <div class="navbar-nav" id="navbar-links">
+        .btn-custom {
+        border-color: #C05367;
+        color: #C05367; 
+        }
 
-                        <a class="nav-item nav-link" id="portfolio-menu" href="../views/projeto.html"> Projeto </a>
-                        <a class="nav-item nav-link" id="registro-menu"> Mapa</a>
-                        <a class="nav-item nav-link" id="identificar-menu"> Jogar </a>
-                        <a class="nav-item nav-link" id="botaoentrar" href="perfil.php"> Eu </a>
-                    </div>
-                </div>
-            </nav>
-        </div>
-    </div>
-</nav>
+        .btn-perfil p{
+            margin: 0;
+            text-align: center;
+            justify-content: center;
+        }
 
-<body>
+        .custom-dialog {
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+        .custom-dialog h3 {
+            margin-top: 0;
+        }
+        .custom-dialog-buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+</style>
+<?php include_once("../../bootstrap/navADM.php") ?>
+
     <div class="container">
-        <h2 class="titulo">
-            Meu perfil
+        <br>
+        <br>
+        <h2 class="titulo text-center">
+        <?php echo $usuario->getNomeUsuario(); ?>
         </h2>
 
-        <?php
-        //function genero($user){
-        include "../../controllers/UserController.php";
+        <br> <br> 
+
+        <i class="fa-solid fa-user center-icon"></i>
+        <div class="profile-info">
+        <div class="column">
+            <p>
+                <strong>Genero:</strong> <br><?php echo $usuario->getGenero() ?><br><br>
+                <strong>Acesso:</strong> <br><?php $acesso = $usuario->getTipoUsuario(); if($acesso == 1) {
+                    echo "Aluno";} else if ($acesso == 2) { echo "Administrador";} else { echo "Professor";} ?>
+            </p>
+        </div>
         
-        foreach ($data['usuario'] as $user): ?>
-
-        <p>
-            Meu nome aqui é <b><?= $user->getNomeUsuario() ?></b>
-            , meu gênero é <b><?= $user->getGenero() ?></b>
-            e estou no <b><?= $user->getEscolaridade() ?></b>.
-            <br>
-            Estou acessando com o perfil de <b><?= $user->getTipoUsuario() ?></b>.
-            <br><br>
-            O e-mail cadastrado é <b>
-                <?= $user->getEmail() ?>
-            </b> e minha senha é um <b>segredo</b>.
-        </p>
-
-        <div class="row justify-content-md-left">
-            <!--EDITAR-->
-            <div class="row-3">
-                <a class="editar" href='./UserController.php?action=edit&id=<?= $user->getId() ?>'> Editar </a>
-            </div>
-
-            <!--SAIR-->
-            <div class="row-3">
-                <a class="sair" href='controllers/LoginController.php?action=sair'> Sair da conta </a>
-            </div>
-
-            <!--EXCLUIR-->
-            <div class="row-3">
-                <a class="excluir" href='./UserController.php?action=deleteUserById&id<?= $user->getId() ?>'> Excluir a conta
-                </a>
-            </div>
+        <div class="column">
+            <p>
+                <strong>Nível Acadêmico:</strong> <br><?php echo $usuario->getEscolaridade(); ?><br><br>
+                <strong>E-mail:</strong> <br><?php echo $usuario->getEmail() ?>
+            </p>
         </div>
     </div>
+    <br>
+            <div class="column">
+            <div class="btn-perfil">
+            <p>
+                <a id="btn-perfil" class="btn btn-custom" href='<?php $usuario->getIdUsuario() ?>'> Editar </a>
+                <br><br><a id="btn-perfil" class="btn btn-custom" href='controllers/LoginController.php?action=sair'> Sair da conta </a>
+                <br><br><a id="btn-perfil" class="btn btn-custom" href="" onclick="return showCustomConfirm('Tem certeza que deseja apagar seu usuário?');"> Excluir a conta</a>
+            </div>
+            </p>
+        </div>
+    </div>
+   
+    <div id="custom-dialog" class="custom-dialog" style="display: none;">
+        <h3>Confirmação</h3>
+        <p id="custom-dialog-message"></p>
+        <div class="custom-dialog-buttons">
+            <a href="#" onclick="customConfirm(true); return false;">OK</a>
+            <a href="#" onclick="customConfirm(false); return false;">Cancelar</a>
+        </div>
+    </div>
+<br><br><br>
 </body>
+<script>
+        function showCustomConfirm(message) {
+            // Exibe o diálogo de confirmação personalizado
+            document.getElementById('custom-dialog-message').textContent = message;
+            document.getElementById('custom-dialog').style.display = 'block';
+            return false; // Evita que o link seja seguido
+        }
 
+        function customConfirm(result) {
+            // Esta função é chamada quando um botão no diálogo é clicado
+            if (result) {
+                // Ação a ser realizada se o usuário clicar em "OK"
+                alert('Ação confirmada! Implemente o comportamento desejado aqui.');
+            } else {
+                // Ação a ser realizada se o usuário clicar em "Cancelar"
+                alert('Ação cancelada! Implemente o comportamento desejado aqui.');
+            }
+
+            // Fecha o diálogo
+            document.getElementById('custom-dialog').style.display = 'none';
+        }
+    </script>
+<?php include_once("../../bootstrap/footer.php") ?>
 </html>
 
-<?php endforeach; ?>
+
