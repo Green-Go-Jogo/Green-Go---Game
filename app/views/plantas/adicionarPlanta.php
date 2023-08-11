@@ -72,6 +72,11 @@ LoginController::verificarAcesso([2, 3]);
   font-family: Poppins-semibold;
 }
 
+.preview-image__img {
+    width: 200px; 
+    height: auto;
+}
+
 
 </style>
 <nav>
@@ -165,15 +170,15 @@ LoginController::verificarAcesso([2, 3]);
 <div class="col-sm" id="imagemreg">
 
     <div class="form-group" id="imagemreg">
-                </div></div>
+                
                 <a id="carregueimagemtexto"> Carregue uma imagem:</a> <br><br>
                 <div class="preview-image">
-                <img data-image-preview />
+                <img class="preview-image__img" data-image-preview />
                 </div><br>
                 <input type="file" required name="imagem" id="picture__input" data-image-input accept=".png, .jpg, .jpeg"/>
                 <a id="carregueimagemtexto2"> .png .jpg ou .jpeg tamanho mínimo: 2MB tamanho máximo: 5MB </a>
                 </div></div>
-                </div></div> 
+                
 
                 
             <br>

@@ -87,6 +87,12 @@ $frutifera = $especie->getFrutifera();
 
 </head>
 
+<style>
+    .preview-image__img {
+    width: 200px; 
+    height: auto;
+}
+</style>
 
 
 <nav>
@@ -179,19 +185,16 @@ $frutifera = $especie->getFrutifera();
                 </div>
                 <br><br>
 
-                <div class="col-sm" id="imagemreg">
-
-                    <div class="form-group" id="imagemreg">
-                                </div></div>
-                                <a id="carregueimagemtexto"> Carregue uma imagem:</a> <br><br>
-                                <label class="picture align-content-center" for="picture__input" tabIndex="0">
-                                <span class="picture__image">
-                                <img class="img-camera" src="/img/d8ca819f5feac5192c31cb17633e1f1f.png">
-                                </span>
-                                </label>  
-                                <input type="file" required name="imagem" id="picture__input" accept=".png, .jpg, .jpeg"/>
-                                <a id="carregueimagemtexto2"> .png .jpg ou .jpeg tamanho mínimo: 2MB tamanho máximo: 5MB </a>
-                                </div> </div> 
+                            <div class="col-sm" id="imagemreg">
+                            <div class="form-group" id="imagemreg">
+                            <a id="carregueimagemtexto"> Carregue uma imagem:</a> <br><br>
+                            <div class="preview-image">
+                            <img class="preview-image__img" data-image-preview />
+                            </div><br>
+                            <input type="file" required name="imagem" id="picture__input" data-image-input accept=".png, .jpg, .jpeg"/>
+                            <a id="carregueimagemtexto2"> .png .jpg ou .jpeg tamanho mínimo: 2MB tamanho máximo: 5MB </a>
+                            </div>
+                            </div>
 
 
                             <br>
@@ -239,5 +242,6 @@ $frutifera = $especie->getFrutifera();
 <script src="assets/js/grayscale.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="js/registro.js"></script>
+<script type="text/javascript" src="../js/imagem.js" defer></script>
 
 </html>
