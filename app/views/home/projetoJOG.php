@@ -163,7 +163,7 @@ a.page-link:hover {
 <div class="row justify-content-md-left">
     <div class="d-flex justify-content-start">
         <div class="img-coord">
-            <img src="../public/.jpg" class="coordenador">
+            <img src="../public/placeholder.png" class="coordenador">
         </div>
     </div>
 
@@ -180,7 +180,7 @@ a.page-link:hover {
 <div class="row justify-content-md-left">
     <div class="d-flex justify-content-start">
         <div class="img-coord">
-            <img src="../public/.jpg" class="coordenador">
+            <img src="../public/placeholder.png" class="coordenador">
         </div>
     </div>
 
