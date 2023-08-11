@@ -167,13 +167,12 @@ LoginController::verificarAcesso([2, 3]);
     <div class="form-group" id="imagemreg">
                 </div></div>
                 <a id="carregueimagemtexto"> Carregue uma imagem:</a> <br><br>
-                <label class="picture align-content-center" for="picture__input" tabIndex="0">
-                <span class="picture__image">
-                <img class="img-camera" src="/img/d8ca819f5feac5192c31cb17633e1f1f.png">
-                </span>
-                </label>  
-                <input type="file" required name="imagem" id="picture__input" accept=".png, .jpg, .jpeg"/>
+                <div class="preview-image">
+                <img data-image-preview />
+                </div><br>
+                <input type="file" required name="imagem" id="picture__input" data-image-input accept=".png, .jpg, .jpeg"/>
                 <a id="carregueimagemtexto2"> .png .jpg ou .jpeg tamanho mínimo: 2MB tamanho máximo: 5MB </a>
+                </div></div>
                 </div></div> 
 
                 
