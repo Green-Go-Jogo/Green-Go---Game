@@ -15,15 +15,32 @@ LoginController::verificarAcesso([2,3]);
 
 </head> 
 
+<style>
+    html, body {
+        height: 100%;
+    }
+
+    body {
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        padding: 0;
+    }
+
+    main {
+        flex: 1;
+    }
+</style>
+
 <body>
 
 <?php include_once("../../bootstrap/navProf.php") ?>
 
 <br>
 <div class="container text-center">
-<a id="titulo"> PORTAL DO <?php if ($_SESSION["TIPO"] == 2) { echo "ADMINISTRADOR";} else {echo "PROFESSOR";} ?></a> <br>
+<a id="titulo"> PORTAL DO PROFESSOR</a> <br>
 
-<c id="welcome"> Seja Bem vindo <?php echo $_SESSION['NOME']; ?>! </c> </div> <br><br>
+<c id="welcome"> Seja bem-vindo <?php echo $_SESSION['NOME']; ?>! </c> </div> <br><br>
 
 
 <div class="container text-center">
@@ -32,37 +49,37 @@ LoginController::verificarAcesso([2,3]);
 <div class="card container text-center" style="width: 20rem;">
   <div class="card-body">
   <i class="fa-solid fa-earth-americas" style="color: #ffffff;"></i>
-    <a href="..\home\projeto.php" class="btn" style="color: #ffffff;"> Projeto </a>
+    <a href="..\home\projetoADM.php" class="btn" style="color: #ffffff;"> Projeto </a>
   </div> </div> </div> <br>
 
 <div class="col">
 <div class="card container text-center" style="width: 20rem;">
   <div class="card-body">
-  <i class="fa-solid fa-users" style="color: #ffffff;"></i>
-    <a href="..\equipes\listEquipes.php" class="btn" style="color: #ffffff;"> Equipes </a>
+  <i class="fa-solid fa-map-location-dot" style="color: #ffffff;"></i>
+    <a href="..\zones\listZonas.php" class="btn" style="color: #ffffff;"> Zonas </a>
   </div>
 </div> </div> </div> <br>
 
 <div class="row row-cols-4" id="card">
 <div class="card container text-center" style="width: 20rem;">
   <div class="card-body">
-  <i class="fa-solid fa-seedling" style="color: #ffffff;"></i>
-    <a href="..\plantas\listPlantas.php" class="btn" style="color: #ffffff;"> Plantas </a>
+  <i class="fa-solid fa-leaf" style="color: #ffffff;"></i>
+    <a href="..\especies\listEspecies.php" class="btn" style="color: #ffffff;"> Espécies </a>
   </div>
 </div> <br>
 
 <div class="card container text-center" style="width: 20rem;">
   <div class="card-body">
-  <i class="fa-solid fa-map-location-dot" style="color: #ffffff;"></i>
-    <a href="..\zones\listZonas.php" class="btn" style="color: #ffffff;"> Zonas </a>
+  <i class="fa-solid fa-seedling" style="color: #ffffff;"></i>
+    <a href="..\plantas\listPlantas.php" class="btn" style="color: #ffffff;"> Plantas </a>
   </div>
 </div> </div> <br>
 
 <div class="row row-cols-4" id="card">
 <div class="card container text-center" style="width: 20rem;" >
   <div class="card-body">
-  <i class="fa-solid fa-leaf" style="color: #ffffff;"></i>
-    <a href="..\especies\listEspecies.php" class="btn" style="color: #ffffff;"> Espécies </a>
+  <i class="fa-solid fa-users" style="color: #ffffff;"></i>
+    <a href="..\equipes\listEquipes.php" class="btn" style="color: #ffffff;"> Equipes </a>
   </div>
 </div> <br>
 

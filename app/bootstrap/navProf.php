@@ -94,27 +94,35 @@ color:#fff;
     outline: none;
 }
 
+#usuario {
+    color: #7EC4BB;
+    margin-right: 5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center; 
+    width: 35px;
+    height: 35px;
+    font-size: 21px;
+  }
+
+  #usuario:hover {
+    color: #078071;
+  }
+
 
 </style>
 
 <body onload="carregar_modo()">
 <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
-        <a href="../home/indexADM.php" class="navbar-brand">
+        <a href="../home/index.php" class="navbar-brand">
             <img  id="logo" src="../../public/logo-green.svg" alt="Logo" width="30" height="30">
         </a>
 
-
             <div class="ml-auto">
-              
-                <div class="nav-item dropdown">
-                    <a href="#" class="btn btn-outline btn-custom dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <?php echo $_SESSION['NOME']; ?>
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="../users/perfil.php">Perfil</a>
-                        <a href="../users/sairExec.php"><i id="doorIcon" class="door-icon fa-solid fa-door-closed"></i></a>
-                    </div> 
+
+                    <a href="../users/perfil.php"><i id="usuario" class="fa-solid fa-user-gear"></i></a>
+                    <a href="../users/sairExec.php"><i id="doorIcon" class="door-icon fa-solid fa-door-closed"></i></a>
                     <button type="button" id="dark-mode" class="btn btn-darkmode"><i id="logoDarkMode" class="fa-solid fa-moon"></i></button>                    
                 </div>
                 

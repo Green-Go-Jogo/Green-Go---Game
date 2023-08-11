@@ -50,7 +50,7 @@ Class PlantaHTML {
             echo "<div class='card-body'>";
             echo "<h5 id='nomePlanta' class='card-title nome-soc'>". $planta->getNomeSocial() ."</h5>"."<br>"; 
             echo "<p class='card-text nome-texto'>Código: ".$planta->getCodNumerico()."<br>Pontuação: ".$planta->getPontos()."<br>"."</p>";
-            echo "<p class='card-text nome-texto' style='color: #04574d;'>".$planta->getZona()."</p>";
+            echo "<p class='card-text nome-texto' style='color: #338a5f;'>".$planta->getZona()."</p>";
             echo "<p class='card-text nome-texto' style='color: #04574d;'>".$planta->getUsuario()->getNomeUsuario()."</p>";
             echo "<a href='editarPlanta.php?id=".$planta->getIdPlanta()."' class='btn btn-primary editar'>Editar</a>";
             echo "<a href='deletarPlanta.php?id=".$planta->getIdPlanta()."' onclick='return confirm(\"Confirma a exclusão da Planta?\");' class='btn btn-alert excluir'>Excluir</a>";

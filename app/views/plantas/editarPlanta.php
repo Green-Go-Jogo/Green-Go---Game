@@ -39,7 +39,7 @@ LoginController::verificarAcesso([2, 3]);
 
 <head>
 
-    <title>Adicionar planta</title>
+    <title>Editar planta</title>
     <?php include_once("../../bootstrap/header.php");?>
     <script>  $(document).ready(function() {
                      $('select').addClass('custom-selectize').selectize({
@@ -109,7 +109,7 @@ LoginController::verificarAcesso([2, 3]);
 
                         <div class="row">
                             <div class="col">
-                                <h1 id="primeirotextoreg">Editar uma planta!</h1>
+                                <h1 id="primeirotextoreg">Edite uma planta!</h1>
 
 
                             <form action="editarPlantaExec.php" method="POST" enctype="multipart/form-data">
@@ -217,7 +217,7 @@ LoginController::verificarAcesso([2, 3]);
             </div>
 
             <div class="container"> <br><br>
-            <button type="submit" class="btn btn-primary btn-lg" id="botoesregistrar"><a>Adicionar</a> </button>
+            <button type="submit" class="btn btn-primary btn-lg" id="botoesregistrar"><a>Editar</a> </button>
             <button type="reset" class="btn btn-secondary btn-lg" id="botoeslimpar"> <a id="limpar"> Limpar</a>
             </button>
             </div>

@@ -4,6 +4,17 @@
  include_once("../../controllers/EspecieController.php");
  include_once("../zones/htmlZonaForm.php");
  include_once("../especies/htmlEspecie.php");
+
+ include_once("../../controllers/LoginController.php");
+LoginController::manterUsuario();
+LoginController::verificarAcesso([2, 3]);
+?>
+<?php if (isset($_SESSION['msg_erro'])): ?>
+    <span>
+        <?= $_SESSION['msg_erro'] ?>
+    </span>
+<?php endif ?>
+<?php include_once("../../controllers/ZonaController.php");
  
  $cod = isset($_GET['cod']) ? $_GET['cod'] : null;
  $ide = isset($_GET['ide']) ? $_GET['ide'] : null;
@@ -93,12 +104,10 @@ if ($ide == 24 && $cod == 1206) {
             <?= $planta->getNomeSocial() ?>
         </title>
 
-        <head>
-
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+    <title>Adicionar Zona</title>
     <?php include_once("../../bootstrap/header.php");?>
-    <link rel="stylesheet" type="text/css" href="../css/index.css">
-    
+    <link rel="stylesheet" href="../csscheer/zona.css">
 
 </head> 
 <style>
@@ -193,28 +202,26 @@ body {
     overflow-x: hidden !important;
 }
 
+    html, body {
+        height: 100%;
+    }
+
+    body {
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        padding: 0;
+    }
+
+    main {
+        flex: 1;
+    }
 </style>
 
-<nav class="navbar navbar-expand-lg">
-    <a href="../index.php" class="navbar-brand">
-        <div class="row align-items-center">
-            <div id="imgmenu">
-                <img class="img-responsive" id="logo">
-            </div>
-        </div>
-    </a>
+<nav>
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-links"
-        aria-controls="navbar-links" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"><img src="../../public/menu.svg" id="menuicon"></span>
-    </button>
+    <?php include_once("../../bootstrap/navADM.php");?>
 
-    <div class="collapse navbar-collapse" id="navbar-links">
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item"><a class="nav-link" href="../projeto.php">Projeto</a></li>
-            <!-- <li class="nav-item"><a class="nav-link" href="../users/login.php">Entrar</a></li> -->
-        </ul>
-    </div>
 </nav>
 
     <body>

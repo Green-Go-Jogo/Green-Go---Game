@@ -108,7 +108,7 @@ color:#fff;
 <body onload="carregar_modo()">
 <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
-        <a href="../home/indexADM.php" class="navbar-brand">
+        <a href="../home/index.php" class="navbar-brand">
             <img  id="logo" src="../../public/logo-green.svg" alt="Logo" width="30" height="30">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarLinks"
@@ -119,19 +119,22 @@ color:#fff;
         <div class="collapse navbar-collapse" id="navbarLinks">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
+                    <a class="nav-link" style="color: #338a5f;" href="../home/indexADM.php">Dashboard</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" style="color: #338a5f;" href="../home/projetoADM.php">Projeto</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" style="color: #338a5f;" href="../equipes/listEquipes.php">Equipes</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" style="color: #338a5f;" href="../plantas/listPlantas.php">Plantas</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" style="color: #338a5f;" href="../zones/listZonas.php">Zonas</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" style="color: #338a5f;" href="../especies/listEspecies.php">Espécies</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" style="color: #338a5f;" href="../plantas/listPlantas.php">Plantas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" style="color: #338a5f;" href="../equipes/listEquipes.php">Equipes</a>
                 </li>
             </ul>
             
@@ -145,7 +148,7 @@ color:#fff;
                         <a class="dropdown-item" href="../users/perfil.php">Perfil</a>
                         <a class="dropdown-item" href="../users/sairExec.php">Sair</a>
                     </div>
-                    <a href="#" class="btn btn-jogar">Jogar Agora</a>
+                    <a href="..\partidas\adicionarPartida.php" class="btn btn-jogar">Criar Partida</a>
                     <button type="button" id="dark-mode" class="btn btn-darkmode"><i id="logoDarkMode" class="fa-solid fa-moon"></i></button>                    
                 </div>
                 

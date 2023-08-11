@@ -47,7 +47,7 @@ if($equipe == null) {
 
                         <div class="row">
                         <div class="col">
-                        <h1 id="primeirotextoreg"> Editar uma Equipe!</h1>
+                        <h1 id="primeirotextoreg"> Edite uma Equipe!</h1>
                             <form action="editarEquipeExec.php" method="POST" enctype="multipart/form-data">
 
                             <div class="container" id="reg1">
@@ -77,7 +77,7 @@ if($equipe == null) {
                             <div id="imagemSelecionada">
                             <img src="<?php echo $equipe->getIconeEquipe(); ?>" alt="" id="previewImagem" style="width: 300px; height: 300px"> <br><br>
                             <div class="container">
-                            <button type="submit" class="btn btn-primary btn-lg" id="botoesregistrar"><a>Adicionar</a> </button>
+                            <button type="submit" class="btn btn-primary btn-lg" id="botoesregistrar"><a>Editar</a> </button>
                             <button type="reset" class="btn btn-secondary btn-lg" id="botoeslimpar"> <a id="limpar"> Limpar</a>
                             </button>
                             </div>

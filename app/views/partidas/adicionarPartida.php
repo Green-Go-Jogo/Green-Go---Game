@@ -8,123 +8,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<title>Cadastrar Partida</title>
 <?php include_once("../../bootstrap/header.php");?>
-    <title>Cadastrar Partida</title>
      <script>  $(document).ready(function() {
                      $('select').addClass('custom-selectize').selectize({
                     sortField: 'text'
                     });
         }); </script>
 
-    <link rel="stylesheet" href="../css/adicionarplanta.css">
-    <link rel="stylesheet" href="../css/plantas.css">
-    <link rel="stylesheet" href="../css/listPlanta.css">
+    <link rel="stylesheet" href="../csscheer/partida.css">
     <script type="text/javascript" src="../js/script.js"></script>
     <script type="text/javascript" src="../js/addValue.js"></script>
 </head>
-<style>
 
-img {
-    width: 30%;
-    height: auto;
-}
-
-.cke_resizer {
-display: none !important;
-}
-
-      
-
-#txtNomeForm {
-    border-radius: 5px;
-}
-
-#txtPontos {
-    border-radius: 5px;
-}
-
-#carregueimagemtexto {
-    margin-bottom: 5px;
-}
-
-.container > :is(.preview-image, .form) {
-  width: 100%;
-}
-
-.container > .preview-image > img {
-  width: 100%;
-  object-fit: contain;
-}
-
-.container > .form {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
-.container > .form > input {
-  width: 100%;
-  border: 1px solid rgba(200, 200, 200, 1);
-  padding: 8px;
-  font-size: 16px;
-  border-radius: 4px;
-}
-.container > .form > input::-webkit-file-upload-button {
-  font-size: 12px;
-  font-family: "Space Grotesk";
-  border: 1px solid rgba(200, 200, 200, 1);
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.container > .form > button {
-  padding: 8px 16px;
-  font-size: 16px;
-  cursor: pointer;
-  border: 1px solid rgba(200, 200, 200, 1);
-  border-radius: 4px;
-}
-
-/* Estilos para o campo de texto do Selectize.js */
-.selectize-control.single .selectize-input,
-.selectize-control.single .selectize-input:focus, 
-.selectize-control.single .selectize-input.full {
-  width: 500px;
-  margin-top: 1px;
-  color: #ebf0f1;
-  background-color: #f0b6bc;
-  font-family: Poppins-semibold;
-}
-
-/* Estilos para o dropdown do Selectize.js */
-.selectize-dropdown-content .option {
-  color: #ebf0f1;
-  background-color: #f0b6bc;
-  font-family: Poppins-semibold;
-}
-
-.selectize-dropdown-content .option:hover {
-  background-color: #ec737c;
-}
-
-
-
-/* Estilos para o item selecionado no Selectize.js */
-.selectize-control.single .item {
-  background-color: #f0b6bc;
-  color: #ebf0f1;
-  font-family: Poppins-semibold;
-}
-
-/* Estilos para o item selecionado quando o dropdown está ativo */
-.selectize-input.active {
-  background-color: #f0b6bc;
-  color: #ebf0f1;
-  font-family: Poppins-semibold;
-}
-
-
-</style>
 
 <?php include_once("../../bootstrap/navADM.php") ?>
 <body>
@@ -162,7 +58,7 @@ display: none !important;
                             <div class="form-group">
                             <label for="selectZona" id="txtNome">Zona:</label>  
                             <button type="button" id="addButtonZona" class="btn">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="30" fill="#04574d" viewBox="0 0 16 16">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="30" fill="#20A494" viewBox="0 0 16 16">
                             <path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01-.622-.636zM8.5 6v1.5H10a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 1 0z"/> </svg>
                             </button>
                             <div class="w-100"></div>
@@ -176,9 +72,9 @@ display: none !important;
                             ?>
 
                             <div class="form-group">
-                            <label for="selectEquipe" id="txtNome">Equipe:</label>
+                            <label for="selectEquipe" id="txtNomeEquipe">Equipe:</label>
                             <button type="button" id="addButtonEquipe" class="btn">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="30" fill="#04574d" viewBox="0 0 16 16">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="30" fill="#20A494" viewBox="0 0 16 16">
                             <path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01-.622-.636zM8.5 6v1.5H10a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 1 0z"/> </svg>
                             </button>
                             <div class="w-100"></div>
@@ -214,9 +110,10 @@ display: none !important;
                             <div class="w-100"></div>
                             <input type="text" name="ConfSenha_Sala" class="form-control" id="txtNomeForm" aria-describedby="nome-cadastro" value="<?php echo isset($_POST['ConfSenha_Sala']) ? $_POST['ConfSenha_Sala'] : ''; ?>">
                             <div class="w-100"></div>
+                            <br> <br> <br>
 
                             <div class="container">
-                            <button type="submit" class="btn btn-primary btn-lg" id="botoesregistrar"><a>Adicionar</a> </button>
+                            <button type="submit" class="btn btn-primary btn-lg" id="botoesregistrar"><a>Criar</a> </button>
                             <button type="reset" class="btn btn-secondary btn-lg" id="botoeslimpar"> <a id="limpar"> Limpar</a>
                             </button>
                             <br>

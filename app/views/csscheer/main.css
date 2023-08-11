@@ -118,6 +118,9 @@ a.excluir:hover {
     background-color: #078071;
 }
 
+.modo-escuro #txtNomeAtributo {
+    color: #078071;
+}
 
 .modo-escuro .btn-jogar{
     background-color: #04574d;
@@ -162,7 +165,7 @@ a.excluir:hover {
 
     .modo-escuro div.dropdown-menu{
         background-color: #121212;
-        border-color: #f0b6bc; 
+        border-color:  ; 
         color: #f0b6bc;
         
        
