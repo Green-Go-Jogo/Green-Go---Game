@@ -1,0 +1,117 @@
+:root {
+    --principal: #078071;
+    --verdao: #04574d;
+    --cinzinha: #ebf0f1;
+    --destaque: #ED8E96;
+    --rosinha: #f0b6bc;
+    --rosão: #C05367;
+    --branquinho: #ffffff;
+    --verdinho: #7EC4BB;
+    --cinzaclaro: #272626;
+    --cinza: #1B1B1B;
+    
+    width: 100%;
+    height: 100%;
+
+    font-family: Poppins-regular, Roboto;
+}
+
+    @font-face {
+        font-family: 'Cooper';
+        src: url('../fontes/cooperhewitt-heavy.otf');
+    }
+    
+    @font-face {
+        font-family: 'Poppins';
+        src: url('../fontes/Poppins-ExtraBold.ttf');
+    }
+    
+    @font-face {
+        font-family: 'Poppins-regular';
+        src: url('../fontes/Poppins-Regular.ttf');
+    }
+    
+    @font-face {
+        font-family: 'Poppins-semibold';
+        src: url('../fontes/Poppins-SemiBold.ttf');
+    }
+    
+    @font-face {
+        font-family: 'Poppins-medium';
+        src: url('../fontes/Poppins-Medium.ttf');
+    }
+
+body {
+    background-color: #ebf0f1;;
+}
+
+
+#primeirotextoreg {
+    color: #078071;
+    margin-left: 11px;
+    margin-top: 35px;
+    font-size: 45px;
+}
+
+
+#nomePlanta {
+    background-color: #04574d;
+    color: #ffffff !important;
+    border-radius: 5px;
+    margin-left: 15px;
+    margin-right: 20px;
+    font-size: 55px;
+    width: 37rem; 
+    font-family: Poppins;
+}
+
+#nomeUm {
+    font-size: 35px;
+    margin-bottom: 20px;
+    font-family: Poppins-semibold;
+}
+
+#nomeDois {
+    font-size: 35px;
+    font-family: Poppins-semibold;
+}
+
+#codigoPlanta {
+    color: #7EC4BB;
+    font-size: 35px;
+    margin-bottom: 15px;
+    font-family: Poppins-semibold;
+}
+
+#imagemPlanta {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+    border-style: dashed;
+    border-radius: 5px;
+    border-width: 10px;
+    border-color: #f0b6bc;
+}
+
+#historiaplanta {
+    color: #04574d;
+    font-family: Poppins-regular;
+    text-align: justify;
+}
+
+#pontos {
+    background-color: #7EC4BB;
+    border-radius: 50px;
+    font-size: 40px;
+    color: #ffffff;
+    width: auto;
+    margin-top: 35px;
+}
+
+#atributos {
+    color: #C05367;
+    font-family: Poppins;
+    font-size: 35px;
+    text-decoration: underline;
+}
+

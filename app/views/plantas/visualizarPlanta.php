@@ -105,96 +105,14 @@ if ($ide == 24 && $cod == 1206) {
         </title>
 
 <head>
-    <title>Adicionar Zona</title>
     <?php include_once("../../bootstrap/header.php");?>
-    <link rel="stylesheet" href="../csscheer/zona.css">
+    <link rel="stylesheet" href="../csscheer/verplanta.css">
 
 </head> 
 <style>
 
 .img-responsive {
     width: 130px;
-}
-
-#nomePlanta {
-    height: 10%;
-    width: 80% ;
-    margin-left: 3%;
-    border-radius: 5px;
-    background-color: #04574d;
-    color: #FFFFFF; 
-    text-align: center !important;
-}
-
-#nomeUm {
-    font-size: 40%; 
-    height: 10%;
-    width: 70% ;
-    margin-left: 3%;
-    margin-top: 3%;
-    color: #f58c95; 
-}
-
-#nomeDois {
-    font-size: 40%; 
-    height: 10%;
-    width: 90% ;
-    margin-left: 3%;
-    margin-bottom: 4%;
-    color: #f58c95; 
-}
-
-#codigoPlanta {
-    flex-basis: 92%;
-    text-align: right;
-    color: #338a5f;
-    font-size: 70%; 
-}
-
-#imagemPlanta {
-    height: auto;
-    width: 95% ;
-}
-
-#imagem1Planta {
-    height: auto;
-    width: 100%;
-}
-
-#pontos {
-    size: 50%;
-    margin-top: 6%;
-    margin-left: 16%;
-    background-color: #f0b6bc;
-    color: #FFFFFF;
-    border-radius: 5px;
-    width: 70%;
-    font-size: 60%; 
-    text-align: center !important;
-}
-
-#atributos {
-    size: 50%;
-    margin-left: 34%;
-    margin-bottom: 10%;
-    margin-top: 3%;
-    color: #C05367;
-    border-radius: 5px;
-    width: 35%;
-    font-size: 35%; 
-    text-align: center !important;
-}
-
-#historiaplanta {
-    margin: 0 auto;
-    width: 93%;
-    color: #04574d;
-    text-align: left;
-}
-
-.descricao {
-    font-size: 40%;
-    line-height: 1.3;
 }
 
 
@@ -230,35 +148,36 @@ body {
 
 <div class="titulo">
     <div class="row">
-        <h1 class="nome" id="nomePlanta">
+        <h1 class="nome text-center" id="nomePlanta">
             <?= $planta->getNomeSocial() ?>
-        </h1>
+        </h1> </div> <br>
 
         <h1 class="nome" id="nomeUm">
-            <a style="color: #C05367;"> Nome Popular: </a> <?= $especie->getNomePopular() ?>
+            <a> Nome Popular: </a> <a style="color: #C05367; font-family: Poppins;"> <?= $especie->getNomePopular() ?> </a>
         </h1>
 
         <h1 class="nome" id="nomeDois">
-            <a style="color: #C05367;"> Nome Científico: </a>><i> <?= $especie->getNomeCientifico() ?></i>
-        </h1>
+            <a> Nome Científico: </a> <i style="color: #C05367; font-family: Poppins;"> <?= $especie->getNomeCientifico() ?></i>
+        </h1> </div>
 
-        <p class="codigo" id="codigoPlanta">
+        <div class="container">
+        <p class="codigo text-right" id="codigoPlanta">
             Código: <?= $planta->getCodNumerico() ?>
-        </p>
+        </p> </div> </div>
 
-</div>
 
-<div class="img-responsive" id="imagem1Planta">
+<div class="container" id="imagem1Planta">
         <img id="imagemPlanta" src="<?php echo $planta->getImagemPlanta(); ?>"/>
-    </div> <br>
+     <br> <br>
 
 <div> 
 
 <h1 class="descricao" id="historiaplanta">
     <?= $planta->getPlantaHistoria() ?>
-</h1>
+</h1> <br>
 
-    <p class="descricao" id="pontos">
+<div class="container text-center">
+    <p class="descricao text-center" id="pontos">
     Pontos: <?=$planta->getPontos(); ?>
     </p>
 
@@ -270,22 +189,16 @@ body {
         <?php echo $exot; ?>
         <?php echo $frut; ?>
         <?php echo $rara; ?>
-    </p>
+    </p> </div>
 
         
 </div>
-            <div class="row justify-content-start botoes">
-                <!--A PARTIR DAQUI, QUANDO CLICADO PARA VER DETALHES (VALE PARA TODOS OS USUARIOS!!)
-                <div class="col-auto min-content">
-                    <a class="qrcode" href=".">
-                        QR CODE
-                    </a>
-                </div>-->
-            </div>
 
-            <br><br>
+
+            <br>
         </div>
         <script src="../bootstrap/bootstrap.min.js"></script>
-    </body>
-
+        
+<?php include_once("../../bootstrap/footer.php");?>
+</body>
 </html>
