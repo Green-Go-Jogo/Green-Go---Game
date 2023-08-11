@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="../csscheer/partida.css">
     <script type="text/javascript" src="../js/script.js"></script>
     <script type="text/javascript" src="../js/addValue.js"></script>
+    
 </head>
 
 

@@ -16,20 +16,17 @@ LoginController::verificarAcesso([2,3]);
 </head> 
 
 <style>
-    html, body {
-        height: 100%;
-    }
-
     body {
-        display: flex;
-        flex-direction: column;
-        margin: 0;
-        padding: 0;
-    }
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
 
-    main {
-        flex: 1;
-    }
+main {
+    flex: 1;
+}
 </style>
 
 <body>
@@ -89,10 +86,9 @@ LoginController::verificarAcesso([2,3]);
     <a href="..\partidas\adicionarPartida.php" class="btn" style="color: #ffffff;"> Partida </a>
   </div>
 </div> </div> </div>
-    
+   
 <?php include_once("../../bootstrap/footer.php");?>
 
-</body>
 <script>
     $(document).ready(function() {
       $("#doorIcon").mouseover(function() {
