@@ -57,36 +57,38 @@
                             <?php } ?>
 
                             <div class="form-group">
-                            <label for="selectZona" id="txtNome">Zona:</label>  
-                            <button type="button" id="addButtonZona" class="btn">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="30" fill="#20A494" viewBox="0 0 16 16">
-                            <path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01-.622-.636zM8.5 6v1.5H10a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 1 0z"/> </svg>
-                            </button>
-                            <div class="w-100"></div>
-                            <br>
-                            <a id="txtZonaForm">
+                            <label for="selectZona" id="txtNome">Zona:</label>
+                            <div class="input-group">
                             <?php
                             $zonaCont = new ZonaController();
                             $zonas = $zonaCont->listar();
 
-                             ZonaHTMLForm::desenhaSelect($zonas, "partida_zona", "SomPlanta");
+                            ZonaHTMLForm::desenhaSelect($zonas, "partida_zona", "SomPlanta");
                             ?>
+                            <div class="input-group-append">
+                            <button type="button" id="addButtonZona" class="btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="30" fill="#20A494" viewBox="0 0 16 16"> <path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01-.622-.636zM8.5 6v1.5H10a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 1 0z"/> </svg>
+                            </button>
+                            </div>
+                            </div>
+                            </div>
 
                             <div class="form-group">
                             <label for="selectEquipe" id="txtNomeEquipe">Equipe:</label>
-                            <button type="button" id="addButtonEquipe" class="btn">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="30" fill="#20A494" viewBox="0 0 16 16">
-                            <path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01-.622-.636zM8.5 6v1.5H10a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 1 0z"/> </svg>
-                            </button>
-                            <div class="w-100"></div>
-                            <br>
-                            <a id="txtEquipeForm">
+                            <div class="input-group">
                             <?php
                             $equipeCont = new EquipeController();
                             $equipes = $equipeCont->listar();
 
-                             EquipeHTMLForm::desenhaSelect($equipes, "partida_equipe", "nome_equipe");
+                            EquipeHTMLForm::desenhaSelect($equipes, "partida_equipe", "nome_equipe");
                             ?>
+                            <div class="input-group-append">
+                            <button type="button" id="addButtonEquipe" class="btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="30" fill="#20A494" viewBox="0 0 16 16"> <path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01-.622-.636zM8.5 6v1.5H10a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 1 0z"/> </svg>
+                            </button>
+                            </div>
+                            </div>
+                            </div>
                             </a>
                             
 

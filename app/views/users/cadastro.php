@@ -25,7 +25,7 @@
 
     <div class="container">
       <div class="row justify-content-md-left">
-      <h1 class="titulo">Criar conta</h1>
+      <h1 class="titulo" id="titulo">Criar conta</h1>
 
       <form method="post" action="cadastroExec.php">
         <div>
@@ -76,7 +76,7 @@
 
             <div class="row align-items-center">
               <div class="col-auto">
-                <button class="btn btn-primary" id="botaocadastro" type="submit">Cadastrar</button>
+                <button class="btn" id="botaocadastro" type="submit">Cadastrar</button>
 
               </div>
               <div class="col-auto">

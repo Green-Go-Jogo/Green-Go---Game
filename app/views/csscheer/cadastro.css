@@ -99,7 +99,7 @@ body {
 
 .form-control {
     background-color: #f0b6bc !important;
-    color: #ffffff;
+    color: #ffffff !important;
     font-family: Poppins-semibold;
     margin-left: 11px;
     border-radius: 5px;
@@ -109,7 +109,7 @@ body {
 }
 
 .senha-cadastro {
-    color: #04574d;
+    color: #C05367;
     font-family: Poppins-semibold;
     margin-left: 11px;
     font-size: 15px;

@@ -259,7 +259,8 @@ a.excluir:hover {
 
     
     .modo-escuro input#txtNomeForm,.modo-escuro input#txtNomeZona, .modo-escuro input#txtCodigoForm,
-    .modo-escuro input#txtNomeEquipe, .modo-escuro div.selectize-input, .modo-escuro input#txtCorForm {
+    .modo-escuro input#txtNomeEquipe, .modo-escuro div.selectize-input, .modo-escuro input#txtCorForm,
+    .modo-escuro input.form-control, .modo-escuro select.form-control {
         background-color: #121212 !important;
         border-color: #C05367 !important;
         border-width: 3px;
@@ -283,9 +284,6 @@ a.excluir:hover {
       .modo-escuro .selectize-dropdown-content .option:hover {
         background-color: #C05367;
       }
-      
-      
-      
       
       .modo-escuro .selectize-control.single .item {
         background-color: #121212;
@@ -346,4 +344,32 @@ a.excluir:hover {
 
         .modo-escuro img#imagemPlanta{
             border-color:#C05367;
+        }
+
+        .modo-escuro button#addButtonZona.btn, .modo-escuro button#addButtonEquipe.btn {
+            background-color: #1B1B1B;
+        }
+
+        .modo-escuro button#botaocadastro {
+            background-color: #04574d;
+        }
+
+        .modo-escuro button#botaocadastro:hover{
+            background-color: #078071;
+        }
+
+        .modo-escuro p#jatemumaconta, .modo-escuro p#termos {
+            color: #f0b6bc;
+        }
+
+        .modo-escuro a#entrar, .modo-escuro a#termos1 {
+            color:#7EC4BB !important; 
+        }
+
+        .modo-escuro a#entrar:hover, .modo-escuro a#termos1:hover{
+            color:#078071 !important;
+        }
+
+        .modo-escuro h1#titulo {
+            color:#f0b6bc !important;
         }
