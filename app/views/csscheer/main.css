@@ -375,5 +375,5 @@ a.excluir:hover {
         }
 
         .modo-escuro h6.senha-cadastro {
-            color: #f0b6bc;
+            color: #f0b6bc !important;
         }
