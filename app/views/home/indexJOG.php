@@ -12,8 +12,7 @@
 
 <style>
     img {
-       justify-content: center;
-       align: center;
+       margin: auto;
     }
 </style>
 
@@ -28,6 +27,6 @@
                         <h1>OPS!</h1>
                         <h2>A trilha pela natureza digital ainda está em construção. Enquanto plantamos pixels e regamos links, que tal fazer uma caminhada pelos jardins virtuais vizinhos? Quem sabe você encontra algumas curiosidades botânicas ou um riacho de conhecimento fluindo por lá? </h2>
                         <img src="../../public/logo-construcao.gif" alt="construcao">   
-    <?php include_once("../bootstrap/footer.php");?>
+    <?php include_once("../../bootstrap/footer.php");?>
 </body>
 </html>
