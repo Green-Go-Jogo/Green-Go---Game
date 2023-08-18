@@ -97,7 +97,7 @@ class UsuarioDAO {
 
                    
             if($tipo == 1){
-            header("location: ../home/index.php");
+            header("location: ../home/indexJOG.php");
             }
 
             else{

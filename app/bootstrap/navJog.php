@@ -1,28 +1,150 @@
-<div class="col-xs-12" id="nav-container">
-        <div id="itensmenu">
-            <nav class="navbar navbar-expand-lg " id="menu">
-                <a href="../indexJOG.php" class="nav-brand">
-                    <div class="row justify-content-md-left">
-                        <div id="imgmenu">
-                        <img class="img-responsive" src="../public/logo-green.svg"  id="logo" >
-                        </div>
-                    </div>
-                </a>
+<style>
+.navbar {
+             /* Cor de fundo desejada para a Navbar */
+ 
+            font-size: 16px; /* Tamanho da fonte */
+            font-family: Poppins-regular;
+        }
 
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-links"
-                    aria-controls="navbar-links" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"> <img src="../public/menu.svg" id="menuicon"></span>
-                </button>
 
-                <div class="collapse navbar-collapse justify-content-end" id="navbar-links">
-                    <div class="navbar-nav">
 
-                    <a class="nav-item nav-link" id="projeto-menu" href="../views/projeto.php"> Projeto </a>
-                   <!-- <a class="nav-item nav-link" id="mapa-menu" href="..\controllers\EspecieController.php?action=EspeciesMapa"> Mapa</a>
-                    <a class="nav-item nav-link" id="itemmenu" href="./PlantaController.php?action=formIdentificarPlanta"> Jogar </a> -->
-                    <a class="nav-item nav-link" id="botaoentrar" href="./UserController.php?action=findUserById"> Eu </a>
-                    </div>
-                </div>
-            </nav>
+.btn-custom {
+  border-color: #C05367;
+  color: #C05367;
+  font-size: 20px;
+  width: 15rem;
+  height: auto; 
+}
+
+.btn-custom:hover {
+  background-color: #C05367; 
+  border-color: #ffffff;
+  color: #ffffff !important; 
+  font-size: 20px;
+}
+
+.btn-darkmode {
+  display: inline-flex; /* Para alinhar o ícone verticalmente com o texto */
+  align-items: center; /* Para alinhar o ícone verticalmente com o texto */
+  justify-content: center; 
+  background-color: #ebf0f1;
+  border-style: none;
+  width: 35px;
+  height: 35px;
+}
+
+.btn-lightmode {
+  display: inline-flex; /* Para alinhar o ícone verticalmente com o texto */
+  align-items: center; /* Para alinhar o ícone verticalmente com o texto */
+  justify-content: center; 
+  background-color: #1B1B1B;
+  border-style: none;
+  width: 35px;
+  height: 35px;
+}
+
+.btn-nav {
+  display: inline-flex; /* Para alinhar o ícone verticalmente com o texto */
+  align-items: center; /* Para alinhar o ícone verticalmente com o texto */
+  justify-content: center; 
+  border-style: none;
+  width: 35px;
+  height: 35px;
+}
+
+.btn-lightmode:hover {
+    background-color: #1B1B1B; 
+    border-color: #1B1B1B;
+    color: #ebf0f1;
+}
+
+.btn-darkmode:hover {
+    background-color: #ebf0f1; 
+    border-color: #ebf0f1;
+    color: #1B1B1B;
+}
+
+.btn-lightmode:focus, .btn-lightmode:active{
+    box-shadow: none;
+}
+
+.btn-darkmode:focus, .btn-darkmode:active{
+    box-shadow: none;
+}
+
+.fa-moon {
+    font-size: 21px;
+    color: #1B1B1B
+}
+.fa-sun {
+    font-size: 21px;
+    color: #ebf0f1;
+}
+
+.dropdown-item{
+color: #C05367;
+width: 15rem;
+height: auto;
+
+}
+.dropdown-item:hover{
+background-color: #f0b6bc; 
+color:#fff;
+}
+
+#menu {
+    width: auto;
+    height: 20px;
+}
+
+.navbar-toggler {
+    box-shadow: none;
+    border: none;
+    outline: none;
+}
+
+#usuario {
+    color: #7EC4BB;
+    margin-right: 5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center; 
+    width: 35px;
+    height: 35px;
+    font-size: 21px;
+  }
+
+  #usuario:hover {
+    color: #078071;
+  }
+  
+  .door-icon {
+    color: #f0b6bc;
+    margin-right: 5px;
+    font-size: 21px;
+  }
+  .door-icon:hover {
+    color: #C05367;
+  }
+
+
+</style>
+
+<body onload="carregar_modo()">
+<nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+        <a href="../home/index.php" class="navbar-brand">
+            <img  id="logo" src="../../public/logo-green.svg" alt="Logo" width="30" height="30">
+        </a>
+
+            <div class="ml-auto">
+
+                    <a class="btn btn-nav" href="#"><i id="usuario" class="fa-solid fa-user-gear"></i></a>
+                    <button type="button" id="dark-mode" class="btn btn-darkmode"><i id="logoDarkMode" class="fa-solid fa-moon"></i></button>                    
+                    <a class="btn btn-nav" href="../users/sairExec.php"><i id="doorIcon" class="door-icon fa-solid fa-door-closed"></i></a>
+                  </div>              
+            </div>
         </div>
     </div>
+</nav>
+
