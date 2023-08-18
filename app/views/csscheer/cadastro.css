@@ -1,0 +1,177 @@
+:root {
+    --principal: #338a5f;
+    --verdao: #04574d;
+    --branco: #ebf0f1;
+    --destaque: #f58c95;
+    --rosinha: #f0b6bc;
+    --rosão: #C05367;
+    --cinza: #586660;
+    --cinzinha: #d3dadb;
+    --branquinho #ffffff;
+
+    width: 100%;
+    height: 100%;
+
+    font-family: Poppins-regular, Roboto;
+}
+
+    @font-face {
+        font-family: 'Cooper';
+        src: url('../fontes/cooperhewitt-heavy.otf');
+    }
+    
+    @font-face {
+        font-family: 'Poppins';
+        src: url('../fontes/Poppins-ExtraBold.ttf');
+    }
+    
+    @font-face {
+        font-family: 'Poppins-regular';
+        src: url('../fontes/Poppins-Regular.ttf');
+    }
+    
+    @font-face {
+        font-family: 'Poppins-semibold';
+        src: url('../fontes/Poppins-SemiBold.ttf');
+    }
+    
+    @font-face {
+        font-family: 'Poppins-medium';
+        src: url('../fontes/Poppins-Medium.ttf');
+    }
+
+body {
+    background-color: #ebf0f1;
+}
+
+.titulo {
+    color: #04574d;
+    font-family: Poppins;
+    margin-left: 11px;
+    margin-top: 35px;
+    font-size: 45px;
+}
+
+#cadastronome {
+    color: #338a5f;
+    font-family: Poppins-semibold;
+    margin-left: 11px;
+    margin-top: 40px;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+#cadastrousuario {
+    color: #338a5f;
+    font-family: Poppins-semibold;
+    margin-left: 11px;
+    margin-top: 40px;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+#cadastroemail {
+    color: #338a5f;
+    font-family: Poppins-semibold;
+    margin-left: 11px;
+    margin-top: 40px;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+#cadastrosenha {
+    color: #338a5f;
+    font-family: Poppins-semibold;
+    margin-left: 11px;
+    margin-top: 40px;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+#cadastrogenero {
+    color: #338a5f;
+    font-family: Poppins-semibold;
+    margin-left: 11px;
+    margin-top: 40px;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.form-control {
+    background-color: #f0b6bc !important;
+    color: #ffffff;
+    font-family: Poppins-semibold;
+    margin-left: 11px;
+    border-radius: 5px;
+    width: 63%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.senha-cadastro {
+    color: #04574d;
+    font-family: Poppins-semibold;
+    margin-left: 11px;
+    font-size: 15px;
+}
+
+#botaocadastro {
+    color: #ffffff;
+    background-color: #338a5f;
+    font-family: Poppins-regular;
+    margin-left: 11px;
+    margin-bottom: 10px;
+    font-size: 25px;
+}
+
+#botaocadastro:hover {
+    color: #ffffff;
+    background-color: #04574d;
+    font-family: Poppins-regular;
+    margin-left: 11px;
+    margin-bottom: 10px;
+    font-size: 25px;
+}
+
+#jatemumaconta {
+    color: #C05367;
+    font-family: Poppins-semibold;
+    margin-left: 11px;
+    font-size: 16px;
+}
+
+#entrar {
+    color: #338a5f;
+    font-family: Poppins;
+    margin-left: 6px;
+    font-size: 16px;
+}
+
+#entrar:hover {
+    color: #04574d;
+    font-family: Poppins;
+    margin-left: 6px;
+    font-size: 16px;
+}
+
+#termos {
+    color: #C05367;
+    font-family: Poppins-semibold;
+    margin-top: 7px;
+    margin-left: 11px;
+    font-size: 16px;
+}
+
+#termos1 {
+    color: #338a5f;
+    font-family: Poppins;
+    margin-left: 6px;
+    font-size: 16px;
+}
+
+#termos1:hover {
+    color: #04574d;
+    font-family: Poppins;
+    margin-left: 6px;
+    font-size: 16px;
+}

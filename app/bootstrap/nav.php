@@ -123,8 +123,8 @@ color:#fff;
                     </li>
                 </ul>
                 <div class="ml-auto">
-                    <a href="../users/login.php" class="btn btn-outline btn-custom mr-2">Iniciar Sessão</a>
-                    <a href="../users/login.php" class="btn btn-jogar">Jogar Agora</a>
+                    <a href="../users/cadastro.php" class="btn btn-outline btn-custom mr-2">Cadastre-se</a>
+                    <a href="../users/login.php" class="btn btn-jogar">Iniciar Sessão</a>
                     <button type="button" id="dark-mode" class="btn btn-darkmode"><i id="logoDarkMode" class="fa-solid fa-moon"></i></button>
                 </div>
             </div>
