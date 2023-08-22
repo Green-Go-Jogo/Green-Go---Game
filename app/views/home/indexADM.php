@@ -20,8 +20,8 @@ LoginController::verificarAcesso([2,3]);
   height: 100%;
   margin: 0;
 }
-#nicolas-lindo {
-  height: 70%;
+#laembaixo {
+  height: 100%;
 }
 </style>
 
@@ -35,7 +35,7 @@ LoginController::verificarAcesso([2,3]);
 <c id="welcome"> Seja bem-vindo <?php echo $_SESSION['NOME']; ?>! </c> </div> <br><br>
 
 
-<div class="container text-center" id="nicolas-lindo">
+<div class="container text-center" id="laembaixo">
 <div class="row" id="card">
 <div class="col">
 <div class="card container text-center" style="width: 20rem;">

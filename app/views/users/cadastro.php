@@ -36,15 +36,15 @@
             
             <label for="email-cadastro" id="cadastrousuario">Nome de Usuário:</label>
             <br>
-            <input type="text" class="form-control" id="login-cadastro" name='field_login' required> <br>
+            <input type="text" class="form-control" id="login-cadastro" autocomplete="off"  name='field_login' required> <br>
 
             <label for="email-cadastro" id="cadastroemail">E-mail:</label>
             <br>
-            <input type="email" class="form-control" id="email-cadastro" name='field_email' required> <br>
+            <input type="email" class="form-control" id="email-cadastro" autocomplete="off"  name='field_email' required> <br>
 
             <label for="senha-cadastro" id="cadastrosenha">Senha:</label>
             <br>
-            <input type="password" class="form-control" id="senha-cadastro" name="field_password" required> <br>
+            <input type="password" class="form-control" id="senha-cadastro" autocomplete="off" name="field_password" required> <br>
             <h6 class="senha-cadastro">8 caracteres contendo letras e números</h6>
 
             <label for="caixinha-cad" id="cadastrogenero">Gênero:</label>
