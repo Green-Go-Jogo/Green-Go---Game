@@ -39,7 +39,7 @@
 
 </style>
 
-<?php include_once("../../bootstrap/navJOG.php");?>
+<?php include_once("../../bootstrap/navJog.php");?>
 
 <body>
     <div class="container">
