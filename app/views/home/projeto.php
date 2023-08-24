@@ -40,8 +40,8 @@
 
     <div class="container" >
         <div id="sobre">
-            <h2 class="titulo" style="text-align: center;">
-                O que é o <img src="../../../public/isologo-greengo-novo.svg" width="95%" class="isologo">
+        <h2 class="titulo" style="text-align: center;">
+                O que é o <img src="../../public/isologo-greengo.svg" width="95%" class="isologo">
             </h2>
 
             <p> É o resultado dos avanços de um projeto de extensão denominado <b>Green Go: Jogo Educacional Sobre a 

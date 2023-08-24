@@ -3,47 +3,45 @@
 
 <head>
 
-    <?php include_once("../bootstrap/header.php");?>
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/projeto.css">
-    <link rel="stylesheet" href="csscheer/footer.css">
+    <?php include_once("../../bootstrap/header.php");?>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/projeto.css">
+    <link rel="stylesheet" href="../csscheer/footer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
 </head>
 
 <style>
 
-a.page-link:hover {
-            color: #ebf0f1 !important;
-            background-color: #f58c95; }
-
         a.page-link{
-            color: #ebf0f1 !important;
+            color: #ebf0f1 ;
             background-color: #f58c95; }
    
         a.page-link:hover,
             .page-item.active a.page-link {
-            color: #ebf0f1 !important;
+            color: #ebf0f1 ;
             background-color: #C05367;
             }
 
         a.excluir:hover {
             color: var(--branco);
-            background-color: #f0b6bc !important;
+            background-color: #f0b6bc ;
             border-radius: 5px; }
 
             body {
-            overflow-x: hidden !important;
+            overflow-x: hidden ;
              }
 </style>    
 
 
 <body>
 
+<?php include_once("../../bootstrap/navJog.php") ?>
+
     <div class="container" >
         <div id="sobre">
-            <h2 class="titulo" style="text-align: center;">
-                O que é o <img src="../public/isologo-greengo-verde.svg" width="95%" class="isologo">
+        <h2 class="titulo" style="text-align: center;">
+                O que é o <img src="../../public/isologo-greengo.svg" width="95%" class="isologo">
             </h2>
 
             <p> É o resultado dos avanços de um projeto de extensão denominado <b>Green Go: Jogo Educacional Sobre a 
@@ -111,7 +109,7 @@ a.page-link:hover {
 <div class="row justify-content-md-left">
     <div class="d-flex justify-content-start">
         <div class="img-coord">
-            <img src="../public/marcela.jpg" class="coordenador">
+            <img src="../../public/marcela.jpg" class="coordenador">
         </div>
     </div>
 
@@ -129,7 +127,7 @@ a.page-link:hover {
 <div class="row justify-content-md-left">
     <div class="d-flex justify-content-start">
         <div class="img-coord">
-            <img src="../public/franco.jpg" class="coordenador">
+            <img src="../../public/franco.jpg" class="coordenador">
         </div>
     </div>
 
@@ -146,7 +144,7 @@ a.page-link:hover {
 <div class="row justify-content-md-left">
     <div class="d-flex justify-content-start">
         <div class="img-coord">
-            <img src="../public/humberto.jpg" class="coordenador">
+            <img src="../../public/humberto.jpg" class="coordenador">
         </div>
     </div>
 
@@ -163,7 +161,7 @@ a.page-link:hover {
 <div class="row justify-content-md-left">
     <div class="d-flex justify-content-start">
         <div class="img-coord">
-            <img src="../public/placeholder.png" class="coordenador">
+            <img src="../../public/placeholder.png" class="coordenador">
         </div>
     </div>
 
@@ -180,7 +178,7 @@ a.page-link:hover {
 <div class="row justify-content-md-left">
     <div class="d-flex justify-content-start">
         <div class="img-coord">
-            <img src="../public/placeholder.png" class="coordenador">
+            <img src="../../public/placeholder.png" class="coordenador">
         </div>
     </div>
 
@@ -201,7 +199,7 @@ a.page-link:hover {
 <div id="div-modulo-website" class="content-div" style="display: none;">
 
 <div id="nois">
-            <img src="../public/nois.jpg" class="img-fluid alunas">
+            <img src="../../public/nois.jpg" class="img-fluid alunas">
 
             <div class="membro">
                 <b>MARIA EDUARDA HECK SOUZA BENEDITO</b> <br>
@@ -251,7 +249,7 @@ a.page-link:hover {
 <div class="row justify-content-md-left">
     <div class="d-flex justify-content-start">
         <div class="img-coord">
-            <img src="../public/amanda.jpeg" class="coordenador">
+            <img src="../../public/amanda.jpeg" class="coordenador">
         </div>
     </div>
 
@@ -269,7 +267,7 @@ a.page-link:hover {
 <div class="row justify-content-md-left">
     <div class="d-flex justify-content-start">
         <div class="img-coord">
-            <img src="../public/annye.jpeg" class="coordenador">
+            <img src="../../public/annye.jpeg" class="coordenador">
         </div>
     </div>
 
@@ -286,14 +284,14 @@ a.page-link:hover {
 <div class="row justify-content-md-left">
     <div class="d-flex justify-content-start">
         <div class="img-coord">
-            <img src="../public/gabriel.jpeg" class="coordenador">
+            <img src="../../public/gabriel.jpeg" class="coordenador">
         </div>
     </div>
 
     <div class="txt-coord align-self-center">
         <span>
             <b>GABRIEL MANDELLI CARDOSO 🦁</b> <br>
-            Desenvolvedor Back-end & Desenvolvedor Front-end<br>
+            Desenvolvedor Full-Stack<br>
             <small>mandelli@greengoifpr.com.br</small>
         </span>
     </div>
@@ -302,7 +300,7 @@ a.page-link:hover {
 <div class="row justify-content-md-left">
     <div class="d-flex justify-content-start">
         <div class="img-coord">
-            <img src="../public/nikolas.jpeg" class="coordenador">
+            <img src="../../public/nikolas.jpeg" class="coordenador">
         </div>
     </div>
 
@@ -326,14 +324,14 @@ a.page-link:hover {
 <div class="row justify-content-md-left">
     <div class="d-flex justify-content-start">
         <div class="img-coord">
-            <img src="../public/rafaela.jpg" class="coordenador">
+            <img src="../../public/rafaela.jpg" class="coordenador">
         </div>
     </div>
 
     <div class="txt-coord align-self-center">
         <span>
             <b>RAFAELA FONTANA</b> <br>
-            Desenvolvedora Back-end & Desenvolvedora Front-End <br>
+            Desenvolvedora Full-Stack <br>
             <small>rafaela@greengoifpr.com.br</small>
         </span>
     </div>
@@ -344,7 +342,7 @@ a.page-link:hover {
 <div class="row justify-content-md-left">
     <div class="d-flex justify-content-start">
         <div class="img-coord">
-            <img src="../public/rayssa.jpeg" class="coordenador">
+            <img src="../../public/rayssa.jpeg" class="coordenador">
         </div>
     </div>
 
@@ -361,7 +359,7 @@ a.page-link:hover {
 <div class="row justify-content-md-left">
     <div class="d-flex justify-content-start">
         <div class="img-coord">
-            <img src="../public/juliana.jpeg" class="coordenador">
+            <img src="../../public/juliana.jpeg" class="coordenador">
         </div>
     </div>
 
@@ -378,7 +376,7 @@ a.page-link:hover {
 <div class="row justify-content-md-left">
     <div class="d-flex justify-content-start">
         <div class="img-coord">
-            <img src="../public/nura.jpeg" class="coordenador">
+            <img src="../../public/nura.jpeg" class="coordenador">
         </div>
     </div>
 
@@ -404,18 +402,19 @@ a.page-link:hover {
             <div class="container">
                 <div class="row  d-flex justify-content-around">
                     <div class="col">
-                        <a href="https://foz.ifpr.edu.br/" target="_blank"><img id="ifpr" src="../public/foz-horizontal.png"></a>
+                        <a href="https://foz.ifpr.edu.br/" target="_blank"><img id="ifpr" src="../../public/foz-horizontal.png"></a>
                     </div>
 
                     <div class="col">
-                        <a href="https://foz.ifpr.edu.br/iftech-apresentara-prototipos-e-produtos-desenvolvidos-por-diferentes-cursos-do-campus/" target="_blank"><img id="nit" src="../public/nit.png"></a>
+                        <a href="https://foz.ifpr.edu.br/iftech-apresentara-prototipos-e-produtos-desenvolvidos-por-diferentes-cursos-do-campus/" target="_blank"><img id="nit" src="../../public/nit.png"></a>
                         
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <?php include_once("../bootstrap/footer.php");?>
+    
+    <?php include_once("../../bootstrap/footer.php");?>
 </body>
 
 </html>
