@@ -28,7 +28,7 @@ class LoginController {
     public static function sair() {
         session_start();
 
-        session_destroy();
+        session_write_close();
         header("Location: login.php");   
     }
     

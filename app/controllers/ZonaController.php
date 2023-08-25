@@ -5,7 +5,7 @@ include_once(__DIR__ . "/../dao/ZonaDAO.php");
 
 class ZonaController {
 
-    private $ZonaDAO;
+    private $zonaDAO;
 
     public function __construct() {
         $this->zonaDAO = new ZonaDAO();

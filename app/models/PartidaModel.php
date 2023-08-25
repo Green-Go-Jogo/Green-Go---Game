@@ -11,12 +11,16 @@ Class Partida {
     private $Senha;
     private $TempoPartida;
     private $NomePartida;
+    private $StatusPartida;
     private $PontuacaoEquipe;
     private $PontuacaoUsuario;
 
 
 
-
+    public function __toString() {
+        return $this->DataInicio;
+		return $this->DataFim;
+    }
     /**
      * Get the value of IdPartida
      */ 
@@ -233,6 +237,26 @@ Class Partida {
     public function setNomePartida($NomePartida)
     {
         $this->NomePartida = $NomePartida;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of StatusPartida
+     */ 
+    public function getStatusPartida()
+    {
+        return $this->StatusPartida;
+    }
+
+    /**
+     * Set the value of StatusPartida
+     *
+     * @return  self
+     */ 
+    public function setStatusPartida($StatusPartida)
+    {
+        $this->StatusPartida = $StatusPartida;
 
         return $this;
     }
