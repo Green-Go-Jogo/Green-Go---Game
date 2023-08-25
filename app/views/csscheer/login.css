@@ -71,7 +71,7 @@ body {
     }
 
 .form-control {
-    background-color: #f0b6bc;
+    background-color: #f0b6bc !important;
     color: #ffffff;
     font-family: Poppins-semibold;
     margin-bottom: 25px;
