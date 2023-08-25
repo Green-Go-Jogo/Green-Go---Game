@@ -103,6 +103,10 @@ color:#fff;
     outline: none;
 }
 
+.nav-item {
+    list-style-type: none;
+}
+
 
 </style>
 

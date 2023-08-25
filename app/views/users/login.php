@@ -47,7 +47,7 @@
                        </div>
 
                        <div class="container text-right novoporaqui">
-                            <p>Novo por aqui?<br> <a class="text-center" id="cadastro" href="cadastro.php">Cadastre-se</a></p> </div> </div>
+                            <p>Novo por aqui?<br> <a class="text-center" id="cadastro" href="cadastro.php"> Cadastre-se</a></p> </div> </div>
                         
 
                     <div class="container-fluid" id="laembaixo">
