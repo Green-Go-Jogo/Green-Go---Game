@@ -3,8 +3,9 @@
 
 <head>
     <title>Em Construção!</title>
+
     <?php include_once("../../bootstrap/header.php");?>
-    <link rel="stylesheet" href="csscheer/indexjog.css">
+    <link rel="stylesheet" href="../csscheer/indexjog.css">
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="csscheer/footer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -15,27 +16,6 @@
     img {
        margin: auto;
     }
-
-    #ops {
-    color: #04574d;
-    font-family: Poppins;
-    margin-left: 11px;
-    margin-top: 35px;
-    font-size: 70px;
-}
-
-#textoerro {
-    color: #C05367;
-    font-family: Poppins-semibold;
-    margin-top: 25px;
-    margin-bottom: 10px;
-    font-size: 27px;
-}
-
-#gif{
-    width: 300px;
-    height: auto;
-}
 
 </style>
 
