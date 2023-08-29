@@ -172,17 +172,12 @@ body {
 
 <div> 
 
-<h1 class="descricao" id="historiaplanta">
-    <?= $planta->getPlantaHistoria() ?>
-</h1> <br>
-
-<div class="container text-center">
+<div class=" text-center">
     <p class="descricao text-center" id="pontos">
     Pontos: <?=$planta->getPontos(); ?>
     </p>
-
     
-    <p class="descricao" id="atributos">
+    <p class=" descricao" id="atributos">
         <?php echo $tox; ?>
         <?php echo $med; ?>
         <?php echo $come; ?>
@@ -191,7 +186,26 @@ body {
         <?php echo $rara; ?>
     </p> </div>
 
-        
+    <br>
+    <br>
+    <w id="nomespecie"> História da Espécie: </w>
+    <h1 class="descricao" id="historiaespecie">
+        <?= $especie->getDescricao() ?>
+    </h1> <br><br>
+
+    <w id="nomespecie"> História da Planta: </w>
+    <h1 class="descricao" id="historiaplanta">
+    <?= $planta->getPlantaHistoria() ?>
+</h1> <br><br>
+
+<div class="container text-center">
+<img id="mapa" src="../../public/mapa.png"> 
+<w id="zonaencontrada">
+<?= $planta->getNomeSocial() ?>
+ encontrado na 
+<?= $planta->getZona() ?>!
+</w> </div>
+    
 </div>
 
 

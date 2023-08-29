@@ -77,7 +77,7 @@ body {
 }
 
 #codigoPlanta {
-    color: #7EC4BB;
+    color: #078071;
     font-size: 35px;
     margin-bottom: 15px;
     font-family: Poppins-semibold;
@@ -95,6 +95,7 @@ body {
 
 #historiaplanta {
     color: #04574d;
+    margin-top: 7px;
     font-family: Poppins-regular;
     text-align: justify;
 }
@@ -105,7 +106,7 @@ body {
     font-size: 40px;
     color: #ffffff;
     width: auto;
-    margin-top: 35px;
+    margin-top: 15px;
 }
 
 #atributos {
@@ -115,3 +116,30 @@ body {
     text-decoration: underline;
 }
 
+#nomespecie {
+    font-size: 25px;
+    color: #ED8E96;
+    font-family: Poppins-semibold;
+}
+
+#historiaespecie {
+    color: #04574d;
+    margin-top: 7px;
+    font-family: Poppins-regular;
+    text-align: justify;
+}
+
+#mapa {
+    width: 100px;
+    height: auto;
+}
+
+#zonaencontrada {
+    color: #C05367;
+    margin-left: 10px;
+    font-size: 3rem;
+    font-family: Poppins;
+    position: relative;
+    top: 12px;
+    text-decoration: underline;
+}
