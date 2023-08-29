@@ -21,9 +21,14 @@
 
 
 .buttons {
+ 
   margin-top: 50px;
   text-align: center;
   border-radius: 30px;
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+
 }
 
 .blob-btn {
@@ -137,12 +142,49 @@
     margin-top: 7%;
     text-align: center;
     font-family: Poppins-regular;
+    font-size: 18px;
 
 }
 
 .home {
- padding : 70px 70px;    
+ padding : 70px;
+ 
 }
+
+.titulo {
+  font-size: 80px;
+  font-family: Poppins-regular;
+}
+
+.subtitulo{
+  font-family: Poppins-regular;
+  font-size: 20px;
+}
+
+.texto {
+  font-family: Poppins-regular;
+}
+
+.gabrielgay {
+            display: flex;
+            width: 100%;
+
+        }
+
+        .conteudo {
+            flex: 1;
+            padding: 20px; /* Adicione margem esquerda para separar o conteúdo da imagem */
+        }
+
+        .imagem {
+            flex: 1;
+            background-image: url('../public/gabriel.jpeg');
+            background-size: cover;
+            background-position: center;
+            height: 50vh; /* Defina a altura desejada para a imagem */
+        }
+
+
 
 
 </style>
@@ -167,7 +209,6 @@
   </button>
   <br/>
 
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
   <defs>
     <filter id="goo">
       <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10"></feGaussianBlur>
@@ -178,6 +219,44 @@
 </svg>
 </div>
 </div>
+<div class="gabrielgay">
+    <div class="conteudo">
+      <span class="titulo">
+        Escaneie os <br>QR Codes
+      </span>
+      <h6 class="subtitulo">Leia as plantas</h6>
+      <span class="texto">
+      Explore as plantas, ganhe pontos e descubra suas características e histórias únicas enquanto você joga.
+      </span>
+    </div>
+    <div class="imagem"></div>
+    </div>
+
+    <div class="gabrielgay">
+    <div class="imagem"></div>
+    <div class="conteudo">
+      <span class="titulo">
+        Jogue em <br>Equipe
+      </span>
+      <h6 class="subtitulo">Trabalhem juntos </h6>
+      <span class="texto">
+      Jogar em equipe é eficiente e divertido. Trabalhar juntos, compartilhar estratégias e celebrar vitórias em conjunto torna a experiência mais satisfatória.
+      </span>
+    </div>
+    </div>
+
+    <div class="gabrielgay">
+    <div class="conteudo">
+      <span class="titulo">
+        Responda aos <br>Quizzes
+      </span>
+      <h6 class="subtitulo">Teste seu conhecimento</h6>
+      <span class="texto">
+      Desafie seu conhecimento botânico! Participe do nosso Quiz das Plantas e teste o quanto você sabe sobre o reino vegetal.
+      </span>
+    </div>
+    <div class="imagem"></div>
+    </div>
 
                         <?php include_once("../../bootstrap/footer.php");?>
 </html>
