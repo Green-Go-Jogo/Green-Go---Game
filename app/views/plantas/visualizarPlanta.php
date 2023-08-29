@@ -198,7 +198,7 @@ body {
     <?= $planta->getPlantaHistoria() ?>
 </h1> <br><br>
 
-<div class="container text-center">
+<div class="text-center">
 <img id="mapa" src="../../public/mapa.png"> 
 <w id="zonaencontrada">
 <?= $planta->getNomeSocial() ?>
