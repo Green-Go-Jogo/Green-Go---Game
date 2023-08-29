@@ -1,8 +1,27 @@
 <?php include_once("../../controllers/ZonaController.php");
       include_once("../../controllers/EquipeController.php");
+      include_once("../../controllers/PartidaController.php");
       include_once("../zones/htmlZonaForm.php");
       include_once("../equipes/htmlEquipeForm.php");
       include_once("../users/sessions.php");
+
+      if (!isset($_GET['id'])) {
+        $id = null;
+    } else {
+        $id = $_GET['id'];
+    }
+
+      if ($id !== null) {
+        $partidaCont = new PartidaController();
+        $partida = $partidaCont->buscarPorId($id);
+    } else if ($idEditarpartida !== null) {
+        $partidaCont = new PartidaController();
+        $partida = $partidaCont->buscarPorId($idEditarPartida);
+    } else {
+        echo "Planta não encontrada!<br>";
+        echo "<a href='listPlantas.php'>Voltar</a>";
+        exit;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -49,7 +68,7 @@
                             <div class="w-100">
                             <label for="formtexto" id="txtNome">Nome da Partida:</label>
                             <div class="w-100"></div>
-                            <input type="text" name="Nome_Partida" class="form-control" id="txtNomeForm" aria-describedby="nome-cadastro" value="<?php echo isset($_POST['Nome_Partida']) ? $_POST['Nome_Partida'] : ''; ?>">
+                            <input type="text" name="Nome_Partida" class="form-control" id="txtNomeForm" aria-describedby="nome-cadastro" value="<?php echo isset($_POST['Nome_Partida']) ? $_POST['Nome_Partida'] : $partida->getNomePartida(); ?>">
                             <div class="w-100"></div>
                             <?php if (isset($errors) && !empty($errors) && isset($errors['Nome_Partida'])) { ?>
                             <div class="alert alert-warning" style="position: left;"><?php echo $errors['Nome_Partida']; ?></div>
@@ -100,22 +119,34 @@
                             <div class="w-100"></div>
                             <input type="number" name="Limite_Jogadores" class="form-control" id="txtNomeForm" aria-describedby="nome-cadastro" value="<?php echo isset($_POST['Limite_Jogadores']) ? $_POST['Limite_Jogadores'] : ''; ?>">
                             <div class="w-100"></div>  
+                            <?php if (isset($errors) && !empty($errors) && isset($errors['Limite_Jogadores'])) { ?>
+                            <div class="alert alert-warning" style="position: left;"><?php echo $errors['Limite_Jogadores']; ?></div>
+                            <?php } ?>
 
                             <br>
                             <label for="formtexto" id="txtNome">Tempo de Partida (Minutos):</label>
                             <div class="w-100"></div>
                             <input type="number" name="Tempo_Partida" class="form-control" id="txtNomeForm" aria-describedby="nome-cadastro" value="<?php echo isset($_POST['Tempo_Partida']) ? $_POST['Tempo_Partida'] : ''; ?>">
                             <div class="w-100"></div>
+                            <?php if (isset($errors) && !empty($errors) && isset($errors['Limite_Jogadores'])) { ?>
+                            <div class="alert alert-warning" style="position: left;"><?php echo $errors['Limite_Jogadores']; ?></div>
+                            <?php } ?>
 
                             <label for="formtexto" id="txtNome">Senha da Sala:</label>
                             <div class="w-100"></div>
                             <input type="text" name="Senha_Sala" class="form-control" id="txtNomeForm" aria-describedby="nome-cadastro" value="<?php echo isset($_POST['Senha_Sala']) ? $_POST['Senha_Sala'] : ''; ?>">
                             <div class="w-100"></div>
+                            <?php if (isset($errors) && !empty($errors) && isset($errors['Senha_Sala'])) { ?>
+                            <div class="alert alert-warning" style="position: left;"><?php echo $errors['Senha_Sala']; ?></div>
+                            <?php } ?>
 
                             <label for="formtexto" id="txtNome">Confirmação Senha da Sala:</label>
                             <div class="w-100"></div>
                             <input type="text" name="ConfSenha_Sala" class="form-control" id="txtNomeForm" aria-describedby="nome-cadastro" value="<?php echo isset($_POST['ConfSenha_Sala']) ? $_POST['ConfSenha_Sala'] : ''; ?>">
                             <div class="w-100"></div>
+                            <?php if (isset($errors) && !empty($errors) && isset($errors['ConfSenha_Sala'])) { ?>
+                            <div class="alert alert-warning" style="position: left;"><?php echo $errors['ConfSenha_Sala']; ?></div>
+                            <?php } ?>
                             <br> <br> <br>
 
                             <div class="container">

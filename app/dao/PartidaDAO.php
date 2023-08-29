@@ -11,24 +11,22 @@ include_once(__DIR__."/../models/UsuarioModel.php");
 
 class PartidaDAO {
 
-    private const SQL_PARTIDA = "SELECT p.*, pz.idPartidaZona, pe.idPartidaEquipe FROM partida p"
-    ."LEFT JOIN partida_zona pz ON pz.idPartida = p.idPartida"."LEFT JOIN" ." partida_equipe pe ON pe.idPartida = p.idPartida";
+    private const SQL_PARTIDA = "SELECT p.* FROM partida p";
+    private const SQL_EQUIPE = "SELECT p.*, pe.* FROM partida_equipe pe JOIN equipe e ON pe.idEquipe = e.idEquipe INNER JOIN partida p ON pe.idPartida = p.idPartida";
 
     private function mapPartidas($resultSql) {
             $partidas = array();
             foreach ($resultSql as $reg):
             
-            $partida = new partida();  
-            $partida->setIdPartida($reg['idpartida']);
-
-            $equipe = new Equipe($reg['idEspecie'], $reg['nomePop']);
-            $partida->setEspecie($especie);
-
-            $zona = new Zona($reg['idZona'], $reg['nomeZona']);
-            $partida->setZona($zona);
-
-            $usuario = new Usuario($reg['idUsuario'], $reg['nomeUsuario']);
-            $partida->setUsuario($usuario);
+            $partida = new Partida();  
+            $partida->setIdPartida($reg['idPartida']);
+            $partida->setNomePartida($reg['nomePartida']);
+            $partida->setDataInicio($reg['dataInicio']);
+            $partida->setDataFim($reg['dataFim']);
+            $partida->setTempoPartida($reg['tempoPartida']);
+            $partida->setSenha($reg['senhaPartida']);
+            $partida->setStatusPartida($reg['statusPartida']);
+            $partida->setLimiteJogadores($reg['limiteJogadores']);
 
             array_push($partidas, $partida);
         endforeach;
@@ -41,96 +39,113 @@ class PartidaDAO {
         $conn = conectar_db();
 
         $sql = PartidaDAO::SQL_PARTIDA . 
-                " ORDER BY p.nomeSocial";
+                " ORDER BY p.nomePartida";
         $stm = $conn->prepare($sql);    
         $stm->execute();
         $result = $stm->fetchAll();
 
-        return $this->mapPlantas($result);
+        return $this->mapPartidas($result);
     }
 
 
-    public function findById($idPlanta) {
+
+    public function findById($idPartida) {
         $conn = conectar_db();
 
-        $sql = PlantaDAO::SQL_PLANTA . 
-                " WHERE p.idPlanta = ?";
+        $sql = PartidaDAO::SQL_PARTIDA. 
+                " WHERE p.idPartida = ?";
 
         $stmt = $conn->prepare($sql);
-        $stmt->execute([$idPlanta]);
+        $stmt->execute([$idPartida]);
         $result = $stmt->fetchAll();
 
-        //Criar o objeto Planta
-        $plantas = $this->mapPlantas($result);
+      
 
-        if(count($plantas) == 1)
-            return $plantas[0];
-        elseif(count($plantas) == 0)
+        //Criar o objeto Partida
+        $partidas = $this->mapPartidas($result);
+
+        if(count($partidas) == 1)
+            return $partidas[0];
+        elseif(count($partidas) == 0)
             return null;
 
-        die("PlantaDAO.findById - Erro: mais de uma planta".
-                " encontrado para o ID ".$idPlanta);
+            return $partidas;
     }
 
-    public function findByCod($CodNumerico) {
+    public function findByIdZona($idZona) {
         $conn = conectar_db();
 
-        $sql = PlantaDAO::SQL_PLANTA . 
-                " WHERE p.codNumerico = ?";
+        $sql = PartidaDAO::SQL_PARTIDA. 
+                " WHERE z.idZona = ?";
 
         $stmt = $conn->prepare($sql);
-        $stmt->execute([$CodNumerico]);
+        $stmt->execute([$idZona]);
         $result = $stmt->fetchAll();
 
-        //Criar o objeto Codigos
-        $plantas = $this->mapPlantas($result);
+      
 
-        if(count($plantas) == 1)
-            return $plantas[0];
-        elseif(count($plantas) == 0)
+        //Criar o objeto Partida
+        $zonas = $this->mapPartidas($result);
+
+        if(count($zonas) == 1)
+            return $zonas[0];
+        elseif(count($zonas) == 0)
             return null;
 
-        die("PlantaDAO.findByCod - Erro: mais de um codigo".
-                " encontrado para o ID ".$CodNumerico);
+            return $zonas;
     }
 
-    public function gerarCodigoAleatorio() {
-        $conn = conectar_db();
-
-        $sql = PlantaDAO::SQL_PLANTA . 
-        " WHERE codNumerico = :codNumerico";
-
-        $numeros = mt_rand(1000, 9999); // Gera um número aleatório de 4 dígitos
-    
-        // Verifica se o número já existe no banco de dados
-        $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':codNumerico', $numeros);
-        $stmt->execute();
-    
-        $count = $stmt->fetchColumn();
-    
-        if ($count > 0) {
-          // Se o número já existir, gera um novo número chamando recursivamente a função
-          return self::gerarCodigoAleatorio();
-        }
-    
-        return $numeros;
-      }
-    
+   
 
       public function savePartida(Partida $partida) {
         $conn = conectar_db();
     
-        $sql = "INSERT INTO partida (nomePartida, limiteJogadores, senhaPartida, tempoPartida) VALUES (?, ?, ?, ?)";
+        $sql = "INSERT INTO partida (nomePartida, limiteJogadores, senhaPartida, tempoPartida, statusPartida) VALUES (?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
         $stmt->execute([
             $partida->getNomePartida(),
             $partida->getLimiteJogadores(),
             $partida->getSenha(),
-            $partida->getTempoPartida()
+            $partida->getTempoPartida(),
+            $partida->getStatusPartida()
         ]);
+
+        $idPartida = $conn->lastInsertId();
+        $partida->setIdPartida($conn->lastInsertId());
+        $this->saveEquipe($partida, $idPartida);
+        $this->saveZona($partida, $idPartida);
     }
-   
+
+    public function saveEquipe(Partida $partida, $idPartida) {
+        $conn = conectar_db();
+        $equipes = $partida->getEquipes();
+
+        foreach($equipes as $equipe){
+        $sql = "INSERT INTO partida_equipe (idEquipe, idPartida) VALUES (?, ?)";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([
+            $equipe,
+            $idPartida,
+        ]);
+        
+    };
+    return;
+}
+
+    public function saveZona(Partida $partida, $idPartida) {
+        $conn = conectar_db();
+        $zonas = $partida->getZonas();
+
+        foreach($zonas as $zona){
+        $sql = "INSERT INTO partida_zona (idZona, idPartida) VALUES (?, ?)";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([
+            $zona,
+            $idPartida,
+        ]);
+    
+    };
+}
 
     public function update(Planta $planta) {
         $conn = conectar_db();

@@ -6,6 +6,9 @@ include_once(__DIR__."/../models/EquipeModel.php");
 class EquipeDAO {
 
     private const SQL_EQUIPE = "SELECT * FROM equipe e";
+    private const SQL_EQUIPE_PARTIDA = "SELECT e.*".
+                                        " FROM partida_equipe pe".
+                                        " JOIN equipe e ON pe.idEquipe = e.idEquipe";
 
     private function mapEquipes($resultSql) {
             $equipes = array();
@@ -22,7 +25,7 @@ class EquipeDAO {
 
         return $equipes;
     
-}
+    }
 
     public function list() {
         $conn = conectar_db();
@@ -56,6 +59,24 @@ class EquipeDAO {
 
         die("EspecieDAO.findById - Erro: mais de uma equipe".
                 " encontrado para o ID ".$idEquipe);
+    }
+
+    public function listByPartida($idPartida) {
+        $conn = conectar_db();
+
+        $sql = EquipeDAO::SQL_EQUIPE_PARTIDA. 
+                " WHERE pe.idPartida = ?";
+
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([$idPartida]);
+        $result = $stmt->fetchAll();
+
+      
+
+        //Criar o objeto Partida
+        $equipes = $this->mapEquipes($result);
+
+        return $equipes; 
     }
 
 

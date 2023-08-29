@@ -12,7 +12,7 @@ Class Equipe {
     //Construtor da classe
     public function __construct($id="",$nome="",$icone="")
     {
-        $this->IdEquipe = $id;
+        $this->idEquipe = $id;
         $this->nomeEquipe = $nome;
         $this->iconeEquipe = $icone;  
     }

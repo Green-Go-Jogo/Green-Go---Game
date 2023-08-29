@@ -49,7 +49,7 @@ var idZonaSelecionada;
             $("#addButtonZona").click(function() {
                 if (ZonaSelecionada !== undefined && !isZoneAlreadyAdded(idZonaSelecionada)) {
                     zonasAdicionadas.push(idZonaSelecionada);
-                    $("#txtZonaForm").append('<div class="zone-wrapper" data-id="' + contadorZona + '"><input type="hidden" name="zona_' + contadorZona + '" value="' + idZonaSelecionada + '"> <a>' + ZonaSelecionada + '</a> <a href="#" class="delete-zone" data-action="delete"><i class="fas fa-trash" style="color: #338a5f;"></i></a></div>');
+                    $("#txtZona").append('<div class="zone-wrapper" data-id="' + contadorZona + '"><input type="hidden" name="zona_' + contadorZona + '" value="' + idZonaSelecionada + '"> <span>' + ZonaSelecionada + '</span> <a href="#" class="delete-zone" data-action="delete"><i class="fas fa-trash" style="color: #338a5f;"></i></a></div>');
                     contadorZona++;
                 } else {
                     alert('Essa zona já foi adicionada.');
@@ -59,7 +59,7 @@ var idZonaSelecionada;
             $("#addButtonEquipe").click(function() {
                 if (EquipeSelecionada !== undefined && !isTeamAlreadyAdded(idEquipeSelecionada)) {
                     equipesAdicionadas.push(idEquipeSelecionada);
-                    $("#txtEquipeForm").append('<div class="team-wrapper" data-id="' + contadorEquipe + '"><input type="hidden" name="equipe_' + contadorEquipe + '" value="' + idEquipeSelecionada + '"> <a>' + EquipeSelecionada + '</a> <a href="#" class="delete-team" data-action="delete"><i class="fas fa-trash" style="color: #338a5f;"></i></a></div>');
+                    $("#txtEquipe").append('<div class="team-wrapper" data-id="' + contadorEquipe + '"><input type="hidden" name="equipe_' + contadorEquipe + '" value="' + idEquipeSelecionada + '"> <a>' + EquipeSelecionada + '</a> <a href="#" class="delete-team" data-action="delete"><i class="fas fa-trash" style="color: #338a5f;"></i></a></div>');
                     contadorEquipe++;
                 } else {
                     alert('Essa equipe já foi adicionada.');

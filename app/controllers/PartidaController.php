@@ -2,29 +2,43 @@
 #Classe de controller para partida
 
 include_once(__DIR__."/../dao/PartidaDAO.php");
+include_once(__DIR__."/../dao/EquipeDAO.php");
 
 class PartidaController {
 
     private $partidaDAO;
+    private $equipeDAO;
+    private $zonaDAO;
 
     public function __construct() {
         $this->partidaDAO = new PartidaDAO();
+        $this->equipeDAO = new EquipeDAO();
+        $this->zonaDAO = new ZonaDAO();
     }
 
     public function listar() {
-        return $this->plantaDAO->list();
+        return $this->partidaDAO->list();
+    }
+    
+    public function buscarPorId($idPartida) {
+        $partida = $this->partidaDAO->findById($idPartida);
+        if($partida) {
+            $zonas = $this->zonaDAO->listByPartida($idPartida);
+            $equipes = $this->equipeDAO->listByPartida($idPartida);
+            $partida->setEquipes($equipes);
+            $partida->setZonas($zonas);
+        }
+
+
+        return $partida;
     }
 
-    public function buscarPorId($idPlanta) {
-        return $this->plantaDAO->findById($idPlanta);
+    public function buscarPorIdZona($idPartida) {
+        return $this->partidaDAO->findByIdZona($idPartida);
     }
 
-    public function buscarPorCodigo($CodNumerico) {
-        return $this->plantaDAO->findByCod($CodNumerico);
-    }
-
-    public function gerarCodigo() {
-        return $this->plantaDAO->gerarCodigoAleatorio();
+    public function buscarPorIdEquipe($idPartida) {
+        return $this->partidaDAO->findByIdEquipe($idPartida);
     }
 
     public function salvarPartida($partida) {
@@ -32,7 +46,7 @@ class PartidaController {
     }
 
     public function atualizar($planta) {
-        $this->plantaDAO->update($planta);
+        $this->partidaDAO->update($planta);
     }
 
     public function excluir($planta) {

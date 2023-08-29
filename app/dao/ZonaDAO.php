@@ -5,8 +5,12 @@ include_once(__DIR__ . "/../connection/Connection.php");
 include_once(__DIR__ . "/../models/ZonaModel.php");
 
 class zonaDAO {
-    private const SQL_ZONA = "SELECT z.*, s.nomeZona AS nomeZona FROM zona z".
-    " JOIN zona s ON s.idZona= z.idZona";
+    private const SQL_ZONA = "SELECT z.idZona, z.nomeZona, COUNT(p.idPlanta) AS qntPlantas, SUM(p.pontuacaoPlanta) AS pontoZona
+    FROM zona z ".
+    " LEFT JOIN planta p ON z.idZona = p.idZona ";
+    private const SQL_ZONA_PARTIDA = "SELECT z.*".
+    " FROM partida_zona pz".
+    " JOIN zona z ON pz.idZona = z.idZona";
 
     private function mapZonas($resultSql) {
         $zonas = array();
@@ -66,6 +70,24 @@ class zonaDAO {
 
         die("zonaDAO.findById - Erro: mais de um Zona".
                 " encontrado para o ID ".$idZona);
+    }
+
+    public function listByPartida($idPartida) {
+        $conn = conectar_db();
+
+        $sql = ZonaDAO::SQL_ZONA_PARTIDA. 
+                " WHERE pz.idPartida = ?";
+
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([$idPartida]);
+        $result = $stmt->fetchAll();
+
+      
+
+        //Criar o objeto Partida
+        $zonas = $this->mapZonas($result);
+
+        return $zonas; 
     }
 
 
