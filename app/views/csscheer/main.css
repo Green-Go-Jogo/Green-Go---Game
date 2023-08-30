@@ -377,3 +377,19 @@ a.excluir:hover {
         .modo-escuro h6.senha-cadastro {
             color: #f0b6bc !important;
         }
+
+        .modo-escuro span.titulo {
+            color: #fff;
+          }
+          
+        .modo-escuro h6.subtitulo{ 
+            color: #C05367;
+          }
+          
+        .modo-escuro span.texto {
+            color: #ED8E96;
+          }
+
+        .modo-escuro div.coisas {
+            background-color: #121212;
+          }

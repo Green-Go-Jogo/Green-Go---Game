@@ -153,23 +153,31 @@
 
 .titulo {
   font-size: 80px;
-  font-family: Poppins-regular;
+  font-family: Poppins;
+  color: #04574d;
 }
 
 .subtitulo{
-  font-family: Poppins-regular;
+  font-family: Poppins-semibold;
   font-size: 20px;
+  color: #C05367;
 }
 
 .texto {
   font-family: Poppins-regular;
+  color: #338A5F;
 }
 
-.gabrielgay {
+.coisas {
             display: flex;
             width: 100%;
+            background-color: #D8DCDD;
 
         }
+
+        .coisas2 {
+            display: flex;
+            width: 100%;}
 
         .conteudo {
             flex: 1;
@@ -178,10 +186,27 @@
 
         .imagem {
             flex: 1;
-            background-image: url('../public/gabriel.jpeg');
             background-size: cover;
             background-position: center;
-            height: 50vh; /* Defina a altura desejada para a imagem */
+            height: 60vh; /* Defina a altura desejada para a imagem */
+            margin-left : 50vh;
+            
+        }
+
+        .imagem2 {
+            flex: 1;
+            background-size: cover;
+            background-position: center;
+            height: 60vh; /* Defina a altura desejada para a imagem */
+
+            
+        }
+
+        .imgqr{
+          top: 0;
+  right: 0;
+  /* Ajuste a largura conforme necessário */
+  height: auto;
         }
 
 
@@ -219,7 +244,9 @@
 </svg>
 </div>
 </div>
-<div class="gabrielgay">
+<br>
+
+<div class="coisas">
     <div class="conteudo">
       <span class="titulo">
         Escaneie os <br>QR Codes
@@ -229,11 +256,12 @@
       Explore as plantas, ganhe pontos e descubra suas características e histórias únicas enquanto você joga.
       </span>
     </div>
-    <div class="imagem"></div>
+    <div class="imagem"> <img src="../../public/qrcodejog.png" class="imgqr"> </div>
     </div>
+    <br>
 
-    <div class="gabrielgay">
-    <div class="imagem"></div>
+    <div class="coisas2">
+    <div class="imagem2"></div>
     <div class="conteudo">
       <span class="titulo">
         Jogue em <br>Equipe
@@ -244,8 +272,9 @@
       </span>
     </div>
     </div>
+    <br>
 
-    <div class="gabrielgay">
+    <div class="coisas">
     <div class="conteudo">
       <span class="titulo">
         Responda aos <br>Quizzes
