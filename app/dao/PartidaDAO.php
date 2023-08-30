@@ -12,8 +12,7 @@ include_once(__DIR__."/../models/UsuarioModel.php");
 class PartidaDAO {
 
     private const SQL_PARTIDA = "SELECT p.* FROM partida p";
-    private const SQL_EQUIPE = "SELECT p.*, pe.* FROM partida_equipe pe JOIN equipe e ON pe.idEquipe = e.idEquipe INNER JOIN partida p ON pe.idPartida = p.idPartida";
-
+    
     private function mapPartidas($resultSql) {
             $partidas = array();
             foreach ($resultSql as $reg):
@@ -25,7 +24,6 @@ class PartidaDAO {
             $partida->setDataFim($reg['dataFim']);
             $partida->setTempoPartida($reg['tempoPartida']);
             $partida->setSenha($reg['senhaPartida']);
-            $partida->setStatusPartida($reg['statusPartida']);
             $partida->setLimiteJogadores($reg['limiteJogadores']);
 
             array_push($partidas, $partida);
@@ -59,8 +57,6 @@ class PartidaDAO {
         $stmt->execute([$idPartida]);
         $result = $stmt->fetchAll();
 
-      
-
         //Criar o objeto Partida
         $partidas = $this->mapPartidas($result);
 
@@ -68,34 +64,8 @@ class PartidaDAO {
             return $partidas[0];
         elseif(count($partidas) == 0)
             return null;
-
-            return $partidas;
     }
 
-    public function findByIdZona($idZona) {
-        $conn = conectar_db();
-
-        $sql = PartidaDAO::SQL_PARTIDA. 
-                " WHERE z.idZona = ?";
-
-        $stmt = $conn->prepare($sql);
-        $stmt->execute([$idZona]);
-        $result = $stmt->fetchAll();
-
-      
-
-        //Criar o objeto Partida
-        $zonas = $this->mapPartidas($result);
-
-        if(count($zonas) == 1)
-            return $zonas[0];
-        elseif(count($zonas) == 0)
-            return null;
-
-            return $zonas;
-    }
-
-   
 
       public function savePartida(Partida $partida) {
         $conn = conectar_db();
@@ -131,6 +101,33 @@ class PartidaDAO {
     };
     return;
 }
+    public function findByLoginSenha(string $IdPartida, string $Senha) {
+            $conn = conectar_db();
+            $sql = PartidaDAO::SQL_PARTIDA . " WHERE idPartida = ? AND senhaPartida = ?";
+            $stmt = $conn->prepare($sql);
+            $stmt->execute([$IdPartida, $Senha]);
+            $result = $stmt->fetchAll();
+
+            $partidas = $this->mapPartidas($result);
+    
+            if (count($partidas) === 1) { 
+            return $partidas[0];
+            }
+    
+            return null;
+            }
+
+    public function enterRoom($IdPartida, $Senha){
+
+            $partida = $this->findByLoginSenha($IdPartida, $Senha);
+
+            if ($partida !== null) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        
 
     public function saveZona(Partida $partida, $idPartida) {
         $conn = conectar_db();

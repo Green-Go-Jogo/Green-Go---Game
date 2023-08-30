@@ -12,9 +12,9 @@ if (isset($_GET['id'])) {
     echo "ID não encontrado na URL.";
 }
 
-$partidas = $partidaCont->buscarPorId($_GET['id']); 
+$partida = $partidaCont->buscarPorId($_GET['id']); 
 
-
+$tempo = $partida->getTempoPartida(); 
 
 ?>
 <?php include_once("../../controllers/LoginController.php");
@@ -26,7 +26,7 @@ LoginController::verificarAcesso([2, 3]);
 <html lang="en">
 <head>
 
-    <title>Espécies</title>
+    <title>Dashboard Partida</title>
     <?php include_once("../../bootstrap/header.php");?>
 
 
@@ -75,20 +75,21 @@ LoginController::verificarAcesso([2, 3]);
     
   <h1 class="text-center primeirotextoreg">PARTIDAS</h1>
   <br><br><br>
-  <?php echo "<a href='editarPartida.php?id=".$id."' class='btn btn-primary editar'>Editar</a>"; ?>
+  <?php echo "<a href='editarPartida.php?id=".$id."' class='btn btn-primary editar'>Editar</a>";?>
   <br><br>
-<div id="counter">00:00:00</div>
-    <button onclick="inicia()">Iniciar</button>
+  <button id="startButton" onclick="startTimer(<?php echo $tempo; ?>)">Iniciar Timer</button>
+    <div id="timer"></div>
+
 
         <?php 
-            PartidaHTML::desenhaPartidaZona($partidas);
+            PartidaHTML::desenhaPartidaZona($partida);
         ?>
 
 </div>
 </div>
 
         <?php 
-            PartidaHTML::desenhaPartidaEquipe($partidas);
+            PartidaHTML::desenhaPartidaEquipe($partida);
         ?>
 
 </div>
@@ -101,44 +102,80 @@ LoginController::verificarAcesso([2, 3]);
 </body>
 
 <script>
-var segundos = 0;
-var interval;
-var contadorAtivo = false;
+      
+     
+        var timerStarted = false;
+        var timerPaused = false;
+        var startTime = 0;
+        var endTime = 0;
+        var url = window.location.href;
+        var partidaId = url.split('?id=')[1]; // Obtém a parte após o '?id=' na URL
 
-// Pega o valor do ID da URL
-var urlParams = new URLSearchParams(window.location.search);
-var id = urlParams.get('id');
 
-function atualizaContador() {
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", "atualiza_contador.php?id=" + id, true);
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            document.getElementById("counter").innerHTML = xhr.responseText;
+        function startTimer(duration) {
+            if (!timerStarted) {
+            startTime = Math.floor(Date.now() / 1000);
+            endTime = startTime + (duration * 60);
+            timerStarted = true;
+            timerPaused = false;
+
+            saveTime(partidaId, 'startTime', startTime); // Envie o tempo de início ao iniciar
+            updateTimer();
+            } else {
+            timerPaused = !timerPaused;
+
+            if (timerPaused) {
+                saveTime(partidaId, 'endTime', Math.floor(Date.now() / 1000)); // Envie o tempo de término ao pausar
+            } else {
+                saveTime(partidaId, 'startTime', startTime); // Envie o tempo de início ao reiniciar
+            }
         }
-    };
-    xhr.send();
-}
 
-function inicia() {
-    if (!contadorAtivo) {
-        interval = setInterval(atualizaContador, 1000); // Chamada a cada 1 segundo
-        contadorAtivo = true;
-    }
-}
+            updateButtonState();
+        }
 
-function para() {
-    clearInterval(interval);
-    contadorAtivo = false;
-}
+        function updateButtonState() {
+            var button = document.getElementById("startButton");
+            if (timerPaused) {
+                button.innerHTML = "Continuar";
+            } else {
+                button.innerHTML = "Pausar";
+            }
 
-function zera() {
-    clearInterval(interval);
-    segundos = 0;
-    document.getElementById("counter").innerHTML = "00:00:00";
-    contadorAtivo = false;
-}
+            button.disabled = timerPaused;
+        }
 
-        
+        function updateTimer() {
+            var now = Math.floor(Date.now() / 1000);
+            var remainingTime = endTime - now;
+
+            if (remainingTime <= 0) {
+                saveTime(partidaId, 'endTime', Math.floor(Date.now() / 1000)); // Envie o tempo de término ao pausar
+                document.getElementById("timer").innerHTML = "Tempo expirado!";
+            } else {
+                var minutes = Math.floor(remainingTime / 60);
+                var seconds = remainingTime % 60;
+
+                document.getElementById("timer").innerHTML = "Tempo restante: " + minutes + " minutos e " + seconds + " segundos";
+
+                if (!timerPaused) {
+                    setTimeout(updateTimer, 1000);
+                }
+            }
+        }
+
+        function saveTime(partidaId, timeType, timestamp) {
+            $.ajax({
+                type: "POST",
+                url: "save_time.php",
+                data: { timeType: timeType, timestamp: timestamp, partidaId: partidaId },
+                success: function(response) {
+                    console.log("Tempo salvo com sucesso: " + timeType + " - " + timestamp + " - " + partidaId);
+                },
+                error: function(error) {
+                    console.log("Erro ao salvar tempo: " + error);
+                }
+            });
+        }
     </script>
 </html>

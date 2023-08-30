@@ -104,8 +104,27 @@ class zonaDAO {
         $conn = conectar_db();
     
         $sql = "UPDATE zona SET nomeZona = ? WHERE idZona = ?";
-        $stmt = $conn->prepare($sql);
-        $stmt->execute([$zona->getNomeZona(), $zona->getIdZona()]);
+        $stmtUpdate = $conn->prepare($sql);
+        $stmtUpdate->execute([$zona->getNomeZona(), $zona->getIdZona()]);
+    }    
+
+    public function updatePlanta(Zona $zona) {
+        $conn = conectar_db();
+    
+        $sqlQntPlantas = "SELECT COUNT(p.idPlanta) FROM planta AS p WHERE p.idZona = ?";
+        $sqlPontoZona = "SELECT SUM(p.pontuacaoPlanta) FROM planta AS p WHERE p.idZona = ?";
+    
+        $stmtQntPlantas = $conn->prepare($sqlQntPlantas);
+        $stmtQntPlantas->execute([$zona->getIdZona()]);
+        $qntPlantas = $stmtQntPlantas->fetchColumn();
+    
+        $stmtPontoZona = $conn->prepare($sqlPontoZona);
+        $stmtPontoZona->execute([$zona->getIdZona()]);
+        $pontoZona = $stmtPontoZona->fetchColumn();
+    
+        $sqlUpdate = "UPDATE zona SET qntPlantas = ?, pontoZona = ? WHERE idZona = ?";
+        $stmtUpdate = $conn->prepare($sqlUpdate);
+        $stmtUpdate->execute([$qntPlantas, $pontoZona, $zona->getIdZona()]);
     }
 
     

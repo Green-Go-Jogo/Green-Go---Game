@@ -7,7 +7,6 @@
 
  include_once("../../controllers/LoginController.php");
 LoginController::manterUsuario();
-LoginController::verificarAcesso([2, 3]);
 ?>
 <?php if (isset($_SESSION['msg_erro'])): ?>
     <span>

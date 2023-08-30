@@ -2,13 +2,16 @@
 #Classe de controller para planta
 
 include_once(__DIR__."/../dao/PlantaDAO.php");
+include_once(__DIR__."/../dao/ZonaDAO.php");
 
 class PlantaController {
 
     private $plantaDAO;
+    private $zonaDAO;
 
     public function __construct() {
         $this->plantaDAO = new PlantaDAO();
+        $this->zonaDAO = new ZonaDAO();
     }
 
     public function listar() {
@@ -29,14 +32,17 @@ class PlantaController {
 
     public function salvar($planta) {
         $this->plantaDAO->save($planta);
+        $this->zonaDAO->updatePlanta($planta->getZona());
     }
 
     public function atualizar($planta) {
         $this->plantaDAO->update($planta);
+        $this->zonaDAO->updatePlanta($planta->getZona());
     }
 
     public function excluir($planta) {
         $this->plantaDAO->delete($planta);
+        $this->zonaDAO->updatePlanta($planta->getZona());
     }
 
     public function apagarImagem($idPlanta) {

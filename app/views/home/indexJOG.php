@@ -195,7 +195,7 @@
     <div class="home">
     <p class="jogo" >Um jogo para aprender mais sobre as plantas</p>
     <img src="../../public/isologo-greengo.svg" width="100%" class="isologo">
-<div class="buttons">
+    <a href="../partidas/listPartidas.php"><div class="buttons">
   <button class="blob-btn">
     Jogar Agora
     <span class="blob-btn__inner">
@@ -206,7 +206,7 @@
         <span class="blob-btn__blob"></span>
       </span>
     </span>
-  </button>
+  </button></a>
   <br/>
 
   <defs>

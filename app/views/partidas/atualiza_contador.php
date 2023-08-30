@@ -1,79 +1,100 @@
+<!DOCTYPE html>
+
 <?php
-include_once(__DIR__."/../../controllers/PartidaController.php");
+include_once(__DIR__."/../../connection/Connection.php");
+
+$conn = conectar_db();
+// Buscar o valor em minutos do banco de dados
+$query = "SELECT tempoPartida FROM partida WHERE idPartida = 32"; // Supondo que o timer de interesse tenha ID 1
+$stmt = $conn->query($query);
+$minutesToAdd = $stmt->fetchColumn();
 
 
-session_start();
+?>
 
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Timer</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        
+        var timerStarted = false;
+        var timerPaused = false;
+        var startTime = 0;
+        var endTime = 0;
 
-  
+        function startTimer(duration) {
+            if (!timerStarted) {
+            startTime = Math.floor(Date.now() / 1000);
+            endTime = startTime + (duration * 60);
+            timerStarted = true;
+            timerPaused = false;
 
-function buscarPartida($id) {
-    $partidaCont = new PartidaController();
-    $partidas = $partidaCont->buscarPorId($id); 
+            saveTime('startTime', startTime); // Envie o tempo de início ao iniciar
+            updateTimer();
+            } else {
+            timerPaused = !timerPaused;
 
-    $processedPartidaTimes = array();
-    $primeiroTempoPartida = null; // Definir como nulo inicialmente
-
-    foreach ($partidas as $partida) {
-        $horaInicio = $partida->getDataInicio();
-        $tempoPartida = $partida->getTempoPartida();
-
-        $registro = "$horaInicio-$tempoPartida";
-
-        if (!in_array($registro, $processedPartidaTimes)) {
-            $processedPartidaTimes[] = $registro;
-
-            // Armazenar o primeiro valor de tempo de partida encontrado
-            if ($primeiroTempoPartida === null) {
-                $primeiroTempoPartida = $tempoPartida;
+            if (timerPaused) {
+                saveTime('endTime', Math.floor(Date.now() / 1000)); // Envie o tempo de término ao pausar
+            } else {
+                saveTime('startTime', startTime); // Envie o tempo de início ao reiniciar
             }
         }
-    }
 
-    return $primeiroTempoPartida; // Retornar o primeiro valor encontrado
-}
+            updateButtonState();
+        }
 
+        function updateButtonState() {
+            var button = document.getElementById("startButton");
+            if (timerPaused) {
+                button.innerHTML = "Continuar";
+            } else {
+                button.innerHTML = "Pausar";
+            }
 
-function formatatempo($segs) {
-    $min = 0;
-    $hr = 0;
+            button.disabled = timerPaused;
+        }
 
-    while ($segs >= 60) {
-        $segs -= 60;
-        $min++;
-    }
+        function updateTimer() {
+            var now = Math.floor(Date.now() / 1000);
+            var remainingTime = endTime - now;
 
-    while ($min >= 60) {
-        $min -= 60;
-        $hr++;
-    }
+            if (remainingTime <= 0) {
+                document.getElementById("timer").innerHTML = "Tempo expirado!";
+            } else {
+                var minutes = Math.floor(remainingTime / 60);
+                var seconds = remainingTime % 60;
 
-    $hr = str_pad($hr, 2, '0', STR_PAD_LEFT);
-    $min = str_pad($min, 2, '0', STR_PAD_LEFT);
-    $segs = str_pad($segs, 2, '0', STR_PAD_LEFT);
+                document.getElementById("timer").innerHTML = "Tempo restante: " + minutes + " minutos e " + seconds + " segundos";
 
-    $fin = $hr . ":" . $min . ":" . $segs;
-    return $fin;
-}
+                if (!timerPaused) {
+                    setTimeout(updateTimer, 1000);
+                }
+            }
+        }
 
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
-$primeiroTempoPartida = buscarPartida($id) * 60;
-}
-
-$tempoTotal = isset($primeiroTempoPartida) ? intval($primeiroTempoPartida) : 0; // Tempo total em segundos (5 minutos)
-if (!isset($_SESSION['TEMPO_PARTIDA'])) {
-    $_SESSION['TEMPO_PARTIDA'] = $tempoTotal;
-} else {
-    $_SESSION['TEMPO_PARTIDA']--;
-}
-
-echo formatatempo($_SESSION['TEMPO_PARTIDA']);
-
-    ?>
-
-
-
+        function saveTime(timeType, timestamp) {
+            $.ajax({
+                type: "POST",
+                url: "save_time.php",
+                data: { timeType: timeType, timestamp: timestamp },
+                success: function(response) {
+                    console.log("Tempo salvo com sucesso: " + timeType + " - " + timestamp);
+                },
+                error: function(error) {
+                    console.log("Erro ao salvar tempo: " + error);
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <button id="startButton" onclick="startTimer(<?php echo $minutesToAdd; ?>)">Iniciar Timer</button>
+    <div id="timer"></div>
+</body>
+</html>
 
 
 

@@ -96,38 +96,70 @@ Class PartidaHTML {
         echo "<th scope='col'>Nome da Partida</th>";
         echo "<th scope='col'>Jogadores</th>";
         echo "<th scope='col'>Status</th>";
+        echo "<th scope='col'>Status</th>";
         echo "</tr>";
         echo "</thead>";
         echo "<tbody>";
 
         foreach ($partidas as $partida) {
+
+        
+
             
-        $statusp = $partida->getStatusPartida();
-        if($statusp == 1) {
-            $Status = "Aguardando";
+        if(null !==($partida->getDataInicio())) {
+            $Status = "Em Andamento";
+            $Open = "CLOSE";
        }
-       else if($statusp == 2){
-           $Status = "Em Andamento";
-       }
-       else if($statusp == 3){
-           $Status = "Encerrada";
+       else if(null !==($partida->getDataFim())){
+           $Status = "Finalizada";
+           $Open = "CLOSE";
        }
        else {
-           $Status = "Desconhecido";
+           $Status = "Aguardando";
+           $Open = "OPEN";
        }
+       
             echo "<tr>";
             echo "<td>".$partida->getNomePartida()."</td>";
             echo "<td style='color: #338a5f;'>"."0/".$partida->getLimiteJogadores()."</td>";
             echo "<td style='color: #04574d;'>".$Status."</td>";
             // echo "<td>";
-            // echo "<a href='editarpartida.php?id=".$partida->getIdPartida()."' class='btn btn-primary editar'>Editar</a>";
-            // echo "<a href='deletarpartida.php?id=".$partida->getIdPartida()."' onclick='return confirm(\"Confirma a exclusão da partida?\");' class='btn btn-alert excluir'>Excluir</a>";
-            // echo "</td>";
+            if ($Open == "OPEN") {
+            echo "<td><button type='button' class='btn btn-primary entrar-btn' data-bs-toggle='modal' data-bs-target='#exampleModal' data-partida-id='".$partida->getIdPartida()."'>Entrar</button></td>";
+            }
+            else {
+                
+            }
             echo "</tr>";
         }
 
         echo "</tbody>";
         echo "</table>";
+        echo "</div>";
+
+        // Modal HTML
+        echo "<div class='modal fade' id='exampleModal' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>";
+        echo "<div class='modal-dialog'>";
+        echo "<div class='modal-content'>";
+        echo "<div class='modal-header'>";
+        echo "<h1 class='modal-title fs-5' id='exampleModalLabel'>Enter Password</h1>";
+        echo "<button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>";
+        echo "</div>";
+        echo "<div class='modal-body'>";
+        echo "<form id='password-form' action='verificar_senha.php' method='POST'>";
+        echo "<input type='hidden' id='partida-id' name='partidaId'>";
+        echo "<div class='mb-3'>";
+        echo "<label for='password' class='col-form-label'>Password:</label>";
+        echo "<input type='password' class='form-control' id='password' name='password'>";
+        echo "</div>";
+        echo "</div>";
+        echo "<div class='modal-footer'>";
+        echo "<button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>";
+        echo "<button type='submit' class='btn btn-primary' id='submit-password'>Submit</button>";
+        echo "</div>";
+        echo "</form>";
+        echo "</div>";
+        echo "</div>";
         echo "</div>";
     }
 
@@ -199,6 +231,30 @@ Class PartidaHTML {
         echo "</table>";
         echo "</div>"; // Feche a div com a classe zonaP
         echo "</div>";
+    }
+
+    public static function desenhaJogadorEquipe($partida) {
+    
+        echo "<div class='container text-center'>";
+        echo "<div class='row row-cols-6'>";
+
+        foreach ($partida->getEquipes() as $equipe):
+            echo "<div class='col-md-6'>";
+            echo "<br>";
+            echo "<div class='card' style='width: 22rem;'>";
+            echo "<a href='visualizarEquipe.php?ideq=".$equipe->getIdEquipe()."'><img src='".$equipe->getIconeEquipe()."' style='width: 55%; height: 50%;'class='card-img-top mais' alt='...'></a><br>";
+            echo "<div class='card-body' style='background-color:" .$equipe->getCorEquipe()."'>";
+            echo "<h5 class='card-title nome-soc' id='nomeEquipe'>". $equipe->getNomeEquipe() ."</h5>";
+            echo "<a href='' class='btn btn-primary editar' id='editarEquipe' >ESCOLHER</a>";
+            echo "<br>";
+            echo "</div>";
+            echo "</div>";
+            echo "</div>";
+        endforeach;
+
+        echo "</div>";
+        echo "</div>";
+    
     }
 }
 ?>

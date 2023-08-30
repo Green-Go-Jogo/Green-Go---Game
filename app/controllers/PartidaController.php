@@ -3,6 +3,7 @@
 
 include_once(__DIR__."/../dao/PartidaDAO.php");
 include_once(__DIR__."/../dao/EquipeDAO.php");
+include_once(__DIR__."/../dao/ZonaDAO.php");
 
 class PartidaController {
 
@@ -28,17 +29,7 @@ class PartidaController {
             $partida->setEquipes($equipes);
             $partida->setZonas($zonas);
         }
-
-
         return $partida;
-    }
-
-    public function buscarPorIdZona($idPartida) {
-        return $this->partidaDAO->findByIdZona($idPartida);
-    }
-
-    public function buscarPorIdEquipe($idPartida) {
-        return $this->partidaDAO->findByIdEquipe($idPartida);
     }
 
     public function salvarPartida($partida) {
@@ -50,11 +41,11 @@ class PartidaController {
     }
 
     public function excluir($planta) {
-        $this->plantaDAO->delete($planta);
+        $this->partidaDAO->delete($planta);
     }
 
     public function apagarImagem($idPlanta) {
-        $this->plantaDAO->deleteImage($idPlanta);
+        $this->partidaDAO->deleteImage($idPlanta);
     }
 }
 

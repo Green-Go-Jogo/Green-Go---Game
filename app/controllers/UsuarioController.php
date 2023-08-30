@@ -7,15 +7,6 @@ class UsuarioController {
 
     private $usuarioDAO;
 
-    protected function handleAction() {
-        //Captura a ação do parâmetro GET
-        $action = NULL;
-        if(isset($_GET['action']))
-            $action = $_GET['action'];
-        
-        //Chama a ação
-        $this->callAction($action);
-    }
 
     public function __construct() {
         $this->usuarioDAO = new UsuarioDAO();
