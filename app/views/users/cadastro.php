@@ -32,7 +32,7 @@
           <div>
             <label for="nome-cadastro" id="cadastronome">Nome Completo:</label>
             <br>
-            <input type="text" class="form-control" id="nome-cadastro"> <br>
+            <input type="text" class="form-control" id="nome-cadastro" name="field_nome"> <br>
             
             <label for="email-cadastro" id="cadastrousuario">Nome de Usuário:</label>
             <br>
@@ -73,6 +73,8 @@
             <br>
             <br>
             <br>
+
+            <input type="hidden" class="form-control" id="tipo-aluno" autocomplete="off" name="aluno" value="1" required> <br>
 
             <div class="row align-items-center">
               <div class="col-auto">
