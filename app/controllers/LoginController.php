@@ -75,7 +75,7 @@ class LoginController {
     }
 
     else {
-        echo include_once("../../bootstrap/nav.php");
+        include_once("../../bootstrap/nav.php");
     }
 
    }

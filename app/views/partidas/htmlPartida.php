@@ -128,7 +128,7 @@ Class PartidaHTML {
             echo "<td><button type='button' class='btn btn-primary entrar-btn' data-bs-toggle='modal' data-bs-target='#exampleModal' data-partida-id='".$partida->getIdPartida()."'>Entrar</button></td>";
             }
             else {
-                
+
             }
             echo "</tr>";
         }
@@ -245,7 +245,7 @@ Class PartidaHTML {
             echo "<a href='visualizarEquipe.php?ideq=".$equipe->getIdEquipe()."'><img src='".$equipe->getIconeEquipe()."' style='width: 55%; height: 50%;'class='card-img-top mais' alt='...'></a><br>";
             echo "<div class='card-body' style='background-color:" .$equipe->getCorEquipe()."'>";
             echo "<h5 class='card-title nome-soc' id='nomeEquipe'>". $equipe->getNomeEquipe() ."</h5>";
-            echo "<a href='' class='btn btn-primary editar' id='editarEquipe' >ESCOLHER</a>";
+            echo "<a href='verEquipe.php?id=".$equipe->getIdEquipe()."' class='btn btn-primary editar' id='editarEquipe' >ESCOLHER</a>";
             echo "<br>";
             echo "</div>";
             echo "</div>";

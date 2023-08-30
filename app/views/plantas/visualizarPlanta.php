@@ -6,7 +6,9 @@
  include_once("../especies/htmlEspecie.php");
 
  include_once("../../controllers/LoginController.php");
-LoginController::manterUsuario();
+ if (isset($_SESSION['ID'])) {
+    LoginController::manterUsuario();
+}
 ?>
 <?php if (isset($_SESSION['msg_erro'])): ?>
     <span>
@@ -137,7 +139,13 @@ body {
 
 <nav>
 
-    <?php include_once("../../bootstrap/navADM.php");?>
+<?php 
+if (!isset($_SESSION['TIPO'])) {
+    $tipo = 0;
+} else {
+    $tipo = $_SESSION['TIPO'];
+}
+LoginController::navBar($tipo);?>
 
 </nav>
 
