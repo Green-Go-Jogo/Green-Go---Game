@@ -101,6 +101,39 @@ class PartidaDAO {
     };
     return;
 }
+
+public function saveUsuarioEquipe($idEquipe, $idUsuario) {
+    $conn = conectar_db();
+    
+    $sql = "INSERT INTO equipe_usuario (idEquipe, idUsuario) VALUES (?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute([
+        $idEquipe,
+        $idUsuario,
+    ]);
+ 
+return;
+}
+
+public function usuarioInEquipe($idUsuario) {
+    $conn = conectar_db();
+    
+    $sql = "SELECT * FROM equipe_usuario WHERE idUsuario = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute([
+    $idUsuario,
+]);
+    
+    $result = $stmt->fetchAll();
+    if(count($result) >= 1)
+            return true;
+        else{
+            return null;
+    }
+}
+
+
+
     public function findByLoginSenha(string $IdPartida, string $Senha) {
             $conn = conectar_db();
             $sql = PartidaDAO::SQL_PARTIDA . " WHERE idPartida = ? AND senhaPartida = ?";

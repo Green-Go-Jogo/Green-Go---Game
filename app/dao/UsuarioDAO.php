@@ -5,6 +5,9 @@ include_once(__DIR__."/../connection/Connection.php");
 include_once(__DIR__."/../models/UsuarioModel.php");
 class UsuarioDAO {
     private const SQL_USUARIO = "SELECT * FROM usuario u";
+    private const SQL_EQUIPE_USUARIO = "SELECT e.idEquipe, u.* FROM equipe_usuario eu 
+                                        JOIN usuario u ON eu.idUsuario = u.idUsuario
+                                        JOIN equipe e ON eu.idEquipe = e.idEquipe";
 
     private function mapUsuarios($resultSql) {
             $usuarios = array();
@@ -50,6 +53,21 @@ class UsuarioDAO {
             return null;
         die("UsuarioDAO.findById - Erro: mais de um usuario".
                 " encontrado para o ID ".$idUsuario);
+    }
+
+    public function findUsers($idEquipe) {
+        $conn = conectar_db();
+
+        $sql = UsuarioDAO::SQL_EQUIPE_USUARIO. 
+                " WHERE e.idEquipe = ?";
+
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([$idEquipe]);
+        $result = $stmt->fetchAll();
+
+        $usuarios = $this->mapUsuarios($result);
+
+        return $usuarios;
     }
 
     public function findByLoginSenha(string $login, string $senha) {

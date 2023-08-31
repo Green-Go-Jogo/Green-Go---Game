@@ -9,6 +9,7 @@ class EquipeDAO {
     private const SQL_EQUIPE_PARTIDA = "SELECT e.*".
                                         " FROM partida_equipe pe".
                                         " JOIN equipe e ON pe.idEquipe = e.idEquipe";
+    
 
     private function mapEquipes($resultSql) {
             $equipes = array();
@@ -78,6 +79,7 @@ class EquipeDAO {
 
         return $equipes; 
     }
+
 
 
     public function save(Equipe $equipe) {

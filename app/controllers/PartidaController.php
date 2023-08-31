@@ -36,6 +36,18 @@ class PartidaController {
         $this->partidaDAO->savePartida($partida);
     }
 
+    public function salvarUsuarioEquipe($idEquipe) {
+        $idUsuario = $_SESSION["ID"];
+        $inEquipe = $this->partidaDAO->usuarioInEquipe($idUsuario);
+
+        if($inEquipe){
+        $error = "Você já pertence a uma equipe!";
+        return $error;
+    } else {
+        $this->partidaDAO->saveUsuarioEquipe($idEquipe, $idUsuario);
+    }
+    }
+
     public function atualizar($planta) {
         $this->partidaDAO->update($planta);
     }

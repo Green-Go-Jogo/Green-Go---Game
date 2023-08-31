@@ -6,16 +6,17 @@ include_once(__DIR__."/htmlPartida.php");
 
 $partidaCont = new PartidaController();
 
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
+if (isset($_GET['idp'])) {
+    $id = $_GET['idp'];
 } else {
     echo "ID não encontrado na URL.";
 }
 
-$partida = $partidaCont->buscarPorId($_GET['id']); 
+$partida = $partidaCont->buscarPorId($_GET['idp']); 
 
 
 ?>
+
 <?php include_once("../../controllers/LoginController.php");
 LoginController::manterUsuario();
 LoginController::verificarAcesso([1]);

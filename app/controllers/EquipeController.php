@@ -19,6 +19,7 @@ class EquipeController {
         return $this->equipeDAO->findById($idEquipe);
     }
 
+    
     public function salvar($equipe) {
         $this->equipeDAO->save($equipe);
     }

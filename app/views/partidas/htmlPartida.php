@@ -163,6 +163,57 @@ Class PartidaHTML {
         echo "</div>";
     }
 
+    public static function desenhaEquipe($usuarios, $partida) {
+
+
+        echo "<div class='container text-center'>";
+        echo "<table class='table'>";
+        echo "<thead>";
+        echo "<tr>";
+        echo "<th scope='col'>Nome</th>";
+        echo "<th scope='col'>Escolaridade</th>";
+        echo "<th scope='col'>Pontos</th>";
+        echo "</tr>";
+        echo "</thead>";
+        echo "<tbody>";
+
+
+        foreach ($usuarios as $usuario) { 
+    
+       
+            echo "<tr>";
+            echo "<td>".$usuario->getNomeUsuario()."</td>";
+            echo "<td style='color: #04574d;'>".$usuario->getEscolaridade()."</td>";
+            echo "<td style='color: #04574d;'>"."</td>";
+            // echo "<td>";
+            echo "</tr>";
+        }
+
+        echo "</tbody>";
+        echo "</table>";
+        echo "</div>";
+
+        if (!is_null($partida->getDataInicio())) {
+            $Status = "Em andamento!";
+            $Open = "CLOSE";
+            $link = '<a href="mainJogo.php">Clique aqui para caçar as plantas!</a>';
+        } else if (!is_null($partida->getDataFim())) {
+            $Status = "Essa partida acabou!";
+            $Open = "CLOSE";
+            $link = '';
+        } else {
+            $Status = "Aguarde! O jogo iniciará assim que o Professor permitir :)";
+            $Open = "OPEN";
+            $link = '';
+        }
+        
+        echo "<p class='text-center'>" . $Status . "</p>";
+        
+        if (!empty($link)) {
+            echo "<p class='text-center'>" . $link . "</p>";
+        }
+    }
+
 
     public static function desenhaPartidaZona($partida) {
     
@@ -238,6 +289,8 @@ Class PartidaHTML {
         echo "<div class='container text-center'>";
         echo "<div class='row row-cols-6'>";
 
+        $idPartida = $partida->getIdPartida();
+
         foreach ($partida->getEquipes() as $equipe):
             echo "<div class='col-md-6'>";
             echo "<br>";
@@ -245,7 +298,7 @@ Class PartidaHTML {
             echo "<a href='visualizarEquipe.php?ideq=".$equipe->getIdEquipe()."'><img src='".$equipe->getIconeEquipe()."' style='width: 55%; height: 50%;'class='card-img-top mais' alt='...'></a><br>";
             echo "<div class='card-body' style='background-color:" .$equipe->getCorEquipe()."'>";
             echo "<h5 class='card-title nome-soc' id='nomeEquipe'>". $equipe->getNomeEquipe() ."</h5>";
-            echo "<a href='verEquipe.php?id=".$equipe->getIdEquipe()."' class='btn btn-primary editar' id='editarEquipe' >ESCOLHER</a>";
+            echo "<a href='processEquipe.php?ide=".$equipe->getIdEquipe()."&idp=".$idPartida."' class='btn btn-primary editar' id='editarEquipe' >ESCOLHER</a>";
             echo "<br>";
             echo "</div>";
             echo "</div>";
