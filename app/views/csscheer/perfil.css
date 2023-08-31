@@ -1,0 +1,174 @@
+:root {
+    --principal: #078071;
+    --verdao: #04574d;
+    --cinzinha: #ebf0f1;
+    --destaque: #ED8E96;
+    --rosinha: #f0b6bc;
+    --rosão: #C05367;
+    --branquinho: #ffffff;
+    --verdinho: #7EC4BB;
+    --cinzaclaro: #272626;
+    --cinza: #1B1B1B;
+    
+    width: 100%;
+    height: 100%;
+
+    font-family: Poppins-regular, Roboto;
+}
+
+    @font-face {
+        font-family: 'Cooper';
+        src: url('../fontes/cooperhewitt-heavy.otf');
+    }
+    
+    @font-face {
+        font-family: 'Poppins';
+        src: url('../fontes/Poppins-ExtraBold.ttf');
+    }
+    
+    @font-face {
+        font-family: 'Poppins-regular';
+        src: url('../fontes/Poppins-Regular.ttf');
+    }
+    
+    @font-face {
+        font-family: 'Poppins-semibold';
+        src: url('../fontes/Poppins-SemiBold.ttf');
+    }
+    
+    @font-face {
+        font-family: 'Poppins-medium';
+        src: url('../fontes/Poppins-Medium.ttf');
+    }
+
+body {
+    background-color: #ebf0f1;;
+}
+
+
+.center-icon {
+    display: flex;
+    align-items: center; /* Centraliza verticalmente */
+    justify-content: center; /* Centraliza horizontalmente */
+    height: 100%; /* Ocupa a altura da tela */
+}
+
+
+.fa-user{
+    font-size: 150px;  
+    color: #333; 
+}
+
+.profile-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* Estilos opcionais para o conteúdo */
+.profile-info p {
+    margin: 0;
+    text-align: center;
+    justify-content: center;
+    color: #078071;
+}
+
+/* Defina a largura das colunas (50% para cada coluna) */
+.profile-info .column {
+    width: calc(50% - 10px); /* Leva em consideração o espaço entre as colunas */
+}
+
+
+.custom-dialog {
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 300px;
+    margin: 0 auto;
+}
+.custom-dialog h3 {
+    margin-top: 0;
+}
+.custom-dialog-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+#subtitulo {
+    color: #04574d;
+    font-family: Poppins-semibold;
+    margin-top: 50px;
+    margin-bottom: 5px;
+    font-size: 20px;
+}
+
+#subtituloemail {
+    color: #04574d;
+    font-family: Poppins-semibold;
+    font-size: 20px;
+    position: relative;
+    top: -7px;
+}
+
+#conteudoemail {
+    color: #078071;
+    font-family: Poppins-regular;
+    font-size: 17px;
+    text-decoration: underline dotted;
+    position: relative;
+    top: -10px;
+
+}
+
+#icon {
+    margin-bottom: 5px;
+    width: 270px;
+    height: auto;
+}
+
+#acesso {
+    font-family: Poppins-semibold;
+    color: #04574d;
+    font-size: 23px;
+    text-decoration: underline dotted;
+    
+}
+
+#conteudo {
+    color: #078071;
+    font-family: Poppins-regular;
+    font-size: 17px;
+    text-decoration: underline dotted;
+}
+
+#usuarionome {
+    color: #078071;
+    font-family: Poppins;
+    font-size: 45px;
+}
+
+#btn-perfil {
+    background-color: #C05367;
+    color: #ffffff !important; 
+    font-family: Poppins;
+    font-size: 19px;
+    width: 17rem;
+    height: auto;
+    }
+
+    #btn-perfil:hover {
+        background-color: #f0b6bc;
+        color: #ffffff !important; 
+        font-family: Poppins;
+        font-size: 19px;
+        width: 17rem;
+        height: auto;
+        }
+        
+    
+    .btn-perfil p{
+        margin: 0;
+        text-align: center;
+        justify-content: center;
+    }

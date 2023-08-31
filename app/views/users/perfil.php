@@ -18,102 +18,49 @@ $usuario = $usuarioCont->buscarPorId($id);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meu perfil</title>
     <link rel="stylesheet" href="../csscheer/main.css">
+    <link rel="stylesheet" href="../csscheer/perfil.css">
     <?php include_once("../../bootstrap/header.php") ?>
 </head>
-<style>
-        .center-icon {
-            display: flex;
-            align-items: center; /* Centraliza verticalmente */
-            justify-content: center; /* Centraliza horizontalmente */
-            height: 100%; /* Ocupa a altura da tela */
-        }
 
-    
-        .fa-user{
-            font-size: 150px;  
-            color: #333; 
-        }
-
-        .profile-info {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        /* Estilos opcionais para o conteúdo */
-        .profile-info p {
-            margin: 0;
-            text-align: center;
-            justify-content: center;
-            color: #078071;
-        }
-
-        /* Defina a largura das colunas (50% para cada coluna) */
-        .profile-info .column {
-            width: calc(50% - 10px); /* Leva em consideração o espaço entre as colunas */
-        }
-
-        .btn-custom {
-        border-color: #C05367;
-        color: #C05367; 
-        }
-
-        .btn-perfil p{
-            margin: 0;
-            text-align: center;
-            justify-content: center;
-        }
-
-        .custom-dialog {
-            background-color: white;
-            border-radius: 5px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            max-width: 300px;
-            margin: 0 auto;
-        }
-        .custom-dialog h3 {
-            margin-top: 0;
-        }
-        .custom-dialog-buttons {
-            display: flex;
-            justify-content: space-between;
-        }
-</style>
 <?php include_once("../../bootstrap/navADM.php") ?>
 
     <div class="container">
         <br>
         <br>
-        <h2 class="titulo text-center">
+        <h2 class="titulo text-center" id="usuarionome">
         <?php echo $usuario->getNomeUsuario(); ?>
         </h2>
+        <div class="text-center">
+        <p id="acesso"> <?php $acesso = $usuario->getTipoUsuario(); if($acesso == 1) {
+                    echo "Aluno";} else if ($acesso == 2) { echo "Administrador";} else { echo "Professor";} ?> </p>
+            </p>
 
-        <br> <br> 
+        <br> <br>
 
-        <i class="fa-solid fa-user center-icon"></i>
+        <img src="../../public/placeholder2.png" id="icon"></img> <br>
         <div class="profile-info">
         <div class="column">
-            <p>
-                <strong>Genero:</strong> <br><?php echo $usuario->getGenero() ?><br><br>
-                <strong>Acesso:</strong> <br><?php $acesso = $usuario->getTipoUsuario(); if($acesso == 1) {
-                    echo "Aluno";} else if ($acesso == 2) { echo "Administrador";} else { echo "Professor";} ?>
-            </p>
+            <p id="subtitulo">
+                Gênero: <br> </p> <p id="conteudo"> <?php echo $usuario->getGenero() ?></p><br><br>
+                <br>
+                
         </div>
         
         <div class="column">
-            <p>
-                <strong>Nível Acadêmico:</strong> <br><?php echo $usuario->getEscolaridade(); ?><br><br>
-                <strong>E-mail:</strong> <br><?php echo $usuario->getEmail() ?>
-            </p>
+            <p id="subtitulo">
+                Nível Acadêmico: </p> <p id="conteudo"><?php echo $usuario->getEscolaridade(); ?></p><br><br></div></div>
+                
+                <div class="text-center">
+                <p id="subtituloemail" class="text-center">
+                E-mail:</p><p id="conteudoemail"><?php echo $usuario->getEmail() ?> </p>
+        </p>
         </div>
     </div>
-    <br>
+    <br> <br>
             <div class="column">
             <div class="btn-perfil">
             <p>
                 <a id="btn-perfil" class="btn btn-custom" href='<?php $usuario->getIdUsuario() ?>'> Editar </a>
-                <br><br><a id="btn-perfil" class="btn btn-custom" href='controllers/LoginController.php?action=sair'> Sair da conta </a>
                 <br><br><a id="btn-perfil" class="btn btn-custom" href="" onclick="return showCustomConfirm('Tem certeza que deseja apagar seu usuário?');"> Excluir a conta</a>
             </div>
             </p>

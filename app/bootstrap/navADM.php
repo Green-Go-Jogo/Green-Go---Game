@@ -80,6 +80,7 @@
 .btn-jogar{
   background-color:#078071;
   color: #fff;
+  margin-right: 7px;
 }
 .btn-jogar:hover {
   background-color: #04574d;
