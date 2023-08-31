@@ -393,3 +393,38 @@ a.excluir:hover {
         .modo-escuro div.coisas {
             background-color: #121212;
           }
+
+        .modo-escuro p#subtitulo {
+            color: #C05367;
+        }
+
+        .modo-escuro p#subtituloemail {
+            color: #C05367;
+        }
+
+        .modo-escuro p#conteudo {
+            color: #7EC4BB;
+        }
+
+        .modo-escuro p#conteudoemail {
+            color: #7EC4BB;
+        }
+
+        .modo-escuro a#btn-perfil.btn.btn-custom {
+            background-color: #272626;
+            color: #f0b6bc !important;
+            border-color: #f0b6bc;
+        
+        }
+
+        .modo-escuro a#btn-perfil.btn.btn-custom:hover {
+            background-color: #121212;
+        }
+
+        .modo-escuro p#acesso {
+            color: #078071;
+        }
+
+        .modo-escuro h2#usuarionome {
+            color: #7EC4BB;
+        }

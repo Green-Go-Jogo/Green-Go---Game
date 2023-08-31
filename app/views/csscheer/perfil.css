@@ -159,7 +159,7 @@ body {
 
     #btn-perfil:hover {
         background-color: #f0b6bc;
-        color: #ffffff !important; 
+        color: #ffffff; 
         font-family: Poppins;
         font-size: 19px;
         width: 17rem;
