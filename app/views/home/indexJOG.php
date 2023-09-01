@@ -193,7 +193,8 @@
             background-size: cover;
             background-position: center;
             height: 60vh; /* Defina a altura desejada para a imagem */
-            margin-left : 50vh;
+            text-align : right;
+
             
         }
 

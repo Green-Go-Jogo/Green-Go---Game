@@ -2,7 +2,7 @@
 
 <style>
 
-        .row.row-cols-4 {
+.row.row-cols-4 {
     display: flex;
     flex-wrap: wrap;
 }
@@ -47,65 +47,62 @@
 }
 
 
+
+</style>
+
+
 </style>
 
 <?php
-
-            
-
-
 
 Class PartidaHTML {
    
     public static function desenhaPartida($partidas) {
 
-
         echo "<div class='container text-center'>";
-        echo "<table class='table'>";
-        echo "<thead>";
-        echo "<tr>";
-        echo "<th scope='col' id='nome'>Nome da Partida</th>";
-        echo "<th scope='col' id='nome'>Jogadores</th>";
-        echo "<th scope='col' id='nome'>Status</th>";
-        echo "<th scope='col'> </th>";
-        echo "</tr>";
-        echo "</thead>";
-        echo "<tbody>";
+        echo "<div class='row row-cols-4'>";
 
         foreach ($partidas as $partida) {
 
+            if(null !==($partida->getDataInicio())) {
+                $Status = "Em Andamento";
+                $Open = "CLOSE";
+           }
+           else if(null !==($partida->getDataFim())){
+               $Status = "Finalizada";
+               $Open = "CLOSE";
+           }
+           else {
+               $Status = "Aguardando";
+               $Open = "OPEN";
+           }
+           
+        echo "<div class='col-md-4'>";
+        echo "<br>";
+        echo "<div class='card' style='width: 22rem;'>";
+        echo "<div class='card-body'>";
+        echo "<h5 class='card-title' id='Nome'>".$partida->getNomePartida()."</h5>"."<br>";
+        echo "<p class='card-text nome-texto'> Jogadores: "."0/".$partida->getLimiteJogadores()."</p>";
+        echo "<br>";
+        echo "<p class='card-text nome-texto'> Status: "."0/".$Status."</p>";
         
 
             
-        if(null !==($partida->getDataInicio())) {
-            $Status = "Em Andamento";
-            $Open = "CLOSE";
-       }
-       else if(null !==($partida->getDataFim())){
-           $Status = "Finalizada";
-           $Open = "CLOSE";
-       }
-       else {
-           $Status = "Aguardando";
-           $Open = "OPEN";
-       }
-       
-            echo "<tr>";
-            echo "<td id='nomepartida'>".$partida->getNomePartida()."</td>";
-            echo "<td id='jogadores'>"."0/".$partida->getLimiteJogadores()."</td>";
-            echo "<td id='status'>".$Status."</td>";
+        
+
             // echo "<td>";
             if ($Open == "OPEN") {
-            echo "<td><button type='button' class='btn btn-primary entrar-btn' data-bs-toggle='modal' data-bs-target='#exampleModal' data-partida-id='".$partida->getIdPartida()."'>Entrar</button></td>";
+            echo "<button type='button' class='btn btn-primary entrar-btn' data-bs-toggle='modal' data-bs-target='#exampleModal' data-partida-id='".$partida->getIdPartida()."'>Entrar</button>";
             }
             else {
 
             }
-            echo "</tr>";
+            echo "<br>";
+            echo "</div>";
+            echo "</div>";
+            echo "</div>";
         }
 
-        echo "</tbody>";
-        echo "</table>";
         echo "</div>";
 
         // Modal HTML
