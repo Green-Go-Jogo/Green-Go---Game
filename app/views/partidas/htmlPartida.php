@@ -1,35 +1,6 @@
+<link rel="stylesheet" href="../csscheer/verpartida.css">
 
 <style>
-
-    .btn:hover {
-        color: #f58c95;
-        transform: scale(1.05); }
-
-        a.editar:hover {
-            color: #ebf0f1 !important;
-            background-color: #04574d; }
-
-        a.editar{
-            color: #ebf0f1 !important;
-            background-color: #338a5f; }
-
-
-        a.excluir {
-            color: #f0b6bc;
-            border-color: #f0b6bc;
-        }
-
-        a.excluir:hover {
-            color: var(--branco);
-            background-color: #f0b6bc;
-            border-radius: 5px; }
-
-        #nomePlanta {
-            background-color: #C05367 !important;
-            color: #FFFFFF !important;
-            border-radius: 20px;
-            transform: scale(1.05);
-        }
 
         .row.row-cols-4 {
     display: flex;
@@ -93,10 +64,10 @@ Class PartidaHTML {
         echo "<table class='table'>";
         echo "<thead>";
         echo "<tr>";
-        echo "<th scope='col'>Nome da Partida</th>";
-        echo "<th scope='col'>Jogadores</th>";
-        echo "<th scope='col'>Status</th>";
-        echo "<th scope='col'>Status</th>";
+        echo "<th scope='col' id='nome'>Nome da Partida</th>";
+        echo "<th scope='col' id='nome'>Jogadores</th>";
+        echo "<th scope='col' id='nome'>Status</th>";
+        echo "<th scope='col'> </th>";
         echo "</tr>";
         echo "</thead>";
         echo "<tbody>";
@@ -120,9 +91,9 @@ Class PartidaHTML {
        }
        
             echo "<tr>";
-            echo "<td>".$partida->getNomePartida()."</td>";
-            echo "<td style='color: #338a5f;'>"."0/".$partida->getLimiteJogadores()."</td>";
-            echo "<td style='color: #04574d;'>".$Status."</td>";
+            echo "<td id='nomepartida'>".$partida->getNomePartida()."</td>";
+            echo "<td id='jogadores'>"."0/".$partida->getLimiteJogadores()."</td>";
+            echo "<td id='status'>".$Status."</td>";
             // echo "<td>";
             if ($Open == "OPEN") {
             echo "<td><button type='button' class='btn btn-primary entrar-btn' data-bs-toggle='modal' data-bs-target='#exampleModal' data-partida-id='".$partida->getIdPartida()."'>Entrar</button></td>";

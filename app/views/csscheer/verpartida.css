@@ -1,14 +1,15 @@
 :root {
-    --principal: #338a5f;
+    --principal: #078071;
     --verdao: #04574d;
-    --branco: #ebf0f1;
-    --destaque: #f58c95;
+    --cinzinha: #ebf0f1;
+    --destaque: #ED8E96;
     --rosinha: #f0b6bc;
     --rosão: #C05367;
-    --cinza: #586660;
-    --cinzinha: #d3dadb;
     --branquinho: #ffffff;
-
+    --verdinho: #7EC4BB;
+    --cinzaclaro: #272626;
+    --cinza: #1B1B1B;
+     
     width: 100%;
     height: 100%;
 
@@ -44,47 +45,37 @@ body {
     background-color: #ebf0f1;;
 }
 
-.btn {
-    font-size: 35px;
-    font-family: Poppins;
-}
-
 .btn:hover {
-    color: #C05367 !important;
-    font-size: 35px;
-    font-family: Poppins;
+    color:#f58c95;
+    transform: scale(1.05);
+    text-decoration: none;
 }
 
-.fa-solid {
-    font-size: 25px;
-}
-
-#partida {
-    background-color: #f0b6bc;
-    color: #ffffff;
-    border-style: dashed;
-    border-width: 4px;
-    border-color: #C05367;
-    margin-top: 50px;
-    font-family: Poppins;
-}
-
-.card {
-    background-color: #f0b6bc;
-    border-style: dashed;
-    border-width: 4px;
-    border-color: #C05367;
-}
-
-
-#titulo {
+.primeirotextoreg {
     color: #04574d;
-    font-size: 55px;
     font-family: Poppins;
+    margin-bottom: 30px;
+    font-family: Poppins;
+    margin-top: 15px;
+    font-size: 60px; }
+
+#nome {
+    color: #078071;
+    font-family: Poppins-semibold;
+    font-size: 20px;
 }
 
-#welcome {
-    color:#078071;
-    font-size: 20px;
+#nomepartida {
+    color: #C05367;
+    font-family: Poppins-regular;
+}
+
+#jogadores {
+    color: #7EC4BB;
+    font-family: Poppins-regular;
+}
+
+#status {
+    color: #f58c95;
     font-family: Poppins-regular;
 }

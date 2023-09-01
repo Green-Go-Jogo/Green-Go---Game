@@ -78,9 +78,16 @@ LoginController::verificarAcesso([2,3]);
 <div class="card container text-center" id="card" style="width: 20rem;">
   <div class="card-body">
   <i class="fa-solid fa-gamepad" style="color: #ffffff;"></i>
-    <a href="..\partidas\adicionarPartida.php" class="btn" style="color: #ffffff;"> Partida </a>
+    <a href="..\partidas\listPartidas.php" class="btn" style="color: #ffffff;"> Partidas </a>
   </div>
-</div> </div> </div>
+</div> </div> 
+
+<div class="card container" id="partida" style="width: 88%;">
+  <div class="card-body text-center">
+    <a href="..\partidas\listPartidas.php" class="btn" style="color: #ffffff;"> Criar Partida </a>
+  </div> </div> </div> </div>
+
+  
 <div class="wrapper">
 <?php include_once("../../bootstrap/footer.php");?>
 </html>

@@ -12,25 +12,10 @@ LoginController::verificarAcesso([1,2,3]);
 <head>
 
     <title>Partidas</title>
+
     <?php include_once("../../bootstrap/header.php");?>
+    <link rel="stylesheet" href="../csscheer/verpartida.css">
 
-
-</head>
-
-
-
-    <style>
-    .btn:hover {
-        color:#f58c95;
-        transform: scale(1.05);
-        text-decoration: none;
-    }
-
-    body {
-        background-color: #ebf0f1;
-    }
-
-    </style>
 
 </head>
 <body >
