@@ -6,7 +6,7 @@ include_once("../../controllers/LoginController.php");
 LoginController::manterUsuario();
 
 $partidaCont = new PartidaController();
-$error = $partidaCont->salvarUsuarioEquipe($_GET['ide']); // Salvar o valor retornado pela função
+$error = $partidaCont->salvarUsuarioEquipe($_GET['ide'], $_GET['idp']); // Salvar o valor retornado pela função
 
 if ($error !== null) {
     echo $error;

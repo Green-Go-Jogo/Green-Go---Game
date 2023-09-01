@@ -22,6 +22,7 @@ $equipe = $equipeCont->buscarPorId($idEquipe);
 
 $partidaCont = new PartidaController();
 $partida = $partidaCont->buscarPorId($idPartida); 
+
 ?>
 
 <!DOCTYPE html>

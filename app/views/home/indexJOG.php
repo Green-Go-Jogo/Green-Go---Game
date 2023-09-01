@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+<?php
+ include_once("../../controllers/LoginController.php");
 
+    LoginController::manterUsuario();   
+?>
 <head>
     <title>Green GO</title>
     <?php include_once("../../bootstrap/header.php");?>
@@ -222,7 +226,7 @@
     <img src="../../public/isologo-greengo.svg" width="100%" class="isologo">
     <a href="../partidas/listPartidas.php"><div class="buttons">
   <button class="blob-btn">
-    Jogar Agora
+    Jogar Agora 
     <span class="blob-btn__inner">
       <span class="blob-btn__blobs">
         <span class="blob-btn__blob"></span>

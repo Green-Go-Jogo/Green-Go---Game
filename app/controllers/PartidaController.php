@@ -3,6 +3,7 @@
 
 include_once(__DIR__."/../dao/PartidaDAO.php");
 include_once(__DIR__."/../dao/EquipeDAO.php");
+include_once(__DIR__."/../dao/PlantaDAO.php");
 include_once(__DIR__."/../dao/ZonaDAO.php");
 
 class PartidaController {
@@ -10,9 +11,11 @@ class PartidaController {
     private $partidaDAO;
     private $equipeDAO;
     private $zonaDAO;
+    private $plantaDAO;
 
     public function __construct() {
         $this->partidaDAO = new PartidaDAO();
+        $this->plantaDAO = new PlantaDAO();
         $this->equipeDAO = new EquipeDAO();
         $this->zonaDAO = new ZonaDAO();
     }
@@ -36,16 +39,36 @@ class PartidaController {
         $this->partidaDAO->savePartida($partida);
     }
 
-    public function salvarUsuarioEquipe($idEquipe) {
+    public function salvarUsuarioEquipe($idEquipe, $idPartida) {
+
+        $idPartidaEquipe = $this->partidaDAO->findPartidaEquipe($idEquipe, $idPartida);
         $idUsuario = $_SESSION["ID"];
-        $inEquipe = $this->partidaDAO->usuarioInEquipe($idUsuario);
+        $inEquipe = $this->partidaDAO->usuarioInEquipe($idPartidaEquipe);
 
         if($inEquipe){
         $error = "Você já pertence a uma equipe!";
         return $error;
     } else {
-        $this->partidaDAO->saveUsuarioEquipe($idEquipe, $idUsuario);
+       $this->partidaDAO->saveUsuarioEquipe($idPartidaEquipe, $idUsuario);
     }
+    }
+
+    public function checarQRCode($statusPartida, $plantaId, $arrayPlantas) {
+
+
+        if ($statusPartida) {
+            if (!in_array($plantaId, $arrayPlantas)) {
+                $arrayPlantas[] = $plantaId;
+                $planta = $this->plantaDAO->findById($plantaId);
+                $_SESSION["PONTOS"] += $planta->getPontos();
+                $_SESSION['PLANTAS_LIDAS'] = $arrayPlantas;
+                echo "Parabéns, você encontrou uma nova planta!";
+            } else {
+                echo "Você já leu esse QR Code para esta planta.";
+            }
+        } else {
+            exit;
+        }
     }
 
     public function atualizar($planta) {

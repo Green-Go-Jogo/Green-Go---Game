@@ -18,8 +18,15 @@ class LoginController {
         $this->usuarioDAO->logon($usuario);
     }
 
-    public function entrarPartida($IdPartida, $senha) {
-        return $this->partidaDAO->enterRoom($IdPartida, $senha);
+    public function entrarPartida($idPartida, $senha) {
+        $bool = $this->partidaDAO->enterRoom($idPartida, $senha);
+        if($bool) {
+            $this->manterPartida($idPartida);
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
 
@@ -28,15 +35,27 @@ class LoginController {
     session_start();
 
     $nomeADM = $_SESSION['NOME']; 
-    $idADM = $_SESSION['ID'];
+    $idUser = $_SESSION['ID'];
     $tipoUsuario = $_SESSION['TIPO'];
     
+    // $_SESSION['PARTIDA'] = 34;
+    // $_SESSION['STATUS_PARTIDA'] = true;
+    // $_SESSION["PONTOS"];
+    
     }
+
+    public static function manterPartida($idPartida) {
+
+    $_SESSION['STATUS_PARTIDA'] = true;
+    $_SESSION['PARTIDA'] = $idPartida;
+    }
+
+
 
     public static function sair() {
         session_start();
 
-        session_write_close();
+        session_destroy();
         header("Location: login.php");   
     }
     

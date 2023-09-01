@@ -5,9 +5,10 @@ include_once(__DIR__."/../connection/Connection.php");
 include_once(__DIR__."/../models/UsuarioModel.php");
 class UsuarioDAO {
     private const SQL_USUARIO = "SELECT * FROM usuario u";
-    private const SQL_EQUIPE_USUARIO = "SELECT e.idEquipe, u.* FROM equipe_usuario eu 
-                                        JOIN usuario u ON eu.idUsuario = u.idUsuario
-                                        JOIN equipe e ON eu.idEquipe = e.idEquipe";
+    private const SQL_EQUIPE_USUARIO = "SELECT e.idEquipe, usuario.* FROM partida_usuario pu 
+    JOIN usuario ON pu.idUsuario = usuario.idUsuario 
+    JOIN partida_equipe pe ON pu.idPartidaEquipe = pe.idPartidaEquipe 
+    JOIN equipe e ON pe.idEquipe = e.idEquipe";
 
     private function mapUsuarios($resultSql) {
             $usuarios = array();
@@ -70,6 +71,21 @@ class UsuarioDAO {
         return $usuarios;
     }
 
+    public function findPartida($idEquipe) {
+        $conn = conectar_db();
+
+        $sql = UsuarioDAO::SQL_EQUIPE_USUARIO. 
+                " WHERE e.idEquipe = ?";
+
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([$idEquipe]);
+        $result = $stmt->fetchAll();
+
+        $usuarios = $this->mapUsuarios($result);
+
+        return $usuarios;
+    }
+
     public function findByLoginSenha(string $login, string $senha) {
         $conn = conectar_db();
         $sql = UsuarioDAO::SQL_USUARIO . " WHERE (email = ? OR loginUsuario = ?)";
@@ -110,6 +126,7 @@ class UsuarioDAO {
              $_SESSION['ID'] = $usuario->getIdUsuario();
              $_SESSION['NOME'] = $usuario->getNomeUsuario();
              $_SESSION['TIPO'] = $usuario->getTipoUsuario();
+             $_SESSION['PLANTAS_LIDAS'] = array();
 
              $tipo = $usuario->getTipoUsuario();
 

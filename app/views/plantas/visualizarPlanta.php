@@ -1,25 +1,39 @@
 <?php
  include_once("../../controllers/PlantaController.php");
  include_once("../../controllers/ZonaController.php");
+ include_once("../../controllers/PartidaController.php");
  include_once("../../controllers/EspecieController.php");
  include_once("../zones/htmlZonaForm.php");
  include_once("../especies/htmlEspecie.php");
 
  include_once("../../controllers/LoginController.php");
- if (isset($_SESSION['ID'])) {
     LoginController::manterUsuario();
-}
+  
+
 ?>
-<?php if (isset($_SESSION['msg_erro'])): ?>
-    <span>
-        <?= $_SESSION['msg_erro'] ?>
-    </span>
-<?php endif ?>
+
 <?php include_once("../../controllers/ZonaController.php");
+
+
+
+
+ $fromQR = isset($_GET['qrcode']) && $_GET['qrcode'] == 1;
+
+
  
  $cod = isset($_GET['cod']) ? $_GET['cod'] : null;
  $ide = isset($_GET['ide']) ? $_GET['ide'] : null;
  $idp = isset($_GET['idp']) ? $_GET['idp'] : null;
+
+ if ($fromQR) {
+    
+    $partidaCont = new PartidaController();
+    $partida = $partidaCont->checarQRCode($_SESSION['PARTIDA'], $idp, $_SESSION['PLANTAS_LIDAS']);
+    
+    print_r($_SESSION['PLANTAS_LIDAS']);
+    print_r($_SESSION['PONTOS']);
+
+}
 
  if ($ide !== null) {
  $especieCont = new EspecieController();
@@ -145,6 +159,7 @@ if (!isset($_SESSION['TIPO'])) {
 } else {
     $tipo = $_SESSION['TIPO'];
 }
+
 LoginController::navBar($tipo);?>
 
 </nav>

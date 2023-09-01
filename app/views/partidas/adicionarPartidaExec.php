@@ -26,13 +26,14 @@ foreach ($_POST as $name => $value) {
 
 $partida = new Partida();
 // $partida->setAdmPartida($idUsuario);
+$partida->setIdAdm($idUsuario);
 $partida->setNomePartida($nomePartida);
 $partida->setLimiteJogadores($limiteJogadores);
 $partida->setSenha($senhaSala);
 $partida->setTempoPartida($tempoPartida);
 $partida->setZonas($zonas);
 $partida->setEquipes($equipes);
-$partida->setStatusPartida(1);
+
 
 
 $partidaCont = new PartidaController();

@@ -18,6 +18,7 @@ class PartidaDAO {
             foreach ($resultSql as $reg):
             
             $partida = new Partida();  
+            $partida->setIdAdm($reg['idUsuario']);
             $partida->setIdPartida($reg['idPartida']);
             $partida->setNomePartida($reg['nomePartida']);
             $partida->setDataInicio($reg['dataInicio']);
@@ -70,14 +71,14 @@ class PartidaDAO {
       public function savePartida(Partida $partida) {
         $conn = conectar_db();
     
-        $sql = "INSERT INTO partida (nomePartida, limiteJogadores, senhaPartida, tempoPartida, statusPartida) VALUES (?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO partida (idUsuario, nomePartida, limiteJogadores, senhaPartida, tempoPartida) VALUES (?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
         $stmt->execute([
+            $partida->getIdAdm(),
             $partida->getNomePartida(),
             $partida->getLimiteJogadores(),
             $partida->getSenha(),
             $partida->getTempoPartida(),
-            $partida->getStatusPartida()
         ]);
 
         $idPartida = $conn->lastInsertId();
@@ -102,26 +103,53 @@ class PartidaDAO {
     return;
 }
 
-public function saveUsuarioEquipe($idEquipe, $idUsuario) {
+public function saveUsuarioEquipe($idPartidaEquipe, $idUsuario) {
+
+    var_dump($idPartidaEquipe);
     $conn = conectar_db();
     
-    $sql = "INSERT INTO equipe_usuario (idEquipe, idUsuario) VALUES (?, ?)";
+    $sql = "INSERT INTO partida_usuario (idPartidaEquipe, idUsuario) VALUES (?, ?)";
     $stmt = $conn->prepare($sql);
     $stmt->execute([
-        $idEquipe,
+        $idPartidaEquipe,
         $idUsuario,
     ]);
  
 return;
 }
 
-public function usuarioInEquipe($idUsuario) {
+public function findPartidaEquipe($idEquipe, $idPartida) {
+
     $conn = conectar_db();
     
-    $sql = "SELECT * FROM equipe_usuario WHERE idUsuario = ?";
+    $sql = "SELECT * FROM partida_equipe WHERE idEquipe = ? AND idPartida = ?";
     $stmt = $conn->prepare($sql);
     $stmt->execute([
-    $idUsuario,
+        $idEquipe,
+        $idPartida,
+    ]);
+ 
+// Obtenha o resultado da consulta
+$result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+// Verifique se a consulta retornou algum resultado
+if ($result) {
+    // O valor de 'idPartidaEquipe' está em $result['idPartidaEquipe']
+    $idPartidaEquipe = $result['idPartidaEquipe'];
+    return $idPartidaEquipe;
+} else {
+    // A consulta não retornou resultados, faça o tratamento apropriado, como retornar um valor padrão ou lançar uma exceção.
+    return null; // Ou outra ação apropriada
+}
+}
+
+public function usuarioInEquipe($idPartidaEquipe) {
+    $conn = conectar_db();
+    
+    $sql = "SELECT * FROM partida_usuario pu JOIN partida_equipe pe ON pu.idPartidaEquipe = pe.idPartidaEquipe WHERE pu.idPartidaEquipe = ? AND pu.idUsuario = 26";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute([
+    $idPartidaEquipe,
 ]);
     
     $result = $stmt->fetchAll();
@@ -150,9 +178,9 @@ public function usuarioInEquipe($idUsuario) {
             return null;
             }
 
-    public function enterRoom($IdPartida, $Senha){
+    public function enterRoom($idPartida, $Senha){
 
-            $partida = $this->findByLoginSenha($IdPartida, $Senha);
+            $partida = $this->findByLoginSenha($idPartida, $Senha);
 
             if ($partida !== null) {
                 return true;

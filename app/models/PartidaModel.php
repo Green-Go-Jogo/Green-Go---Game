@@ -3,6 +3,7 @@
 Class Partida {
 
     private $IdPartida;
+    private $IdADM;
     private $DataInicio;
     private $DataFim;
     private $LimiteJogadores;
@@ -257,6 +258,26 @@ Class Partida {
     public function setStatusPartida($StatusPartida)
     {
         $this->StatusPartida = $StatusPartida;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of IdADM
+     */ 
+    public function getIdADM()
+    {
+        return $this->IdADM;
+    }
+
+    /**
+     * Set the value of IdADM
+     *
+     * @return  self
+     */ 
+    public function setIdADM($IdADM)
+    {
+        $this->IdADM = $IdADM;
 
         return $this;
     }

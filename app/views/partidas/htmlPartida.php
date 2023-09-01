@@ -164,14 +164,15 @@ Class PartidaHTML {
         echo "</table>";
         echo "</div>";
 
-        if (!is_null($partida->getDataInicio())) {
-            $Status = "Em andamento!";
-            $Open = "CLOSE";
-            $link = '<a href="mainJogo.php">Clique aqui para caçar as plantas!</a>';
-        } else if (!is_null($partida->getDataFim())) {
+        if (!is_null($partida->getDataFim())) {
             $Status = "Essa partida acabou!";
             $Open = "CLOSE";
             $link = '';
+        } else if (!is_null($partida->getDataInicio())) {
+            $Status = "Em andamento!";
+            $Open = "CLOSE";
+            $link = '<a href="mainJogo.php">Clique aqui para caçar as plantas!</a>';
+            
         } else {
             $Status = "Aguarde! O jogo iniciará assim que o Professor permitir :)";
             $Open = "OPEN";
