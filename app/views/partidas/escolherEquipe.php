@@ -35,20 +35,11 @@ LoginController::verificarAcesso([1]);
 
 
     <style>
-    .btn:hover {
-        color:#f58c95;
-        transform: scale(1.05);
-        text-decoration: none;
-    }
-
+        
     body {
         background-color: #ebf0f1;
     }
-    .zonaP {
-    float: right; /* Alinha a div à direita */
-    /* Você pode adicionar mais estilos conforme necessário */
-}
-
+ 
 .custom-container {
     display: flex;
 }
@@ -60,16 +51,55 @@ LoginController::verificarAcesso([1]);
     left: 1200px; /* Ajuste conforme necessário para posicionar à direita */
     /* Você pode ajustar top, right, bottom, left conforme necessário */
 }
+
+    .row.row-cols-4 {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.col-md-4 {
+    flex-basis: calc(25% - 20px);
+    margin-bottom: 20px;
+    padding: 10px; 
+}
+
+
+@media (max-width: 767px) {
+    .col-md-4 {
+        flex-basis: calc(50% - 20px);
+    }
+
+    .container.text-center {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+    }
+
+    .row.row-cols-4 {
+        justify-content: center;
+    }
+}
+
+
+@media (min-width: 768px) and (max-width: 1280px) {
+    .col-md-4 {
+        flex-basis: calc(50% - 20px);
+    }
+}
+
     </style>
 
 </head>
 <body>
 
+<?php LoginController::navBar($_SESSION['TIPO']);?>
 
 
     <br>
     <br>
-  <h1 class="text-center primeirotextoreg">ESCOLHA UMA EQUIPE</h1>
+  <h1 class="text-center primeirotextoreg">ESCOLHA UMA EQUIPE!</h1>
   
 
 </div>
@@ -85,5 +115,7 @@ LoginController::verificarAcesso([1]);
 <br>
 <br>
 <br>
+
+<?php include_once("../../bootstrap/footer.php");?>
 </body>
 </html>
