@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="../csscheer/verpartida.css">
+<link rel="stylesheet" href="../css/listPlanta.css">
 
 <style>
 
@@ -45,6 +46,56 @@
         flex-basis: calc(25% - 20px);
     }
 }
+
+
+
+.custom-container {
+display: flex;
+}
+
+.custom-div {
+padding: 10px;
+position: relative; /* Habilita o posicionamento relativo */
+top: -50px; /* Ajuste conforme necessário para posicionar acima da tabela */
+left: 1200px; /* Ajuste conforme necessário para posicionar à direita */
+/* Você pode ajustar top, right, bottom, left conforme necessário */
+}
+
+#nomeEquipe {
+    background-color: #FFFFFF !important;
+    color: #04574d;
+    border-radius: 20px;
+}
+
+#codigoEquipe {
+    margin-left: 57px;
+    width: 200px;
+    background-color: #FFFFFF;
+    color: #C05367;
+    border-radius: 20px;
+}
+
+#escolherEquipe {
+    background-color: #FFFFFF;
+    color: #338a5f ;
+    
+}
+
+#escolherEquipe:hover {
+    color: #FFFFFF ;
+    background-color: #f0b6bc ;
+}
+
+
+.container.text-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+}
+
+
 
 
 </style>
@@ -259,7 +310,7 @@ Class PartidaHTML {
     public static function desenhaJogadorEquipe($partida) {
     
         echo "<div class='container text-center'>";
-        echo "<div class='row row-cols-6'>";
+        echo "<div class='row row-cols-4'>";
 
         $idPartida = $partida->getIdPartida();
 
@@ -267,10 +318,10 @@ Class PartidaHTML {
             echo "<div class='col-md-6'>";
             echo "<br>";
             echo "<div class='card' style='width: 22rem;'>";
-            echo "<a href='visualizarEquipe.php?ideq=".$equipe->getIdEquipe()."'><img src='".$equipe->getIconeEquipe()."' style='width: 55%; height: 50%;'class='card-img-top mais' alt='...'></a><br>";
+            echo "<a><img src='".$equipe->getIconeEquipe()."' style='width: 55%; height: 50%;'class='card-img-top mais' alt='...'></a><br>";
             echo "<div class='card-body' style='background-color:" .$equipe->getCorEquipe()."'>";
             echo "<h5 class='card-title nome-soc' id='nomeEquipe'>". $equipe->getNomeEquipe() ."</h5>";
-            echo "<a href='processEquipe.php?ide=".$equipe->getIdEquipe()."&idp=".$idPartida."' class='btn btn-primary editar' id='editarEquipe' >ESCOLHER</a>";
+            echo "<a href='processEquipe.php?ide=".$equipe->getIdEquipe()."&idp=".$idPartida."' class='btn btn-primary excluir' id='escolherEquipe' >Quero essa!</a>";
             echo "<br>";
             echo "</div>";
             echo "</div>";

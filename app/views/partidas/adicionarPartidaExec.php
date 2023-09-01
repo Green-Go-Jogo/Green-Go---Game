@@ -25,7 +25,6 @@ foreach ($_POST as $name => $value) {
 
 
 $partida = new Partida();
-// $partida->setAdmPartida($idUsuario);
 $partida->setIdAdm($idUsuario);
 $partida->setNomePartida($nomePartida);
 $partida->setLimiteJogadores($limiteJogadores);
