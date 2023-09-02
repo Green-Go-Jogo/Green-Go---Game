@@ -39,6 +39,6 @@ $partidaCont = new PartidaController();
 $partidaCont->salvarPartida($partida);
 
 $idPartidaInserida = $partida->getIdPartida();
-header("Location: PartidaADM.php.?id=" . $idPartidaInserida);
+header("Location: PartidaADM.php?id=" . $idPartidaInserida);
   
     ?>
