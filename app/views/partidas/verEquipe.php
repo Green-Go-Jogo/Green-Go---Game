@@ -96,7 +96,7 @@ $partida = $partidaCont->buscarPorId($idPartida);
     atualizarDados();
 
     // Usar setInterval para chamar a função a cada x milissegundos.
-    setInterval(atualizarDados, 5000); // Atualizar a cada 5 segundos (5000 ms).
+    setInterval(atualizarDados, 1000); // Atualizar a cada segundo (1000 ms).
 
 </script>
 

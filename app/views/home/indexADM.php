@@ -84,7 +84,7 @@ LoginController::verificarAcesso([2,3]);
 
 <div class="card container" id="partida" style="width: 88%;">
   <div class="card-body text-center">
-    <a href="..\partidas\listPartidas.php" class="btn" style="color: #ffffff;"> Criar Partida </a>
+    <a href="..\partidas\adicionarPartida.php" class="btn" style="color: #ffffff;"> Criar Partida </a>
   </div> </div> </div> </div>
 
   

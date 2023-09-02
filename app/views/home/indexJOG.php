@@ -266,7 +266,7 @@
     <br>
 
     <div class="coisas2">
-    <div class="imagem2"></div>
+    <div class="imagem2"> <img src="../../public/equipeJog.png" class="imgequipe"> </div>
     <div class="conteudo">
       <span class="titulo">
         Jogue em <br>Equipe
