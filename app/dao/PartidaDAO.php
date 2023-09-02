@@ -143,13 +143,13 @@ if ($result) {
 }
 }
 
-public function usuarioInEquipe($idPartidaEquipe) {
+public function usuarioInEquipe($idUsuario, $idEquipe, $idPartida) {
     $conn = conectar_db();
     
-    $sql = "SELECT * FROM partida_usuario pu JOIN partida_equipe pe ON pu.idPartidaEquipe = pe.idPartidaEquipe WHERE pu.idPartidaEquipe = ? AND pu.idUsuario = 26";
+    $sql = "SELECT * FROM partida_usuario pu WHERE pu.idUsuario = ?";
     $stmt = $conn->prepare($sql);
     $stmt->execute([
-    $idPartidaEquipe,
+    $idUsuario
 ]);
     
     $result = $stmt->fetchAll();

@@ -43,7 +43,7 @@ class PartidaController {
 
         $idPartidaEquipe = $this->partidaDAO->findPartidaEquipe($idEquipe, $idPartida);
         $idUsuario = $_SESSION["ID"];
-        $inEquipe = $this->partidaDAO->usuarioInEquipe($idPartidaEquipe);
+        $inEquipe = $this->partidaDAO->usuarioInEquipe($idUsuario, $idEquipe, $idPartida);
 
         if($inEquipe){
         $error = "Você já pertence a uma equipe!";

@@ -35,7 +35,7 @@ LoginController::verificarAcesso([1]);
 
 
     <style>
-        
+
     body {
         background-color: #ebf0f1;
     }
@@ -101,7 +101,12 @@ LoginController::verificarAcesso([1]);
     <br>
   <h1 class="text-center primeirotextoreg">ESCOLHA UMA EQUIPE!</h1>
   
-
+  <?php
+if (isset($_GET['msg'])) {
+    $msg = $_GET['msg'];
+    echo '<div class="alert alert-warning">' . htmlspecialchars($msg) . '</div>';
+}
+?>
 </div>
 </div>
 

@@ -48,8 +48,6 @@
 }
 
 
-
-</style>
 .custom-container {
 display: flex;
 }
@@ -88,7 +86,7 @@ left: 1200px; /* Ajuste conforme necessário para posicionar à direita */
 }
 
 
-.container.text-center {
+.container.text-center.equipe {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -303,7 +301,7 @@ Class PartidaHTML {
 
     public static function desenhaJogadorEquipe($partida) {
     
-        echo "<div class='container text-center'>";
+        echo "<div class='container text-center equipe'>";
         echo "<div class='row row-cols-4'>";
 
         $idPartida = $partida->getIdPartida();
