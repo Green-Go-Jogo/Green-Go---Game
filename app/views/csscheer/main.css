@@ -428,3 +428,7 @@ a.excluir:hover {
         .modo-escuro h2#usuarionome {
             color: #7EC4BB;
         }
+
+        .modo-escuro p#status {
+            color: #f0b6bc;
+        }

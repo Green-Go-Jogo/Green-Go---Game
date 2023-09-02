@@ -94,18 +94,6 @@ left: 1200px; /* Ajuste conforme necessário para posicionar à direita */
     min-height: 60vh;
 }
 
-
-.btn.entrar-btn {
-        color: #C05367;
-        border-color: #C05367;
-    }
-
-.btn.entrar-btn:hover {
-        color: var(--branco);
-        background-color: #C05367;
-        border-radius: 5px; 
-    }
-
 #lab-senha {
     color: #04574d;
 }
@@ -168,10 +156,9 @@ Class PartidaHTML {
         echo "<br>";
         echo "<div class='card' style='width: 22rem;'>";
         echo "<div class='card-body'>";
-        echo "<h5 class='card-title' id='Nome'>".$partida->getNomePartida()."</h5>"."<br>";
+        echo "<h5 class='card-title' id='nomepartida'>".$partida->getNomePartida()."</h5>"."<br>";
         echo "<p class='card-text nome-texto'> Jogadores: "."0/".$partida->getLimiteJogadores()."</p>";
-        echo "<br>";
-        echo "<p class='card-text nome-texto'> Status: ".$Status."</p>";
+        echo "<p class='card-text nome-texto' id='status'> Status: ".$Status."</p>";
         
             if ($Open == "OPEN") {
             echo "<button type='button' class='btn entrar-btn' data-bs-toggle='modal' data-bs-target='#exampleModal' data-partida-id='".$partida->getIdPartida()."'>Entrar</button>";

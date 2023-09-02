@@ -66,8 +66,12 @@ body {
 }
 
 #nomepartida {
-    color: #C05367;
-    font-family: Poppins-regular;
+    background-color: #C05367;
+    color: #ffffff;
+    font-family: Poppins-semibold;
+    border-radius: 20px;
+    font-size: 25px;
+    padding: 3px;
 }
 
 #jogadores {
@@ -77,6 +81,24 @@ body {
 
 #status {
     color: #f58c95;
-    font-family: Poppins-regular;
+    margin-top: -15px;
 }
 
+.modoescuro p#status {
+    color: #f58c95;
+    margin-top: -15px;
+}
+
+.btn.entrar-btn {
+    background-color: #078071;
+    color: #ffffff;
+    font-family: Poppins-semibold;
+    font-size: 20px;
+    transition: 0.3s ease;
+}
+
+.btn.entrar-btn:hover {
+    color: var(--branco);
+    background-color: #04574d;
+    border-radius: 5px; 
+}
