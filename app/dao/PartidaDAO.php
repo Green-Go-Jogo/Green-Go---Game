@@ -143,7 +143,7 @@ if ($result) {
 }
 }
 
-public function usuarioInEquipe($idUsuario, $idEquipe, $idPartida) {
+public function usuarioInEquipe($idUsuario) {
     $conn = conectar_db();
     
     $sql = "SELECT * FROM partida_usuario pu WHERE pu.idUsuario = ?";

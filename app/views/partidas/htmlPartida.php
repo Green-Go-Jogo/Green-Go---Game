@@ -95,8 +95,49 @@ left: 1200px; /* Ajuste conforme necessário para posicionar à direita */
 }
 
 
+.btn.entrar-btn {
+        color: #C05367;
+        border-color: #C05367;
+    }
 
+.btn.entrar-btn:hover {
+        color: var(--branco);
+        background-color: #C05367;
+        border-radius: 5px; 
+    }
 
+#lab-senha {
+    color: #04574d;
+}
+
+    .btn.submit:hover {
+        color: #ebf0f1 !important;
+        background-color: #04574d; }
+
+    .btn.submit{
+        color: #ebf0f1 !important;
+        background-color: #338a5f; }
+
+    .btn.cancel {
+            color: #C05367;
+            background-color: #FFFFFF;
+            border-color: #C05367;
+        }
+
+    .btn.cancel:hover {
+        color: var(--branco);
+        background-color: #f0b6bc !important;
+        border-radius: 5px; }
+
+    #password {
+        background-color: #f0b6bc;
+    color: #ffffff;
+    font-family: Poppins-semibold;
+    margin-bottom: 50px;
+    border-radius: 5px;
+    height: auto;
+    border-radius: 5px;
+    }
 </style>
 
 <?php
@@ -130,15 +171,10 @@ Class PartidaHTML {
         echo "<h5 class='card-title' id='Nome'>".$partida->getNomePartida()."</h5>"."<br>";
         echo "<p class='card-text nome-texto'> Jogadores: "."0/".$partida->getLimiteJogadores()."</p>";
         echo "<br>";
-        echo "<p class='card-text nome-texto'> Status: "."0/".$Status."</p>";
+        echo "<p class='card-text nome-texto'> Status: ".$Status."</p>";
         
-
-            
-        
-
-            // echo "<td>";
             if ($Open == "OPEN") {
-            echo "<button type='button' class='btn btn-primary entrar-btn' data-bs-toggle='modal' data-bs-target='#exampleModal' data-partida-id='".$partida->getIdPartida()."'>Entrar</button>";
+            echo "<button type='button' class='btn entrar-btn' data-bs-toggle='modal' data-bs-target='#exampleModal' data-partida-id='".$partida->getIdPartida()."'>Entrar</button>";
             }
             else {
 
@@ -156,20 +192,19 @@ Class PartidaHTML {
         echo "<div class='modal-dialog'>";
         echo "<div class='modal-content'>";
         echo "<div class='modal-header'>";
-        echo "<h1 class='modal-title fs-5' id='exampleModalLabel'>Enter Password</h1>";
-        echo "<button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>";
+        echo "<h1 class='modal-title text-center fs-5' id='exampleModalLabel'>Coloque a senha:</h1>";
         echo "</div>";
         echo "<div class='modal-body'>";
         echo "<form id='password-form' action='verificar_senha.php' method='POST'>";
         echo "<input type='hidden' id='partida-id' name='partidaId'>";
         echo "<div class='mb-3'>";
-        echo "<label for='password' class='col-form-label'>Password:</label>";
+        echo "<label for='password' id='lab-senha' class='col-form-label'>Senha:</label>";
         echo "<input type='password' class='form-control' id='password' name='password'>";
         echo "</div>";
         echo "</div>";
         echo "<div class='modal-footer'>";
-        echo "<button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>";
-        echo "<button type='submit' class='btn btn-primary' id='submit-password'>Submit</button>";
+        echo "<button type='button' class='btn cancel btn-secondary' data-bs-dismiss='modal'>Fechar</button>";
+        echo "<button type='submit' class='btn submit btn-primary' id='submit-password'>Entrar</button>";
         echo "</div>";
         echo "</form>";
         echo "</div>";

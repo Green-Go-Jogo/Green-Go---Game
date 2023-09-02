@@ -6,12 +6,12 @@ $loginCont = new LoginController;
 $partidaId = $_POST['partidaId'];
 $password = $_POST['password'];
 
-
 $result = $loginCont->entrarPartida($partidaId, $password); // Chama a função para verificar a senha
 
 if ($result) {
-  header("Location: escolherEquipe.php?idp=" . $partidaId);
+  header("Location: escolherEquipe.php?idp=" . $partidaId );
 } else {
-    header("Location: listPartidas.php");
+  $msg = "Senha inválida!";
+    header("Location: listPartidas.php?msg=".$msg);
 }
 ?>

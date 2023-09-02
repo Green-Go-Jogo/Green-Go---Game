@@ -28,8 +28,14 @@ LoginController::verificarAcesso([1,2,3]);
     
   <h1 class="text-center primeirotextoreg">PARTIDAS</h1>
   <br><br><br>
-    
-        
+  <div class="text-center" style="max-width: 200px;">
+  <?php
+if (isset($_GET['msg'])) {
+    $msg = $_GET['msg'];
+    echo '<div class="alert alert-warning">' . htmlspecialchars($msg) . '</div>';
+}
+?>
+   </div>     
         <?php
             $partidaCont = new PartidaController();
             $partidas = $partidaCont->listar(); 

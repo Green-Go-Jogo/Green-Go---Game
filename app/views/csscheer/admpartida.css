@@ -43,10 +43,21 @@
 
 body {
     background-color: #ebf0f1;;
-}
 
-.btn:hover {
-    color:#f58c95;
+}
+    
+    .container {
+        text-align: center; /* Centraliza horizontalmente o conteúdo dentro do contêiner */
+    }
+
+
+.btn.timer {
+    color: #ffffff;
+    background-color: #f0b6bc;
+}
+.btn.timer:hover {
+    color: #04574d;
+    background-color: #f0b6bc;
     transform: scale(1.05);
     text-decoration: none;
 }
@@ -59,24 +70,19 @@ body {
     margin-top: 15px;
     font-size: 60px; }
 
-#nome {
-    color: #078071;
-    font-family: Poppins-semibold;
-    font-size: 20px;
+
+.circulo {
+    width: 100px;
+    height: 100px;
+    background-color: #f58c95;
+    border-radius: 50%;
+    margin: auto;
+    display: flex;
+    text-align: center;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
 }
 
-#nomepartida {
-    color: #C05367;
-    font-family: Poppins-regular;
+#timer {
+    color: #ffffff;
 }
-
-#jogadores {
-    color: #7EC4BB;
-    font-family: Poppins-regular;
-}
-
-#status {
-    color: #f58c95;
-    font-family: Poppins-regular;
-}
-

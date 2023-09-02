@@ -40,10 +40,12 @@ class PartidaController {
     }
 
     public function salvarUsuarioEquipe($idEquipe, $idPartida) {
-
+       
         $idPartidaEquipe = $this->partidaDAO->findPartidaEquipe($idEquipe, $idPartida);
+        
         $idUsuario = $_SESSION["ID"];
-        $inEquipe = $this->partidaDAO->usuarioInEquipe($idUsuario, $idEquipe, $idPartida);
+        $inEquipe = $this->partidaDAO->usuarioInEquipe($idUsuario);
+        var_dump($inEquipe);
 
         if($inEquipe){
         $error = "Você já pertence a uma equipe!";

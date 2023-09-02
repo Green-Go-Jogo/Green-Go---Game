@@ -28,6 +28,7 @@ LoginController::verificarAcesso([2, 3]);
 
     <title>Dashboard Partida</title>
     <?php include_once("../../bootstrap/header.php");?>
+    <link rel="stylesheet" href="../csscheer/admpartida.css">
 
 
 </head>
@@ -35,31 +36,6 @@ LoginController::verificarAcesso([2, 3]);
 
 
     <style>
-    .btn:hover {
-        color:#f58c95;
-        transform: scale(1.05);
-        text-decoration: none;
-    }
-
-    body {
-        background-color: #ebf0f1;
-    }
-    .zonaP {
-    float: right; /* Alinha a div à direita */
-    /* Você pode adicionar mais estilos conforme necessário */
-}
-
-.custom-container {
-    display: flex;
-}
-
-.custom-div {
-    padding: 10px;
-    position: relative; /* Habilita o posicionamento relativo */
-    top: -50px; /* Ajuste conforme necessário para posicionar acima da tabela */
-    left: 1200px; /* Ajuste conforme necessário para posicionar à direita */
-    /* Você pode ajustar top, right, bottom, left conforme necessário */
-}
     </style>
 
 </head>
@@ -74,12 +50,15 @@ LoginController::verificarAcesso([2, 3]);
 
     
   <h1 class="text-center primeirotextoreg">PARTIDAS</h1>
+  
+  <div class="container">
   <br><br><br>
   <?php echo "<a href='editarPartida.php?id=".$id."' class='btn btn-primary editar'>Editar</a>";?>
   <br><br>
-  <button id="startButton" onclick="startTimer(<?php echo $tempo; ?>)">Iniciar Timer</button>
-    <div id="timer"></div>
-
+  <button class="btn timer" id="startButton" onclick="startTimer(<?php echo $tempo; ?>)">Iniciar Timer</button>
+  
+  <br><br><div class="circulo" id="timer"><?php echo $tempo.":00"; ?></div>
+    </div>
 
         <?php 
             PartidaHTML::desenhaPartidaZona($partida);
@@ -156,7 +135,7 @@ LoginController::verificarAcesso([2, 3]);
                 var minutes = Math.floor(remainingTime / 60);
                 var seconds = remainingTime % 60;
 
-                document.getElementById("timer").innerHTML = "Tempo restante: " + minutes + " minutos e " + seconds + " segundos";
+                document.getElementById("timer").innerHTML = minutes + ":" + seconds;
 
                 if (!timerPaused) {
                     setTimeout(updateTimer, 1000);
