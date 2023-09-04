@@ -74,16 +74,20 @@ left: 1200px; /* Ajuste conforme necessário para posicionar à direita */
     border-radius: 20px;
 }
 
-#escolherEquipe {
-    background-color: #FFFFFF;
-    color: #338a5f ;
-    
-}
 
-#escolherEquipe:hover {
-    color: #FFFFFF ;
-    background-color: #f0b6bc ;
-}
+    #escolherEquipe{
+        color: #338a5f;
+        background-color: #ffffff; 
+        border-color: #ffffff;
+        font-family: Poppins-semibold;
+        font-size: 20px; }
+
+            
+    #escolherEquipe:hover {
+        color: #ffffff;
+        background-color: #338a5f;
+        border-color: #338a5f; }
+
 
 
 .container.text-center.equipe {

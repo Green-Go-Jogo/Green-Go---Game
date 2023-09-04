@@ -432,3 +432,15 @@ a.excluir:hover {
         .modo-escuro p#status {
             color: #f0b6bc;
         }
+
+        .modo-escuro a#escolherEquipe{
+            background-color: #121212;
+            border-color: #ffffff;
+            color: #ffffff;
+}
+    
+                
+        .modo-escuro a#escolherEquipe:hover {
+            color: #ffffff;
+            background-color: #272626; }
+    
