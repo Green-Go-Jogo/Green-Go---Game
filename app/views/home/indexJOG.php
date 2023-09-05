@@ -325,7 +325,7 @@
       Desafie seu conhecimento botânico! Participe do nosso Quiz das Plantas e teste o quanto você sabe sobre o reino vegetal.
       </span>
     </div>
-    <div class="imagem"></div>
+    <div class="imagem"> <img src="../../public/quizzjog.png" class="imgequipe"> </div>
     </div>
 
                         <?php include_once("../../bootstrap/footer.php");?>
