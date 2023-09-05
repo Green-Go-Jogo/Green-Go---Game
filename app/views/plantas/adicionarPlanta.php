@@ -97,7 +97,7 @@ input[type="file"] {
 
 <body>
     <main>
-        <nav id="primeirotextoindex">
+        
             <div class="container">
                 <div class="row justify-content-md-left">
 
@@ -223,8 +223,8 @@ input[type="file"] {
 
 
             
-
-</div>
+ 
+</div></div></div></div></div></div></div></div></div>
 </div>
 <br><br><br>
 
@@ -237,6 +237,6 @@ input[type="file"] {
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/grayscale.js"></script>
     <script type="text/javascript" src="../js/imagem.js" defer></script>
-</body>
+
 
 </html>

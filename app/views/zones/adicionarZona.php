@@ -86,6 +86,7 @@ LoginController::verificarAcesso([2, 3]);
                             </div>
 
                             </form>
+                            <br><br><br><br>
 
     </main>
     <?php include_once("../../bootstrap/footer.php");?>

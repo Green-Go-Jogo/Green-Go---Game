@@ -233,7 +233,7 @@ $frutifera = $especie->getFrutifera();
                             </form>
 
             </div>
-        </div>
+        </div></div></div></div></div></div></div>
         <br><br>
     </main>
     <?php include_once("../../bootstrap/footer.php");?>

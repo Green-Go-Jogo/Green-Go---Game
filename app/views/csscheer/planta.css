@@ -42,6 +42,7 @@
 
 body {
     background-color: #ebf0f1;
+    overflow-x: hidden;
 }
 
 #primeirotextoreg {
@@ -222,5 +223,18 @@ body {
   .fa-camera {
     font-size: 33px;
     color: #078071;
+  }
+
+  @media (max-width: 767px) {
+
+    .selectize-control.single .selectize-input,
+    .selectize-control.single .selectize-input:focus, 
+    .selectize-control.single .selectize-input.full, #txtNomeForm, #txtZonaForm, #txtCodigoForm, .ck-editor__editable_inline {
+      width: 95% !important;
+
+    }
+   
+    
+
   }
   

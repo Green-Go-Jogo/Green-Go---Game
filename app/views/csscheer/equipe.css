@@ -125,3 +125,13 @@ body {
     font-family: Poppins-regular;
 }
 
+@media (max-width: 767px) {
+
+    .selectize-control.single .selectize-input,
+    .selectize-control.single .selectize-input:focus, 
+    .selectize-control.single .selectize-input.full,.ck-editor__editable_inline, #txtCorForm, #txtNomeEquipe  {
+      width: 95% !important;
+
+    }
+
+}

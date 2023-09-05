@@ -124,7 +124,7 @@
                             </button>
                             <br>
                             <br>
-                            </div>
+                            </div></div></div></div></div></div>
 
                             <input type="hidden" name="id_usuario" value="<?php echo $_SESSION['ID']; ?>" />
 
