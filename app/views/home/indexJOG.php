@@ -207,14 +207,50 @@
             
         }
 
-        .imgqr{
+        .imgqr, .imgequipe{
           top: 0;
-  right: 0;
-  /* Ajuste a largura conforme necessário */
-  height: auto;
+          right: 0;
+          height: auto;
+          max-width: 100%
         }
 
 
+        @media (max-width: 768px) {
+
+  .home {
+    padding: 20px;
+  }
+
+  .titulo {
+    font-size: 60px; 
+  }
+
+  .coisas, .coisas2 {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    text-align: center; 
+  }
+
+  .conteudo {
+    margin-bottom: 20px; 
+  }
+
+  .imagem, .imagem2 {
+    order: 1; 
+  }
+
+
+}
+
+@media (max-width: 992px) {
+ 
+  .titulo {
+    font-size: 60px; 
+  }
+
+
+}
 
 
 </style>
