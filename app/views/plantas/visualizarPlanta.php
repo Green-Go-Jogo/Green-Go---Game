@@ -188,10 +188,11 @@ LoginController::navBar($tipo);?>
         </p> </div> </div>
 
 
-<div class="container" id="imagem1Planta">
+<div class="container text-center" id="imagem1Planta">
         <img id="imagemPlanta" src="<?php echo $planta->getImagemPlanta(); ?>"/>
      <br> <br>
-
+     </div>
+     <div class="container">
 <div> 
 
 <div class=" text-center">
