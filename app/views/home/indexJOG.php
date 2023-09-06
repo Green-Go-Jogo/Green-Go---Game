@@ -248,7 +248,20 @@
   .titulo {
     font-size: 60px; 
   }
+  .coisas, .coisas2 {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    text-align: center; 
+  }
 
+  .conteudo {
+    margin-bottom: 20px; 
+  }
+
+  .imagem, .imagem2 {
+    order: 1; 
+  }
 
 }
 
