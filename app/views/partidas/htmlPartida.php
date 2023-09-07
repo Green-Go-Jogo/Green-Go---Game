@@ -281,7 +281,7 @@ Class PartidaHTML {
         } else if (!is_null($partida->getDataInicio())) {
             $Status = "Em andamento!";
             $Open = "CLOSE";
-            $link = "<a href='mainJogo.php?idp=".$partida->getIdPartida().'&ide='.$idEquipe."'style='font-family: Poppins-medium; margin-top: 15px;'>Clique aqui para caçar as plantas!</a>";
+            $link = "<a href='mainJogo.php?idp=".$partida->getIdPartida().'&ide='.$idEquipe."'style='font-family: Poppins-medium; margin-top: 15px; color: #ED8E96; text-decoration: underline;'>Clique aqui para caçar as plantas!</a>";
             
         } else {
             $Status = '<a style="font-family: Poppins-medium; margin-top: 15px;">Aguarde! O jogo iniciará assim que o Professor permitir ★</a>';

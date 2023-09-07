@@ -1,0 +1,142 @@
+:root {
+    --principal: #338a5f;
+    --verdao: #04574d;
+    --branco: #ebf0f1;
+    --destaque: #f58c95;
+    --rosinha: #f0b6bc;
+    --rosão: #C05367;
+    --cinza: #586660;
+    --cinzinha: #d3dadb;
+    --branquinho #ffffff;
+
+    width: 100%;
+    height: 100%;
+
+    font-family: Poppins-regular, Roboto;
+}
+
+    @font-face {
+        font-family: 'Cooper';
+        src: url('../fontes/cooperhewitt-heavy.otf');
+    }
+    
+    @font-face {
+        font-family: 'Poppins';
+        src: url('../fontes/Poppins-ExtraBold.ttf');
+    }
+    
+    @font-face {
+        font-family: 'Poppins-regular';
+        src: url('../fontes/Poppins-Regular.ttf');
+    }
+    
+    @font-face {
+        font-family: 'Poppins-semibold';
+        src: url('../fontes/Poppins-SemiBold.ttf');
+    }
+    
+    @font-face {
+        font-family: 'Poppins-medium';
+        src: url('../fontes/Poppins-Medium.ttf');
+    }
+
+body {
+    background-color: #ebf0f1;
+}
+
+#timer {
+    color: #ffffff;
+    position: relative;
+    z-index: 1;
+    font-size: 30px;
+    margin-left: 33px;
+    font-family: Poppins-medium;
+    letter-spacing: 2px;
+}
+
+#timercor {
+    color: #ebf0f1;
+    background-color: #C05367;
+    position: relative;
+    z-index: 2;
+    top: -50px;
+    border-radius: 50px;
+    margin-right: 27%;
+    margin-left: 27%;
+    height: 45px;
+}
+
+#botaotimer {
+    width: 28px;
+    height: auto;
+    position: relative;
+    z-index: 3;
+    margin-top: -30px;
+    top: 38px;
+    right: 53px;
+}
+
+#div {
+    margin-top: -50px;
+    align-content: center;
+    position: relative;
+    z-index: 4;
+}
+
+#encontrartitulo {
+    color: #04574d;
+    font-family: Poppins;
+    font-size: 330%;
+    text-decoration: underline dotted;
+    margin-top: -45px;
+    margin-left: -65px;
+    position: relative;
+}
+
+#encontrartitulo2 {
+    color: #04574d;
+    font-family: Poppins;
+    font-size: 330%;
+    text-decoration: underline dotted;
+    margin-bottom: 60px;
+    text-align: left;
+}
+
+#codigoplanta {
+    color: #ffffff;
+    background-color: #f0b6bc;
+    width: 320px;
+    height: 100px;
+    border-radius: 15px;
+    border-color: none;
+    font-size: 50px;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+#divjogo {
+    width: 100%;
+    height: 55px;
+}
+
+#botoes {
+    margin-top: 35px;
+    background-color: #338a5f;
+    border-color: #04574d;
+    border-style: dashed;
+    border-width: 7.5px;
+}
+
+#camera {
+    margin-right: 10px;
+    margin-left: 10px;
+    width: 70px;
+    height: auto;
+}
+
+#zona, #equipe {
+    width: 65px;
+    height: auto;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}

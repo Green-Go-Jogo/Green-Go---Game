@@ -1,19 +1,31 @@
 <?php
 include_once(__DIR__."/../../controllers/PartidaController.php");
-include_once(__DIR__."/../../controllers/ZonaController.php");
 include_once(__DIR__."/../../controllers/EquipeController.php");
+include_once(__DIR__."/../../controllers/UsuarioController.php");
 include_once(__DIR__."/htmlPartida.php");
+?>
+<?php include_once("../../controllers/LoginController.php");
+LoginController::manterUsuario();
+LoginController::verificarAcesso([1,2,3]);
+
+$idEquipe = $_GET['ide'];
+
+$idPartida = $_GET['idp'];
+
+$usuarioCont = new UsuarioController();
+$usuarios = $usuarioCont->buscarUsuarios($idEquipe); 
+
+
+$equipeCont = new EquipeController();
+$equipe = $equipeCont->buscarPorId($idEquipe); 
+
 
 $partidaCont = new PartidaController();
-
-if (isset($_GET['idp'])) {
-    $id = $_GET['idp'];
-} else {
-    echo "ID não encontrado na URL.";
-}
+$partida = $partidaCont->buscarPorId($idPartida); 
 
 $partida = $partidaCont->buscarPorId($_GET['idp']); 
 
+$tempo = $partida->getTempoPartida(); 
 
 ?>
 
@@ -28,6 +40,7 @@ LoginController::verificarAcesso([1]);
 
     <title>Jogue!</title>
     <?php include_once("../../bootstrap/header.php");?>
+    <link rel="stylesheet" href="../csscheer/jogo.css">
 
 
 </head>
@@ -96,20 +109,36 @@ LoginController::verificarAcesso([1]);
 
 <?php LoginController::navBar($_SESSION['TIPO']);?>
 
+<br>
 
-    <br>
-    <br>
-  <h1 class="text-center primeirotextoreg">PROCURE AS PLANTAS!</h1>
+    <img src="../../public/divjogo.jpg" id="divjogo"> </img> 
+    <div class="text-center" id="timercor"> 
+    <img src="../../public/botaotimer.png" id="botaotimer"> </img>
+    <div class="circulo" id="timer"><?php echo $tempo.":00"; ?>
+    </div></div>
+    
+    <br><br>
+
+
+  <h1 class="text-center" id="encontrartitulo">Encontrou </h1>
+  <h1 class="text-center" id="encontrartitulo2">uma planta?</h1>
+
+  <div class="d-flex justify-content-center">
+  <input type="text" name="codigo_planta" class="form-control"  maxlength="4" id="codigoplanta"></div>
+  <br>
   
-  
-</div>
-</div>
+  <div class="text-center" id="botoes">
 
-        <button>EQUIPE</button>
-        <button>CAMERA</button>
-        <button>ZONA</button>
+        <a class="btn" href="zona.php">
+        <img src="../../public/botaozona.png" id="zona"> </img> </a>
 
-</div>
+        <a class="btn" href="camera.php">
+        <img src="../../public/botaocamera.png" id="camera"> </img> </a>
+
+        <a class="btn" href="../../views/partidas/verEquipe.php">
+        <img src="../../public/botaoequipe.png" id="equipe"> </img> </a>
+
+        </div>
 <br>
 <br>
 <br>
