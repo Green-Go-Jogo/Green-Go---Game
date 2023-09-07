@@ -35,9 +35,18 @@ $partida = $partidaCont->buscarPorId($idPartida);
 
 </head>
 
-
-
     <style>
+
+    #titulo {
+        color: #04574d;
+        font-family: Poppins;
+        margin-bottom: 30px;
+        font-family: Poppins;
+        margin-top: 15px;
+        font-size: 60px; 
+    }
+
+
     .btn:hover {
         color:#f58c95;
         transform: scale(1.05);
@@ -47,6 +56,7 @@ $partida = $partidaCont->buscarPorId($idPartida);
     body {
         background-color: #ebf0f1;
     }
+
 
     </style>
 
@@ -59,7 +69,7 @@ $partida = $partidaCont->buscarPorId($idPartida);
 
 </nav>
     
-  <h1 class="text-center primeirotextoreg"><?php echo $equipe->getNomeEquipe(); ?></h1>
+  <h1 class="text-center" id="titulo"><?php echo $equipe->getNomeEquipe(); ?></h1>
   <br><br><br>
     
   <div id="conteudo">

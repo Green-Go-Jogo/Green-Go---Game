@@ -130,6 +130,49 @@ left: 1200px; /* Ajuste conforme necessário para posicionar à direita */
     height: auto;
     border-radius: 5px;
     }
+
+    #pontosequipe, #nomequipe {
+        color: #C05367;
+        font-family: Poppins;
+        font-size: 25px;
+    }
+
+    #tabelapontos, #tabelanome {
+        color: #078071;
+        font-family: Poppins-semibold;
+        font-size: 15px;
+        text-decoration: underline dotted;
+    }
+
+    #fecharpassword {
+        color: #C05367;
+        border-color: #C05367;
+        font-size: 17px;
+        font-family: Poppins-semibold;
+    }
+
+    #fecharpassword:hover {
+        color: #ffffff;
+        background-color: #C05367 !important;
+    }
+
+    #submit-password {
+        color: #ffffff;
+        background-color: #078071;
+        font-size: 17px;
+        font-family: Poppins-semibold;
+    }
+
+    #submit-password:hover {
+        color: #ffffff;
+        background-color: #04574d;
+    }
+
+    #exampleModalLabel {
+        font-family: Poppins-medium;
+    }
+
+
 </style>
 
 <?php
@@ -183,18 +226,18 @@ Class PartidaHTML {
         echo "<div class='modal-dialog'>";
         echo "<div class='modal-content'>";
         echo "<div class='modal-header'>";
-        echo "<h1 class='modal-title text-center fs-5' id='exampleModalLabel'>Coloque a senha:</h1>";
+        echo "<h1 class='modal-title text-center fs-5' id='exampleModalLabel'>Insira a senha:</h1>";
         echo "</div>";
         echo "<div class='modal-body'>";
         echo "<form id='password-form' action='verificar_senha.php' method='POST'>";
         echo "<input type='hidden' id='partida-id' name='partidaId'>";
         echo "<div class='mb-3'>";
-        echo "<label for='password' id='lab-senha' class='col-form-label'>Senha:</label>";
+        echo "<label for='password' id='lab-senha' class='col-form-label'> </label>";
         echo "<input type='password' class='form-control' id='password' name='password'>";
         echo "</div>";
         echo "</div>";
         echo "<div class='modal-footer'>";
-        echo "<button type='button' class='btn cancel btn-secondary' data-bs-dismiss='modal'>Fechar</button>";
+        echo "<button type='button' class='btn cancel btn-secondary' data-bs-dismiss='modal' id='fecharpassword'>Fechar</button>";
         echo "<button type='submit' class='btn submit btn-primary' id='submit-password'>Entrar</button>";
         echo "</div>";
         echo "</form>";
@@ -210,9 +253,8 @@ Class PartidaHTML {
         echo "<table class='table'>";
         echo "<thead>";
         echo "<tr>";
-        echo "<th scope='col'>Nome</th>";
-        echo "<th scope='col'>Escolaridade</th>";
-        echo "<th scope='col'>Pontos</th>";
+        echo "<th scope='col' id='nomequipe'>Nome</th>";
+        echo "<th scope='col' id='pontosequipe'>Pontos</th>";
         echo "</tr>";
         echo "</thead>";
         echo "<tbody>";
@@ -222,9 +264,8 @@ Class PartidaHTML {
     
        
             echo "<tr>";
-            echo "<td>".$usuario->getNomeUsuario()."</td>";
-            echo "<td style='color: #04574d;'>".$usuario->getEscolaridade()."</td>";
-            echo "<td style='color: #04574d;'>"."</td>";
+            echo "<td id='tabelanome'>".$usuario->getNomeUsuario()."</td>";
+            echo "<td id='tabelapontos'>"."</td>";
             // echo "<td>";
             echo "</tr>";
         }
@@ -240,10 +281,10 @@ Class PartidaHTML {
         } else if (!is_null($partida->getDataInicio())) {
             $Status = "Em andamento!";
             $Open = "CLOSE";
-            $link = "<a href='mainJogo.php?idp=".$partida->getIdPartida().'&ide='.$idEquipe."'>Clique aqui para caçar as plantas!</a>";
+            $link = '<a style="font-family: Poppins-medium; margin-top: 15px; href='mainJogo.php?idp=".$partida->getIdPartida().'&ide='.$idEquipe."'>Clique aqui para caçar as plantas!</a>';
             
         } else {
-            $Status = "Aguarde! O jogo iniciará assim que o Professor permitir :)";
+            $Status = '<a style="font-family: Poppins-medium; margin-top: 15px;">Aguarde! O jogo iniciará assim que o Professor permitir ★</a>';
             $Open = "OPEN";
             $link = '';
         }

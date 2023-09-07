@@ -32,7 +32,7 @@ LoginController::verificarAcesso([1,2,3]);
   <?php
 if (isset($_GET['msg'])) {
     $msg = $_GET['msg'];
-    echo '<div class="alert alert-warning">' . htmlspecialchars($msg) . '</div>';
+    echo '<div class="alert alert-warning align-center">' . htmlspecialchars($msg) . '</div>';
 }
 ?>
    </div>     
