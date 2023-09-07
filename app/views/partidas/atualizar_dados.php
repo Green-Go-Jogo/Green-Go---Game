@@ -17,6 +17,6 @@ $partidaCont = new PartidaController();
 $partida = $partidaCont->buscarPorId($idPartida);
 
 // Chame a função para desenhar o HTML com os novos dados e retorne somente o conteúdo
-$conteudoAtualizado = PartidaHTML::desenhaEquipe($usuarios, $partida);
+$conteudoAtualizado = PartidaHTML::desenhaEquipe($usuarios, $partida, $idEquipe);
 echo $conteudoAtualizado;
 ?>

@@ -7,6 +7,9 @@ Class Partida {
     private $DataInicio;
     private $DataFim;
     private $LimiteJogadores;
+    private $IdPartidaUsuario;
+    private $IdPartidaEquipe;
+    private $IdUsuario;
     private $Zonas;
     private $Equipes;
     private $Senha;
@@ -15,7 +18,6 @@ Class Partida {
     private $StatusPartida;
     private $PontuacaoEquipe;
     private $PontuacaoUsuario;
-
 
 
     public function __toString() {
@@ -281,4 +283,83 @@ Class Partida {
 
         return $this;
     }
+
+    /**
+     * Get the value of IdPartidaUsuario
+     */ 
+    public function getIdPartidaUsuario()
+    {
+        return $this->IdPartidaUsuario;
+    }
+
+    /**
+     * Set the value of IdPartidaUsuario
+     *
+     * @return  self
+     */ 
+    public function setIdPartidaUsuario($IdPartidaUsuario)
+    {
+        $this->IdPartidaUsuario = $IdPartidaUsuario;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of IdPartidaEquipe
+     */ 
+    public function getIdPartidaEquipe()
+    {
+        return $this->IdPartidaEquipe;
+    }
+
+    /**
+     * Set the value of IdPartidaEquipe
+     *
+     * @return  self
+     */ 
+    public function setIdPartidaEquipe($IdPartidaEquipe)
+    {
+        $this->IdPartidaEquipe = $IdPartidaEquipe;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of IdUsuario
+     */ 
+    public function getIdUsuario()
+    {
+        return $this->IdUsuario;
+    }
+
+    /**
+     * Set the value of IdUsuario
+     *
+     * @return  self
+     */ 
+    public function setIdUsuario($IdUsuario)
+    {
+        $this->IdUsuario = $IdUsuario;
+
+        return $this;
+    }
+
+    function issetDataFim($valor) {
+        // Verifique o valor aqui e retorne true ou false com base nos critérios
+        if ($valor) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function issetDataInicio($valor) {
+        // Verifique o valor aqui e retorne true ou false com base nos critérios
+        if ($valor) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }

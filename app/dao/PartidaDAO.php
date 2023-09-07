@@ -12,6 +12,13 @@ include_once(__DIR__."/../models/UsuarioModel.php");
 class PartidaDAO {
 
     private const SQL_PARTIDA = "SELECT p.* FROM partida p";
+    private const SQL_USUARIO_PARTIDA = "SELECT pe.pontuacaoEquipe,p.dataFim,p.dataInicio,pe.idPartida,pu.* FROM partida_usuario pu 
+    JOIN partida_equipe pe ON pu.idPartidaEquipe = pe.idPartidaEquipe 
+    JOIN partida p ON pe.idPartida = p.idPartida";
+    private const SQL_PLANTA_ZONA = "SELECT plant.*,pz.* FROM partida_zona pz 
+    JOIN partida part ON part.idPartida = pz.idPartida 
+    JOIN zona z ON z.idZona = pz.idZona 
+    JOIN planta plant ON plant.idZona = z.idZona";
     
     private function mapPartidas($resultSql) {
             $partidas = array();
@@ -32,7 +39,26 @@ class PartidaDAO {
 
         return $partidas;
     
-}
+}   
+    private function mapUsuarioPartida($resultSql) {
+        $partidas = array();
+            foreach ($resultSql as $reg):
+            
+            $partida = new Partida();  
+            $partida->setIdPartida($reg['idPartida']);
+            $partida->setIdusuario($reg['idUsuario']);
+            $partida->setIdPartidaUsuario($reg['idPartidaUsuario']);
+            $partida->setIdPartidaEquipe($reg['idPartidaEquipe']);
+            $partida->setDataFim($reg['dataFim']); 
+            $partida->setDataInicio($reg['dataInicio']);
+            $partida->setPontuacaoEquipe($reg['pontuacaoEquipe']);
+
+            array_push($partidas, $partida);
+        endforeach;
+
+        return $partidas;
+
+    }
 
     public function list() {
         $conn = conectar_db();
@@ -66,6 +92,33 @@ class PartidaDAO {
         elseif(count($partidas) == 0)
             return null;
     }
+
+    public function findByPartidaByIdUsuario($idUsuario) {
+        $conn = conectar_db();
+    
+    $sql = PartidaDAO::SQL_USUARIO_PARTIDA . " WHERE pu.idUsuario = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute([
+        $idUsuario
+        ]);
+    
+    $result = $stmt->fetchAll();
+    
+    $partidas = $this->mapUsuarioPartida($result);
+
+    if(count($result) >= 1) {
+        foreach($partidas as $partida)
+        $partidaFinalizada = $partida->issetDataFim($partida->getDataFim());
+
+        if($partidaFinalizada) {
+            return $partida;
+        }
+        else{
+            return null;
+    }
+    }
+}
+
 
 
       public function savePartida(Partida $partida) {
@@ -129,38 +182,48 @@ public function findPartidaEquipe($idEquipe, $idPartida) {
         $idPartida,
     ]);
  
-// Obtenha o resultado da consulta
 $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-// Verifique se a consulta retornou algum resultado
 if ($result) {
-    // O valor de 'idPartidaEquipe' está em $result['idPartidaEquipe']
     $idPartidaEquipe = $result['idPartidaEquipe'];
     return $idPartidaEquipe;
 } else {
-    // A consulta não retornou resultados, faça o tratamento apropriado, como retornar um valor padrão ou lançar uma exceção.
-    return null; // Ou outra ação apropriada
+      return null; 
 }
 }
 
 public function usuarioInEquipe($idUsuario) {
     $conn = conectar_db();
     
-    $sql = "SELECT * FROM partida_usuario pu WHERE pu.idUsuario = ?";
+    $sql = PartidaDAO::SQL_USUARIO_PARTIDA . " WHERE pu.idUsuario = ?";
     $stmt = $conn->prepare($sql);
     $stmt->execute([
     $idUsuario
 ]);
     
     $result = $stmt->fetchAll();
-    if(count($result) >= 1)
-            return true;
+    
+    $partidas = $this->mapUsuarioPartida($result);
+
+    if(count($result) >= 1) {
+        foreach($partidas as $partida)
+        $partidaFinalizada = $partida->issetDataFim($partida->getDataFim());
+        $partidaAndamento = $partida->issetDataFim($partida->getDataFim());
+
+        if($partidaFinalizada) {
+            return null;
+        }
+        else if($partidaAndamento) {
+            return $partida;
+        }
+        else {
+            return $partida;
+        }
+    }
         else{
             return null;
     }
 }
-
-
 
     public function findByLoginSenha(string $IdPartida, string $Senha) {
             $conn = conectar_db();
@@ -179,7 +242,6 @@ public function usuarioInEquipe($idUsuario) {
             }
 
     public function enterRoom($idPartida, $Senha){
-
             $partida = $this->findByLoginSenha($idPartida, $Senha);
 
             if ($partida !== null) {
@@ -232,15 +294,39 @@ public function usuarioInEquipe($idUsuario) {
     $stmt->execute([$planta->getIdPlanta()]);
 }
 
-    public function deleteImage($idPlanta) {
-    $plantaCont = new PlantaController();
-    $planta = $plantaCont->buscarPorId($idPlanta);
+    public function addScore($arrayPlantas, $pontos, $idUsuario) {
+        $conn = conectar_db();
+
+    $usuario = $this->usuarioInEquipe($idUsuario);
     
-    $img_del = $planta->getImagemPlanta();
-    if (file_exists($img_del)) {
-        unlink($img_del);
+    if($usuario) {
+        
+        $plantasString = implode(' | ', $arrayPlantas);
+        
+        // Atualize a coluna plantasLidas no banco de dados com a nova string
+        $sql = "UPDATE partida_usuario SET pontuacao = ?, plantasLidas = ? WHERE idPartidaUsuario = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([$pontos, $plantasString, $usuario->getIdPartidaUsuario()]);
+    } else {
+        echo 'Usuário não encontrado.';
+    }    
+}
+
+    public function checkZona($idPlanta, $idPartida){
+    $conn = conectar_db();
+ 
+    $sql = PartidaDAO::SQL_PLANTA_ZONA . " WHERE plant.idPlanta = ? AND part.idPartida = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute([$idPlanta, $idPartida]);
+
+    $result = $stmt->fetchAll();
+
+    if(count($result) == 1){
+        return true;
+    }
+    else {
+        return false;
     }
 }
 }
-
 ?>

@@ -39,37 +39,55 @@ class PartidaController {
         $this->partidaDAO->savePartida($partida);
     }
 
+    public function partidaStatus($idUsuario){
+        $partida = $this->partidaDAO->findByPartidaByIdUsuario($idUsuario);
+        return $partida;
+    }
+
     public function salvarUsuarioEquipe($idEquipe, $idPartida) {
        
         $idPartidaEquipe = $this->partidaDAO->findPartidaEquipe($idEquipe, $idPartida);
         
         $idUsuario = $_SESSION["ID"];
         $inEquipe = $this->partidaDAO->usuarioInEquipe($idUsuario);
-        var_dump($inEquipe);
 
         if($inEquipe){
         $error = "Você já pertence a uma equipe!";
         return $error;
     } else {
+       $_SESSION['PARTIDA'] = true;
        $this->partidaDAO->saveUsuarioEquipe($idPartidaEquipe, $idUsuario);
     }
     }
 
-    public function checarQRCode($statusPartida, $plantaId, $arrayPlantas) {
+    public function checarQRCode($statusPartida, $idPlanta, $arrayPlantas, $idUsuario) {
 
+        $partida = $this->partidaDAO->usuarioInEquipe($idUsuario);
 
-        if ($statusPartida) {
-            if (!in_array($plantaId, $arrayPlantas)) {
-                $arrayPlantas[] = $plantaId;
-                $planta = $this->plantaDAO->findById($plantaId);
+        if ($partida !== null) {
+
+            
+            $idPartida = $partida->getIdPartida();
+            $inZona = $this->partidaDAO->checkZona($idPlanta, $idPartida);
+            if($inZona){
+            if (!in_array($idPlanta, $arrayPlantas)) {
+                $planta = $this->plantaDAO->findById($idPlanta);
                 $_SESSION["PONTOS"] += $planta->getPontos();
+                $arrayPlantas[] = $idPlanta;
                 $_SESSION['PLANTAS_LIDAS'] = $arrayPlantas;
-                echo "Parabéns, você encontrou uma nova planta!";
+
+                $this->partidaDAO->addScore($_SESSION['PLANTAS_LIDAS'], $_SESSION['PONTOS'], $idUsuario);
+                echo "Parabéns, você encontrou uma nova planta! <br>";
+                
             } else {
-                echo "Você já leu esse QR Code para esta planta.";
+                echo "Você já leu esse QR Code para esta planta. <br>";
             }
+        }
+        else {
+            echo "Essa planta não pertence às zonas que você atualmente está procurando! <br>";
+        }
         } else {
-            exit;
+            return false;
         }
     }
 

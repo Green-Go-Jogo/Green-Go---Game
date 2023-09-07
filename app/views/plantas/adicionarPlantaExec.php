@@ -58,7 +58,7 @@ if (!empty($errors)) {
 //Criar o objeto planta
 
 //Gerar o QR Code
-$qrCodeTexto = "https://www.greengoifpr.com.br/app/views/plantas/visualizarPlanta.php?cod=" . urlencode($Cod_Numerico) . "&ide=". urlencode($id_especie);
+$qrCodeTexto = "https://www.greengoifpr.com.br/app/views/plantas/visualizarPlanta.php?cod=" . urlencode($Cod_Numerico) . "&ide=". urlencode($id_especie) . "&qrcode=true";
 $qrCodeArq = "../../public/qrcode/qrcode_". $Cod_Numerico . ".png"; 
 QRcode::png($qrCodeTexto, $qrCodeArq, QR_ECLEVEL_L, 10); 
 

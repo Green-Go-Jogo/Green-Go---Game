@@ -7,9 +7,8 @@
  include_once("../especies/htmlEspecie.php");
 
  include_once("../../controllers/LoginController.php");
-    LoginController::manterUsuario();
-  
 
+    LoginController::manterUsuario();
 ?>
 
 <?php include_once("../../controllers/ZonaController.php");
@@ -17,21 +16,17 @@
 
 
 
- $fromQR = isset($_GET['qrcode']) && $_GET['qrcode'] == 1;
-
-
- 
+ $fromQR = isset($_GET['qrcode']) && $_GET['qrcode'] == true;
  $cod = isset($_GET['cod']) ? $_GET['cod'] : null;
  $ide = isset($_GET['ide']) ? $_GET['ide'] : null;
  $idp = isset($_GET['idp']) ? $_GET['idp'] : null;
 
  if ($fromQR) {
-    
+     if ($_SESSION['PARTIDA']) {
     $partidaCont = new PartidaController();
-    $partida = $partidaCont->checarQRCode($_SESSION['PARTIDA'], $idp, $_SESSION['PLANTAS_LIDAS']);
-    
-    print_r($_SESSION['PLANTAS_LIDAS']);
-    print_r($_SESSION['PONTOS']);
+    $partida = $partidaCont->checarQRCode($_SESSION['PARTIDA'], $idp, $_SESSION['PLANTAS_LIDAS'], $_SESSION['ID']);}
+    else {};
+    var_dump($_SESSION['PLANTAS_LIDAS']); echo "<br>" . $_SESSION['PONTOS'];
 
 }
 
@@ -238,4 +233,28 @@ LoginController::navBar($tipo);?>
         
 <?php include_once("../../bootstrap/footer.php");?>
 </body>
+<script>
+        $(document).ready(function () {
+            $.ajax({
+                type: "POST",
+                url: "verificar_usuario.php",
+                dataType: "json",
+                data: {
+                    userID: <?php echo $_SESSION["ID"]; ?> // Envie o ID do usuário
+                },
+                success: function (response) {
+                    if (response === true) {
+                        // Redirecionar para a página X se a resposta for verdadeira
+                        window.location.href = "../partidas/rankPartida.php";
+                    } else {
+                        // A resposta foi false, pode fazer algo diferente aqui, se necessário
+                        console.log("Usuário não válido");
+                    }
+                },
+                error: function () {
+                    console.log("Erro ao processar a requisição AJAX");
+                }
+            });
+        });
+    </script>
 </html>

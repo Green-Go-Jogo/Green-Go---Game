@@ -127,6 +127,8 @@ class UsuarioDAO {
              $_SESSION['NOME'] = $usuario->getNomeUsuario();
              $_SESSION['TIPO'] = $usuario->getTipoUsuario();
              $_SESSION['PLANTAS_LIDAS'] = array();
+             $_SESSION['PARTIDA'] = false;
+             $_SESSION['PONTOS'] = 0;
 
              $tipo = $usuario->getTipoUsuario();
 

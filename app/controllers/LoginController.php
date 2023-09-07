@@ -21,7 +21,7 @@ class LoginController {
     public function entrarPartida($idPartida, $senha) {
         $bool = $this->partidaDAO->enterRoom($idPartida, $senha);
         if($bool) {
-            $this->manterPartida($idPartida);
+            $_SESSION['PARTIDA'] = true;
             return true;
         }
         else {
@@ -31,26 +31,16 @@ class LoginController {
 
 
     public static function manterUsuario() {
-
-    session_start();
-
-    $nomeADM = $_SESSION['NOME']; 
-    $idUser = $_SESSION['ID'];
-    $tipoUsuario = $_SESSION['TIPO'];
+        session_start();
     
-    // $_SESSION['PARTIDA'] = 34;
-    // $_SESSION['STATUS_PARTIDA'] = true;
-    // $_SESSION["PONTOS"];
-    
+        // Verifique se as variáveis de sessão estão definidas antes de acessá-las
+        $nomeADM = isset($_SESSION['NOME']) ? $_SESSION['NOME'] : null;
+        $idUser = isset($_SESSION['ID']) ? $_SESSION['ID'] : null;
+        $tipoUsuario = isset($_SESSION['TIPO']) ? $_SESSION['TIPO'] : null;
+        $arrayPlantas = isset($_SESSION['PLANTAS_LIDAS']) ? $_SESSION['PLANTAS_LIDAS'] : null ;
+        $statusPartida = isset($_SESSION['PARTIDA']) ? $_SESSION['PARTIDA'] : null;
+        $pontosJogador = isset($_SESSION['PONTOS']) ? $_SESSION['PONTOS'] : null;
     }
-
-    public static function manterPartida($idPartida) {
-
-    $_SESSION['STATUS_PARTIDA'] = true;
-    $_SESSION['PARTIDA'] = $idPartida;
-    }
-
-
 
     public static function sair() {
         session_start();

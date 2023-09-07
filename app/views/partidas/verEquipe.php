@@ -63,7 +63,7 @@ $partida = $partidaCont->buscarPorId($idPartida);
   <br><br><br>
     
   <div id="conteudo">
-    <?php PartidaHTML::desenhaEquipe($usuarios, $partida); ?>
+    <?php PartidaHTML::desenhaEquipe($usuarios, $partida, $idEquipe); ?>
 </div> 
 
 

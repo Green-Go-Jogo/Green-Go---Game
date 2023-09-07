@@ -203,7 +203,7 @@ Class PartidaHTML {
         echo "</div>";
     }
 
-    public static function desenhaEquipe($usuarios, $partida) {
+    public static function desenhaEquipe($usuarios, $partida, $idEquipe) {
 
 
         echo "<div class='container text-center'>";
@@ -240,7 +240,7 @@ Class PartidaHTML {
         } else if (!is_null($partida->getDataInicio())) {
             $Status = "Em andamento!";
             $Open = "CLOSE";
-            $link = '<a href="mainJogo.php">Clique aqui para caçar as plantas!</a>';
+            $link = "<a href='mainJogo.php?idp=".$partida->getIdPartida().'&ide='.$idEquipe."'>Clique aqui para caçar as plantas!</a>";
             
         } else {
             $Status = "Aguarde! O jogo iniciará assim que o Professor permitir :)";
