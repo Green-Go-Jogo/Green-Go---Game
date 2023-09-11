@@ -12,13 +12,19 @@ include_once(__DIR__."/../models/UsuarioModel.php");
 class PartidaDAO {
 
     private const SQL_PARTIDA = "SELECT p.* FROM partida p";
+
     private const SQL_USUARIO_PARTIDA = "SELECT pe.pontuacaoEquipe,p.dataFim,p.dataInicio,pe.idPartida,pu.* FROM partida_usuario pu 
     JOIN partida_equipe pe ON pu.idPartidaEquipe = pe.idPartidaEquipe 
     JOIN partida p ON pe.idPartida = p.idPartida";
+
     private const SQL_PLANTA_ZONA = "SELECT plant.*,pz.* FROM partida_zona pz 
     JOIN partida part ON part.idPartida = pz.idPartida 
     JOIN zona z ON z.idZona = pz.idZona 
     JOIN planta plant ON plant.idZona = z.idZona";
+
+    private const SQL_EQUIPE_PARTIDA = "SELECT pe.pontuacaoEquipe,p.dataFim,p.dataInicio,pe.idPartida,e.* FROM equipe e 
+    JOIN partida_equipe pe ON e.idEquipe = pe.idEquipe 
+    JOIN partida p ON pe.idPartida = p.idPartida";
     
     private function mapPartidas($resultSql) {
             $partidas = array();
@@ -93,7 +99,21 @@ class PartidaDAO {
             return null;
     }
 
-    public function findByPartidaByIdUsuario($idUsuario) {
+    public function findRelacaoByIdPartida($idPartida) {
+        $conn = conectar_db();
+    
+    $sql = PartidaDAO::SQL_USUARIO_PARTIDA . " WHERE pu.idPartida = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute([
+        $idPartida
+        ]);
+    
+    $result = $stmt->fetchAll();
+
+    return $this->mapUsuarioPartida($result);
+}
+
+    public function findPartidaByIdUsuario($idUsuario) {
         $conn = conectar_db();
     
     $sql = PartidaDAO::SQL_USUARIO_PARTIDA . " WHERE pu.idUsuario = ?";
@@ -266,6 +286,15 @@ public function usuarioInEquipe($idUsuario) {
     
     };
 }
+
+    public function teamScore() {
+        $conn = conectar_db();
+
+        $sql = "UPDATE partida_equipe pe SET pe.pontuacaoEquipe = (SELECT SUM(pu.pontuacao) FROM partida_usuario pu WHERE pu.idPartidaEquipe = pe.idPartidaEquipe)";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+
+    }
 
     public function update(Planta $planta) {
         $conn = conectar_db();

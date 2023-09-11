@@ -5,6 +5,10 @@ if (isset($_POST['timeType']) && isset($_POST['timestamp'])) {
     $idPartida = $_POST['partidaId'];
     
     include_once(__DIR__."/../../connection/Connection.php");
+    
+    include_once(__DIR__."/../../controllers/PartidaController.php");
+    
+    $partCont = new PartidaController;
 
     $conn = conectar_db();
     
@@ -28,6 +32,8 @@ if (isset($_POST['timeType']) && isset($_POST['timestamp'])) {
 
     $formattedTimestamp = $dateTime->format('Y-m-d H:i:s');
         $sql = "UPDATE partida SET dataFim = ? WHERE idPartida = ?";
+        $partCont->salvarPontuacaoEquipe();
+
     } else {
         echo "Erro: Tipo de tempo inválido";
         exit;

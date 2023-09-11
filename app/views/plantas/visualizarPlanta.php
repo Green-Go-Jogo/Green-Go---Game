@@ -8,13 +8,7 @@
 
  include_once("../../controllers/LoginController.php");
 
-    LoginController::manterUsuario();
-?>
-
-<?php include_once("../../controllers/ZonaController.php");
-
-
-
+ LoginController::manterUsuario();
 
  $fromQR = isset($_GET['qrcode']) && $_GET['qrcode'] == true;
  $cod = isset($_GET['cod']) ? $_GET['cod'] : null;
@@ -22,11 +16,13 @@
  $idp = isset($_GET['idp']) ? $_GET['idp'] : null;
 
  if ($fromQR) {
+    $_SESSION['PARTIDA'] = true;
      if ($_SESSION['PARTIDA']) {
     $partidaCont = new PartidaController();
-    $partida = $partidaCont->checarQRCode($_SESSION['PARTIDA'], $idp, $_SESSION['PLANTAS_LIDAS'], $_SESSION['ID']);}
-    else {};
+    $partida = $partidaCont->checarQRCode($_SESSION['PARTIDA'], $idp, $_SESSION['PLANTAS_LIDAS'], $_SESSION['ID']);
     var_dump($_SESSION['PLANTAS_LIDAS']); echo "<br>" . $_SESSION['PONTOS'];
+}
+    else {};
 
 }
 
@@ -234,7 +230,12 @@ LoginController::navBar($tipo);?>
 <?php include_once("../../bootstrap/footer.php");?>
 </body>
 <script>
-        $(document).ready(function () {
+    $(document).ready(function () {
+        // Verifique se a variável de sessão PARTIDA é verdadeira
+        var partidaAtiva = <?php echo ($_SESSION['PARTIDA'] ? 'true' : 'false'); ?>;
+        
+        if (partidaAtiva === true) {
+            // A variável de sessão PARTIDA é verdadeira, agora você pode chamar o código para verificar o usuário ou fazer outras ações aqui
             $.ajax({
                 type: "POST",
                 url: "verificar_usuario.php",
@@ -242,19 +243,23 @@ LoginController::navBar($tipo);?>
                 data: {
                     userID: <?php echo $_SESSION["ID"]; ?> // Envie o ID do usuário
                 },
-                success: function (response) {
-                    if (response === true) {
-                        // Redirecionar para a página X se a resposta for verdadeira
-                        window.location.href = "../partidas/rankPartida.php";
+                success: function (userResponse) {
+                    if (userResponse.isValid === true) {
+                    // Redirecionar para a página X se a resposta for verdadeira
+                     window.location.href = "../partidas/rankPartida.php?id=" + userResponse.idPartida;
                     } else {
                         // A resposta foi false, pode fazer algo diferente aqui, se necessário
                         console.log("Usuário não válido");
                     }
                 },
                 error: function () {
-                    console.log("Erro ao processar a requisição AJAX");
+                    console.log("Erro ao processar a requisição AJAX do usuário");
                 }
             });
-        });
-    </script>
+        } else {
+            // A variável de sessão PARTIDA não é verdadeira, faça algo diferente aqui, se necessário
+            console.log("Partida não está ativa");
+        }
+    });
+</script>
 </html>

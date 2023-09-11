@@ -4,17 +4,18 @@ Class Equipe {
 
     private $idEquipe;
     private $nomeEquipe;
-    private $codEntrada;
+    private $pontuacaoEquipe;
     private $corEquipe;
     private $iconeEquipe;
 
 
     //Construtor da classe
-    public function __construct($id="",$nome="",$icone="")
+    public function __construct($id="",$nome="",$icone="",$pontuacao="")
     {
         $this->idEquipe = $id;
         $this->nomeEquipe = $nome;
         $this->iconeEquipe = $icone;  
+        $this->pontuacaoEquipe = $pontuacao;
     }
 
     /**
@@ -57,25 +58,6 @@ Class Equipe {
         return $this;
     }
 
-    /**
-     * Get the value of codEntrada
-     */ 
-    public function getCodEntrada()
-    {
-        return $this->codEntrada;
-    }
-
-    /**
-     * Set the value of codEntrada
-     *
-     * @return  self
-     */ 
-    public function setCodEntrada($codEntrada)
-    {
-        $this->codEntrada = $codEntrada;
-
-        return $this;
-    }
 
     /**
      * Get the value of corEquipe
@@ -113,6 +95,26 @@ Class Equipe {
     public function setIconeEquipe($iconeEquipe)
     {
         $this->iconeEquipe = $iconeEquipe;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of pontuacaoEquipe
+     */ 
+    public function getPontuacaoEquipe()
+    {
+        return $this->pontuacaoEquipe;
+    }
+
+    /**
+     * Set the value of pontuacaoEquipe
+     *
+     * @return  self
+     */ 
+    public function setPontuacaoEquipe($pontuacaoEquipe)
+    {
+        $this->pontuacaoEquipe = $pontuacaoEquipe;
 
         return $this;
     }

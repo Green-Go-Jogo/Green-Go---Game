@@ -8,27 +8,10 @@ include_once(__DIR__."/htmlPartida.php");
 LoginController::manterUsuario();
 LoginController::verificarAcesso([1,2,3]);
 
-if($_SESSION['PARTIDA']) {
-    echo 'ativa';
-}
-else {
-    echo 'false';
-}
-// $idEquipe = $_GET['ide'];
+ $idPartida = $_GET['id'];
 
-// $idPartida = $_GET['idp'];
-
-// $usuarioCont = new UsuarioController();
-// $usuarios = $usuarioCont->buscarUsuarios($idEquipe); 
-
-
-// $equipeCont = new EquipeController();
-// $equipe = $equipeCont->buscarPorId($idEquipe); 
-
-
-// $partidaCont = new PartidaController();
-// $partida = $partidaCont->buscarPorId($idPartida); 
-
+ $partidaCont = new PartidaController();
+ $partida = $partidaCont->buscarPorId($idPartida); 
 ?>
 
 <!DOCTYPE html>
@@ -67,6 +50,9 @@ else {
     
     
   <div id="conteudo">
+  <?php                    
+            PartidaHTML::desenhaRanking($partida);
+        ?>
 </div> 
 
 

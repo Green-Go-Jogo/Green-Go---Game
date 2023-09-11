@@ -6,7 +6,7 @@ include_once(__DIR__."/../models/EquipeModel.php");
 class EquipeDAO {
 
     private const SQL_EQUIPE = "SELECT * FROM equipe e";
-    private const SQL_EQUIPE_PARTIDA = "SELECT e.*".
+    private const SQL_EQUIPE_PARTIDA = "SELECT pe.pontuacaoEquipe,e.*".
                                         " FROM partida_equipe pe".
                                         " JOIN equipe e ON pe.idEquipe = e.idEquipe";
     
@@ -20,6 +20,9 @@ class EquipeDAO {
             $equipe->setNomeEquipe($reg['nomeEquipe']);
             $equipe->setCorEquipe($reg['cor']);
             $equipe->setIconeEquipe($reg['icone']);
+            if (isset($reg['pontuacaoEquipe'])) {
+                $equipe->setPontuacaoEquipe($reg['pontuacaoEquipe']);
+            }
            
             array_push($equipes, $equipe);
         endforeach;

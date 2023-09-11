@@ -39,8 +39,9 @@ class PartidaController {
         $this->partidaDAO->savePartida($partida);
     }
 
-    public function partidaStatus($idUsuario){
-        $partida = $this->partidaDAO->findByPartidaByIdUsuario($idUsuario);
+
+    public function buscarPartidaPorIdUsuario($idUsuario){
+        $partida = $this->partidaDAO->findPartidaByIdUsuario($idUsuario);
         return $partida;
     }
 
@@ -89,6 +90,10 @@ class PartidaController {
         } else {
             return false;
         }
+    }
+
+    public function salvarPontuacaoEquipe() {
+        $this->partidaDAO->teamScore();
     }
 
     public function atualizar($planta) {

@@ -391,5 +391,47 @@ Class PartidaHTML {
         echo "</div>";
     
     }
+
+    public static function desenhaRanking($partida) {
+    
+        echo "<div class='container text-center'>";
+        echo "<div class='equipeP text-right'>"; // Adicione a classe equipeP aqui
+        echo "<table class='table'>";
+        echo "<thead>";
+        echo "<tr>";
+        echo "<th scope='col'></th>";
+        echo "<th scope='col' class='text-center'>EQUIPES</th>";
+        echo "<th scope='col'></th>";
+        echo "</tr>";
+        echo "<tr>";
+        echo "<th scope='col'>Nome</th>";
+        echo "<th scope='col'>Cor</th>";
+        echo "<th scope='col'>Icon</th>";
+        echo "<th scope='col'>Pontuação Final</th>";
+        echo "</tr>";
+        echo "</thead>";
+        echo "<tbody>"; 
+        
+        $equipes = $partida->getEquipes();
+
+    // Classifique as equipes com base na pontuação final (em ordem decrescente)
+    usort($equipes, function($a, $b) {
+        return $b->getPontuacaoEquipe() - $a->getPontuacaoEquipe();
+    });
+
+        foreach ($equipes as $equipe) { 
+            echo "<tr>";
+            echo "<td>".$equipe->getNomeEquipe()."</td>";
+            echo "<td style='background-color: ".$equipe->getCorEquipe()."'></td>";
+            echo "<td style='color: #338a5f;'> <img style='width: 60px;' src='".$equipe->getIconeEquipe()."'/></td>";
+            echo "<td>".$equipe->getPontuacaoEquipe()."</td>";
+            echo "</tr>";
+        }
+    
+        echo "</tbody>";
+        echo "</table>";
+        echo "</div>"; // Feche a div com a classe zonaP
+        echo "</div>";
+    }
 }
 ?>
