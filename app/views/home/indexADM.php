@@ -41,7 +41,7 @@ LoginController::verificarAcesso([2,3]);
 <div class="card container text-center" style="width: 20rem;">
   <div class="card-body">
   <i class="fa-solid fa-earth-americas" style="color: #ffffff;"></i>
-    <a href="..\home\projetoADM.php" class="btn" style="color: #ffffff;"> Projeto </a>
+    <a href="..\home\projeto.php" class="btn" style="color: #ffffff;"> Projeto </a>
   </div> </div> </div> <br>
 
 <div class="col">

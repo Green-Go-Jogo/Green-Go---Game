@@ -24,8 +24,8 @@ class UsuarioController {
         $this->usuarioDAO->manterSessaoADM($nomeADM);
     }
 
-    public function buscarUsuarios($equipe) {
-       return $this->usuarioDAO->findUsers($equipe);
+    public function buscarUsuarios($idEquipe, $idPartida) {
+       return $this->usuarioDAO->findUsers($idEquipe, $idPartida);
     }
 
     public function sair($nomeADM) {

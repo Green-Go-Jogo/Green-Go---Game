@@ -1,6 +1,11 @@
 <?php include_once("../../controllers/LoginController.php");
 LoginController::manterUsuario();
-LoginController::verificarAcesso([2, 3]);
+LoginController::verificarAcesso([1, 2, 3]);
+if (!isset($_SESSION['TIPO'])) {
+    $tipo = null;
+} else {
+    $tipo = $_SESSION['TIPO'];
+}
 ?>
 
 <?php include_once("../../controllers/UsuarioController.php");
@@ -22,7 +27,7 @@ $usuario = $usuarioCont->buscarPorId($id);
     <?php include_once("../../bootstrap/header.php") ?>
 </head>
 
-<?php include_once("../../bootstrap/navADM.php") ?>
+<?php LoginController::navBar($tipo); ?>
 
     <div class="container">
         <br>

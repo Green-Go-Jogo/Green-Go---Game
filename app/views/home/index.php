@@ -1,8 +1,16 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+<?php include_once("../../controllers/LoginController.php"); 
 
+LoginController::manterUsuario();
+if (!isset($_SESSION['TIPO'])) {
+    $tipo = null;
+} else {
+    $tipo = $_SESSION['TIPO'];
+}?>
 <head>
-    <?php include_once("../../bootstrap/header.php");?>
+    <?php include_once("../../bootstrap/header.php");
+    ?>
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../csscheer/footer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -39,7 +47,7 @@
 
 <body>
 
-<?php include_once("../../bootstrap/nav.php") ?>
+<?php LoginController::navBar($tipo);?>
 
     <div class="container">
         <div class="row justify-content-md-left">

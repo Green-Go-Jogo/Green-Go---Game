@@ -13,7 +13,7 @@ $idEquipe = $_GET['ide'];
 $idPartida = $_GET['idp'];
 
 $usuarioCont = new UsuarioController();
-$usuarios = $usuarioCont->buscarUsuarios($idEquipe); 
+$usuarios = $usuarioCont->buscarUsuarios($idEquipe, $idPartida); 
 
 
 $equipeCont = new EquipeController();

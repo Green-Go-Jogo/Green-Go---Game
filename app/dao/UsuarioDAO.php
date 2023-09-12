@@ -5,7 +5,7 @@ include_once(__DIR__."/../connection/Connection.php");
 include_once(__DIR__."/../models/UsuarioModel.php");
 class UsuarioDAO {
     private const SQL_USUARIO = "SELECT * FROM usuario u";
-    private const SQL_EQUIPE_USUARIO = "SELECT e.idEquipe, usuario.* FROM partida_usuario pu 
+    private const SQL_EQUIPE_USUARIO = "SELECT e.idEquipe,pe.idPartida, usuario.* FROM partida_usuario pu 
     JOIN usuario ON pu.idUsuario = usuario.idUsuario 
     JOIN partida_equipe pe ON pu.idPartidaEquipe = pe.idPartidaEquipe 
     JOIN equipe e ON pe.idEquipe = e.idEquipe";
@@ -56,14 +56,14 @@ class UsuarioDAO {
                 " encontrado para o ID ".$idUsuario);
     }
 
-    public function findUsers($idEquipe) {
+    public function findUsers($idEquipe, $idPartida) {
         $conn = conectar_db();
 
         $sql = UsuarioDAO::SQL_EQUIPE_USUARIO. 
-                " WHERE e.idEquipe = ?";
+                " WHERE e.idEquipe = ? AND pe.idPartida = ?";
 
         $stmt = $conn->prepare($sql);
-        $stmt->execute([$idEquipe]);
+        $stmt->execute([$idEquipe, $idPartida]);
         $result = $stmt->fetchAll();
 
         $usuarios = $this->mapUsuarios($result);

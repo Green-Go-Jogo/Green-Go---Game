@@ -26,6 +26,7 @@ class PlantaDAO {
             $planta->setCodNumerico($reg['codNumerico']);
             $planta->setPlantaHistoria($reg['historia']);
             $planta->setQrCode($reg['codQR']);
+            $planta->setIdEspecie($reg['idEspecie']);
 
             $especie = new Especie($reg['idEspecie'], $reg['nomePop']);
             $planta->setEspecie($especie);

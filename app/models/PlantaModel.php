@@ -12,6 +12,7 @@ Class Planta {
     private $zona;
     private $PlantaHistoria;
     private $Usuario;
+    private $idEspecie;
 
 
     public function __toString() {
@@ -213,6 +214,26 @@ Class Planta {
     public function setUsuario($Usuario)
     {
         $this->Usuario = $Usuario;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of idEspecie
+     */ 
+    public function getIdEspecie()
+    {
+        return $this->idEspecie;
+    }
+
+    /**
+     * Set the value of idEspecie
+     *
+     * @return  self
+     */ 
+    public function setIdEspecie($idEspecie)
+    {
+        $this->idEspecie = $idEspecie;
 
         return $this;
     }

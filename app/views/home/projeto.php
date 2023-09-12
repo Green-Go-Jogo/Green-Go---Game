@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php include_once("../../controllers/LoginController.php"); 
 
+LoginController::manterUsuario();
+if (!isset($_SESSION['TIPO'])) {
+    $tipo = null;
+} else {
+    $tipo = $_SESSION['TIPO'];
+}?>
 <head>
 
     <?php include_once("../../bootstrap/header.php");?>
@@ -36,7 +43,7 @@
 
 <body>
 
-<?php include_once("../../bootstrap/nav.php") ?>
+<?php LoginController::navBar($tipo);?>
 
     <div class="container" >
         <div id="sobre">

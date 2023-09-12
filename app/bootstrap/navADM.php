@@ -156,7 +156,7 @@ color:#fff;
                     <a class="nav-link" style="color: #338a5f;" href="../home/indexADM.php">Dashboard</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" style="color: #338a5f;" href="../home/projetoADM.php">Projeto</a>
+                    <a class="nav-link" style="color: #338a5f;" href="../home/projeto.php">Projeto</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" style="color: #338a5f;" href="../zones/listZonas.php">Zonas</a>

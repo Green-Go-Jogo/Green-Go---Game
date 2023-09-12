@@ -136,22 +136,29 @@ color:#fff;
         <a href="../home/index.php" class="navbar-brand">
             <img  id="logo" src="../../public/logo-green.svg" alt="Logo" width="30" height="30">
         </a>
-
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarLinks"
+            aria-controls="navbarLinks" aria-expanded="false" aria-label="Toggle navigation">
+            <img id="menu" src="../../public/menu.svg" alt="">
+        </button>
+        
         <div class="collapse navbar-collapse" id="navbarLinks">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" style="color: #338a5f;" href="../home/indexJog.php">Home</a>
-                </li>
-            </ul>
-
-
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" style="color: #338a5f;" href="../home/projeto.php">Projeto</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" style="color: #338a5f;" href="../home/indexJog.php">Home</a>
+            </li>
+        </ul>
+        
             <div class="ml-auto">
-                    <a class="btn btn-nav" href="#"><i id="usuario" class="fa-solid fa-user-gear"></i></a>
+                    <a class="btn btn-nav" href="../users/perfil.php"><i id="usuario" class="fa-solid fa-user-gear"></i></a>
                     <button type="button" id="dark-mode" class="btn btn-darkmode"><i id="logoDarkMode" class="fa-solid fa-moon"></i></button>                    
                     <a class="btn btn-nav" href="../users/sairExec.php"><i id="doorIcon" class="door-icon fa-solid fa-door-closed"></i></a>
                   </div>              
             </div>
         </div>
     </div>
+    <div>
 </nav>
 

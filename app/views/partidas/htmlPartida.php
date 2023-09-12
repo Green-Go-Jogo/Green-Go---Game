@@ -186,19 +186,19 @@ Class PartidaHTML {
 
         foreach ($partidas as $partida) {
 
-            if(null !==($partida->getDataInicio())) {
-                $Status = "Em Andamento";
-                $Open = "CLOSE";
+            if(null !==($partida->getDataFim())) {
+                $Status = "Finalizada";
+                $Open = "END";
            }
-           else if(null !==($partida->getDataFim())){
-               $Status = "Finalizada";
+           else if(null !==($partida->getDataInicio())){
+               $Status = "Em andamento";
                $Open = "CLOSE";
            }
            else {
                $Status = "Aguardando";
-               $Open = "OPEN";
+               $Open = "YES";
            }
-           
+
         echo "<div class='col-md-4'>";
         echo "<br>";
         echo "<div class='card' style='width: 22rem;'>";
@@ -207,12 +207,15 @@ Class PartidaHTML {
         echo "<p class='card-text nome-texto'> Jogadores: "."0/".$partida->getLimiteJogadores()."</p>";
         echo "<p class='card-text nome-texto' id='status'> Status: ".$Status."</p>";
         
-            if ($Open == "OPEN") {
+            if ($Open == "YES") {
             echo "<button type='button' class='btn entrar-btn' data-bs-toggle='modal' data-bs-target='#exampleModal' data-partida-id='".$partida->getIdPartida()."'>Entrar</button>";
             }
-            else {
-
+            else if($Open == "END"){
+            echo "<a href='rankPartida.php?id=".$partida->getIdPartida()."'><button type='button' class='btn entrar-btn'>Resultado</button></a>";
             }
+            else if($Open == "CLOSE"){
+                echo "<button type='button' class='btn entrar-btn'>Fechada!</button>";
+                }
             echo "<br>";
             echo "</div>";
             echo "</div>";
@@ -233,7 +236,7 @@ Class PartidaHTML {
         echo "<input type='hidden' id='partida-id' name='partidaId'>";
         echo "<div class='mb-3'>";
         echo "<label for='password' id='lab-senha' class='col-form-label'> </label>";
-        echo "<input type='password' class='form-control' id='password' name='password'>";
+        echo "<input type='password' autocomplete='off' class='form-control' id='password' name='password'>";
         echo "</div>";
         echo "</div>";
         echo "<div class='modal-footer'>";
