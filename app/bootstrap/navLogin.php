@@ -118,7 +118,7 @@ color:#fff;
         </a>
 
         <li class="nav-item">
-                    <a class="nav-link" style="color: #338a5f;" href="../home/projetoADM.php">Projeto</a>
+                    <a class="nav-link" style="color: #338a5f;" href="../home/projeto.php">Projeto</a>
                 </li>
 
 
