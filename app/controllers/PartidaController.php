@@ -104,9 +104,7 @@ class PartidaController {
         $this->partidaDAO->delete($planta);
     }
 
-    public function apagarImagem($idPlanta) {
-        $this->partidaDAO->deleteImage($idPlanta);
-    }
+    
 }
 
 ?>

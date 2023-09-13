@@ -68,5 +68,46 @@ LoginController::verificarAcesso([2, 3]);
 
 </div>
 <?php include_once("../../bootstrap/footer.php");?>
+<script>
+    function prepararImpressao(nomePlanta, codNumerico, qrCodeImagem) {
+        // Define os valores no modal
+        document.getElementById('conteudoParaImpressao').innerHTML = `
+        
+            </style>
+            <p style="font-size: 30px; font-family: Poppins-regular;">Nome da Planta: ${nomePlanta}</p>
+            <p style="font-size: 30px; font-family: Poppins-regular;">Código Numérico: ${codNumerico}</p>
+            <img src="${qrCodeImagem}" alt="QR Code">
+        `;
+    }
+
+    function abrirTelaDeImpressao() {
+    const conteudoParaImpressao = document.getElementById('conteudoParaImpressao').innerHTML;
+
+    const janela = window.open('', '', 'width=800,height=800');
+    janela.document.write('<html><head>');
+    janela.document.write('<style> @font-face {font-family: "Poppins-regular"; src: url("../fontes/Poppins-Regular.ttf");}</style>');
+    
+    // Adiciona estilos para ocultar elementos indesejados na impressão
+    janela.document.write('<style>@page { size: auto;  margin: 0mm; } @media print {.no-print { display: none; }}</style>');
+    
+    janela.document.write('</head><body>');
+    janela.document.write(conteudoParaImpressao);
+    
+    // Adiciona uma classe CSS "no-print" nos elementos que você deseja ocultar na impressão
+    janela.document.write('<div class="no-print">Informações indesejadas</div>');
+    
+    janela.document.write('</body></html>');
+    janela.document.close();
+
+    setTimeout(() => {
+        janela.print();
+        janela.close();
+    }, 1000);
+}
+</script>
+
+
 </body>
+
 </html>
+

@@ -99,7 +99,6 @@ Class PlantaHTML {
         </svg>
     </a>";
         echo "<div class='row row-cols-4'>";
-
         foreach ($plantas as $planta):
             echo "<div class='col-md-4'>";
             echo "<br>";
@@ -112,11 +111,32 @@ Class PlantaHTML {
             echo "<p class='card-text nome-texto' style='color: #04574d;'>".$planta->getUsuario()->getNomeUsuario()."</p>";
             echo "<a href='editarPlanta.php?id=".$planta->getIdPlanta()."' class='btn btn-primary editar'>Editar</a>";
             echo "<a href='deletarPlanta.php?id=".$planta->getIdPlanta()."' onclick='return confirm(\"Confirma a exclusão da Planta?\");' class='btn btn-alert excluir'>Excluir</a>";
+            echo "<button type='button' class='btn btn-alert imprimir' data-toggle='modal' data-target='#imprimirModal' onclick='prepararImpressao(\"".$planta->getNomeSocial()."\", \"".$planta->getCodNumerico()."\", \"".$planta->getQrCode()."\")'>Imprimir</button>";
             echo "<br>";
             echo "</div>";
             echo "</div>";
             echo "</div>";
         endforeach;
+
+        
+            echo "<div id='imprimirModal' class='modal fade' role='dialog'>";
+            echo "<div class='modal-dialog'>";
+            echo "<div class='modal-content'>";
+            echo "<div class='modal-header'>";
+            echo "<h4 class='modal-title'>Imprimir Planta</h4>";
+            echo "<button type='button' class='close' data-dismiss='modal'>&times;</button>";
+            echo "</div>";
+            echo "<div class='modal-body'>";
+            echo "<div id='conteudoParaImpressao'>";
+            echo "</div>";
+            echo "</div>";
+            echo "<div class='modal-footer'>";
+            echo "<button type='button' class='btn btn-default' data-dismiss='modal'>Fechar</button>";
+            echo "<button type='button' class='btn btn-primary' onclick='abrirTelaDeImpressao()'>Imprimir</button>";
+            echo "</div>";
+            echo "</div>";
+            echo "</div>";
+            echo "</div>";
 
         echo "</div>";
         echo "</div>";

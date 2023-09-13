@@ -8,6 +8,7 @@ include_once(__DIR__."/../models/EspecieModel.php");
 include_once(__DIR__."/../models/ZonaModel.php");
 include_once(__DIR__."/../models/PlantaModel.php");
 include_once(__DIR__."/../models/UsuarioModel.php");
+require_once(__DIR__."/../api/phpqrcode/qrlib.php");
 
 class PlantaDAO {
 
@@ -133,6 +134,23 @@ class PlantaDAO {
         $stmt = $conn->prepare($sql);
         $stmt->execute([$planta->getNomeSocial(), $planta->getQrCode(), $planta->getCodNumerico(), 
                         $planta->getPontos(), $planta->getPlantaHistoria(), $planta->getImagemPlanta(), $planta->getZona()->getIdZona(), $planta->getEspecie()->getIdEspecie(), $planta->getUsuario()->getIdUsuario()]);
+        
+        $idPlanta = $conn->lastInsertId();
+        $this->saveQrCode($idPlanta, $planta->getEspecie()->getIdEspecie(), $planta->getCodNumerico());
+    
+        }
+    
+    public function saveQrCode($idPlanta, $idEspecie, $Cod_Numerico) {
+        $conn = conectar_db();
+
+        //Gerar o QR Code
+        $qrCodeTexto = "https://www.greengoifpr.com.br/app/views/plantas/visualizarPlanta.php?idp=" . urlencode($idPlanta) . "&ide=". urlencode($idEspecie) . "&qrcode=true";
+        $qrCodeArq = "../../public/qrcode/qrcode_". $Cod_Numerico . ".png"; 
+        QRcode::png($qrCodeTexto, $qrCodeArq, QR_ECLEVEL_L, 10); 
+
+        $sql = "UPDATE planta SET codQR = ? WHERE idPlanta = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([$qrCodeArq, $idPlanta]);
     }
 
     public function update(Planta $planta) {
