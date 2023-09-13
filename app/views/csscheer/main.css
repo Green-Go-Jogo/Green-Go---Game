@@ -266,6 +266,12 @@ a.excluir:hover {
         border-width: 3px;
 
     }
+
+    .modo-escuro div#partida {
+        background-color: #121212 !important;
+        border-color: #C05367 !important;
+
+    }
     
     .modo-escuro select#imagem{
         background-color: #121212 !important;
