@@ -85,7 +85,7 @@ body {
 
 #imagemPlanta {
     
-    width: 75%;
+    width: 50%;
     height: auto;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -93,6 +93,13 @@ body {
     border-radius: 5px;
     border-width: 10px;
     border-color: #f0b6bc;
+}
+
+@media (max-width: 767px){
+    #imagemPlanta {
+        width: 100%;
+        height : auto;
+        margin-top: auto;}
 }
 
 
