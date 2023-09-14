@@ -176,16 +176,16 @@ left: 1200px; /* Ajuste conforme necessário para posicionar à direita */
 </style>
 
 <?php
-
+include_once("../../controllers/PartidaController.php");
 Class PartidaHTML {
-   
+    
     public static function desenhaPartida($partidas) {
-
+        $partCont = new PartidaController();
         echo "<div class='container text-center'>";
         echo "<div class='row row-cols-4'>";
 
         foreach ($partidas as $partida) {
-
+      
             if(null !==($partida->getDataFim())) {
                 $Status = "Finalizada";
                 $Open = "END";
@@ -199,12 +199,14 @@ Class PartidaHTML {
                $Open = "YES";
            }
 
+        $jogadores = $partCont->contarJogadores($partida->getIdPartida());   
+        $maxJogadores = $partida->getLimiteJogadores() * count($partida->getEquipes());  
         echo "<div class='col-md-4'>";
         echo "<br>";
         echo "<div class='card' style='width: 22rem;'>";
         echo "<div class='card-body'>";
         echo "<h5 class='card-title' id='nomepartida'>".$partida->getNomePartida()."</h5>"."<br>";
-        echo "<p class='card-text nome-texto'> Jogadores: "."0/".$partida->getLimiteJogadores()."</p>";
+        echo "<p class='card-text nome-texto'> Jogadores: ".$jogadores."/".$maxJogadores."</p>";
         echo "<p class='card-text nome-texto' id='status'> Status: ".$Status."</p>";
         
             if ($Open == "YES") {
@@ -250,7 +252,7 @@ Class PartidaHTML {
     }
 
     public static function desenhaEquipe($usuarios, $partida, $idEquipe) {
-
+        $partCont = new PartidaController();
 
         echo "<div class='container text-center'>";
         echo "<table class='table'>";
@@ -262,13 +264,14 @@ Class PartidaHTML {
         echo "</thead>";
         echo "<tbody>";
 
-
         foreach ($usuarios as $usuario) { 
-    
+        $usuarioPartida = $partCont->buscarUsuarioPorIdPartida($usuario->getIdUsuario(), $partida->getIdPartida());
+        $pontos = $usuarioPartida->getPontuacaoUsuario() !== null ? $usuarioPartida->getPontuacaoUsuario() : 0;
+        
        
             echo "<tr>";
             echo "<td id='tabelanome'>".$usuario->getNomeUsuario()."</td>";
-            echo "<td id='tabelapontos'>"."</td>";
+            echo "<td id='tabelapontos'>".$pontos."</td>";
             // echo "<td>";
             echo "</tr>";
         }
@@ -370,20 +373,27 @@ Class PartidaHTML {
     }
 
     public static function desenhaJogadorEquipe($partida) {
-    
+        $partCont = new PartidaController();
         echo "<div class='container text-center equipe'>";
         echo "<div class='row row-cols-4'>";
 
         $idPartida = $partida->getIdPartida();
 
         foreach ($partida->getEquipes() as $equipe):
+
+        $jogadores = $partCont->contarJogadoresEquipe($partida->getIdPartida(), $equipe->getIdEquipe());   
+        $maxJogadores = $partida->getLimiteJogadores();
+        $urlDisabled = ($jogadores == $maxJogadores) ? "'#'" : "'processEquipe.php?ide=" . $equipe->getIdEquipe() . "&idp=" . $idPartida . "'"; 
+        $textoBotao = ($jogadores == $maxJogadores) ? "Essa equipe está cheia!" : "Quero essa!";
+
             echo "<div class='col-md-6'>";
             echo "<br>";
             echo "<div class='card' style='width: 22rem;'>";
             echo "<a><img src='".$equipe->getIconeEquipe()."' style='width: 55%; height: 50%;'class='card-img-top mais' alt='...'></a><br>";
             echo "<div class='card-body' style='background-color:" .$equipe->getCorEquipe()."'>";
             echo "<h5 class='card-title nome-soc' id='nomeEquipe'>". $equipe->getNomeEquipe() ."</h5>";
-            echo "<a href='processEquipe.php?ide=".$equipe->getIdEquipe()."&idp=".$idPartida."' class='btn btn-primary excluir' id='escolherEquipe' >Quero essa!</a>";
+            echo "<p class='card-text nome-texto'> Jogadores: ".$jogadores."/".$maxJogadores."</p>";
+            echo "<a href=".$urlDisabled." class='btn btn-primary excluir' id='escolherEquipe'>$textoBotao</a>";
             echo "<br>";
             echo "</div>";
             echo "</div>";

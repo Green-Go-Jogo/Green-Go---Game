@@ -58,6 +58,7 @@ class PartidaDAO {
             $partida->setDataFim($reg['dataFim']); 
             $partida->setDataInicio($reg['dataInicio']);
             $partida->setPontuacaoEquipe($reg['pontuacaoEquipe']);
+            $partida->setPontuacaoUsuario($reg['pontuacao']);
 
             array_push($partidas, $partida);
         endforeach;
@@ -138,6 +139,25 @@ class PartidaDAO {
     }
     }
 }
+    public function findTableUsuario($idUsuario, $idPartida) {
+        $conn = conectar_db();
+
+        $sql = PartidaDAO::SQL_USUARIO_PARTIDA . " WHERE pu.idUsuario = ? AND p.idPartida = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([
+        $idUsuario, $idPartida
+        ]);
+
+    $result = $stmt->fetchAll();
+
+    $usuarios = $this->mapUsuarioPartida($result);
+
+    if(count($usuarios) == 1)
+            return $usuarios[0];
+        elseif(count($usuarios) == 0)
+            return null;
+}
+
 
 
 
@@ -293,6 +313,30 @@ public function usuarioInEquipe($idUsuario) {
         $sql = "UPDATE partida_equipe pe SET pe.pontuacaoEquipe = (SELECT SUM(pu.pontuacao) FROM partida_usuario pu WHERE pu.idPartidaEquipe = pe.idPartidaEquipe)";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
+
+    }
+
+    public function countPlayers($idPartida) {
+        $conn = conectar_db();
+
+        $sql = "SELECT pu.* FROM partida_usuario pu JOIN partida_equipe pe ON pe.idPartidaEquipe = pu.idPartidaEquipe WHERE idPartida = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([$idPartida]);
+
+        $numLinhas = $stmt->rowCount();
+        return $numLinhas;
+
+    }
+
+    public function countPlayersTeam($idPartida, $idEquipe) {
+        $conn = conectar_db();
+
+        $sql = "SELECT pu.* FROM partida_usuario pu JOIN partida_equipe pe ON pe.idPartidaEquipe = pu.idPartidaEquipe WHERE idPartida = ? AND idEquipe = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([$idPartida, $idEquipe]);
+
+        $numLinhas = $stmt->rowCount();
+        return $numLinhas;
 
     }
 

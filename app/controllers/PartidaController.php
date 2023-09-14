@@ -21,7 +21,17 @@ class PartidaController {
     }
 
     public function listar() {
-        return $this->partidaDAO->list();
+        $partidas = $this->partidaDAO->list(); 
+    
+    foreach ($partidas as $partida) {
+        $idPartida = $partida->getIdPartida(); 
+        $zonas = $this->zonaDAO->listByPartida($idPartida);
+        $equipes = $this->equipeDAO->listByPartida($idPartida);
+        $partida->setEquipes($equipes);
+        $partida->setZonas($zonas);
+    }
+    
+    return $partidas;
     }
     
     public function buscarPorId($idPartida) {
@@ -42,6 +52,11 @@ class PartidaController {
 
     public function buscarPartidaPorIdUsuario($idUsuario){
         $partida = $this->partidaDAO->findPartidaByIdUsuario($idUsuario);
+        return $partida;
+    }
+
+    public function buscarUsuarioPorIdPartida($idUsuario, $idPartida){
+        $partida = $this->partidaDAO->findTableUsuario($idUsuario, $idPartida);
         return $partida;
     }
 
@@ -90,6 +105,14 @@ class PartidaController {
         } else {
             return false;
         }
+    }
+
+    public function contarJogadores($idPartida) {
+        return $this->partidaDAO->countPlayers($idPartida);
+    }
+
+    public function contarJogadoresEquipe($idPartida, $idEquipe) {
+        return $this->partidaDAO->countPlayersTeam($idPartida, $idEquipe);
     }
 
     public function salvarPontuacaoEquipe() {
