@@ -141,6 +141,30 @@ a.editar {
     display: inline-block;
 }
 
+button#imprimas {
+    color: var(--branco);
+    background-color: #338A5F;
+    border: none;
+    border-radius: 5px;
+    width: max-content !important;
+    height: max-content !important;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-family: Poppins-semibold;
+    font-size: 20px;
+    transition: 0.3s ease;
+    display: inline-block;
+}
+
+button#imprimas:hover {
+    color: #ebf0f1 !important;
+    background-color: #04574d;
+    transform: scale(1.05);
+}
+
+
 a.editar:hover {
     color: #ebf0f1 !important;
     background-color: #04574d;
@@ -174,6 +198,34 @@ a.excluir:hover {
 }
 
 .excluir:disabled {
+    color: var(--cinza);
+    border: 2px solid var(--cinza);
+}
+
+#editas {
+    color: var(--principal);
+    background-color: transparent;
+    border-radius: 5px;
+    border: 1px solid var(--principal);
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    font-family: Poppins-medium;
+    font-size: 16px;
+    transition: 0.3s ease;
+    margin-left: 15px;
+    display: inline-block;
+    text-decoration: none;
+}
+
+a#editas:hover {
+    color: var(--branco);
+    background-color: var(--principal);
+    border-radius: 5px;
+}
+
+#editas:disabled {
     color: var(--cinza);
     border: 2px solid var(--cinza);
 }

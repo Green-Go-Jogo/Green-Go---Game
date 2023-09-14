@@ -113,29 +113,13 @@ if (($fromQR || $fromCod) && $tipo) {
 </head> 
 <style>
 
-.img-responsive {
-    width: 130px;
-}
+
 
 
 body {
     overflow-x: hidden !important;
 }
 
-    html, body {
-        height: 100%;
-    }
-
-    body {
-        display: flex;
-        flex-direction: column;
-        margin: 0;
-        padding: 0;
-    }
-
-    main {
-        flex: 1;
-    }
 </style>
 
 <nav>
@@ -168,7 +152,7 @@ body {
         </p> </div> </div>
 
 
-<div class="container text-center" id="imagem1Planta">
+<div class="text-center" id="imagem1Planta">
         <img id="imagemPlanta" src="<?php echo $planta->getImagemPlanta(); ?>"/>
      <br> <br>
      </div>

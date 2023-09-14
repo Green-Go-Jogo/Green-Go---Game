@@ -67,6 +67,7 @@ body {
     border-color: #C05367;
     margin-top: 50px;
     font-family: Poppins;
+    width: 88%;
 }
 
 .card {
@@ -87,4 +88,10 @@ body {
     color:#078071;
     font-size: 20px;
     font-family: Poppins-regular;
+}
+
+@media (max-width: 767px) {
+    #partida {
+        width: 20rem;
+    }
 }

@@ -17,22 +17,6 @@ LoginController::verificarAcesso([2, 3]);
     <style>
     
 
-        a.editar:hover {
-            color: #ebf0f1 !important;
-            background-color: #04574d; }
-
-        a.editar{
-            color: #ebf0f1 !important;
-            background-color: #338a5f; }
-
-        a.excluir:hover {
-            color: var(--branco);
-            background-color: #f0b6bc ;
-            border-radius: 5px; }
-
-            body {
-        background-color: #ebf0f1;
-    }
     </style>
 
 

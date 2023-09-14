@@ -18,21 +18,24 @@ LoginController::verificarAcesso([2,3]);
 <style>
    html, body {
   height: 100%;
-  margin: 0;
+
 }
 #laembaixo {
   height: 100%;
 }
+
+
+
 </style>
 
 <body>
 <?php include_once("../../bootstrap/navProf.php") ?>
 
 <br>
-<div class="container text-center">
+<div id="content" class="container text-center">
 <a id="titulo"> PORTAL DO PROFESSOR</a> <br>
 
-<c id="welcome"> Seja bem-vindo <?php echo $_SESSION['NOME']; ?>! </c> </div> <br><br>
+<c id="welcome"> Seja bem-vindo <?php echo $_SESSION['NOME']; ?>! </c> <br><br>
 
 
 <div class="container text-center" id="laembaixo">
@@ -82,12 +85,11 @@ LoginController::verificarAcesso([2,3]);
   </div>
 </div> </div> 
 
-<div class="card container" id="partida" style="width: 88%;">
+<div class="card container" id="partida">
   <div class="card-body text-center">
     <a href="..\partidas\adicionarPartida.php" class="btn" style="color: #ffffff;"> Criar Partida </a>
-  </div> </div> </div> </div>
+  </div> </div> </div> </div></div></div></div></div>
 
   
-<div class="wrapper">
 <?php include_once("../../bootstrap/footer.php");?>
 </html>

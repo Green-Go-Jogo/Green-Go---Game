@@ -108,12 +108,25 @@ a.excluir:hover {
     border-radius: 5px;
 }
 
-.modo-escuro a.editar{
+.modo-escuro a#editas {
+    color: #f0b6bc;
+    border-color: #f0b6bc;
+    border-radius: 5px;
+}
+
+.modo-escuro a#editas:hover {
+    color: #f0b6bc;
+    background-color: #272626;
+    border-radius: 5px;
+}
+
+.modo-escuro a.editar, .modo-escuro button#imprimas{
     background-color: #04574d;
     color: #ffffff;
 }
 
-.modo-escuro a.editar:hover{
+
+.modo-escuro a.editar:hover, .modo-escuro button#imprimas:hover{
     background-color: #078071;
 }
 

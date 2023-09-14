@@ -87,12 +87,15 @@ body {
     
     width: 75%;
     height: auto;
-    margin-bottom: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     border-style: dashed;
     border-radius: 5px;
     border-width: 10px;
     border-color: #f0b6bc;
 }
+
+
 
 #historiaplanta {
     color: #04574d;

@@ -15,14 +15,16 @@
         transform: scale(1.05); }
 
 
-        a.editar:hover {
-            color: #ebf0f1 !important;
-            background-color: #04574d; }
 
-        a.editar{
-            color: #ebf0f1 !important;
-            background-color: #338a5f; }
+        a#editas {
+            color: #C05367;
+            border-color: #C05367;
+        }
 
+        a#editas:hover {
+            color: var(--branco);
+            background-color: #C05367;
+            border-radius: 5px; }
 
         a.excluir {
             color: #f0b6bc;
@@ -115,9 +117,9 @@ Class PlantaHTML {
             echo "<p class='card-text nome-texto'>Código: ".$planta->getCodNumerico()."<br>Pontuação: ".$planta->getPontos()."<br>"."</p>";
             echo "<p class='card-text nome-texto' style='color: #338a5f;'>".$planta->getZona()."</p>";
             echo "<p class='card-text nome-texto' style='color: #04574d;'>".$planta->getUsuario()->getNomeUsuario()."</p>";
-            echo "<a href='editarPlanta.php?id=".$planta->getIdPlanta()."' class='btn btn-primary editar'>Editar</a>";
-            echo "<a href='deletarPlanta.php?id=".$planta->getIdPlanta()."' onclick='return confirm(\"Confirma a exclusão da Planta?\");' class='btn btn-alert excluir'>Excluir</a>";
-            echo "<button type='button' class='btn btn-alert imprimir' data-toggle='modal' data-target='#imprimirModal' onclick='prepararImpressao(\"".$especie->getNomePopular()."\",\"".$especie->getNomeCientifico()."\", \"".$planta->getCodNumerico()."\", \"".$planta->getQrCode()."\")'>Imprimir</button>";
+            echo "<button type='button' id='imprimas' data-toggle='modal' data-target='#imprimirModal' onclick='prepararImpressao(\"".$especie->getNomePopular()."\",\"".$especie->getNomeCientifico()."\", \"".$planta->getCodNumerico()."\", \"".$planta->getQrCode()."\")'>Imprimir</button>";
+            echo "<a href='editarPlanta.php?id=".$planta->getIdPlanta()."'  id='editas'>Editar</a>";
+            echo "<a href='deletarPlanta.php?id=".$planta->getIdPlanta()."' onclick='return confirm(\"Confirma a exclusão da Planta?\");'  id='excluas' class='btn btn-alert excluir'>Excluir</a>";
             echo "<br>";
             echo "</div>";
             echo "</div>";
