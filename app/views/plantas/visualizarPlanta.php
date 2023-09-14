@@ -11,9 +11,10 @@
  LoginController::manterUsuario();
 
  $fromQR = isset($_GET['qrcode']) && $_GET['qrcode'] == true;
- $fromCod = isset($_GET['cod']) && $_GET['cod'] == true;
+ $fromCod = isset($_GET['code']) && $_GET['code'] == true;
  $ide = isset($_GET['ide']) ? $_GET['ide'] : null;
  $idp = isset($_GET['idp']) ? $_GET['idp'] : null;
+ $cod = isset($_GET['cod']) ? $_GET['cod'] : null;
  if (!isset($_SESSION['TIPO'])) {
     $tipo = null;
 } else {
@@ -35,6 +36,12 @@ if (($fromQR || $fromCod) && $tipo) {
  $especieCont = new EspecieController();
  $especie = $especieCont->buscarPorId($ide);
  }
+
+ if ($cod !== null) {
+    $plantaCont = new PlantaController();
+    $planta = $plantaCont->buscarPorCodigo($cod);
+}
+   
 
  if ($idp !== null) {
     $plantaCont = new PlantaController();

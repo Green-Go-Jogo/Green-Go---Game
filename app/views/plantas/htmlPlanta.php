@@ -90,8 +90,13 @@
 </style>
 
 <?php
+
+include_once("../../controllers/EspecieController.php");
+
+
 Class PlantaHTML {
     public static function desenhaPlanta($plantas) {
+        $especieCont = new EspecieController();
         echo "<div class='container text-center'>";
         echo "<a class='btn incluir' href='adicionarPlanta.php' id='botaomais'>
         <svg xmlns='http://www.w3.org/2000/svg' width='90' height='60' fill='#20A494' viewBox='0 0 16 16'>
@@ -100,6 +105,7 @@ Class PlantaHTML {
     </a>";
         echo "<div class='row row-cols-4'>";
         foreach ($plantas as $planta):
+            $especie = $especieCont->buscarPorId($planta->getEspecie()->getIdEspecie());
             echo "<div class='col-md-4'>";
             echo "<br>";
             echo "<div class='card card-darkmode' style=' width: 22rem;'>";
@@ -111,7 +117,7 @@ Class PlantaHTML {
             echo "<p class='card-text nome-texto' style='color: #04574d;'>".$planta->getUsuario()->getNomeUsuario()."</p>";
             echo "<a href='editarPlanta.php?id=".$planta->getIdPlanta()."' class='btn btn-primary editar'>Editar</a>";
             echo "<a href='deletarPlanta.php?id=".$planta->getIdPlanta()."' onclick='return confirm(\"Confirma a exclusão da Planta?\");' class='btn btn-alert excluir'>Excluir</a>";
-            echo "<button type='button' class='btn btn-alert imprimir' data-toggle='modal' data-target='#imprimirModal' onclick='prepararImpressao(\"".$planta->getNomeSocial()."\", \"".$planta->getCodNumerico()."\", \"".$planta->getQrCode()."\")'>Imprimir</button>";
+            echo "<button type='button' class='btn btn-alert imprimir' data-toggle='modal' data-target='#imprimirModal' onclick='prepararImpressao(\"".$especie->getNomePopular()."\",\"".$especie->getNomeCientifico()."\", \"".$planta->getCodNumerico()."\", \"".$planta->getQrCode()."\")'>Imprimir</button>";
             echo "<br>";
             echo "</div>";
             echo "</div>";
@@ -123,7 +129,7 @@ Class PlantaHTML {
             echo "<div class='modal-dialog'>";
             echo "<div class='modal-content'>";
             echo "<div class='modal-header'>";
-            echo "<h4 class='modal-title'>Imprimir Planta</h4>";
+            echo "<h4 class='modal-title text-center'>Imprimir Planta</h4>";
             echo "<button type='button' class='close' data-dismiss='modal'>&times;</button>";
             echo "</div>";
             echo "<div class='modal-body'>";

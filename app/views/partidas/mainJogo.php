@@ -230,7 +230,7 @@ function validateCode(cod) {
   dataType: "json", // Espera uma resposta JSON
   success: function(userResponse) {
     if (userResponse.isValid === true) {
-      window.location.href = "../plantas/visualizarPlanta.php?idp=" + userResponse.idPlanta + "&ide=" + userResponse.idEspecie + "&cod=true";
+      window.location.href = "../plantas/visualizarPlanta.php?idp=" + userResponse.idPlanta + "&ide=" + userResponse.idEspecie + "&code=true";
     } else {
       resultDiv.text("Esse código não pertence a uma planta!");           
     }
