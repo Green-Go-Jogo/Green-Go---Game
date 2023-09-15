@@ -1,32 +1,51 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Camera Access</title>
+    <title>Leitor de QR Code</title>
 </head>
 <body>
-    <button id="startCamera">Abrir Câmera</button>
     <video id="cameraFeed" autoplay style="display: none;"></video>
+    <canvas id="qrCanvas" style="display: none;"></canvas>
 
+    <script src="https://cdn.jsdelivr.net/npm/jsqr@2.0.2/dist/jsQR.js"></script>
     <script>
-        // Event listener para o botão
-        document.getElementById('startCamera').addEventListener('click', function() {
-            // Verifique se o navegador suporta a API WebRTC
-            if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-                // Acesso à câmera traseira
-                navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })
-                .then(function(stream) {
-                    // Exiba o feed da câmera em um elemento de vídeo
-                    var video = document.getElementById('cameraFeed');
-                    video.style.display = 'block';
-                    video.srcObject = stream;
-                })
-                .catch(function(error) {
-                    console.error('Erro ao acessar a câmera:', error);
-                });
-            } else {
-                alert('Seu navegador não suporta a API WebRTC.');
+        const video = document.getElementById('cameraFeed');
+        const canvas = document.getElementById('qrCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Inicialize a câmera
+        navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })
+            .then(function(stream) {
+                video.style.display = 'block';
+                video.srcObject = stream;
+            })
+            .catch(function(error) {
+                console.error('Erro ao acessar a câmera:', error);
+            });
+
+        // Função para verificar o QR code
+        function checkQRCode() {
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            const code = jsQR(imageData.data, imageData.width, imageData.height, {
+                inversionAttempts: 'dontInvert',
+            });
+
+            if (code) {
+                alert('QR Code detectado: ' + code.data);
             }
-        });
+
+            requestAnimationFrame(checkQRCode);
+        }
+
+        // Iniciar a verificação do QR code
+        video.onloadedmetadata = function() {
+            canvas.style.display = 'block';
+            checkQRCode();
+        };
     </script>
 </body>
 </html>
