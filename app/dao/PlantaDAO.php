@@ -160,6 +160,10 @@ class PlantaDAO {
         $stmt = $conn->prepare($sql);
         $stmt->execute([$planta->getNomeSocial(), $planta->getQrCode(), $planta->getCodNumerico(), 
         $planta->getPontos(), $planta->getPlantaHistoria(), $planta->getImagemPlanta(), $planta->getZona()->getIdZona(), $planta->getEspecie()->getIdEspecie(), $planta->getUsuario()->getIdUsuario(), $planta->getIdPlanta()]);
+       
+        $idPlanta = $planta->getIdPlanta();
+        $this->saveQrCode($idPlanta, $planta->getEspecie()->getIdEspecie(), $planta->getCodNumerico());
+    
     }
 
     

@@ -7,7 +7,12 @@ include_once(__DIR__."/../../models/UsuarioModel.php");
 include_once(__DIR__."/../../controllers/PlantaController.php");
 
 //Capturar os valores vindos do formulário
-$nomeSocial = $_POST["Nome_Social"];
+if (isset($_POST["Nome_Social"])) {
+  $nomeSocial = $_POST["Nome_Social"];
+} 
+else {
+  $nomeSocial = null;
+};
 $Cod_Numerico = $_POST['Cod_Numerico'];
 $pontuacao = $_POST['Pontuacao'];
 $historia = $_POST['Historia'];
@@ -25,11 +30,6 @@ move_uploaded_file($imagem["tmp_name"], $caminho_imagem);
 //Validar dados
 $errors = array();
 
-if (empty($nomeSocial)) {
-  $errors['Nome_Social'] = "O campo Nome Social é obrigatório.";
-} elseif (!preg_match('/^[a-zA-ZÀ-ÖØ-öø-ÿ0-9\s\-]+$/', $nomeSocial)) {
-  $errors['Nome_Social'] = "O campo Nome Social contém caracteres especiais.";
-}
 
 if (empty($id_zona)) {
   $errors['zona_planta'] = "O campo Zona é obrigatório";

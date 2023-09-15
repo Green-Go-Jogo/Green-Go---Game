@@ -147,7 +147,7 @@ color:#fff;
               <a class="nav-link" style="color: #338a5f;" href="../home/projeto.php">Projeto</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" style="color: #338a5f;" href="../home/indexJog.php">Home</a>
+              <a class="nav-link" style="color: #338a5f;" href="../home/indexJOG.php">Home</a>
             </li>
         </ul>
         

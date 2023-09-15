@@ -22,7 +22,7 @@ $errors = array();
 
 if (empty($nomePopular)) {
   $errors['Nome_Popular'] = "O campo Nome Popular é obrigatório.";
-} elseif (!preg_match('/^[a-zA-ZÀ-ÖØ-öø-ÿ0-9\s\-]+$/', $nomePopular)) {
+} elseif (!preg_match('/^[a-zA-ZÀ-ÖØ-öø-ÿ0-9-\s\'"]+/', $nomePopular)) {
   $errors['Nome_Popular'] = "O campo Nome Popular contém caracteres especiais.";
 }
 

@@ -59,10 +59,6 @@ $nome_imagem = md5(uniqid($imagem['name'])).".".$extensao;
 $caminho_imagem = "../../public/plantas/" . $nome_imagem;
 move_uploaded_file($imagem["tmp_name"], $caminho_imagem);
 
-//Gerar o QR Code
-$qrCodeTexto = "https://www.greengoifpr.com.br/app/views/plantas/visualizarPlanta.php?idp=" . urlencode($id_planta) . "&ide=". urlencode($id_especie) . "qrcode=true";
-$qrCodeArq = "../../public/qrcode/qrcode_". $Cod_Numerico . ".png"; 
-QRcode::png($qrCodeTexto, $qrCodeArq, QR_ECLEVEL_L, 10); 
 
 $plantaCont = new PlantaController();
 $plantaCont->apagarImagem($id_planta);
@@ -74,7 +70,6 @@ $planta->setCodNumerico($Cod_Numerico);
 $planta->setPontos($pontuacao);
 $planta->setPlantaHistoria($historia);
 $planta->setImagemPlanta($caminho_imagem);
-$planta->setQrCode($qrCodeArq);
 
 $zona = new Zona($id_zona);
 $planta->setZona($zona);

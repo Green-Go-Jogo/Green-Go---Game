@@ -53,16 +53,15 @@ LoginController::verificarAcesso([2, 3]);
 </div>
 <?php include_once("../../bootstrap/footer.php");?>
 <script>
-    function prepararImpressao(nomePopular, nomeCientifico, codNumerico, qrCodeImagem) {
-    nomeSocial = null;
+    function prepararImpressao(nomeSocial, nomePopular, nomeCientifico, codNumerico, qrCodeImagem) {
     if (nomeSocial) {
         // Define os valores no modal
         document.getElementById('conteudoParaImpressao').innerHTML = `
-            <div class="container">
+        <div class="container">
                 <div class="left">
-                    <p style="font-size: 30px; margin: 0;">Nome Popular: <br><b>${nomePopular}</b></p>
-                    <p style="font-size: 30px;">Nome Científico: <br><b>${nomeCientifico}</b></p>
-                    <p style="font-size: 30px;">Código Numérico: <br><b>${codNumerico}</b></p>
+                    <p style="font-size: 20px; margin-top: 65px;">Nome Social: </p><p class="conteudo" style="font-size: 30px; margin-top: -20px"><b>${nomeSocial}<br><span style="font-size: 15px">(${nomePopular})<span></b></p>
+                    <p style="font-size: 20px;">Nome Científico: </p><p class="conteudo" style="font-size: 30px; margin-top: -20px"><i><b>${nomeCientifico}</b></i></p>
+                    <p style="font-size: 20px;">Código Numérico: </p><p class="conteudo" style="font-size: 45px; margin-top: -20px"><b>${codNumerico}</b></p>
                 </div>
                 <div class="right">
                     <img src="${qrCodeImagem}" alt="QR Code">
@@ -74,9 +73,9 @@ LoginController::verificarAcesso([2, 3]);
         document.getElementById('conteudoParaImpressao').innerHTML = `
             <div class="container">
                 <div class="left">
-                    <p style="font-size: 30px;">Nome Popular: <br><b>${nomePopular}</b></p>
-                    <p style="font-size: 30px;">Nome Científico: <br><b>${nomeCientifico}</b></p>
-                    <p style="font-size: 30px;">Código Numérico: <br><b>${codNumerico}</b></p>
+                    <p style="font-size: 20px; margin-top: 75px">Nome Popular: </p><p class="conteudo" style="font-size: 30px;  margin-top: -20px"><b>${nomePopular}</b></p>
+                    <p style="font-size: 20px;">Nome Científico: </p><p class="conteudo" style="font-size: 30px; margin-top: -20px"><i><b>${nomeCientifico}</b></i></p>
+                    <p style="font-size: 20px;">Código Numérico: </p><p class="conteudo" style="font-size: 45px; margin-top: -20px"><b>${codNumerico}</b></p>
                 </div>
                 <div class="right">
                     <img src="${qrCodeImagem}" alt="QR Code">

@@ -21,12 +21,18 @@
     $tipo = $_SESSION['TIPO'];
 }
 
+if ($cod !== null) {
+    $plantaCont = new PlantaController();
+    $planta = $plantaCont->buscarPorCodigo($cod);
+}
+
 
 if (($fromQR || $fromCod) && $tipo) {
     if ($_SESSION['PARTIDA']) {
     $partidaCont = new PartidaController();
+    $idPlanta = ($idp != null) ? $idp : $planta->getIdPlanta();
     $partida = $partidaCont->buscarPartidaAndamentoPorIdUsuario($_SESSION['ID']);
-    $msgFind = $partidaCont->checarQRCode($_SESSION['PARTIDA'], $idp, $_SESSION['PLANTAS_LIDAS'], $_SESSION['ID']);
+    $msgFind = $partidaCont->checarQRCode($_SESSION['PARTIDA'], $idPlanta, $_SESSION['PLANTAS_LIDAS'], $_SESSION['ID']);
     $msgReturn = "<a href='../partidas/mainJogo.php?idp=".$partida->getIdPartida()."&ide=".$partida->getIdEquipe()."' id='voltarjogo'> Encontrou outra planta? Volte para o jogo! </a>";
 }
     else {};
@@ -37,11 +43,6 @@ if (($fromQR || $fromCod) && $tipo) {
  $especieCont = new EspecieController();
  $especie = $especieCont->buscarPorId($ide);
  }
-
- if ($cod !== null) {
-    $plantaCont = new PlantaController();
-    $planta = $plantaCont->buscarPorCodigo($cod);
-}
    
  if ($idp !== null) {
     $plantaCont = new PlantaController();
