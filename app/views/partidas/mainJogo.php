@@ -127,6 +127,8 @@ $tempo = $partida->getTempoPartida();
 
 <br>
 
+<video id="video" style="display:none;"></video>
+
     <img src="../../public/divjogo.jpg" id="divjogo"> </img> 
     <div class="text-center" id="timercor"> 
     <img src="../../public/botaotimer.png" id="botaotimer"> </img>
@@ -169,7 +171,6 @@ $tempo = $partida->getTempoPartida();
         <img src='../../public/botaoequipe.png' id='equipe'> </img> </a> " ?>
 
         </div>
-        <video id="video" style="display:none;"></video>
 <br>
 <br>
 <br>
