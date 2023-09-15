@@ -4,8 +4,7 @@
     <title>Leitor de QR Code</title>
 </head>
 <body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.26/webcam.js"></script>
-<script src="html5-qrcode.min.js"></script>
+<script src="../../api/html5-qrcode-master/minified/html5-qrcode.min.js"></script>
 
 <div style="width: 500px" id="reader"></div>
 <div id="my_result"></div>
