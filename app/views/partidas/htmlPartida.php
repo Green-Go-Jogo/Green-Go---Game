@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="../csscheer/verpartida.css">
+<link rel="stylesheet" href="../csscheer/ranking.css">
 <link rel="stylesheet" href="../css/listPlanta.css">
 
 <style>
@@ -415,23 +416,12 @@ Class PartidaHTML {
 
     public static function desenhaRanking($partida) {
     
-        echo "<div class='container text-center'>";
+        echo "<div class='text-center'>";
+        echo "<h1 class='titulorank text-center'>Placar de Líderes</h1>";
         echo "<div class='equipeP text-right'>"; // Adicione a classe equipeP aqui
-        echo "<table class='table'>";
-        echo "<thead>";
-        echo "<tr>";
-        echo "<th scope='col'></th>";
-        echo "<th scope='col' class='text-center'>EQUIPES</th>";
-        echo "<th scope='col'></th>";
-        echo "</tr>";
-        echo "<tr>";
-        echo "<th scope='col'>Nome</th>";
-        echo "<th scope='col'>Cor</th>";
-        echo "<th scope='col'>Icon</th>";
-        echo "<th scope='col'>Pontuação Final</th>";
-        echo "</tr>";
-        echo "</thead>";
-        echo "<tbody>"; 
+        echo "<div class='text-center'> </div>";
+        echo "</div>";
+ 
         
         $equipes = $partida->getEquipes();
 
@@ -441,12 +431,13 @@ Class PartidaHTML {
     });
 
         foreach ($equipes as $equipe) { 
-            echo "<tr>";
-            echo "<td>".$equipe->getNomeEquipe()."</td>";
-            echo "<td style='background-color: ".$equipe->getCorEquipe()."'></td>";
-            echo "<td style='color: #338a5f;'> <img style='width: 60px;' src='".$equipe->getIconeEquipe()."'/></td>";
-            echo "<td>".$equipe->getPontuacaoEquipe()."</td>";
-            echo "</tr>";
+            echo "<div style='background-color: ".$equipe->getCorEquipe()."'>";
+            echo "<div class='text-center'> º Lugar </div>";
+            echo "<div style='color: #338a5f;'> <img style='width: 60px;' src='".$equipe->getIconeEquipe()."'/></div>";
+            echo "<div>".$equipe->getNomeEquipe()."</div>";
+            echo "<div>".$equipe->getPontuacaoEquipe()."</div>";
+            echo "<div class='text-center'> Pontos </div>";
+            echo "</div>";
         }
     
         echo "</tbody>";
