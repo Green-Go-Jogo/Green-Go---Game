@@ -127,7 +127,6 @@ p {
 a.editar {
     color: #04574d;
     background-color: var(--principal);
-    border: none;
     border-radius: 5px;
     width: max-content !important;
     height: max-content !important;
@@ -139,12 +138,13 @@ a.editar {
     font-size: 20px;
     transition: 0.3s ease;
     display: inline-block;
+    border-width: 3px ;
+        border-color: #ffffff ;
 }
 
 button#imprimas {
     color: var(--branco);
     background-color: #338A5F;
-    border: none;
     border-radius: 5px;
     width: max-content !important;
     height: max-content !important;
@@ -156,6 +156,8 @@ button#imprimas {
     font-size: 20px;
     transition: 0.3s ease;
     display: inline-block;
+    border-width: 3px ;
+    border-color: #ffffff ;
 }
 
 button#imprimas:hover {
@@ -169,6 +171,7 @@ a.editar:hover {
     color: #ebf0f1 !important;
     background-color: #04574d;
     transform: scale(1.05);
+    
 }
 
 a.editar:disabled {
@@ -189,6 +192,7 @@ a.editar:disabled {
     transition: 0.3s ease;
     margin-left: 15px;
     display: inline-block;
+
 }
 
 a.excluir:hover {
@@ -214,7 +218,6 @@ a.excluir:hover {
     font-family: Poppins-medium;
     font-size: 16px;
     transition: 0.3s ease;
-    margin-left: 15px;
     display: inline-block;
     text-decoration: none;
 }

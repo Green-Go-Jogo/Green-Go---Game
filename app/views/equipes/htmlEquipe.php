@@ -27,18 +27,23 @@
     #editarEquipe {
         background-color: #FFFFFF;
         color: #338a5f ;
+        border-width: 5px ;
+        border-color: #ffffff ;
         
     }
 
     #excluirEquipe {
         color: #338a5f ;
         background-color: #FFFFFF ;
+        border-width: 2px ;
+        border-color: #ffffff ;
         
     }
 
     #editarEquipe:hover {
         color: #04574d ;
         background-color: #338a5f ;
+        
     }
 
     #excluirEquipe:hover {

@@ -2,7 +2,7 @@
 <html lang="pt-br">
 
 <head>
-    <title>Em Construção!</title>
+    <title>Acesso Negado!</title>
     <?php include_once("../../bootstrap/header.php");?>
     <link rel="stylesheet" href="csscheer/indexjog.css">
     <link rel="stylesheet" href="css/index.css">
@@ -48,16 +48,18 @@
             <div id="about-area">
                 <div class="row">
                     <div class="col text-center">
-                        <h1 id="ops">OPS!</h1>
+                        <h1 id="ops">ACESSO NEGADO! </h1>
 
                         <br>
                         <div class="container text-center">
                         <img src="../../public/greengoconstrucao.gif" alt="construcao" id="gif">
 
 
-                        <h2 id="textoerro" style="line-height:35px">A trilha pela natureza digital ainda está em construção. <br>
-                            Enquanto plantamos pixels e regamos links, que tal fazer uma caminhada pelos jardins virtuais vizinhos? <br>
-                             Quem sabe você encontra algumas curiosidades botânicas ou um riacho de conhecimento fluindo por lá? </h2>
+                        <h2 id="textoerro" style="line-height:35px">Parece que você tropeçou em um território protegido em nossa emocionante selva digital.<br> 
+                            Nossos guardiões virtuais estão trabalhando incansavelmente para manter este local especial seguro e intacto.<br> 
+                            Enquanto espera, que tal explorar outras trilhas virtuais em nossa floresta? <br> 
+                            Quem sabe você encontrará novos caminhos para o conhecimento!
+                        </h2>
                          
 <br><br><br>
 </div></div></div></div></div></div>

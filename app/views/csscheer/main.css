@@ -466,4 +466,8 @@ a.excluir:hover {
     .modo-escuro td#tabelapontos, .modo-escuro td#tabelanome {
         color: #7EC4BB;
     }
+
+    .modo-escuro p#nomezinho {
+        color: #078071;
+    }
     
