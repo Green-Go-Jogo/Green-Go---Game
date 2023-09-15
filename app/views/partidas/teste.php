@@ -4,48 +4,33 @@
     <title>Leitor de QR Code</title>
 </head>
 <body>
-    <video id="cameraFeed" autoplay style="display: none;"></video>
-    <canvas id="qrCanvas" style="display: none;"></canvas>
+    <video id="scanner" autoplay></video>
+    <button id="startCamera">Abrir Câmera</button>
 
-    <script src="https://cdn.jsdelivr.net/npm/jsqr@2.0.2/dist/jsQR.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/instascan/2.0.0/instascan.min.js"></script>
     <script>
-        const video = document.getElementById('cameraFeed');
-        const canvas = document.getElementById('qrCanvas');
-        const ctx = canvas.getContext('2d');
+        const scanner = new Instascan.Scanner({ video: document.getElementById('scanner') });
 
-        // Inicialize a câmera
-        navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })
-            .then(function(stream) {
-                video.style.display = 'block';
-                video.srcObject = stream;
-            })
-            .catch(function(error) {
-                console.error('Erro ao acessar a câmera:', error);
-            });
+        // Event listener para o botão "Abrir Câmera"
+        document.getElementById('startCamera').addEventListener('click', function() {
+            Instascan.Camera.getCameras()
+                .then(function(cameras) {
+                    if (cameras.length > 0) {
+                        scanner.start(cameras[0]); // Use a primeira câmera encontrada
+                    } else {
+                        alert('Nenhuma câmera encontrada.');
+                    }
+                })
+                .catch(function(error) {
+                    console.error('Erro ao acessar a câmera:', error);
+                });
+        });
 
-        // Função para verificar o QR code
-        function checkQRCode() {
-            canvas.width = video.videoWidth;
-            canvas.height = video.videoHeight;
-            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-
-            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-            const code = jsQR(imageData.data, imageData.width, imageData.height, {
-                inversionAttempts: 'dontInvert',
-            });
-
-            if (code) {
-                alert('QR Code detectado: ' + code.data);
-            }
-
-            requestAnimationFrame(checkQRCode);
-        }
-
-        // Iniciar a verificação do QR code
-        video.onloadedmetadata = function() {
-            canvas.style.display = 'block';
-            checkQRCode();
-        };
+        // Event listener para a leitura de QR codes
+        scanner.addListener('scan', function(content) {
+            alert('QR Code detectado: ' + content);
+            window.location.href = content; // Redirecionar para o site do QR code
+        });
     </script>
 </body>
 </html>
