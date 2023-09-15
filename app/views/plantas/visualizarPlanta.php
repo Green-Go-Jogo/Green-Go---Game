@@ -25,8 +25,9 @@
 if (($fromQR || $fromCod) && $tipo) {
     if ($_SESSION['PARTIDA']) {
     $partidaCont = new PartidaController();
-    $partida = $partidaCont->checarQRCode($_SESSION['PARTIDA'], $idp, $_SESSION['PLANTAS_LIDAS'], $_SESSION['ID']);
-    var_dump($_SESSION['PLANTAS_LIDAS']); echo "<br>" . $_SESSION['PONTOS'];
+    $partida = $partidaCont->buscarPartidaAndamentoPorIdUsuario($_SESSION['ID']);
+    $msgFind = $partidaCont->checarQRCode($_SESSION['PARTIDA'], $idp, $_SESSION['PLANTAS_LIDAS'], $_SESSION['ID']);
+    $msgReturn = "<a href='../partidas/mainJogo.php?idp=".$partida->getIdPartida()."&ide=".$partida->getIdEquipe()."' id='voltarjogo'> Encontrou outra planta? Volte para o jogo! </a>";
 }
     else {};
 
@@ -42,13 +43,11 @@ if (($fromQR || $fromCod) && $tipo) {
     $planta = $plantaCont->buscarPorCodigo($cod);
 }
    
-
  if ($idp !== null) {
     $plantaCont = new PlantaController();
     $planta = $plantaCont->buscarPorId($idp);
 }
   
-
  $frutifera = $especie->getFrutifera();
  if ($frutifera == 1) { 
      $frut = "<br>"."Frutífera";
@@ -124,8 +123,10 @@ body {
 
 <nav>
 
-<?php LoginController::navBar($tipo);?>
+<?php LoginController::navBar($tipo);
 
+echo "<br>";
+echo "<p class='text-center' id='msg'><b>".$msgFind."<b></p>";?>
 </nav>
 
     <body>
@@ -197,7 +198,7 @@ body {
 
 <br><br><br>
 <div class="text-center">
-    <a id="voltarjogo"> Encontrou outra planta? Volte para o jogo! </a>
+    <?php echo $msgReturn; ?>
 </div>
 
 

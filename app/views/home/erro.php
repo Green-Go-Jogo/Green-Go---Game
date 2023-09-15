@@ -47,7 +47,7 @@
         <div class="row justify-content-md-left">
             <div id="about-area">
                 <div class="row">
-                    <div class="col">
+                    <div class="col text-center">
                         <h1 id="ops">OPS!</h1>
 
                         <br>
@@ -55,7 +55,7 @@
                         <img src="../../public/greengoconstrucao.gif" alt="construcao" id="gif">
 
 
-                        <h2 id="textoerro">A trilha pela natureza digital ainda está em construção. <br>
+                        <h2 id="textoerro" style="line-height:35px">A trilha pela natureza digital ainda está em construção. <br>
                             Enquanto plantamos pixels e regamos links, que tal fazer uma caminhada pelos jardins virtuais vizinhos? <br>
                              Quem sabe você encontra algumas curiosidades botânicas ou um riacho de conhecimento fluindo por lá? </h2>
                          

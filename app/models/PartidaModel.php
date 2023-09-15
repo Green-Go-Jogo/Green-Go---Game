@@ -10,6 +10,7 @@ Class Partida {
     private $IdPartidaUsuario;
     private $IdPartidaEquipe;
     private $IdUsuario;
+    private $IdEquipe;
     private $Zonas;
     private $Equipes;
     private $Senha;
@@ -362,4 +363,24 @@ Class Partida {
         }
     }
 
+
+    /**
+     * Get the value of IdEquipe
+     */ 
+    public function getIdEquipe()
+    {
+        return $this->IdEquipe;
+    }
+
+    /**
+     * Set the value of IdEquipe
+     *
+     * @return  self
+     */ 
+    public function setIdEquipe($IdEquipe)
+    {
+        $this->IdEquipe = $IdEquipe;
+
+        return $this;
+    }
 }

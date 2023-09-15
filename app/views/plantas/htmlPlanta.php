@@ -87,7 +87,14 @@
     }
 }
 
+#nomezinho {
+    color: #04574d;
+}
 
+#codplanta {
+    color : #7EC4BB;
+    text-decoration : underline dotted;
+}
 
 </style>
 
@@ -114,10 +121,12 @@ Class PlantaHTML {
             echo "<a href='visualizarPlanta.php?idp=".$planta->getIdPlanta()."&ide=".$planta->getEspecie()->getIdEspecie()."'><img src='".$planta->getImagemPlanta()."' style='width: 90%; height: 90%; margin-right: 10px; border-radius: 5px;'class='card-img-top mais' alt='...'></a>";
             echo "<div class='card-body'>";
             echo "<h5 id='nomePlanta' class='card-title nome-soc'>". $planta->getNomeSocial() ."</h5>"."<br>"; 
-            echo "<p class='card-text nome-texto'>Código: ".$planta->getCodNumerico()."<br>Pontuação: ".$planta->getPontos()."<br>"."</p>";
+            echo "<p class='card-text nome-texto'><a id='codplanta' >Código: ".$planta->getCodNumerico()."<br><br></a>Pontuação: ".$planta->getPontos()."<br>"."</p>";
             echo "<p class='card-text nome-texto' style='color: #338a5f;'>".$planta->getZona()."</p>";
-            echo "<p class='card-text nome-texto' style='color: #04574d;'>".$planta->getUsuario()->getNomeUsuario()."</p>";
+            echo "<p class='card-text nome-texto' id='nomezinho' >".$planta->getUsuario()->getNomeUsuario()."</p>";
             echo "<button type='button' id='imprimas' data-toggle='modal' data-target='#imprimirModal' onclick='prepararImpressao(\"".$especie->getNomePopular()."\",\"".$especie->getNomeCientifico()."\", \"".$planta->getCodNumerico()."\", \"".$planta->getQrCode()."\")'>Imprimir</button>";
+            echo "<br>";
+            echo "<br>";
             echo "<a href='editarPlanta.php?id=".$planta->getIdPlanta()."'  id='editas'>Editar</a>";
             echo "<a href='deletarPlanta.php?id=".$planta->getIdPlanta()."' onclick='return confirm(\"Confirma a exclusão da Planta?\");'  id='excluas' class='btn btn-alert excluir'>Excluir</a>";
             echo "<br>";

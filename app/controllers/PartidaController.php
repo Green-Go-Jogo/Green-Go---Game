@@ -22,7 +22,6 @@ class PartidaController {
 
     public function listar() {
         $partidas = $this->partidaDAO->list(); 
-    
     foreach ($partidas as $partida) {
         $idPartida = $partida->getIdPartida(); 
         $zonas = $this->zonaDAO->listByPartida($idPartida);
@@ -50,8 +49,13 @@ class PartidaController {
     }
 
 
-    public function buscarPartidaPorIdUsuario($idUsuario){
-        $partida = $this->partidaDAO->findPartidaByIdUsuario($idUsuario);
+    public function buscarPartidaFinalizadaPorIdUsuario($idUsuario){
+        $partida = $this->partidaDAO->findPartidaFinalizadaByIdUsuario($idUsuario);
+        return $partida;
+    }
+
+    public function buscarPartidaAndamentoPorIdUsuario($idUsuario){
+        $partida = $this->partidaDAO->findPartidaAndamentoByIdUsuario($idUsuario);
         return $partida;
     }
 
@@ -93,14 +97,17 @@ class PartidaController {
                 $_SESSION['PLANTAS_LIDAS'] = $arrayPlantas;
 
                 $this->partidaDAO->addScore($_SESSION['PLANTAS_LIDAS'], $_SESSION['PONTOS'], $idUsuario);
-                echo "Parabéns, você encontrou uma nova planta! <br>";
+                $msgFind = "Parabéns, você encontrou uma nova planta! ";
+                return $msgFind;
                 
             } else {
-                echo "Você já leu esse QR Code para esta planta. <br>";
+                $msgFind = "Você já leu esse QR Code nessa partida. <br> Ou seja sem pontos pra você :(";
+                return $msgFind;
             }
         }
         else {
-            echo "Essa planta não pertence às zonas que você atualmente está procurando! <br>";
+            $msgFind = "Essa planta não pertence à uma das zonas da sua partida!";
+            return $msgFind;
         }
         } else {
             return false;

@@ -29,6 +29,13 @@ class LoginController {
         }
     }
 
+    public function checarAdmPartida($idPartida, $idUsuario) {
+        $partida = $this->partidaDAO->findById($idPartida);
+
+        if($partida->getIdAdm() != $idUsuario) {
+            header('location: ../home/acessonegado.php');
+        }
+    }
 
     public static function manterUsuario() {
         session_start();
@@ -46,7 +53,7 @@ class LoginController {
         session_start();
 
         session_destroy();
-        header("Location: login.php");   
+        header("Location: ../home/index.php");   
     }
     
     public static function verificarAcesso($allowedTypes) {

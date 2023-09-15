@@ -13,7 +13,7 @@ class PartidaDAO {
 
     private const SQL_PARTIDA = "SELECT p.* FROM partida p";
 
-    private const SQL_USUARIO_PARTIDA = "SELECT pe.pontuacaoEquipe,p.dataFim,p.dataInicio,pe.idPartida,pu.* FROM partida_usuario pu 
+    private const SQL_USUARIO_PARTIDA = "SELECT pe.pontuacaoEquipe,p.dataFim,p.dataInicio,pe.idPartida,pe.idEquipe, pu.* FROM partida_usuario pu 
     JOIN partida_equipe pe ON pu.idPartidaEquipe = pe.idPartidaEquipe 
     JOIN partida p ON pe.idPartida = p.idPartida";
 
@@ -55,6 +55,7 @@ class PartidaDAO {
             $partida->setIdusuario($reg['idUsuario']);
             $partida->setIdPartidaUsuario($reg['idPartidaUsuario']);
             $partida->setIdPartidaEquipe($reg['idPartidaEquipe']);
+            $partida->setIdEquipe($reg['idEquipe']);
             $partida->setDataFim($reg['dataFim']); 
             $partida->setDataInicio($reg['dataInicio']);
             $partida->setPontuacaoEquipe($reg['pontuacaoEquipe']);
@@ -114,7 +115,7 @@ class PartidaDAO {
     return $this->mapUsuarioPartida($result);
 }
 
-    public function findPartidaByIdUsuario($idUsuario) {
+    public function findPartidaFinalizadaByIdUsuario($idUsuario) {
         $conn = conectar_db();
     
     $sql = PartidaDAO::SQL_USUARIO_PARTIDA . " WHERE pu.idUsuario = ?";
@@ -139,6 +140,33 @@ class PartidaDAO {
     }
     }
 }
+
+public function findPartidaAndamentoByIdUsuario($idUsuario) {
+    $conn = conectar_db();
+
+$sql = PartidaDAO::SQL_USUARIO_PARTIDA . " WHERE pu.idUsuario = ?";
+$stmt = $conn->prepare($sql);
+$stmt->execute([
+    $idUsuario
+    ]);
+
+$result = $stmt->fetchAll();
+
+$partidas = $this->mapUsuarioPartida($result);
+
+if(count($result) >= 1) {
+    foreach($partidas as $partida)
+    $partidaAndamento = $partida->issetDataInicio($partida->getDataInicio());
+
+    if($partidaAndamento) {
+        return $partida;
+    }
+    else{
+        return null;
+}
+}
+}
+
     public function findTableUsuario($idUsuario, $idPartida) {
         $conn = conectar_db();
 
@@ -156,7 +184,7 @@ class PartidaDAO {
             return $usuarios[0];
         elseif(count($usuarios) == 0)
             return null;
-}
+    }
 
 
 
@@ -248,7 +276,7 @@ public function usuarioInEquipe($idUsuario) {
     if(count($result) >= 1) {
         foreach($partidas as $partida)
         $partidaFinalizada = $partida->issetDataFim($partida->getDataFim());
-        $partidaAndamento = $partida->issetDataFim($partida->getDataFim());
+        $partidaAndamento = $partida->issetDataInicio($partida->getDataInicio());
 
         if($partidaFinalizada) {
             return null;
@@ -280,6 +308,7 @@ public function usuarioInEquipe($idUsuario) {
     
             return null;
             }
+
 
     public function enterRoom($idPartida, $Senha){
             $partida = $this->findByLoginSenha($idPartida, $Senha);

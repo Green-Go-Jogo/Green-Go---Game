@@ -159,10 +159,16 @@ body {
     color: #078071;
     font-family: Poppins;
     font-size: 2rem;
-    text-decoration: underline dotted;
-}
+    text-decoration: underline dotted;    }
+
 
 #id {
     border-width: 5px;
     border-color: #ffffff;
+}
+    
+#msg {
+    
+    margin-top: 10px;
+    margin-bottom: 10px;
 }

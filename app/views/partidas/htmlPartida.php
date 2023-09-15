@@ -205,9 +205,9 @@ Class PartidaHTML {
                $Status = "Aguardando";
                $Open = "YES";
            }
-
+        $numEquipes = count($partida->getEquipes()); 
         $jogadores = $partCont->contarJogadores($partida->getIdPartida());   
-        $maxJogadores = $partida->getLimiteJogadores() * count($partida->getEquipes());  
+        $maxJogadores = $partida->getLimiteJogadores() * $numEquipes;
         echo "<div class='col-md-4'>";
         echo "<br>";
         echo "<div class='card' style='width: 22rem;'>";

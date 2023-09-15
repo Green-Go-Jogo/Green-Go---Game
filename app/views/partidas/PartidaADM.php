@@ -7,19 +7,21 @@ include_once(__DIR__."/htmlPartida.php");
 $partidaCont = new PartidaController();
 
 if (isset($_GET['id'])) {
-    $id = $_GET['id'];
+    $idPartida = $_GET['id'];
 } else {
     echo "ID não encontrado na URL.";
 }
 
-$partida = $partidaCont->buscarPorId($_GET['id']); 
+$partida = $partidaCont->buscarPorId($idPartida); 
 
 $tempo = $partida->getTempoPartida(); 
 
 ?>
 <?php include_once("../../controllers/LoginController.php");
+$loginCont = new LoginController();
 LoginController::manterUsuario();
 LoginController::verificarAcesso([2, 3]);
+$loginCont->checarAdmPartida($idPartida, $_SESSION['ID']);
 ?>
 
 <!DOCTYPE html>
@@ -53,7 +55,7 @@ LoginController::verificarAcesso([2, 3]);
   
   <div class="container">
   <br><br><br>
-  <?php echo "<a href='editarPartida.php?id=".$id."' class='btn btn-primary editar'>Editar</a>";?>
+  <?php echo "<a href='editarPartida.php?id=".$idPartida."' class='btn btn-primary editar'>Editar</a>";?>
   <br><br>
   <button class="btn timer" id="startButton" onclick="startTimer(<?php echo $tempo; ?>)">Iniciar Timer</button>
   
