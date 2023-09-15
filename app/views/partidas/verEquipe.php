@@ -15,10 +15,8 @@ $idPartida = $_GET['idp'];
 $usuarioCont = new UsuarioController();
 $usuarios = $usuarioCont->buscarUsuarios($idEquipe, $idPartida); 
 
-
 $equipeCont = new EquipeController();
 $equipe = $equipeCont->buscarPorId($idEquipe); 
-
 
 $partidaCont = new PartidaController();
 $partida = $partidaCont->buscarPorId($idPartida); 

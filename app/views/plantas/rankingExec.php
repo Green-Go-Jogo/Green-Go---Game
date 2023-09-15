@@ -7,7 +7,7 @@ session_start();
 
 if (isset($_POST["userID"])) {
     $userID = $_POST["userID"];
-    $partida = $partidaCont->buscarPartidaPorIdUsuario($userID);
+    $partida = $partidaCont->buscarPartidaFinalizadaPorIdUsuario($userID);
 
     $datafim = $partida->getDataFim();
     $pontuacao = $partida->getPontuacaoEquipe();

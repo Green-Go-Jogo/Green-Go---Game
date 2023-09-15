@@ -160,4 +160,10 @@ body {
     font-family: Poppins;
     font-size: 2rem;
     text-decoration: underline dotted;
+    }
+    
+#msg {
+    
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
