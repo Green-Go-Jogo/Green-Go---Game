@@ -154,3 +154,10 @@ body {
     top: 12px;
     text-decoration: underline;
 }
+
+#voltarjogo {
+    color: #078071;
+    font-family: Poppins;
+    font-size: 2rem;
+    text-decoration: underline dotted;
+}

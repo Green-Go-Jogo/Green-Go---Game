@@ -195,6 +195,11 @@ body {
     
 </div>
 
+<br><br><br>
+<div class="text-center">
+    <a id="voltarjogo"> Encontrou outra planta? Volte para o jogo! </a>
+</div>
+
 
             <br>
         </div>
