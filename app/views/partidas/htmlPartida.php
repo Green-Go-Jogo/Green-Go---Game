@@ -137,7 +137,14 @@ left: 1200px; /* Ajuste conforme necessário para posicionar à direita */
         font-size: 25px;
     }
 
-    #tabelapontos, #tabelanome {
+    #tabelapontos {
+        color: #078071;
+        font-family: Poppins-semibold;
+        font-size: 15px;
+        text-decoration: underline dotted;
+    }
+
+    #tabelanome {
         color: #078071;
         font-family: Poppins-semibold;
         font-size: 15px;
@@ -254,12 +261,12 @@ Class PartidaHTML {
     public static function desenhaEquipe($usuarios, $partida, $idEquipe) {
         $partCont = new PartidaController();
 
-        echo "<div class='container text-center'>";
-        echo "<table class='table'>";
+        echo "<div class='text-center'>";
+        echo "<table class='table text-center' >";
         echo "<thead>";
-        echo "<tr>";
+        echo "<tr class='text-center'>";
         echo "<th scope='col' id='nomequipe'>Nome</th>";
-        echo "<th scope='col' id='pontosequipe'>Pontos</th>";
+        echo "<th scope='col' class='text-left' id='pontosequipe'>Pontos</th>";
         echo "</tr>";
         echo "</thead>";
         echo "<tbody>";
@@ -271,14 +278,14 @@ Class PartidaHTML {
        
             echo "<tr>";
             echo "<td id='tabelanome'>".$usuario->getNomeUsuario()."</td>";
-            echo "<td id='tabelapontos'>".$pontos."</td>";
+            echo "<td id='tabelapontos' class='text-left'>".$pontos."</td>";
             // echo "<td>";
             echo "</tr>";
         }
 
         echo "</tbody>";
         echo "</table>";
-        echo "</div>";
+        echo "</div><br>";
 
         if (!is_null($partida->getDataFim())) {
             $Status = "Essa partida acabou!";
@@ -392,8 +399,9 @@ Class PartidaHTML {
             echo "<a><img src='".$equipe->getIconeEquipe()."' style='width: 55%; height: 50%;'class='card-img-top mais' alt='...'></a><br>";
             echo "<div class='card-body' style='background-color:" .$equipe->getCorEquipe()."'>";
             echo "<h5 class='card-title nome-soc' id='nomeEquipe'>". $equipe->getNomeEquipe() ."</h5>";
-            echo "<p class='card-text nome-texto'> Jogadores: ".$jogadores."/".$maxJogadores."</p>";
-            echo "<a href=".$urlDisabled." class='btn btn-primary excluir' id='escolherEquipe'>$textoBotao</a>";
+            echo "<p class='card-text nome-texto' style='background-color: #ffffff; border-radius: 3px;'> Jogadores: ".$jogadores."/".$maxJogadores."</p>";
+            echo "<a href=".$urlDisabled." class='btn btn-primary excluir' id='escolherEquipe' style='border-width: 3px;
+            border-color: #ffffff;'>$textoBotao</a>";
             echo "<br>";
             echo "</div>";
             echo "</div>";

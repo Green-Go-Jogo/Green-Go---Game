@@ -161,3 +161,8 @@ body {
     font-size: 2rem;
     text-decoration: underline dotted;
 }
+
+#id {
+    border-width: 5px;
+    border-color: #ffffff;
+}
