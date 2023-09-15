@@ -164,8 +164,8 @@ $tempo = $partida->getTempoPartida();
         <a class="btn" href="zona.php">
         <img src="../../public/botaozona.png" id="zona"> </img> </a>
 
-        <button id="startButton" href="camera.php">
-        <img src="../../public/botaocamera.png" id="camera"> </img> </button>
+        <a href="camera.php">
+        <img src="../../public/botaocamera.png" id="camera"> </img> </a>
 
         <?php echo "<a class='btn' href='verEquipe.php?ide=".$idEquipe.'&idp='.$idPartida."'>
         <img src='../../public/botaoequipe.png' id='equipe'> </img> </a> " ?>
@@ -176,7 +176,6 @@ $tempo = $partida->getTempoPartida();
 <br>
 <br>
 <br>
-<script src="../js/camera.js"></script>
 <?php include_once("../../bootstrap/footer.php");?>
 </body>
 <script>
