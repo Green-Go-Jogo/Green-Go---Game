@@ -221,6 +221,16 @@ $tempo = $partida->getTempoPartida();
         }
       }
 
+      Instascan.Camera.getCameras().then(function (cameras) {
+        if (cameras.length > 0) {
+            scanner.start(cameras[1] || cameras[0]);  // Seleciona a câmera traseira, ou a primeira câmera disponível
+        } else {
+            console.error('No cameras found.');
+        }
+    }).catch(function (e) {
+        console.error(e);
+    });
+
       $('#qrScannerModal').on('hidden.bs.modal', function () {
         stopScanner();
       });
@@ -234,15 +244,7 @@ $tempo = $partida->getTempoPartida();
           window.location.href = content;
         });
 
-        Instascan.Camera.getCameras().then(function (cameras) {
-        if (cameras.length > 0) {
-            scanner.start(cameras[1] || cameras[0]);  // Seleciona a câmera traseira, ou a primeira câmera disponível
-        } else {
-            console.error('No cameras found.');
-        }
-    }).catch(function (e) {
-        console.error(e);
-    });
+        
       });
     </script>
 
