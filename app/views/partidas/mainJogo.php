@@ -234,15 +234,24 @@ $tempo = $partida->getTempoPartida();
           window.location.href = content;
         });
 
-        Instascan.Camera.getCameras().then((cameras) => {
-          if (cameras.length > 2) {  // Verifica se há pelo menos duas câmeras
-            scanner.start(cameras[2]);  // Abre a segunda câmera (câmera traseira)
-          } else if (cameras.length > 1) {
-          scanner.start(cameras[1]);  // Se só houver uma câmera, abre a única câmera disponível
-          } else {
-            console.error('Não existe câmera no dispositivo!');
-          }
-});
+        Instascan.Camera.getCameras().then(function (cameras) {
+            //If a camera is detected
+            if (cameras.length > 0) {
+                //If the user has a rear/back camera
+                if (cameras[1]) {
+                    //use that by default
+                    scanner.start(cameras[1]);
+                } else {
+                    //else use front camera
+                    scanner.start(cameras[0]);
+                }
+            } else {
+                //if no cameras are detected give error
+                console.error('No cameras found.');
+            }
+        }).catch(function (e) {
+            console.error(e);
+        });
       });
     </script>
 
