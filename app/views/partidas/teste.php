@@ -18,10 +18,7 @@
       type="text/javascript"
       src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
     ></script>
-    <script
-      type="text/javascript"
-      src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"
-    ></script>
+    <script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
   </head>
   <body>
     <button
