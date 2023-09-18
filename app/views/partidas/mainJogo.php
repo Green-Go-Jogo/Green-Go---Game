@@ -174,35 +174,22 @@ $tempo = $partida->getTempoPartida();
         </div>
 
       <!-- MODAL DA CAMERA -->
-        <div class="modal fade" id="qrScannerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">
-              Scanner de QR Code
-            </h5>
-            <button
-              type="button"
-              class="close"
-              data-dismiss="modal"
-              aria-label="Close"
-              onclick="stopScanner()"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <video
-              id="preview"
-              width="100%"
-              style="height: 300px"
-            ></video>
-            <div id="cameraInfo"></div> <!-- Div para exibir informações da câmera -->
-          </div>
-          </div>
+      <div class="modal fade" id="qrScannerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Scanner de QR Code</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="stopScanner()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <video id="preview" width="100%"></video>
+          <div id="cameraInfo"></div>
         </div>
       </div>
     </div>
+  </div>
 <br>
 <br>
 <br>
@@ -215,50 +202,63 @@ $tempo = $partida->getTempoPartida();
 <!-- CAMERA DO QRCODE -->
 
 <script>
-      let scanner = null;
+    let scanner = null;
 
-      function stopScanner() {
-        if (scanner) {
-          scanner.stop();
-        }
+    function stopScanner() {
+      if (scanner) {
+        scanner.stop();
       }
+    }
 
-      
+    function startScanner(cameraIndex) {
+      Instascan.Camera.getCameras().then(function (cameras) {
+        let cameraInfo = document.getElementById('cameraInfo');
+        cameraInfo.innerHTML = '';
 
-      $('#qrScannerModal').on('hidden.bs.modal', function () {
-        stopScanner();
+        if (cameras.length > 0) {
+          cameraInfo.innerHTML += '<p>Câmeras disponíveis:</p>';
+          cameras.forEach(function (camera, index) {
+            cameraInfo.innerHTML += '<p>Câmera ' + index + ': ' + camera.name + '</p>';
+          });
+
+          const videoElement = document.getElementById('preview');
+          videoElement.style.height = '';  // Limpa o estilo de altura
+          // Inicia o scanner com a câmera especificada
+          scanner.start(cameras[cameraIndex]);
+        } else {
+          console.error('Não existe câmera no dispositivo!');
+          cameraInfo.innerText = 'Não há câmeras disponíveis no dispositivo.';
+        }
+      }).catch(function (e) {
+        console.error(e);
+      });
+    }
+
+    $('#qrScannerModal').on('hidden.bs.modal', function () {
+      stopScanner();
+    });
+
+    $('#qrScannerModal').on('shown.bs.modal', function () {
+      scanner = new Instascan.Scanner({
+        video: document.getElementById('preview'),
       });
 
-      $('#qrScannerModal').on('shown.bs.modal', function () {
-        scanner = new Instascan.Scanner({
-          video: document.getElementById('preview'),
-        });
-
-        scanner.addListener('scan', function (content) {
-          window.location.href = content;
-        });
-        Instascan.Camera.getCameras().then(function (cameras) {
-          let cameraInfo = document.getElementById('cameraInfo');
-          cameraInfo.innerHTML = '';  // Limpa o conteúdo existente
-
-          if (cameras.length > 0) {
-            cameraInfo.innerHTML += '<p>Câmeras disponíveis:</p>';
-            cameras.forEach(function (camera, index) {
-              cameraInfo.innerHTML += '<p>Câmera ' + index + ': ' + camera.name + '</p>';
-            });
-
-            // Inicia o scanner com a primeira câmera disponível
-            scanner.start(cameras[0]);
-          } else {
-            console.error('Não existe câmera no dispositivo!');
-            cameraInfo.innerText = 'Não há câmeras disponíveis no dispositivo.';
-          }
-        }).catch(function (e) {
-          console.error(e);
-        });
-        
+      scanner.addListener('scan', function (content) {
+        window.location.href = content;
       });
-    </script>
+
+      // Inicia o scanner com a última câmera disponível
+      Instascan.Camera.getCameras().then(function (cameras) {
+        if (cameras.length > 0) {
+          startScanner(cameras.length - 1);
+        } else {
+          console.error('Não existe câmera no dispositivo!');
+        }
+      }).catch(function (e) {
+        console.error(e);
+      });
+    });
+  </script>
 
 <!-- INPUT DE CÓDIGO -->
     <script>
