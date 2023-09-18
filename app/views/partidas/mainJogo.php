@@ -197,6 +197,8 @@ $tempo = $partida->getTempoPartida();
               width="100%"
               style="height: 300px"
             ></video>
+            <div id="cameraInfo"></div> <!-- Div para exibir informações da câmera -->
+          </div>
           </div>
         </div>
       </div>
@@ -235,17 +237,24 @@ $tempo = $partida->getTempoPartida();
         scanner.addListener('scan', function (content) {
           window.location.href = content;
         });
-        Instascan.Camera.getCameras().then((cameras) => {
+        Instascan.Camera.getCameras().then(function (cameras) {
+          let cameraInfo = document.getElementById('cameraInfo');
+          cameraInfo.innerHTML = '';  // Limpa o conteúdo existente
+
           if (cameras.length > 0) {
-var selectedCam = cameras[0];
-$.each(cameras, (i, c) => {
-if (c.name.indexOf('back') != -1) {
-selectedCam = c;
-return false;
-}
-});
-scanner.start(selectedCam);
-}
+            cameraInfo.innerHTML += '<p>Câmeras disponíveis:</p>';
+            cameras.forEach(function (camera, index) {
+              cameraInfo.innerHTML += '<p>Câmera ' + index + ': ' + camera.name + '</p>';
+            });
+
+            // Inicia o scanner com a primeira câmera disponível
+            scanner.start(cameras[0]);
+          } else {
+            console.error('Não existe câmera no dispositivo!');
+            cameraInfo.innerText = 'Não há câmeras disponíveis no dispositivo.';
+          }
+        }).catch(function (e) {
+          console.error(e);
         });
         
       });
