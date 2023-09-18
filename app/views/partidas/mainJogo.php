@@ -235,12 +235,14 @@ $tempo = $partida->getTempoPartida();
         });
 
         Instascan.Camera.getCameras().then((cameras) => {
-          if (cameras.length > 0) {
-            scanner.start(cameras[1]);
+          if (cameras.length > 1) {  // Verifica se há pelo menos duas câmeras
+            scanner.start(cameras[1]);  // Abre a segunda câmera (câmera traseira)
+          } else if (cameras.length > 0) {
+          scanner.start(cameras[0]);  // Se só houver uma câmera, abre a única câmera disponível
           } else {
             console.error('Não existe câmera no dispositivo!');
-          }
-        });
+            }
+          });
       });
     </script>
 
