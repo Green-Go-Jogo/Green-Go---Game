@@ -221,13 +221,7 @@ $tempo = $partida->getTempoPartida();
         }
       }
 
-      Instascan.Camera.getCameras().then((cameras) => {
-          if (cameras.length > 0) {
-            scanner.start(cameras[1]);
-          } else {
-            console.error('Não existe câmera no dispositivo!');
-          }
-        });
+      
 
       $('#qrScannerModal').on('hidden.bs.modal', function () {
         stopScanner();
@@ -241,7 +235,13 @@ $tempo = $partida->getTempoPartida();
         scanner.addListener('scan', function (content) {
           window.location.href = content;
         });
-
+        Instascan.Camera.getCameras().then((cameras) => {
+          if (cameras.length > 0) {
+            scanner.start(cameras[1]);
+          } else {
+            console.error('Não existe câmera no dispositivo!');
+          }
+        });
         
       });
     </script>
