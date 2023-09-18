@@ -235,23 +235,14 @@ $tempo = $partida->getTempoPartida();
         });
 
         Instascan.Camera.getCameras().then(function (cameras) {
-            //If a camera is detected
-            if (cameras.length > 0) {
-                //If the user has a rear/back camera
-                if (cameras[1]) {
-                    //use that by default
-                    scanner.start(cameras[1]);
-                } else {
-                    //else use front camera
-                    scanner.start(cameras[0]);
-                }
-            } else {
-                //if no cameras are detected give error
-                console.error('No cameras found.');
-            }
-        }).catch(function (e) {
-            console.error(e);
-        });
+        if (cameras.length > 0) {
+            scanner.start(cameras[1] || cameras[0]);  // Seleciona a câmera traseira, ou a primeira câmera disponível
+        } else {
+            console.error('No cameras found.');
+        }
+    }).catch(function (e) {
+        console.error(e);
+    });
       });
     </script>
 
