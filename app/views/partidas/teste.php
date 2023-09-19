@@ -57,7 +57,7 @@
           const videoElement = document.getElementById('preview');
           videoElement.style.height = '';  // Limpa o estilo de altura
           // Inicia o scanner com a câmera especificada
-          scanner.start(cameras[cameraIndex]);
+          scanner.start(cameras[1]);
         } else {
           console.error('Não existe câmera no dispositivo!');
           cameraInfo.innerText = 'Não há câmeras disponíveis no dispositivo.';
