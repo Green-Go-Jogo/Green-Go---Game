@@ -1,22 +1,46 @@
-// Seleciona o botão e o elemento de vídeo
-const startButton = document.getElementById('startButton');
-const video = document.getElementById('video');
+let videoElement;
 
-// Verifica se o navegador suporta a API getUserMedia
-if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-    // Adiciona um evento de clique ao botão
-    startButton.addEventListener('click', function () {
-        // Solicita permissão para acessar a câmera
-        navigator.mediaDevices.getUserMedia({ video: true })
-            .then(function (stream) {
-                // Define o vídeo para exibir o feed da câmera
-                video.srcObject = stream;
-                video.play();
-            })
-            .catch(function (error) {
-                console.error('Erro ao acessar a câmera: ', error);
-            });
+    async function startCamera() {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
+        videoElement = document.getElementById('video');
+        videoElement.srcObject = stream;
+        videoElement.play();
+      } catch (error) {
+        console.error('Error accessing camera:', error);
+      }
+    }
+
+    function scanQRCode() {
+      const canvasElement = document.createElement('canvas');
+      const context = canvasElement.getContext('2d');
+
+      canvasElement.width = videoElement.videoWidth;
+      canvasElement.height = videoElement.videoHeight;
+      context.drawImage(videoElement, 0, 0, canvasElement.width, canvasElement.height);
+
+      const imageData = context.getImageData(0, 0, canvasElement.width, canvasElement.height);
+      const code = jsQR(imageData.data, imageData.width, imageData.height);
+
+      if (code) {
+        console.log('QR Code scanned:', code.data);
+        window.location.href = code.data;  // Redireciona para a URL lida no QR code
+        $('#qrScannerModal').modal('hide');  // Fecha o modal após o redirecionamento
+      }
+    }
+
+    // Inicializa o scanner quando o modal é mostrado
+    $('#qrScannerModal').on('shown.bs.modal', function () {
+      startCamera();
+      setInterval(scanQRCode, 1000);  // Escaneia a cada segundo
     });
-} else {
-    console.error('O navegador não suporta a API getUserMedia.');
-}
+
+    // Limpa o stream da câmera quando o modal é fechado
+    $('#qrScannerModal').on('hidden.bs.modal', function () {
+      if (videoElement && videoElement.srcObject) {
+        const stream = videoElement.srcObject;
+        const tracks = stream.getTracks();
+        tracks.forEach(track => track.stop());
+        videoElement.srcObject = null;
+      }
+    });
