@@ -127,6 +127,16 @@ color:#fff;
     color: #C05367;
   }
 
+  .btn-jogar{
+  background-color:#078071;
+  color: #fff;
+  margin-right: 7px;
+}
+.btn-jogar:hover {
+  background-color: #04574d;
+  border-color: #04574d;
+  color: #fff !important;
+}
 
 </style>
 
@@ -152,6 +162,17 @@ color:#fff;
         </ul>
         
             <div class="ml-auto">
+            <?php require_once("../../controllers/PartidaController.php");
+           $partCont = new PartidaController;
+           $partidaNav = $partCont->UsuarioNaEquipe($_SESSION['ID']); 
+           if ($partidaNav) {
+            $txtPartida = "Voltar a Partida";
+            echo "<a href='../partidas/verEquipe.php?ide=".$partidaNav->getIdEquipe()."&idp=".$partidaNav->getIdPartida()."' class='btn btn-jogar'>$txtPartida</a>";  
+           } else {
+            
+           }
+          ?>
+                    
                     <a class="btn btn-nav" href="../users/perfil.php"><i id="usuario" class="fa-solid fa-user-gear"></i></a>
                     <button type="button" id="dark-mode" class="btn btn-darkmode"><i id="logoDarkMode" class="fa-solid fa-moon"></i></button>                    
                     <a class="btn btn-nav" href="../users/sairExec.php"><i id="doorIcon" class="door-icon fa-solid fa-door-closed"></i></a>

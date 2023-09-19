@@ -63,6 +63,7 @@ $loginCont->checarAdmPartida($idPartida, $_SESSION['ID']);
     </div>
 
         <?php 
+            
             PartidaHTML::desenhaPartidaZona($partida);
         ?>
 

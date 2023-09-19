@@ -186,7 +186,38 @@ if(count($result) >= 1) {
             return null;
     }
 
-
+    public function FindPartidaByADM($idUsuario) {
+        $conn = conectar_db();
+        
+        $sql = "SELECT * FROM partida WHERE idUsuario = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([
+        $idUsuario
+    ]);
+        
+        $result = $stmt->fetchAll();
+        
+        $partidas = $this->mapPartidas($result);
+    
+        if(count($result) >= 1) {
+            foreach($partidas as $partida)
+            $partidaFinalizada = $partida->issetDataFim($partida->getDataFim());
+            $partidaAndamento = $partida->issetDataInicio($partida->getDataInicio());
+    
+            if($partidaFinalizada) {
+                return null;
+            }
+            else if($partidaAndamento) {
+                return $partida;
+            }
+            else {
+                return $partida;
+            }
+        }
+            else{
+                return null;
+        }
+    }
 
 
       public function savePartida(Partida $partida) {

@@ -177,8 +177,18 @@ color:#fff;
             
             <div class="ml-auto">
               
-           
-                    <a href="..\partidas\adicionarPartida.php" class="btn btn-jogar">Criar Partida</a>
+           <?php require_once("../../controllers/PartidaController.php");
+           $partCont = new PartidaController;
+           $partidaNav = $partCont->buscarPartidaPorADM($_SESSION['ID']); 
+           if ($partidaNav) {
+            $isPartida = "..\partidas\PartidaADM.php?id=".$partidaNav->getIdPartida();
+            $txtPartida = "Administrar Partida";
+           } else {
+            $isPartida = "..\partidas\adicionarPartida.php";            
+            $txtPartida = "Criar Partida";
+           }
+          ?>
+                    <a href="<?php echo $isPartida ?>" class="btn btn-jogar"><?php echo $txtPartida; ?></a>
                     <a class="btn btn-nav" href="../users/perfil.php"><i id="usuario" class="fa-solid fa-user-gear"></i></a>
                     <button type="button" id="dark-mode" class="btn btn-darkmode"><i id="logoDarkMode" class="fa-solid fa-moon"></i></button> 
                     <a class="btn btn-nav" href="../users/sairExec.php"><i id="doorIcon" class="door-icon fa-solid fa-door-closed"></i></a>                   

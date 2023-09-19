@@ -59,6 +59,11 @@ class PartidaController {
         return $partida;
     }
 
+    public function buscarPartidaPorADM($idUsuario){
+        $partida = $this->partidaDAO->findPartidaByADM($idUsuario);
+        return $partida;
+    }
+
     public function buscarUsuarioPorIdPartida($idUsuario, $idPartida){
         $partida = $this->partidaDAO->findTableUsuario($idUsuario, $idPartida);
         return $partida;
@@ -78,6 +83,10 @@ class PartidaController {
        $_SESSION['PARTIDA'] = true;
        $this->partidaDAO->saveUsuarioEquipe($idPartidaEquipe, $idUsuario);
     }
+    }
+
+    public function UsuarioNaEquipe($idUsuario) {
+        return $this->partidaDAO->usuarioInEquipe($idUsuario);
     }
 
     public function checarQRCode($statusPartida, $idPlanta, $arrayPlantas, $idUsuario) {
