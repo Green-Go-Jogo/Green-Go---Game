@@ -21,7 +21,9 @@
           </button>
         </div>
         <div class="modal-body">
+          <p>Para escanear um QR Code, clique no botão abaixo para ativar a câmera.</p>
           <video id="video" width="100%" height="100%" autoplay></video>
+          <button class="btn btn-success mt-3" onclick="scanQRCode()">Escanear QR Code</button>
         </div>
       </div>
     </div>
