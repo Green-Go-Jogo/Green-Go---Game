@@ -12,6 +12,9 @@ LoginController::verificarAcesso([1,2,3]);
 
  $partidaCont = new PartidaController();
  $partida = $partidaCont->buscarPorId($idPartida); 
+
+ unset($_SESSION['PLANTAS_LIDAS']);
+ unset($_SESSION['PONTOS']);
 ?>
 
 <!DOCTYPE html>

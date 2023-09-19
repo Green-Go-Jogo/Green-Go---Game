@@ -250,6 +250,6 @@ echo "<b></p>";?>
     atualizarDados();
 
     // Usar setInterval para chamar a função a cada x milissegundos.
-    setInterval(atualizarDados, 5000); // Atualizar a cada segundo (1000 ms).
+    setInterval(atualizarDados, 15000); // Atualizar a cada segundo (1000 ms).
 </script>
 </html>
