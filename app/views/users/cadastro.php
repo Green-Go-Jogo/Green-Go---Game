@@ -9,7 +9,17 @@
     <link rel="stylesheet" href="../csscheer/cadastro.css">
 
 </head>
-
+<style>
+  .mensagemRetorno {
+    width: 300px;
+    word-wrap: break-word;
+    color: #04574d;
+    font-family: Poppins-semibold;
+    margin-bottom: -20px;
+    margin-left: 11px;
+    font-size: 15px;
+}
+</style>
 <nav>
 <?php include_once("../../bootstrap/nav.php");?>
 </nav>
@@ -26,28 +36,28 @@
             <label for="nome-cadastro" id="cadastronome">Nome Completo:</label>
             <br>
             <input type="text" class="form-control" id="nome-cadastro" autocomplete="off" name="field_nome">
-            <span class="mensagemRetorno" id="retornoCampo1"></span> <br>
+            <p class="mensagemRetorno" id="retornoCampo1"></p> <br>
             <label for="email-cadastro" id="cadastrousuario">Nome de Usuário:</label>
             <br>
             <input type="text" class="form-control" id="login-cadastro" autocomplete="off"  name='field_login' required>
-            <span class="mensagemRetorno" id="retornoCampo2"></span> <br>
+            <p class="mensagemRetorno" id="retornoCampo2"></p> <br>
 
             <label for="email-cadastro" id="cadastroemail">E-mail:</label>
             <br>
             <input type="email" class="form-control" id="email-cadastro" autocomplete="off"  name='field_email' required> 
-            <span class="mensagemRetorno" id="retornoCampo3"></span><br>
+            <p class="mensagemRetorno" id="retornoCampo3"></p><br>
 
             <label for="senha-cadastro" id="cadastrosenha">Senha:</label>
             <br>
             <input type="password" class="form-control" id="senha-cadastro" autocomplete="off" name="field_password" required>
-            <span class="mensagemRetorno" id="retornoCampo4"></span> <br>
+            <p class="mensagemRetorno" id="retornoCampo4"></p> <br>
             <h6 class="senha-cadastro">8 caracteres contendo letras e números</h6>
 
             <label for="senha-cadastro" id="cadastrosenha">Confirmação de Senha:</label>
             <br>
             <input type="password" class="form-control" id="senha-cadastro-conf" autocomplete="off" name="field_password_conf" required>
             
-            <span class="mensagemRetorno" id="retornoCampo5"></span> <br>
+            <p class="mensagemRetorno" id="retornoCampo5"></p> <br>
 
             <label for="caixinha-cad" id="cadastrogenero">Gênero:</label>
             <br>
@@ -57,7 +67,7 @@
               <option value="Masculino">Masculino</option>
               <option value="Outro">Outro</option>
             </select>
-            <span class="mensagemRetorno" id="retornoCampo6"></span>
+            <p class="mensagemRetorno" id="retornoCampo6"></p>
             <br><br>
 
 
@@ -72,7 +82,7 @@
               <option value="Ensino Médio">Ensino médio</option>
               <option value="Ensino Superior">Ensino superior</option>
             </select>
-            <span class="mensagemRetorno" id="retornoCampo7"></span>
+            <p class="mensagemRetorno" id="retornoCampo7"></p>
             <br>
             <br>
             <br>

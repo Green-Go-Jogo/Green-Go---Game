@@ -7,7 +7,7 @@
     --rosão: #C05367;
     --cinza: #586660;
     --cinzinha: #d3dadb;
-    --branquinho #ffffff;
+    --branquinho: #ffffff;
 
     width: 100%;
     height: 100%;
@@ -103,7 +103,7 @@ body {
     font-family: Poppins-semibold;
     margin-left: 11px;
     border-radius: 5px;
-    width: 63%;
+    width: 78%;
     height: auto;
     border-radius: 5px;
 }
@@ -176,9 +176,3 @@ body {
     font-size: 16px;
 }
 
-.mensagemRetorno {
-    color: #ff002f;
-    font-family: Poppins-semibold;
-    margin-left: 11px;
-    font-size: 15px;
-}
