@@ -3,7 +3,7 @@
 
 <head>
 
-<?php include_once("../bootstrap/header.php");?>
+<?php include_once("../../bootstrap/header.php");?>
 <link rel="stylesheet" href="css/index.css">
 <link rel="stylesheet" href="csscheer/footer.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -42,16 +42,17 @@
         </h2>
 
         <p>
-            Título do estudo: <b>GREEN GO: GAMIFICAÇÃO DA IDENTIFICAÇÃO DE PLANTAS DO IFPR</b> <br><br>
+            Título do estudo: <b>GREEN GO: JOGO DA IDENTIFICAÇÃO DE PLANTAS DO IFPR</b> <br><br>
 
             Pesquisador responsável: <b>Marcela Turim Koschevic</b> <br><br>
 
-            Responsáveis pelo desenvolvimento do sistema: <b>Alana Brandão de Oliveira, Maria Eduarda de Oliveira
+            Responsáveis pelo desenvolvimento do sistema web: <b>Amanda Procopio Scheer, Annye Miyuki Furuti,
+                Alana Brandão de Oliveira, Gabriel Mandelli Cardoso, Maria Eduarda de Oliveira
                 Becker,
-                Maria Eduarda Heck Souza Benedito e Nicolly Tavassi de Souza</b> <br><br>
+                Maria Eduarda Heck Souza Benedito, Nicolly Tavassi de Souza e Nikolas Oliveira de Araujo</b> <br><br>
 
         <ol type="I">
-            <li>Eu, Marcela Turim Koschevic, responsável pela pesquisa <b>Green Go: Gamificação da Identificação de
+            <li>Eu, Marcela Turim Koschevic, responsável pela pesquisa <b>Green Go: Jogo da Identificação de
                     Plantas
                     do IFPR</b>, informo que os dados relativos à participação no sistema Green Go serão tabulados e
                 analisados.</li>
@@ -60,7 +61,7 @@
             <li>Por meio da pesquisa citada pretende-se desenvolver e utilizar em atividades de extensão voltadas
                 para a
                 educação
-                ambiental um sistema web gamificado para identificação “etnobotânica” das plantas do campus, com o
+                ambiental por meio de um jogo web para identificação “etnobotânica” das plantas do campus, com o
                 intuito de promover
                 o conhecimento e envolver a comunidade local com o meio acadêmico. Para o desenvolvimento desta
                 pesquisa
@@ -83,6 +84,10 @@
                 na
                 pesquisa, você terá
                 acompanhamento e assistência dos condutores do jogo, de forma gratuita.</li>
+            <br>
+            <li>Caso apresente alguma dificuldade fisica é importante que tome cuidado dobrado durante o período do jogo,
+                não se colocando em situações de risco.
+            </li>
             <br>
 
             <li>Os benefícios que esperamos como estudo são fazer com que os participantes do jogo possam aprender a
@@ -114,13 +119,13 @@
                         Esclarecido </b> e está suficientemente informado, ficando claro que sua participação é
                         voluntária. Está ciente também dos objetivos da pesquisa, dos possíveis danos ou riscos deles
                         provenientes e da garantia de confidencialidade. Diante do exposto e de espontânea vontade,
-                        concorda em participar da pesquisa Green Go: Gamificação da Identificação de Plantas do IFPR.
+                        concorda em participar da pesquisa Green Go: Jogo da Identificação de Plantas do IFPR.
                     </p>
+                    <br>
+                    <p><a href="../users/cadastro.php"> Voltar para a página de Cadastro</a></p>
                 </div>
             </div>
         </div>
-        <?php include_once("../bootstrap/footer.php");?>
-
     </div>
 </body>
 
