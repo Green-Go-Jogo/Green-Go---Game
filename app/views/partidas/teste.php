@@ -38,8 +38,9 @@
       const hasCameraPermission = Cookies.get('cameraPermissionGranted');
 
       if (hasCameraPermission || !navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
-        // A permissão foi concedida anteriormente ou a API de mídia não está disponível.
-        return;
+        videoElement = document.getElementById('video');
+        videoElement.srcObject = stream;
+        videoElement.play();return;
       }
 
       try {
