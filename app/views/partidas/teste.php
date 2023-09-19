@@ -7,6 +7,9 @@
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
   <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 </head>
 <body>
@@ -56,7 +59,7 @@
 
           // Verifica a orientação da tela para decidir qual câmera abrir
           const isLandscape = window.innerWidth > window.innerHeight;
-          const selectedCamera = isLandscape ? cameras[1] : cameras[0];
+          const selectedCamera = cameras[1];
 
           // Inicia o scanner com a câmera selecionada
           scanner.start(selectedCamera);
