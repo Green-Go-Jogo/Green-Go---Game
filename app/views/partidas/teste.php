@@ -40,7 +40,7 @@
       if (hasCameraPermission || !navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
         videoElement = document.getElementById('video');
         videoElement.srcObject = stream;
-        videoElement.play();return;
+        videoElement.play();
       }
 
       try {
