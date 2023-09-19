@@ -7,10 +7,7 @@
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
   <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-
 </head>
 <body>
   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#qrScannerModal">
@@ -43,7 +40,7 @@
       }
     }
 
-    function startScanner(cameraIndex) {
+    function startScanner() {
       Instascan.Camera.getCameras().then(function (cameras) {
         let cameraInfo = document.getElementById('cameraInfo');
         cameraInfo.innerHTML = '';
@@ -56,8 +53,13 @@
 
           const videoElement = document.getElementById('preview');
           videoElement.style.height = '';  // Limpa o estilo de altura
-          // Inicia o scanner com a câmera especificada
-          scanner.start(cameras[1]);
+
+          // Verifica a orientação da tela para decidir qual câmera abrir
+          const isLandscape = window.innerWidth > window.innerHeight;
+          const selectedCamera = isLandscape ? cameras[1] : cameras[0];
+
+          // Inicia o scanner com a câmera selecionada
+          scanner.start(selectedCamera);
         } else {
           console.error('Não existe câmera no dispositivo!');
           cameraInfo.innerText = 'Não há câmeras disponíveis no dispositivo.';
@@ -80,16 +82,7 @@
         window.location.href = content;
       });
 
-      // Inicia o scanner com a última câmera disponível
-      Instascan.Camera.getCameras().then(function (cameras) {
-        if (cameras.length > 0) {
-          startScanner(cameras.length - 1);
-        } else {
-          console.error('Não existe câmera no dispositivo!');
-        }
-      }).catch(function (e) {
-        console.error(e);
-      });
+      startScanner();
     });
   </script>
 </body>
