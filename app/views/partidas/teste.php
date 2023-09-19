@@ -21,9 +21,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <p>Para escanear um QR Code, clique no botão abaixo para ativar a câmera.</p>
           <video id="video" width="100%" height="100%" autoplay></video>
-          <button class="btn btn-success mt-3" onclick="scanQRCode()">Escanear QR Code</button>
         </div>
       </div>
     </div>
@@ -64,8 +62,29 @@
       }
     }
 
+    // Verifica se já foi concedida permissão para a câmera
+    function checkCameraPermission() {
+      const permissionCookie = document.cookie.replace(/(?:(?:^|.*;\s*)cameraPermission\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+      return permissionCookie === 'granted';
+    }
+
+    // Solicita permissão para a câmera
+    function requestCameraPermission() {
+      if (!checkCameraPermission()) {
+        navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })
+          .then(() => {
+            // Permissão concedida, armazene no cookie
+            document.cookie = "cameraPermission=granted";
+          })
+          .catch(error => {
+            console.error('Error accessing camera:', error);
+          });
+      }
+    }
+
     // Inicializa o scanner quando o modal é mostrado
     $('#qrScannerModal').on('shown.bs.modal', function () {
+      requestCameraPermission();
       startCamera();
       setInterval(scanQRCode, 1000);  // Escaneia a cada segundo
     });
