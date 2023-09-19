@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Scanner de QR Code com Bootstrap Modal</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/3.0.1/js.cookie.min.js"></script>
 </head>
 <body>
   <h1 class="mt-4 ml-4">Scanner de QR Code</h1>
@@ -35,29 +34,17 @@
     let videoElement;
 
     async function startCamera() {
-      const hasCameraPermission = Cookies.get('cameraPermissionGranted');
-
-      if (hasCameraPermission || !navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
-        // A permissão foi concedida anteriormente ou a API de mídia não está disponível.
-        return;
-      }
-
       try {
         const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
         videoElement = document.getElementById('video');
         videoElement.srcObject = stream;
         videoElement.play();
-
-        // Defina o cookie para registrar a permissão da câmera concedida.
-        Cookies.set('cameraPermissionGranted', 'true', { expires: 365 }); // Expira em 365 dias
       } catch (error) {
         console.error('Error accessing camera:', error);
       }
     }
 
     function scanQRCode() {
-      if (!videoElement || !videoElement.srcObject) return;
-
       const canvasElement = document.createElement('canvas');
       const context = canvasElement.getContext('2d');
 
