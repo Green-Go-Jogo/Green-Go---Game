@@ -205,42 +205,53 @@ $tempo = $partida->getTempoPartida();
     <script>
       const resultDiv = $("#result");
 
-      $(".input-box").on("input", function(event) {
-        const inputText = $(this).text();
-        const index = $(this).index();
+$(".input-box").on("input", function(event) {
+  const inputText = $(this).text();
+  const index = $(this).index();
 
-        inputText.setAttribute('inputmode', 'numeric');
-        inputText.setAttribute('pattern', '[0-9]*');
+  // Verificar se o texto foi apagado e mover o foco para o campo anterior
+  if (inputText === "") {
+    if (index > 0) {
+      $(".input-box").eq(index - 1).focus();
+      $(".input-box").eq(index - 1).text("");
+    }
+  }
 
-        // Verificar se o texto foi apagado e mover o foco para o campo anterior
-        if (inputText === "") {
-          if (index > 0) {
-            $(".input-box").eq(index - 1).focus();
-            $(".input-box").eq(index - 1).text("");
-          }
-        }
+  // Limitar o texto a 1 caractere
+  if (inputText.length > 1) {
+    $(this).text(inputText[0]);
+  }
 
-        // Limitar o texto a 1 caractere
-        if (inputText.length > 1) {
-            $(this).text(inputText[0]);
-        }
+  // Mover o foco para o próximo campo se houver texto
+  if (index < $(".input-box").length - 1 && inputText !== "") {
+    $(".input-box").eq(index + 1).focus();
+  }
+});
 
-        // Mover o foco para o próximo campo se houver texto
-        if (index < $(".input-box").length - 1 && inputText !== "") {
-          $(".input-box").eq(index + 1).focus();
-        }
-      });
+$(".input-box").on("keydown", function(event) {
+  if (event.key === "Backspace" && $(this).text() === "") {
+    const index = $(this).index();
+    if (index > 0) {
+      $(".input-box").eq(index - 1).focus();
+      $(".input-box").eq(index - 1).text("");
+      event.preventDefault(); // Impedir que o navegador aja como um botão "Backspace" normal
+    }
+  }
+});
 
-      $(".input-box").on("keydown", function(event) {
-        if (event.key === "Backspace" && $(this).text() === "") {
-          const index = $(this).index();
-          if (index > 0) {
-            $(".input-box").eq(index - 1).focus();
-            $(".input-box").eq(index - 1).text("");
-            event.preventDefault(); // Impedir que o navegador aja como um botão "Backspace" normal
-          }
-        }
-      });
+// Função para focar no campo e exibir o teclado numérico em dispositivos móveis
+function focusNumericKeyboard(element) {
+  element.setAttribute("type", "number");
+  element.focus();
+}
+
+// Adicionar tratamento de evento para dispositivos móveis
+$(".input-box").on("touchstart", function(event) {
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  if (isMobile) {
+    focusNumericKeyboard(event.target);
+  }
+});
 
       $("#submitButton").on("click", function() {
         const cod = $(".input-box").map(function() {
