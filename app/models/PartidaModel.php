@@ -383,4 +383,24 @@ Class Partida {
 
         return $this;
     }
+    
+    public function calcularTempoRestante()
+    {
+        $dataAtual = new DateTime('now');
+        $dataInicio = new DateTime($this->DataInicio);
+
+        $intervalo = $dataInicio->diff($dataAtual);
+        $tempoPassadoMinutos = $intervalo->format('%i'); // Tempo passado em minutos
+        $tempoPassadoSegundos = $intervalo->format('%s'); // Tempo passado em segundos
+
+        $tempoRestanteMinutos = max(0, $this->TempoPartida - $tempoPassadoMinutos);
+        $tempoRestanteSegundos = max(0, 60 - $tempoPassadoSegundos);
+
+        return [
+            'minutos' => $tempoRestanteMinutos,
+            'segundos' => $tempoRestanteSegundos
+        ];
+    }
+
+
 }

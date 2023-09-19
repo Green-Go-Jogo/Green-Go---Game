@@ -320,6 +320,8 @@ LoginController::verificarAcesso([2, 3]);
       xhr.onreadystatechange = function () {
         if (xhr.readyState === XMLHttpRequest.DONE) {
           if (xhr.status === 200) {
+            
+      console.log('Resposta do servidor:', xhr.responseText);
             const respostas = JSON.parse(xhr.responseText);
             mensagensRetorno[0].textContent = respostas.campo1;
             mensagensRetorno[1].textContent = respostas.campo2;
