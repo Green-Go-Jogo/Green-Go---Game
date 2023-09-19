@@ -432,7 +432,8 @@ Class PartidaHTML {
 
         foreach ($equipes as $equipe) { 
             echo "<div style='background-color: ".$equipe->getCorEquipe()."'>";
-            echo "<div class='text-center'> º Lugar </div>";
+            echo "<br>";
+            echo "<a> <div class='text-center' id='lugarzinho'> º Lugar </a></div>";
             echo "<div style='color: #338a5f;'> <img style='width: 60px;' src='".$equipe->getIconeEquipe()."'/></div>";
             echo "<div>".$equipe->getNomeEquipe()."</div>";
             echo "<div>".$equipe->getPontuacaoEquipe()."</div>";

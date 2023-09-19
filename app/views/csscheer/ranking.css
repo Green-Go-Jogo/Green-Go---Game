@@ -51,3 +51,15 @@ body {
     margin-top: 5px;
     margin-bottom: 15px;
 }
+
+#lugarzinho {
+    background-color: #ffffff;
+    margin-top: -15px;
+    font-size: 27px;
+    font-family: Poppins-semibold;
+    width: 150px;
+    color: #f58c95;
+    border-radius: 50px;
+    text-decoration: underline dotted;
+    
+}
