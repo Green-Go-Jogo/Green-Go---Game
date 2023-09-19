@@ -56,6 +56,8 @@
     }
 
     function scanQRCode() {
+      if (!videoElement || !videoElement.srcObject) return;
+
       const canvasElement = document.createElement('canvas');
       const context = canvasElement.getContext('2d');
 
