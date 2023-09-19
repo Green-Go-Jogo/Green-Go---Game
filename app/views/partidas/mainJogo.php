@@ -143,10 +143,10 @@ $tempo = $partida->getTempoPartida();
 
   <div class="d-flex justify-content-center">
   <div class="input-container">
-  <div class="input-box" contenteditable="true" id="box1" onkeypress="return allowOnlyNumbers(event)"></div>
-  <div class="input-box" contenteditable="true" id="box2" onkeypress="return allowOnlyNumbers(event)"></div>
-  <div class="input-box" contenteditable="true" id="box3" onkeypress="return allowOnlyNumbers(event)"></div>
-  <div class="input-box" contenteditable="true" id="box4" onkeypress="return allowOnlyNumbers(event)"></div>
+  <div class="input-box" id="box1" onkeypress="return allowOnlyNumbers(event)"></div>
+  <div class="input-box" id="box2" onkeypress="return allowOnlyNumbers(event)"></div>
+  <div class="input-box" id="box3" onkeypress="return allowOnlyNumbers(event)"></div>
+  <div class="input-box" id="box4" onkeypress="return allowOnlyNumbers(event)"></div>
 
   </div>
 
@@ -206,15 +206,19 @@ $tempo = $partida->getTempoPartida();
     <script>
       const resultDiv = $("#result");
 
-      function allowOnlyNumbers(event) {
-      const charCode = (event.which) ? event.which : event.keyCode;
-        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-          event.preventDefault();
-          return false;
-        }
-      return true;
-      }
+      function allowOnlyNumbers(event, boxId) {
+    const charCode = (event.which) ? event.which : event.keyCode;
+    const inputBox = document.getElementById(boxId);
 
+    if (charCode < 48 || charCode > 57) {
+        event.preventDefault();
+        return false;
+    }
+
+    // Set the input mode to numeric on mobile devices
+    inputBox.setAttribute('inputmode', 'numeric');
+    inputBox.setAttribute('pattern', '[0-9]*');
+}
       $(".input-box").on("input", function(event) {
         const inputText = $(this).text();
         const index = $(this).index();
