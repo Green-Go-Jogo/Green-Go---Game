@@ -429,16 +429,18 @@ Class PartidaHTML {
     usort($equipes, function($a, $b) {
         return $b->getPontuacaoEquipe() - $a->getPontuacaoEquipe();
     });
-
-        foreach ($equipes as $equipe) { 
+        
+    $lugar = "1";
+        foreach ($equipes as $equipe) {
             echo "<div style='background-color: ".$equipe->getCorEquipe()."'>";
             echo "<br>";
-            echo "<a> <div class='text-center' id='lugarzinho'> º Lugar </a></div>";
+            echo "<a> <div class='text-center' id='lugarzinho'>".$lugar."º Lugar </a></div>";
             echo "<div style='color: #338a5f;'> <img style='width: 60px;' src='".$equipe->getIconeEquipe()."'/></div>";
             echo "<div>".$equipe->getNomeEquipe()."</div>";
             echo "<div>".$equipe->getPontuacaoEquipe()."</div>";
             echo "<div class='text-center'> Pontos </div>";
             echo "</div>";
+            $lugar += 1;
         }
     
         echo "</tbody>";

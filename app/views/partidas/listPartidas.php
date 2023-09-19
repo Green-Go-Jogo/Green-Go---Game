@@ -36,6 +36,7 @@ if (isset($_GET['msg'])) {
 }
 ?>
    </div>     
+   <div id='partidas'>
         <?php
             $partidaCont = new PartidaController();
             $partidas = $partidaCont->listar(); 
@@ -64,35 +65,6 @@ $(document).ready(function() {
             $('#partida-id').val(partidaId);
         });
     });
-// document.addEventListener("DOMContentLoaded", function() {
-
-//   $(document).ready(function() {
-//     $('#exampleModal').on('show.bs.modal', function(event) {
-//       var button = $(event.relatedTarget); // Botão que acionou o modal
-//       var partidaId = button.data('partida-id'); // ID da partida
-      
-//       $('#partida-id').val(partidaId); // Atualizar o valor do input hidden
-//     });
-
-//     $('#submit-password').click(function() {
-//       var partidaId = $('#partida-id').val();
-//       var password = $('#password').val();
-//       console.log(partidaId);
-//       console.log(password);
-
-//       $.post('verificar_senha.php', { partidaId: partidaId, password: password }, function(data) {
-//     if (data === 'true') {
-//         console.log('Senha correta. Prossiga.');
-//         // Fazer algo quando a senha estiver correta
-//     } else {
-//         console.log('Senha incorreta. Tente novamente.');
-//         // Fazer algo quando a senha estiver incorreta
-//     }
-// });
-//       });
-//     });
-//   });
-
 </script>
 
 </html>
