@@ -27,7 +27,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <video id="preview" width="100%"></video>
+          <video id="preview" width="100%" playsinline></video>
           <div id="cameraInfo"></div>
         </div>
       </div>
