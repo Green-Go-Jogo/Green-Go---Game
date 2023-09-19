@@ -82,20 +82,26 @@
       });
 
       $('#qrScannerModal').on('shown.bs.modal', function () {
-        scanner = new Instascan.Scanner({
-          video: document.getElementById('preview'),
-        });
-
-        scanner.addListener('scan', function (content) {
-          alert('Escaneou o conteudo: ' + content);
-          window.open(content, '_blank');
-        });
-
         Instascan.Camera.getCameras().then((cameras) => {
-          if (cameras.length > 0) {
-            scanner.start(cameras[0]);
+          let backCamera = cameras.find((camera) => camera.name.toLowerCase().includes('back'));
+          let frontCamera = cameras.find((camera) => camera.name.toLowerCase().includes('front'));
+
+          // Prioritize back camera, if available
+          const selectedCamera = backCamera || frontCamera;
+
+          if (selectedCamera) {
+            scanner = new Instascan.Scanner({
+              video: document.getElementById('preview'),
+            });
+
+            scanner.addListener('scan', function (content) {
+              alert('Escaneou o conteudo: ' + content);
+              window.open(content, '_blank');
+            });
+
+            scanner.start(selectedCamera);
           } else {
-            console.error('Não existe câmera no dispositivo!');
+            console.error('Não foi possível encontrar uma câmera.');
           }
         });
       });
