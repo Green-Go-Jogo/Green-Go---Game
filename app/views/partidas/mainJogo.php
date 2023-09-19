@@ -143,11 +143,10 @@ $tempo = $partida->getTempoPartida();
 
   <div class="d-flex justify-content-center">
   <div class="input-container">
-  <div class="input-box" id="box1" onkeypress="return allowOnlyNumbers(event)"></div>
-  <div class="input-box" id="box2" onkeypress="return allowOnlyNumbers(event)"></div>
-  <div class="input-box" id="box3" onkeypress="return allowOnlyNumbers(event)"></div>
-  <div class="input-box" id="box4" onkeypress="return allowOnlyNumbers(event)"></div>
-
+  <div class="input-box" contenteditable="plaintext-only" id="box1"></div>
+  <div class="input-box" contenteditable="plaintext-only" id="box2"></div>
+  <div class="input-box" contenteditable="plaintext-only" id="box3"></div>
+  <div class="input-box" contenteditable="plaintext-only" id="box4"></div>
   </div>
 
   </div>
@@ -206,22 +205,12 @@ $tempo = $partida->getTempoPartida();
     <script>
       const resultDiv = $("#result");
 
-      function allowOnlyNumbers(event, boxId) {
-    const charCode = (event.which) ? event.which : event.keyCode;
-    const inputBox = document.getElementById(boxId);
-
-    if (charCode < 48 || charCode > 57) {
-        event.preventDefault();
-        return false;
-    }
-
-    // Set the input mode to numeric on mobile devices
-    inputBox.setAttribute('inputmode', 'numeric');
-    inputBox.setAttribute('pattern', '[0-9]*');
-}
       $(".input-box").on("input", function(event) {
         const inputText = $(this).text();
         const index = $(this).index();
+
+        inputText.setAttribute('inputmode', 'numeric');
+        inputText.setAttribute('pattern', '[0-9]*');
 
         // Verificar se o texto foi apagado e mover o foco para o campo anterior
         if (inputText === "") {
