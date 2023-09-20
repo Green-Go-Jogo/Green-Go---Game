@@ -2,9 +2,7 @@ let videoElement;
 
     async function startCamera() {
       try {
-        const stream = await navigator.mediaDevices.getUserMedia({ video: {facingMode: {
-          exact: 'environment'
-        } }});
+        const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
         videoElement = document.getElementById('video');
         videoElement.srcObject = stream;
         videoElement.play();
