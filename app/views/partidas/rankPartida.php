@@ -21,7 +21,7 @@ LoginController::verificarAcesso([1,2,3]);
 <html lang="en">
 <head>
 
-    <title>a</title>
+    <title>Ranking</title>
     <?php include_once("../../bootstrap/header.php");?>
 
 
