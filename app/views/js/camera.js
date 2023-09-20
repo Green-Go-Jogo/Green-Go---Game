@@ -10,8 +10,12 @@ const constraints = {
         videoElement = document.getElementById('video');
         const stream = await navigator.mediaDevices.getUserMedia({
           video: {
-              facingMode: {
-                  exact: 'user'
+              facingMode: 'environment',
+              width: {
+                  min: 1280
+              },
+              height: {
+                  min: 720
               }
           }
       }).then(stream => videoElement.srcObject = stream)
