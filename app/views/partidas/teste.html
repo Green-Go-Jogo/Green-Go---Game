@@ -4,31 +4,32 @@
     <title>Scanner QR Code</title>
 </head>
 <body>
-    <button onclick="startCamera()">Abrir Câmera</button>
-    <video id="video"></video>
+    <button onclick="listDevices()">Listar Dispositivos</button>
+    <ul id="deviceList"></ul>
+    <video id="video" style="display:none;"></video>
     
     <script src="script.js"></script>
 </body>
 <script>
-  async function startCamera() {
+  async function listDevices() {
     try {
         const devices = await navigator.mediaDevices.enumerateDevices();
-        let videoDeviceId;
+        const deviceListElement = document.getElementById('deviceList');
+        deviceListElement.innerHTML = ''; // Limpa a lista antes de adicionar os novos dispositivos
 
-        for (const device of devices) {
-            if (device.kind === 'videoinput') {
-                // Verifica se o dispositivo é a câmera traseira
-                if (device.label.toLowerCase().includes('traseira') || device.label.toLowerCase().includes('back')) {
-                    videoDeviceId = device.deviceId;
-                    break;
-                }
-            }
-        }
+        devices.forEach(device => {
+            const listItem = document.createElement('li');
+            listItem.textContent = `${device.kind}: ${device.label}`;
+            deviceListElement.appendChild(listItem);
+        });
+    } catch (error) {
+        console.error('Erro ao listar dispositivos:', error);
+    }
+}
 
-        const stream = await navigator.mediaDevices.getUserMedia({ video: { deviceId: { exact: videoDeviceId } } });
-        const videoElement = document.getElementById('video');
-        videoElement.srcObject = stream;
-        videoElement.play();
+async function startCamera() {
+    try {
+        // Restante do código para iniciar a câmera, conforme anteriormente
     } catch (error) {
         console.error('Erro ao acessar a câmera:', error);
     }
