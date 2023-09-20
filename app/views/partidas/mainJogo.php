@@ -37,7 +37,6 @@ $tempo = $partida->getTempoPartida();
     <title>Jogue!</title>
     <?php include_once("../../bootstrap/header.php");?>
     <link rel="stylesheet" href="../csscheer/jogo.css">
-    <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
     <script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
  
 
