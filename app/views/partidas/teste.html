@@ -4,7 +4,7 @@
     <title>Scanner QR Code</title>
 </head>
 <body>
-    <button onclick="listDevices()">Listar Dispositivos</button>
+    <button onclick="startCamera()">Listar Dispositivos</button>
     <ul id="deviceList"></ul>
     <video id="video" style="display:none;"></video>
     
@@ -29,7 +29,24 @@
 
 async function startCamera() {
     try {
-        // Restante do código para iniciar a câmera, conforme anteriormente
+        const devices = await navigator.mediaDevices.enumerateDevices();
+        let videoDeviceId = null;
+
+        for (const device of devices) {
+            if (device.kind === 'videoinput' && (device.label.toLowerCase().includes('traseira') || device.label.toLowerCase().includes('back'))) {
+                videoDeviceId = device.deviceId;
+                break;
+            }
+        }
+
+        if (videoDeviceId) {
+            const stream = await navigator.mediaDevices.getUserMedia({ video: { deviceId: { exact: videoDeviceId } } });
+            const videoElement = document.getElementById('video');
+            videoElement.srcObject = stream;
+            videoElement.play();
+        } else {
+            console.error('Nenhuma câmera traseira encontrada.');
+        }
     } catch (error) {
         console.error('Erro ao acessar a câmera:', error);
     }
