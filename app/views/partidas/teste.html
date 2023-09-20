@@ -1,53 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Scanner QR Code</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leitor de QR Code</title>
+    <style>
+        #preview {
+            width: 100%;
+            height: auto;
+        }
+    </style>
 </head>
 <body>
-    <button onclick="startCamera()">Listar Dispositivos</button>
-    <ul id="deviceList"></ul>
-    <video id="video" ></video>
-    
-    <p id="deviceInfo"></p>
+    <video id="preview"></video>
+    <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
     <script src="script.js"></script>
 </body>
-<script>
-  async function startCamera() {
-    try {
-        const devices = await navigator.mediaDevices.enumerateDevices();
-        let videoDeviceId = null;
-        let videoDeviceKind = null;
-        let videoDeviceLabel = null;
-
-        for (const device of devices) {
-            if (device.kind === 'videoinput' && (device.label.toLowerCase().includes('traseira') || device.label.toLowerCase().includes('back'))) {
-                videoDeviceId = device.deviceId;
-                videoDeviceKind = device.kind;
-                videoDeviceLabel = device.label;
-                break;
-            }
-        }
-
-        if (videoDeviceId) {
-            // Exibir informações sobre a câmera traseira na tela
-            const deviceInfoElement = document.getElementById('deviceInfo');
-            deviceInfoElement.textContent = `Informações da câmera traseira: 
-                                            DeviceId: ${videoDeviceId}, 
-                                            Kind: ${videoDeviceKind}, 
-                                            Label: ${videoDeviceLabel}`;
-
-            const stream = await navigator.mediaDevices.getUserMedia({ video: { deviceId: { exact: videoDeviceId } } });
-            const videoElement = document.getElementById('video');
-            videoElement.srcObject = stream;
-            videoElement.play();
-        } else {
-            console.error('Nenhuma câmera traseira encontrada.');
-        }
-    } catch (error) {
-        console.error('Erro ao acessar a câmera:', error);
-    }
-}
-
-
-</script>
 </html>

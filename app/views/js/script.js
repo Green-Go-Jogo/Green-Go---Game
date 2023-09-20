@@ -1,12 +1,18 @@
-async function startCamera() {
-    try {
-        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-        const videoElement = document.getElementById('video');
-        videoElement.srcObject = stream;
-        videoElement.play();
+document.addEventListener('DOMContentLoaded', function () {
+    let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
 
-        // Adicione o código para processar o vídeo e escanear o QR code aqui
-    } catch (error) {
-        console.error('Erro ao acessar a câmera:', error);
-    }
-}
+    scanner.addListener('scan', function (content) {
+        alert('QR code lido: ' + content);
+        // Aqui você pode manipular o conteúdo lido do QR code como quiser.
+    });
+
+    Instascan.Camera.getCameras().then(function (cameras) {
+        if (cameras.length > 0) {
+            scanner.start(cameras[0]);
+        } else {
+            console.error('Nenhuma câmera encontrada.');
+        }
+    }).catch(function (e) {
+        console.error(e);
+    });
+});
