@@ -116,34 +116,10 @@ class UsuarioDAO {
                 exit;
             }
             else {
-                $this->createSession($usuario);
+                return $usuario;
             }
         }
     
-        public function createSession(Usuario $usuario) {
-
-             session_start();
-             $_SESSION['ID'] = $usuario->getIdUsuario();
-             $_SESSION['NOME'] = $usuario->getNomeUsuario();
-             $_SESSION['TIPO'] = $usuario->getTipoUsuario();
-             $_SESSION['PLANTAS_LIDAS'] = array();
-             $_SESSION['PARTIDA'] = false;
-             $_SESSION['PONTOS'] = 0;
-
-             $tipo = $usuario->getTipoUsuario();
-
-                   
-            if($tipo == 1){
-            header("location: ../home/indexJOG.php");
-            }
-
-            else{
-            $_SESSION['TIPO'] = $usuario->getTipoUsuario();
-            header("location: ../home/indexADM.php");
-            }
-                 
-
-        }
 
     public function manterSessaoADM($nomeADM){
         session_start();

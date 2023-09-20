@@ -15,8 +15,41 @@ class LoginController {
     }
 
     public function logar($usuario) {
-        $this->usuarioDAO->logon($usuario);
+        $usuarioLogin = $this->usuarioDAO->logon($usuario);
+        $this->createSession($usuarioLogin);
     }
+
+    public function createSession(Usuario $usuario) {
+
+        session_start();
+        $_SESSION['ID'] = $usuario->getIdUsuario();
+        $_SESSION['NOME'] = $usuario->getNomeUsuario();
+        $_SESSION['TIPO'] = $usuario->getTipoUsuario();
+        $inPartida = $this->partidaDAO->usuarioInEquipe($_SESSION['ID']);
+        if ($inPartida) {
+            $_SESSION['PARTIDA'] = true;
+            $_SESSION['PONTOS'] = $inPartida->getPontuacaoUsuario();
+            $_SESSION['PLANTAS_LIDAS'] = explode(' | ', $inPartida->getPlantasLidas());
+        } else {
+        $_SESSION['PLANTAS_LIDAS'] = array();
+        $_SESSION['PARTIDA'] = false;
+        $_SESSION['PONTOS'] = 0;
+        }
+        
+        $tipo = $usuario->getTipoUsuario();
+
+              
+       if($tipo == 1){
+       header("location: ../home/indexJOG.php");
+       }
+
+       else{
+       $_SESSION['TIPO'] = $usuario->getTipoUsuario();
+       header("location: ../home/indexADM.php");
+       }
+            
+
+   }
 
     public function entrarPartida($idPartida, $senha) {
         $bool = $this->partidaDAO->enterRoom($idPartida, $senha);

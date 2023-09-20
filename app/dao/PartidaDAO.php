@@ -58,6 +58,7 @@ class PartidaDAO {
             $partida->setIdEquipe($reg['idEquipe']);
             $partida->setDataFim($reg['dataFim']); 
             $partida->setDataInicio($reg['dataInicio']);
+            $partida->setPlantasLidas($reg['plantasLidas']);
             $partida->setPontuacaoEquipe($reg['pontuacaoEquipe']);
             $partida->setPontuacaoUsuario($reg['pontuacao']);
 
