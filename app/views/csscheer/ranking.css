@@ -54,12 +54,40 @@ body {
 
 #lugarzinho {
     background-color: #ffffff;
-    margin-top: -15px;
     font-size: 27px;
     font-family: Poppins-semibold;
-    width: 150px;
+    width: 200px;
     color: #f58c95;
     border-radius: 50px;
     text-decoration: underline dotted;
-    
+}
+
+#lugarzinho1 {
+    margin-top: -15px;
+}
+
+#pontinhos {
+    background-color: #ffffff;
+    color: #C05367;
+    margin-bottom: -15px;
+    font-size: 17px;
+    font-family: Poppins-semibold;
+}
+
+#pontosfinal {
+    font-family: Poppins;
+    color: #ffffff;
+    font-size: 55px;
+    -webkit-text-fill-color: #f0b6bc;
+    -webkit-text-stroke: 2px;
+    -webkit-text-stroke-color: #ffffff;
+  }
+
+  #nomezinho {
+    font-family: Poppins-regular;
+    font-size: 17px;
+    margin-top: 7px;
+    margin-bottom: 7px;
+    text-decoration: underline;
+    color: #ffffff;
 }

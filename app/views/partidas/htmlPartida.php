@@ -421,6 +421,7 @@ Class PartidaHTML {
         echo "<div class='equipeP text-right'>"; // Adicione a classe equipeP aqui
         echo "<div class='text-center'> </div>";
         echo "</div>";
+        echo "<br>";
  
         
         $equipes = $partida->getEquipes();
@@ -434,17 +435,17 @@ Class PartidaHTML {
         foreach ($equipes as $equipe) {
             echo "<div style='background-color: ".$equipe->getCorEquipe()."'>";
             echo "<br>";
-            echo "<a> <div class='text-center' id='lugarzinho'>".$lugar."º Lugar </a></div>";
-            echo "<div style='color: #338a5f;'> <img style='width: 60px;' src='".$equipe->getIconeEquipe()."'/></div>";
-            echo "<div>".$equipe->getNomeEquipe()."</div>";
-            echo "<div>".$equipe->getPontuacaoEquipe()."</div>";
-            echo "<div class='text-center'> Pontos </div>";
+            echo "<a id='lugarzinho'> <div class='d-flex justify-content-center' id='lugarzinho1'>".$lugar."º Lugar </a></div>";
+            echo "<div id='nomezinho'>".$equipe->getNomeEquipe()."</div>";
+            echo "<div style='color: #338a5f;'> <img style='width: 80px;' src='".$equipe->getIconeEquipe()."'/></div>";
+            echo "<div id='pontosfinal'>".$equipe->getPontuacaoEquipe()."</div>";
+            echo "<div class='text-center' id='pontinhos'> Pontos </div>";
+            echo "<br>";
             echo "</div>";
+            echo "<br><br>";
             $lugar += 1;
         }
     
-        echo "</tbody>";
-        echo "</table>";
         echo "</div>"; // Feche a div com a classe zonaP
         echo "</div>";
     }
