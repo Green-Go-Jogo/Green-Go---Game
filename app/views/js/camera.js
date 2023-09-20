@@ -1,24 +1,16 @@
 let videoElement;
 const constraints = {
   video: {
+    width: { ... },
+    height: { ... },
     facingMode: "environment"
   },
 };
     async function startCamera() {
       try {
-        
+        const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
         videoElement = document.getElementById('video');
-        const stream = await navigator.mediaDevices.getUserMedia({
-          video: {
-              facingMode: 'environment',
-              width: {
-                  min: 1280
-              },
-              height: {
-                  min: 720
-              }
-          }
-      }).then(stream => videoElement.srcObject = stream)
+        videoElement.srcObject = stream;
         videoElement.play();
       } catch (error) {
         console.error('Error accessing camera:', error);
