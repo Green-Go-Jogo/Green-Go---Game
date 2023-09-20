@@ -8,26 +8,11 @@
     <ul id="deviceList"></ul>
     <video id="video" ></video>
     
+    <p id="deviceInfo"></p>
     <script src="script.js"></script>
 </body>
 <script>
-  async function listDevices() {
-    try {
-        const devices = await navigator.mediaDevices.enumerateDevices();
-        const deviceListElement = document.getElementById('deviceList');
-        deviceListElement.innerHTML = ''; // Limpa a lista antes de adicionar os novos dispositivos
-
-        devices.forEach(device => {
-            const listItem = document.createElement('li');
-            listItem.textContent = `${device.kind}: ${device.label}`;
-            deviceListElement.appendChild(listItem);
-        });
-    } catch (error) {
-        console.error('Erro ao listar dispositivos:', error);
-    }
-}
-
-async function startCamera() {
+  async function startCamera() {
     try {
         const devices = await navigator.mediaDevices.enumerateDevices();
         let videoDeviceId = null;
@@ -40,6 +25,10 @@ async function startCamera() {
         }
 
         if (videoDeviceId) {
+            // Exibir o deviceId da câmera traseira na tela
+            const deviceInfoElement = document.getElementById('deviceInfo');
+            deviceInfoElement.textContent = `Último deviceId encontrado para a câmera traseira: ${videoDeviceId}`;
+
             const stream = await navigator.mediaDevices.getUserMedia({ video: { deviceId: { exact: videoDeviceId } } });
             const videoElement = document.getElementById('video');
             videoElement.srcObject = stream;
@@ -51,6 +40,7 @@ async function startCamera() {
         console.error('Erro ao acessar a câmera:', error);
     }
 }
+
 
 </script>
 </html>
