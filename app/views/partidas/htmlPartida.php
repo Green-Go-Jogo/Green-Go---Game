@@ -442,9 +442,9 @@ Class PartidaHTML {
         return $pontuacaoB - $pontuacaoA;  // Realizando a comparação
     });
         
-    $lugar = "1";
-        foreach ($equipes as $equipe) {
-            $pontosEquipe = $equipe->getPontuacaoEquipe() !== null ? $equipe->getPontuacaoEquipe() : 0;
+    $lugar = 1;
+        foreach ($equipes as $equipe) {  
+            $pontosEquipe = (int)$equipe->getPontuacaoEquipe();
             echo "<div style='background-color: ".$equipe->getCorEquipe()."'>";
             echo "<br>";
             echo "<a id='lugarzinho'> <div class='d-flex justify-content-center' id='lugarzinho1'>".$lugar."º Lugar </a></div>";
