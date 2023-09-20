@@ -124,15 +124,6 @@ if (isset($_GET['msg'])) {
 <?php include_once("../../bootstrap/footer.php");?>
 </body>
 <script>
-    // Defina o intervalo de tempo para a recarga em milissegundos (por exemplo, a cada 5 segundos)
-    const intervaloRecarga = 5000; // 5000 milissegundos = 5 segundos
-
-    // Função para recarregar a página
-    function recarregarPagina() {
-        location.reload(); // Recarrega a página
-    }
-
-    // Chame a função para recarregar a página a cada intervalo de tempo
-    setInterval(recarregarPagina, intervaloRecarga);
+    
 </script>
 </html>

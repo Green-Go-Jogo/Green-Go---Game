@@ -140,3 +140,18 @@ body {
     margin-top: 15px;
     margin-bottom: 10px;
 }
+
+.camerazinha {
+background-color: #338a5f;
+}
+
+#submitButton {
+    font-family: Poppins-medium;
+    color:#04574d;
+    font-size: 20px;
+    text-decoration: underline;
+}
+
+.submitButton:focus, .submitButton:active{
+    box-shadow: none;
+}

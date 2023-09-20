@@ -13,6 +13,7 @@ Class Partida {
     private $IdEquipe;
     private $Zonas;
     private $Equipes;
+    private $plantasLidas;
     private $Senha;
     private $TempoPartida;
     private $NomePartida;
@@ -403,4 +404,24 @@ Class Partida {
     }
 
 
+
+    /**
+     * Get the value of plantasLidas
+     */ 
+    public function getPlantasLidas()
+    {
+        return $this->plantasLidas;
+    }
+
+    /**
+     * Set the value of plantasLidas
+     *
+     * @return  self
+     */ 
+    public function setPlantasLidas($plantasLidas)
+    {
+        $this->plantasLidas = $plantasLidas;
+
+        return $this;
+    }
 }

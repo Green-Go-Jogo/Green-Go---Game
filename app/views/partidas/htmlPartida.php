@@ -193,22 +193,28 @@ Class PartidaHTML {
         echo "<div class='row row-cols-4'>";
 
         foreach ($partidas as $partida) {
-      
-            if(null !==($partida->getDataFim())) {
-                $Status = "Finalizada";
-                $Open = "END";
-           }
-           else if(null !==($partida->getDataInicio())){
-               $Status = "Em andamento";
-               $Open = "CLOSE";
-           }
-           else {
-               $Status = "Aguardando";
-               $Open = "YES";
-           }
+            
         $numEquipes = count($partida->getEquipes()); 
         $jogadores = $partCont->contarJogadores($partida->getIdPartida());   
         $maxJogadores = $partida->getLimiteJogadores() * $numEquipes;
+            
+            if(null !==($partida->getDataFim())) {
+                $Status = "Finalizada";
+                $Open = "END";
+            }
+            else if(null !==($partida->getDataInicio())){
+                $Status = "Em andamento";
+                $Open = "CLOSE";
+             }
+            else if($maxJogadores == $jogadores) {
+                $Status = "Cheia";
+                $Open = "FULL";
+            }
+            else {
+               $Status = "Aguardando";
+               $Open = "YES";
+            }
+
         echo "<div class='col-md-4'>";
         echo "<br>";
         echo "<div class='card' style='width: 22rem;'>";
@@ -217,7 +223,10 @@ Class PartidaHTML {
         echo "<p class='card-text nome-texto'> Jogadores: ".$jogadores."/".$maxJogadores."</p>";
         echo "<p class='card-text nome-texto' id='status'> Status: ".$Status."</p>";
         
-            if ($Open == "YES") {
+            if($Open == "FULL") {
+                echo "<button type='button' class='btn entrar-btn'>Partida Cheia!</button>";
+            }
+            else if ($Open == "YES") {
             echo "<button type='button' class='btn entrar-btn' data-bs-toggle='modal' data-bs-target='#exampleModal' data-partida-id='".$partida->getIdPartida()."'>Entrar</button>";
             }
             else if($Open == "END"){
