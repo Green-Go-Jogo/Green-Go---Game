@@ -37,6 +37,7 @@ $tempo = $partida->getTempoPartida();
     <title>Jogue!</title>
     <?php include_once("../../bootstrap/header.php");?>
     <link rel="stylesheet" href="../csscheer/jogo.css">
+    <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
     <script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
  
 
@@ -186,7 +187,7 @@ $tempo = $partida->getTempoPartida();
           </button>
         </div>
         <div class="modal-body">
-          <video id="video" width="100%" height="100%" autoplay></video>
+          <video id="preview" width="100%" height="100%" autoplay></video>
         </div>
       </div>
     </div>
