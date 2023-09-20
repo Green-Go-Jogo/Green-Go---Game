@@ -1,14 +1,23 @@
 let videoElement;
-    async function startCamera() {
-      try {
-        const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
-        videoElement = document.getElementById('video');
-        videoElement.srcObject = stream;
-        videoElement.play();
-      } catch (error) {
-        console.error('Error accessing camera:', error);
-      }
+
+async function startCamera() {
+  try {
+    const devices = await navigator.mediaDevices.enumerateDevices();
+    const rearCamera = devices.find(device => device.kind === 'videoinput' && device.label.includes('rear'));
+    
+    if (rearCamera) {
+      const stream = await navigator.mediaDevices.getUserMedia({ video: { deviceId: rearCamera.deviceId } });
+      videoElement = document.getElementById('video');
+      videoElement.srcObject = stream;
+      videoElement.play();
+      console.log('Rear camera started successfully.');
+    } else {
+      console.error('No rear camera found.');
     }
+  } catch (error) {
+    console.error('Error accessing camera:', error);
+  }
+}
     function scanQRCode() {
       const canvasElement = document.createElement('canvas');
       const context = canvasElement.getContext('2d');
