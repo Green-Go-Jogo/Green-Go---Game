@@ -16,18 +16,25 @@
     try {
         const devices = await navigator.mediaDevices.enumerateDevices();
         let videoDeviceId = null;
+        let videoDeviceKind = null;
+        let videoDeviceLabel = null;
 
         for (const device of devices) {
             if (device.kind === 'videoinput' && (device.label.toLowerCase().includes('traseira') || device.label.toLowerCase().includes('back'))) {
                 videoDeviceId = device.deviceId;
+                videoDeviceKind = device.kind;
+                videoDeviceLabel = device.label;
                 break;
             }
         }
 
         if (videoDeviceId) {
-            // Exibir o deviceId da câmera traseira na tela
+            // Exibir informações sobre a câmera traseira na tela
             const deviceInfoElement = document.getElementById('deviceInfo');
-            deviceInfoElement.textContent = `Último deviceId encontrado para a câmera traseira: ${videoDeviceId} ${device.kind}: ${device.label}`;
+            deviceInfoElement.textContent = `Informações da câmera traseira: 
+                                            DeviceId: ${videoDeviceId}, 
+                                            Kind: ${videoDeviceKind}, 
+                                            Label: ${videoDeviceLabel}`;
 
             const stream = await navigator.mediaDevices.getUserMedia({ video: { deviceId: { exact: videoDeviceId } } });
             const videoElement = document.getElementById('video');
