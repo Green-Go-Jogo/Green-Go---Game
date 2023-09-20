@@ -1,18 +1,18 @@
-document.addEventListener('DOMContentLoaded', function () {
-    let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
+const html5QrCode = new Html5Qrcode('reader');
 
-    scanner.addListener('scan', function (content) {
-        alert('QR code lido: ' + content);
-        // Aqui você pode manipular o conteúdo lido do QR code como quiser.
-    });
+function onScanSuccess(qrCodeMessage) {
+    alert(`QR code lido: ${qrCodeMessage}`);
+}
 
-    Instascan.Camera.getCameras().then(function (cameras) {
-        if (cameras.length > 0) {
-            scanner.start(cameras[0]);
-        } else {
-            console.error('Nenhuma câmera encontrada.');
-        }
-    }).catch(function (e) {
-        console.error(e);
-    });
-});
+function onScanError(errorMessage) {
+    console.error(`Erro ao ler QR code: ${errorMessage}`);
+}
+
+html5QrCode.start(
+    { facingMode: 'environment' }, // Use 'user' to use the front camera
+    {
+        qrbox: 250
+    },
+    onScanSuccess,
+    onScanError
+);
