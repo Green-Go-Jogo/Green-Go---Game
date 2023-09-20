@@ -187,7 +187,7 @@ $tempo = $partida->getTempoPartida();
           </button>
         </div>
         <div class="modal-body">
-          <video id="preview" width="100%" height="100%" autoplay></video>
+          <video id="video" width="100%" height="100%" autoplay></video>
         </div>
       </div>
     </div>
