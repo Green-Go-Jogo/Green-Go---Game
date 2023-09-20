@@ -60,6 +60,8 @@ LoginController::verificarAcesso([1,2,3]);
 
 
 </div>
+
+<div class="text-center" style="color: #C05367;"><a style="color: #C05367;" href="https://docs.google.com/forms/d/e/1FAIpQLSeDybrCyrFW4LFDQYvd5aLoFJFDEpB2bza7e840gRXLv03Ipw/viewform">Acesse o nosso formulário de pesquisa!</a></div>
 <br>
 <br>
 <br>
