@@ -27,7 +27,7 @@
         if (videoDeviceId) {
             // Exibir o deviceId da câmera traseira na tela
             const deviceInfoElement = document.getElementById('deviceInfo');
-            deviceInfoElement.textContent = `Último deviceId encontrado para a câmera traseira: ${videoDeviceId}`;
+            deviceInfoElement.textContent = `Último deviceId encontrado para a câmera traseira: ${videoDeviceId} ${device.kind}: ${device.label}`;
 
             const stream = await navigator.mediaDevices.getUserMedia({ video: { deviceId: { exact: videoDeviceId } } });
             const videoElement = document.getElementById('video');
