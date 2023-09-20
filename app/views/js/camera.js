@@ -1,11 +1,5 @@
 let videoElement;
-const constraints = {
-  video: {
-    width: { ... },
-    height: { ... },
-    facingMode: "environment"
-  },
-};
+
     async function startCamera() {
       try {
         const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
