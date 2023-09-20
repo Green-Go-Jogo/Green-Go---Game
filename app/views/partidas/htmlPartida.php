@@ -444,12 +444,13 @@ Class PartidaHTML {
         
     $lugar = "1";
         foreach ($equipes as $equipe) {
+            $pontosEquipe = $equipe->getPontuacaoEquipe() !== null ? $equipe->getPontuacaoEquipe() : 0;
             echo "<div style='background-color: ".$equipe->getCorEquipe()."'>";
             echo "<br>";
             echo "<a id='lugarzinho'> <div class='d-flex justify-content-center' id='lugarzinho1'>".$lugar."º Lugar </a></div>";
             echo "<div id='nomezinho'>".$equipe->getNomeEquipe()."</div>";
             echo "<div style='color: #338a5f;'> <img style='width: 80px;' src='".$equipe->getIconeEquipe()."'/></div>";
-            echo "<div id='pontosfinal'>".$equipe->getPontuacaoEquipe()."</div>";
+            echo "<div id='pontosfinal'>".$pontosEquipe."</div>";
             echo "<div class='text-center' id='pontinhos'> Pontos </div>";
             echo "<br>";
             echo "</div>";
