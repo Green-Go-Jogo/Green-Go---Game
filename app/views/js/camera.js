@@ -9,11 +9,12 @@ const constraints = {
         
         videoElement = document.getElementById('video');
         const stream = await navigator.mediaDevices.getUserMedia({
-          audio: false,
           video: {
-            facingMode: 'environment'
+              facingMode: {
+                  exact: 'user'
+              }
           }
-        }).then(stream => videoElement.srcObject = stream)
+      }).then(stream => videoElement.srcObject = stream)
         videoElement.play();
       } catch (error) {
         console.error('Error accessing camera:', error);
