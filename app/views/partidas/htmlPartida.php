@@ -437,7 +437,9 @@ Class PartidaHTML {
 
     // Classifique as equipes com base na pontuação final (em ordem decrescente)
     usort($equipes, function($a, $b) {
-        return $b->getPontuacaoEquipe() - $a->getPontuacaoEquipe();
+        $pontuacaoA = (int)$a->getPontuacaoEquipe();  // Convertendo para inteiro
+        $pontuacaoB = (int)$b->getPontuacaoEquipe();  // Convertendo para inteiro
+        return $pontuacaoB - $pontuacaoA;  // Realizando a comparação
     });
         
     $lugar = "1";
