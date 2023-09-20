@@ -119,6 +119,8 @@ $tempo = $partida->getTempoPartida();
     justify-content: center; /* Centralizar horizontalmente */
   }
 
+
+
     </style>
 
 </head>
@@ -152,19 +154,20 @@ $tempo = $partida->getTempoPartida();
   </div>
   <br>
   <div class="d-flex justify-content-center">
-  <button class="btn" id="submitButton">Enviar</button>
+  <button class="btn submitButton" id="submitButton">Achei uma planta!</button>
   <br>
+  
   </div>
 
-  
-<div id="result"></div>
+  <div class="text-center"><p id="result" style="color:#C05367"></p></div>
+
   
   <div class="text-center" id="botoes">
 
         <a class="btn" href="zona.php">
         <img src="../../public/botaozona.png" id="zona"> </img></a>
 
-        <button  type="button" class="btn btn-primary" data-toggle="modal" data-target="#qrScannerModal">
+        <button  type="button" class="btn camerazinha" id="camerazinha" data-toggle="modal" data-target="#qrScannerModal">
         <img src="../../public/botaocamera.png" id="camera"> </img> </button>
 
         <?php echo "<a class='btn' href='verEquipe.php?ide=".$idEquipe.'&idp='.$idPartida."'>

@@ -470,4 +470,29 @@ a.excluir:hover {
     .modo-escuro p#nomezinho {
         color: #078071;
     }
+    .modo-escuro button#submitButton {
+        color: #C05367;
+        background-color: transparent;
+    }
+    .modo-escuro p#result {
+        color: #078071 !important;
+    }
+    .modo-escuro div.modal-content {
+        background-color: #121212;
+    }
+    .modo-escuro h5.modal-title {
+        background-color: transparent !important;
+        color: #C05367 !important;
+    }
+
+    .modo-escuro h1#encontrartitulo, .modo-escuro h1#encontrartitulo2 {
+        color: #C05367 !important;
+    }
+    .modo-escuro div#botoes {
+        background-color: var(--verdao);
+        border-color: #078071;
+    }
+    .modo-escuro button#camerazinha {
+        background-color:var(--verdao) !important;
+    }
     
