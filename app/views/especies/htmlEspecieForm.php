@@ -13,7 +13,7 @@ class EspecieHTMLForm {
             if($especie->getIdEspecie() == $idEspecieSelec)
                 echo " selected ";
 
-            echo ">". $especie->getNomePopular()." (Nome Cientifíco: ". $especie->getNomeCientifico(). ")"."</option>";
+            echo ">". $especie->getNomePopular()." (".$especie->getNomeCientifico(). ")"."</option>";
         endforeach;
 
         echo "</select>";
