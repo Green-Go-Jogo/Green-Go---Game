@@ -495,4 +495,10 @@ a.excluir:hover {
     .modo-escuro button#camerazinha {
         background-color:var(--verdao) !important;
     }
+
+    .ck-editor__editable {
+        background-color: pink;
+      }
+      
+      /* Define a cor do texto para branco */
     

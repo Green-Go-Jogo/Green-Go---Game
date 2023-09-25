@@ -20,11 +20,6 @@ $id_usuario = $_POST['id_usuario'];
 //Validar dados
 $errors = array();
 
-if (empty($nomeSocial)) {
-  $errors['Nome_Social'] = "O campo Nome Social é obrigatório.";
-} elseif (!preg_match('/^[a-zA-ZÀ-ÖØ-öø-ÿ0-9\s\-]+$/', $nomeSocial)) {
-  $errors['Nome_Social'] = "O campo Nome Social contém caracteres especiais.";
-}
 
 if (empty($id_zona)) {
   $errors['zona_planta'] = "O campo Zona é obrigatório";
@@ -40,9 +35,6 @@ if (empty($pontuacao)) {
   $errors['Pontuacao'] = "O campo Pontuação deve conter 2 ou menos dígitos!";
 }
 
-if (empty($historia)) {
-  $errors['Historia'] = "O campo História é obrigatório.";
-} 
 
 if (!empty($errors)) {
     $idEditarPlanta = $id_planta; require_once ("editarPlanta.php");

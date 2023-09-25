@@ -94,6 +94,42 @@ LoginController::verificarAcesso([2, 3]);
     height: auto;
 }
 
+div.ck-editor__editable {
+        background-color: #f0b6bc !important;
+        font-family: Poppins-Regular;
+        border: 1px solid #ced4da;
+        color: #FFFFFF;   
+        width: 500px;
+      }
+
+  div.ck-editor__editable strong {
+      color: #c05367;
+      }
+  
+  div.ck-toolbar {
+      background-color: #FFFFFF !important;
+        font-family: Poppins-Regular;
+        border: 1px solid #ced4da;
+        color: #FFFFFF;   
+        width: 500px !important;
+  }
+
+  .ck.ck-editor__main>.ck-editor__editable:not(.ck-focused) {
+    border-color: #c05367;
+}
+
+.ck-rounded-corners .ck.ck-editor__main>.ck-editor__editable, .ck.ck-editor__main>.ck-editor__editable.ck-rounded-corners {
+  border-color: #c05367;
+}
+
+  .modo-escuro div.ck-editor__editable {   
+    background-color: #121212 !important;
+    font-family: Poppins-Regular;
+        border-color: #c05367;
+        color: #FFFFFF;   
+        width: 500px;
+      }
+      
 input[type="file"] {
     display: none;
 }
@@ -183,9 +219,6 @@ input[type="file"] {
                             <label for="formtexto" id="txtPontos">Pontuação:</label>
                             <div class="w-100"> </div>
                             <input type="number" name="Pontuacao" class="form-control" id="txtCodigoForm" aria-describedby="nome-cadastro" value="<?php echo isset($_POST['Pontuacao']) ? $_POST['Pontuacao'] : $planta->getPontos(); ?>">
-                            <div class="w-100"> </div>
-                            
-                            <br>
                             <?php if (isset($errors) && !empty($errors) && isset($errors['Pontuacao'])) { ?>
                             <div class="alert alert-warning"><?php echo $errors['Pontuacao']; ?></div>
                             <?php } ?>
@@ -208,19 +241,21 @@ input[type="file"] {
 
             <div class="container" id="caixadetexto"> <br><br><br>
             <a id="textodescritivo">Descrição:</a> <br><br>
-            <textarea id="editor" name="Historia" class="ckeditor" value=""></textarea>
+            <textarea id="editor" name="Historia" value=""></textarea>
             <script>
-            CKEDITOR.replace('editor', {
-            contentsCss: ['../csscheer/especie.css'],
-            removePlugins: 'elementspath',
-            toolbar: [
-            { name: 'clipboard', items: [ 'Cut', 'Copy' ] },
-            { name: 'undo', items: [ 'Undo', 'Redo' ] },
-            { name: 'basicstyles', items: [ 'Italic', 'Bold', 'Strike', 'Underline' ] },
-            { name: 'links', items: [ 'Link' ] }
-            ]
-            });
-            </script>
+    ClassicEditor
+      .create(document.querySelector('#editor'))
+      .then(editor => {
+        // Obtém o conteúdo retornado por $planta->getHistoria()
+        const historiaContent = `<?php echo $planta->getPlantaHistoria(); ?>`;
+
+        // Define o conteúdo inicial do editor
+        editor.setData(historiaContent);
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  </script>
             <span class="mensagemRetorno" id="retornoCampo1"></span>
             <?php if (isset($errors) && !empty($errors) && isset($errors['Descricao'])) { ?>
             <div class="alert alert-warning"><?php echo $errors['Descricao']; ?></div>
@@ -289,9 +324,6 @@ input[type="file"] {
   });
 
 
-  CKEDITOR.instances.editor1.on('change', function() { 
-    console.log("TEST");
-});
 
 
     function atualizarMensagem(elemento) {
@@ -299,9 +331,7 @@ input[type="file"] {
       xhr.open("POST", "testeajax.php", true);
       xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
-      let valorCampo1 = document.getElementsByName("Nome_Social")[0].value;
       let valorCampo2 = document.getElementsByName("Pontuacao")[0].value;
-      let valorCampo3 = document.getElementsByName("Historia")[0].textContent;
       let valorCampo4 = document.getElementsByName("zona_planta")[0].value;
       let valorCampo5 = document.getElementsByName("especie_planta")[0].value;
 
@@ -314,9 +344,7 @@ input[type="file"] {
         valorCampo = elemento.options[elemento.selectedIndex].value;
       }
 
-      const parametros = "Nome_Social=" + encodeURIComponent(valorCampo1) +
-        "&Pontuacao=" + encodeURIComponent(valorCampo2) +
-        "&Historia=" + encodeURIComponent(valorCampo3) +
+      const parametros = "Pontuacao=" + encodeURIComponent(valorCampo2) +
         "&zona_planta=" + encodeURIComponent(valorCampo4) +
         "&especie_planta=" + encodeURIComponent(valorCampo5);
 
@@ -326,11 +354,9 @@ input[type="file"] {
             
       console.log('Resposta do servidor:', xhr.responseText);
             const respostas = JSON.parse(xhr.responseText);
-            mensagensRetorno[0].textContent = respostas.campo1;
             mensagensRetorno[1].textContent = respostas.campo2;
             mensagensRetorno[2].textContent = respostas.campo3;
             mensagensRetorno[3].textContent = respostas.campo4;
-            mensagensRetorno[4].textContent = respostas.campo5;
           } else {
             resultadoVerificacao.innerHTML = "Erro na requisição.";
           }
