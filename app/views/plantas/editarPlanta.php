@@ -94,6 +94,10 @@ LoginController::verificarAcesso([2, 3]);
     height: auto;
 }
 
+input[type="file"] {
+    display: none;
+}
+
 
 </style>
 <nav>
@@ -189,20 +193,19 @@ LoginController::verificarAcesso([2, 3]);
                             <br><br>
 
                             <div class="col-sm" id="imagemreg">
-                            <div class="form-group" id="imagemreg">
-                            <a id="carregueimagemtexto" > Carregue uma imagem:</a> <br><br>
+
+    <div class="form-group" id="imagemreg">
+                
+                <a id="carregueimagemtexto" > Carregue uma imagem:</a> <br><br>
                 <div class="preview-image">
                 <img class="preview-image__img" data-image-preview />
                 </div><br>
-                <label for="img" class="custom-file-upload"><i class="fa-solid fa-camera"></i></label>
+                <label for="img" class="custom-file-upload"><img src="../../public/cameraicone.png" alt="Ícone" style="position: relative ;top: -9px ;width: 43px; height: 43px;"/></label>
                 <input type="file" id="img" required name="imagem" id="picture__input" data-image-input accept=".png, .jpg, .jpeg"/>
-                <a id="carregueimagemtexto2"> .png .jpg ou .jpeg tamanho mínimo: 2MB tamanho máximo: 5MB </a>
+                <a id="carregueimagemtexto2"> <- Selecione um arquivo para a imagem da planta </a>
                 </div></div>
                 
 
-                
-            <br>
-            <div class="w-100"></div>
             <div class="container" id="caixadetexto"> <br><br><br>
             <a id="textodescritivo">Descrição:</a> <br><br>
             <textarea id="editor" name="Historia" class="ckeditor" value=""></textarea>
