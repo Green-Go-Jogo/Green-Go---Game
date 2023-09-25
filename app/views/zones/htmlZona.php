@@ -79,11 +79,8 @@
     transform: scale(1.05);
     position: relative;
     right: -2rem;
-
+    box-shadow: none;
 }
-
-
-
 
 </style>
 
