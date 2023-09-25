@@ -86,6 +86,43 @@ input[type="file"] {
     cursor: pointer;
 }
 
+  div.ck-editor__editable {
+        background-color: #f0b6bc !important;
+        font-family: Poppins-Regular;
+        border: 1px solid #ced4da;
+        color: #FFFFFF;   
+        width: 500px;
+      }
+
+  div.ck-editor__editable strong {
+      color: #c05367;
+      }
+  
+  div.ck-toolbar {
+      background-color: #FFFFFF !important;
+        font-family: Poppins-Regular;
+        border: 1px solid #ced4da;
+        color: #FFFFFF;   
+        width: 500px !important;
+  }
+
+  .ck.ck-editor__main>.ck-editor__editable:not(.ck-focused) {
+    border-color: #c05367;
+}
+
+.ck-rounded-corners .ck.ck-editor__main>.ck-editor__editable, .ck.ck-editor__main>.ck-editor__editable.ck-rounded-corners {
+  border-color: #c05367;
+}
+
+  .modo-escuro div.ck-editor__editable {   
+    background-color: #121212 !important;
+    font-family: Poppins-Regular;
+        border-color: #c05367;
+        color: #FFFFFF;   
+        width: 500px;
+      }
+      
+  
 
 
 
@@ -199,17 +236,19 @@ input[type="file"] {
             <a id="textodescritivo">Descrição:</a> <br><br>
             <textarea id="editor" name="Historia" value=""></textarea>
             <script>
-            CKEDITOR.replace('editor', {
-            contentsCss: ['../csscheer/planta.css'],
-            removePlugins: 'elementspath',
-            toolbar: [
-            { name: 'clipboard', items: [ 'Cut', 'Copy' ] },
-            { name: 'undo', items: [ 'Undo', 'Redo' ] },
-            { name: 'basicstyles', items: [ 'Italic', 'Bold', 'Strike', 'Underline' ] },
-            { name: 'links', items: [ 'Link' ] }
-            ]
-            });
-            
+              ClassicEditor
+                .create(document.querySelector('#editor'), {
+                fontFamily: {
+                options: [
+                  'default', 'Arial, sans-serif', 'Georgia, serif',
+                  'Impact, Charcoal, sans-serif', 'Tahoma, Geneva, sans-serif',
+                  'Times New Roman, Times, serif', 'Verdana, Geneva, sans-serif',
+                  ]
+                }
+                })
+                .catch(error => {
+                console.error(error);
+                  });
             </script>
             
             <?php if (isset($errors) && !empty($errors) && isset($errors['Descricao'])) { ?>

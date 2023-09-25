@@ -43,6 +43,13 @@
             transform: scale(1.05);
         }
 
+        #nomePlanta2 {
+            background-color: #f58c95 !important;
+            color: #FFFFFF !important;
+            border-radius: 20px;
+            transform: scale(1.05);
+        }
+
         .row.row-cols-4 {
     display: flex;
     flex-wrap: wrap;
@@ -115,12 +122,18 @@ Class PlantaHTML {
         echo "<div class='row row-cols-4'>";
         foreach ($plantas as $planta):
             $especie = $especieCont->buscarPorId($planta->getEspecie()->getIdEspecie());
+            $nomePlanta = $planta->getNomeSocial() !== null ? $planta->getNomeSocial() : $especie->getNomePopular(); 
             echo "<div class='col-md-4'>";
             echo "<br>";
             echo "<div class='card card-darkmode' style=' width: 22rem;'>";
             echo "<a href='visualizarPlanta.php?idp=".$planta->getIdPlanta()."&ide=".$planta->getEspecie()->getIdEspecie()."'><img src='".$planta->getImagemPlanta()."' style='width: 90%; height: 90%; margin-right: 10px; border-radius: 5px;'class='card-img-top mais' alt='...'></a>";
             echo "<div class='card-body'>";
-            echo "<h5 id='nomePlanta' class='card-title nome-soc'>". $planta->getNomeSocial() ."</h5>"."<br>"; 
+            if ($nomePlanta == $planta->getNomeSocial()){
+                echo "<h5 id='nomePlanta' class='card-title nome-soc'>". $nomePlanta ."</h5>"."<br>";
+                }
+            else {
+                echo "<h5 id='nomePlanta2' class='card-title nome-soc'>". $nomePlanta ."</h5>"."<br>";
+                }
             echo "<p class='card-text nome-texto'><a id='codplanta' >Código: ".$planta->getCodNumerico()."<br><br></a>Pontuação: ".$planta->getPontos()."<br>"."</p>";
             echo "<p class='card-text nome-texto' style='color: #338a5f;'>".$planta->getZona()."</p>";
             echo "<p class='card-text nome-texto' id='nomezinho' >".$planta->getUsuario()->getNomeUsuario()."</p>";

@@ -45,9 +45,6 @@ if (empty($pontuacao)) {
   $errors['Pontuacao'] = "O campo Pontuação deve conter 2 ou menos dígitos!";
 }
 
-if (empty($historia)) {
-  $errors['Historia'] = "O campo História é obrigatório.";
-} 
 
 if (!empty($errors)) {
     require_once("adicionarPlanta.php");
