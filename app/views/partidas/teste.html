@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="../../api/html5-qrcode-master/minified/html5-qrcode.min.js"></script>
+    <title>Leitor de QR Code</title>
+    <style>
+    main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    #reader {
+        width: 50%;
+        height: 50%;
+    }
+    #result {
+        text-align: center;
+        font-size: 1.5rem;
+    }
+    </style>
+</head>
+<body>
+    <main>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#qrScannerModal">
+            Abrir Scanner QR
+        </button>
+    </main>
+
+    <!-- Modal -->
+    <div class="modal fade" id="qrScannerModal" tabindex="-1" role="dialog" aria-labelledby="qrScannerModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="qrScannerModalLabel">Leitor de QR Code</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="reader"></div>
+                    <div id="result"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+      let scanner = null;
+
+      function initScanner() {
+          scanner = new Html5QrcodeScanner('reader', {
+              qrbox: {
+                  width: 250,
+                  height: 250,
+              },
+              fps: 20,
+          });
+      }
+
+      function success(result) {
+          window.location.href = result;
+          scanner.clear();
+      }
+
+      function error(err) {
+          console.error(err);
+      }
+
+      $('#qrScannerModal').on('shown.bs.modal', function () {
+          initScanner();
+          scanner.render(success, error);
+      });
+
+      function stopScanner() {
+          if (scanner) {
+              scanner.stop().then(ignore => {
+                  scanner.clear();
+                  scanner = null;
+                  $('#qrScannerModal').modal('hide');
+              }).catch(err => {
+                  console.error(err);
+              });
+          }
+      }
+  </script>
+</body>
+</html>

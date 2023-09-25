@@ -37,7 +37,7 @@ $tempo = $partida->getTempoPartida();
     <title>Jogue!</title>
     <?php include_once("../../bootstrap/header.php");?>
     <link rel="stylesheet" href="../csscheer/jogo.css">
-    <script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+    <script src="../../api/html5-qrcode-master/minified/html5-qrcode.min.js"></script>
  
 
 </head>
@@ -119,7 +119,14 @@ $tempo = $partida->getTempoPartida();
     justify-content: center; /* Centralizar horizontalmente */
   }
 
-
+  #reader {
+        width: 100%;
+        height: 100%;
+    }
+    #result {
+        text-align: center;
+        font-size: 1.5rem;
+    }
 
     </style>
 
@@ -176,21 +183,25 @@ $tempo = $partida->getTempoPartida();
         </div>
 
       <!-- MODAL DA CAMERA -->
-      <div class="modal fade" id="qrScannerModal" tabindex="-1" role="dialog" aria-labelledby="qrScannerModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="qrScannerModalLabel">Scanner de QR Code</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+    <div class="modal fade" id="qrScannerModal" tabindex="-1" role="dialog" aria-labelledby="qrScannerModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="qrScannerModalLabel">Leitor de QR Code</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="reader"></div>
+                    <div id="result"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                </div>
+            </div>
         </div>
-        <div class="modal-body">
-          <video id="video" width="100%" height="100%" autoplay></video>
-        </div>
-      </div>
     </div>
-  </div>
 <br>
 <br>
 <br>

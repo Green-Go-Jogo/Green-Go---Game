@@ -437,17 +437,20 @@ Class PartidaHTML {
 
     // Classifique as equipes com base na pontuação final (em ordem decrescente)
     usort($equipes, function($a, $b) {
-        return $b->getPontuacaoEquipe() - $a->getPontuacaoEquipe();
+        $pontuacaoA = (int)$a->getPontuacaoEquipe();  // Convertendo para inteiro
+        $pontuacaoB = (int)$b->getPontuacaoEquipe();  // Convertendo para inteiro
+        return $pontuacaoB - $pontuacaoA;  // Realizando a comparação
     });
         
-    $lugar = "1";
-        foreach ($equipes as $equipe) {
+    $lugar = 1;
+        foreach ($equipes as $equipe) {  
+            $pontosEquipe = (int)$equipe->getPontuacaoEquipe();
             echo "<div style='background-color: ".$equipe->getCorEquipe()."'>";
             echo "<br>";
             echo "<a id='lugarzinho'> <div class='d-flex justify-content-center' id='lugarzinho1'>".$lugar."º Lugar </a></div>";
             echo "<div id='nomezinho'>".$equipe->getNomeEquipe()."</div>";
             echo "<div style='color: #338a5f;'> <img style='width: 80px;' src='".$equipe->getIconeEquipe()."'/></div>";
-            echo "<div id='pontosfinal'>".$equipe->getPontuacaoEquipe()."</div>";
+            echo "<div id='pontosfinal'>".$pontosEquipe."</div>";
             echo "<div class='text-center' id='pontinhos'> Pontos </div>";
             echo "<br>";
             echo "</div>";
