@@ -86,6 +86,16 @@ class UsuarioDAO {
         return $usuarios;
     }
 
+    public function findUserByType($tipo) {
+        $conn = conectar_db();
+        $sql = UsuarioDAO::SQL_USUARIO . 
+                " WHERE u.tipoUsuario = ?";
+        $stm = $conn->prepare($sql);    
+        $stm->execute([$tipo]); 
+        $result = $stm->fetchAll();
+        return $this->mapUsuarios($result);
+    }
+
     public function findByLoginSenha(string $login, string $senha) {
         $conn = conectar_db();
         $sql = UsuarioDAO::SQL_USUARIO . " WHERE (email = ? OR loginUsuario = ?)";

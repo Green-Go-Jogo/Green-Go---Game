@@ -43,6 +43,10 @@ class UsuarioController {
     public function excluir($usuario) {
         $this->usuarioDAO->delete($usuario);
     }
+    public function buscarUsuarioPorTipo($tipo) {
+        return $this->usuarioDAO->findUserByType($tipo);
+        
+    }
 }
 
 ?>

@@ -1,10 +1,11 @@
 <?php
-class Especie {
+class Especie implements JsonSerializable {
 	private $IdEspecie;
 	private $ImagemEspecie;
 	private $Descricao;
 	private $NomePopular;
 	private $NomeCientifico;
+
 	private $Frutifera;
 	private $Toxidade;
 	private $Exotica;
@@ -12,6 +13,26 @@ class Especie {
 	private $Medicinal;
 	private $Comestivel;
 	
+	private $caracteristicas = array();
+
+	public function jsonSerialize() {
+        return
+        [
+            'IdEspecie' => $this->IdEspecie,
+            'ImagemEspecie' => $this->ImagemEspecie,
+            'Descricao' => $this->Descricao,
+            'NomePopular' => $this->NomePopular,
+			'NomeCientifico' => $this->NomeCientifico,
+
+            'Frutifera' => $this->Frutifera,
+            'Toxidade' => $this->Toxidade,
+            'Exotica' => $this->Exotica,
+			'Raridade' => $this->Raridade,
+            'Medicinal' => $this->Medicinal,
+            'Comestivel' => $this->Comestivel,
+			'caracteristicas' => $this->caracteristicas
+        ];
+    }
 
 	//Construtor da classe
     public function __construct($id="",$nomep="", $nomec="")
@@ -122,6 +143,7 @@ class Especie {
 	public function setFrutifera($Frutifera)
 	{
 		$this->Frutifera = $Frutifera;
+		$this->setCaracteristicas("frutifera");
 
 		return $this;
 	}
@@ -142,7 +164,7 @@ class Especie {
 	public function setToxidade($Toxidade)
 	{
 		$this->Toxidade = $Toxidade;
-
+		$this->setCaracteristicas("toxicidade");
 		return $this;
 	}
 
@@ -162,6 +184,7 @@ class Especie {
 	public function setExotica($Exotica)
 	{
 		$this->Exotica = $Exotica;
+		$this->setCaracteristicas("exotica");
 
 		return $this;
 	}
@@ -182,6 +205,7 @@ class Especie {
 	public function setRaridade($Raridade)
 	{
 		$this->Raridade = $Raridade;
+		$this->setCaracteristicas("raridade");
 
 		return $this;
 	}
@@ -202,6 +226,7 @@ class Especie {
 	public function setMedicinal($Medicinal)
 	{
 		$this->Medicinal = $Medicinal;
+		$this->setCaracteristicas("medicinal");
 
 		return $this;
 	}
@@ -222,7 +247,23 @@ class Especie {
 	public function setComestivel($Comestivel)
 	{
 		$this->Comestivel = $Comestivel;
-
+		$this->setCaracteristicas("comestivel");
 		return $this;
+	}
+
+	/**
+	 * Set the value of caracteristicas
+	 *
+	 * @return  self
+	 */ 
+	public function getCaracteristicas()
+	{
+		return $this->caracteristicas;
+	}
+
+	public function setCaracteristicas($Caracteristica)
+	{
+		$this->caracteristicas[] = $Caracteristica;
+		return $this->caracteristicas;
 	}
 }

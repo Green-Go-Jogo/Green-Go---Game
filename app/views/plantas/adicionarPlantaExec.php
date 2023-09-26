@@ -30,6 +30,9 @@ move_uploaded_file($imagem["tmp_name"], $caminho_imagem);
 //Validar dados
 $errors = array();
 
+if (empty($id_zona)) {
+  $errors['zona_planta'] = "O campo Zona é obrigatório";
+} 
 
 if (empty($id_zona)) {
   $errors['zona_planta'] = "O campo Zona é obrigatório";

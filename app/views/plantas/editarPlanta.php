@@ -240,7 +240,7 @@ input[type="file"] {
                 
 
             <div class="container" id="caixadetexto"> <br><br><br>
-            <a id="textodescritivo">Descrição:</a> <br><br>
+            <a id="textodescritivo">História da Planta:</a> <br><br>
             <textarea id="editor" name="Historia" value=""></textarea>
             <script>
     ClassicEditor

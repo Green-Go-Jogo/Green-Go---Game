@@ -2,6 +2,9 @@
 include_once(__DIR__."/../../connection/Connection.php");
 include_once(__DIR__."/../../controllers/PlantaController.php");
 include_once(__DIR__."/htmlPlanta.php");
+include_once(__DIR__."/../../controllers/EspecieController.php");
+include_once(__DIR__."/../../models/EspecieModel.php");
+include_once(__DIR__."/htmlEspecie.php");
 ?>
 <?php include_once("../../controllers/LoginController.php");
 LoginController::manterUsuario();
@@ -36,13 +39,33 @@ LoginController::verificarAcesso([2, 3]);
 </div><br><br><br>
         
 
+<div id="filtroParent">
+    <label> Buscar usuário</label>
+    <input type="text" name="buscar" id="buscar" oninput="findPlantas()">
+    <button id="filtroButton" onclick="openFiltros()"> filtros </button>
+    
+    </div>
+    <div>
         <?php
+        if(isset($_SESSION['filtrado'])) {
+            if($_SESSION['filtrado'] != null) {
+                $plantas = $_SESSION['filtrado'];
+            }
+        }
+        else {
             $plantaCont = new PlantaController();
             $plantas = $plantaCont->listar(); 
-            
-            PlantaHTML::desenhaPlanta($plantas);
+        }
+            if(isset($plantas) != null) {
+                PlantaHTML::desenhaPlanta($plantas);
+            }
+            else {
+                echo "<p>NÃO HÁ PLANTAS DE ESTA ESPÉCIE</p>";
+            }
         ?>
         </div>  
+
+</div>
 
 </div>
 <?php include_once("../../bootstrap/footer.php");?>
@@ -102,6 +125,7 @@ LoginController::verificarAcesso([2, 3]);
 }
 </script>
 
+<script src="../js/ajax/plantaFilter.js"> </script> 
 
 </body>
 

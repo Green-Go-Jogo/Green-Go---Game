@@ -1,7 +1,7 @@
 <?php 
 
 
-    class Usuario {
+    class Usuario implements JsonSerializable{
 
         private $idUsuario;
         private $nomeUsuario;
@@ -12,6 +12,20 @@
         private $escolaridade;
         private $tipoUsuario;
 
+        #[\ReturnTypeWillChange]
+        public function jsonSerialize() {
+            return
+            [
+                'idUsuario' => $this->idUsuario,
+                'nomeUsuario' => $this->nomeUsuario,
+                'email' => $this->email,
+                'login' => $this->login,
+                'senha' =>$this->senha,
+                'genero' => $this->genero,
+                'escolaridade' => $this->escolaridade,
+                'tipoUsuario' => $this->tipoUsuario
+            ];
+        }
          //Construtor da classe
     public function __construct($id="",$nome="")
     {
