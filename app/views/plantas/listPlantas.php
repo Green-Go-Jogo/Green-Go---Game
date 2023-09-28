@@ -71,6 +71,7 @@ LoginController::verificarAcesso([2, 3]);
 <?php include_once("../../bootstrap/footer.php");?>
 <script>
     function prepararImpressao(nomeSocial, nomePopular, nomeCientifico, codNumerico, qrCodeImagem) {
+
     if (nomeSocial) {
         // Define os valores no modal
         document.getElementById('conteudoParaImpressao').innerHTML = `

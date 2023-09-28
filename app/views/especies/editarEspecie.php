@@ -89,10 +89,46 @@ $frutifera = $especie->getFrutifera();
 </head>
 
 <style>
-    .preview-image__img {
-    width: 200px; 
+    .preview-image__img, #imgatual {
+    width: 400px; 
     height: auto;
 }
+
+div.ck-editor__editable {
+        background-color: #f0b6bc !important;
+        font-family: Poppins-Regular;
+        border: 1px solid #ced4da;
+        color: #FFFFFF;   
+        width: 500px;
+      }
+
+  div.ck-editor__editable strong {
+      color: #c05367;
+      }
+  
+  div.ck-toolbar {
+      background-color: #FFFFFF !important;
+        font-family: Poppins-Regular;
+        border: 1px solid #ced4da;
+        color: #FFFFFF;   
+        width: 500px !important;
+  }
+
+  .ck.ck-editor__main>.ck-editor__editable:not(.ck-focused) {
+    border-color: #c05367;
+}
+
+.ck-rounded-corners .ck.ck-editor__main>.ck-editor__editable, .ck.ck-editor__main>.ck-editor__editable.ck-rounded-corners {
+  border-color: #c05367;
+}
+
+  .modo-escuro div.ck-editor__editable {   
+    background-color: #121212 !important;
+    font-family: Poppins-Regular;
+        border-color: #c05367;
+        color: #FFFFFF;   
+        width: 500px
+  }
 
 input[type="file"] {
     display: none;
@@ -193,30 +229,34 @@ input[type="file"] {
                 <div class="col-sm" id="imagemreg">
 
 <div class="form-group" id="imagemreg">
-            
-            <a id="carregueimagemtexto" > Carregue uma imagem:</a> <br><br>
+            <a id="carregueimagemtexto" > Imagem Atual:</a> <br><br>
+            <div class="preview-image">
+            <input type="hidden" name='imagemAtual' value="<?php echo $especie->getImagemEspecie() ?>">
+            <img id="imgatual" src="<?php echo $especie->getImagemEspecie() ?>" />
+            </div><br>
+            <a id="carregueimagemtexto" > Carregue uma imagem para alterar a atual:</a> <br><br>
             <div class="preview-image">
             <img class="preview-image__img" data-image-preview />
             </div><br>
             <label for="img" class="custom-file-upload"><img src="../../public/cameraicone.png" alt="Ícone" style="position: relative ;top: -9px ;width: 43px; height: 43px;"/></label>
-            <input type="file" id="img" required name="imagem" id="picture__input" data-image-input accept=".png, .jpg, .jpeg"/>
+            <input type="file" id="img" name="imagem" id="picture__input" data-image-input accept=".png, .jpg, .jpeg"/>
             <a id="carregueimagemtexto2"> <- Selecione um arquivo para a imagem da espécie </a>
             </div></div>
 
                             <div class="container" id="caixadetexto"> <br><br><br>  
                             <a id="textodescritivo">Descrição:</a> <br><br>
-                            <textarea id="editor" name="Descricao" value="<?php echo $especie->getDescricao()?>"></textarea>
+                            <textarea id="editor" name="Descricao" value=""></textarea>
                             <script>
-                            CKEDITOR.replace('editor', {
-                            contentsCss: ['../csscheer/especie.css'],
-                            removePlugins: 'elementspath',
-                            toolbar: [
-                            { name: 'clipboard', items: [ 'Cut', 'Copy' ] },
-                            { name: 'undo', items: [ 'Undo', 'Redo' ] },
-                            { name: 'basicstyles', items: [ 'Italic', 'Bold', 'Strike', 'Underline' ] },
-                            { name: 'links', items: [ 'Link' ] }
-                            ]
-                            });
+                                ClassicEditor
+                                    .create(document.querySelector('#editor'))
+                                    .then(editor => {
+                                        const historiaContent = `<?php echo $especie->getDescricao()?>`;
+
+                                        editor.setData(historiaContent);
+                                        })
+                                        .catch(error => {
+                                        console.error(error);
+                                    });
                             </script>
                             <?php if (isset($errors) && !empty($errors) && isset($errors['Descricao'])) { ?>
                             <div class="alert alert-warning"><?php echo $errors['Descricao']; ?></div>

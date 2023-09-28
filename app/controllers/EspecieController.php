@@ -30,6 +30,10 @@ class EspecieController {
     public function excluir($especie) {
         $this->especieDAO->delete($especie);
     }
+
+    public function apagarImagem($idEspecie) {
+        $this->especieDAO->deleteImage($idEspecie);
+    }
 }
 
 ?>

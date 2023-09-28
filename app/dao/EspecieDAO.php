@@ -99,7 +99,16 @@ class EspecieDAO {
     $stmt = $conn->prepare($sql);
     $stmt->execute([$especie->getIdEspecie()]);
 }
+
+public function deleteImage($idEspecie) {
     
+    $especie = $this->findById($idEspecie);
+    
+    $img_del = $especie->getImagemEspecie();
+    if (file_exists($img_del)) {
+        unlink($img_del);
+    }
+}
 }
 
 ?>

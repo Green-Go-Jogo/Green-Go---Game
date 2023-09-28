@@ -139,7 +139,7 @@ Class PlantaHTML {
             echo "<p class='card-text nome-texto'><a id='codplanta' >Código: ".$planta->getCodNumerico()."<br><br></a>Pontuação: ".$planta->getPontos()."<br>"."</p>";
             echo "<p class='card-text nome-texto' style='color: #338a5f;'>".$planta->getZona()."</p>";
             echo "<p class='card-text nome-texto' id='nomezinho' >".$planta->getUsuario()->getNomeUsuario()."</p>";
-            echo "<button type='button' id='imprimas' data-toggle='modal' data-target='#imprimirModal' onclick='prepararImpressao(\"".$planta->getNomeSocial()."\", \"".$especie->getNomePopular()."\", \"".$especie->getNomeCientifico()."\", \"".$planta->getCodNumerico()."\", \"".$planta->getQrCode()."\")'>Imprimir</button>";
+            echo "<button type='button' id='imprimas' data-toggle='modal' data-target='#imprimirModal' onclick='prepararImpressao(\"".htmlspecialchars(addslashes($planta->getNomeSocial()), ENT_QUOTES)."\", \"".htmlspecialchars(addslashes($especie->getNomePopular()), ENT_QUOTES)."\", \"".htmlspecialchars(addslashes($especie->getNomeCientifico()), ENT_QUOTES)."\", \"".htmlspecialchars(addslashes($planta->getCodNumerico()), ENT_QUOTES)."\", \"".htmlspecialchars(addslashes($planta->getQrCode()), ENT_QUOTES)."\")'>Imprimir</button>";
             echo "<br>";
             echo "<br>";
             echo "<a href='editarPlanta.php?id=".$planta->getIdPlanta()."'  id='editas'>Editar</a>";
