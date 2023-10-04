@@ -1,13 +1,23 @@
 <?php
 #Arquivo com a declaração da classe Stand
 
-class Zona {
+class Zona implements JsonSerializable{
 
     private $IdZona;
     private $NomeZona;
     private $QntdPlanta;
     private $PontosTotais;
-
+   
+    #[\ReturnTypeWillChange]
+    public function jsonSerialize() {
+        return
+        [
+            'IdZona' => $this->IdZona,
+            'NomeZona' => $this->NomeZona,
+            'QntdPlanta' => $this->QntdPlanta,
+            'PontosTotais' => $this->PontosTotais
+        ];
+    }
     //Construtor da classe
     public function __construct($id="",$nome="", $qntP="", $pontosT=0)
     {

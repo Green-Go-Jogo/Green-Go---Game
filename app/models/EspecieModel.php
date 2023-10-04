@@ -15,6 +15,7 @@ class Especie implements JsonSerializable {
 	
 	private $caracteristicas = array();
 
+	#[\ReturnTypeWillChange]
 	public function jsonSerialize() {
         return
         [
