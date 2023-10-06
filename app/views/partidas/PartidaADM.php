@@ -51,15 +51,21 @@ $loginCont->checarAdmPartida($idPartida, $_SESSION['ID']);
 
 
     
-  <h1 class="text-center primeirotextoreg">PARTIDAS</h1>
+  <h1 class="text-center primeirotextoreg">SALA DE CONTROLE</h1>
   
-  <div class="container">
-  <br><br><br>
-  <?php echo "<a href='editarPartida.php?id=".$idPartida."' class='btn btn-primary editar'>Editar</a>";?>
+  <div class="text-center">
+
+  <button class="btn timer"> <i class="fa-regular fa-circle-play" id="play"> </i> </button>
+  
+  <button class="btn timer"> <i class="fa-regular fa-circle-pause" id="pause"> </i> </button>
+
+  <a class="text-center" id="timer"><?php echo $tempo.":00"; ?> </a> </div> </div>
+
   <br><br>
-  <button class="btn timer" id="startButton" onclick="startTimer(<?php echo $tempo; ?>)">Iniciar Timer</button>
-  
-  <br><br><div class="circulo" id="timer"><?php echo $tempo.":00"; ?></div>
+  <div>
+  <?php echo "<a href='editarPartida.php?id=".$idPartida."' class='btn btn-primary editar text-center'>Editar</a>";?>
+  <br><br>
+
     </div>
 
         <?php 
