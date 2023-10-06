@@ -1,7 +1,8 @@
 <?php
 
-Class Planta {
+Class Planta implements JsonSerializable{
 
+    private $NomePlantaGenerico;
     private $IdPlanta;
     private $NomeSocial;
     private $Pontos;
@@ -14,6 +15,23 @@ Class Planta {
     private $Usuario;
     private $idEspecie;
 
+    #[\ReturnTypeWillChange]
+    public function jsonSerialize() {
+        return
+        [
+            'IdPlanta' => $this->IdPlanta,
+            'NomePlanta' => $this->NomePlantaGenerico,
+            'NomeSocial' => $this->NomeSocial,
+            'Pontos' => $this->Pontos,
+            'QrCode' => $this->QrCode,
+            'CodNumerico' =>$this->CodNumerico,
+            'Especie' => $this->Especie,
+            'ImagemPlanta' => $this->ImagemPlanta,
+            'zona' => $this->zona,
+            'PlantaHistoria' => $this->PlantaHistoria,
+            'Usuario' => $this->Usuario
+        ];
+    }
 
     public function __toString() {
         return $this->ImagemPlanta;
@@ -234,6 +252,26 @@ Class Planta {
     public function setIdEspecie($idEspecie)
     {
         $this->idEspecie = $idEspecie;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of NomePlantaGenerico
+     */ 
+    public function getNomePlantaGenerico()
+    {
+        return $this->NomePlantaGenerico;
+    }
+
+    /**
+     * Set the value of NomePlantaGenerico
+     *
+     * @return  self
+     */ 
+    public function setNomePlantaGenerico($NomePlantaGenerico)
+    {
+        $this->NomePlantaGenerico = $NomePlantaGenerico;
 
         return $this;
     }

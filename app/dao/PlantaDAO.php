@@ -1,4 +1,7 @@
 <?php
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL);
 #Classe DAO para o model de personagem
 
 #Classe DAO para o model de Personagem
@@ -28,7 +31,9 @@ class PlantaDAO {
             $planta->setPlantaHistoria($reg['historia']);
             $planta->setQrCode($reg['codQR']);
             $planta->setIdEspecie($reg['idEspecie']);
-
+            if(isset($reg['nomePlanta'])) {
+                $planta->setNomePlantaGenerico($reg['nomePlanta']);
+            }
             $especie = new Especie($reg['idEspecie'], $reg['nomePop']);
             $planta->setEspecie($especie);
 
@@ -193,6 +198,65 @@ class PlantaDAO {
         unlink($img_del);
     }
 }
+
+public function filter(Array $caracteristics, string $search, array $ADMs) {
+    $conn = conectar_db();
+    $sql = "SELECT p.*, e.idEspecie, e.nomePop, z.nomeZona, u.idUsuario, u.nomeUsuario, COALESCE(NULLIF(p.nomeSocial, ''), e.nomePop) AS nomePlanta FROM planta p "
+    . "JOIN zona z ON z.idZona = p.idZona JOIN especie e ON e.idEspecie = p.idEspecie JOIN usuario u ON u.idUsuario = p.idUsuario WHERE ";
+    if(! empty($caracteristics)) {
+        $columns = count($caracteristics);
+    
+        $j = 0;
+        for($i = 0; $i < $columns; $i++) {
+            if($i > 0) {
+                $sql .= " AND ";
+            }
+
+            $sql .= "e.".$caracteristics[$j] . " = 1";
+            $j++;
+        }
+    }
+
+    if(! empty($ADMs)) {
+        
+        if(! empty($caracteristics)) {
+            $sql .= " AND";
+        }
+        $sql .= " (";
+        $columns = count($ADMs);
+    
+        $j = 0;
+        for($i = 0; $i < $columns; $i++) {
+            if($i > 0) {
+                $sql .= " OR ";
+            }
+
+            $sql .= " u.nomeUsuario = '" . $ADMs[$j] . "'";
+            $j++;
+        }
+        $sql .= ")";
+    }
+
+    if($search != "") {
+        if(! empty($caracteristics) or ! empty($ADMs)) {
+            $sql .= " AND ";
+        }
+        $sql .= " COALESCE(NULLIF(p.nomeSocial, ''), e.nomePop) LIKE '%".$search."%'";
+    }
+    
+    $sql .= " ORDER BY nomePlanta;";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    $result = $stmt->fetchAll();
+    try {
+        return $this->mapPlantas($result);
+    } catch (Exception $e) {
+        echo "fuck";
+    }
+    
+}
+
 }
 
 ?>

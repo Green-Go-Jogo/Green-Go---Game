@@ -4,6 +4,87 @@
 
 <style>
 
+#labelBuscar {
+    font-family: Poppins-semibold;
+    font-size: 16px;
+    color: #C05367;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+#buscar {
+    background-color: #f0b6bc;
+    color: #ffffff;
+    font-family: Poppins-semibold;
+    margin-bottom: 25px;
+    border-radius: 5px;
+    width: 160px;
+    height: auto;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+}
+
+#filtroButton, #filtroAdmButton  {
+    margin-bottom: -10px;
+    margin-left: 20px;
+    color: #FFFFFF;;
+    background-color: #338A5F;
+    font-family: Poppins-regular;
+    border-color: #f0b6bc;
+    width: 230px;
+    height: auto;
+}
+
+.adms {
+    margin-left: 20px;
+    margin-top: 15px;
+    font-family: Poppins-semibold;
+    color: #C05367;
+    font-size: 14px;
+}
+
+div.adms button.btn {
+    background-color: #C05367;
+    color: #FFFFFF;
+    font-family: Poppins-semibold;
+}
+
+label.filtrokids {
+    margin-left: 5px;
+    font-family: Poppins-semibold;
+    font-size: 14px;
+    color: #C05367;
+}
+
+select {
+    background-color: #f0b6bc;
+    color: #ffffff;
+    font-family: Poppins-semibold;
+    margin-left: 20px !important;
+    border-radius: 5px;
+    width: 160px;
+    height: auto;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+}
+
+/* Estilo geral para os checkboxes e labels */
+input.filtroKids {
+    margin-left: 20px;
+}
+
+/* Estilo para os checkboxes com base na característica "Cor" */
+input.filtrokidstoxicidade:checked::after {
+    color: red;
+    background-color: #04574d;
+}
+
+/* Estilo para os checkboxes com base na característica "Tamanho" */
+input.filtrokidsfrutifera {
+    font-size: 20px;
+}
+
+
 #botaomais {
     transform: scale(1.05);
     position: relative;
@@ -121,11 +202,11 @@ Class PlantaHTML {
         <path d='M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01-.622-.636zM8.5 6v1.5H10a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 1 0z'/>
         </svg> </div>
     </a>";
-        echo "<div class='row row-cols-4'>";
+        echo "<div id='pai' class='row row-cols-4'>";
         foreach ($plantas as $planta):
             $especie = $especieCont->buscarPorId($planta->getEspecie()->getIdEspecie());
             $nomePlanta = !empty($planta->getNomeSocial()) ? 1 : 0;
-            echo "<div class='col-md-4'>";
+            echo "<div class='card-kid col-md-4'>";
             echo "<br>";
             echo "<div class='card card-darkmode' style=' width: 22rem;'>";
             echo "<a href='visualizarPlanta.php?idp=".$planta->getIdPlanta()."&ide=".$planta->getEspecie()->getIdEspecie()."'><img src='".$planta->getImagemPlanta()."' style='width: 90%; height: 90%; margin-right: 10px; border-radius: 5px;'class='card-img-top mais' alt='...'></a>";
@@ -136,10 +217,10 @@ Class PlantaHTML {
             else {
                 echo "<h5 id='nomePlanta2' class='card-title nome-soc'>". $especie->getNomePopular()."</h5>"."<br>";
                 }
-            echo "<p class='card-text nome-texto'><a id='codplanta' >Código: ".$planta->getCodNumerico()."<br><br></a>Pontuação: ".$planta->getPontos()."<br>"."</p>";
+            echo "<p class='card-text nome-texto'><a id='codplanta'>Código: ".$planta->getCodNumerico()."<br><br></a>Pontuação: ".$planta->getPontos()."<br>"."</p>";
             echo "<p class='card-text nome-texto' style='color: #338a5f;'>".$planta->getZona()."</p>";
             echo "<p class='card-text nome-texto' id='nomezinho' >".$planta->getUsuario()->getNomeUsuario()."</p>";
-            echo "<button type='button' id='imprimas' data-toggle='modal' data-target='#imprimirModal' onclick='prepararImpressao(\"".$planta->getNomeSocial()."\", \"".$especie->getNomePopular()."\", \"".$especie->getNomeCientifico()."\", \"".$planta->getCodNumerico()."\", \"".$planta->getQrCode()."\")'>Imprimir</button>";
+            echo "<button type='button' id='imprimas' data-toggle='modal' data-target='#imprimirModal' onclick='prepararImpressao(\"".htmlspecialchars(addslashes($planta->getNomeSocial()), ENT_QUOTES)."\", \"".htmlspecialchars(addslashes($especie->getNomePopular()), ENT_QUOTES)."\", \"".htmlspecialchars(addslashes($especie->getNomeCientifico()), ENT_QUOTES)."\", \"".htmlspecialchars(addslashes($planta->getCodNumerico()), ENT_QUOTES)."\", \"".htmlspecialchars(addslashes($planta->getQrCode()), ENT_QUOTES)."\")'>Imprimir</button>";
             echo "<br>";
             echo "<br>";
             echo "<a href='editarPlanta.php?id=".$planta->getIdPlanta()."'  id='editas'>Editar</a>";

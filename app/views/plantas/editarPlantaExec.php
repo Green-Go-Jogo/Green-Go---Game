@@ -13,6 +13,7 @@ $Cod_Numerico = $_POST['Cod_Numerico'];
 $pontuacao = $_POST['Pontuacao'];
 $historia = $_POST['Historia'];
 $imagem = $_FILES['imagem'];
+$imagemAtual = $_POST['imagemAtual'];
 $id_zona = $_POST['zona_planta'];
 $id_especie = $_POST['especie_planta'];
 $id_usuario = $_POST['id_usuario'];
@@ -43,25 +44,31 @@ if (!empty($errors)) {
 
 
 //Criar o objeto planta
-
-
-//Tratar a imagem
-$extensao = pathinfo($imagem['name'], PATHINFO_EXTENSION);
-$nome_imagem = md5(uniqid($imagem['name'])).".".$extensao;
-$caminho_imagem = "../../public/plantas/" . $nome_imagem;
-move_uploaded_file($imagem["tmp_name"], $caminho_imagem);
-
-
 $plantaCont = new PlantaController();
-$plantaCont->apagarImagem($id_planta);
+$planta = new Planta();
 
-$planta = new Planta();    
+if ($imagem['error'] === UPLOAD_ERR_NO_FILE) {
+  $planta->setImagemPlanta($imagemAtual);
+} else {
+  $plantaCont->apagarImagem($id_planta);
+  // Um arquivo foi enviado, você pode processá-lo aqui
+  $extensao = pathinfo($imagem['name'], PATHINFO_EXTENSION);
+  $nome_imagem = md5(uniqid($imagem['name'])).".".$extensao;
+  $caminho_imagem = "../../public/plantas/" . $nome_imagem;
+  move_uploaded_file($imagem["tmp_name"], $caminho_imagem);
+
+  $planta->setImagemPlanta($caminho_imagem);
+}
+
+
+
+    
 $planta->setIdPlanta($id_planta);
 $planta->setNomeSocial($nomeSocial);
 $planta->setCodNumerico($Cod_Numerico);
 $planta->setPontos($pontuacao);
 $planta->setPlantaHistoria($historia);
-$planta->setImagemPlanta($caminho_imagem);
+
 
 $zona = new Zona($id_zona);
 $planta->setZona($zona);

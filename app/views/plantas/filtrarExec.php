@@ -1,6 +1,5 @@
 <?php
 
-
 include_once(__DIR__."/../../models/EspecieModel.php");
 include_once(__DIR__."/../../models/ZonaModel.php");
 include_once(__DIR__."/../../models/PlantaModel.php");
@@ -39,40 +38,23 @@ class FiltrarExec {
         return;
     }
 
-    function bruh() {
+    function findPlantas() {
         $data = json_decode(stripslashes($_POST['data']));
-        echo json_encode($data);
+        $caracteristicas = $data[0];
+        $busca = $data[1];
+        $ADMs = $data[2];
+
+        if(empty($data[0]) && $data[1] == "" && empty($data[2])) {
+            $data = $this->plantaCont->listar();
+            echo json_encode($data);
+            return;
+        }
+
+        $filtrado = $this->plantaCont->filtrar($caracteristicas, $busca, $ADMs);
+
+        echo json_encode($filtrado);
         return;
     }
 }
 
 $filtrar = new FiltrarExec();
-
-
-// $filtragem = array();
-// if(isset($_GET['stopFiltering'])){
-//     if($_GET['stopFiltering'] == true) {
-//         $_SESSION['filtrado'] = null;
-//         header("location: listPlantas.php");
-//         die;
-//     }
-// }
-// else {
-// isset($_POST['frutifera']) && !empty($_POST['frutifera']) ? array_push($filtragem, $_POST['frutifera'] ) : NULL;
-// isset($_POST['comestivel']) && !empty($_POST['comestivel']) ?  array_push($filtragem, $_POST['comestivel']) : NULL;
-// isset($_POST['raridade']) && !empty($_POST['raridade']) ?  array_push($filtragem, $_POST['raridade']) : NULL;
-// isset($_POST['medicinal']) && !empty($_POST['medicinal']) ?  array_push($filtragem, $_POST['medicinal']) : NULL;
-// isset($_POST['toxicidade']) && !empty($_POST['toxicidade']) ?  array_push($filtragem, $_POST['toxicidade']) : NULL;
-// isset($_POST['exotica']) && !empty($_POST['exotica']) ?  array_push($filtragem, $_POST['exotica']) : NULL;
-// if(empty($filtragem)) {
-//     header("location: listPlantas.php");
-//     die();
-// }
-// $plantaCont = new PlantaController();
-// $plantas = $plantaCont->filtrar($filtragem);
-
-
-// $_SESSION['filtrado'] = $plantas;
-// echo "bruh";
-// return
-// }

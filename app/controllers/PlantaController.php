@@ -48,6 +48,10 @@ class PlantaController {
     public function apagarImagem($idPlanta) {
         $this->plantaDAO->deleteImage($idPlanta);
     }
+
+    public function filtrar(Array $caracteristicas, string $busca, array $ADMs) {
+        return $this->plantaDAO->filter($caracteristicas, $busca, $ADMs);        
+     }
 }
 
 ?>

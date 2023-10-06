@@ -16,6 +16,7 @@ $medicinal = isset($_POST['medicinal']) && !empty($_POST['medicinal']) ? $_POST[
 $toxidade = isset($_POST['toxidade']) && !empty($_POST['toxidade']) ? $_POST['toxidade'] : 0;
 $exotica = isset($_POST['exotica']) && !empty($_POST['exotica']) ? $_POST['exotica'] : 0;
 $imagem = $_FILES['imagem'];
+$imagemAtual = $_POST['imagemAtual'];
 
 
 
@@ -45,18 +46,26 @@ if (!empty($errors)) {
   }
 
 
-$extensao = pathinfo($imagem['name'], PATHINFO_EXTENSION);
-$nome_imagem = md5(uniqid($imagem['name'])).".".$extensao;
-$caminho_imagem = "../../public/especies/" . $nome_imagem;
-move_uploaded_file($imagem["tmp_name"], $caminho_imagem);
-
 //Criar o objeto personagem
 $especie = new Especie();
+
+if ($imagem['error'] === UPLOAD_ERR_NO_FILE) {
+  $especie->setImagemEspecie($imagemAtual);
+} else {
+  $especieCont->apagarImagem($id);
+  // Um arquivo foi enviado, você pode processá-lo aqui
+  $extensao = pathinfo($imagem['name'], PATHINFO_EXTENSION);
+  $nome_imagem = md5(uniqid($imagem['name'])).".".$extensao;
+  $caminho_imagem = "../../public/especies/" . $nome_imagem;
+  move_uploaded_file($imagem["tmp_name"], $caminho_imagem);
+
+  $especie->setImagemEspecie($caminho_imagem);
+}
+
 $especie->setIdEspecie($id);
 $especie->setNomePopular($nomePopular);
 $especie->setNomeCientifico($nomeCientifico);
 $especie->setDescricao($descricao);
-$especie->setImagemEspecie($caminho_imagem);
 $especie->setFrutifera($frutifera);
 $especie->setComestivel($comestivel);
 $especie->setRaridade($raridade);

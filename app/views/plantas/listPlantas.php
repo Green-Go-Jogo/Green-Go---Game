@@ -18,7 +18,8 @@ LoginController::verificarAcesso([2, 3]);
     <?php include_once("../../bootstrap/header.php");?>
 
     <style>
-    
+
+
 
     </style>
 
@@ -40,9 +41,11 @@ LoginController::verificarAcesso([2, 3]);
         
 
 <div id="filtroParent">
-    <label> Buscar usuário</label>
-    <input type="text" name="buscar" id="buscar" oninput="findPlantas()">
-    <button id="filtroButton" onclick="openFiltros()"> filtros </button>
+    <label id="labelBuscar"> Buscar Planta</label>
+    <input type="text" name="buscar" id="buscar" oninput="saveBusca()">
+    <br>
+    <button id="filtroButton" class="btn" onclick="openFiltros()"> Abrir Filtros </button>
+    <br> <br>
     
     </div>
     <div>
@@ -71,6 +74,7 @@ LoginController::verificarAcesso([2, 3]);
 <?php include_once("../../bootstrap/footer.php");?>
 <script>
     function prepararImpressao(nomeSocial, nomePopular, nomeCientifico, codNumerico, qrCodeImagem) {
+
     if (nomeSocial) {
         // Define os valores no modal
         document.getElementById('conteudoParaImpressao').innerHTML = `

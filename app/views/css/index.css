@@ -136,12 +136,26 @@ body {
     border: none;
 }
 
-.quadrado p {
-    color: var(--branco);
-    text-align: center;
+p.textoBotao {
+    margin: 0;
+    align-items: center;
+    color: var(--verdao);
     margin-top: 50px;
+    text-align: center;
     font-family: Poppins-semibold;
     font-size: 20px;
+    text-decoration: underline dotted; 
+}
+
+p.textoNovidade {
+    margin: 0;
+    align-items: center;
+    color: var(--verdao);
+    margin-top: 50px;
+    text-align: center;
+    font-family: Poppins-semibold;
+    font-size: 20px;
+    text-decoration: underline dotted; 
 }
 
 .quadrado img {
@@ -207,3 +221,4 @@ body {
     font-size: 18px;
     font-weight: bold;
 }
+
