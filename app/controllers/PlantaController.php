@@ -49,8 +49,8 @@ class PlantaController {
         $this->plantaDAO->deleteImage($idPlanta);
     }
 
-    public function filtrar(Array $caracteristicas, string $busca, array $ADMs) {
-        return $this->plantaDAO->filter($caracteristicas, $busca, $ADMs);        
+    public function filtrar(Array $caracteristicas, string $busca, array $ADMs, array $zonas) {
+        return $this->plantaDAO->filter($caracteristicas, $busca, $ADMs, $zonas);        
      }
 }
 

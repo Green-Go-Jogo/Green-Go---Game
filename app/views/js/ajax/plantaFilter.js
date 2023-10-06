@@ -1,11 +1,19 @@
 const displayDiv = document.createElement('div');
+const displayDivZona = document.createElement('div');
+
 const pai = document.getElementById("filtroParent");
 const FiltrosButton = document.getElementById("filtroButton");
 var caracteristicasSelected = [];
 var caracteristicas = [];
+
 var ADMs = [];
 var selectedValues = []; 
+
+var zonas = [];
+var selectedZonas = []; 
+
 var busca = "";
+
 var cardNull = false;
 
 function openFiltros() {
@@ -16,10 +24,11 @@ function openFiltros() {
         if (this.readyState == 4 && this.status == 200) {
             var retorno = xhttp.responseText;
             var Array = JSON.parse(retorno);
-
+            
             ADMs = Array[0];
             caracteristicas = Array[1];
             caracteristicas = Object.entries(caracteristicas).slice(-1);
+            zonas = Array[2];
             show();
         }
     }
@@ -38,10 +47,16 @@ function show() {
     br2.className = "filtroKids";
     pai.appendChild(br2);
 
-    // createSendFiltroButton();
+    createFiltroZona();
+    br3 = document.createElement("br");
+    br3.className = "filtroKids";
+    pai.appendChild(br3);
 
+    createStopFiltroButton();
+    FiltrosButton.innerHTML = "Fechar Filtro";
     FiltrosButton.setAttribute("onclick", "closeFiltros()");
 }
+
 function createFiltroCaracteristicas() {
     i = 0;
     caracteristicas[0][1].forEach(element => {
@@ -53,6 +68,9 @@ function createFiltroCaracteristicas() {
         input.value = element;
         input.setAttribute("oninput", "saveCaracteristicas('"+element+"')");
 
+        if(caracteristicasSelected.includes(element)) {
+            input.checked = true;
+        }
         label = document.createElement('label');
         label.for = element;
         label.innerHTML = element;
@@ -66,11 +84,12 @@ function createFiltroCaracteristicas() {
         i++;
     });
 }
+
 function createFiltroADMs() {
     select = document.createElement('select');
     select.className = "filtroKids";
     select.id = "selectAdm";
-    select.setAttribute("oninput", "findPlantas()");
+    // select.setAttribute("oninput", "findPlantas()");
     pai.appendChild(select);
 
     ADMs.forEach(element => {
@@ -92,9 +111,13 @@ function createFiltroADMs() {
     sendFiltroButton.addEventListener("click", addSelectedValue);  // Adicionando um evento de clique
     pai.appendChild(sendFiltroButton);
 
+    if(selectedValues.length > 0) {
+        displaySelectedValues();   
+    }
     
     displayDiv.id = 'displaySelectedValues';  // Atribuindo um ID para a área de exibição
     pai.appendChild(displayDiv);
+ 
 }
 function addSelectedValue() {
     const selectedOption = select.options[select.selectedIndex];
@@ -122,10 +145,95 @@ function removeSelectedValue(value) {
     }
 }
 
+function createFiltroZona() {
+    selectZonas = document.createElement('select');
+    selectZonas.className = "filtroKids";
+    selectZonas.id = "selectZona";
+    // select.setAttribute("oninput", "findPlantas()");
+    pai.appendChild(selectZonas);
+    zonas.forEach(element => {
+    
+        option = document.createElement('option');
+        option.name = element["NomeZona"];
+        option.className = "filtroKids";
+        option.value = element["NomeZona"];
+        option.innerHTML = element["NomeZona"];
+
+        selectZonas.appendChild(option);
+    });
+    
+    const sendZonaButton = document.createElement("button");
+    sendZonaButton.className = "btn filtroKids";
+    sendZonaButton.setAttribute('id', 'filtroZonaButton');
+    sendZonaButton.innerHTML = "Adicionar Zona";
+    sendZonaButton.addEventListener("click", addSelectedZona);  // Adicionando um evento de clique
+    pai.appendChild(sendZonaButton);
+
+    if(selectedZonas.length > 0) {
+        displaySelectedZonas();   
+    }
+    
+    displayDivZona.id = 'displaySelectedZonas';  // Atribuindo um ID para a área de exibição
+    pai.appendChild(displayDivZona);
+ 
+}
+function addSelectedZona() {
+    const selectedOptionZonas = selectZonas.options[selectZonas.selectedIndex];
+    if (selectedOptionZonas) {
+        const valueZonas = selectedOptionZonas.value;
+        // Verifica se o valor já está no array antes de adicioná-lo
+        if (!selectedZonas.includes(valueZonas)) {
+            selectedZonas.push(valueZonas);
+            displaySelectedZonas();  // Atualiza a exibição
+            findPlantas();
+        }
+    }
+}
+function displaySelectedZonas() {
+    displayDivZona.innerHTML = selectedZonas.map(valueZonas => {
+        return `<div class='zonas'>${valueZonas} <button class='btn' onclick="removeSelectedZona('${valueZonas}')">Remover</button></div>`;
+    }).join('');
+}
+function removeSelectedZona(valueZonas) {
+    const indexZonas = selectedZonas.indexOf(valueZonas);
+    if (indexZonas !== -1) {
+        selectedZonas.splice(indexZonas, 1);
+        displaySelectedZonas();  // Atualiza a exibição
+        findPlantas();
+    }
+}
+
+function createStopFiltroButton() {
+    button = document.createElement('button');
+    button.setAttribute("onclick", "stopFiltros()");
+    button.className = "btn filtroKids";
+    button.innerHTML = "Limpar Filtro";
+    pai.appendChild(button);
+
+}
+function stopFiltros() {
+    removeChildren({parentId:'displaySelectedValues',childName:'adms'});
+    removeChildren({parentId:'displaySelectedZonas',childName:'zonas'});
+    document.getElementById("buscar").value = "";
+    document.querySelectorAll('input[type=checkbox]').forEach(el => el.checked = false);
+    selectedValues = [];
+    selectedZonas = [];
+    caracteristicasSelected = [];
+    busca = "";
+    findPlantas();
+}
+
 function closeFiltros() {
     removeChildren({parentId:'filtroParent',childName:'filtroKids'});
+    removeChildren({parentId:'displaySelectedValues',childName:'adms'});
+    removeChildren({parentId:'displaySelectedZonas',childName:'zonas'});
+
+    FiltrosButton.innerHTML = "Abrir Filtro";
     FiltrosButton.setAttribute("onclick", "show()");
+   
 } 
+
+
 function removeChildren(params) {
     var parentId = params.parentId;
     var childName = params.childName;
@@ -152,7 +260,7 @@ function saveBusca() {
 }
 
 function findPlantas () {
-    filtroArray = [caracteristicasSelected, busca, selectedValues];
+    filtroArray = [caracteristicasSelected, busca, selectedValues, selectedZonas];
     var jsonString = JSON.stringify(filtroArray);
     $.ajax({
          type: "POST",
@@ -193,7 +301,7 @@ function createCards(plantas) {
     }
 
     plantas.forEach(element => {
-
+console.log(element);
         div = document.createElement('div');
         div.className = "card-kid col-md-4";
         document.getElementById("pai").appendChild(div);
@@ -255,15 +363,26 @@ function createCards(plantas) {
         p3.innerHTML = element['Usuario']['nomeUsuario'];
         divBody.appendChild(p3);
 
+        
         // Crie o elemento button impressao
-        // btn = document.createElement('button');
-        // btn.setAttribute('type', 'button');
-        // btn.setAttribute('id', 'imprimas');
-        // btn.setAttribute('data-toggle', 'modal');
-        // btn.setAttribute('data-target', '#imprimirModal');
-        // btn.setAttribute('onclick', `prepararImpressao('${htmlspecialchars(addslashes($planta->getNomeSocial()), ENT_QUOTES)}', '${htmlspecialchars(addslashes($especie->getNomePopular()), ENT_QUOTES)}', '${htmlspecialchars(addslashes($especie->getNomeCientifico()), ENT_QUOTES)}', '${htmlspecialchars(addslashes($planta->getCodNumerico()), ENT_QUOTES)}', '${htmlspecialchars(addslashes($planta->getQrCode()), ENT_QUOTES)}')`);
-        // btn.innerText = 'Imprimir';
-        // divBody.appendChild(btn);
+        btn = document.createElement('button');
+        btn.setAttribute('type', 'button');
+        btn.setAttribute('id', 'imprimas');
+        btn.setAttribute('data-toggle', 'modal');
+        btn.setAttribute('data-target', '#imprimirModal');
+        btn.setAttribute('onclick', `prepararImpressao('`+ 
+        element["NomeSocial"]+`',' `+ 
+        element["Especie"]["NomePopular"]+`', '`+ 
+        element["Especie"]["NomeCientifico"]+`', '`+ 
+        element["CodNumerico"]+`', '`+
+        element["QrCode"] +`');`);
+        btn.innerText = 'Imprimir';
+        divBody.appendChild(btn);
+
+        br68 = document.createElement("br");
+        br69 = document.createElement("br");
+        divBody.appendChild(br68);
+        divBody.appendChild(br69);
 
         a2 = document.createElement('a');
         a2.href = "editarPlanta.php?id="+element['IdPlanta'];

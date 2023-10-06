@@ -173,36 +173,40 @@ class PlantaDAO {
 
     
     public function delete(Planta $planta) {
-    $conn = conectar_db();
-    
+        $conn = conectar_db();
+        
 
-    $sql = "DELETE FROM planta WHERE idPlanta = ?";
-    $arquivo_del = $planta->getImagemPlanta();
-    if (file_exists($arquivo_del)) {
-        unlink($arquivo_del);
-    }
-    $qrcode_del = $planta->getQrCode();
-    if (file_exists($qrcode_del)) {
-        unlink($qrcode_del);
-    }
-    $stmt = $conn->prepare($sql);
-    $stmt->execute([$planta->getIdPlanta()]);
-}
+        $sql = "DELETE FROM planta WHERE idPlanta = ?";
+        $arquivo_del = $planta->getImagemPlanta();
+        if (file_exists($arquivo_del)) {
+            unlink($arquivo_del);
+        }
+        $qrcode_del = $planta->getQrCode();
+        if (file_exists($qrcode_del)) {
+            unlink($qrcode_del);
+        }
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([$planta->getIdPlanta()]);
+    }   
 
     public function deleteImage($idPlanta) {
     
-    $planta = $this->findById($idPlanta);
-    
-    $img_del = $planta->getImagemPlanta();
-    if (file_exists($img_del)) {
-        unlink($img_del);
+        $planta = $this->findById($idPlanta);
+        
+        $img_del = $planta->getImagemPlanta();
+        if (file_exists($img_del)) {
+            unlink($img_del);
+        }
     }
-}
 
-public function filter(Array $caracteristics, string $search, array $ADMs) {
+public function filter(Array $caracteristics, string $search, array $ADMs, array $zonas) {
     $conn = conectar_db();
-    $sql = "SELECT p.*, e.idEspecie, e.nomePop, z.nomeZona, u.idUsuario, u.nomeUsuario, COALESCE(NULLIF(p.nomeSocial, ''), e.nomePop) AS nomePlanta FROM planta p "
-    . "JOIN zona z ON z.idZona = p.idZona JOIN especie e ON e.idEspecie = p.idEspecie JOIN usuario u ON u.idUsuario = p.idUsuario WHERE ";
+    $sql = "SELECT p.*, e.*, z.nomeZona, u.idUsuario, u.nomeUsuario, COALESCE(NULLIF(p.nomeSocial, ''), e.nomePop) AS nomePlanta FROM planta p "
+    . "JOIN zona z ON z.idZona = p.idZona JOIN especie e ON e.idEspecie = p.idEspecie JOIN usuario u ON u.idUsuario = p.idUsuario";
+    if(! empty($caracteristics) or ! empty($ADMs) or $search != "" or ! empty($zonas)) {
+        $sql .= " WHERE ";
+    }
+    //*  cria filtro das caracteristicas
     if(! empty($caracteristics)) {
         $columns = count($caracteristics);
     
@@ -216,7 +220,7 @@ public function filter(Array $caracteristics, string $search, array $ADMs) {
             $j++;
         }
     }
-
+//*  cria filtro dos adms
     if(! empty($ADMs)) {
         
         if(! empty($caracteristics)) {
@@ -236,7 +240,27 @@ public function filter(Array $caracteristics, string $search, array $ADMs) {
         }
         $sql .= ")";
     }
+//*  cria filtro das zonas
+    if(! empty($zonas)) {
+        
+        if(! empty($ADMs)) {
+            $sql .= " AND";
+        }
+        $sql .= " (";
+        $columns = count($zonas);
+    
+        $j = 0;
+        for($i = 0; $i < $columns; $i++) {
+            if($i > 0) {
+                $sql .= " OR ";
+            }
 
+            $sql .= " z.nomeZona = '" . $zonas[$j] . "'";
+            $j++;
+        }
+        $sql .= ")";
+    }
+//*  cria filtro da buscar
     if($search != "") {
         if(! empty($caracteristics) or ! empty($ADMs)) {
             $sql .= " AND ";
@@ -250,11 +274,46 @@ public function filter(Array $caracteristics, string $search, array $ADMs) {
     $stmt->execute();
     $result = $stmt->fetchAll();
     try {
-        return $this->mapPlantas($result);
+        return $this->mapPlantasAndEspecie($result);
     } catch (Exception $e) {
         echo "fuck";
     }
     
+}
+private function mapPlantasAndEspecie($resultSql) {
+    $plantas = array();
+    foreach ($resultSql as $reg):
+    
+    $planta = new Planta();  
+    $planta->setIdPlanta($reg['idPlanta']);
+    $planta->setNomeSocial($reg['nomeSocial']);
+    $planta->setPontos($reg['pontuacaoPlanta']);
+    $planta->setImagemPlanta($reg['imagemPlanta']);
+    $planta->setCodNumerico($reg['codNumerico']);
+    $planta->setPlantaHistoria($reg['historia']);
+    $planta->setQrCode($reg['codQR']);
+    $planta->setIdEspecie($reg['idEspecie']);
+    if(isset($reg['nomePlanta'])) {
+        $planta->setNomePlantaGenerico($reg['nomePlanta']);
+    }
+    $especie = new Especie();
+    $especie->setDescricao($reg['descricao']);
+    $especie->setNomeCientifico($reg['nomeCie']);
+    $especie->setNomePopular($reg['nomePop']);
+    $especie->setIdEspecie($reg['idEspecie']);
+    $planta->setEspecie($especie);
+
+    $zona = new Zona($reg['idZona'], $reg['nomeZona']);
+    $planta->setZona($zona);
+
+    $usuario = new Usuario($reg['idUsuario'], $reg['nomeUsuario']);
+    $planta->setUsuario($usuario);
+
+    array_push($plantas, $planta);
+endforeach;
+
+return $plantas;
+
 }
 
 }
