@@ -17,7 +17,10 @@ if (!isset($_SESSION['TIPO'])) {
     <style>
         /* Adicione estilos personalizados aqui, se necessário */
         body {
-            overflow-x: hidden;
+            
+            margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Para evitar scroll horizontal */
         }
         @media (max-width: 50%) {
 
@@ -44,6 +47,7 @@ if (!isset($_SESSION['TIPO'])) {
         }
 
 .col-md-6 {
+    background-color: #338a5f;
     display: flex;
     width: 600px;
     height: 300px;
@@ -306,17 +310,19 @@ if (!isset($_SESSION['TIPO'])) {
   background: rgb(255, 255, 255);
   background: linear-gradient(180deg, #7EC4BB 0%, rgba(255, 255, 255, 0) 75%, rgba(255, 255, 255, 0) 100%);
 }
+
     </style>
 </head>
 
 <body>
 
 <?php LoginController::navBar($tipo);?>
+<div class="clorofila">
+        <img src="../../public/clorofila.gif" alt="" id="clorofila">    
+<div class="row clorofila-linha"></div>
 
-    <div class="container" style="height: 750px;">
-        
-    </div>
-
+</div>
+<div class="conteudo">
     <div class="container">
         <div class="row">
 
@@ -385,11 +391,13 @@ if (!isset($_SESSION['TIPO'])) {
         <!-- Fim da Parte 3 -->  
         </div>
     </div>
-
-    <div class="row" style="background-color: #338a5f; height: 5px"></div>
+    
+    <div class="row" style="background-color: #338a5f; height: 5px; width: 100%"></div>
+</div>
     <br><br>
 
     <!-- Parte Final com o Em breve -->
+  <div class="embreve">
     <div class="container">
         <div class="row">     
             <div class="col">
@@ -412,6 +420,7 @@ if (!isset($_SESSION['TIPO'])) {
                 </div>
             </div>
         </div>
+    </div>
     </div>
     <!-- Fim da Parte Final -->
     

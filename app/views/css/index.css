@@ -222,3 +222,54 @@ body {
     font-weight: bold;
 }
 
+img#clorofila {
+    position: relative;
+    display: flex;
+    margin: auto;
+    align-items: center;
+    width: 63%;
+    z-index: 2;
+}
+
+img#imagem-fundo {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    top: -41.7rem;
+}
+
+.clorofila {
+    position: relative;
+    background-color: #ebf0f1 !important;
+    display: flex;
+    margin: auto;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 1;
+    background-image: linear-gradient(to bottom,#ebf0f1 77%,#338a5f 23% ); /* Gradiente com divisão entre vermelho (50%) e azul (50%) */
+}
+
+.row.clorofila-linha::before {
+    content: "";
+    background-color: #338a5f;
+    height: 5px;
+    max-width: 100%;
+    width: 100%; /* A linha ocupa toda a largura */
+    position: absolute;
+    top: 80%;
+    left: 0;
+    z-index: 1; /* A linha fica atrás da imagem */
+}
+
+.navbar {
+    background-color: #ebf0f1;
+}
+
+.conteudo {
+    background-color: #338a5f;
+}
+
+.embreve {
+    background-color: #ebf0f1;
+}
