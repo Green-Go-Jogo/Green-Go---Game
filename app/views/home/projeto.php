@@ -238,7 +238,7 @@ if (!isset($_SESSION['TIPO'])) {
                 Somos medalhistas!
             </h3>
 
-            <img class="img-medalha img-fluid" src="../public/medalhistas.png">
+            <img class="img-medalha img-fluid" src="../../public/medalhistas.png">
 
             <p>
                 3º Lugar na categoria Ciências Exatas e da Terra na XI Feira de Inovação das Ciências e Engenharias

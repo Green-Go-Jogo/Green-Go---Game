@@ -139,7 +139,7 @@ body {
 p.textoBotao {
     margin: 0;
     align-items: center;
-    color: var(--verdao);
+    color: #fff;
     margin-top: 50px;
     text-align: center;
     font-family: Poppins-semibold;
@@ -228,7 +228,7 @@ img#clorofila {
     margin: auto;
     align-items: center;
     width: 63%;
-    z-index: 2;
+    z-index: 3;
     animation: forwards;
 }
 
@@ -250,7 +250,6 @@ img#imagem-fundo {
     justify-content: center;
     z-index: 1;
     background-image: linear-gradient(to bottom,#ebf0f1 77%,#04574d 25% ); 
-
 }
 
 .modo-escuro .clorofila {
@@ -285,14 +284,36 @@ img#imagem-fundo {
     background-color: #04574d;
 }
 
+.isologo {
+    z-index: 2;
+    position: absolute;
+    align-items: center;
+    background-repeat: no-repeat;
+    top: 30px;
+}
+
 .col-md-6 {
     border-radius: 20px;
-    background-color: #fff;
+    background-color: transparent;
     display: flex;
     width: 600px;
     height: 300px;
     justify-content: center;
     align-items: center;
+    color: #fff;
+}
+
+.col-md-6.botao{
+    background-image: url('../../public/balao-background.png'); /* Substitua 'caminho_da_imagem.jpg' pelo caminho da sua imagem de fundo */
+    background-size: cover; /* Ajusta o tamanho da imagem para cobrir toda a área da div */
+    background-repeat: no-repeat; /* Evita a repetição da imagem de fundo */
+    background-position: center center; /* Centraliza a imagem de fundo */
+    display: flex; /* Permite o uso de flexbox para centralizar o conteúdo */
+    justify-content: center; /* Centraliza o conteúdo horizontalmente */
+    align-items: center; /* Centraliza o conteúdo verticalmente */
+    background-color: #04574d; /* Substitua pelo código da cor que deseja */
+    background-blend-mode: overlay;
+    z-index: 1;
 }
 
 .modo-escuro #msgHide { 

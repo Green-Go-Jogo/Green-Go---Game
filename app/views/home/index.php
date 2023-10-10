@@ -309,6 +309,7 @@ if (!isset($_SESSION['TIPO'])) {
   background: linear-gradient(180deg, #7EC4BB 0%, rgba(255, 255, 255, 0) 75%, rgba(255, 255, 255, 0) 100%);
 }
 
+
     </style>
 </head>
 
@@ -316,15 +317,15 @@ if (!isset($_SESSION['TIPO'])) {
 
 <?php LoginController::navBar($tipo);?>
 <div class="clorofila">
+        <img src="../../public/isologo-greengo.svg" width="100%" class="isologo">
         <img src="../../public/clorofila.webp" onload="acelerarGIF()" alt="" id="clorofila">    
        
 </div>
 <div class="conteudo">
     <div class="container">
         <div class="row">
-
         <!-- Parte 1 - Cadastro -->
-            <div class="col-md-6">
+            <div class="col-md-6 botao">
               <div class="wrapper">
                 <div class="link_wrapper">
                     <a href="#">Cadastre-se</a>
@@ -345,7 +346,7 @@ if (!isset($_SESSION['TIPO'])) {
             <div class="col-md-6">
                 <p class="textoBotao">Acompanhe nosso Blog e nossa página no Instagram! <br> E conheça mais sobre o IFPR!</p>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 botao">
                 <button class="btn-cssbuttons">
                     <span>REDES SOCIAIS</span><span>
                         <svg height="18" width="18" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1024 1024" class="icon">
@@ -370,7 +371,7 @@ if (!isset($_SESSION['TIPO'])) {
         <!-- Fim da Parte 2 -->
 
         <!-- Parte 3 - Projeto -->
-        <div class="col-md-6">
+        <div class="col-md-6 botao">
               <div class="wrapper">
                 <div class="link_wrapper">
                     <a href="#">Conheça o Projeto</a>
