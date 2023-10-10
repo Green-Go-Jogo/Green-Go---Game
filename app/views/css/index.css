@@ -229,6 +229,7 @@ img#clorofila {
     align-items: center;
     width: 63%;
     z-index: 2;
+    animation: forwards;
 }
 
 img#imagem-fundo {
@@ -249,7 +250,7 @@ img#imagem-fundo {
     justify-content: center;
     z-index: 1;
     background-image: linear-gradient(to bottom,#ebf0f1 77%,#04574d 25% ); 
-    border-radius: 10px;
+
 }
 
 .modo-escuro .clorofila {
@@ -263,7 +264,7 @@ img#imagem-fundo {
     justify-content: center;
     z-index: 1;
     background-image: linear-gradient(to bottom,#1b1b1b 77%,#04574d 25% ); 
-    border-radius: 10px;
+ 
 }
 
 .row.clorofila-linha::before {
@@ -278,17 +279,15 @@ img#imagem-fundo {
     z-index: 1; /* A linha fica atrás da imagem */
 }
 
-
-
 .conteudo {
     z-index: -3;
-    border-radius: 10px;
     border: 3px solid #04574d;
-    background-color: #7EC4BB;
+    background-color: #04574d;
 }
 
 .col-md-6 {
-    background-color: #7EC4BB;
+    border-radius: 20px;
+    background-color: #fff;
     display: flex;
     width: 600px;
     height: 300px;

@@ -316,8 +316,8 @@ if (!isset($_SESSION['TIPO'])) {
 
 <?php LoginController::navBar($tipo);?>
 <div class="clorofila">
-        <img src="../../public/clorofila.gif" alt="" id="clorofila">    
-
+        <img src="../../public/clorofila.webp" onload="acelerarGIF()" alt="" id="clorofila">    
+       
 </div>
 <div class="conteudo">
     <div class="container">
@@ -389,7 +389,7 @@ if (!isset($_SESSION['TIPO'])) {
         </div>
     </div>
     
-    <div class="row" style="background-color: #7EC4BB; height: 5px; width: 100%"></div>
+    <div class="row" style="background-color: #04574d; height: 100px; width: 100%"></div>
 </div>
     <br><br>
 
