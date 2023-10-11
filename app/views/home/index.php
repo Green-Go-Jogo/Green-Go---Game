@@ -309,7 +309,26 @@ if (!isset($_SESSION['TIPO'])) {
   background: linear-gradient(180deg, #7EC4BB 0%, rgba(255, 255, 255, 0) 75%, rgba(255, 255, 255, 0) 100%);
 }
 
-
+@media (max-width: 768px) {
+        .texto1 {
+            order: 1 !important;
+        }
+        .botao1 {
+            order: 2 !important;
+        }
+        .texto2 {
+            order: 3 !important;
+        }
+        .botao2 {
+            order: 4 !important;
+        }
+        .texto3 {
+            order: 5 !important;
+        }
+        .botao3 {
+            order: 6 !important;
+        }
+    }
     </style>
 </head>
 
@@ -317,7 +336,7 @@ if (!isset($_SESSION['TIPO'])) {
 
 <?php LoginController::navBar($tipo);?>
 <div class="clorofila">
-        <img src="../../public/isologo-greengo.svg" width="100%" class="isologo">
+        <img src="../../public/isologo-greengo.svg" width="100%" class="logo-fundo">
         <img src="../../public/clorofila.webp" onload="acelerarGIF()" alt="" id="clorofila">    
        
 </div>
@@ -325,7 +344,7 @@ if (!isset($_SESSION['TIPO'])) {
     <div class="container">
         <div class="row">
         <!-- Parte 1 - Cadastro -->
-            <div class="col-md-6 botao">
+            <div class="col-md-6 botao botao1">
               <div class="wrapper">
                 <div class="link_wrapper">
                     <a href="#">Cadastre-se</a>
@@ -337,16 +356,16 @@ if (!isset($_SESSION['TIPO'])) {
             </div>
     </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 texto texto1">
                 <p class="textoBotao">Participe de uma experiência única <br> Se cadastre agora no Green Go!</p>
             </div>
         <!-- Fim da Parte 1 -->
 
         <!-- Parte 2 - Redes Sociais -->
-            <div class="col-md-6">
+            <div class="col-md-6 texto texto2">
                 <p class="textoBotao">Acompanhe nosso Blog e nossa página no Instagram! <br> E conheça mais sobre o IFPR!</p>
             </div>
-            <div class="col-md-6 botao">
+            <div class="col-md-6 botao botao2">
                 <button class="btn-cssbuttons">
                     <span>REDES SOCIAIS</span><span>
                         <svg height="18" width="18" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1024 1024" class="icon">
@@ -371,7 +390,7 @@ if (!isset($_SESSION['TIPO'])) {
         <!-- Fim da Parte 2 -->
 
         <!-- Parte 3 - Projeto -->
-        <div class="col-md-6 botao">
+        <div class="col-md-6 botao botao3">
               <div class="wrapper">
                 <div class="link_wrapper">
                     <a href="#">Conheça o Projeto</a>
@@ -383,7 +402,7 @@ if (!isset($_SESSION['TIPO'])) {
             </div>
     </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 texto texto3">
                 <p class="textoBotao">Participe de uma experiência única <br> Se cadastre agora no Green Go!</p>
             </div>
         <!-- Fim da Parte 3 -->  

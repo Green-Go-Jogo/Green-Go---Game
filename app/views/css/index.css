@@ -284,7 +284,7 @@ img#imagem-fundo {
     background-color: #04574d;
 }
 
-.isologo {
+.logo-fundo {
     z-index: 2;
     position: absolute;
     align-items: center;
@@ -303,15 +303,16 @@ img#imagem-fundo {
     color: #fff;
 }
 
+
 .col-md-6.botao{
-    background-image: url('../../public/balao-background.png'); /* Substitua 'caminho_da_imagem.jpg' pelo caminho da sua imagem de fundo */
-    background-size: cover; /* Ajusta o tamanho da imagem para cobrir toda a área da div */
-    background-repeat: no-repeat; /* Evita a repetição da imagem de fundo */
-    background-position: center center; /* Centraliza a imagem de fundo */
-    display: flex; /* Permite o uso de flexbox para centralizar o conteúdo */
-    justify-content: center; /* Centraliza o conteúdo horizontalmente */
-    align-items: center; /* Centraliza o conteúdo verticalmente */
-    background-color: #04574d; /* Substitua pelo código da cor que deseja */
+    background-image: url('../../public/balao-background.png'); 
+    background-size: cover;  
+    background-repeat: no-repeat; 
+    background-position: center center; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    background-color: #04574d; 
     background-blend-mode: overlay;
     z-index: 1;
 }
