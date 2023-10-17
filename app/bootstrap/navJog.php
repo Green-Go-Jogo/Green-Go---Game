@@ -159,6 +159,9 @@ color:#fff;
             <li class="nav-item">
               <a class="nav-link" style="color: #338a5f;" href="../home/indexJOG.php">Home</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" style="color: #338a5f;" href="../partidas/listPartidas.php">Partidas</a>
+            </li>
         </ul>
         
             <div class="ml-auto">
