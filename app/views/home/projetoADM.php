@@ -99,7 +99,7 @@ a.page-link:hover {
     <li class="page-item" onclick="ativar(this)"><a class="page-link" href="#" data-target="div-orientadores">Orientadores</a></li>
     <li class="page-item" onclick="ativar(this)"><a class="page-link" href="#" data-target="div-modulo-website">Módulo Website</a></li>
     <li class="page-item d-md-none"><hr></li>
-    <li class="page-item" onclick="ativar(this)"><a class="page-link" href="#" data-target="div-modulo-jogo">Módulo Jogo</a></li>
+    <li class="page-item" onclick="ativar(this)"><a class="page-link" href="#" data-target="div-modulo-jogo">Módulo Website/Jogo</a></li>
     <li class="page-item" onclick="ativar(this)"><a class="page-link" href="#" data-target="div-modulo-quiz">Módulo Quiz</a></li>
   </ul>
 </nav>

@@ -334,7 +334,6 @@ p#post {
     color: var(--verdao);
     margin-top: 50px;
     text-align: center;
+    font-size: 30px;
     font-family: Poppins-semibold;
-    font-size: 20px;
-    text-decoration: underline dotted;
 }
