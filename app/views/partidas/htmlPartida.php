@@ -322,7 +322,7 @@ Class PartidaHTML {
 
     public static function desenhaPartidaZona($partida) {
     
-        echo "<div class='container text-center'>";
+        echo "<div class=' text-center'>";
         echo "<div class='zonaP text-right'>"; // Adicione a classe zonaP aqui
         echo "<table class='table'>";
         echo "<thead>";
@@ -358,7 +358,7 @@ Class PartidaHTML {
 
     public static function desenhaPartidaEquipe($partida) {
     
-        echo "<div class='container text-center'>";
+        echo "<div class=' text-center'>";
         echo "<div class='equipeP text-right'>"; // Adicione a classe equipeP aqui
         echo "<table class='table'>";
         echo "<thead>";

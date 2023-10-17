@@ -59,10 +59,12 @@ $loginCont->checarAdmPartida($idPartida, $_SESSION['ID']);
   
   <button class="btn timer"> <i class="fa-regular fa-circle-pause" id="pause"> </i> </button>
 
-  <a class="text-center" id="timer"><?php echo $tempo.":00"; ?> </a> </div> </div>
+  <a class="text-center" id="timer"><?php echo $tempo.":00"; ?> </a> <br>
+
+  <a class="stop" id="encerrar"> Encerrar a partida! </a> </div> </div>
 
   <br><br>
-  <div>
+  <div class="text-center">
   <?php echo "<a href='editarPartida.php?id=".$idPartida."' class='btn btn-primary editar text-center'>Editar</a>";?>
   <br><br>
 
@@ -74,7 +76,7 @@ $loginCont->checarAdmPartida($idPartida, $_SESSION['ID']);
         ?>
 
 </div>
-</div>
+</div> <br>
 
         <?php 
             PartidaHTML::desenhaPartidaEquipe($partida);
