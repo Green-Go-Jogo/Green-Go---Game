@@ -12,6 +12,10 @@ $idEquipe = $_GET['ide'];
 
 $idPartida = $_GET['idp'];
 
+if (isset($_GET['error'])) {
+    $error = $_GET['error'];
+}
+
 $usuarioCont = new UsuarioController();
 $usuarios = $usuarioCont->buscarUsuarios($idEquipe, $idPartida); 
 
@@ -55,6 +59,16 @@ $partida = $partidaCont->buscarPorId($idPartida);
         background-color: #ebf0f1;
     }
 
+    .sair {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+
+    .fa-solid {
+        font-size: 25px;
+    }
+
 
     </style>
 
@@ -68,17 +82,24 @@ $partida = $partidaCont->buscarPorId($idPartida);
 </nav>
     
   <h1 class="text-center" id="titulo"><?php echo $equipe->getNomeEquipe(); ?></h1>
-  <br><br><br>
+  <br>
+  <p class="text-center" style="color: #f58c95"><?php if (isset($error)) {echo $error;} ?><p><br><br>
     
   <div id="conteudo">
     <?php PartidaHTML::desenhaEquipe($usuarios, $partida, $idEquipe); ?>
+
 </div> 
 
 
 </div>
+
 <br>
 <br>
 <br>
+<a class="container sair" href="<?php echo "sairPartida.php?id=".$_SESSION['ID']; ?>">
+<i class="fa-solid fa-person-running"></i>
+<p class="text-center">Sair da Partida</p>
+</a>
 <br>
 <br>
 

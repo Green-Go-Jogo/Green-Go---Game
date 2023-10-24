@@ -77,8 +77,8 @@ class PartidaController {
         $inEquipe = $this->partidaDAO->usuarioInEquipe($idUsuario);
 
         if($inEquipe){
-        $error = "Você já pertence a uma equipe!";
-        return $error;
+        $idPartidaEquipe = $this->partidaDAO->usuarioInEquipe($idUsuario);
+        return $idPartidaEquipe;
     } else {
        $_SESSION['PARTIDA'] = true;
        $this->partidaDAO->saveUsuarioEquipe($idPartidaEquipe, $idUsuario);

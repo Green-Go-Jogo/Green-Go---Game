@@ -16,9 +16,11 @@ $equipeCheia = ($jogadores == $maxJogadores);
 if ($equipeCheia) {
     header('location: escolherEquipe.php?idp='.$_GET['idp']);
 } else {    
-    $error = $partidaCont->salvarUsuarioEquipe($_GET['ide'], $_GET['idp']); 
-    if ($error !== null) {    
-    echo $error;
+    $equipeUsuario = $partidaCont->salvarUsuarioEquipe($_GET['ide'], $_GET['idp']); 
+    if ($equipeUsuario !== null) {    
+    $error = "Você já faz parte de uma equipe em uma partida! Te trouxemos de volta à ela :) <br><br> Se você acredita que isso é um erro, saia da partida ou peça ajuda de um professor/administrador!";
+    header("Location: verEquipe.php?ide=". $equipeUsuario->getIdEquipe() ."&idp=". $equipeUsuario->getIdPartida()."&error=".$error);
+    var_dump($equipeUsuario);
     }
     else {
     header("Location: verEquipe.php?ide=". $_GET['ide'] ."&idp=". $_GET['idp']);

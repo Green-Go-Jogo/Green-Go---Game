@@ -55,7 +55,7 @@ $loginCont->checarAdmPartida($idPartida, $_SESSION['ID']);
   
   <div class="text-center">
 
-  <button class="btn timer"> <i class="fa-regular fa-circle-play" id="play"> </i> </button>
+  <button class="btn timer" onclick="startTimer()"> <i class="fa-regular fa-circle-play" id="play"> </i> </button>
   
   <button class="btn timer"> <i class="fa-regular fa-circle-pause" id="pause"> </i> </button>
 
