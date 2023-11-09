@@ -283,7 +283,7 @@ function createCards(plantas) {
         if(cardNull == false) {
             div = document.createElement('div');
             div.id ="msgNull";
-            div.innerHTML = "AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH";
+            div.innerHTML = "NÃO EXISTE UMA PLANTA CORRESPONDENTE À BUSCA :(";
             document.getElementById("pai").appendChild(div);
             cardNull = true;
             return;
@@ -301,7 +301,7 @@ function createCards(plantas) {
     }
 
     plantas.forEach(element => {
-console.log(element);
+    console.log(element);
         div = document.createElement('div');
         div.className = "card-kid col-md-4";
         document.getElementById("pai").appendChild(div);
