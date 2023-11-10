@@ -1,6 +1,5 @@
 <link rel="stylesheet" href="../css/listPlanta.css">
 
-
 <style> 
     #labelBuscar {
         font-family: Poppins-semibold;

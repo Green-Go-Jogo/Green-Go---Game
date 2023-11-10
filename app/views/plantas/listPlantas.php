@@ -1,14 +1,13 @@
 <?php
+include_once("../../controllers/LoginController.php");
+LoginController::manterUsuario();
+LoginController::verificarAcesso([2, 3]);
 include_once(__DIR__."/../../connection/Connection.php");
 include_once(__DIR__."/../../controllers/PlantaController.php");
 include_once(__DIR__."/htmlPlanta.php");
 include_once(__DIR__."/../../controllers/EspecieController.php");
 include_once(__DIR__."/../../models/EspecieModel.php");
 include_once(__DIR__."/htmlEspecie.php");
-?>
-<?php include_once("../../controllers/LoginController.php");
-LoginController::manterUsuario();
-LoginController::verificarAcesso([2, 3]);
 ?>
 <!DOCTYPE html>
 <html lang="en">

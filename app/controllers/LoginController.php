@@ -97,7 +97,7 @@ class LoginController {
     
         if (!isset($_SESSION['ID'])) { 
             $nologin = "Você precisa se conectar primeiro!";
-            header('location: ../users/login.php?aviso=' . urlencode($nologin));;
+            header('location: ../users/login.php?aviso=' . urlencode($nologin));
             exit;
         }
     
@@ -108,7 +108,7 @@ class LoginController {
             exit;
         }
     }
-
+    
    public static function navBar ($tipoUsuario) {
 
     if ($tipoUsuario == 2){
