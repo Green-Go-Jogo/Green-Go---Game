@@ -76,7 +76,7 @@ function createFiltroCaracteristicas() {
         label = document.createElement('label');
         label.for = element;
         label.innerHTML = element;
-        label.className = "filtroKids";
+        label.className = "atributos filtroKids";
 
         pai.appendChild(input);
         pai.appendChild(label);

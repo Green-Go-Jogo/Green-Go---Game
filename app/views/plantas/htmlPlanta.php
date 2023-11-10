@@ -90,7 +90,7 @@
     .labelZona,
     .labelAdm {
         font-size: 16px !important;
-        color: #04574d !important;
+        color: #C05367 !important;
         font-family: Poppins-semibold !important;
         margin-left: 20px !important;
     }

@@ -283,6 +283,9 @@ a#editas:hover {
     color: #7EC4BB;
     text-decoration: underline dotted; }
 
-label.filtrokids {
+label.atributos.filtrokids {
     width: 100px;
+    color: #078071;;
+    text-decoration: underline dotted;
+    margin-top: 15px;
 }
