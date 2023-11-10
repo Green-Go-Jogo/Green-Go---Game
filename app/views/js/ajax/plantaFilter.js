@@ -284,7 +284,7 @@ function createCards(plantas) {
         if(cardNull == false) {
             div = document.createElement('div');
             div.id ="msgNull";
-            div.innerHTML = "NÃO EXISTE UMA PLANTA CORRESPONDENTE À BUSCA :(";
+            div.innerHTML = "Nenhuma planta encontrada!";
             document.getElementById("pai").appendChild(div);
             cardNull = true;
             return;

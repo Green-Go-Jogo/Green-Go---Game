@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="../css/listPlanta.css">
 
 
-<style>
+<style> 
 
 #labelBuscar {
     font-family: Poppins-semibold;
@@ -16,12 +16,14 @@
     background-color: #f0b6bc;
     color: #ffffff;
     font-family: Poppins-semibold;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     border-radius: 5px;
-    width: 160px;
+    width: 230px;
     height: auto;
     border-radius: 5px;
     border: 1px solid #ced4da;
+    right: -20px;
+    position: relative;
 }
 
 #filtroButton, #filtroAdmButton  {

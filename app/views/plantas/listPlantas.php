@@ -39,9 +39,9 @@ LoginController::verificarAcesso([2, 3]);
   <h1 class="text-center primeirotextoreg">PLANTAS</h1> </a>
 </div><br><br><br>
         
-
-<div id="filtroParent">
-    <label id="labelBuscar"> Buscar Planta</label>
+<div class="container text-right">
+<div class="container text-left" id="filtroParent">
+    <label id="labelBuscar"> Buscar Planta: </label> <br>
     <input type="text" name="buscar" id="buscar" oninput="saveBusca()">
     <br>
     <button id="filtroButton" class="btn" onclick="openFiltros()"> Abrir Filtros </button>
