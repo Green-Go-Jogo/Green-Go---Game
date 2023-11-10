@@ -270,3 +270,6 @@ a#editas:hover {
     vertical-align: middle;
     padding-left: 1%;} 
 
+label.filtrokids {
+    width: 100px;
+}
