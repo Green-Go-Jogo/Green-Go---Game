@@ -281,5 +281,8 @@ a#editas:hover {
 
 #quantidade {
     color: #7EC4BB;
-    text-decoration: underline dotted;
+    text-decoration: underline dotted; }
+
+label.filtrokids {
+    width: 100px;
 }

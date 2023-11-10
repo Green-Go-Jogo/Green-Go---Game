@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="../css/listPlanta.css">
 
-<style> 
+<style>
     #labelBuscar {
         font-family: Poppins-semibold;
         font-size: 16px;
@@ -21,25 +21,25 @@
         border: 1px solid #ced4da;
     }
 
-#buscar {
-    background-color: #f0b6bc;
-    color: #ffffff;
-    font-family: Poppins-semibold;
-    margin-bottom: 20px;
-    border-radius: 5px;
-    width: 230px;
-    height: auto;
-    border-radius: 5px;
-    border: 1px solid #ced4da;
-    right: -20px;
-    position: relative;
-}
+    #buscar {
+        background-color: #f0b6bc;
+        color: #ffffff;
+        font-family: Poppins-semibold;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        width: 230px;
+        height: auto;
+        border-radius: 5px;
+        border: 1px solid #ced4da;
+        right: -20px;
+        position: relative;
+    }
+
     #filtroButton,
-    #filtroAdmButton {
+    .limpar, .limpar:hover, .limpar:focus {
         margin-bottom: -10px;
         margin-left: 20px;
         color: #FFFFFF;
-        ;
         background-color: #338A5F;
         font-family: Poppins-regular;
         border-color: #f0b6bc;
@@ -47,7 +47,14 @@
         height: auto;
     }
 
-    .adms {
+    #filtroAdmButton,
+    #filtroZonaButton {
+        background-color: transparent;
+        box-shadow: none;
+    }
+
+    .adms,
+    .zonas {
         margin-left: 20px;
         margin-top: 15px;
         font-family: Poppins-semibold;
@@ -56,8 +63,7 @@
     }
 
     div.adms button.btn {
-        background-color: #C05367;
-        color: #FFFFFF;
+        background-color: transparent;
         font-family: Poppins-semibold;
     }
 
@@ -71,13 +77,22 @@
     select {
         background-color: #f0b6bc;
         color: #ffffff;
-        font-family: Poppins-semibold;
+        font-family: Poppins-semibold !important;
         margin-left: 20px !important;
         border-radius: 5px;
         width: 160px;
         height: auto;
         border-radius: 5px;
         border: 1px solid #ced4da;
+
+    }
+
+    .labelZona,
+    .labelAdm {
+        font-size: 16px !important;
+        color: #04574d !important;
+        font-family: Poppins-semibold !important;
+        margin-left: 20px !important;
     }
 
     /* Estilo geral para os checkboxes e labels */
