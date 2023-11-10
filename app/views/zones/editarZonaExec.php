@@ -7,6 +7,7 @@ include_once(__DIR__."/../../controllers/ZonaController.php");
 //Capturar os valores vindos do formulário
 $nomeZona = $_POST["Nome_Zona"];
 $id = $_POST["id_zona"];
+$id_usuario = $_POST['id_usuario'];
 
 $errors = array();
 
@@ -29,6 +30,7 @@ if (empty($nomeZona)) {
 $zona = new Zona();
 $zona->setIdZona($id);
 $zona->setNomeZona($nomeZona);
+$zona->setUsuario($id_usuario);
 
 
 //Chamar o controler para salvar a zona

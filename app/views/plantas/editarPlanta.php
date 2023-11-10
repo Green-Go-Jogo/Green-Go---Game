@@ -250,13 +250,17 @@ if ($id !== null) {
                               <textarea id="editor" name="Historia" value=""></textarea>
                               <script>
                                 ClassicEditor
-                                  .create(document.querySelector('#editor'))
-                                  .then(editor => {
+                                  .create(document.querySelector('#editor'), {
+                                    ckfinder: {
+                                      uploadUrl: 'processarImagem.php'
+                                    }
+                                  }).then(editor => {
                                     // Obtém o conteúdo retornado por $planta->getHistoria()
                                     const historiaContent = `<?php echo $planta->getPlantaHistoria(); ?>`;
 
                                     // Define o conteúdo inicial do editor
                                     editor.setData(historiaContent);
+                                    
                                   })
                                   .catch(error => {
                                     console.error(error);

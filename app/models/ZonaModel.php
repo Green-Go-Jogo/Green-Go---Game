@@ -7,6 +7,7 @@ class Zona implements JsonSerializable{
     private $NomeZona;
     private $QntdPlanta;
     private $PontosTotais;
+    private $Usuario;
    
     #[\ReturnTypeWillChange]
     public function jsonSerialize() {
@@ -19,12 +20,13 @@ class Zona implements JsonSerializable{
         ];
     }
     //Construtor da classe
-    public function __construct($id="",$nome="", $qntP="", $pontosT=0)
+    public function __construct($id="",$nome="", $qntP="", $pontosT=0, $idUsuario="")
     {
         $this->IdZona = $id;
         $this->NomeZona = $nome;
         $this->QntdPlanta = $qntP;
         $this->PontosTotais = $pontosT;
+        $this->Usuario = $idUsuario;
     }
     
     public function __toString() {
@@ -109,10 +111,27 @@ class Zona implements JsonSerializable{
 
         return $this;
     }
+
+    /**
+     * Get the value of Usuario
+     */ 
+    public function getUsuario()
+    {
+        return $this->Usuario;
+    }
+
+    /**
+     * Set the value of Usuario
+     *
+     * @return  self
+     */ 
+    public function setUsuario($Usuario)
+    {
+        $this->Usuario = $Usuario;
+
+        return $this;
+    }
     }
     /**
      * Get the value of idStand
-     */ 
-   
-
-?>
+     */

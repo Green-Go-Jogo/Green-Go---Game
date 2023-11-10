@@ -15,7 +15,7 @@ class Especie implements JsonSerializable {
 	private $Raridade;
 	private $Medicinal;
 	private $Comestivel;
-	
+	private $Usuario;
 	private $caracteristicas = array();
 
 	#[\ReturnTypeWillChange]
@@ -352,6 +352,26 @@ class Especie implements JsonSerializable {
 	{
 		$this->Nativa = $Nativa;
 		$this->setCaracteristicas("Nativa");
+		return $this;
+	}
+
+	/**
+	 * Get the value of Usuario
+	 */ 
+	public function getUsuario()
+	{
+		return $this->Usuario;
+	}
+
+	/**
+	 * Set the value of Usuario
+	 *
+	 * @return  self
+	 */ 
+	public function setUsuario($Usuario)
+	{
+		$this->Usuario = $Usuario;
+
 		return $this;
 	}
 }

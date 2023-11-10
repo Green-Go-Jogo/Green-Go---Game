@@ -180,7 +180,11 @@ LoginController::verificarAcesso([2, 3]);
                                     <textarea id="editor" name="Descricao" value=""></textarea>
                                     <script>
                                         ClassicEditor
-                                            .create(document.querySelector('#editor'))
+                                            .create(document.querySelector('#editor'), {
+                                                ckfinder: {
+                                                    uploadUrl: '../plantas/processarImagem.php'
+                                                }
+                                            })
                                             .then(editor => {
 
                                             })
@@ -199,8 +203,7 @@ LoginController::verificarAcesso([2, 3]);
                                     <button type="reset" class="btn btn-secondary btn-lg" id="botoeslimpar"> <a id="limpar"> Limpar</a>
                                     </button>
                                 </div>
-
-
+                                <input type="hidden" name="id_usuario" value="<?php echo $_SESSION['ID']; ?>" />
                             </form>
 
                         </div>

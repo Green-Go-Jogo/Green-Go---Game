@@ -240,7 +240,12 @@ input[type="file"] {
                   'Impact, Charcoal, sans-serif', 'Tahoma, Geneva, sans-serif',
                   'Times New Roman, Times, serif', 'Verdana, Geneva, sans-serif',
                   ]
+                },
+                ckfinder: {
+                  uploadUrl: 'processarImagem.php'
                 }
+                }).then(editor=> {
+                  console.log(editor);
                 })
                 .catch(error => {
                 console.error(error);

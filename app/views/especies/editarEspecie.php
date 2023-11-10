@@ -287,7 +287,11 @@ if ($ornamental == 1) {
                                     <textarea id="editor" name="Descricao" value=""></textarea>
                                     <script>
                                         ClassicEditor
-                                            .create(document.querySelector('#editor'))
+                                            .create(document.querySelector('#editor'), {
+                                                ckfinder: {
+                                                    uploadUrl: '../plantas/processarImagem.php'
+                                                }
+                                            })
                                             .then(editor => {
                                                 const historiaContent = `<?php echo $especie->getDescricao() ?>`;
 
@@ -311,7 +315,7 @@ if ($ornamental == 1) {
         </div>
 
         <input type="hidden" name="id_especie" value="<?php echo $especie->getIdEspecie(); ?>" />
-
+        <input type="hidden" name="id_usuario" value="<?php echo $_SESSION['ID']; ?>" />
 
         </form>
 

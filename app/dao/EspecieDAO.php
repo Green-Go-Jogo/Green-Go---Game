@@ -1,12 +1,12 @@
 <?php
 
 include_once(__DIR__."/../connection/Connection.php");
+include_once(__DIR__."/../models/UsuarioModel.php");
 include_once(__DIR__."/../models/EspecieModel.php");
 
 class EspecieDAO {
 
-    private const SQL_ESPECIE = "SELECT n.*, e.nomePop FROM especie n".
-    " JOIN especie e ON e.idEspecie = n.idEspecie";
+    private const SQL_ESPECIE = "SELECT e.*, u.nomeUsuario FROM especie e" . " JOIN usuario u ON u.idUsuario = e.idUsuario";
 
     private function mapEspecies($resultSql) {
             $especies = array();
@@ -29,6 +29,8 @@ class EspecieDAO {
             $especie->setPanc($reg['panc']);
             $especie->setNativa($reg['nativa']);
 
+            $usuario = new Usuario($reg['idUsuario'], $reg['nomeUsuario']);
+            $especie->setUsuario($usuario);
            
             array_push($especies, $especie);
         endforeach;
@@ -41,7 +43,7 @@ class EspecieDAO {
         $conn = conectar_db();
 
         $sql = EspecieDAO::SQL_ESPECIE . 
-                " ORDER BY e.nomeCie";
+                " ORDER BY e.nomePop";
         $stm = $conn->prepare($sql);    
         $stm->execute();
         $result = $stm->fetchAll();
@@ -53,7 +55,7 @@ class EspecieDAO {
         $conn = conectar_db();
 
         $sql = EspecieDAO::SQL_ESPECIE . 
-                " WHERE n.idEspecie = ?";
+                " WHERE e.idEspecie = ?";
 
         $stmt = $conn->prepare($sql);
         $stmt->execute([$idEspecie]);
@@ -75,29 +77,28 @@ class EspecieDAO {
     public function save(Especie $especie) {
         $conn = conectar_db();
 
-        $sql = "INSERT INTO especie (nomePop, nomeCie, descricao, imagemEspecie, frutifera, comestivel, raridade, medicinal, toxicidade, exotica, nativa, endemica, ornamental, panc)".
-        " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO especie (nomePop, nomeCie, descricao, imagemEspecie, frutifera, comestivel, raridade, medicinal, toxicidade, exotica, nativa, endemica, ornamental, panc, idUsuario)".
+        " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
         $stmt->execute([$especie->getNomePopular(), $especie->getNomeCientifico(), $especie->getDescricao(), $especie->getImagemEspecie(),
                 $especie->getFrutifera(), $especie->getComestivel(), $especie->getRaridade(), $especie->getMedicinal(), $especie->getToxidade(), $especie->getExotica(), $especie->getNativa(),
-                $especie->getEndemica(), $especie->getOrnamental(), $especie->getPanc()]);
+                $especie->getEndemica(), $especie->getOrnamental(), $especie->getPanc(), $especie->getUsuario()]);
     }
 
     public function update(Especie $especie) {
         $conn = conectar_db();
     
-        $sql = "UPDATE especie SET nomePop = ?, nomeCie = ?, descricao = ?, imagemEspecie = ?, frutifera = ?, comestivel = ?, raridade = ?, medicinal = ?, toxicidade = ?, exotica = ?, nativa = ?, endemica = ?, ornamental = ?, panc = ? WHERE idEspecie = ?";
+        $sql = "UPDATE especie SET nomePop = ?, nomeCie = ?, descricao = ?, imagemEspecie = ?, frutifera = ?, comestivel = ?, raridade = ?, medicinal = ?, toxicidade = ?, exotica = ?, nativa = ?, endemica = ?, ornamental = ?, panc = ?, idUsuario = ? WHERE idEspecie = ?";
         $stmt = $conn->prepare($sql);
         $stmt->execute([$especie->getNomePopular(), $especie->getNomeCientifico(), $especie->getDescricao(), $especie->getImagemEspecie(),
         $especie->getFrutifera(), $especie->getComestivel(), $especie->getRaridade(), $especie->getMedicinal(), $especie->getToxidade(), $especie->getExotica(), $especie->getNativa(),
-        $especie->getEndemica(), $especie->getOrnamental(), $especie->getPanc(), $especie->getIdEspecie()]);
+        $especie->getEndemica(), $especie->getOrnamental(), $especie->getPanc(), $especie->getUsuario(), $especie->getIdEspecie()]);
     }
 
     
     public function delete(Especie $especie) {
     $conn = conectar_db();
     
-
     $sql = "DELETE FROM especie WHERE idEspecie = ?";
     $arquivo_del = $especie->getImagemEspecie();
     if (file_exists($arquivo_del)) {

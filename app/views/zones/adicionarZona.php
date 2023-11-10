@@ -84,7 +84,8 @@ LoginController::verificarAcesso([2, 3]);
                             </button>
                             </div>
                             </div>
-
+                            
+                            <input type="hidden" name="id_usuario" value="<?php echo $_SESSION['ID']; ?>" />
                             </form>
                             <br><br><br><br>
 

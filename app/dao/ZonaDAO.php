@@ -3,9 +3,10 @@
 
 include_once(__DIR__ . "/../connection/Connection.php");
 include_once(__DIR__ . "/../models/ZonaModel.php");
+include_once(__DIR__."/../models/UsuarioModel.php");
 
 class zonaDAO {
-    private const SQL_ZONA = "SELECT z.idZona, z.nomeZona, COUNT(p.idPlanta) AS qntPlantas, SUM(p.pontuacaoPlanta) AS pontoZona
+    private const SQL_ZONA = "SELECT z.idZona, z.nomeZona, z.idUsuario, COUNT(p.idPlanta) AS qntPlantas, SUM(p.pontuacaoPlanta) AS pontoZona
     FROM zona z ".
     " LEFT JOIN planta p ON z.idZona = p.idZona ";
     private const SQL_ZONA_PARTIDA = "SELECT z.*".
@@ -21,6 +22,7 @@ class zonaDAO {
             $zona->setNomeZona($reg['nomeZona']);
             $zona->setQntdPlanta($reg['qntPlantas']);
             $zona->setPontosTotais($reg['pontoZona']);
+            $zona->setUsuario($reg['idUsuario']);
 
             array_push($zonas, $zona);
         endforeach;
@@ -31,7 +33,7 @@ class zonaDAO {
     public function list() {
         $conn = conectar_db();
 
-        $sql = "SELECT z.idZona, z.nomeZona, COUNT(p.idPlanta) AS qntPlantas, SUM(p.pontuacaoPlanta) AS pontoZona
+        $sql = "SELECT z.idZona, z.nomeZona, z.idUsuario, COUNT(p.idPlanta) AS qntPlantas, SUM(p.pontuacaoPlanta) AS pontoZona
         FROM zona z 
         LEFT JOIN planta p ON z.idZona = p.idZona 
         GROUP BY z.idZona, z.nomeZona
@@ -42,8 +44,7 @@ class zonaDAO {
 
         $zonas = array();
         foreach ($result as $reg):
-            $zona = 
-                new Zona($reg['idZona'], $reg['nomeZona'], $reg['qntPlantas'], $reg['pontoZona']);
+            $zona = new Zona($reg['idZona'], $reg['nomeZona'], $reg['qntPlantas'], $reg['pontoZona'], $reg['idUsuario']);
             array_push($zonas, $zona);
         endforeach;
 
@@ -94,18 +95,18 @@ class zonaDAO {
     public function save(Zona $zona) {
         $conn = conectar_db();
 
-        $sql = "INSERT INTO zona (nomeZona)".
-        " VALUEs (?)";
+        $sql = "INSERT INTO zona (nomeZona, idUsuario)".
+        " VALUES (?, ?)";
         $stmt = $conn->prepare($sql);
-        $stmt->execute([$zona->getNomeZona()]);
+        $stmt->execute([$zona->getNomeZona(), $zona->getUsuario()]);
     }
 
     public function update(Zona $zona) {
         $conn = conectar_db();
     
-        $sql = "UPDATE zona SET nomeZona = ? WHERE idZona = ?";
+        $sql = "UPDATE zona SET nomeZona = ?, idUsuario = ? WHERE idZona = ?";
         $stmtUpdate = $conn->prepare($sql);
-        $stmtUpdate->execute([$zona->getNomeZona(), $zona->getIdZona()]);
+        $stmtUpdate->execute([$zona->getNomeZona(), $zona->getUsuario(), $zona->getIdZona()]);
     }    
 
     public function updatePlanta(Zona $zona) {
@@ -137,7 +138,3 @@ class zonaDAO {
 }
     
 }
-
-
-
-?>

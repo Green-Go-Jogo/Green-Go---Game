@@ -172,3 +172,17 @@ body {
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
+figure img {
+    max-width: 40%;
+}
+
+@media (max-width: 992px) {
+    figure img {
+        max-width: 70%;
+    }
+}
+
+h1 p {
+    font-family: Poppins-regular !important;
+}

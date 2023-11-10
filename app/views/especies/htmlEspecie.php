@@ -191,8 +191,11 @@ class EspecieHTML
             echo "<div class='card-body'>";
             echo "<h5 id='nomeEspecie' class='card-title nome-soc'>" . $especie->getNomePopular() . "</h5>";
             echo "<p class='card-text nome-texto'>" . $frut . $tox . $med . $come . $rara . $exot . $orn . $pan . $nat . $ende . "</p>";
+            echo "<p class='card-text nome-texto' id='nomezinho' >" . $especie->getUsuario()->getNomeUsuario() . "</p>";
+            if (($_SESSION['TIPO'] == 3 && $_SESSION['NOME'] == $especie->getUsuario()->getNomeUsuario()) || $_SESSION['TIPO'] == 2) {
             echo "<a href='editarEspecie.php?id=" . $especie->getIdEspecie() . "' class='btn btn-primary editar'>Editar</a>";
             echo "<a href='deletarEspecie.php?id=" . $especie->getIdEspecie() . "' onclick='return confirm(\"Confirma a exclusão da Espécie? Todas as plantas associadas a essa espécie também serão excluídas!\");' class='btn btn-alert excluir'>Excluir</a>";
+            }
             echo "<br>";
             echo "</div>";
             echo "</div>";

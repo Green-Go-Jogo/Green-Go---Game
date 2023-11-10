@@ -9,6 +9,7 @@ $id = $_POST["id_especie"];
 $nomePopular = $_POST["Nome_Popular"];
 $nomeCientifico = $_POST['Nome_Cientifico'];
 $descricao = $_POST['Descricao'];
+$id_usuario = $_POST['id_usuario'];
 $frutifera = isset($_POST['frutifera']) && !empty($_POST['frutifera']) ? $_POST['frutifera'] : 0;
 $comestivel = isset($_POST['comestivel']) && !empty($_POST['comestivel']) ? $_POST['comestivel'] : 0;
 $raridade = isset($_POST['raridade']) && !empty($_POST['raridade']) ? $_POST['raridade'] : 0;
@@ -69,6 +70,7 @@ if ($imagem['error'] === UPLOAD_ERR_NO_FILE) {
 $especie->setIdEspecie($id);
 $especie->setNomePopular($nomePopular);
 $especie->setNomeCientifico($nomeCientifico);
+$especie->setUsuario($id_usuario);
 $especie->setDescricao($descricao);
 $especie->setFrutifera($frutifera);
 $especie->setComestivel($comestivel);

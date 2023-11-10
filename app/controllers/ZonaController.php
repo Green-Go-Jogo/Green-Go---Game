@@ -32,6 +32,3 @@ class ZonaController {
         $this->zonaDAO->delete($zona);
     }
 }
-
-
-?>
