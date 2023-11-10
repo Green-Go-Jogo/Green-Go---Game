@@ -160,6 +160,7 @@ if ($planta == null) {
 
     <div class="container">
 
+    <label id="labelnomesocial"> Nome Social: </label> <br>
         <div class="titulo">
             <div class="row">
                 <h1 class="nome text-center" id="nomePlanta">

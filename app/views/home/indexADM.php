@@ -93,14 +93,14 @@ LoginController::verificarAcesso([2, 3]);
       <?php if ($_SESSION['TIPO'] == 2) {
         echo '<div class="card container" id="partida">';
         echo '    <div class="card-body text-center">';
-        echo '        <a href="..\users/listUsuarios.php" class="btn" style="color: #ffffff;">Usuários</a>';
+        echo '        <a href="..\users/listUsuarios.php" class="btn" style="color: #ffffff; text-decoration: underline dotted;"> Usuários</a>';
         echo '    </div>';
         echo '</div>';
       } ?>
 
       <div class="card container" id="partida">
         <div class="card-body text-center">
-          <a href="..\partidas\adicionarPartida.php" class="btn" style="color: #ffffff;"> Criar Partida </a>
+          <a href="..\partidas\adicionarPartida.php" class="btn" style="color: #ffffff; text-decoration: underline dotted;"> Criar Partida </a>
         </div>
       </div>
     </div>

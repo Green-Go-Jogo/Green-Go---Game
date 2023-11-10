@@ -270,3 +270,16 @@ a#editas:hover {
     vertical-align: middle;
     padding-left: 1%;} 
 
+#nomezinho {
+    color: #04574d;
+}
+
+#atributos {
+    color: #7EC4BB;
+    text-decoration: underline dotted;
+}
+
+#quantidade {
+    color: #7EC4BB;
+    text-decoration: underline dotted;
+}

@@ -63,6 +63,7 @@ body {
     font-size: 55px;
     width: 37rem; 
     font-family: Poppins;
+    margin-top: -10px;
 }
 
 #nomeUm {
@@ -185,4 +186,12 @@ figure img {
 
 h1 p {
     font-family: Poppins-regular !important;
+}
+
+#labelnomesocial {
+    position: relative;
+    margin-bottom: -30px;
+    font-family: Poppins-semibold;
+    font-size: 25px;
+    color: #ED8E96;
 }

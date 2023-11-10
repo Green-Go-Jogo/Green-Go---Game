@@ -44,10 +44,17 @@ body {
     background-color: #ebf0f1;;
 }
 
+#partida .btn:hover {
+    color: #078071 !important;
+    font-size: 35px;
+    font-family: Poppins;
+}
 .btn {
     font-size: 35px;
     font-family: Poppins;
 }
+
+
 
 .btn:hover {
     color: #C05367 !important;
@@ -60,15 +67,16 @@ body {
 }
 
 #partida {
-    background-color: #f0b6bc;
+    background-color: #7EC4BB;
     color: #ffffff;
     border-style: dashed;
     border-width: 4px;
-    border-color: #C05367;
+    border-color: #078071;
     margin-top: 50px;
     font-family: Poppins;
-    width: 88%;
+    width: 82%;
 }
+
 
 .card {
     background-color: #f0b6bc;
