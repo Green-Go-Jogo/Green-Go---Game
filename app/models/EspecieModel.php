@@ -5,7 +5,10 @@ class Especie implements JsonSerializable {
 	private $Descricao;
 	private $NomePopular;
 	private $NomeCientifico;
-
+	private $Panc;
+	private $Ornamental;
+	private $Endemica;
+	private $Nativa;
 	private $Frutifera;
 	private $Toxidade;
 	private $Exotica;
@@ -31,6 +34,10 @@ class Especie implements JsonSerializable {
 			'Raridade' => $this->Raridade,
             'Medicinal' => $this->Medicinal,
             'Comestivel' => $this->Comestivel,
+			'Endemica' => $this->Endemica,
+            'Nativa' => $this->Nativa,
+            'PANC' => $this->Panc,
+			'Ornamental' => $this->Ornamental,
 			'caracteristicas' => $this->caracteristicas
         ];
     }
@@ -144,7 +151,7 @@ class Especie implements JsonSerializable {
 	public function setFrutifera($Frutifera)
 	{
 		$this->Frutifera = $Frutifera;
-		$this->setCaracteristicas("frutifera");
+		$this->setCaracteristicas("Frutifera");
 
 		return $this;
 	}
@@ -165,7 +172,7 @@ class Especie implements JsonSerializable {
 	public function setToxidade($Toxidade)
 	{
 		$this->Toxidade = $Toxidade;
-		$this->setCaracteristicas("toxicidade");
+		$this->setCaracteristicas("Toxicidade");
 		return $this;
 	}
 
@@ -185,7 +192,7 @@ class Especie implements JsonSerializable {
 	public function setExotica($Exotica)
 	{
 		$this->Exotica = $Exotica;
-		$this->setCaracteristicas("exotica");
+		$this->setCaracteristicas("Exotica");
 
 		return $this;
 	}
@@ -206,7 +213,7 @@ class Especie implements JsonSerializable {
 	public function setRaridade($Raridade)
 	{
 		$this->Raridade = $Raridade;
-		$this->setCaracteristicas("raridade");
+		$this->setCaracteristicas("Raridade");
 
 		return $this;
 	}
@@ -227,7 +234,7 @@ class Especie implements JsonSerializable {
 	public function setMedicinal($Medicinal)
 	{
 		$this->Medicinal = $Medicinal;
-		$this->setCaracteristicas("medicinal");
+		$this->setCaracteristicas("Medicinal");
 
 		return $this;
 	}
@@ -248,7 +255,7 @@ class Especie implements JsonSerializable {
 	public function setComestivel($Comestivel)
 	{
 		$this->Comestivel = $Comestivel;
-		$this->setCaracteristicas("comestivel");
+		$this->setCaracteristicas("Comestivel");
 		return $this;
 	}
 
@@ -266,5 +273,85 @@ class Especie implements JsonSerializable {
 	{
 		$this->caracteristicas[] = $Caracteristica;
 		return $this->caracteristicas;
+	}
+
+	/**
+	 * Get the value of Panc
+	 */ 
+	public function getPanc()
+	{
+		return $this->Panc;
+	}
+
+	/**
+	 * Set the value of Panc
+	 *
+	 * @return  self
+	 */ 
+	public function setPanc($Panc)
+	{
+		$this->Panc = $Panc;
+		$this->setCaracteristicas("PANC");
+		return $this;
+	}
+
+	/**
+	 * Get the value of Ornamental
+	 */ 
+	public function getOrnamental()
+	{
+		return $this->Ornamental;
+	}
+
+	/**
+	 * Set the value of Ornamental
+	 *
+	 * @return  self
+	 */ 
+	public function setOrnamental($Ornamental)
+	{
+		$this->Ornamental = $Ornamental;
+		$this->setCaracteristicas("Ornamental");
+		return $this;
+	}
+
+	/**
+	 * Get the value of Endemica
+	 */ 
+	public function getEndemica()
+	{
+		return $this->Endemica;
+	}
+
+	/**
+	 * Set the value of Endemica
+	 *
+	 * @return  self
+	 */ 
+	public function setEndemica($Endemica)
+	{
+		$this->Endemica = $Endemica;
+		$this->setCaracteristicas("Endemica");
+		return $this;
+	}
+
+	/**
+	 * Get the value of Nativa
+	 */ 
+	public function getNativa()
+	{
+		return $this->Nativa;
+	}
+
+	/**
+	 * Set the value of Nativa
+	 *
+	 * @return  self
+	 */ 
+	public function setNativa($Nativa)
+	{
+		$this->Nativa = $Nativa;
+		$this->setCaracteristicas("Nativa");
+		return $this;
 	}
 }

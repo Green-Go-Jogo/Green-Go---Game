@@ -1,6 +1,7 @@
 const displayDiv = document.createElement('div');
 const displayDivZona = document.createElement('div');
-
+const tipoUsuarioLogado = document.getElementById('tipoUsuarioLogado').value;
+const nomeUsuarioLogado = document.getElementById('nomeUsuarioLogado').value;
 const pai = document.getElementById("filtroParent");
 const FiltrosButton = document.getElementById("filtroButton");
 var caracteristicasSelected = [];
@@ -370,12 +371,7 @@ function createCards(plantas) {
         btn.setAttribute('id', 'imprimas');
         btn.setAttribute('data-toggle', 'modal');
         btn.setAttribute('data-target', '#imprimirModal');
-        btn.setAttribute('onclick', `prepararImpressao('`+ 
-        element["NomeSocial"]+`',' `+ 
-        element["Especie"]["NomePopular"]+`', '`+ 
-        element["Especie"]["NomeCientifico"]+`', '`+ 
-        element["CodNumerico"]+`', '`+
-        element["QrCode"] +`');`);
+        btn.setAttribute('onclick', `prepararImpressao(${JSON.stringify(element["NomeSocial"])}, ${JSON.stringify(element["Especie"]["NomePopular"])}, ${JSON.stringify(element["Especie"]["NomeCientifico"])}, ${JSON.stringify(element["CodNumerico"])}, ${JSON.stringify(element["QrCode"])})`);
         btn.innerText = 'Imprimir';
         divBody.appendChild(btn);
 
@@ -384,12 +380,15 @@ function createCards(plantas) {
         divBody.appendChild(br68);
         divBody.appendChild(br69);
 
+        if ((tipoUsuarioLogado == 3 && nomeUsuarioLogado == element['Usuario']['nomeUsuario']) || tipoUsuarioLogado == 2) {
         a2 = document.createElement('a');
         a2.href = "editarPlanta.php?id="+element['IdPlanta'];
         a2.id = 'editas';
         a2.innerHTML = "Editar";
         divBody.appendChild(a2);
+        }
 
+        if ((tipoUsuarioLogado == 3 && nomeUsuarioLogado == element['Usuario']['nomeUsuario']) || tipoUsuarioLogado == 2) {
         a3 = document.createElement('a');
         a3.href = "deletarPlanta.php?id="+element['IdPlanta'];
         a3.setAttribute('onclick', 'return confirm(\"Confirma a exclusão da Planta?\");');
@@ -397,6 +396,7 @@ function createCards(plantas) {
         a3.className = 'btn btn-alert excluir';
         a3.innerHTML = "Excluir";
         divBody.appendChild(a3);
+        }
 
         br3 = document.createElement('br');
         divBody.appendChild(br3);

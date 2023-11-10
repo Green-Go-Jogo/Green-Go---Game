@@ -63,11 +63,12 @@ LoginController::verificarAcesso([2, 3]);
                 PlantaHTML::desenhaPlanta($plantas);
             }
             else {
-                echo "<p>NÃO HÁ PLANTAS DE ESTA ESPÉCIE</p>";
+                echo "<p>NÃO HÁ PLANTAS NESSES PARAMÊTROS</p>";
             }
         ?>
         </div>  
-
+        <input type="hidden" id="tipoUsuarioLogado" value="<?php echo $_SESSION['TIPO']?>">
+        <input type="hidden" id="nomeUsuarioLogado" value="<?php echo $_SESSION['NOME']?>">
 </div>
 
 </div>

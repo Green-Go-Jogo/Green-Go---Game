@@ -15,6 +15,10 @@ $raridade = isset($_POST['raridade']) && !empty($_POST['raridade']) ? $_POST['ra
 $medicinal = isset($_POST['medicinal']) && !empty($_POST['medicinal']) ? $_POST['medicinal'] : 0;
 $toxidade = isset($_POST['toxidade']) && !empty($_POST['toxidade']) ? $_POST['toxidade'] : 0;
 $exotica = isset($_POST['exotica']) && !empty($_POST['exotica']) ? $_POST['exotica'] : 0;
+$endemica = isset($_POST['endemica']) && !empty($_POST['endemica']) ? $_POST['endemica'] : 0;
+$nativa = isset($_POST['nativa']) && !empty($_POST['nativa']) ? $_POST['nativa'] : 0;
+$panc = isset($_POST['panc']) && !empty($_POST['panc']) ? $_POST['panc'] : 0;
+$ornamental = isset($_POST['ornamental']) && !empty($_POST['ornamental']) ? $_POST['ornamental'] : 0;
 $imagem = $_FILES['imagem'];
 $imagemAtual = $_POST['imagemAtual'];
 
@@ -72,6 +76,10 @@ $especie->setRaridade($raridade);
 $especie->setMedicinal($medicinal);
 $especie->setToxidade($toxidade);
 $especie->setExotica($exotica);
+$especie->setOrnamental($ornamental);
+$especie->setPanc($panc);
+$especie->setEndemica($endemica);
+$especie->setNativa($nativa);
 
 //Chamar o controler para salvar o planta
 $especieCont = new EspecieController();

@@ -1,17 +1,15 @@
-
 <link rel="stylesheet" href="../css/listPlanta.css">
 
 
 <style>
- 
- #botaomais {
-    transform: scale(1.05);
-    position: relative;
-    right: -2rem;
-    box-shadow: none;
-}
+    #botaomais {
+        transform: scale(1.05);
+        position: relative;
+        right: -2rem;
+        box-shadow: none;
+    }
 
-#raridadeEspecie {
+    #raridadeEspecie {
         margin-left: 57px;
         width: 200px;
         background-color: #FFFFFF;
@@ -21,85 +19,90 @@
 
     .btn:hover {
         color: #f58c95;
-        transform: scale(1.05); }
-
-        a.editar:hover {
-            color: #ebf0f1 !important;
-            background-color: #04574d; }
-
-        a.editar{
-            color: #ebf0f1 !important;
-            background-color: #338a5f; }
-
-        a.excluir {
-            color: #f0b6bc;
-            border-color: #f0b6bc;
-        }
-
-        a.excluir:hover {
-            color: var(--branco);
-            background-color: #f0b6bc ;
-            border-radius: 5px; }
-
-        #nomeEspecie {
-            background-color: #C05367 !important;
-            color: #FFFFFF !important;
-            border-radius: 20px;
-            transform: scale(1.05);
-        }
-
-        .row.row-cols-4 {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.col-md-4 {
-    flex-basis: calc(25% - 20px);
-    margin-bottom: 20px;
-    padding: 10px; 
-}
-
-
-@media (max-width: 767px) {
-    .col-md-4 {
-        flex-basis: calc(50% - 20px);
+        transform: scale(1.05);
     }
 
-    .container.text-center {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        min-height: 100vh;
+    a.editar:hover {
+        color: #ebf0f1 !important;
+        background-color: #04574d;
+    }
+
+    a.editar {
+        color: #ebf0f1 !important;
+        background-color: #338a5f;
+    }
+
+    a.excluir {
+        color: #f0b6bc;
+        border-color: #f0b6bc;
+    }
+
+    a.excluir:hover {
+        color: var(--branco);
+        background-color: #f0b6bc;
+        border-radius: 5px;
+    }
+
+    #nomeEspecie {
+        background-color: #C05367 !important;
+        color: #FFFFFF !important;
+        border-radius: 20px;
+        transform: scale(1.05);
     }
 
     .row.row-cols-4 {
-        justify-content: center;
+        display: flex;
+        flex-wrap: wrap;
     }
-}
 
-
-@media (min-width: 768px) and (max-width: 991px) {
-    .col-md-4 {
-        flex-basis: calc(50% - 20px);
-    }
-}
-
-
-@media (min-width: 992px) {
     .col-md-4 {
         flex-basis: calc(25% - 20px);
+        margin-bottom: 20px;
+        padding: 10px;
     }
-}
 
+
+    @media (max-width: 767px) {
+        .col-md-4 {
+            flex-basis: calc(50% - 20px);
+        }
+
+        .container.text-center {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .row.row-cols-4 {
+            justify-content: center;
+        }
+    }
+
+
+    @media (min-width: 768px) and (max-width: 991px) {
+        .col-md-4 {
+            flex-basis: calc(50% - 20px);
+        }
+    }
+
+
+    @media (min-width: 992px) {
+        .col-md-4 {
+            flex-basis: calc(25% - 20px);
+        }
+    }
 </style>
 
 
 <?php
-Class EspecieHTML {
-    public static function desenhaEspecie($especies) {
+class EspecieHTML
+{
+    public static function desenhaEspecie($especies)
+    {
 
-        
+
         echo "<div class='container text-center'>";
         echo "<div class='container text-right'>";
         echo "<a class='btn incluir' href='adicionarEspecie.php' id='botaomais'>
@@ -109,58 +112,87 @@ Class EspecieHTML {
     </a>";
         echo "<div class='row row-cols-4'>"; // inicie a div row fora do loop
 
-        foreach ($especies as $especie):
+        foreach ($especies as $especie) :
 
             $frutifera = $especie->getFrutifera();
-            if ($frutifera == 1) { 
-                $frut = "<br>"."Frutífera";
-            } else { 
+            if ($frutifera == 1) {
+                $frut = "<br>" . "Frutífera";
+            } else {
                 $frut = "";
             };
 
             $exotica = $especie->getExotica();
-            if ($exotica == 1) { 
-                $exot = "<br>"."Exótica";
-            } else { 
+            if ($exotica == 1) {
+                $exot = "<br>" . "Exótica";
+            } else {
                 $exot = "";
             };
 
             $raridade = $especie->getRaridade();
-            if ($raridade == 1) { 
-                $rara = "<br>"."Rara";
-            } else { 
+            if ($raridade == 1) {
+                $rara = "<br>" . "Rara";
+            } else {
                 $rara = "";
             };
 
             $toxidade = $especie->getToxidade();
-            if ($toxidade == 1) { 
-                $tox = "<br>"."Toxíca";
-            } else { 
+            if ($toxidade == 1) {
+                $tox = "<br>" . "Tóxica";
+            } else {
                 $tox = "";
             };
 
             $medicinal = $especie->getMedicinal();
-            if ($medicinal == 1) { 
-                $med = "<br>"."Medicinal";
-            } else { 
+            if ($medicinal == 1) {
+                $med = "<br>" . "Medicinal";
+            } else {
                 $med = "";
             };
 
             $comestivel = $especie->getComestivel();
-            if ($comestivel == 1) { 
-                $come = "<br>"."Comestível";
-            } else { 
+            if ($comestivel == 1) {
+                $come = "<br>" . "Comestível";
+            } else {
                 $come = "";
             };
+
+            $nativa = $especie->getNativa();
+            if ($nativa == 1) {
+                $nat = "<br>" . "Nativa";
+            } else {
+                $nat = "";
+            };
+
+            $endemica = $especie->getEndemica();
+            if ($endemica == 1) {
+                $ende = "<br>" . "Endêmica";
+            } else {
+                $ende = "";
+            };
+
+            $panc = $especie->getPanc();
+            if ($panc == 1) {
+                $pan = "<br>" . "PANC";
+            } else {
+                $pan = "";
+            };
+
+            $ornamental = $especie->getOrnamental();
+            if ($ornamental == 1) {
+                $orn = "<br>" . "Ornamental";
+            } else {
+                $orn = "";
+            };
+
             echo "<div class='col-md-4'>";
             echo "<br>";
             echo "<div class='card' style='width: 22rem; '>";
-            echo "<img src='".$especie->getImagemEspecie()."' style='width: 90%; height: 90%; margin-left: 18px; border-radius: 5px;'class='card-img-top mais' alt='...'>";
+            echo "<img src='" . $especie->getImagemEspecie() . "' style='width: 90%; height: 90%; margin-left: 18px; border-radius: 5px;'class='card-img-top mais' alt='...'>";
             echo "<div class='card-body'>";
-            echo "<h5 id='nomeEspecie' class='card-title nome-soc'>". $especie->getNomePopular() ."</h5>";
-            echo "<p class='card-text nome-texto'>".$frut.$tox.$med.$come.$rara.$exot."</p>";
-            echo "<a href='editarEspecie.php?id=".$especie->getIdEspecie()."' class='btn btn-primary editar'>Editar</a>";
-            echo "<a href='deletarEspecie.php?id=".$especie->getIdEspecie()."' onclick='return confirm(\"Confirma a exclusão da Espécie? Todas as plantas associadas a essa espécie também serão excluídas!\");' class='btn btn-alert excluir'>Excluir</a>";
+            echo "<h5 id='nomeEspecie' class='card-title nome-soc'>" . $especie->getNomePopular() . "</h5>";
+            echo "<p class='card-text nome-texto'>" . $frut . $tox . $med . $come . $rara . $exot . $orn . $pan . $nat . $ende . "</p>";
+            echo "<a href='editarEspecie.php?id=" . $especie->getIdEspecie() . "' class='btn btn-primary editar'>Editar</a>";
+            echo "<a href='deletarEspecie.php?id=" . $especie->getIdEspecie() . "' onclick='return confirm(\"Confirma a exclusão da Espécie? Todas as plantas associadas a essa espécie também serão excluídas!\");' class='btn btn-alert excluir'>Excluir</a>";
             echo "<br>";
             echo "</div>";
             echo "</div>";
@@ -172,5 +204,3 @@ Class EspecieHTML {
     }
 }
 ?>
-
-

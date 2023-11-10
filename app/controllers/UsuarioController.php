@@ -40,6 +40,10 @@ class UsuarioController {
         $this->usuarioDAO->update($usuario);
     }
 
+    public function atualizarAcesso($usuario) {
+        $this->usuarioDAO->updateAcess($usuario);
+    }
+
     public function excluir($usuario) {
         $this->usuarioDAO->delete($usuario);
     }

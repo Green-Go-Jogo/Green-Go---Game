@@ -39,4 +39,24 @@ LoginController::verificarAcesso([2, 3]);
 </div>
 </main>
 <?php include_once("../../bootstrap/footer.php");?>
+<script>
+    async function mudarTipoUsuario(selectElement) {
+        const idUsuario = selectElement.getAttribute('data-id');
+        const novoTipoUsuario = selectElement.value;
+
+        try {
+        await fetch('../users/alterarUsuario.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: `idUsuario=${idUsuario}&novoTipoUsuario=${novoTipoUsuario}`
+        });
+
+        console.log(idUsuario + novoTipoUsuario);
+    } catch (error) {
+        console.error('Erro ao enviar POST:', error);
+    }
+}
+</script>
 </html>

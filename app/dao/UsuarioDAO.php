@@ -177,6 +177,14 @@ class UsuarioDAO {
         $stmt->execute([$usuario->getNomeUsuario(), $usuario->getLogin(), $usuario->getSenha(), $usuario->getEmail(), 
         $usuario->getGenero(), $usuario->getTipoUsuario(), $usuario->getEscolaridade(), $usuario->getIdUsuario()]);
     }
+
+    public function updateAcess(Usuario $usuario) {
+        $conn = conectar_db();
+    
+        $sql = "UPDATE usuario SET tipoUsuario = ? WHERE idUsuario = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([$usuario->getTipoUsuario(), $usuario->getIdUsuario()]);
+    }
     
     public function delete(Usuario $usuario) {
     $conn = conectar_db();

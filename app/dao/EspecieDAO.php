@@ -24,6 +24,11 @@ class EspecieDAO {
             $especie->setMedicinal($reg['medicinal']);
             $especie->setToxidade($reg['toxicidade']);
             $especie->setExotica($reg['exotica']);
+            $especie->setEndemica($reg['endemica']);
+            $especie->setOrnamental($reg['ornamental']);
+            $especie->setPanc($reg['panc']);
+            $especie->setNativa($reg['nativa']);
+
            
             array_push($especies, $especie);
         endforeach;
@@ -70,20 +75,22 @@ class EspecieDAO {
     public function save(Especie $especie) {
         $conn = conectar_db();
 
-        $sql = "INSERT INTO especie (nomePop, nomeCie, descricao, imagemEspecie, frutifera, comestivel, raridade, medicinal, toxicidade, exotica)".
-        " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO especie (nomePop, nomeCie, descricao, imagemEspecie, frutifera, comestivel, raridade, medicinal, toxicidade, exotica, nativa, endemica, ornamental, panc)".
+        " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
         $stmt->execute([$especie->getNomePopular(), $especie->getNomeCientifico(), $especie->getDescricao(), $especie->getImagemEspecie(),
-                $especie->getFrutifera(), $especie->getComestivel(), $especie->getRaridade(), $especie->getMedicinal(), $especie->getToxidade(), $especie->getExotica()]);
+                $especie->getFrutifera(), $especie->getComestivel(), $especie->getRaridade(), $especie->getMedicinal(), $especie->getToxidade(), $especie->getExotica(), $especie->getNativa(),
+                $especie->getEndemica(), $especie->getOrnamental(), $especie->getPanc()]);
     }
 
     public function update(Especie $especie) {
         $conn = conectar_db();
     
-        $sql = "UPDATE especie SET nomePop = ?, nomeCie = ?, descricao = ?, imagemEspecie = ?, frutifera = ?, comestivel = ?, raridade = ?, medicinal = ?, toxicidade = ?, exotica = ? WHERE idEspecie = ?";
+        $sql = "UPDATE especie SET nomePop = ?, nomeCie = ?, descricao = ?, imagemEspecie = ?, frutifera = ?, comestivel = ?, raridade = ?, medicinal = ?, toxicidade = ?, exotica = ?, nativa = ?, endemica = ?, ornamental = ?, panc = ? WHERE idEspecie = ?";
         $stmt = $conn->prepare($sql);
         $stmt->execute([$especie->getNomePopular(), $especie->getNomeCientifico(), $especie->getDescricao(), $especie->getImagemEspecie(),
-        $especie->getFrutifera(), $especie->getComestivel(), $especie->getRaridade(), $especie->getMedicinal(), $especie->getToxidade(), $especie->getExotica(), $especie->getIdEspecie()]);
+        $especie->getFrutifera(), $especie->getComestivel(), $especie->getRaridade(), $especie->getMedicinal(), $especie->getToxidade(), $especie->getExotica(), $especie->getNativa(),
+        $especie->getEndemica(), $especie->getOrnamental(), $especie->getPanc(), $especie->getIdEspecie()]);
     }
 
     

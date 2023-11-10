@@ -223,8 +223,10 @@ Class PlantaHTML {
             echo "<button type='button' id='imprimas' data-toggle='modal' data-target='#imprimirModal' onclick='prepararImpressao(\"".htmlspecialchars(addslashes($planta->getNomeSocial()), ENT_QUOTES)."\", \"".htmlspecialchars(addslashes($especie->getNomePopular()), ENT_QUOTES)."\", \"".htmlspecialchars(addslashes($especie->getNomeCientifico()), ENT_QUOTES)."\", \"".htmlspecialchars(addslashes($planta->getCodNumerico()), ENT_QUOTES)."\", \"".htmlspecialchars(addslashes($planta->getQrCode()), ENT_QUOTES)."\")'>Imprimir</button>";
             echo "<br>";
             echo "<br>";
+            if (($_SESSION['TIPO'] == 3 && $_SESSION['NOME'] == $planta->getUsuario()->getNomeUsuario()) || $_SESSION['TIPO'] == 2) {
             echo "<a href='editarPlanta.php?id=".$planta->getIdPlanta()."'  id='editas'>Editar</a>";
             echo "<a href='deletarPlanta.php?id=".$planta->getIdPlanta()."' onclick='return confirm(\"Confirma a exclusão da Planta?\");'  id='excluas' class='btn btn-alert excluir'>Excluir</a>";
+            }
             echo "<br>";
             echo "</div>";
             echo "</div>";
