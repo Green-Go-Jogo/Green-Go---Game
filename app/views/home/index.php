@@ -12,6 +12,11 @@ if (!isset($_SESSION['TIPO'])) {
 <head>
     <?php include_once("../../bootstrap/header.php");
     ?>
+    <meta name="description" content="Catálogo de plantas do IFPR com um jogo educacional sobre o meio ambiente. Explore a flora local e aprenda sobre a natureza do nosso campus.">
+    <meta name="keywords" content="GreenGo, GreenGoIFPR, greengoifpr, Catálogo de Plantas, IFPR, Jogo Educativo, Meio Ambiente, Flora">
+    <meta name="author" content="Green Go Team">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.greengoifpr.com.br/">
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../csscheer/footer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">

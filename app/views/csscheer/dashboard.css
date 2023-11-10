@@ -77,6 +77,25 @@ body {
     width: 82%;
 }
 
+@media (max-width: 920px) and (min-width: 769px) {
+    div.card.container#partida {
+        width: 97% !important;
+    }
+} 
+
+@media (max-width: 767px) and (min-width: 671px) {
+    div.card.container#partida {
+        max-width: 767px;
+        width: 100% !important;
+    }
+}
+
+@media (max-width: 670px) {
+    div.card.container#partida {
+        max-width: 767px;
+        width: 100% !important;
+    }
+}
 
 .card {
     background-color: #f0b6bc;
@@ -98,8 +117,7 @@ body {
     font-family: Poppins-regular;
 }
 
-@media (max-width: 767px) {
-    #partida {
-        width: 20rem;
-    }
+
+.text-center {
+    max-width: 100%;
 }
