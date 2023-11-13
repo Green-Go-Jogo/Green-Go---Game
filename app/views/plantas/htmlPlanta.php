@@ -208,12 +208,19 @@
 
     #nomezinho {
         color: #04574d;
+        text-decoration: underline dotted;
     }
 
     #codplanta {
         color: #7EC4BB;
         text-decoration: underline dotted;
     }
+
+    #atualização {
+        color: #04574d;
+        margin-bottom: -8px;
+    }
+
 </style>
 
 <?php
@@ -249,6 +256,7 @@ class PlantaHTML
             }
             echo "<p class='card-text nome-texto'><a id='codplanta'>Código: " . $planta->getCodNumerico() . "<br><br></a>Pontuação: " . $planta->getPontos() . "<br>" . "</p>";
             echo "<p class='card-text nome-texto' style='color: #338a5f;'>" . $planta->getZona() . "</p>";
+            echo "<p class='card-text nome-texto' id='atualização' >Última edição por:";
             echo "<p class='card-text nome-texto' id='nomezinho' >" . $planta->getUsuario()->getNomeUsuario() . "</p>";
             echo "<button type='button' id='imprimas' data-toggle='modal' data-target='#imprimirModal' onclick='prepararImpressao(\"" . htmlspecialchars(addslashes($planta->getNomeSocial()), ENT_QUOTES) . "\", \"" . htmlspecialchars(addslashes($especie->getNomePopular()), ENT_QUOTES) . "\", \"" . htmlspecialchars(addslashes($especie->getNomeCientifico()), ENT_QUOTES) . "\", \"" . htmlspecialchars(addslashes($planta->getCodNumerico()), ENT_QUOTES) . "\", \"" . htmlspecialchars(addslashes($planta->getQrCode()), ENT_QUOTES) . "\")'>Imprimir</button>";
             echo "<br>";

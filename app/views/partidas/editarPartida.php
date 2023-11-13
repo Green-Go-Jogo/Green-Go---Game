@@ -27,7 +27,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Cadastrar Partida</title>
+<title>Editar Partida</title>
 <?php include_once("../../bootstrap/header.php");?>
      <script>  $(document).ready(function() {
                      $('select').addClass('custom-selectize').selectize({
@@ -37,7 +37,24 @@
 
     <link rel="stylesheet" href="../csscheer/partida.css">
     
-    
+    <style>
+        #cancelar {
+        position: relative;
+        color: #C05367;
+        font-family: Poppins-medium;
+        top: 10px;
+        left: 40px;
+        text-decoration: underline dotted;
+        font-size: 20px;
+    }
+
+    #cancelar:hover {
+    color: #ED8E96;
+    font-family: Poppins-medium;
+}
+
+    </style>
+
 </head>
 
 
@@ -55,7 +72,7 @@
 
                         <div class="row">
                             <div class="col">
-                                <h1 id="primeirotextoreg"> Crie uma partida!</h1>
+                                <h1 id="primeirotextoreg"> Edite sua partida!</h1>
 
 
                             <form action="adicionarPartidaExec.php" method="POST" enctype="multipart/form-data">
@@ -75,7 +92,7 @@
                             <?php } ?>
 
                             <div class="form-group">
-                            <label for="selectZona" id="txtNome">Zona:</label>
+                            <label for="selectZona" id="txtNome">Adicionar Zona:</label>
                             <div class="input-group">
                             <?php
                             $zonaCont = new ZonaController();
@@ -96,7 +113,7 @@
                             <div id="txtZona"></div>
 
                             <div class="form-group">
-                            <label for="selectEquipe" id="txtNomeEquipe">Equipe:</label>
+                            <label for="selectEquipe" id="txtNomeEquipe">Adicionar Equipe:</label>
                             <div class="input-group">
                             <?php
                             $equipeCont = new EquipeController();
@@ -115,7 +132,7 @@
                             
 
                             <br>
-                            <label for="formtexto" id="txtNome">Total de Jogadores (Divididos entre as equipes):</label>
+                            <label for="formtexto" id="txtNome">Máximo de Jogadores por Equipe:</label>
                             <div class="w-100"></div>
                             <input type="number" name="Limite_Jogadores" class="form-control" id="txtNomeForm" aria-describedby="nome-cadastro" value="<?php echo isset($_POST['Limite_Jogadores']) ? $_POST['Limite_Jogadores'] : ''; ?>">
                             <div class="w-100"></div>  
@@ -124,7 +141,7 @@
                             <?php } ?>
 
                             <br>
-                            <label for="formtexto" id="txtNome">Tempo de Partida (Minutos):</label>
+                            <label for="formtexto" id="txtNome">Tempo de Partida (em minutos):</label>
                             <div class="w-100"></div>
                             <input type="number" name="Tempo_Partida" class="form-control" id="txtNomeForm" aria-describedby="nome-cadastro" value="<?php echo isset($_POST['Tempo_Partida']) ? $_POST['Tempo_Partida'] : ''; ?>">
                             <div class="w-100"></div>
@@ -140,7 +157,7 @@
                             <div class="alert alert-warning" style="position: left;"><?php echo $errors['Senha_Sala']; ?></div>
                             <?php } ?>
 
-                            <label for="formtexto" id="txtNome">Confirmação Senha da Sala:</label>
+                            <label for="formtexto" id="txtNome">Confirmação da Senha da Sala:</label>
                             <div class="w-100"></div>
                             <input type="text" name="ConfSenha_Sala" class="form-control" id="txtNomeForm" aria-describedby="nome-cadastro" value="<?php echo isset($_POST['ConfSenha_Sala']) ? $_POST['ConfSenha_Sala'] : ''; ?>">
                             <div class="w-100"></div>
@@ -150,9 +167,10 @@
                             <br> <br> <br>
 
                             <div class="container">
-                            <button type="submit" class="btn btn-primary btn-lg" id="botoesregistrar"><a>Criar</a> </button>
+                            <button type="submit" class="btn btn-primary btn-lg" id="botoesregistrar"><a>Salvar</a> </button>
                             <button type="reset" class="btn btn-secondary btn-lg" id="botoeslimpar"> <a id="limpar"> Limpar</a>
                             </button>
+                            <br> <a class="text-center" id="cancelar" href="../../views/partidas/PartidaADM.php"> Cancelar e Voltar </a>
                             <br>
                             <br>
                             </div>

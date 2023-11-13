@@ -83,6 +83,15 @@
         right: -2rem;
         box-shadow: none;
     }
+
+    #atualização {
+        color: #04574d;
+        margin-bottom: -8px;
+    }
+
+    #nomezinho {
+        text-decoration: underline dotted;
+    }
 </style>
 
 
@@ -110,6 +119,7 @@ class ZonaHTML
             echo "<h5 class='card-title nome-soc' id='NomeZona'>" . $zona->getNomeZona() . "</h5>" . "<br>";
             echo "<p class='card-text nome-texto' id='quantidade'> Quantidade de Plantas: " . $zona->getQntdPlanta() . "<br>" . "</p>";
             echo "<p class='card-text nome-texto'> Pontos Totais: " . $pontosZona . "</p>";
+            echo "<p class='card-text nome-texto' id='atualização' >Última edição por:";
             echo "<p class='card-text nome-texto' id='nomezinho' >" . $usuario->getNomeUsuario() . "</p>";
             if (($_SESSION['TIPO'] == 3 && $_SESSION['NOME'] == $usuario->getNomeUsuario()) || $_SESSION['TIPO'] == 2) {
                 echo "<a href='editarZona.php?id=" . $zona->getIdZona() . "' class='btn btn-primary editar'>Editar</a>";

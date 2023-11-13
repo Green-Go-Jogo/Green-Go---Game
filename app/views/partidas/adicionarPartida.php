@@ -56,7 +56,7 @@
                             <?php } ?>
 
                             <div class="form-group">
-                            <label for="selectZona" id="txtNome">Zona:</label>
+                            <label for="selectZona" id="txtNome">Adicionar Zona:</label>
                             <div class="input-group">
                             <?php
                             $zonaCont = new ZonaController();
@@ -77,7 +77,7 @@
                             <div id="txtZona"></div>
 
                             <div class="form-group">
-                            <label for="selectEquipe" id="txtNomeEquipe">Equipe:</label>
+                            <label for="selectEquipe" id="txtNomeEquipe">Adicionar Equipe:</label>
                             <div class="input-group">
                             <?php
                             $equipeCont = new EquipeController();
@@ -96,13 +96,13 @@
                             
 
                             <br>
-                            <label for="formtexto" id="txtNome">Total de Jogadores (Divididos entre as equipes):</label>
+                            <label for="formtexto" id="txtNome">Máximo de Jogadores por Equipe:</label>
                             <div class="w-100"></div>
                             <input type="number" name="Limite_Jogadores" class="form-control" id="txtNomeForm" aria-describedby="nome-cadastro" value="<?php echo isset($_POST['Limite_Jogadores']) ? $_POST['Limite_Jogadores'] : ''; ?>">
                             <div class="w-100"></div>  
 
                             <br>
-                            <label for="formtexto" id="txtNome">Tempo de Partida (Minutos):</label>
+                            <label for="formtexto" id="txtNome">Tempo de Partida (em minutos):</label>
                             <div class="w-100"></div>
                             <input type="number" name="Tempo_Partida" class="form-control" id="txtNomeForm" aria-describedby="nome-cadastro" value="<?php echo isset($_POST['Tempo_Partida']) ? $_POST['Tempo_Partida'] : ''; ?>">
                             <div class="w-100"></div>
@@ -112,7 +112,7 @@
                             <input type="text" name="Senha_Sala" class="form-control" id="txtNomeForm" aria-describedby="nome-cadastro" value="<?php echo isset($_POST['Senha_Sala']) ? $_POST['Senha_Sala'] : ''; ?>">
                             <div class="w-100"></div>
 
-                            <label for="formtexto" id="txtNome">Confirmação Senha da Sala:</label>
+                            <label for="formtexto" id="txtNome">Confirmação da Senha da Sala:</label>
                             <div class="w-100"></div>
                             <input type="text" name="ConfSenha_Sala" class="form-control" id="txtNomeForm" aria-describedby="nome-cadastro" value="<?php echo isset($_POST['ConfSenha_Sala']) ? $_POST['ConfSenha_Sala'] : ''; ?>">
                             <div class="w-100"></div>

@@ -219,8 +219,10 @@ Class PartidaHTML {
         echo "<div class='card' style='width: 22rem;'>";
         echo "<div class='card-body'>";
         echo "<h5 class='card-title' id='nomepartida'>".$partida->getNomePartida()."</h5>"."<br>";
-        echo "<p class='card-text nome-texto'> Jogadores: ".$jogadores."/".$maxJogadores."</p>";
-        echo "<p class='card-text nome-texto' id='status'> Status: ".$Status."</p>";
+        echo "<p class='card-text nome-texto'> Jogadores: ".$jogadores."/".$maxJogadores."<br></p>";
+        echo "<p class='card-text nome-texto' id='status'> Status: ".$Status."<br></p>";
+        echo "<p class='card-text nome-texto' id='zonas'> INSERIR ZONAS AQUI".$zona."<br></p>";
+        echo "<p class='card-text nome-texto' id='criador'> Criado por: <br>"."</p>";
         
             if($Open == "FULL") {
                 echo "<button type='button' class='btn entrar-btn'>Partida Cheia!</button>";

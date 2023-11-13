@@ -163,6 +163,22 @@ if ($ornamental == 1) {
     input[type="file"] {
         display: none;
     }
+
+    #cancelar {
+        position: relative;
+        color: #C05367;
+        font-family: Poppins-medium;
+        top: 10px;
+        left: 40px;
+        text-decoration: underline dotted;
+        font-size: 20px;
+    }
+
+    #cancelar:hover {
+    color: #ED8E96;
+    font-family: Poppins-medium;
+}
+
 </style>
 
 
@@ -309,9 +325,10 @@ if ($ornamental == 1) {
         </nav>
 
         <div class="container"> <br><br>
-            <button type="submit" class="btn btn-primary btn-lg" id="botoesregistrar"><a>Editar</a> </button>
+            <button type="submit" class="btn btn-primary btn-lg" id="botoesregistrar"><a>Salvar</a> </button>
             <button type="reset" class="btn btn-secondary btn-lg" id="botoeslimpar"> <a id="limpar"> Limpar</a>
             </button>
+            <br> <a class="text-center" id="cancelar" href="../../views/especies/listEspecies.php"> Cancelar e Voltar </a>
         </div>
 
         <input type="hidden" name="id_especie" value="<?php echo $especie->getIdEspecie(); ?>" />

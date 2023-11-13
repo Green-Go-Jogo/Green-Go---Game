@@ -62,7 +62,7 @@ include_once(__DIR__."/htmlEspecie.php");
                 PlantaHTML::desenhaPlanta($plantas);
             }
             else {
-                echo "<p>NÃO HÁ PLANTAS NESSES PARAMÊTROS</p>";
+                echo "<p>Nenhuma planta encontrada!</p>";
             }
         ?>
         </div>  

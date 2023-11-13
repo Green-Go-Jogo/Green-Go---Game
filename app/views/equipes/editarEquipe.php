@@ -22,6 +22,25 @@ if($equipe == null) {
 <!DOCTYPE html>
 <html lang="pt-br">
 
+<style>
+
+#cancelar {
+        position: relative;
+        color: #C05367;
+        font-family: Poppins-medium;
+        top: -26px;
+        left: 43px;
+        text-decoration: underline dotted;
+        font-size: 20px;
+    }
+
+    #cancelar:hover {
+    color: #ED8E96;
+    font-family: Poppins-medium;
+}
+
+</style>
+
 <head>
     
 <title>Editar Equipe</title>  
@@ -77,9 +96,10 @@ if($equipe == null) {
                             <div id="imagemSelecionada">
                             <img src="<?php echo $equipe->getIconeEquipe(); ?>" alt="" id="previewImagem" style="width: 300px; height: 300px"> <br><br>
                             <div class="container">
-                            <button type="submit" class="btn btn-primary btn-lg" id="botoesregistrar"><a>Editar</a> </button>
+                            <button type="submit" class="btn btn-primary btn-lg" id="botoesregistrar"><a>Salvar</a> </button>
                             <button type="reset" class="btn btn-secondary btn-lg" id="botoeslimpar"> <a id="limpar"> Limpar</a>
                             </button>
+                            <br> <a class="text-center" id="cancelar" href="../../views/equipes/listEquipes.php"> Cancelar e Voltar </a>
                             </div>
                             <br><br>
 

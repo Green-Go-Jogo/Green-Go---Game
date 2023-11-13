@@ -227,7 +227,7 @@ if ($planta == null) {
                 <img id="mapa" src="../../public/mapa.png">
                 <w id="zonaencontrada">
                     <?= $planta->getNomeSocial() ?>
-                    encontrado na
+                    encontra-se na
                     <?= $planta->getZona() ?>!
                 </w>
             </div>
