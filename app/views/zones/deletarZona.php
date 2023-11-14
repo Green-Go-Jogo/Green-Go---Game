@@ -8,17 +8,18 @@ $idZona = $_GET["id"];
 $zonaCont = new ZonaController();
 $zona = $zonaCont->buscarPorId($idZona);
 
-if($zona != null) {
-    //Deletar o zona
-    $zonaCont->excluir($zona);
+if ($zona != null) {
 
-    //Retornar para a página inicial
+    try {
+        $zonaCont->excluir($zona);
+    } catch (PDOException $e) {
+        header("Location: ../home/erro.php");
+        exit;
+    }
+
     header("location: listZonas.php");
-
-} else { 
-    echo "O zona de ID ".$idZona." não existe.";
+} else {
+    echo "O zona de ID " . $idZona . " não existe.";
     echo "<br>";
     echo "<a href='index.php'>Voltar</a>";
 }
-
-?>
