@@ -1,6 +1,7 @@
 <link rel="stylesheet" href="../csscheer/verpartida.css">
 <link rel="stylesheet" href="../csscheer/ranking.css">
 <link rel="stylesheet" href="../css/listPlanta.css">
+<link rel="stylesheet" href="../css/admpartida.css">
 
 <style>
 
@@ -346,19 +347,19 @@ Class PartidaHTML {
 
     public static function desenhaPartidaZona($partida) {
     
-        echo "<div class=' text-center'>";
+        echo "<div class='container text-center'>";
         echo "<div class='zonaP text-right'>"; // Adicione a classe zonaP aqui
         echo "<table class='table'>";
         echo "<thead>";
         echo "<tr>";
         echo "<th scope='col'></th>";
-        echo "<th scope='col' class='text-center'>ZONAS</th>";
+        echo "<th scope='col' class='text-center' id='zonaadm'>ZONAS</th>";
         echo "<th scope='col'></th>";
         echo "</tr>";
         echo "<tr>";
-        echo "<th scope='col'>Nome</th>";
-        echo "<th scope='col'>Qntd Plantas</th>";
-        echo "<th scope='col'>Pontos Totais</th>";
+        echo "<th scope='col' class='text-center' id='nomeadm'>Nome</th>";
+        echo "<th scope='col' class='text-center' id='nomeadm'>Qntd Plantas</th>";
+        echo "<th scope='col' class='text-center' id='nomeadm'>Pontos Totais</th>";
         echo "</tr>";
         echo "</thead>";
         echo "<tbody>";
@@ -366,9 +367,9 @@ Class PartidaHTML {
         foreach ($partida->getZonas() as $zona) {
 
             echo "<tr>";
-            echo "<td>".$zona->getNomeZona()."</td>";
-            echo "<td style='color: #338a5f;'>".$zona->getQntdPlanta()."</td>";
-            echo "<td style='color: #338a5f;'>".$zona->getPontosTotais()."</td>";
+            echo "<td class='text-center' id='nomeequipeadm'>".$zona->getNomeZona()."</td>";
+            echo "<td class='text-center' id='nomeequipeadm'>".$zona->getQntdPlanta()."</td>";
+            echo "<td class='text-center' id='nomeequipeadm'>".$zona->getPontosTotais()."</td>";
             echo "</tr>";
 
     
@@ -382,28 +383,28 @@ Class PartidaHTML {
 
     public static function desenhaPartidaEquipe($partida) {
     
-        echo "<div class=' text-center'>";
+        echo "<div class='container text-center'>";
         echo "<div class='equipeP text-right'>"; // Adicione a classe equipeP aqui
         echo "<table class='table'>";
         echo "<thead>";
         echo "<tr>";
         echo "<th scope='col'></th>";
-        echo "<th scope='col' class='text-center'>EQUIPES</th>";
+        echo "<th scope='col' class='text-center' id='equipeadm'>EQUIPES</th>";
         echo "<th scope='col'></th>";
         echo "</tr>";
         echo "<tr>";
-        echo "<th scope='col'>Nome</th>";
-        echo "<th scope='col'>Cor</th>";
-        echo "<th scope='col'>Icon</th>";
+        echo "<th class='text-center' scope='col' id='nomeadm'>Nome</th>";
+        echo "<th class='text-center' scope='col' id='nomeadm'>Cor</th>";
+        echo "<th class='text-center' scope='col' id='nomeadm'>Icon</th>";
         echo "</tr>";
         echo "</thead>";
         echo "<tbody>"; 
 
         foreach ($partida->getEquipes() as $equipe) { 
             echo "<tr>";
-            echo "<td>".$equipe->getNomeEquipe()."</td>";
-            echo "<td style='background-color: ".$equipe->getCorEquipe()."'></td>";
-            echo "<td style='color: #338a5f;'> <img style='width: 60px;' src='".$equipe->getIconeEquipe()."'/></td>";
+            echo "<td class='text-center' id='nomeequipeadm'>".$equipe->getNomeEquipe()."</td>";
+            echo "<td class='text-center' id='coradm' style='background-color: ".$equipe->getCorEquipe()."'></td>";
+            echo "<td class='text-center' style='color: #338a5f;'> <img style='width: 60px;' src='".$equipe->getIconeEquipe()."'/></td>";
             echo "</tr>";
         }
     

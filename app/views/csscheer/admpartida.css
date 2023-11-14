@@ -103,5 +103,67 @@ body {
 }
 
 #encerrar {
+    position: relative;
     text-decoration: underline;
+    font-family: Poppins-medium;
+    margin-top: 13px;
+    top: 7px;
+    font-size: 18px;
+}
+
+#editaradm {
+    color: #ffffff;
+    background-color: #f0b6bc;
+    border-color: #ffffff;
+    margin-top: 7px;
+    margin-bottom: 7px;
+}
+
+#editaradm:hover {
+    color: #ffffff;
+    background-color: #ED8E96;
+    border-color: #ffffff;
+}
+
+@media (max-width: 580px)  {
+
+#equipeadm {
+    position: relative;
+    color: #04574d;
+    font-family: Poppins;
+    font-size: 25px;
+    left: 8px; } }
+
+
+#equipeadm {
+    position: relative;
+    color: #04574d;
+    font-family: Poppins;
+    font-size: 25px; } 
+
+#zonaadm {
+    position: relative;
+    color: #04574d;
+    font-family: Poppins;
+    font-size: 25px;   
+}
+
+#nomeadm {
+    color: #C05367;
+    text-decoration: underline dotted;
+    font-family: Poppins-Medium;
+    font-size: 20px;
+}
+
+#nomeequipeadm {
+    position: relative;
+    color: #078071;
+    font-family: Poppins-semibold;
+    font-size: 17px;
+    top: 20px;
+}
+
+#coradm {
+    border-radius: 7px;
+    width: 100px;
 }
