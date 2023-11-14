@@ -205,9 +205,13 @@ Class PartidaHTML {
                 $Status = "Finalizada";
                 $Open = "END";
             }
+            else if($partida->getIdAdm() == $_SESSION['ID']){
+                $Status = "Administrador";
+                $Open = "ADM";
+            }
             else if(null !==($partida->getDataInicio())){
                 $Status = "Em andamento";
-                $Open = "CLOSE";
+                $Open = "NO";
              }
             else if($maxJogadores == $jogadores) {
                 $Status = "Cheia";
@@ -236,9 +240,11 @@ Class PartidaHTML {
             else if($Open == "END"){
             echo "<a href='rankPartida.php?id=".$partida->getIdPartida()."'><button type='button' class='btn entrar-btn'>Resultado</button></a>";
             }
-            else if($Open == "CLOSE"){
+            else if($Open == "NO"){
                 echo "<button type='button' class='btn entrar-btn'>Fechada!</button>";
-                }
+            } else if($Open = "ADM") {
+                echo "<a href='PartidaADM.php?id=".$partida->getIdPartida()."'><button type='button' class='btn entrar-btn'>Administrar</button></a>";
+            }
             echo "<br>";
             echo "</div>";
             echo "</div>";
