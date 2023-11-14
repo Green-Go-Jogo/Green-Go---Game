@@ -1,6 +1,6 @@
 <?php 
 
-Class Equipe {
+Class Equipe implements JsonSerializable{
 
     private $idEquipe;
     private $nomeEquipe;
@@ -10,6 +10,17 @@ Class Equipe {
 
 
     //Construtor da classe
+
+    #[\ReturnTypeWillChange]
+    public function jsonSerialize() {
+        return
+        [
+            'IdEquipe' => $this->idEquipe,
+            'NomeEquipe' => $this->nomeEquipe,
+            'PontuacaoEquipe' => $this->pontuacaoEquipe,
+            'CorEquipe' => $this->corEquipe
+        ];
+    }
     public function __construct($id="",$nome="",$icone="",$pontuacao="")
     {
         $this->idEquipe = $id;
@@ -17,7 +28,9 @@ Class Equipe {
         $this->iconeEquipe = $icone;  
         $this->pontuacaoEquipe = $pontuacao;
     }
-
+    public function __toString() {
+        return $this->nomeEquipe;
+    }
     /**
      * Get the value of idEquipe
      */ 

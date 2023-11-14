@@ -184,15 +184,19 @@ left: 1200px; /* Ajuste conforme necessário para posicionar à direita */
 
 <?php
 include_once("../../controllers/PartidaController.php");
+include_once("../../controllers/UsuarioController.php");
 Class PartidaHTML {
     
     public static function desenhaPartida($partidas) {
         $partCont = new PartidaController();
+        $usuarioCont = new UsuarioController();
         echo "<div class='container text-center'>";
         echo "<div class='row row-cols-4'>";
 
         foreach ($partidas as $partida) {
             
+        $usuario = $usuarioCont->buscarPorId($partida->getIdAdm());
+        $nomeAdm = $usuario->getNomeUsuario();
         $numEquipes = count($partida->getEquipes()); 
         $jogadores = $partCont->contarJogadores($partida->getIdPartida());   
         $maxJogadores = $partida->getLimiteJogadores() * $numEquipes;
@@ -213,7 +217,6 @@ Class PartidaHTML {
                $Status = "Aguardando";
                $Open = "YES";
             }
-
         echo "<div class='col-md-4'>";
         echo "<br>";
         echo "<div class='card' style='width: 22rem;'>";
@@ -221,14 +224,14 @@ Class PartidaHTML {
         echo "<h5 class='card-title' id='nomepartida'>".$partida->getNomePartida()."</h5>"."<br>";
         echo "<p class='card-text nome-texto'> Jogadores: ".$jogadores."/".$maxJogadores."<br></p>";
         echo "<p class='card-text nome-texto' id='status'> Status: ".$Status."<br></p>";
-        echo "<p class='card-text nome-texto' id='zonas'> INSERIR ZONAS AQUI".$zona."<br></p>";
-        echo "<p class='card-text nome-texto' id='criador'> Criado por: <br>"."</p>";
+        echo "<button type='button btn-info' id='info' data-toggle='modal' data-target='#infoModal' onclick='mostrarInfo(" . json_encode($partida->getZonas()) . "," . json_encode($partida->getEquipes()) . ")'>Informações</button>";
+        echo "<br><br><p class='card-text nome-texto' id='criador'> Criado por: <br>".$nomeAdm." <br>"."</p>";
         
             if($Open == "FULL") {
                 echo "<button type='button' class='btn entrar-btn'>Partida Cheia!</button>";
             }
             else if ($Open == "YES") {
-            echo "<button type='button' class='btn entrar-btn' data-bs-toggle='modal' data-bs-target='#exampleModal' data-partida-id='".$partida->getIdPartida()."'>Entrar</button>";
+            echo "<button type='button' class='btn entrar-btn' data-bs-toggle='modal' data-bs-target='#senhaModal' data-partida-id='".$partida->getIdPartida()."'>Entrar</button>";
             }
             else if($Open == "END"){
             echo "<a href='rankPartida.php?id=".$partida->getIdPartida()."'><button type='button' class='btn entrar-btn'>Resultado</button></a>";
@@ -244,8 +247,8 @@ Class PartidaHTML {
 
         echo "</div>";
 
-        // Modal HTML
-        echo "<div class='modal fade' id='exampleModal' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>";
+        // Modal Senha
+        echo "<div class='modal fade' id='senhaModal' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>";
         echo "<div class='modal-dialog'>";
         echo "<div class='modal-content'>";
         echo "<div class='modal-header'>";
@@ -264,6 +267,26 @@ Class PartidaHTML {
         echo "<button type='submit' class='btn submit btn-primary' id='submit-password'>Entrar</button>";
         echo "</div>";
         echo "</form>";
+        echo "</div>";
+        echo "</div>";
+        echo "</div>";
+
+        // Modal Info
+        echo "<div id='infoModal' class='modal fade' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>";
+        echo "<div class='modal-dialog'>";
+        echo "<div class='modal-content'>";
+        echo "<div class='modal-header justify-content-center'>";
+        echo "<h4 class='modal-title d-flex text-center'>Informações</h4>";
+        echo "</div>";
+        echo "<div class='modal-body'>";
+        echo "<div id='informacoes'>";
+        echo "</div>";
+        echo "</div>";
+        echo "<div class='modal-footer'>";
+        echo "<button type='button' class='btn cancel btn-secondary' data-dismiss='modal' id='fecharpassword'>Fechar</button>";
+        echo "</div>";
+        echo "</div>";
+        echo "</div>";
         echo "</div>";
         echo "</div>";
         echo "</div>";

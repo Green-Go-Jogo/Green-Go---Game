@@ -65,6 +65,21 @@ $(document).ready(function() {
             $('#partida-id').val(partidaId);
         });
     });
+
+    function mostrarInfo(zonas, equipes) {
+        console.log('Zonas:', zonas);
+        console.log('Equipes:', equipes);
+
+
+        document.getElementById('informacoes').innerHTML = `
+    <div class="container">
+        <h1 style="font-size: 20px;">Zonas: </h1>
+            ${zonas.map(zona => `<span>${zona.NomeZona}</span><br>`).join('')}
+            <br>
+            <h1 style="font-size: 20px;">Equipes: </h1>
+            ${equipes.map(equipe => `<span>${equipe.NomeEquipe}</span><br>`).join('')}
+    </div>`;
+    }
 </script>
 
 </html>
