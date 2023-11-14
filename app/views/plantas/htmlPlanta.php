@@ -36,7 +36,9 @@
     }
 
     #filtroButton,
-    .limpar, .limpar:hover, .limpar:focus {
+    .limpar,
+    .limpar:hover,
+    .limpar:focus {
         margin-bottom: -10px;
         margin-left: 20px;
         color: #FFFFFF;
@@ -220,7 +222,6 @@
         color: #04574d;
         margin-bottom: -8px;
     }
-
 </style>
 
 <?php

@@ -9,10 +9,14 @@ $equipeCont = new EquipeController();
 $equipe = $equipeCont->buscarPorId($idEquipe);
 
 if($equipe != null) {
-    //Deletar o equipe
-    $equipeCont->excluir($equipe);
 
-    //Retornar para a página inicial
+    try {
+        $equipeCont->excluir($equipe);
+    } catch (PDOException $e) {
+        header("Location: ../home/erro.php");
+        exit;
+    }
+
     header("location: listEquipes.php");
 
 } else { 
@@ -20,5 +24,3 @@ if($equipe != null) {
     echo "<br>";
     echo "<a href='listEquipes.php'>Voltar</a>";
 }
-
-?>
