@@ -125,14 +125,11 @@ body {
     border-color: #ffffff;
 }
 
-@media (max-width: 580px)  {
-
 #equipeadm {
     position: relative;
     color: #04574d;
     font-family: Poppins;
-    font-size: 25px;
-    left: 8px; } }
+    font-size: 25px; }
 
 
 #equipeadm {
@@ -140,13 +137,6 @@ body {
     color: #04574d;
     font-family: Poppins;
     font-size: 25px; } 
-
-#zonaadm {
-    position: relative;
-    color: #04574d;
-    font-family: Poppins;
-    font-size: 25px;   
-}
 
 #nomeadm {
     color: #C05367;
@@ -166,4 +156,86 @@ body {
 #coradm {
     border-radius: 7px;
     width: 100px;
+}
+
+@media (min-width: 768px) and (max-width: 988px) {
+
+    #zonaadm {
+        position: relative;
+        color: #04574d;
+        font-family: Poppins;
+        font-size: 25px;   
+        left: 14px;
+    }
+    
+    #quantidadeadm {
+        position: relative;
+        color: #C05367;
+        text-decoration: underline dotted;
+        font-family: Poppins-Medium;
+        font-size: 20px;
+        left: 14px;
+    } 
+    
+    #plantaadm {
+        position: relative;
+        color: #078071;
+        font-family: Poppins-semibold;
+        font-size: 17px;
+        top: 20px;
+        left: 14px;
+    }
+}
+
+@media (min-width: 989px) {
+
+    #zonaadm {
+        position: relative;
+        color: #04574d;
+        font-family: Poppins;
+        font-size: 25px;   
+        left: 22px;
+    }
+    
+    #quantidadeadm {
+        position: relative;
+        color: #C05367;
+        text-decoration: underline dotted;
+        font-family: Poppins-Medium;
+        font-size: 20px;
+        left: 22px;
+    } 
+    
+    #plantaadm {
+        position: relative;
+        color: #078071;
+        font-family: Poppins-semibold;
+        font-size: 17px;
+        top: 20px;
+        left: 22px;
+    }
+
+}
+
+#zonaadm {
+    position: relative;
+    color: #04574d;
+    font-family: Poppins;
+    font-size: 25px;   
+}
+
+#quantidadeadm {
+    position: relative;
+    color: #C05367;
+    text-decoration: underline dotted;
+    font-family: Poppins-Medium;
+    font-size: 20px;
+} 
+
+#plantaadm {
+    position: relative;
+    color: #078071;
+    font-family: Poppins-semibold;
+    font-size: 17px;
+    top: 20px;
 }

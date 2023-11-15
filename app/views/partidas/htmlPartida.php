@@ -355,7 +355,7 @@ class PartidaHTML
     public static function desenhaPartidaZona($partida)
     {
 
-        echo "<div class=' text-center'>";
+        echo "<div class='container text-center'>";
         echo "<div class='zonaP text-right'>"; // Adicione a classe zonaP aqui
         echo "<table class='table'>";
         echo "<thead>";
@@ -366,7 +366,7 @@ class PartidaHTML
         echo "</tr>";
         echo "<tr>";
         echo "<th scope='col' class='text-center' id='nomeadm'>Nome</th>";
-        echo "<th scope='col' class='text-center' id='nomeadm'>Qntd Plantas</th>";
+        echo "<th scope='col' class='text-center' id='quantidadeadm'>Qntd Plantas</th>";
         echo "<th scope='col' class='text-center' id='nomeadm'>Pontos Totais</th>";
         echo "</tr>";
         echo "</thead>";
@@ -376,11 +376,8 @@ class PartidaHTML
 
             echo "<tr>";
             echo "<td class='text-center' id='nomeequipeadm'>".$zona->getNomeZona()."</td>";
-            echo "<td class='text-center' id='nomeequipeadm'>".$zona->getQntdPlanta()."</td>";
+            echo "<td class='text-center' id='plantaadm'>".$zona->getQntdPlanta()."</td>";
             echo "<td class='text-center' id='nomeequipeadm'>".$zona->getPontosTotais()."</td>";
-            echo "<td>" . $zona->getNomeZona() . "</td>";
-            echo "<td style='color: #338a5f;'>" . $zona->getQntdPlanta() . "</td>";
-            echo "<td style='color: #338a5f;'>" . $zona->getPontosTotais() . "</td>";
             echo "</tr>";
         }
 
@@ -413,7 +410,7 @@ class PartidaHTML
             echo "<tr>";
             echo "<td class='text-center' id='nomeequipeadm'>".$equipe->getNomeEquipe()."</td>";
             echo "<td class='text-center' id='coradm' style='background-color: ".$equipe->getCorEquipe()."'></td>";
-            echo "<td class='text-center' style='color: #338a5f;'> <img style='width: 60px;' src='".$equipe->getIconeEquipe()."'/></td>";
+            echo "<td class='text-center' style='color: #338a5f;'> <img style='width: 60px;' src='".$equipe->getIconeEquipe()."'></td>";
             echo "</tr>";
         }
 
