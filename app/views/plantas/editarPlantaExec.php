@@ -1,10 +1,10 @@
 <?php
 #Arquivo para executar a inclusão de um personagem
-require __DIR__."/../../api/phpqrcode/qrlib.php";
-include_once(__DIR__."/../../models/PlantaModel.php");
-include_once(__DIR__."/../../models/ZonaModel.php");
-include_once(__DIR__."/../../models/UsuarioModel.php");
-include_once(__DIR__."/../../controllers/PlantaController.php");
+require __DIR__ . "/../../api/phpqrcode/qrlib.php";
+include_once(__DIR__ . "/../../models/PlantaModel.php");
+include_once(__DIR__ . "/../../models/ZonaModel.php");
+include_once(__DIR__ . "/../../models/UsuarioModel.php");
+include_once(__DIR__ . "/../../controllers/PlantaController.php");
 
 //Capturar os valores vindos do formulário
 $id_planta = $_POST["id_planta"];
@@ -24,11 +24,11 @@ $errors = array();
 
 if (empty($id_zona)) {
   $errors['zona_planta'] = "O campo Zona é obrigatório";
-} 
+}
 
 if (empty($id_especie)) {
   $errors['especie_planta'] = "O campo Espécie é obrigatório";
-} 
+}
 
 if (empty($pontuacao)) {
   $errors['Pontuacao'] = "O campo Pontuação é obrigatório!";
@@ -38,8 +38,9 @@ if (empty($pontuacao)) {
 
 
 if (!empty($errors)) {
-    $idEditarPlanta = $id_planta; require_once ("editarPlanta.php");
-    exit;
+  $idEditarPlanta = $id_planta;
+  require_once("editarPlanta.php");
+  exit;
 }
 
 
@@ -53,7 +54,7 @@ if ($imagem['error'] === UPLOAD_ERR_NO_FILE) {
   $plantaCont->apagarImagem($id_planta);
   // Um arquivo foi enviado, você pode processá-lo aqui
   $extensao = pathinfo($imagem['name'], PATHINFO_EXTENSION);
-  $nome_imagem = md5(uniqid($imagem['name'])).".".$extensao;
+  $nome_imagem = md5(uniqid($imagem['name'])) . "." . $extensao;
   $caminho_imagem = "../../public/plantas/" . $nome_imagem;
   move_uploaded_file($imagem["tmp_name"], $caminho_imagem);
 
@@ -62,7 +63,7 @@ if ($imagem['error'] === UPLOAD_ERR_NO_FILE) {
 
 
 
-    
+
 $planta->setIdPlanta($id_planta);
 $planta->setNomeSocial($nomeSocial);
 $planta->setCodNumerico($Cod_Numerico);
@@ -85,5 +86,3 @@ $plantaCont->atualizar($planta);
 
 //Redireciona para o início
 header("location: listPlantas.php");
-
-?>

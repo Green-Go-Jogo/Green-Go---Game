@@ -11,6 +11,7 @@ $limiteJogadores = $_POST['Limite_Jogadores'];
 $tempoPartida = $_POST['Tempo_Partida'];
 $senhaSala = $_POST['Senha_Sala'];
 $senhaSalaConf = $_POST['ConfSenha_Sala'];
+$idPartida = $_POST['id_partida'];
 
 $zonas = array();
 $equipes = array();
@@ -56,7 +57,8 @@ if (empty($equipes)) {
 if (!empty($errors)) {
     $errors['zonas'] = $zonas;
     $errors['equipes'] = $equipes;
-    require_once("adicionarPartida.php");
+    $idEditarPartida = $idPartida;
+    require_once("editarPartida.php");
     exit;
 }
 
@@ -68,11 +70,10 @@ $partida->setSenha($senhaSala);
 $partida->setTempoPartida($tempoPartida);
 $partida->setZonas($zonas);
 $partida->setEquipes($equipes);
-
-
+$partida->setIdPartida($idPartida);
 
 $partidaCont = new PartidaController();
-$partidaCont->salvarPartida($partida);
+$partidaCont->atualizarPartida($partida);
 
 $idPartidaInserida = $partida->getIdPartida();
 header("Location: PartidaADM.php?id=" . $idPartidaInserida);

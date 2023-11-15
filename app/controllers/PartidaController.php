@@ -135,12 +135,12 @@ class PartidaController {
         $this->partidaDAO->teamScore();
     }
 
-    public function atualizar($planta) {
-        $this->partidaDAO->update($planta);
+    public function atualizarPartida($partida) {
+        $this->partidaDAO->updatePartida($partida);
     }
 
-    public function excluir($planta) {
-        $this->partidaDAO->delete($planta);
+    public function excluir($partida) {
+        $this->partidaDAO->delete($partida);
     }
 
     

@@ -29,7 +29,8 @@ var idZonaSelecionada;
                 // Pegar a Zona dentro do elemento <option> Selecionada
                 ZonaSelecionada = $(this).find('option:selected').text();
 
-                // Fazer o que desejar com os idZonaes obtidos
+                
+
                 console.log('idZona Selecionada:', idZonaSelecionada);
                 console.log('Zona Selecionada:', ZonaSelecionada);
             });

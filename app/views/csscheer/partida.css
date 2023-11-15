@@ -193,7 +193,7 @@ body {
 
 .selectize-control.single .selectize-input,
 .selectize-control.single .selectize-input:focus, 
-.selectize-control.single .selectize-input.full {
+.selectize-control.single .selectize-input.full  {
   width: 500px;
   margin-top: 1px;
   color: #ebf0f1;
@@ -201,6 +201,9 @@ body {
   font-family: Poppins-semibold;
 }
 
+.form-control.selectize-control {
+    max-width: 500px;
+}
 
 .selectize-dropdown-content .option {
   color: #ebf0f1;

@@ -137,20 +137,19 @@ if ($id !== null) {
   }
 
   #cancelar {
-        position: relative;
-        color: #C05367;
-        font-family: Poppins-medium;
-        top: 10px;
-        left: 40px;
-        text-decoration: underline dotted;
-        font-size: 20px;
-    }
+    position: relative;
+    color: #C05367;
+    font-family: Poppins-medium;
+    top: 10px;
+    left: 40px;
+    text-decoration: underline dotted;
+    font-size: 20px;
+  }
 
-    #cancelar:hover {
+  #cancelar:hover {
     color: #ED8E96;
     font-family: Poppins-medium;
-}
-
+  }
 </style>
 <nav>
 
@@ -276,7 +275,7 @@ if ($id !== null) {
 
                                     // Define o conteúdo inicial do editor
                                     editor.setData(historiaContent);
-                                    
+
                                   })
                                   .catch(error => {
                                     console.error(error);
