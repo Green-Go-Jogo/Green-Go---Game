@@ -352,9 +352,6 @@ class PartidaHTML
     }
 
 
-    public static function desenhaPartidaZona($partida) {
-    
-        echo "<div class='container text-center'>";
     public static function desenhaPartidaZona($partida)
     {
 

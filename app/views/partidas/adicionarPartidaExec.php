@@ -14,6 +14,7 @@ $senhaSalaConf = $_POST['ConfSenha_Sala'];
 
 $zonas = array();
 $equipes = array();
+$errors = array();
 
 foreach ($_POST as $name => $value) {
   if (strpos($name, 'zona_') === 0) {
@@ -23,6 +24,34 @@ foreach ($_POST as $name => $value) {
   }
 }
 
+
+if (strlen($nomePartida) <= 4) {
+    $errors['Nome_Partida'] = "Erro: Nome da Partida deve ter mais que 4 caracteres.";
+}
+
+// Verificação do Limite de Jogadores
+if (!ctype_digit($limiteJogadores) || $limiteJogadores == '00' || strlen($limiteJogadores) > 2) {
+    $errors['Limite_Jogadores'] = "Erro: Limite de Jogadores deve ter até no máximo 2 dígitos numéricos e não pode ser 00.";
+}
+
+if (!ctype_digit($tempoPartida) || $tempoPartida < 5 || strlen($tempoPartida) > 3) {
+    $errors['Tempo_Partida'] = "Erro: Tempo de Partida pode ter até 3 dígitos numéricos e não pode ser menos que 5.";
+    
+}
+
+if (strlen($senhaSala) <= 4 || $senhaSala !== $senhaSalaConf) {
+    $errors['Senha_Sala'] = "Erro: Senha da Sala deve ter mais que 4 caracteres e a confirmação deve ser igual à senha.";
+
+}
+
+if (empty($zonas) || empty($equipes)) {
+    $errors['Equipe_Zona'] = "Erro: Zonas e Equipes não podem estar vazias.";
+}
+
+if (!empty($errors)) {
+    require_once("adicionarPartida.php");
+    exit;
+  }
 
 $partida = new Partida();
 $partida->setIdAdm($idUsuario);

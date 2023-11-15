@@ -1,4 +1,8 @@
 <?php
+include_once("../../controllers/LoginController.php");
+$loginCont = new LoginController();
+LoginController::manterUsuario();
+LoginController::verificarAcesso([2, 3]);
 include_once(__DIR__."/../../controllers/PartidaController.php");
 include_once(__DIR__."/../../controllers/ZonaController.php");
 include_once(__DIR__."/../../controllers/EquipeController.php");
@@ -16,13 +20,9 @@ $partida = $partidaCont->buscarPorId($idPartida);
 
 $tempo = $partida->getTempoPartida(); 
 
-?>
-<?php include_once("../../controllers/LoginController.php");
-$loginCont = new LoginController();
-LoginController::manterUsuario();
-LoginController::verificarAcesso([2, 3]);
 $loginCont->checarAdmPartida($idPartida, $_SESSION['ID']);
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">

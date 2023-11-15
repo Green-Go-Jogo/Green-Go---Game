@@ -1,10 +1,9 @@
 <?php
-include_once(__DIR__ . "/../../controllers/PartidaController.php");
-include_once(__DIR__ . "/htmlPartida.php");
-?>
-<?php include_once("../../controllers/LoginController.php");
+include_once("../../controllers/LoginController.php");
 LoginController::manterUsuario();
 LoginController::verificarAcesso([1, 2, 3]);
+include_once(__DIR__ . "/../../controllers/PartidaController.php");
+include_once(__DIR__ . "/htmlPartida.php");
 ?>
 
 <!DOCTYPE html>

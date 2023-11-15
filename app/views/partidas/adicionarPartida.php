@@ -75,6 +75,9 @@
                             </div>
                             </div>
                             <div id="txtZona"></div>
+                            <?php if (isset($errors) && !empty($errors) && isset($errors['Equipe_Zona'])) { ?>
+                            <div class="alert alert-warning" style="position: left;"><?php echo $errors['Equipe_Zona']; ?></div>
+                            <?php } ?>
 
                             <div class="form-group">
                             <label for="selectEquipe" id="txtNomeEquipe">Adicionar Equipe:</label>
@@ -92,30 +95,44 @@
                             </div>
                             </div>
                             </div>
-                            <div id="txtEquipe"></div>
-                            
+                            <div id="txtEquipe">
+                            <div class="zone-wrapper" data-id="'16'"><input type="hidden" name="zona_'16'" value="'16'"> <span>' + ZonaSelecionada + '</span> <a href="#" class="delete-zone" data-action="delete"><i class="fas fa-trash" style="color: #338a5f;"></i></a></div>');
+                  
+                            </div>
+                            <?php if (isset($errors) && !empty($errors) && isset($errors['Equipe_Zona'])) { ?>
+                            <div class="alert alert-warning" style="position: left;"><?php echo $errors['Equipe_Zona']; ?></div>
+                            <?php } ?>
 
                             <br>
                             <label for="formtexto" id="txtNome">Máximo de Jogadores por Equipe:</label>
                             <div class="w-100"></div>
                             <input type="number" name="Limite_Jogadores" class="form-control" id="txtNomeForm" aria-describedby="nome-cadastro" value="<?php echo isset($_POST['Limite_Jogadores']) ? $_POST['Limite_Jogadores'] : ''; ?>">
                             <div class="w-100"></div>  
-
+                            <?php if (isset($errors) && !empty($errors) && isset($errors['Limite_Jogadores'])) { ?>
+                            <div class="alert alert-warning" style="position: left;"><?php echo $errors['Limite_Jogadores']; ?></div>
+                            <?php } ?>
                             <br>
                             <label for="formtexto" id="txtNome">Tempo de Partida (em minutos):</label>
                             <div class="w-100"></div>
                             <input type="number" name="Tempo_Partida" class="form-control" id="txtNomeForm" aria-describedby="nome-cadastro" value="<?php echo isset($_POST['Tempo_Partida']) ? $_POST['Tempo_Partida'] : ''; ?>">
                             <div class="w-100"></div>
-
+                            <?php if (isset($errors) && !empty($errors) && isset($errors['Tempo_Partida'])) { ?>
+                            <div class="alert alert-warning" style="position: left;"><?php echo $errors['Tempo_Partida']; ?></div>
+                            <?php } ?>
                             <label for="formtexto" id="txtNome">Senha da Sala:</label>
                             <div class="w-100"></div>
                             <input type="text" name="Senha_Sala" class="form-control" id="txtNomeForm" aria-describedby="nome-cadastro" value="<?php echo isset($_POST['Senha_Sala']) ? $_POST['Senha_Sala'] : ''; ?>">
                             <div class="w-100"></div>
-
+                            <?php if (isset($errors) && !empty($errors) && isset($errors['Senha_Sala'])) { ?>
+                            <div class="alert alert-warning" style="position: left;"><?php echo $errors['Senha_Sala']; ?></div>
+                            <?php } ?>
                             <label for="formtexto" id="txtNome">Confirmação da Senha da Sala:</label>
                             <div class="w-100"></div>
                             <input type="text" name="ConfSenha_Sala" class="form-control" id="txtNomeForm" aria-describedby="nome-cadastro" value="<?php echo isset($_POST['ConfSenha_Sala']) ? $_POST['ConfSenha_Sala'] : ''; ?>">
                             <div class="w-100"></div>
+                            <?php if (isset($errors) && !empty($errors) && isset($errors['ConfSenha_Sala'])) { ?>
+                            <div class="alert alert-warning" style="position: left;"><?php echo $errors['ConfSenha_Sala']; ?></div>
+                            <?php } ?>
                             <br> <br> <br>
 
                             <div class="container">
