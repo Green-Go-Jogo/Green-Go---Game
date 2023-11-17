@@ -1,4 +1,7 @@
 <?php
+include_once("../../controllers/LoginController.php");
+LoginController::manterUsuario();
+LoginController::verificarAcesso([1]);
 include_once(__DIR__."/../../controllers/PartidaController.php");
 include_once(__DIR__."/../../controllers/ZonaController.php");
 include_once(__DIR__."/../../controllers/EquipeController.php");
@@ -15,11 +18,6 @@ if (isset($_GET['idp'])) {
 $partida = $partidaCont->buscarPorId($_GET['idp']); 
 
 
-?>
-
-<?php include_once("../../controllers/LoginController.php");
-LoginController::manterUsuario();
-LoginController::verificarAcesso([1]);
 ?>
 
 <!DOCTYPE html>

@@ -139,9 +139,9 @@ class PartidaController {
         $this->partidaDAO->updatePartida($partida);
     }
 
-    public function excluir($partida) {
-        $this->partidaDAO->delete($partida);
-    }
+    // public function excluir($partida) {
+    //     $this->partidaDAO->delete($partida);
+    // }
 
     
 }

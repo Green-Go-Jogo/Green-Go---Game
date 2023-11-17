@@ -75,7 +75,11 @@ function createFiltroCaracteristicas() {
         }
         label = document.createElement('label');
         label.for = element;
-        label.innerHTML = element;
+
+        // Mapeia as strings desejadas para seus equivalentes modificados
+        const labelContent = mapString(element);
+
+        label.innerHTML = labelContent;
         label.className = "atributos filtroKids";
 
         pai.appendChild(input);
@@ -88,6 +92,27 @@ function createFiltroCaracteristicas() {
         }
         i++;
     });
+}
+
+function mapString(str) {
+    switch (str) {
+
+        case "Toxicidade":
+            return "Tóxica";
+        case "Endemica":
+            return "Endêmica";
+        case "Raridade":
+            return "Rara";
+        case "Frutifera":
+            return "Frutífera";
+        case "Exotica":
+            return "Exótica";
+        case "Comestivel":
+            return "Comestível";
+        default:
+            return str;
+            
+    }
 }
 
 function createFiltroADMs() {

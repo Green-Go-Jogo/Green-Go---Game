@@ -387,6 +387,45 @@ class PartidaHTML
         echo "</div>";
     }
 
+    public static function desenhaPartidaAlunos($partida)
+    {
+        $usuarioCont = new UsuarioController();
+        echo "<div class='container text-center'>";
+        echo "<div class='zonaP text-right'>"; // Adicione a classe zonaP aqui
+        echo "<table class='table'>";
+        echo "<thead>";
+        echo "<tr>";
+        echo "<th scope='col'></th>";
+        echo "<th scope='col' class='text-center' id='zonaadm'>ALUNOS</th>";
+        echo "<th scope='col'></th>";
+        echo "</tr>";
+        echo "<tr>";
+        echo "<th scope='col' class='text-center' id='nomeadm'>Nome</th>";
+        echo "<th scope='col' class='text-center' id='quantidadeadm'>Login</th>";
+        echo "<th scope='col' class='text-center' id='nomeadm'>E-mail</th>";
+        echo "</tr>";
+        echo "</thead>";
+        echo "<tbody>";
+
+        foreach ($partida->getEquipes() as $equipe) {
+            $usuarios = $usuarioCont->buscarUsuarios($equipe->getIdEquipe(), $partida->getIdPartida());
+            
+            foreach ($usuarios as $usuario)
+            { 
+            echo "<tr>";
+            echo "<td class='text-center' id='nomeequipeadm'>".$usuario->getNomeUsuario()."</td>";
+            echo "<td class='text-center' id='plantaadm'>".$usuario->getLogin()."</td>";
+            echo "<td class='text-center' id='nomeequipeadm'>".$usuario->getEmail()."</td>";
+            echo "</tr>";
+            }
+        }
+
+        echo "</tbody>";
+        echo "</table>";
+        echo "</div>"; // Feche a div com a classe zonaP
+        echo "</div>";
+    }
+
     public static function desenhaPartidaEquipe($partida) {
     
         echo "<div class='container text-center'>";
