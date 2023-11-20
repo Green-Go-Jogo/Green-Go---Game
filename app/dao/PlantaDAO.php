@@ -62,6 +62,19 @@ class PlantaDAO {
         return $this->mapPlantas($result);
     }
 
+    
+    public function listByZona($idZona) {
+        $conn = conectar_db();
+
+        $sql = PlantaDAO::SQL_PLANTA . 
+                " WHERE z.idZona = ?";
+        $stm = $conn->prepare($sql);    
+        $stm->execute([$idZona]);
+        $result = $stm->fetchAll();
+
+        return $this->mapPlantas($result);
+    }
+
 
     public function findById($idPlanta) {
         $conn = conectar_db();

@@ -6,9 +6,7 @@ include_once(__DIR__ . "/../models/ZonaModel.php");
 include_once(__DIR__."/../models/UsuarioModel.php");
 
 class zonaDAO {
-    private const SQL_ZONA = "SELECT z.idZona, z.nomeZona, z.idUsuario, COUNT(p.idPlanta) AS qntPlantas, SUM(p.pontuacaoPlanta) AS pontoZona
-    FROM zona z ".
-    " LEFT JOIN planta p ON z.idZona = p.idZona ";
+    private const SQL_ZONA = "SELECT * FROM zona z";
     private const SQL_ZONA_PARTIDA = "SELECT z.*".
     " FROM partida_zona pz".
     " JOIN zona z ON pz.idZona = z.idZona";
@@ -50,7 +48,7 @@ class zonaDAO {
 
         return $zonas;
     }
-
+    
     public function findById($idZona) {
         $conn = conectar_db();
 

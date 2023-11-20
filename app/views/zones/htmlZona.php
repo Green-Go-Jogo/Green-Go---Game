@@ -134,6 +134,57 @@ class ZonaHTML
         echo "</div>";
         echo "</div>";
     }
+
+    public static function desenhaPlantas($plantas)
+    {
+        include_once("../../controllers/EspecieController.php");
+        $especieCont = new EspecieController();
+        
+        echo "<table class='table'>";
+        echo "<thead>";
+        echo "<tr>";
+        echo "<th>Imagem</th>";
+        echo "<th>Nome</th>";
+        echo "<th>Código</th>";
+        echo "<th>Pontuação</th>";
+        echo "<th>Zona</th>";
+        echo "<th>Última Edição por</th>";
+        echo "</tr>";
+        echo "</thead>";
+        echo "<tbody>";
+
+        foreach ($plantas as $planta) :
+            $especie = $especieCont->buscarPorId($planta->getEspecie()->getIdEspecie());
+            $nomePlanta = !empty($planta->getNomeSocial()) ? $planta->getNomeSocial() : $especie->getNomePopular();
+
+            echo "<tr>";
+            echo "<td>";
+            echo "<a href='visualizarPlanta.php?idp=" . $planta->getIdPlanta() . "&ide=" . $planta->getEspecie()->getIdEspecie() . "'>";
+            echo "<img src='" . $planta->getImagemPlanta() . "' style='width: 90%; height: 90%; margin-right: 10px; border-radius: 5px;' class='card-img-top mais' alt='...'>";
+            echo "</a>";
+            echo "</td>";
+            echo "<td>";
+            echo "<h5 id='nomePlanta' class='card-title nome-soc'>" . $nomePlanta . "</h5>" . "<br>";
+            echo "</td>";
+            echo "<td>";
+            echo "<p class='card-text nome-texto'><a id='codplanta'>Código: " . $planta->getCodNumerico() . "<br><br></a></p>";
+            echo "</td>";
+            echo "<td>";
+            echo "<p class='card-text nome-texto'>Pontuação: " . $planta->getPontos() . "</p>";
+            echo "</td>";
+            echo "<td>";
+            echo "<p class='card-text nome-texto' style='color: #338a5f;'>" . $planta->getZona() . "</p>";
+            echo "</td>";
+            echo "<td>";
+            echo "<p class='card-text nome-texto' id='atualização' >Última edição por:</p>";
+            echo "<p class='card-text nome-texto' id='nomezinho' >" . $planta->getUsuario()->getNomeUsuario() . "</p>";
+            echo "</td>";
+            echo "</tr>";
+        endforeach;
+
+        echo "</tbody>";
+        echo "</table>";
+    }
 }
 ?>
 
