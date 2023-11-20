@@ -95,9 +95,9 @@ include_once("../equipes/htmlEquipeForm.php");
                                                                 }
                                                             } ?>
                                                         </div>
-                                                        <?php if (isset($errors) && !empty($errors) && isset($errors['Equipe_Zona'])) { ?>
+                                                        <?php if (isset($errors) && !empty($errors) && isset($errors['Zona'])) { ?>
                                                             <br>
-                                                            <div class="alert alert-warning" style="position: left;"><?php echo $errors['Equipe_Zona']; ?></div>
+                                                            <div class="alert alert-warning" style="position: left;"><?php echo $errors['Zona']; ?></div>
                                                         <?php } ?>
 
                                                         <div class="form-group">
@@ -129,9 +129,9 @@ include_once("../equipes/htmlEquipeForm.php");
                                                                 }
                                                             } ?>
                                                         </div>
-                                                        <?php if (isset($errors) && !empty($errors) && isset($errors['Equipe_Zona'])) { ?>
+                                                        <?php if (isset($errors) && !empty($errors) && isset($errors['Equipe'])) { ?>
                                                             <br>
-                                                            <div class="alert alert-warning" style="position: left;"><?php echo $errors['Equipe_Zona']; ?></div>
+                                                            <div class="alert alert-warning" style="position: left;"><?php echo $errors['Equipe']; ?></div>
                                                         <?php } ?>
 
                                                         <br>

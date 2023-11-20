@@ -3,10 +3,10 @@ include_once("../../controllers/LoginController.php");
 $loginCont = new LoginController();
 LoginController::manterUsuario();
 LoginController::verificarAcesso([2, 3]);
-include_once(__DIR__."/../../controllers/PartidaController.php");
-include_once(__DIR__."/../../controllers/ZonaController.php");
-include_once(__DIR__."/../../controllers/EquipeController.php");
-include_once(__DIR__."/htmlPartida.php");
+include_once(__DIR__ . "/../../controllers/PartidaController.php");
+include_once(__DIR__ . "/../../controllers/ZonaController.php");
+include_once(__DIR__ . "/../../controllers/EquipeController.php");
+include_once(__DIR__ . "/htmlPartida.php");
 
 $partidaCont = new PartidaController();
 
@@ -16,9 +16,10 @@ if (isset($_GET['id'])) {
     echo "ID não encontrado na URL.";
 }
 
-$partida = $partidaCont->buscarPorId($idPartida); 
-
-$tempo = $partida->getTempoPartida(); 
+$partida = $partidaCont->buscarPorId($idPartida);
+$dataInicio = $partida->getDataInicio();
+$dataFim = $partida->getDataFim();
+$tempo = $partida->getTempoPartida();
 
 $loginCont->checarAdmPartida($idPartida, $_SESSION['ID']);
 ?>
@@ -26,10 +27,11 @@ $loginCont->checarAdmPartida($idPartida, $_SESSION['ID']);
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
     <title>Dashboard Partida</title>
-    <?php include_once("../../bootstrap/header.php");?>
+    <?php include_once("../../bootstrap/header.php"); ?>
     <link rel="stylesheet" href="../csscheer/admpartida.css">
 
 
@@ -37,138 +39,185 @@ $loginCont->checarAdmPartida($idPartida, $_SESSION['ID']);
 
 
 
-    <style>
-    </style>
+<style>
+</style>
 
 </head>
+
 <body>
-<nav>
+    <nav>
 
-<?php include_once("../../bootstrap/navADM.php");?>
-<br>
+        <?php include_once("../../bootstrap/navADM.php"); ?>
+        <br>
 
-</nav>
+    </nav>
 
 
-    
-  <h1 class="text-center primeirotextoreg">SALA DE CONTROLE</h1>
-  
-  <div class="text-center">
 
-  <button class="btn timer" onclick="startTimer()"> <i class="fa-regular fa-circle-play" id="play"> </i> </button>
-  
-  <button class="btn timer"> <i class="fa-regular fa-circle-pause" id="pause"> </i> </button>
+    <h1 class="text-center primeirotextoreg">SALA DE CONTROLE</h1>
 
-  <a class="text-center" id="timer"><?php echo $tempo.":00"; ?> </a> <br>
+    <div class="text-center">
 
-  <a class="stop" id="encerrar"> Encerrar a partida? </a> </div> </div>
+        <button id="startCountdown" class="btn timer iniciar"> <i class="fa-regular fa-circle-play" id="play"> </i> </button>
 
-  <br><br>
-  <div class="text-center">
-  <?php echo "<a href='editarPartida.php?id=".$idPartida."' class='btn btn-primary editar text-center' id='editaradm'>Editar</a>";?>
-  <br><br>
+        <button class="btn timer"> <i class="fa-regular fa-circle-pause" id="pause"> </i> </button> 
+
+        <span id="minutes" class="timer-text"><?php echo $tempo;?></span>
+        <span class="timer-text">:</span>
+        <span id="seconds" class="timer-text">00</span>
+        <br>
+        <a class="stop" id="encerrar"> Encerrar a partida? </a>
+    </div>
+    </div>
+
+    <br><br>
+    <div class="text-center">
+        <?php echo "<a href='editarPartida.php?id=" . $idPartida . "' class='btn btn-primary editar text-center' id='editaradm'>Editar</a>"; ?>
+        <br><br>
 
     </div>
 
-        <?php 
-            PartidaHTML::desenhaPartidaEquipe($partida);
-        ?>
-        
+    <?php
+    PartidaHTML::desenhaPartidaEquipe($partida);
+    ?>
 
-</div>
-</div> <br>
 
-        <?php            
-            PartidaHTML::desenhaPartidaZona($partida);
-        ?>
+    </div>
+    </div> <br>
 
-<?php            
-            PartidaHTML::desenhaPartidaAlunos($partida);
-        ?>
-</div>
-<br>
-<br>
-<br>
-<br>
-<br>
-<?php include_once("../../bootstrap/footer.php");?>
+    <?php
+    PartidaHTML::desenhaPartidaZona($partida);
+    ?>
+
+    <div id="conteudo">
+    <?php
+    PartidaHTML::desenhaPartidaAlunos($partida);
+    ?>
+    </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <?php include_once("../../bootstrap/footer.php"); ?>
 </body>
 
 <script>
-      
-     
-        var timerStarted = false;
-        var timerPaused = false;
-        var startTime = 0;
-        var endTime = 0;
-        var url = window.location.href;
-        var partidaId = url.split('?id=')[1]; // Obtém a parte após o '?id=' na URL
-
-
-        function startTimer(duration) {
-            if (!timerStarted) {
-            startTime = Math.floor(Date.now() / 1000);
-            endTime = startTime + (duration * 60);
-            timerStarted = true;
-            timerPaused = false;
-
-            saveTime(partidaId, 'startTime', startTime); // Envie o tempo de início ao iniciar
-            updateTimer();
-            } else {
-            timerPaused = !timerPaused;
-
-            if (timerPaused) {
-                saveTime(partidaId, 'endTime', Math.floor(Date.now() / 1000)); // Envie o tempo de término ao pausar
-            } else {
-                saveTime(partidaId, 'startTime', startTime); // Envie o tempo de início ao reiniciar
+    function atualizarDados() {
+        // Fazer uma requisição AJAX para atualizar os dados
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                // Atualizar o conteúdo da div com os novos dados
+                document.getElementById("conteudo").innerHTML = this.responseText;
             }
-        }
+        };
+        xhttp.open("GET", "atualizarAlunos.php?idp=<?php echo $idPartida; ?>", true);
+        xhttp.send();
+    }
 
-            updateButtonState();
-        }
+    // Chamar a função para atualizar os dados inicialmente ao carregar a página.
+    atualizarDados();
 
-        function updateButtonState() {
-            var button = document.getElementById("startButton");
-            if (timerPaused) {
-                button.innerHTML = "Continuar";
-            } else {
-                button.innerHTML = "Pausar";
-            }
+    // Usar setInterval para chamar a função a cada x milissegundos.
+    setInterval(atualizarDados, 12000); // Atualizar a cada segundo (1000 ms).
+</script>
 
-            button.disabled = timerPaused;
-        }
+<script>
+    var duration = <?php echo $tempo; ?>;
+    var dataInicio = new Date('<?php echo $dataInicio; ?>');
+    var dataFim = new Date('<?php echo $dataFim; ?>');
+    var countdownInterval;
+    var url = window.location.href;
+    var partidaId = url.split('?id=')[1];
 
-        function updateTimer() {
-            var now = Math.floor(Date.now() / 1000);
-            var remainingTime = endTime - now;
+    if (!isNaN(dataFim) && dataFim !== null) {
+        document.getElementById("startCountdown").classList.remove("encerrar");
+        document.getElementById("startCountdown").classList.remove("iniciar");
+        document.getElementById("startCountdown").classList.add("desativado");
+        document.getElementById("minutes").innerHTML = "00";
+        document.getElementById("seconds").innerHTML = "00";
+    } else if (dataInicio && (dataInicio.getTime() + duration * 60 * 1000 - new Date().getTime()) > 0) {
+        console.log(dataInicio)
+        var isCountdownRunning = true;
+        startCountdown(duration, dataInicio, isCountdownRunning);
+    } else {
+        
+    }
 
-            if (remainingTime <= 0) {
-                saveTime(partidaId, 'endTime', Math.floor(Date.now() / 1000)); // Envie o tempo de término ao pausar
-                document.getElementById("timer").innerHTML = "Tempo expirado!";
-            } else {
-                var minutes = Math.floor(remainingTime / 60);
-                var seconds = remainingTime % 60;
+    function startCountdown(duracao, dataInicio, timerBool) {
+        var tempoAtual = new Date().getTime();
+        var targetDate = dataInicio.getTime() + duracao * 60 * 1000;
+        isCountdownRunning = timerBool;
 
-                document.getElementById("timer").innerHTML = minutes + ":" + seconds;
+        document.getElementById("startCountdown").classList.remove("iniciar");
+        document.getElementById("startCountdown").classList.add("encerrar");
+        // document.getElementById("countdownMessage").innerHTML = "Countdown in progress...";
 
-                if (!timerPaused) {
-                    setTimeout(updateTimer, 1000);
-                }
-            }
-        }
-
-        function saveTime(partidaId, timeType, timestamp) {
-            $.ajax({
-                type: "POST",
-                url: "save_time.php",
-                data: { timeType: timeType, timestamp: timestamp, partidaId: partidaId },
-                success: function(response) {
-                    console.log("Tempo salvo com sucesso: " + timeType + " - " + timestamp + " - " + partidaId);
-                },
-                error: function(error) {
-                    console.log("Erro ao salvar tempo: " + error);
-                }
+        var encerrarButton = document.getElementsByClassName("encerrar")[0];
+        if (encerrarButton) {
+            encerrarButton.addEventListener("click", function() {
+                saveTime(partidaId, 'endTime', Math.floor(Date.now() / 1000));
+                stopCountdown();
             });
         }
-    </script>
+
+        countdownInterval = setInterval(function() {
+            if (isCountdownRunning) {
+                var now = new Date().getTime();
+                var distance = targetDate - now;
+                var minutes = Math.floor(distance / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById("minutes").innerHTML = minutes;
+                document.getElementById("seconds").innerHTML = seconds;
+
+                if (distance < 0) {
+                    clearInterval(countdownInterval);
+                    document.getElementById("minutes").innerHTML = document.getElementById("seconds").innerHTML = "00";
+                    saveTime(partidaId, 'endTime', Math.floor(Date.now() / 1000));
+                }
+            }
+        }, 1000);
+    }
+
+    function stopCountdown() {
+        isCountdownRunning = false;
+    }
+
+    var iniciarButton = document.getElementsByClassName("iniciar")[0];
+    if (iniciarButton) {
+        iniciarButton.addEventListener("click", function() {
+            var duration = <?php echo $tempo; ?>;
+            var dataAtual = Date.now();
+            var dataInicio = new Date(dataAtual);
+            var isCountdownRunning = true;
+
+            console.log(dataInicio);
+            console.log(duration)
+            saveTime(partidaId, 'startTime', Math.floor(Date.now() / 1000));
+            startCountdown(duration, dataInicio, isCountdownRunning);
+        });
+    }
+
+    function saveTime(partidaId, timeType, timestamp) {
+        $.ajax({
+            type: "POST",
+            url: "save_time.php",
+            data: {
+                timeType: timeType,
+                timestamp: timestamp,
+                partidaId: partidaId
+            },
+            success: function(response) {
+                console.log("Tempo salvo com sucesso: " + timeType + " - " + timestamp + " - " + partidaId);
+            },
+            error: function(error) {
+                console.log("Erro ao salvar tempo: " + error);
+            }
+        });
+    }
+</script>
+
 </html>

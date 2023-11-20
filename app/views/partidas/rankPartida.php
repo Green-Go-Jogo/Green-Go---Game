@@ -14,8 +14,14 @@ include_once(__DIR__."/htmlPartida.php");
  $partidaCont = new PartidaController();
  $partida = $partidaCont->buscarPorId($idPartida); 
 
- unset($_SESSION['PLANTAS_LIDAS']);
- unset($_SESSION['PONTOS']);
+ if ($_SESSION['PARTIDA'] == false) {
+    unset($_SESSION['PLANTAS_LIDAS']);
+    unset($_SESSION['PONTOS']);
+    
+    $_SESSION['PLANTAS_LIDAS'] = array();
+    $_SESSION['PONTOS'] = 0;
+} 
+
 ?>
 
 <!DOCTYPE html>

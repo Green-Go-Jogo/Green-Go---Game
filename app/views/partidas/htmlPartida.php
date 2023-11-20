@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="../csscheer/verpartida.css">
 <link rel="stylesheet" href="../csscheer/ranking.css">
 <link rel="stylesheet" href="../css/listPlanta.css">
-<link rel="stylesheet" href="../css/admpartida.css">
+<link rel="stylesheet" href="../csscheer/admpartida.css">
 
 <style>
     .row.row-cols-4 {

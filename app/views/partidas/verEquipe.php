@@ -119,7 +119,7 @@ $partida = $partidaCont->buscarPorId($idPartida);
                 document.getElementById("conteudo").innerHTML = this.responseText;
             }
         };
-        xhttp.open("GET", "atualizar_dados.php?ide=<?php echo $idEquipe; ?>&idp=<?php echo $idPartida; ?>", true);
+        xhttp.open("GET", "atualizarEquipe.php?ide=<?php echo $idEquipe; ?>&idp=<?php echo $idPartida; ?>", true);
         xhttp.send();
     }
 
