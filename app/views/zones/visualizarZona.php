@@ -8,6 +8,7 @@ include_once("./htmlZona.php");
 $idZona = $_GET["id"];
 
 $zonaCont = new ZonaController();
+$zona = $zonaCont->buscarPorId($idZona);
 $plantas = $zonaCont->buscarPlantasZona($idZona);
 ?>
 <html lang="en">
@@ -15,7 +16,7 @@ $plantas = $zonaCont->buscarPlantasZona($idZona);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title><?php echo $zona->getNomeZona(); ?></title>
     <?php include_once("../../bootstrap/header.php"); ?>
 </head>
 

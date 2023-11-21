@@ -106,3 +106,29 @@ body {
     font-family: Poppins-regular;
     font-size: 20px;
 }
+
+#info {
+    background-color: #338A5F;
+    color: #ffffff;
+    font-family: Poppins-semibold;
+    font-size: 19px;
+    border-radius: 5px;
+    padding: 5px;
+
+}
+
+#info:hover {
+    color: var(--branco);
+    background-color: #04574d;
+    border-radius: 5px;
+    
+}
+
+#criador {
+    color: #04574d;
+    text-decoration: underline dotted;
+}
+
+#status {
+    color: #7EC4BB;
+}
