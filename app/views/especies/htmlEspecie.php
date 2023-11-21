@@ -191,7 +191,7 @@ class EspecieHTML
                 if ($i < $count - 1 && ($i + 1) % 2 == 0) {
                     echo "<br>";
                 } else {
-                    echo " ";
+                    echo "&nbsp;&nbsp;";
                 }
             } echo "</p>";
             echo "<p class='card-text nome-texto' id='atualização' >Última edição por:";
