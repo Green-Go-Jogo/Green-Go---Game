@@ -2,7 +2,13 @@
 <?php
 include_once("../../controllers/LoginController.php");
 LoginController::manterUsuario();
-include_once("../../controllers/LoginController.php");
+include_once("../../controllers/ZonaController.php");
+include_once("./htmlZona.php");
+
+$idZona = $_GET["id"];
+
+$zonaCont = new ZonaController();
+$plantas = $zonaCont->buscarPlantasZona($idZona);
 ?>
 <html lang="en">
 
@@ -19,6 +25,10 @@ include_once("../../controllers/LoginController.php");
         <?php include_once("../../bootstrap/navADM.php"); ?>
 
     </nav>
+
+    <div>
+        <?php ZonaHTML::desenhaPlantas($plantas)?>
+    </div>
 </body>
 
 <?php include_once("../../bootstrap/footer.php"); ?>

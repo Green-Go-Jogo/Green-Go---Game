@@ -93,7 +93,7 @@
             flex-basis: calc(25% - 20px);
         }
     }
-    
+
     #nomezinho {
         color: #04574d;
         text-decoration: underline dotted;
@@ -103,7 +103,6 @@
         color: #04574d;
         margin-bottom: -8px;
     }
-
 </style>
 
 
@@ -125,75 +124,58 @@ class EspecieHTML
 
         foreach ($especies as $especie) :
 
+            $caracteristicas = array();
+
             $frutifera = $especie->getFrutifera();
             if ($frutifera == 1) {
-                $frut = "<br>" . "Frutífera";
-            } else {
-                $frut = "";
-            };
+                $caracteristicas[] = "Frutífera";
+            }
 
             $exotica = $especie->getExotica();
             if ($exotica == 1) {
-                $exot = "<br>" . "Exótica";
-            } else {
-                $exot = "";
-            };
+                $caracteristicas[] = "Exótica";
+            }
 
             $raridade = $especie->getRaridade();
             if ($raridade == 1) {
-                $rara = "<br>" . "Rara";
-            } else {
-                $rara = "";
-            };
+                $caracteristicas[] = "Rara";
+            }
 
             $toxidade = $especie->getToxidade();
             if ($toxidade == 1) {
-                $tox = "<br>" . "Tóxica";
-            } else {
-                $tox = "";
-            };
+                $caracteristicas[] = "Tóxica";
+            }
 
             $medicinal = $especie->getMedicinal();
             if ($medicinal == 1) {
-                $med = "<br>" . "Medicinal";
-            } else {
-                $med = "";
-            };
+                $caracteristicas[] = "Medicinal";
+            }
 
             $comestivel = $especie->getComestivel();
             if ($comestivel == 1) {
-                $come = "<br>" . "Comestível";
-            } else {
-                $come = "";
-            };
+                $caracteristicas[] = "Comestível";
+            }
 
             $nativa = $especie->getNativa();
             if ($nativa == 1) {
-                $nat = "<br>" . "Nativa";
-            } else {
-                $nat = "";
-            };
+                $caracteristicas[] = "Nativa";
+            }
 
             $endemica = $especie->getEndemica();
             if ($endemica == 1) {
-                $ende = "<br>" . "Endêmica";
-            } else {
-                $ende = "";
-            };
+                $caracteristicas[] = "Endêmica";
+            }
 
             $panc = $especie->getPanc();
             if ($panc == 1) {
-                $pan = "<br>" . "PANC";
-            } else {
-                $pan = "";
-            };
+                $caracteristicas[] = "PANC";
+            }
 
             $ornamental = $especie->getOrnamental();
             if ($ornamental == 1) {
-                $orn = "<br>" . "Ornamental";
-            } else {
-                $orn = "";
-            };
+                $caracteristicas[] = "Ornamental";
+            }
+
 
             echo "<div class='col-md-4'>";
             echo "<br>";
@@ -201,12 +183,22 @@ class EspecieHTML
             echo "<img src='" . $especie->getImagemEspecie() . "' style='width: 90%; height: 90%; margin-left: 18px; border-radius: 5px;'class='card-img-top mais' alt='...'>";
             echo "<div class='card-body'>";
             echo "<h5 id='nomeEspecie' class='card-title nome-soc'>" . $especie->getNomePopular() . "</h5>";
-            echo "<p class='card-text nome-texto' id='atributos'>" . $frut . $tox . $med . $come . $rara . $exot . $orn . $pan . $nat . $ende . "</p>";
+            echo "<p class='card-text nome-texto' id='atributos'>";
+            $count = count($caracteristicas); 
+            for ($i = 0; $i < $count; $i++) {
+                echo $caracteristicas[$i];
+            
+                if ($i < $count - 1 && ($i + 1) % 2 == 0) {
+                    echo "<br>";
+                } else {
+                    echo " ";
+                }
+            } echo "</p>";
             echo "<p class='card-text nome-texto' id='atualização' >Última edição por:";
             echo "<p class='card-text nome-texto' id='nomezinho' >" . $especie->getUsuario()->getNomeUsuario() . "</p>";
             if (($_SESSION['TIPO'] == 3 && $_SESSION['NOME'] == $especie->getUsuario()->getNomeUsuario()) || $_SESSION['TIPO'] == 2) {
-            echo "<a href='editarEspecie.php?id=" . $especie->getIdEspecie() . "' class='btn btn-primary editar'>Editar</a>";
-            echo "<a href='deletarEspecie.php?id=" . $especie->getIdEspecie() . "' onclick='return confirm(\"Confirma a exclusão da Espécie? Todas as plantas associadas a essa espécie também serão excluídas!\");' class='btn btn-alert excluir'>Excluir</a>";
+                echo "<a href='editarEspecie.php?id=" . $especie->getIdEspecie() . "' class='btn btn-primary editar'>Editar</a>";
+                echo "<a href='deletarEspecie.php?id=" . $especie->getIdEspecie() . "' onclick='return confirm(\"Confirma a exclusão da Espécie? Todas as plantas associadas a essa espécie também serão excluídas!\");' class='btn btn-alert excluir'>Excluir</a>";
             }
             echo "<br>";
             echo "</div>";
