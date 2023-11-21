@@ -363,7 +363,7 @@ class PartidaHTML
         echo "<th scope='col'></th>";
         echo "<th scope='col' class='text-center' id='zonaadm'>ZONAS</th>";
         echo "<th scope='col'></th>";
-        echo "</tr>"; 
+        echo "</tr>";
         echo "<tr>";
         echo "<th scope='col' class='text-center' id='nomeadm'>Nome</th>";
         echo "<th scope='col' class='text-center' id='quantidadeadm'>Qntd Plantas</th>";
@@ -375,9 +375,9 @@ class PartidaHTML
         foreach ($partida->getZonas() as $zona) {
 
             echo "<tr>";
-            echo "<td class='text-center' id='nomeequipeadm'>".$zona->getNomeZona()."</td>";
-            echo "<td class='text-center' id='plantaadm'>".$zona->getQntdPlanta()."</td>";
-            echo "<td class='text-center' id='nomeequipeadm'>".$zona->getPontosTotais()."</td>";
+            echo "<td class='text-center' id='nomeequipeadm'>" . $zona->getNomeZona() . "</td>";
+            echo "<td class='text-center' id='plantaadm'>" . $zona->getQntdPlanta() . "</td>";
+            echo "<td class='text-center' id='nomeequipeadm'>" . $zona->getPontosTotais() . "</td>";
             echo "</tr>";
         }
 
@@ -409,14 +409,13 @@ class PartidaHTML
 
         foreach ($partida->getEquipes() as $equipe) {
             $usuarios = $usuarioCont->buscarUsuarios($equipe->getIdEquipe(), $partida->getIdPartida());
-            
-            foreach ($usuarios as $usuario)
-            { 
-            echo "<tr>";
-            echo "<td class='text-center' id='nomeequipeadm'>".$usuario->getNomeUsuario()."</td>";
-            echo "<td class='text-center' id='plantaadm'>".$usuario->getLogin()."</td>";
-            echo "<td class='text-center' id='nomeequipeadm'>".$usuario->getEmail()."</td>";
-            echo "</tr>";
+
+            foreach ($usuarios as $usuario) {
+                echo "<tr>";
+                echo "<td class='text-center' id='nomeequipeadm'>" . $usuario->getNomeUsuario() . "</td>";
+                echo "<td class='text-center' id='plantaadm'>" . $usuario->getLogin() . "</td>";
+                echo "<td class='text-center' id='nomeequipeadm'>" . $usuario->getEmail() . "</td>";
+                echo "</tr>";
             }
         }
 
@@ -426,8 +425,9 @@ class PartidaHTML
         echo "</div>";
     }
 
-    public static function desenhaPartidaEquipe($partida) {
-    
+    public static function desenhaPartidaEquipe($partida)
+    {
+
         echo "<div class='container text-center'>";
         echo "<div class='equipeP text-right'>"; // Adicione a classe equipeP aqui
         echo "<table class='table'>";
@@ -447,9 +447,9 @@ class PartidaHTML
 
         foreach ($partida->getEquipes() as $equipe) {
             echo "<tr>";
-            echo "<td class='text-center' id='nomeequipeadm'>".$equipe->getNomeEquipe()."</td>";
-            echo "<td class='text-center' id='coradm' style='background-color: ".$equipe->getCorEquipe()."'></td>";
-            echo "<td class='text-center' style='color: #338a5f;'> <img style='width: 60px;' src='".$equipe->getIconeEquipe()."'></td>";
+            echo "<td class='text-center' id='nomeequipeadm'>" . $equipe->getNomeEquipe() . "</td>";
+            echo "<td class='text-center' id='coradm' style='background-color: " . $equipe->getCorEquipe() . "'></td>";
+            echo "<td class='text-center' style='color: #338a5f;'> <img style='width: 60px;' src='" . $equipe->getIconeEquipe() . "'></td>";
             echo "</tr>";
         }
 
@@ -503,30 +503,45 @@ class PartidaHTML
         echo "</div>";
         echo "<br>";
 
-
         $equipes = $partida->getEquipes();
 
-        // Classifique as equipes com base na pontuação final (em ordem decrescente)
-        usort($equipes, function ($a, $b) {
-            $pontuacaoA = (int)$a->getPontuacaoEquipe();  // Convertendo para inteiro
-            $pontuacaoB = (int)$b->getPontuacaoEquipe();  // Convertendo para inteiro
-            return $pontuacaoB - $pontuacaoA;  // Realizando a comparação
-        });
-
-        $lugar = 1;
+        // Verifica se todas as pontuações são zero
+        $todasPontuacoesZero = true;
         foreach ($equipes as $equipe) {
-            $pontosEquipe = (int)$equipe->getPontuacaoEquipe();
-            echo "<div style='background-color: " . $equipe->getCorEquipe() . "'>";
-            echo "<br>";
-            echo "<a id='lugarzinho'> <div class='d-flex justify-content-center' id='lugarzinho1'>" . $lugar . "º Lugar </a></div>";
-            echo "<div id='nomezinho'>" . $equipe->getNomeEquipe() . "</div>";
-            echo "<div style='color: #338a5f;'> <img style='width: 80px;' src='" . $equipe->getIconeEquipe() . "'/></div>";
-            echo "<div id='pontosfinal'>" . $pontosEquipe . "</div>";
-            echo "<div class='text-center' id='pontinhos'> Pontos </div>";
-            echo "<br>";
+            if ($equipe->getPontuacaoEquipe() != 0) {
+                $todasPontuacoesZero = false;
+                break;
+            }
+        }
+
+        // Se todas as pontuações são zero, exibe uma mensagem especial
+        if ($todasPontuacoesZero) {
+            echo "<div class='text-center'>";
+            echo "<p>Nenhuma equipe marcou pontos nesta partida.</p>";
             echo "</div>";
-            echo "<br><br>";
-            $lugar += 1;
+        } else {
+            // Classifique as equipes com base na pontuação final (em ordem decrescente)
+            usort($equipes, function ($a, $b) {
+                $pontuacaoA = (int)$a->getPontuacaoEquipe();  // Convertendo para inteiro
+                $pontuacaoB = (int)$b->getPontuacaoEquipe();  // Convertendo para inteiro
+                return $pontuacaoB - $pontuacaoA;  // Realizando a comparação
+            });
+
+            $lugar = 1;
+            foreach ($equipes as $equipe) {
+                $pontosEquipe = (int)$equipe->getPontuacaoEquipe();
+                echo "<div style='background-color: " . $equipe->getCorEquipe() . "'>";
+                echo "<br>";
+                echo "<a id='lugarzinho'> <div class='d-flex justify-content-center' id='lugarzinho1'>" . $lugar . "º Lugar </a></div>";
+                echo "<div id='nomezinho'>" . $equipe->getNomeEquipe() . "</div>";
+                echo "<div style='color: #338a5f;'> <img style='width: 80px;' src='" . $equipe->getIconeEquipe() . "'/></div>";
+                echo "<div id='pontosfinal'>" . $pontosEquipe . "</div>";
+                echo "<div class='text-center' id='pontinhos'> Pontos </div>";
+                echo "<br>";
+                echo "</div>";
+                echo "<br><br>";
+                $lugar += 1;
+            }
         }
 
         echo "</div>"; // Feche a div com a classe zonaP

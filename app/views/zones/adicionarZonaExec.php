@@ -36,5 +36,3 @@ $zonaCont->salvar($zona);
 
 //Redireciona para o início
 header("location: listZonas.php");
-
-?>

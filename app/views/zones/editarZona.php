@@ -70,10 +70,9 @@ if ($id !== null) {
     }
 
     #cancelar:hover {
-    color: #ED8E96;
-    font-family: Poppins-medium;
-}
-
+        color: #ED8E96;
+        font-family: Poppins-medium;
+    }
 </style>
 
 
@@ -121,7 +120,7 @@ if ($id !== null) {
 
                                                     </div>
 
-                                                    <input type="hidden" name="id_zona" value="<?php echo $zona->getIdZona(); ?>" /> 
+                                                    <input type="hidden" name="id_zona" value="<?php echo $zona->getIdZona(); ?>" />
                                                     <input type="hidden" name="id_usuario" value="<?php echo $_SESSION['ID']; ?>" />
 
                                 </form>

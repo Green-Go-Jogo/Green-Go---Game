@@ -39,5 +39,3 @@ $zonaCont->atualizar($zona);
 
 //Redireciona para o início
 header("location: listZonas.php");
-
-?>

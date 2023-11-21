@@ -60,7 +60,7 @@ function show() {
 
 function createFiltroCaracteristicas() {
     i = 0;
-    var quebraLinhaApos = window.innerWidth >= 700 ? 5 : 2; // Troque x pelo tamanho desejado
+    var quebraLinhaApos = window.innerWidth >= 700 ? 5 : 2; 
     caracteristicas[0][1].forEach(element => {
         input = document.createElement('input');
         input.type = "checkbox";
@@ -76,7 +76,6 @@ function createFiltroCaracteristicas() {
         label = document.createElement('label');
         label.for = element;
 
-        // Mapeia as strings desejadas para seus equivalentes modificados
         const labelContent = mapString(element);
 
         label.innerHTML = labelContent;
@@ -329,7 +328,7 @@ function createCards(plantas) {
         if (cardNull == false) {
             div = document.createElement('div');
             div.id = "msgNull";
-            div.innerHTML = "Nenhuma planta encontrada!";
+            div.innerHTML = "<img src='../../public/icon/florvaso_icon.png' alt='Descrição da imagem'>";
             document.getElementById("pai").appendChild(div);
             cardNull = true;
             return;
