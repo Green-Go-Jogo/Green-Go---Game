@@ -363,7 +363,7 @@ class PartidaHTML
         echo "<th scope='col'></th>";
         echo "<th scope='col' class='text-center' id='zonaadm'>ZONAS</th>";
         echo "<th scope='col'></th>";
-        echo "</tr>";
+        echo "</tr>"; 
         echo "<tr>";
         echo "<th scope='col' class='text-center' id='nomeadm'>Nome</th>";
         echo "<th scope='col' class='text-center' id='quantidadeadm'>Qntd Plantas</th>";
