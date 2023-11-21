@@ -159,7 +159,7 @@ class ZonaHTML
 
             echo "<tr>";
             echo "<td>";
-            echo "<a href='visualizarPlanta.php?idp=" . $planta->getIdPlanta() . "&ide=" . $planta->getEspecie()->getIdEspecie() . "'>";
+            echo "<a href='../plantas/visualizarPlanta.php?idp=" . $planta->getIdPlanta() . "&ide=" . $planta->getEspecie()->getIdEspecie() . "'>";
             echo "<img src='" . $planta->getImagemPlanta() . "' style='width: 90%; height: 90%; margin-right: 10px; border-radius: 5px;' class='card-img-top mais' alt='...'>";
             echo "</a>";
             echo "</td>";

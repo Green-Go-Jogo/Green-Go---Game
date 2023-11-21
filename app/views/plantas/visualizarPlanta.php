@@ -124,13 +124,20 @@ if ($planta == null) {
     exit;
 }
 
+$nomeSocial = $planta->getNomeSocial();
+$nomePopular = $especie->getNomePopular();
 ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <title>
-    <?= $planta->getNomeSocial() ?>
+    <?php if (!empty($nomeSocial)) {
+        echo $nomeSocial;
+    } else {
+        echo $nomePopular;
+    }
+    ?>
 </title>
 
 <head>
@@ -160,18 +167,29 @@ if ($planta == null) {
 
     <div class="container">
 
-    <label id="labelnomesocial"> Nome Social: </label> <br>
+        <label id="labelnomesocial">
+            <?php if (!empty($nomeSocial)) {
+                echo "Nome Social:";
+            } else {
+                echo "Nome Popular:";
+            } ?>
+        </label> <br>
         <div class="titulo">
             <div class="row">
                 <h1 class="nome text-center" id="nomePlanta">
-                    <?= $planta->getNomeSocial() ?>
+                    <?php if (!empty($nomeSocial)) {
+                        echo $nomeSocial;
+                    } else {
+                        echo $nomePopular;
+                    } ?>
                 </h1>
             </div> <br>
 
-            <h1 class="nome" id="nomeUm">
-                <a> Nome Popular: </a> <a style="color: #C05367; font-family: Poppins;"> <?= $especie->getNomePopular() ?> </a>
-            </h1>
-
+            <?php if (!empty($nomeSocial)) { ?>
+                <h1 class="nome" id="nomeUm">
+                    <a> Nome Popular: </a> <a style="color: #C05367; font-family: Poppins;"> <?= $especie->getNomePopular() ?> </a>
+                </h1>
+            <?php } ?>
             <h1 class="nome" id="nomeDois">
                 <a> Nome Científico: </a> <i style="color: #C05367; font-family: Poppins;"> <?= $especie->getNomeCientifico() ?></i>
             </h1>
