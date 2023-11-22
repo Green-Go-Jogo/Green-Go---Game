@@ -18,9 +18,15 @@ include_once(__DIR__ . "/htmlEspecie.php");
     <?php include_once("../../bootstrap/header.php"); ?>
 
     <style>
+        #imgNull {
+            width: 20% !important;
+        }
 
-
-
+        @media (max-width: 767px) {
+            #imgNull {
+                width: 40% !important;
+            }
+        }
     </style>
 
 

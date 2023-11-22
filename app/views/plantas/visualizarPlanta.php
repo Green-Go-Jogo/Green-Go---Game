@@ -244,7 +244,11 @@ $nomePopular = $especie->getNomePopular();
             <div class="text-center">
                 <img id="mapa" src="../../public/mapa.png">
                 <w id="zonaencontrada">
-                    <?= $planta->getNomeSocial() ?>
+                    <?php if (!empty($nomeSocial)) {
+                        echo $nomeSocial;
+                    } else {
+                        echo $nomePopular;
+                    } ?>
                     encontra-se na
                     <?= $planta->getZona() ?>!
                 </w>

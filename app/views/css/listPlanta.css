@@ -125,7 +125,7 @@ p {
 }
 
 a.editar {
-    color: #04574d;
+    color: #338A5F;
     background-color: var(--principal);
     border-radius: 5px;
     width: max-content !important;
@@ -288,3 +288,5 @@ label.atributos.filtrokids {
     text-decoration: underline dotted;
     margin-top: 15px;
 }
+
+

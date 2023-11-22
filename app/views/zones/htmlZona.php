@@ -55,7 +55,6 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 100vh;
         }
 
         .row.row-cols-4 {
@@ -92,6 +91,14 @@
     #nomezinho {
         text-decoration: underline dotted;
     }
+
+    img.mais {
+    height: 225px !important;
+    transition: 0.3s ease;
+    align-content: center;
+    margin-top: 20px;
+    margin-left: 10px;
+}
 </style>
 
 
@@ -115,6 +122,7 @@ class ZonaHTML
             echo "<div class='col-md-4'>";
             echo "<br>";
             echo "<div class='card' style='width: 22rem;'>";
+            echo "<a href='visualizarZona.php?id=" . $zona->getIdZona()."'><img src='../../public/botaozona.png' style='width: 90%; height: 90%; margin-right: 10px; border-radius: 5px;'class='card-img-top mais' alt='...'></a>";
             echo "<div class='card-body'>";
             echo "<h5 class='card-title nome-soc' id='NomeZona'>" . $zona->getNomeZona() . "</h5>" . "<br>";
             echo "<p class='card-text nome-texto' id='quantidade'> Quantidade de Plantas: " . $zona->getQntdPlanta() . "<br>" . "</p>";
@@ -159,7 +167,7 @@ class ZonaHTML
 
             echo "<tr>";
             echo "<td>";
-            echo "<a href='visualizarPlanta.php?idp=" . $planta->getIdPlanta() . "&ide=" . $planta->getEspecie()->getIdEspecie() . "'>";
+            echo "<a href='../plantas/visualizarPlanta.php?idp=" . $planta->getIdPlanta() . "&ide=" . $planta->getEspecie()->getIdEspecie() . "'>";
             echo "<img src='" . $planta->getImagemPlanta() . "' style='width: 80%; height: 80%; border-radius: 15px;' class='card-img-top mais text-center' alt='...'>";
             echo "</a>";
             echo "</td>";

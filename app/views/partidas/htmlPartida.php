@@ -356,7 +356,7 @@ class PartidaHTML
     {
 
         echo "<div class='container text-center'>";
-        echo "<div class='zonaP text-right'>"; // Adicione a classe zonaP aqui
+        echo "<div class='zonaP text-right'>"; 
         echo "<table class='table'>";
         echo "<thead>";
         echo "<tr>";
@@ -383,7 +383,7 @@ class PartidaHTML
 
         echo "</tbody>";
         echo "</table>";
-        echo "</div>"; // Feche a div com a classe zonaP
+        echo "</div>"; 
         echo "</div>";
     }
 
@@ -391,7 +391,7 @@ class PartidaHTML
     {
         $usuarioCont = new UsuarioController();
         echo "<div class='container text-center'>";
-        echo "<div class='zonaP text-right'>"; // Adicione a classe zonaP aqui
+        echo "<div class='zonaP text-right'>"; 
         echo "<table class='table'>";
         echo "<thead>";
         echo "<tr>";
@@ -421,7 +421,7 @@ class PartidaHTML
 
         echo "</tbody>";
         echo "</table>";
-        echo "</div>"; // Feche a div com a classe zonaP
+        echo "</div>"; 
         echo "</div>";
     }
 
@@ -429,7 +429,7 @@ class PartidaHTML
     {
 
         echo "<div class='container text-center'>";
-        echo "<div class='equipeP text-right'>"; // Adicione a classe equipeP aqui
+        echo "<div class='equipeP text-right'>"; 
         echo "<table class='table'>";
         echo "<thead>";
         echo "<tr>";
@@ -498,7 +498,7 @@ class PartidaHTML
 
         echo "<div class='text-center'>";
         echo "<h1 class='titulorank text-center'>Placar de Líderes</h1>";
-        echo "<div class='equipeP text-right'>"; // Adicione a classe equipeP aqui
+        echo "<div class='equipeP text-right'>"; 
         echo "<div class='text-center'> </div>";
         echo "</div>";
         echo "<br>";
@@ -508,7 +508,7 @@ class PartidaHTML
         // Verifica se todas as pontuações são zero
         $todasPontuacoesZero = true;
         foreach ($equipes as $equipe) {
-            if ($equipe->getPontuacaoEquipe() != 0) {
+            if ((int)$equipe->getPontuacaoEquipe() != 0) {
                 $todasPontuacoesZero = false;
                 break;
             }
@@ -517,7 +517,7 @@ class PartidaHTML
         // Se todas as pontuações são zero, exibe uma mensagem especial
         if ($todasPontuacoesZero) {
             echo "<div class='text-center'>";
-            echo "<p>Nenhuma equipe marcou pontos nesta partida.</p>";
+            echo "<p>Nenhuma equipe marcou pontos durante essa partida.</p>";
             echo "</div>";
         } else {
             // Classifique as equipes com base na pontuação final (em ordem decrescente)

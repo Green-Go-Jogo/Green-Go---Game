@@ -328,7 +328,7 @@ function createCards(plantas) {
         if (cardNull == false) {
             div = document.createElement('div');
             div.id = "msgNull";
-            div.innerHTML = "<img src='../../public/icon/florvaso_icon.png' alt='Descrição da imagem'>";
+            div.innerHTML = "<br><p>Nenhuma planta foi encontrada!</p><img src='../../public/icon/florvaso_icon.png' id='imgNull' alt='Descrição da imagem'><p>Tente buscar novamente!</p>";
             document.getElementById("pai").appendChild(div);
             cardNull = true;
             return;
