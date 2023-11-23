@@ -151,9 +151,9 @@ $tempo = $partida->getTempoPartida();
   <div class="text-center" id="timercor">
     <img src="../../public/botaotimer.png" id="botaotimer"> </img>
     <div class="circulo" id="timer">
-      <span id="minutes" class="timer-text"><?php echo $tempo; ?></span>
-      <span class="timer-text">:</span>
-      <span id="seconds" class="timer-text">00</span>
+      <span id="minutes" ><?php echo $tempo; ?></span>
+      <span >:</span>
+      <span id="seconds" >00</span>
     </div>
   </div>
 

@@ -356,7 +356,7 @@ class PartidaHTML
     {
 
         echo "<div class='container text-center'>";
-        echo "<div class='zonaP text-right'>"; 
+        echo "<div class='zonaP text-right'>";
         echo "<table class='table'>";
         echo "<thead>";
         echo "<tr>";
@@ -383,7 +383,7 @@ class PartidaHTML
 
         echo "</tbody>";
         echo "</table>";
-        echo "</div>"; 
+        echo "</div>";
         echo "</div>";
     }
 
@@ -391,7 +391,7 @@ class PartidaHTML
     {
         $usuarioCont = new UsuarioController();
         echo "<div class='container text-center'>";
-        echo "<div class='zonaP text-right'>"; 
+        echo "<div class='zonaP text-right'>";
         echo "<table class='table'>";
         echo "<thead>";
         echo "<tr>";
@@ -421,7 +421,7 @@ class PartidaHTML
 
         echo "</tbody>";
         echo "</table>";
-        echo "</div>"; 
+        echo "</div>";
         echo "</div>";
     }
 
@@ -429,7 +429,7 @@ class PartidaHTML
     {
 
         echo "<div class='container text-center'>";
-        echo "<div class='equipeP text-right'>"; 
+        echo "<div class='equipeP text-right'>";
         echo "<table class='table'>";
         echo "<thead>";
         echo "<tr>";
@@ -498,7 +498,7 @@ class PartidaHTML
 
         echo "<div class='text-center'>";
         echo "<h1 class='titulorank text-center'>Placar de Líderes</h1>";
-        echo "<div class='equipeP text-right'>"; 
+        echo "<div class='equipeP text-right'>";
         echo "<div class='text-center'> </div>";
         echo "</div>";
         echo "<br>";
@@ -528,11 +528,20 @@ class PartidaHTML
             });
 
             $lugar = 1;
+            $medalhas = ["🥇", "🥈", "🥉"];
             foreach ($equipes as $equipe) {
                 $pontosEquipe = (int)$equipe->getPontuacaoEquipe();
-                echo "<div style='background-color: " . $equipe->getCorEquipe() . "'>";
+                $width = ($lugar <= 4) ? (100 - ($lugar * 8)) : 68;
+
+                echo "<div class='posicao' style='background-color: " . $equipe->getCorEquipe() . "; width: {$width}%;'>";
                 echo "<br>";
-                echo "<a id='lugarzinho'> <div class='d-flex justify-content-center' id='lugarzinho1'>" . $lugar . "º Lugar </a></div>";
+                
+                // Adiciona a medalha apenas para os 3 primeiros lugares
+                if ($lugar <= 3) {
+                    echo "<a id='lugarzinho'> <div class='d-flex justify-content-center' id='lugarzinho1'>" . $medalhas[$lugar - 1] . " " . $lugar . "º Lugar </a></div>";
+                } else {
+                    echo "<a id='lugarzinho'> <div class='d-flex justify-content-center' id='lugarzinho1'>" . $lugar . "º Lugar </a></div>";
+                }
                 echo "<div id='nomezinho'>" . $equipe->getNomeEquipe() . "</div>";
                 echo "<div style='color: #338a5f;'> <img style='width: 80px;' src='" . $equipe->getIconeEquipe() . "'/></div>";
                 echo "<div id='pontosfinal'>" . $pontosEquipe . "</div>";

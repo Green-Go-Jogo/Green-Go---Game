@@ -15,37 +15,37 @@
     font-family: Poppins-regular, Roboto;
 }
 
-    @font-face {
-        font-family: 'Cooper';
-        src: url('../fontes/cooperhewitt-heavy.otf');
-    }
-    
-    @font-face {
-        font-family: 'Poppins';
-        src: url('../fontes/Poppins-ExtraBold.ttf');
-    }
-    
-    @font-face {
-        font-family: 'Poppins-regular';
-        src: url('../fontes/Poppins-Regular.ttf');
-    }
-    
-    @font-face {
-        font-family: 'Poppins-semibold';
-        src: url('../fontes/Poppins-SemiBold.ttf');
-    }
-    
-    @font-face {
-        font-family: 'Poppins-medium';
-        src: url('../fontes/Poppins-Medium.ttf');
-    }
+@font-face {
+    font-family: 'Cooper';
+    src: url('../fontes/cooperhewitt-heavy.otf');
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('../fontes/Poppins-ExtraBold.ttf');
+}
+
+@font-face {
+    font-family: 'Poppins-regular';
+    src: url('../fontes/Poppins-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Poppins-semibold';
+    src: url('../fontes/Poppins-SemiBold.ttf');
+}
+
+@font-face {
+    font-family: 'Poppins-medium';
+    src: url('../fontes/Poppins-Medium.ttf');
+}
 
 body {
     background-color: #ebf0f1;
 }
 
 .titulorank {
-    color:#04574d;
+    color: #04574d;
     font-size: 60px;
     font-family: Poppins;
     margin-top: 5px;
@@ -59,7 +59,6 @@ body {
     width: 200px;
     color: #f58c95;
     border-radius: 50px;
-    text-decoration: underline dotted;
 }
 
 #lugarzinho1 {
@@ -81,13 +80,20 @@ body {
     -webkit-text-fill-color: #f0b6bc;
     -webkit-text-stroke: 2px;
     -webkit-text-stroke-color: #ffffff;
-  }
+}
 
-  #nomezinho {
-    font-family: Poppins-regular;
-    font-size: 17px;
+#nomezinho {
     margin-top: 7px;
     margin-bottom: 7px;
-    text-decoration: underline;
+    font-family: Poppins;
     color: #ffffff;
+    font-size: 40px;
+    -webkit-text-fill-color: #f0b6bc;
+    -webkit-text-stroke: 2px;
+    -webkit-text-stroke-color: #ffffff;
+}
+
+
+.posicao {
+    border-radius: 10px;
 }
