@@ -102,7 +102,7 @@
               <div class="row container">
                 <p class="container termos" id="termos">
                   Ao clicar em “Cadastrar”, você aceita o nosso
-                  <a class="termos" id="termos1" href="../termos.php" target="__blank">Termo de Consentimento
+                  <a class="termos" id="termos1" href="../home/termos.php" target="__blank">Termo de Consentimento
                     Livre e Esclarecido</a>
                 </p>
               </div>

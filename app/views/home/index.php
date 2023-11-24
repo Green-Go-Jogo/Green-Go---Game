@@ -54,7 +54,7 @@ if (!isset($_SESSION['TIPO'])) {
 
         }
 
-
+        
 
         .col {
             display: flex;
@@ -87,7 +87,7 @@ if (!isset($_SESSION['TIPO'])) {
             text-decoration: none;
             background: #f0b6bc;
             text-align: center;
-            color: #f58c95;
+            color: #fff;
             text-transform: uppercase;
             letter-spacing: 1px;
             border: 3px solid #f58c95;
@@ -139,7 +139,7 @@ if (!isset($_SESSION['TIPO'])) {
             font-weight: 500;
             font-size: 16px;
             line-height: 1;
-            color: #f58c95 !important;
+            color: #fff !important;
             background: none;
             border: none;
             outline: none;
@@ -279,42 +279,42 @@ if (!isset($_SESSION['TIPO'])) {
 
         .light-button button.bt .light-holder .dot {
             position: absolute;
-            top: 0;
+            top: -93px;
             width: 10px;
-            height: 10px;
-            background-color: #04574d;
+            height: 12px;
+            background-color: #C05367;
             border-radius: 10px;
             z-index: 2;
         }
 
         .light-button button.bt .light-holder .light {
             position: absolute;
-            top: 0;
-            width: 200px;
-            height: 200px;
+            top: -87px;
+            width: 250px;
+            height: 340px;
             clip-path: polygon(50% 0%, 25% 100%, 75% 100%);
             background: transparent;
         }
 
         .light-button button.bt:hover .button-holder svg {
-            margin-top: 7px;
-            fill: #7EC4BB;
+            margin-top: 10px;
+            fill: #F0B6BC;
         }
 
         .embreve .light-button button.bt:hover .button-holder {
             font-family: Poppins-medium;
-            color: #7EC4BB !important;
-            outline: #7EC4BB 2px solid;
+            color: #F0B6BC  !important;
+            outline: #C05367 2px solid;
             outline-offset: 2px;
         }
 
         .modo-escuro .light-button button.bt:hover .button-holder #msgHide {
-            color: #7EC4BB !important;
+            color: #7EC4BB  !important;
         }
 
         .light-button button.bt:hover .light-holder .light {
             background: rgb(255, 255, 255);
-            background: linear-gradient(180deg, #7EC4BB 0%, rgba(255, 255, 255, 0) 75%, rgba(255, 255, 255, 0) 100%);
+            background: linear-gradient(180deg, #EC9399 0%, rgba(255, 255, 255, 0) 75%, rgba(255, 255, 255, 0) 100%);
         }
 
         @media (max-width: 768px) {
@@ -353,6 +353,113 @@ if (!isset($_SESSION['TIPO'])) {
                 order: 6 !important;
             }
         }
+
+        @media (min-width: 768px) and (max-width: 992px) {
+
+.light-button button.bt .light-holder .dot {
+    position: absolute;
+    top: -73px;
+    width: 10px;
+    height: 10px;
+    background-color: #C05367;
+    border-radius: 10px;
+    z-index: 2;
+}
+
+.light-button button.bt .light-holder .light {
+    position: absolute;
+    top: -80px;
+    width: 250px;
+    height: 320px;
+    clip-path: polygon(50% 0%, 25% 100%, 75% 100%);
+    background: transparent;
+}
+
+}
+
+@media (min-width: 576px) and (max-width:  767px) {
+
+    .light-button button.bt .light-holder .dot {
+    position: absolute;
+    top: -22px;
+    width: 10px;
+    height: 10px;
+    background-color: #C05367;
+    border-radius: 10px;
+    z-index: 2;
+}
+
+.light-button button.bt .light-holder .light {
+    position: absolute;
+    top: -80px;
+    width: 250px;
+    height: 320px;
+    clip-path: polygon(50% 0%, 25% 100%, 75% 100%);
+    background: transparent;
+}
+
+}
+
+@media (max-width: 576px) and (min-width: 420px) {
+
+.light-button button.bt .light-holder .dot {
+position: absolute;
+top: -7px;
+width: 8px;
+height: 8px;
+background-color: #C05367;
+border-radius: 10px;
+z-index: 2;
+}
+
+.light-button button.bt .light-holder .light {
+position: absolute;
+top: -7px;
+width: 250px;
+height: 220px;
+clip-path: polygon(50% 0%, 25% 100%, 75% 100%);
+background: transparent;
+}
+
+}
+
+@media (max-width: 419px){
+
+    .light-button button.bt .light-holder .dot {
+position: absolute;
+top: 50px;
+width: 5px;
+height: 5px;
+background-color: #C05367;
+border-radius: 10px;
+z-index: 2;
+}
+
+.light-button button.bt .light-holder .light {
+position: absolute;
+top: 55px;
+width: 250px;
+height: 180px;
+clip-path: polygon(50% 0%, 25% 100%, 75% 100%);
+background: transparent;
+}
+
+.light-button button.bt .button-holder {
+            height: 70px;
+            width: 70px;
+            position: relative;
+            left: 14px;
+    }
+
+    .light-button button.bt:hover .button-holder svg {
+            margin-top: 17px;
+            fill: #F0B6BC;
+        }
+
+        }
+
+
+
     </style>
 </head>
 
@@ -364,11 +471,15 @@ if (!isset($_SESSION['TIPO'])) {
         <img src="../../public/clorofila.webp" onload="acelerarGIF()" alt="" id="clorofila">
 
     </div>
-    <div class="conteudo">
-        <div class="container">
+    <div class="conteudo botoes">
+        <div class="container botoes">
             <div class="row">
                 <!-- Parte 1 - Cadastro -->
-                <div class="col-md-6 botao botao1">
+                <div class="col-md-12">
+                <div class="texto texto1">
+                    <p class="textoBotao">Participe de uma experiência única! <br> Se cadastre agora no Green Go!</p>
+                </div>
+                <div class="botao botao1">
                     <div class="wrapper">
                         <div class="link_wrapper">
                             <a href="../users/cadastro.php">Cadastre-se</a>
@@ -380,16 +491,15 @@ if (!isset($_SESSION['TIPO'])) {
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 texto texto1">
-                    <p class="textoBotao">Participe de uma experiência única! <br> Se cadastre agora no Green Go!</p>
                 </div>
                 <!-- Fim da Parte 1 -->
 
                 <!-- Parte 2 - Redes Sociais -->
-                <div class="col-md-6 texto texto2">
+                <div class="col-md-12">
+                <div class="texto texto2">
                     <p class="textoBotao">Acompanhe nossa página no Instagram! <br> E conheça mais sobre o IFPR!</p>
                 </div>
-                <div class="col-md-6 botao botao2">
+                <div class="botao botao2">
                     <button class="btn-cssbuttons">
                         <span>REDES SOCIAIS</span><span>
                             <svg height="18" width="18" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1024 1024" class="icon">
@@ -412,10 +522,15 @@ if (!isset($_SESSION['TIPO'])) {
                         </ul>
                     </button>
                 </div>
+                </div>
                 <!-- Fim da Parte 2 -->
 
                 <!-- Parte 3 - Projeto -->
-                <div class="col-md-6 botao botao3">
+                <div class="col-md-12">
+                <div class="texto texto3">
+                    <p class="textoBotao">Gostou do Green Go? <br> Saiba mais sobre o projeto! </p>
+                </div>
+                <div class="botao botao3">
                     <div class="wrapper">
                         <div class="link_wrapper">
                             <a href="projeto.php">Conheça o Projeto</a>
@@ -427,29 +542,22 @@ if (!isset($_SESSION['TIPO'])) {
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 texto texto3">
-                    <p class="textoBotao">Gostou do Green Go? <br> Venha saber mais sobre aqueles que o criaram! </p>
                 </div>
                 <!-- Fim da Parte 3 -->
             </div>
         </div>
 
-        <div class="row" style="background-color: #04574d; height: 100px; width: 100%"></div>
+        <div class="row botoes" style="background-color: #04574d; height: 100px; width: 100%"></div>
     </div>
     <br><br>
 
     <!-- Parte Novidades -->
-    <br>
-    <br>
     <div class="embreve">
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <p class="textoNovidade">"Na imensidão da natureza, uma descoberta inovadora<br> aguarda para apresentar seus mistérios."</p>
-                    <p class="textoNovidade">CLIQUE PARA DESCOBRIR!</p>
+        <div class="container text-center">
+        <img src="../../public/arvorebotao.png" id="arvore">
+            <div class="row" id="minis">
+                <div class="col" id="surpresa">
                     <div class="light-button">
-                        <p class="textoNovidade"> EM BREVE </p>
-                        <br>
                         <button class="bt">
                             <div class="light-holder">
                                 <div class="dot"></div>

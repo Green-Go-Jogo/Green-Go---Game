@@ -137,14 +137,12 @@ body {
 }
 
 p.textoBotao {
-    margin: 0;
     align-items: center;
     color: #fff;
-    margin-top: 50px;
     text-align: center;
     font-family: Poppins-semibold;
     font-size: 20px;
-    text-decoration: underline dotted; 
+    text-decoration: underline dotted;
 }
 
 p.textoNovidade {
@@ -155,7 +153,7 @@ p.textoNovidade {
     text-align: center;
     font-family: Poppins-semibold;
     font-size: 20px;
-    text-decoration: underline dotted; 
+    text-decoration: underline dotted;
 }
 
 .quadrado img {
@@ -249,7 +247,7 @@ img#imagem-fundo {
     flex-direction: column;
     justify-content: center;
     z-index: 1;
-    background-image: linear-gradient(to bottom,#ebf0f1 77%,#04574d 25% ); 
+    background-image: linear-gradient(to bottom, #ebf0f1 77%, #04574d 25%);
 }
 
 .modo-escuro .clorofila {
@@ -262,8 +260,8 @@ img#imagem-fundo {
     flex-direction: column;
     justify-content: center;
     z-index: 1;
-    background-image: linear-gradient(to bottom,#1b1b1b 77%,#04574d 25% ); 
- 
+    background-image: linear-gradient(to bottom, #1b1b1b 77%, #04574d 25%);
+
 }
 
 .row.clorofila-linha::before {
@@ -271,11 +269,13 @@ img#imagem-fundo {
     background-color: #7EC4BB;
     height: 5px;
     max-width: 100%;
-    width: 100%; /* A linha ocupa toda a largura */
+    width: 100%;
+    /* A linha ocupa toda a largura */
     position: absolute;
     top: 80%;
     left: 0;
-    z-index: 1; /* A linha fica atrás da imagem */
+    z-index: 1;
+    /* A linha fica atrás da imagem */
 }
 
 .conteudo {
@@ -304,20 +304,48 @@ img#imagem-fundo {
 }
 
 
-.col-md-6.botao{
-    background-image: url('../../public/balao-background.png'); 
-    background-size: cover;  
-    background-repeat: no-repeat; 
-    background-position: center center; 
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    background-color: #04574d; 
+.col-md-6.botao {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: none;
     background-blend-mode: overlay;
     z-index: 1;
+    overflow-x: hidden;
 }
 
-.modo-escuro #msgHide { 
+.col-md-12 {
+    display: flex;
+    background-image: url('../../public/nuvem.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    flex-direction: column;
+    height: 300px;
+    justify-content: center;
+    align-items: center;
+}
+
+.conteudo.botoes, .row.botoes {
+    background-image: url('../../public/testeee.png');
+    background-size: 450px;
+    background-repeat: repeat;
+    background-position: center center;
+}
+
+@media (max-width: 924px) {
+    .col-md-12 {
+        background-size: cover;
+    }
+}
+
+@media (max-width: 1240px) {
+    .col-md-12 {
+        height: 400px;
+    }
+}
+
+.modo-escuro #msgHide {
     color: #04574d !important;
 }
 
@@ -336,4 +364,88 @@ p#post {
     text-align: center;
     font-size: 30px;
     font-family: Poppins-semibold;
+}
+
+#arvore {
+    position: relative;
+    height: 65rem;
+    top: -50px;
+}
+
+#surpresa {
+    position: relative;
+    top: -41rem;
+}
+
+#minis {
+    position: relative;
+    height: 1px;
+}
+
+div.redes {
+    position: relative;
+    margin-top: -140px;  
+}
+
+#post {
+    position: relative;
+    top: -40px; 
+    text-decoration: underline dotted;
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+
+    #arvore {
+        position: relative;
+        height: 60rem;
+        top: -80px;
+    }
+
+}
+
+@media (min-width: 576px) and (max-width:  767px) {
+
+    #arvore {
+        position: relative;
+        height: 46rem;
+        top: -80px;
+    }
+
+    #surpresa {
+        position: relative;
+        top: -35.5rem;
+        left: 5px;
+    }
+
+}
+
+@media (max-width: 576px) and (min-width: 420px) {
+
+    #arvore {
+        position: relative;
+        height: 43rem;
+        top: -80px;
+    }
+
+    #surpresa {
+        position: relative;
+        top: -34.5rem;
+    }
+
+}
+
+@media (max-width: 419px){
+
+    #arvore {
+        position: relative;
+        height: 30.5rem;
+        top: -60px;
+    }
+
+    #surpresa {
+        position: relative;
+        top: -29rem;
+        left: -7px;
+    }
+
 }
