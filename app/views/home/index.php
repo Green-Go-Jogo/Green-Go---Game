@@ -391,9 +391,9 @@ if (!isset($_SESSION['TIPO'])) {
 
 .light-button button.bt .light-holder .light {
     position: absolute;
-    top: -80px;
+    top: -20px;
     width: 250px;
-    height: 320px;
+    height: 240px;
     clip-path: polygon(50% 0%, 25% 100%, 75% 100%);
     background: transparent;
 }
@@ -430,7 +430,7 @@ position: absolute;
 top: 50px;
 width: 5px;
 height: 5px;
-background-color: #C05367;
+background-color: transparent;
 border-radius: 10px;
 z-index: 2;
 }
@@ -458,6 +458,52 @@ background: transparent;
 
         }
 
+        @media (min-width: 419px) and (max-width: 502px) {
+
+        #arvore {
+            position: relative;
+            height: 35rem;
+            top: -60px;
+        }
+
+        #surpresa {
+            position: relative;
+            top: -31rem;
+        }
+
+        .light-button button.bt .button-holder {
+            height: 70px;
+            width: 70px;
+            position: relative;
+            
+    }
+
+    .light-button button.bt:hover .button-holder svg {
+            margin-top: 17px;
+            fill: #F0B6BC;
+        }
+
+        .light-button button.bt .light-holder .dot {
+        position: absolute;
+        top: 1px;
+        width: 5px;
+        height: 5px;
+        background-color: transparent;
+        border-radius: 10px;
+        z-index: 2;
+        }
+
+        .light-button button.bt .light-holder .light {
+        position: relative;
+        top: 32px;
+        width: 250px;
+        height: 180px;
+        clip-path: polygon(50% 0%, 25% 100%, 75% 100%);
+        background: transparent;
+        left: -13px;
+        }
+        
+}
 
 
     </style>

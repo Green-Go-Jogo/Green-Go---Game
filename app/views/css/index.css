@@ -419,7 +419,7 @@ div.redes {
 
 }
 
-@media (max-width: 576px) and (min-width: 420px) {
+@media (max-width: 576px) and (min-width: 501px) {
 
     #arvore {
         position: relative;
@@ -434,7 +434,8 @@ div.redes {
 
 }
 
-@media (max-width: 419px){
+
+@media (max-width: 418px){
 
     #arvore {
         position: relative;
@@ -445,7 +446,7 @@ div.redes {
     #surpresa {
         position: relative;
         top: -29rem;
-        left: -7px;
+        right: 3%;
     }
 
 }
