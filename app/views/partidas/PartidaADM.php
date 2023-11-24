@@ -60,9 +60,9 @@ $loginCont->checarAdmPartida($idPartida, $_SESSION['ID']);
 
         <button id="startCountdown" class="btn timer iniciar"> <i class="fa-regular fa-circle-play" id="play"> </i> </button>
 
-        <button class="btn timer"> <i class="fa-regular fa-circle-pause" id="pause"> </i> </button> 
+        <button class="btn timer"> <i class="fa-regular fa-circle-pause" id="pause"> </i> </button>
 
-        <span id="minutes" class="timer-text"><?php echo $tempo;?></span>
+        <span id="minutes" class="timer-text"><?php echo $tempo; ?></span>
         <span class="timer-text">:</span>
         <span id="seconds" class="timer-text">00</span>
         <br>
@@ -90,9 +90,9 @@ $loginCont->checarAdmPartida($idPartida, $_SESSION['ID']);
     ?>
 
     <div id="conteudo">
-    <?php
-    PartidaHTML::desenhaPartidaAlunos($partida);
-    ?>
+        <?php
+        PartidaHTML::desenhaPartidaAlunos($partida);
+        ?>
     </div>
     </div>
     <br>
@@ -133,18 +133,16 @@ $loginCont->checarAdmPartida($idPartida, $_SESSION['ID']);
     var partidaId = url.split('?id=')[1];
 
     if (!isNaN(dataFim) && dataFim !== null) {
-        document.getElementById("startCountdown").classList.remove("encerrar");
         document.getElementById("startCountdown").classList.remove("iniciar");
         document.getElementById("startCountdown").classList.add("desativado");
         document.getElementById("minutes").innerHTML = "00";
         document.getElementById("seconds").innerHTML = "00";
+        document.getElementById("encerrar").innerHTML = "Partida Encerrada!";
     } else if (dataInicio && (dataInicio.getTime() + duration * 60 * 1000 - new Date().getTime()) > 0) {
         console.log(dataInicio)
         var isCountdownRunning = true;
         startCountdown(duration, dataInicio, isCountdownRunning);
-    } else {
-        
-    }
+    } else {}
 
     function startCountdown(duracao, dataInicio, timerBool) {
         var tempoAtual = new Date().getTime();
@@ -152,14 +150,21 @@ $loginCont->checarAdmPartida($idPartida, $_SESSION['ID']);
         isCountdownRunning = timerBool;
 
         document.getElementById("startCountdown").classList.remove("iniciar");
-        document.getElementById("startCountdown").classList.add("encerrar");
+        document.getElementById("encerrar").classList.add("encerrar");
         // document.getElementById("countdownMessage").innerHTML = "Countdown in progress...";
 
         var encerrarButton = document.getElementsByClassName("encerrar")[0];
         if (encerrarButton) {
             encerrarButton.addEventListener("click", function() {
-                saveTime(partidaId, 'endTime', Math.floor(Date.now() / 1000));
-                stopCountdown();
+                // Adiciona um pop-up de confirmação
+                var confirmar = confirm("Tem certeza que deseja encerrar a partida?");
+
+                // Se o usuário clicar em "OK", execute a ação
+                if (confirmar) {
+                    saveTime(partidaId, 'endTime', Math.floor(Date.now() / 1000));
+                    document.getElementById("encerrar").innerHTML = "Partida Encerrada!";
+                    stopCountdown();
+                }
             });
         }
 
@@ -189,13 +194,16 @@ $loginCont->checarAdmPartida($idPartida, $_SESSION['ID']);
     var iniciarButton = document.getElementsByClassName("iniciar")[0];
     if (iniciarButton) {
         iniciarButton.addEventListener("click", function() {
+            // Remova o ouvinte de eventos após o primeiro clique
+            iniciarButton.removeEventListener("click", arguments.callee);
+
             var duration = <?php echo $tempo; ?>;
             var dataAtual = Date.now();
             var dataInicio = new Date(dataAtual);
             var isCountdownRunning = true;
 
             console.log(dataInicio);
-            console.log(duration)
+            console.log(duration);
             saveTime(partidaId, 'startTime', Math.floor(Date.now() / 1000));
             startCountdown(duration, dataInicio, isCountdownRunning);
         });

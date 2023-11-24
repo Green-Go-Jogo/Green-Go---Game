@@ -110,6 +110,7 @@ body {
     margin-top: 13px;
     top: 7px;
     font-size: 18px;
+    cursor: pointer;
 }
 
 #editaradm {

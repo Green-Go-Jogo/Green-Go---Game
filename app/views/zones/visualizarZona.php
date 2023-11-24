@@ -29,6 +29,13 @@ $plantas = $zonaCont->buscarPlantasZona($idZona);
     font-size: 20px;
 }
 
+#primeirotextoreg {
+    color: #078071;
+    margin-left: 11px;
+    margin-top: 35px;
+    font-size: 45px;
+}
+
 #nomePlanta {
     position: relative;
     color: #04574d;
@@ -75,7 +82,7 @@ $plantas = $zonaCont->buscarPlantasZona($idZona);
         <?php include_once("../../bootstrap/navADM.php"); ?>
 
     </nav>
-
+    <h1 class="text-center" id="primeirotextoreg"> <?php echo $zona->getNomeZona(); ?></h1>
     <div>
         <?php ZonaHTML::desenhaPlantas($plantas)?>
     </div>
