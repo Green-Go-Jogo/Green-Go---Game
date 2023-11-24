@@ -276,7 +276,7 @@ $nomePopular = $especie->getNomePopular();
         var partidaAtiva = <?php echo ($_SESSION['PARTIDA'] ? 'true' : 'false'); ?>;
 
         if (partidaAtiva === true) {
-            // A variável de sessão PARTIDA é verdadeira, agora você pode chamar o código para verificar o usuário ou fazer outras ações aqui
+            // A variável de sessão PARTIDA é verdadeira
             $.ajax({
                 type: "POST",
                 url: "rankingExec.php",
@@ -286,7 +286,7 @@ $nomePopular = $especie->getNomePopular();
                 },
                 success: function(userResponse) {
                     if (userResponse.isValid === true) {
-                        // Redirecionar para a página X se a resposta for verdadeira
+                        // Redirecionar para a página se a resposta for verdadeira
                         window.location.href = "../partidas/rankPartida.php?id=" + userResponse.idPartida;
                     } else {
 
@@ -297,7 +297,7 @@ $nomePopular = $especie->getNomePopular();
                 }
             });
         } else {
-            // A variável de sessão PARTIDA não é verdadeira, faça algo diferente aqui, se necessário
+            // A variável de sessão PARTIDA não é verdadeira
             console.log("Partida não está ativa");
         }
     };

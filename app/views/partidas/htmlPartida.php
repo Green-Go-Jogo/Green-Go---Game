@@ -517,7 +517,8 @@ class PartidaHTML
         // Se todas as pontuações são zero, exibe uma mensagem especial
         if ($todasPontuacoesZero) {
             echo "<div class='text-center'>";
-            echo "<p>Nenhuma equipe marcou pontos durante essa partida.</p>";
+            echo "<p>Nenhuma equipe marcou pontos durante essa partida!</p>";
+            echo "<img src='../../public/icon/florvaso_icon.png' style='width: 25%; top: 50px; position: relative'>";
             echo "</div>";
         } else {
             // Classifique as equipes com base na pontuação final (em ordem decrescente)

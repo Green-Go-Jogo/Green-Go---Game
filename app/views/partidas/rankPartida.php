@@ -72,9 +72,7 @@ include_once(__DIR__."/htmlPartida.php");
 <!-- <div class="text-center" style="color: #C05367;"><a style="color: #C05367;" href="https://docs.google.com/forms/d/e/1FAIpQLSeDybrCyrFW4LFDQYvd5aLoFJFDEpB2bza7e840gRXLv03Ipw/viewform">Acesse o nosso formulário de pesquisa!</a></div> -->
 <br>
 <br>
-<br>
-<br>
-<br>
+
 
 
 <?php include_once("../../bootstrap/footer.php");?>
