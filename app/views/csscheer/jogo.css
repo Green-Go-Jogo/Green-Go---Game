@@ -45,7 +45,7 @@ body {
 }
 
 #timer {
-    color: #ffffff;
+    color: #ffffff !important;
     position: relative;
     z-index: 1;
     font-size: 30px;
