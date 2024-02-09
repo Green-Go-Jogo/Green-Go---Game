@@ -99,7 +99,7 @@ body {
 @media (max-width: 767px){
     #imagemPlanta {
         width: 100%;
-        height : auto;
+        height : 300px;
         margin-top: auto;}
 }
 

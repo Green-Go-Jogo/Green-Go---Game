@@ -180,7 +180,7 @@ class EspecieHTML
             echo "<div class='col-md-4'>";
             echo "<br>";
             echo "<div class='card' style='width: 22rem; '>";
-            echo "<img src='" . $especie->getImagemEspecie() . "' style='width: 90%; height: 90%; margin-left: 18px; border-radius: 5px;'class='card-img-top mais' alt='...'>";
+            echo "<a href='visualizarEspecie.php?id=". $especie->getIdEspecie() ."'><img src='" . $especie->getImagemEspecie() . "' style='width: 90%; height: 90%; margin-left: 18px; border-radius: 5px;'class='card-img-top mais' alt='...'><a>";
             echo "<div class='card-body'>";
             echo "<h5 id='nomeEspecie' class='card-title nome-soc'>" . $especie->getNomePopular() . "</h5>";
             echo "<p class='card-text nome-texto' id='atributos'>";
