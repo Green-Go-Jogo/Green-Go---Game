@@ -54,7 +54,7 @@ if (!isset($_SESSION['TIPO'])) {
 
         }
 
-        
+
 
         .col {
             display: flex;
@@ -303,13 +303,13 @@ if (!isset($_SESSION['TIPO'])) {
 
         .embreve .light-button button.bt:hover .button-holder {
             font-family: Poppins-medium;
-            color: #F0B6BC  !important;
+            color: #F0B6BC !important;
             outline: #C05367 2px solid;
             outline-offset: 2px;
         }
 
         .modo-escuro .light-button button.bt:hover .button-holder #msgHide {
-            color: #7EC4BB  !important;
+            color: #7EC4BB !important;
         }
 
         .light-button button.bt:hover .light-holder .light {
@@ -356,156 +356,154 @@ if (!isset($_SESSION['TIPO'])) {
 
         @media (min-width: 768px) and (max-width: 992px) {
 
-.light-button button.bt .light-holder .dot {
-    position: absolute;
-    top: -73px;
-    width: 10px;
-    height: 10px;
-    background-color: #C05367;
-    border-radius: 10px;
-    z-index: 2;
-}
+            .light-button button.bt .light-holder .dot {
+                position: absolute;
+                top: -73px;
+                width: 10px;
+                height: 10px;
+                background-color: #C05367;
+                border-radius: 10px;
+                z-index: 2;
+            }
 
-.light-button button.bt .light-holder .light {
-    position: absolute;
-    top: -80px;
-    width: 250px;
-    height: 320px;
-    clip-path: polygon(50% 0%, 25% 100%, 75% 100%);
-    background: transparent;
-}
+            .light-button button.bt .light-holder .light {
+                position: absolute;
+                top: -80px;
+                width: 250px;
+                height: 320px;
+                clip-path: polygon(50% 0%, 25% 100%, 75% 100%);
+                background: transparent;
+            }
 
-}
-
-@media (min-width: 576px) and (max-width:  767px) {
-
-    .light-button button.bt .light-holder .dot {
-    position: absolute;
-    top: -22px;
-    width: 10px;
-    height: 10px;
-    background-color: #C05367;
-    border-radius: 10px;
-    z-index: 2;
-}
-
-.light-button button.bt .light-holder .light {
-    position: absolute;
-    top: -20px;
-    width: 250px;
-    height: 240px;
-    clip-path: polygon(50% 0%, 25% 100%, 75% 100%);
-    background: transparent;
-}
-
-}
-
-@media (max-width: 576px) and (min-width: 420px) {
-
-.light-button button.bt .light-holder .dot {
-position: absolute;
-top: -7px;
-width: 8px;
-height: 8px;
-background-color: #C05367;
-border-radius: 10px;
-z-index: 2;
-}
-
-.light-button button.bt .light-holder .light {
-position: absolute;
-top: -7px;
-width: 250px;
-height: 220px;
-clip-path: polygon(50% 0%, 25% 100%, 75% 100%);
-background: transparent;
-}
-
-}
-
-@media (max-width: 419px){
-
-    .light-button button.bt .light-holder .dot {
-position: absolute;
-top: 50px;
-width: 5px;
-height: 5px;
-background-color: transparent;
-border-radius: 10px;
-z-index: 2;
-}
-
-.light-button button.bt .light-holder .light {
-position: absolute;
-top: 55px;
-width: 250px;
-height: 180px;
-clip-path: polygon(50% 0%, 25% 100%, 75% 100%);
-background: transparent;
-}
-
-.light-button button.bt .button-holder {
-            height: 70px;
-            width: 70px;
-            position: relative;
-            left: 14px;
-    }
-
-    .light-button button.bt:hover .button-holder svg {
-            margin-top: 17px;
-            fill: #F0B6BC;
         }
+
+        @media (min-width: 576px) and (max-width: 767px) {
+
+            .light-button button.bt .light-holder .dot {
+                position: absolute;
+                top: -22px;
+                width: 10px;
+                height: 10px;
+                background-color: #C05367;
+                border-radius: 10px;
+                z-index: 2;
+            }
+
+            .light-button button.bt .light-holder .light {
+                position: absolute;
+                top: -20px;
+                width: 250px;
+                height: 240px;
+                clip-path: polygon(50% 0%, 25% 100%, 75% 100%);
+                background: transparent;
+            }
+
+        }
+
+        @media (max-width: 576px) and (min-width: 420px) {
+
+            .light-button button.bt .light-holder .dot {
+                position: absolute;
+                top: -7px;
+                width: 8px;
+                height: 8px;
+                background-color: #C05367;
+                border-radius: 10px;
+                z-index: 2;
+            }
+
+            .light-button button.bt .light-holder .light {
+                position: absolute;
+                top: -7px;
+                width: 250px;
+                height: 220px;
+                clip-path: polygon(50% 0%, 25% 100%, 75% 100%);
+                background: transparent;
+            }
+
+        }
+
+        @media (max-width: 419px) {
+
+            .light-button button.bt .light-holder .dot {
+                position: absolute;
+                top: 50px;
+                width: 5px;
+                height: 5px;
+                background-color: transparent;
+                border-radius: 10px;
+                z-index: 2;
+            }
+
+            .light-button button.bt .light-holder .light {
+                position: absolute;
+                top: 55px;
+                width: 250px;
+                height: 180px;
+                clip-path: polygon(50% 0%, 25% 100%, 75% 100%);
+                background: transparent;
+            }
+
+            .light-button button.bt .button-holder {
+                height: 70px;
+                width: 70px;
+                position: relative;
+                left: 14px;
+            }
+
+            .light-button button.bt:hover .button-holder svg {
+                margin-top: 17px;
+                fill: #F0B6BC;
+            }
 
         }
 
         @media (min-width: 419px) and (max-width: 502px) {
 
-        #arvore {
-            position: relative;
-            height: 35rem;
-            top: -60px;
+            #arvore {
+                position: relative;
+                height: 35rem;
+                top: -60px;
+            }
+
+            #surpresa {
+                position: relative;
+                top: -31rem;
+            }
+
+            .light-button button.bt .button-holder {
+                height: 70px;
+                width: 70px;
+                position: relative;
+
+            }
+
+            .light-button button.bt:hover .button-holder svg {
+                margin-top: 17px;
+                fill: #F0B6BC;
+            }
+
+            .light-button button.bt .light-holder .dot {
+                position: absolute;
+                top: 1px;
+                width: 5px;
+                height: 5px;
+                background-color: transparent;
+                border-radius: 10px;
+                z-index: 2;
+            }
+
+            .light-button button.bt .light-holder .light {
+                position: relative;
+                top: 32px;
+                width: 250px;
+                height: 180px;
+                clip-path: polygon(50% 0%, 25% 100%, 75% 100%);
+                background: transparent;
+                left: -13px;
+            }
+
         }
-
-        #surpresa {
-            position: relative;
-            top: -31rem;
-        }
-
-        .light-button button.bt .button-holder {
-            height: 70px;
-            width: 70px;
-            position: relative;
-            
-    }
-
-    .light-button button.bt:hover .button-holder svg {
-            margin-top: 17px;
-            fill: #F0B6BC;
-        }
-
-        .light-button button.bt .light-holder .dot {
-        position: absolute;
-        top: 1px;
-        width: 5px;
-        height: 5px;
-        background-color: transparent;
-        border-radius: 10px;
-        z-index: 2;
-        }
-
-        .light-button button.bt .light-holder .light {
-        position: relative;
-        top: 32px;
-        width: 250px;
-        height: 180px;
-        clip-path: polygon(50% 0%, 25% 100%, 75% 100%);
-        background: transparent;
-        left: -13px;
-        }
-        
-}
-
-
     </style>
 </head>
 
@@ -522,72 +520,72 @@ background: transparent;
             <div class="row">
                 <!-- Parte 1 - Cadastro -->
                 <div class="col-md-12">
-                <div class="texto texto1">
-                    <p class="textoBotao">Participe de uma experiência única! <br> Se cadastre agora no Green Go!</p>
-                </div>
-                <div class="botao botao1">
-                    <div class="wrapper">
-                        <div class="link_wrapper">
-                            <a href="../users/cadastro.php">Cadastre-se</a>
-                            <div class="icon">
-                                <svg viewBox="0 0 148 148" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M86.5709 148C62.1842 135.218 35.9826 90.599 32.7581 61.7587C29.5335 32.9184 49.1653 5.92403 67.0692 0.899082C84.9731 -4.12587 101.143 12.8265 104.848 29.022C108.553 45.2174 99.2312 62.5956 90.4716 78.0347C98.4228 72.4363 115.866 71.7081 116.085 82.1505C116.368 95.6502 102.164 116.355 81.4156 127.767C83.3458 135.646 84.6824 139.001 86.5709 148Z" fill="#338A5F" />
-                                </svg>
+                    <div class="texto texto1">
+                        <p class="textoBotao">Participe de uma experiência única! <br> Se cadastre agora no Green Go!</p>
+                    </div>
+                    <div class="botao botao1">
+                        <div class="wrapper">
+                            <div class="link_wrapper">
+                                <a href="../users/cadastro.php">Cadastre-se</a>
+                                <div class="icon">
+                                    <svg viewBox="0 0 148 148" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M86.5709 148C62.1842 135.218 35.9826 90.599 32.7581 61.7587C29.5335 32.9184 49.1653 5.92403 67.0692 0.899082C84.9731 -4.12587 101.143 12.8265 104.848 29.022C108.553 45.2174 99.2312 62.5956 90.4716 78.0347C98.4228 72.4363 115.866 71.7081 116.085 82.1505C116.368 95.6502 102.164 116.355 81.4156 127.767C83.3458 135.646 84.6824 139.001 86.5709 148Z" fill="#338A5F" />
+                                    </svg>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 </div>
                 <!-- Fim da Parte 1 -->
 
                 <!-- Parte 2 - Redes Sociais -->
                 <div class="col-md-12">
-                <div class="texto texto2">
-                    <p class="textoBotao">Acompanhe nossa página no Instagram! <br> E conheça mais sobre o IFPR!</p>
-                </div>
-                <div class="botao botao2">
-                    <button class="btn-cssbuttons">
-                        <span>REDES SOCIAIS</span><span>
-                            <svg height="18" width="18" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1024 1024" class="icon">
-                                <path fill="#ffffff" d="M767.99994 585.142857q75.995429 0 129.462857 53.394286t53.394286 129.462857-53.394286 129.462857-129.462857 53.394286-129.462857-53.394286-53.394286-129.462857q0-6.875429 1.170286-19.456l-205.677714-102.838857q-52.589714 49.152-124.562286 49.152-75.995429 0-129.462857-53.394286t-53.394286-129.462857 53.394286-129.462857 129.462857-53.394286q71.972571 0 124.562286 49.152l205.677714-102.838857q-1.170286-12.580571-1.170286-19.456 0-75.995429 53.394286-129.462857t129.462857-53.394286 129.462857 53.394286 53.394286 129.462857-53.394286 129.462857-129.462857 53.394286q-71.972571 0-124.562286-49.152l-205.677714 102.838857q1.170286 12.580571 1.170286 19.456t-1.170286 19.456l205.677714 102.838857q52.589714-49.152 124.562286-49.152z"></path>
-                            </svg>
-                        </span>
-                        <ul>
-                            <li>
-                                <a href="https://ifpr.edu.br/foz-do-iguacu/"><img src="../../public/ifpr.svg"></a>
-                            </li>
-                            <li>
-                                <a href="https://www.instagram.com/projetogreengo/"><img src="../../public/instagram.svg"></a>
-                            </li>
-                            <li>
-                                <a href=""><svg width="18" height="18" viewBox="0 0 148 148" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path fill="white" d="M86.5709 148C62.1842 135.218 35.9826 90.599 32.7581 61.7587C29.5335 32.9184 49.1653 5.92403 67.0692 0.899082C84.9731 -4.12587 101.143 12.8265 104.848 29.022C108.553 45.2174 99.2312 62.5956 90.4716 78.0347C98.4228 72.4363 115.866 71.7081 116.085 82.1505C116.368 95.6502 102.164 116.355 81.4156 127.767C83.3458 135.646 84.6824 139.001 86.5709 148Z" fill="#338A5F" />
-                                    </svg>
-                                </a>
-                            </li>
-                        </ul>
-                    </button>
-                </div>
+                    <div class="texto texto2">
+                        <p class="textoBotao">Acompanhe nossa página no Instagram! <br> E conheça mais sobre o IFPR!</p>
+                    </div>
+                    <div class="botao botao2">
+                        <button class="btn-cssbuttons">
+                            <span>REDES SOCIAIS</span><span>
+                                <svg height="18" width="18" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1024 1024" class="icon">
+                                    <path fill="#ffffff" d="M767.99994 585.142857q75.995429 0 129.462857 53.394286t53.394286 129.462857-53.394286 129.462857-129.462857 53.394286-129.462857-53.394286-53.394286-129.462857q0-6.875429 1.170286-19.456l-205.677714-102.838857q-52.589714 49.152-124.562286 49.152-75.995429 0-129.462857-53.394286t-53.394286-129.462857 53.394286-129.462857 129.462857-53.394286q71.972571 0 124.562286 49.152l205.677714-102.838857q-1.170286-12.580571-1.170286-19.456 0-75.995429 53.394286-129.462857t129.462857-53.394286 129.462857 53.394286 53.394286 129.462857-53.394286 129.462857-129.462857 53.394286q-71.972571 0-124.562286-49.152l-205.677714 102.838857q1.170286 12.580571 1.170286 19.456t-1.170286 19.456l205.677714 102.838857q52.589714-49.152 124.562286-49.152z"></path>
+                                </svg>
+                            </span>
+                            <ul>
+                                <li>
+                                    <a href="https://ifpr.edu.br/foz-do-iguacu/"><img src="../../public/ifpr.svg"></a>
+                                </li>
+                                <li>
+                                    <a href="https://www.instagram.com/projetogreengo/"><img src="../../public/instagram.svg"></a>
+                                </li>
+                                <li>
+                                    <a href=""><svg width="18" height="18" viewBox="0 0 148 148" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill="white" d="M86.5709 148C62.1842 135.218 35.9826 90.599 32.7581 61.7587C29.5335 32.9184 49.1653 5.92403 67.0692 0.899082C84.9731 -4.12587 101.143 12.8265 104.848 29.022C108.553 45.2174 99.2312 62.5956 90.4716 78.0347C98.4228 72.4363 115.866 71.7081 116.085 82.1505C116.368 95.6502 102.164 116.355 81.4156 127.767C83.3458 135.646 84.6824 139.001 86.5709 148Z" fill="#338A5F" />
+                                        </svg>
+                                    </a>
+                                </li>
+                            </ul>
+                        </button>
+                    </div>
                 </div>
                 <!-- Fim da Parte 2 -->
 
                 <!-- Parte 3 - Projeto -->
                 <div class="col-md-12">
-                <div class="texto texto3">
-                    <p class="textoBotao">Gostou do Green Go? <br> Saiba mais sobre o projeto! </p>
-                </div>
-                <div class="botao botao3">
-                    <div class="wrapper">
-                        <div class="link_wrapper">
-                            <a href="projeto.php">Conheça o Projeto</a>
-                            <div class="icon">
-                                <svg viewBox="0 0 148 148" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M86.5709 148C62.1842 135.218 35.9826 90.599 32.7581 61.7587C29.5335 32.9184 49.1653 5.92403 67.0692 0.899082C84.9731 -4.12587 101.143 12.8265 104.848 29.022C108.553 45.2174 99.2312 62.5956 90.4716 78.0347C98.4228 72.4363 115.866 71.7081 116.085 82.1505C116.368 95.6502 102.164 116.355 81.4156 127.767C83.3458 135.646 84.6824 139.001 86.5709 148Z" fill="#338A5F" />
-                                </svg>
+                    <div class="texto texto3">
+                        <p class="textoBotao">Gostou do Green Go? <br> Saiba mais sobre o projeto! </p>
+                    </div>
+                    <div class="botao botao3">
+                        <div class="wrapper">
+                            <div class="link_wrapper">
+                                <a href="projeto.php">Conheça o Projeto</a>
+                                <div class="icon">
+                                    <svg viewBox="0 0 148 148" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M86.5709 148C62.1842 135.218 35.9826 90.599 32.7581 61.7587C29.5335 32.9184 49.1653 5.92403 67.0692 0.899082C84.9731 -4.12587 101.143 12.8265 104.848 29.022C108.553 45.2174 99.2312 62.5956 90.4716 78.0347C98.4228 72.4363 115.866 71.7081 116.085 82.1505C116.368 95.6502 102.164 116.355 81.4156 127.767C83.3458 135.646 84.6824 139.001 86.5709 148Z" fill="#338A5F" />
+                                    </svg>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 </div>
                 <!-- Fim da Parte 3 -->
             </div>
@@ -600,7 +598,7 @@ background: transparent;
     <!-- Parte Novidades -->
     <div class="embreve">
         <div class="container text-center">
-        <img src="../../public/arvorebotao.png" id="arvore">
+            <img src="../../public/arvorebotao.png" id="arvore">
             <div class="row" id="minis">
                 <div class="col" id="surpresa">
                     <div class="light-button">
@@ -626,17 +624,22 @@ background: transparent;
     <div class="redes">
         <br><br><br>
         <p id="post"> <strong>Último post do nosso instagram:</strong> </p>
-        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/CxEmk4DLGwY/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:10px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:350px; min-width:200px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
-            <div style="padding:16px;"> <a href="https://www.instagram.com/p/CxEmk4DLGwY/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank">
+        <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/C0nQ6hyxcoX/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
+            <div style="padding:16px;"> <a href="https://www.instagram.com/p/C0nQ6hyxcoX/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank">
                     <div style=" display: flex; flex-direction: row; align-items: center;">
-                        <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div>
+                        <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;">
+                        </div>
                         <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;">
-                            <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div>
-                            <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div>
+                            <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;">
+                            </div>
+                            <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;">
+                            </div>
                         </div>
                     </div>
-                    <div style="padding: 19% 0;"></div>
-                    <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink">
+                    <div style="padding: 19% 0;">
+                    </div>
+                    <div style="display:block; height:50px; margin:0 auto 12px; width:50px;">
+                        <svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink">
                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                 <g transform="translate(-511.000000, -20.000000)" fill="#000000">
                                     <g>
@@ -644,25 +647,35 @@ background: transparent;
                                     </g>
                                 </g>
                             </g>
-                        </svg></div>
+                        </svg>
+                    </div>
                     <div style="padding-top: 8px;">
                         <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">Ver essa foto no Instagram</div>
                     </div>
-                    <div style="padding: 12.5% 0;"></div>
+                    <div style="padding: 12.5% 0;">
+                    </div>
                     <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;">
                         <div>
-                            <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div>
-                            <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div>
-                            <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div>
+                            <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);">
+                            </div>
+                            <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;">
+                            </div>
+                            <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);">
+                            </div>
                         </div>
                         <div style="margin-left: 8px;">
-                            <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div>
-                            <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div>
+                            <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;">
+                            </div>
+                            <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)">
+                            </div>
                         </div>
                         <div style="margin-left: auto;">
-                            <div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div>
-                            <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div>
-                            <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div>
+                            <div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);">
+                            </div>
+                            <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);">
+                            </div>
+                            <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);">
+                            </div>
                         </div>
                     </div>
                     <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;">
@@ -670,7 +683,7 @@ background: transparent;
                         <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;"></div>
                     </div>
                 </a>
-                <p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/p/CxEmk4DLGwY/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">Uma publicação compartilhada por Green Go (@projetogreengo)</a></p>
+                <p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/p/C0nQ6hyxcoX/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">Uma publicação compartilhada por Green Go (@projetogreengo)</a></p>
             </div>
         </blockquote>
         <script async src="//www.instagram.com/embed.js"></script>

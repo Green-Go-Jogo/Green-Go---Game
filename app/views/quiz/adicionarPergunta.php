@@ -146,7 +146,7 @@ if (!isset($_GET['ide'])) {
                         echo "</div>";
 
                         echo "<div class='col-2' style='display: flex; justify-content: space-between'>";
-                            echo "<a href='editarPergunta.php'><i class='fa-solid fa-pencil'></i></a>";
+                            echo "<a href='editarPergunta.php?idq=".$questao->getIdQuestao()."'><i class='fa-solid fa-pencil'></i></a>";
                             echo "<a><i class='fa-solid fa-circle' style='color:" . $cor . "'></i></a>";
                             echo "<a href='deletarPergunta.php?id=".$questao->getIdQuestao()."'><i class='fa-solid fa-trash'></i></a>";
                         echo "</div>";

@@ -3,14 +3,17 @@
 
 include_once(__DIR__ . "/../connection/Connection.php");
 include_once(__DIR__ . "/../models/QuestaoModel.php");
-include_once(__DIR__."/../models/UsuarioModel.php");
+include_once(__DIR__ . "/../models/UsuarioModel.php");
 
-class QuestaoDAO {
+class QuestaoDAO
+{
     private const SQL_QUESTAO = "SELECT * FROM questao q";
+    private const SQL_ALTERNATIVA = "SELECT * FROM alternativa a";
 
-    private function mapQuestoes($resultSql) {
+    private function mapQuestoes($resultSql)
+    {
         $questoes = array();
-        foreach ($resultSql as $reg):
+        foreach ($resultSql as $reg) :
 
             $questao = new Questao();
             $questao->setIdQuestao($reg['idQuestao']);
@@ -25,40 +28,64 @@ class QuestaoDAO {
         return $questoes;
     }
 
-    public function list() {
-        $conn = conectar_db();
-
-        $sql = QuestaoDAO::SQL_QUESTAO;
-        $stm = $conn->prepare($sql);    
-        $stm->execute();
-        $result = $stm->fetchAll();
-
+    private function mapAlternativas($resultSql)
+    {        
         $questoes = array();
-        foreach ($result as $reg):
-            $questao = new Questao($reg['idQuestao'], $reg['descricaoQuestao'], $reg['grauDificuldade'],
-            $reg['imagemQuestao'], $reg['idEspecie']);
+        foreach ($resultSql as $reg) :
+
+            $questao = new Questao();
+            $questao->setDescricaoAlternativa($reg['descricaoAlternativa']);
+            $questao->setAlternativaCerta($reg['alternativaCerta']);
+            $questao->setIdAlternativa($reg['idAlternativa']);
+
             array_push($questoes, $questao);
         endforeach;
 
         return $questoes;
     }
 
-    public function listByEspecie($idEspecie) {
+    public function list()
+    {
+        $conn = conectar_db();
+
+        $sql = QuestaoDAO::SQL_QUESTAO;
+        $stm = $conn->prepare($sql);
+        $stm->execute();
+        $result = $stm->fetchAll();
+
+        $questoes = array();
+        foreach ($result as $reg) :
+            $questao = new Questao(
+                $reg['idQuestao'],
+                $reg['descricaoQuestao'],
+                $reg['grauDificuldade'],
+                $reg['imagemQuestao'],
+                $reg['idEspecie']
+            );
+            array_push($questoes, $questao);
+        endforeach;
+
+        return $questoes;
+    }
+
+    public function listByEspecie($idEspecie)
+    {
         $conn = conectar_db();
 
         $sql = QuestaoDAO::SQL_QUESTAO . " WHERE q.idEspecie = ?";
-        $stm = $conn->prepare($sql);    
+        $stm = $conn->prepare($sql);
         $stm->execute([$idEspecie]);
         $result = $stm->fetchAll();
 
         return $this->mapQuestoes($result);
     }
-    
-    public function findById($idQuestao) {
+
+    public function findById($idQuestao)
+    {
         $conn = conectar_db();
 
-        $sql = questaoDAO::SQL_QUESTAO . 
-                " WHERE q.idQuestao = ?";
+        $sql = questaoDAO::SQL_QUESTAO .
+            " WHERE q.idQuestao = ?";
 
         $stmt = $conn->prepare($sql);
         $stmt->execute([$idQuestao]);
@@ -67,13 +94,28 @@ class QuestaoDAO {
         //Criar o objeto stand
         $questoes = $this->mapQuestoes($result);
 
-        if(count($questoes) == 1)
+        if (count($questoes) == 1)
             return $questoes[0];
-        elseif(count($questoes) == 0)
+        elseif (count($questoes) == 0)
             return null;
 
-        die("questaoDAO.findById - Erro: mais de uma questão".
-                " encontrado para o ID ".$idQuestao);
+        die("questaoDAO.findById - Erro: mais de uma questão" .
+            " encontrado para o ID " . $idQuestao);
+    }
+
+    public function findAlternativas($idQuestao)
+    {
+        $conn = conectar_db();
+
+        $sql = questaoDAO::SQL_ALTERNATIVA .
+            " JOIN questao q ON q.idQuestao = a.idQuestao WHERE q.idQuestao = ?";
+
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([$idQuestao]);
+        $result = $stmt->fetchAll();
+
+        //Criar o objeto stand
+        return $this->mapAlternativas($result);
     }
 
     // public function listByPartida($idPartida) {
@@ -86,7 +128,7 @@ class QuestaoDAO {
     //     $stmt->execute([$idPartida]);
     //     $result = $stmt->fetchAll();
 
-      
+
 
     //     //Criar o objeto Partida
     //     $zonas = $this->mapZonas($result);
@@ -95,52 +137,82 @@ class QuestaoDAO {
     // }
 
 
-    public function saveQuestao(Questao $questao) {
+    public function saveQuestao(Questao $questao)
+    {
         $conn = conectar_db();
 
-        $sql = "INSERT INTO questao (descricaoQuestao, grauDificuldade, imagemQuestao, idEspecie)".
-        " VALUES (?, ?, ?, ?)";
+        $sql = "INSERT INTO questao (descricaoQuestao, grauDificuldade, imagemQuestao, idEspecie)" .
+            " VALUES (?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
         $stmt->execute([$questao->getDescricaoQuestao(), $questao->getGrauDificuldade(), $questao->getImagemQuestao(), $questao->getIdEspecie()]);
-        
+
         $idQuestao = $conn->lastInsertId();
         $questao->setIdQuestao($conn->lastInsertId());
         $this->saveAlternativa($questao, $idQuestao);
     }
 
-    public function saveAlternativa(Questao $questao, $idQuestao) {
+    public function saveAlternativa(Questao $questao, $idQuestao)
+    {
         $conn = conectar_db();
 
         for ($i = 1; $i < 5; $i++) {
-        $alternativas = $questao->getAlternativas();
-        if ($i == $questao->getAlternativaCerta()) {
-            $trueOrFalse = 1;
-        } else {
-            $trueOrFalse = 0;
-        }
-        $questao->setDescricaoAlternativa($alternativas[$i]);
+            $alternativas = $questao->getAlternativas();
+            if ($i == $questao->getAlternativaCerta()) {
+                $trueOrFalse = 1;
+            } else {
+                $trueOrFalse = 0;
+            }
+            $questao->setDescricaoAlternativa($alternativas[$i]);
 
-        $sql = "INSERT INTO alternativa (descricaoAlternativa, alternativaCerta, idQuestao) VALUES (?, ?, ?)";
-        $stmt = $conn->prepare($sql);
-        $stmt->execute([$questao->getDescricaoAlternativa(), $trueOrFalse, $idQuestao]);
+            $sql = "INSERT INTO alternativa (descricaoAlternativa, alternativaCerta, idQuestao) VALUES (?, ?, ?)";
+            $stmt = $conn->prepare($sql);
+            $stmt->execute([$questao->getDescricaoAlternativa(), $trueOrFalse, $idQuestao]);
         }
     }
 
-    public function update(Questao $questao) {
+    public function update(Questao $questao)
+    {
         $conn = conectar_db();
-    
+
         $sql = "UPDATE questao SET descricaoQuestao = ?, grauDificuldade = ?, imagemQuestao = ? WHERE idQuestao = ?";
         $stmtUpdate = $conn->prepare($sql);
-        $stmtUpdate->execute([$questao->getDescricaoQuestao(), $questao->getGrauDificuldade(), $questao->getImagemQuestao(), 
-        $questao->getIdQuestao()]);
-    }    
+        $stmtUpdate->execute([
+            $questao->getDescricaoQuestao(), $questao->getGrauDificuldade(), $questao->getImagemQuestao(),
+            $questao->getIdQuestao()
+        ]);
 
-    public function delete(Questao $questao) {
-    $conn = conectar_db();
+        $this->updateAlternativa($questao);
+    }
 
-    $sql = "DELETE FROM questao WHERE idQuestao = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->execute([$questao->getIdQuestao()]);
-}
-    
+    public function updateAlternativa(Questao $questao) {
+        $conn = conectar_db();
+
+            for ($i = 1; $i < 5; $i++) {
+                $alternativas = $questao->getAlternativas();
+                
+                $idsArray = $questao->getIdsArray();
+                if ($i == $questao->getAlternativaCerta()) {
+                    $trueOrFalse = 1;
+                } else {
+                    $trueOrFalse = 0;
+                }
+                $questao->setDescricaoAlternativa($alternativas[$i]);
+                $questao->setIdAlternativa($idsArray[$i]);
+
+        $sql = "UPDATE alternativa SET descricaoAlternativa = ?, alternativaCerta = ? WHERE idAlternativa = ?";
+        $stmtUpdate = $conn->prepare($sql);
+        $stmtUpdate->execute([
+            $questao->getDescricaoAlternativa(), $trueOrFalse, $questao->getIdAlternativa()
+        ]);
+        }
+    }
+
+    public function delete(Questao $questao)
+    {
+        $conn = conectar_db();
+
+        $sql = "DELETE FROM questao WHERE idQuestao = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([$questao->getIdQuestao()]);
+    }
 }

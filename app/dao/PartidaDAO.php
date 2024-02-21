@@ -407,18 +407,6 @@ class PartidaDAO
         return $numLinhas;
     }
 
-    public function update(Planta $planta)
-    {
-        $conn = conectar_db();
-
-        $sql = "UPDATE planta SET nomeSocial = ?, codQR = ?, codNumerico = ?, pontuacaoPlanta = ?, historia = ?, imagemPlanta = ?, idZona = ?, idEspecie = ?, idUsuario = ? WHERE idPlanta = ?";
-        $stmt = $conn->prepare($sql);
-        $stmt->execute([
-            $planta->getNomeSocial(), $planta->getQrCode(), $planta->getCodNumerico(),
-            $planta->getPontos(), $planta->getPlantaHistoria(), $planta->getImagemPlanta(), $planta->getZona()->getIdZona(), $planta->getEspecie()->getIdEspecie(), $planta->getUsuario()->getIdUsuario(), $planta->getIdPlanta()
-        ]);
-    }
-
     public function updatePartida(Partida $partida)
     {
         $conn = conectar_db();

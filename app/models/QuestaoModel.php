@@ -12,7 +12,9 @@ class Questao
     private $descricaoAlternativa;
     private $alternativaCerta;
     private $idEspecie;
-
+    private $idAlternativa;
+    private $idsArray;
+    
     public function getIdQuestao()
     {
         return $this->idQuestao;
@@ -188,6 +190,46 @@ class Questao
     public function setIdEspecie($idEspecie)
     {
         $this->idEspecie = $idEspecie;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of idAlternativa
+     */ 
+    public function getIdAlternativa()
+    {
+        return $this->idAlternativa;
+    }
+
+    /**
+     * Set the value of idAlternativa
+     *
+     * @return  self
+     */ 
+    public function setIdAlternativa($idAlternativa)
+    {
+        $this->idAlternativa = $idAlternativa;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of idsArray
+     */ 
+    public function getIdsArray()
+    {
+        return $this->idsArray;
+    }
+
+    /**
+     * Set the value of idsArray
+     *
+     * @return  self
+     */ 
+    public function setIdsArray($idsArray)
+    {
+        $this->idsArray = $idsArray;
 
         return $this;
     }

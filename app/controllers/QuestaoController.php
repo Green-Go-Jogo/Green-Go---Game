@@ -23,6 +23,10 @@ class QuestaoController {
         return $this->questao->findById($idQuestao);
     }
 
+    public function buscarAlternativa($idQuestao) {
+        return $this->questao->findAlternativas($idQuestao);
+    }
+
     public function salvar($questao) {
         $this->questao->saveQuestao($questao);
     }
