@@ -194,6 +194,10 @@ $codigo = $plantaCont->gerarCodigo();
                               ?>
                           </div> </a>
 
+                          <div id="Questoes">
+
+                          </div>
+
                           <?php if (isset($errors) && !empty($errors) && isset($errors['especie_planta'])) { ?>
                             <div class="alert alert-warning"><?php echo $errors['especie_planta']; ?></div>
                           <?php } ?>
@@ -202,7 +206,6 @@ $codigo = $plantaCont->gerarCodigo();
                           <div class="w-100"> </div>
                           <input type="number" name="Pontuacao" class="form-control" id="txtCodigoForm" aria-describedby="nome-cadastro" value="<?php echo isset($_POST['Pontuacao']) ? $_POST['Pontuacao'] : ''; ?>">
                           <div class="w-100"> </div>
-                          <br>
                           <?php if (isset($errors) && !empty($errors) && isset($errors['Pontuacao'])) { ?>
                             <div class="alert alert-warning"><?php echo $errors['Pontuacao']; ?></div>
                           <?php } ?>
@@ -218,9 +221,13 @@ $codigo = $plantaCont->gerarCodigo();
                                 <img class="preview-image__img" data-image-preview />
                               </div><br>
                               <label for="img" class="custom-file-upload"><img src="../../public/cameraicone.png" alt="Ícone" style="position: relative ;top: -9px ;width: 43px; height: 43px;" /></label>
-                              <input type="file" id="img" required name="imagem" id="picture__input" data-image-input accept=".png, .jpg, .jpeg" />
+                              <input type="file" id="img" name="imagem" id="picture__input" data-image-input accept=".png, .jpg, .jpeg" />
                               <a id="carregueimagemtexto2"> <- Selecione um arquivo para a imagem da planta </a>
+
                             </div>
+                            <?php if (isset($errors) && !empty($errors) && isset($errors['planta_imagem'])) { ?>
+                              <div class="alert alert-warning"><?php echo $errors['planta_imagem']; ?></div>
+                            <?php } ?>
                           </div>
 
 
@@ -281,6 +288,66 @@ $codigo = $plantaCont->gerarCodigo();
   </main>
   <?php include_once("../../bootstrap/footer.php"); ?>
   <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script>
+    const selectEspecie = document.getElementsByName("especie_planta")[0];
+
+    const selectizeEspecie = $(selectEspecie).selectize({
+      onInitialize: function() {
+        this.trigger("change", this.getValue(), true);
+      },
+      onChange: function(value, isOnInitialize) {
+        mostrarQuestoes(selectEspecie);
+
+      },
+    });
+
+    function mostrarQuestoes(elemento) {
+      const xhr = new XMLHttpRequest();
+        xhr.open("POST", "questoesEspecie.php", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+      if (elemento.tagName === "SELECT") {
+        valorCampo = elemento.options[elemento.selectedIndex].value;
+      }
+
+      const parametros = "idEspecie=" + encodeURIComponent(valorCampo)
+      
+      xhr.onreadystatechange = function() {
+          if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+
+              // JSON de questões
+              var JSONQuestoes = JSON.parse(xhr.response);
+
+              // Limpar o conteúdo anterior da div
+              document.getElementById("Questoes").innerHTML = "";
+
+              // Console
+              console.log('Resposta do servidor:', JSON.parse(xhr.response));
+
+              // Percorrer o array de questões
+            for (var i = 0; i < JSONQuestoes.length; i++) {
+                var questao = JSONQuestoes[i];
+
+                // Criar um elemento de parágrafo para cada informação da questão
+                var paragrafo = document.createElement("p");
+                paragrafo.innerHTML = "<input name='checkbox_"+ i +"' type='checkbox' value='" + questao.idQuestao + "'/>" +
+                                      "<b><span style='margin-left: 10px; color: #338a5f'>Questão:</span></b> " + questao.descricao + 
+                                      "<a><i class='fa-solid fa-circle' style='margin-left: 10px; color:" + questao.cor + "'></i></a> <br>";
+
+                // Adicionar o parágrafo à div
+                document.getElementById("Questoes").appendChild(paragrafo);
+            }
+            } else {
+              resultadoVerificacao.innerHTML = "Erro na requisição.";
+            }
+          }
+        };
+
+        xhr.send(parametros);
+      }
+    
+  </script>
   <script src="assets/js/grayscale.js"></script>
   <script type="text/javascript" src="../js/imagem.js" defer></script>
 

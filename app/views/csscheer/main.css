@@ -317,12 +317,12 @@ a.excluir:hover {
           font-family: Poppins-semibold;
         }
     
-        .modo-escuro input[type=checkbox] {
+        /* .modo-escuro input[type=checkbox] {
             margin-left: -27px;
-        }
+        } */
         
         .modo-escuro input[type=checkbox]:before {
-            content: "";
+            /* content: ""; */
             display: block;
             position: absolute;
             width: 20px;

@@ -20,15 +20,20 @@ $imagem = $_FILES['imagem'];
 $id_zona = $_POST['zona_planta'];
 $id_especie = $_POST['especie_planta'];
 $id_usuario = $_POST['id_usuario'];
+$idQuestoes = array();
+foreach ($_POST as $name => $value) {
+  if (strpos($name, 'checkbox_') === 0) {
+      $idQuestoes[] = $value;
+  } 
+}
+var_dump($idQuestoes);
+exit;
 
-//Tratar a imagem
-$extensao = pathinfo($imagem['name'], PATHINFO_EXTENSION);
-$nome_imagem = md5(uniqid($imagem['name'])).".".$extensao;
-$caminho_imagem = "../../public/plantas/" . $nome_imagem;
-move_uploaded_file($imagem["tmp_name"], $caminho_imagem);
+
 
 //Validar dados
 $errors = array();
+
 
 if (empty($id_zona)) {
   $errors['zona_planta'] = "O campo Zona é obrigatório";
@@ -40,6 +45,10 @@ if (empty($id_zona)) {
 
 if (empty($id_especie)) {
   $errors['especie_planta'] = "O campo Espécie é obrigatório";
+} 
+
+if (empty($imagem[0])) {
+  $errors['planta_imagem'] = "O campo Imagem é obrigatório";
 } 
 
 if (empty($pontuacao)) {
@@ -54,6 +63,11 @@ if (!empty($errors)) {
     exit;
   }
 
+//Tratar a imagem
+$extensao = pathinfo($imagem['name'], PATHINFO_EXTENSION);
+$nome_imagem = md5(uniqid($imagem['name'])).".".$extensao;
+$caminho_imagem = "../../public/plantas/" . $nome_imagem;
+move_uploaded_file($imagem["tmp_name"], $caminho_imagem);
 
 //Criar o objeto planta
 

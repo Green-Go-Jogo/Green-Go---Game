@@ -4,7 +4,7 @@
 class EspecieHTMLForm {
 
     public static function desenhaSelect($especies, $name, $id, $idEspecieSelec=0) {
-        echo "<select id='select-state' class='form-control' name='". $name ."' id='". $id ."'>";
+        echo "<select id='select-state seletor' class='form-control' name='". $name ."' id='". $id ."'>";
 
         echo "<option value=''>Escolha uma Espécie...</option>";
         foreach($especies as $especie):
