@@ -125,6 +125,14 @@ a.excluir:hover {
     color: #ffffff;
 }
 
+.modo-escuro a#addict{
+    background-color: #04574d !important;
+    color: #ffffff !important;
+}
+
+.modo-escuro a#addict:hover{
+    background-color: #078071 !important;
+}
 
 .modo-escuro a.editar:hover, .modo-escuro button#imprimas:hover{
     background-color: #078071;

@@ -158,6 +158,7 @@ button#imprimas {
     display: inline-block;
     border-width: 3px ;
     border-color: #ffffff ;
+    border: none ;
 }
 
 button#imprimas:hover {
