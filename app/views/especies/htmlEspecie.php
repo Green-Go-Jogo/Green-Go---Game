@@ -228,7 +228,7 @@ class EspecieHTML
             echo "<p class='card-text nome-texto' id='atualização' >Última edição por:";
             echo "<p class='card-text nome-texto' id='nomezinho' >" . $especie->getUsuario()->getNomeUsuario() . "</p>";
             if (($_SESSION['TIPO'] == 3 && $_SESSION['NOME'] == $especie->getUsuario()->getNomeUsuario()) || $_SESSION['TIPO'] == 2) {
-                echo "<a href='../quiz/adicionarPergunta.php?ide=" . $especie->getIdEspecie() . "' id='addict' class='btn-primary'>Questões</a><br>";
+                echo "<a href='../quiz/listPergunta.php?ide=" . $especie->getIdEspecie() . "' id='addict' class='btn-primary'>Questões</a><br>";
                 echo "<a href='editarEspecie.php?id=" . $especie->getIdEspecie() . "' id='editas' class='btn btn-primary editar'>Editar</a>";
                 echo "<a href='deletarEspecie.php?id=" . $especie->getIdEspecie() . "' onclick='return confirm(\"Confirma a exclusão da Espécie? Todas as plantas associadas a essa espécie também serão excluídas!\");' class='btn btn-alert excluir'>Excluir</a>";
             }

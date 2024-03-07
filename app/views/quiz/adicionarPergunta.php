@@ -123,40 +123,7 @@ if (!isset($_GET['ide'])) {
                 </form>
             </div>
 
-            <div class="col-6">
-                <h1 style="display: flex; justify-content: center">LISTAGEM DE QUESTÕES</h1>
-                <br>
-                <?php
-                $questaoCont = new QuestaoController;
-                $questoes = $questaoCont->listarPorEspecie($ide);
-
-                foreach ($questoes as $questao) {
-                    $grauD = $questao->getGrauDificuldade();
-                    if ($grauD == "dificil") {
-                        $cor = "#ff0000";
-                    } else if ($grauD == "medio") {
-                        $cor = "#FFD43B";
-                    } else {
-                        $cor = "#04ff00";
-                    }
-                    echo "<div class='row' style='align-items: center'>";
-
-                        echo "<div class='col-10' style='display: flex; align-items: center'>";
-                            echo "<p class='descricaoQuestao' style='margin: auto'>" . $questao->getDescricaoQuestao();"</p>";
-                        echo "</div>";
-
-                        echo "<div class='col-2' style='display: flex; justify-content: space-between'>";
-                            echo "<a href='editarPergunta.php?idq=".$questao->getIdQuestao()."'><i class='fa-solid fa-pencil'></i></a>";
-                            echo "<a><i class='fa-solid fa-circle' style='color:" . $cor . "'></i></a>";
-                            echo "<a href='deletarPergunta.php?id=".$questao->getIdQuestao()."'><i class='fa-solid fa-trash'></i></a>";
-                        echo "</div>";
-                    echo "</div>";
-                }
-                ?>
-                <!-- <div class="row-2">
-                    
-                </div> -->
-            </div>
+            
         </div>
 
     </div>
