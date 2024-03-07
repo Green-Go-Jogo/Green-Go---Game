@@ -221,6 +221,8 @@
         color: #04574d;
         margin-bottom: -8px;
     }
+
+    
 </style>
 
 <?php

@@ -22,14 +22,15 @@
         transform: scale(1.05);
     }
 
-    a.editar:hover {
-        color: #ebf0f1 !important;
-        background-color: #04574d;
+    a#editas {
+        color: #C05367;
+        border-color: #C05367;
     }
 
-    a.editar {
-        color: #ebf0f1 !important;
-        background-color: #338a5f;
+    a#editas:hover {
+        color: var(--branco);
+        background-color: #C05367;
+        border-radius: 5px;
     }
 
     a.excluir {
@@ -102,6 +103,36 @@
     #atualização {
         color: #04574d;
         margin-bottom: -8px;
+    }
+
+    a#addict {
+    color: var(--branco);
+    background-color: #338A5F;
+    border-radius: 5px;
+    width: max-content !important;
+    height: max-content !important;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-family: Poppins-semibold;
+    font-size: 20px;
+    transition: 0.3s ease;
+    display: inline-block;
+    border-width: 3px ;
+    border-color: #ffffff ;
+    margin-bottom: 25px;
+
+}
+
+a#addict:hover {
+    color: #ebf0f1 !important;
+    background-color: #04574d;
+    transform: scale(1.05);
+}
+
+p#nomezinho {
+        margin-bottom: 25px;
     }
 </style>
 
@@ -197,8 +228,8 @@ class EspecieHTML
             echo "<p class='card-text nome-texto' id='atualização' >Última edição por:";
             echo "<p class='card-text nome-texto' id='nomezinho' >" . $especie->getUsuario()->getNomeUsuario() . "</p>";
             if (($_SESSION['TIPO'] == 3 && $_SESSION['NOME'] == $especie->getUsuario()->getNomeUsuario()) || $_SESSION['TIPO'] == 2) {
-                echo "<a href='../quiz/adicionarPergunta.php?ide=" . $especie->getIdEspecie() . "' class='btn btn-primary'>Adicionar Questão</a><br>";
-                echo "<a href='editarEspecie.php?id=" . $especie->getIdEspecie() . "' class='btn btn-primary editar'>Editar</a>";
+                echo "<a href='../quiz/adicionarPergunta.php?ide=" . $especie->getIdEspecie() . "' id='addict' class='btn-primary'>Questões</a><br>";
+                echo "<a href='editarEspecie.php?id=" . $especie->getIdEspecie() . "' id='editas' class='btn btn-primary editar'>Editar</a>";
                 echo "<a href='deletarEspecie.php?id=" . $especie->getIdEspecie() . "' onclick='return confirm(\"Confirma a exclusão da Espécie? Todas as plantas associadas a essa espécie também serão excluídas!\");' class='btn btn-alert excluir'>Excluir</a>";
             }
             echo "<br>";
