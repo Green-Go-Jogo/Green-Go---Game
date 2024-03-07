@@ -14,6 +14,8 @@ class Questao
     private $idEspecie;
     private $idAlternativa;
     private $idsArray;
+    private $idPlanta;
+    private $idPlantaQuestao;
     
     public function getIdQuestao()
     {
@@ -230,6 +232,46 @@ class Questao
     public function setIdsArray($idsArray)
     {
         $this->idsArray = $idsArray;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of idPlanta
+     */ 
+    public function getIdPlanta()
+    {
+        return $this->idPlanta;
+    }
+
+    /**
+     * Set the value of idPlanta
+     *
+     * @return  self
+     */ 
+    public function setIdPlanta($idPlanta)
+    {
+        $this->idPlanta = $idPlanta;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of idPlantaQuestao
+     */ 
+    public function getIdPlantaQuestao()
+    {
+        return $this->idPlantaQuestao;
+    }
+
+    /**
+     * Set the value of idPlantaQuestao
+     *
+     * @return  self
+     */ 
+    public function setIdPlantaQuestao($idPlantaQuestao)
+    {
+        $this->idPlantaQuestao = $idPlantaQuestao;
 
         return $this;
     }

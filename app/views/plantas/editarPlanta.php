@@ -8,6 +8,7 @@ include_once("../../controllers/PlantaController.php");
 include_once("../zones/htmlZonaForm.php");
 include_once("../especies/htmlEspecieForm.php");
 include_once("../../controllers/LoginController.php");
+include_once("../../controllers/QuestaoController.php");
 
 
 
@@ -20,7 +21,9 @@ if (!isset($_GET['id'])) {
 
 if ($id !== null) {
   $plantaCont = new PlantaController();
+  $questaoCont = new QuestaoController();
   $planta = $plantaCont->buscarPorId($id);
+  $questaoPlanta = $questaoCont->listarPorPlanta($id);
 } else if ($idEditarPlanta !== null) {
   $plantaCont = new PlantaController();
   $planta = $plantaCont->buscarPorId($idEditarPlanta);
@@ -29,6 +32,13 @@ if ($id !== null) {
   echo "<a href='listPlantas.php'>Voltar</a>";
   exit;
 }
+
+$idsQuestoesEditar = array();
+foreach ($questaoPlanta as $questao){
+  $idsQuestoesEditar[] = $questao->getIdQuestao();
+}
+
+$idsEditar = json_encode($idsQuestoesEditar)
 ?>
 
 
@@ -225,6 +235,10 @@ if ($id !== null) {
                                 ?>
                             </div> </a>
 
+                            <div id="Questoes">
+
+                            </div>
+
                             <?php if (isset($errors) && !empty($errors) && isset($errors['especie_planta'])) { ?>
                               <div class="alert alert-warning"><?php echo $errors['especie_planta']; ?></div>
                             <?php } ?>
@@ -319,6 +333,68 @@ if ($id !== null) {
   <script src="assets/bootstrap/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="../js/imagem.js" defer></script>
   <script>
+    const selectEspecie = document.getElementsByName("especie_planta")[0];
+
+    const selectizeEspecie = $(selectEspecie).selectize({
+      onInitialize: function() {
+        this.trigger("change", this.getValue(), true);
+      },
+      onChange: function(value, isOnInitialize) {
+        mostrarQuestoes(selectEspecie);
+
+      },
+    });
+
+    function mostrarQuestoes(elemento) {
+      const xhr = new XMLHttpRequest();
+        xhr.open("POST", "questoesEspecie.php", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+      if (elemento.tagName === "SELECT") {
+        valorCampo = elemento.options[elemento.selectedIndex].value;
+      }
+
+      console.log(valorCampo)
+
+      const parametros = "idEspecie=" + encodeURIComponent(valorCampo)
+      
+      xhr.onreadystatechange = function() {
+          if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+
+              // JSON de questões
+              var JSONQuestoes = JSON.parse(xhr.response);
+
+              // Limpar o conteúdo anterior da div
+              document.getElementById("Questoes").innerHTML = "";
+
+              // Console
+              console.log('Resposta do servidor:', JSON.parse(xhr.response));
+
+              // Percorrer o array de questões
+            for (var i = 0; i < JSONQuestoes.length; i++) {
+                var questao = JSONQuestoes[i];
+
+                // Criar um elemento de parágrafo para cada informação da questão
+                var paragrafo = document.createElement("p");
+                paragrafo.innerHTML = "<input name='checkbox_"+ i +"' type='checkbox' value='" + questao.idQuestao + "'/>" +
+                                      "<b><span style='margin-left: 10px; color: #338a5f'>Questão:</span></b> " + questao.descricao + 
+                                      "<a><i class='fa-solid fa-circle' style='margin-left: 10px; color:" + questao.cor + "'></i></a> <br>";
+
+                // Adicionar o parágrafo à div
+                document.getElementById("Questoes").appendChild(paragrafo);
+            }
+            } else {
+              resultadoVerificacao.innerHTML = "Erro na requisição.";
+            }
+          }
+        };
+
+        xhr.send(parametros);
+      }
+    
+  </script>
+  <!-- <script>
     document.addEventListener("DOMContentLoaded", function() {
       const formulario = document.getElementById("formplanta");
       const mensagensRetorno = document.querySelectorAll(".mensagemRetorno");
@@ -400,7 +476,7 @@ if ($id !== null) {
         xhr.send(parametros);
       }
     });
-  </script>
+  </script> -->
 </body>
 
 </html>

@@ -144,7 +144,7 @@ class PlantaDAO {
       }
     
 
-    public function save(Planta $planta) {
+    public function save(Planta $planta, $idQuestoes) {
         $conn = conectar_db();
 
         $sql = "INSERT INTO planta (nomeSocial, codQR, codNumerico, pontuacaoPlanta, historia, imagemPlanta, idZona, idEspecie, idUsuario)".
@@ -154,6 +154,13 @@ class PlantaDAO {
                         $planta->getPontos(), $planta->getPlantaHistoria(), $planta->getImagemPlanta(), $planta->getZona()->getIdZona(), $planta->getEspecie()->getIdEspecie(), $planta->getUsuario()->getIdUsuario()]);
         
         $idPlanta = $conn->lastInsertId();
+
+        foreach($idQuestoes as $idQuestao) {
+            $sql = "INSERT INTO planta_questao (idQuestao, idPlanta)" . " VALUES (?, ?)";
+            $stmt = $conn->prepare($sql);
+            $stmt->execute([$idQuestao, $idPlanta]);
+        }
+
         $this->saveQrCode($idPlanta, $planta->getEspecie()->getIdEspecie(), $planta->getCodNumerico());
     
         }
@@ -171,7 +178,7 @@ class PlantaDAO {
         $stmt->execute([$qrCodeArq, $idPlanta]);
     }
 
-    public function update(Planta $planta) {
+    public function update(Planta $planta, $idQuestoes) {
         $conn = conectar_db();
     
         $sql = "UPDATE planta SET nomeSocial = ?, codQR = ?, codNumerico = ?, pontuacaoPlanta = ?, historia = ?, imagemPlanta = ?, idZona = ?, idEspecie = ?, idUsuario = ? WHERE idPlanta = ?";
@@ -180,6 +187,13 @@ class PlantaDAO {
         $planta->getPontos(), $planta->getPlantaHistoria(), $planta->getImagemPlanta(), $planta->getZona()->getIdZona(), $planta->getEspecie()->getIdEspecie(), $planta->getUsuario()->getIdUsuario(), $planta->getIdPlanta()]);
        
         $idPlanta = $planta->getIdPlanta();
+        $this->deleteQuestoes($idPlanta);
+        foreach($idQuestoes as $idQuestao) {
+            $sql = "INSERT INTO planta_questao (idQuestao, idPlanta)" . " VALUES (?, ?)";
+            $stmt = $conn->prepare($sql);
+            $stmt->execute([$idQuestao, $idPlanta]);
+        }
+
         $this->saveQrCode($idPlanta, $planta->getEspecie()->getIdEspecie(), $planta->getCodNumerico());
     
     }
@@ -190,6 +204,7 @@ class PlantaDAO {
         
 
         $sql = "DELETE FROM planta WHERE idPlanta = ?";
+        $this->deleteQuestoes($planta->getIdPlanta());
         $arquivo_del = $planta->getImagemPlanta();
         if (file_exists($arquivo_del)) {
             unlink($arquivo_del);
@@ -201,6 +216,14 @@ class PlantaDAO {
         $stmt = $conn->prepare($sql);
         $stmt->execute([$planta->getIdPlanta()]);
     }   
+
+    public function deleteQuestoes($idPlanta) {
+
+        $conn = conectar_db();
+        $sql = "DELETE FROM planta_questao WHERE idPlanta = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([$idPlanta]);
+    }
 
     public function deleteImage($idPlanta) {
     

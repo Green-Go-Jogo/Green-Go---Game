@@ -28,6 +28,22 @@ class QuestaoDAO
         return $questoes;
     }
 
+    private function mapQuestoesPlanta($resultSql)
+    {
+        $questoes = array();
+        foreach ($resultSql as $reg) :
+
+            $questao = new Questao();
+            $questao->setIdPlantaQuestao($reg['idPlantaQuestao']);
+            $questao->setIdPlanta($reg['idPlanta']);
+            $questao->setIdQuestao($reg['idQuestao']);
+
+            array_push($questoes, $questao);
+        endforeach;
+
+        return $questoes;
+    }
+
     private function mapAlternativas($resultSql)
     {        
         $questoes = array();
@@ -78,6 +94,18 @@ class QuestaoDAO
         $result = $stm->fetchAll();
 
         return $this->mapQuestoes($result);
+    }
+
+    public function listByPlanta($idPlanta)
+    {
+        $conn = conectar_db();
+
+        $sql = "SELECT * FROM planta_questao" . " WHERE idPlanta = ?";
+        $stm = $conn->prepare($sql);
+        $stm->execute([$idPlanta]);
+        $result = $stm->fetchAll();
+
+        return $this->mapQuestoesPlanta($result);
     }
 
     public function findById($idQuestao)

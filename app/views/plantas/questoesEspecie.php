@@ -24,7 +24,6 @@ foreach ($questoes as $questao) {
         "dificuldade" => $questao->getGrauDificuldade(),
         "cor" => $cor
     );
-
     $questoesEspecie[] = $questaoArray;
 }
 

@@ -17,10 +17,15 @@ $imagemAtual = $_POST['imagemAtual'];
 $id_zona = $_POST['zona_planta'];
 $id_especie = $_POST['especie_planta'];
 $id_usuario = $_POST['id_usuario'];
+$idQuestoes = array();
+foreach ($_POST as $name => $value) {
+  if (strpos($name, 'checkbox_') === 0) {
+      $idQuestoes[] = $value;
+  } 
+}
 
 //Validar dados
 $errors = array();
-
 
 if (empty($id_zona)) {
   $errors['zona_planta'] = "O campo Zona é obrigatório";
@@ -36,13 +41,11 @@ if (empty($pontuacao)) {
   $errors['Pontuacao'] = "O campo Pontuação deve conter 2 ou menos dígitos!";
 }
 
-
 if (!empty($errors)) {
   $idEditarPlanta = $id_planta;
   require_once("editarPlanta.php");
   exit;
 }
-
 
 //Criar o objeto planta
 $plantaCont = new PlantaController();
@@ -61,15 +64,11 @@ if ($imagem['error'] === UPLOAD_ERR_NO_FILE) {
   $planta->setImagemPlanta($caminho_imagem);
 }
 
-
-
-
 $planta->setIdPlanta($id_planta);
 $planta->setNomeSocial($nomeSocial);
 $planta->setCodNumerico($Cod_Numerico);
 $planta->setPontos($pontuacao);
 $planta->setPlantaHistoria($historia);
-
 
 $zona = new Zona($id_zona);
 $planta->setZona($zona);
@@ -82,7 +81,7 @@ $planta->setUsuario($usuario);
 
 //Chamar o controler para salvar o planta
 $plantaCont = new PlantaController();
-$plantaCont->atualizar($planta);
+$plantaCont->atualizar($planta, $idQuestoes);
 
 //Redireciona para o início
 header("location: listPlantas.php");

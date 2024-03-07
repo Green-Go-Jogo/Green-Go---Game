@@ -12,6 +12,12 @@ $tempoPartida = $_POST['Tempo_Partida'];
 $senhaSala = $_POST['Senha_Sala'];
 $senhaSalaConf = $_POST['ConfSenha_Sala'];
 $idPartida = $_POST['id_partida'];
+$idQuestoes = array();
+foreach ($_POST as $name => $value) {
+  if (strpos($name, 'checkbox_') === 0) {
+      $idQuestoes[] = $value;
+  } 
+}
 
 $zonas = array();
 $equipes = array();
@@ -73,7 +79,7 @@ $partida->setEquipes($equipes);
 $partida->setIdPartida($idPartida);
 
 $partidaCont = new PartidaController();
-$partidaCont->atualizarPartida($partida);
+$partidaCont->atualizarPartida($partida, $idQuestoes);
 
 $idPartidaInserida = $partida->getIdPartida();
 header("Location: PartidaADM.php?id=" . $idPartidaInserida);

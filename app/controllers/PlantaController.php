@@ -30,13 +30,13 @@ class PlantaController {
         return $this->plantaDAO->gerarCodigoAleatorio();
     }
 
-    public function salvar($planta) {
-        $this->plantaDAO->save($planta);
+    public function salvar($planta, $idQuestoes) {
+        $this->plantaDAO->save($planta, $idQuestoes);
         $this->zonaDAO->updatePlanta($planta->getZona());
     }
 
-    public function atualizar($planta) {
-        $this->plantaDAO->update($planta);
+    public function atualizar($planta, $idQuestoes) {
+        $this->plantaDAO->update($planta, $idQuestoes);
         $this->zonaDAO->updatePlanta($planta->getZona());
     }
 

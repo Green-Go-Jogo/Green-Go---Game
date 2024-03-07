@@ -26,10 +26,6 @@ foreach ($_POST as $name => $value) {
       $idQuestoes[] = $value;
   } 
 }
-var_dump($idQuestoes);
-exit;
-
-
 
 //Validar dados
 $errors = array();
@@ -45,10 +41,6 @@ if (empty($id_zona)) {
 
 if (empty($id_especie)) {
   $errors['especie_planta'] = "O campo Espécie é obrigatório";
-} 
-
-if (empty($imagem[0])) {
-  $errors['planta_imagem'] = "O campo Imagem é obrigatório";
 } 
 
 if (empty($pontuacao)) {
@@ -90,7 +82,7 @@ $planta->setUsuario($usuario);
 
 //Chamar o controler para salvar o planta
 $plantaCont = new PlantaController();
-$plantaCont->salvar($planta);
+$plantaCont->salvar($planta, $idQuestoes);
 
 //Redireciona para o início
 header("location: listPlantas.php");

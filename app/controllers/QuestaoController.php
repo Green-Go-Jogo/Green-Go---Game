@@ -19,6 +19,10 @@ class QuestaoController {
         return $this->questao->listByEspecie($idEspecie);
     }
 
+    public function listarPorPlanta($idPlanta) {
+        return $this->questao->listByPlanta($idPlanta);
+    }
+
     public function buscarPorId($idQuestao) {
         return $this->questao->findById($idQuestao);
     }
