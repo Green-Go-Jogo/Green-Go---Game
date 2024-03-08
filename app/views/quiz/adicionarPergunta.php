@@ -18,7 +18,7 @@ if (!isset($_GET['ide'])) {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"> 
 
 <head>
     <title>Adicionar Pergunta</title>
@@ -38,93 +38,104 @@ if (!isset($_GET['ide'])) {
 </nav>
 
 <body>
-    <h1 id="quest" class=" text-center tituloPagina">
-        Adicionar Questão
-    </h1>
+<div class="container">
+                <div class="row justify-content-md-left">
 
-    <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <h1 id="primeirotextoreg"> Crie uma Questão!</h1>
 
-        <div class="row" style="margin-top: 10px;">
-
-            <div class="col-6">
                 <form id="frmQuestao" action="adicionarPerguntaExec.php" method="POST" enctype="multipart/form-data">
                     <div class="form-group">
-                        <label class=" nomeAtributo" for="txtDescricaoQ"><span class="asterisco">﹡</span> Descrição:</label>
-                        <input class="form-control" type="text" id="txtDescricaoQ" name="descricao" maxlength="200" placeholder="Informe a descrição da questão" value="<?php echo (isset($dados["questao"]) ? $dados["questao"]->getDescricaoQ() : ''); ?>" />
+                        <label class="nomeAtributo" for="txtDescricaoQ" id="txtNome"> Descrição:</label>
+                        <input class="form-control" type="text" id="txtDescricaoQ" name="descricao" maxlength="200" value="<?php echo (isset($dados["questao"]) ? $dados["questao"]->getDescricaoQ() : ''); ?>" />
                     </div>
                     <div class="form-group">
-                        <label class="nomeAtributo" for="txtGrauDificuldade"><span class="asterisco">﹡</span> Grau de dificuldade:</label>
+                        <label class="nomeAtributo" for="txtGrauDificuldade" id="txtNomeDificuldade"> Grau de dificuldade:</label>
                         <fieldset>
                             <div>
                                 <input type="radio" id="facil" name="grauDificuldade" value="facil">
-                                <label class=" nomeAtributo" for="facil">Fácil</label>
+                                <label class="nomeAtributo" for="facil" id="texto-checkbox">Fácil</label>
                             </div>
 
                             <div>
                                 <input type="radio" id="medio" name="grauDificuldade" value="medio">
-                                <label class="nomeAtributo" for="medio">Médio</label>
+                                <label class="nomeAtributo" for="medio" id="texto-checkbox">Médio</label>
                             </div>
 
                             <div>
                                 <input type="radio" id="dificil" name="grauDificuldade" value="dificil">
-                                <label class="nomeAtributo" for="dificil">Difícil</label>
+                                <label class="nomeAtributo" for="dificil" id="texto-checkbox">Difícil</label>
                             </div>
                         </fieldset>
+                    </div> <br><br>
+
+                        <div class="col-sm" id="imagemreg">
+
+                        <div class="form-group" id="imagemreg">
+
+                        <a id="carregueimagemtexto"> Carregue uma imagem:</a> <br><br>
+                        <div class="preview-image">
+                            <img class="preview-image__img" data-image-preview />
+                        </div><br>
+                        <label for="img" class="custom-file-upload"><img src="../../public/cameraicone.png" alt="Ícone" style="position: relative ;top: -9px ;width: 43px; height: 43px;" /></label>
+                        <input type="file" id="img" required name="imagem" id="picture__input" data-image-input accept=".png, .jpg, .jpeg" />
+                        <a id="carregueimagemtexto2"> <- Selecione um arquivo para a imagem da espécie </a>
+                    </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="uplImagem" class="nomeAtributo">Selecione o arquivo:</label>
-                        <br>
-                        <input class="form-control" type="file" name="imagem" id="uplImagem" accept="image/*" />
+                    <label class="text" id="txtNomeAlternativa"> Crie as alternativas: </label> <br>
+
+                        <label class="nomeAtributo" for="alt1" id="alternativa"> Alternativa 1: </label>
+                        <input class="form-control" type="text" id="alt1" name="alternativa1" maxlength="200">
+                    </div>
+                    <div class="form-group">
+                        <label class="nomeAtributo" for="alt2" id="alternativa"> Alternativa 2: </label>
+                        <input class="form-control" type="text" id="alt2" name="alternativa2" maxlength="200">
+                    </div>
+                    <div class="form-group">
+                        <label class="nomeAtributo" for="alt3" id="alternativa"> Alternativa 3: </label>
+                        <input class="form-control" type="text" id="alt3" name="alternativa3" maxlength="200">
+                    </div>
+                    <div class="form-group">
+                        <label class="nomeAtributo" for="alt4" id="alternativa"> Alternativa 4: </label>
+                        <input class="form-control" type="text" id="alt4" name="alternativa4" maxlength="200">
                     </div>
 
                     <div class="form-group">
-                        <label class="nomeAtributo" for="alt1"><span class="asterisco">﹡</span> Alternativa 1</label>
-                        <input class="form-control" type="text" id="alt1" name="alternativa1" maxlength="200" placeholder="Informe a descrição da alternativa">
-                    </div>
-                    <div class="form-group">
-                        <label class="nomeAtributo" for="alt2"><span class="asterisco">﹡</span> Alternativa 2</label>
-                        <input class="form-control" type="text" id="al2" name="alternativa2" maxlength="200" placeholder="Informe a descrição da alternativa">
-                    </div>
-                    <div class="form-group">
-                        <label class="nomeAtributo" for="alt3"><span class="asterisco">﹡</span> Alternativa 3</label>
-                        <input class="form-control" type="text" id="alt3" name="alternativa3" maxlength="200" placeholder="Informe a descrição da alternativa">
-                    </div>
-                    <div class="form-group">
-                        <label class="nomeAtributo" for="alt4"><span class="asterisco">﹡</span> Alternativa 4</label>
-                        <input class="form-control" type="text" id="alt4" name="alternativa4" maxlength="200" placeholder="Informe a descrição da alternativa">
-                    </div>
+                        <label class="nomeAtributo" id="txtNome"> Selecione a alternativa correta:</label><br>
 
-                    <div class="form-group">
-                        <label class="nomeAtributo"><span class="asterisco">﹡</span> Selecione a alternativa correta:</label><br>
                         <div> <input type="radio" name="alternativa_correta" value="1">
-                            <label class="nomeAtributo">Alternativa 1</label>
+                            <label class="nomeAtributo" id="texto-checkbox">Alternativa 1</label>
                         </div>
 
                         <div> <input type="radio" name="alternativa_correta" value="2">
-                            <label class="nomeAtributo">Alternativa 2</label>
+                            <label class="nomeAtributo" id="texto-checkbox">Alternativa 2</label>
                         </div>
 
                         <div> <input type="radio" name="alternativa_correta" value="3">
-                            <label class="nomeAtributo">Alternativa 3</label>
+                            <label class="nomeAtributo" id="texto-checkbox">Alternativa 3</label>
                         </div>
 
                         <div> <input type="radio" name="alternativa_correta" value="4">
-                            <label class="nomeAtributo">Alternativa 4</label>
+                            <label class="nomeAtributo" id="texto-checkbox">Alternativa 4</label>
                         </div>
                     </div>
+                    <br>
 
                     <div>
                         <input type="hidden" name="id_especie" value="<?php echo $ide; ?>" />
-                        <a class="btn btn-secondary botaoVoltar" href="">Voltar</a>
-                        <button type="submit" class="btn btn-secondary botaoGravar">Gravar</button>
-                        <button type="reset" class="btn btn-secondary botaoLimpar">Limpar</button>
+                        <button type="submit" class="btn btn-secondary botaoGravar" id="botoesregistrar">Adicionar</button>
+                        <button type="reset" class="btn btn-secondary botaoLimpar" id="botoeslimpar">Limpar</button>
                     </div>
                 </form>
             </div>
+            </div> </div>
 
-            
-        </div>
+                <!-- <div class="row-2">
+                    
+                </div> -->
 
     </div>
 </body>

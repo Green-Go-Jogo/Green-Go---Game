@@ -28,3 +28,5 @@ foreach ($questoes as $questao) {
 }
 
 echo json_encode($questoesEspecie);
+
+?> 

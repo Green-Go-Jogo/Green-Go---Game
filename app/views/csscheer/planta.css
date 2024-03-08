@@ -143,7 +143,7 @@ body {
     width: 130px;
     height: auto;
 }
-
+ 
 #botoesregistrar:hover {
     color: #ebf0f1;
     background-color: #04574d;
@@ -237,4 +237,42 @@ body {
     
 
   }
+
+
+  input[type=checkbox]:before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 0;
+    left: 0;
+    background-color: #f0b6bc; 
+}
+
+input[type=checkbox]:checked:before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 0;
+    left: 0;
+    background-color: #C05367;
+}
+
+input[type=checkbox]:checked:after {
+    content: "";
+    display: block;
+    width: 5px;
+    height: 10px;
+    border: solid var(--branco);
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    position: absolute;
+    top: 4.5px;
+    left: 7.5px;
+}
 

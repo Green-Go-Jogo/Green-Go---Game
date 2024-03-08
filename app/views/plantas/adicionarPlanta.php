@@ -121,6 +121,8 @@ $codigo = $plantaCont->gerarCodigo();
     color: #FFFFFF;
     width: 500px;
   }
+
+  
 </style>
 <nav>
 
