@@ -375,9 +375,16 @@ $idsEditar = json_encode($idsQuestoesEditar)
             for (var i = 0; i < JSONQuestoes.length; i++) {
                 var questao = JSONQuestoes[i];
 
+                // Checa se a questão estava selecionada quando cadastrada
+                var idsEditar = <?php echo json_encode($idsEditar); ?>;
+                var checked = false
+                if (idsEditar.includes(questao.idQuestao)){checked = "checked"}
+                
+                console.log(checked)
+
                 // Criar um elemento de parágrafo para cada informação da questão
                 var paragrafo = document.createElement("p");
-                paragrafo.innerHTML = "<input name='checkbox_"+ i +"' type='checkbox' value='" + questao.idQuestao + "'/>" +
+                paragrafo.innerHTML = "<input name='checkbox_"+ i +"' type='checkbox' value='" + questao.idQuestao + "' " + checked + "/>" +
                                       "<b><span style='margin-left: 10px; color: #338a5f'>Questão:</span></b> " + questao.descricao + 
                                       "<a><i class='fa-solid fa-circle' style='margin-left: 10px; color:" + questao.cor + "'></i></a> <br>";
 

@@ -1,14 +1,17 @@
 <?php
+
+include_once("../../controllers/LoginController.php");
+
+LoginController::manterUsuario();
+
 include_once("../../controllers/PlantaController.php");
 include_once("../../controllers/ZonaController.php");
 include_once("../../controllers/PartidaController.php");
 include_once("../../controllers/EspecieController.php");
 include_once("../zones/htmlZonaForm.php");
+include_once("../plantas/htmlPlanta.php");
 include_once("../especies/htmlEspecie.php");
 
-include_once("../../controllers/LoginController.php");
-
-LoginController::manterUsuario();
 
 $fromQR = isset($_GET['qrcode']) && $_GET['qrcode'] == true;
 $fromCod = isset($_GET['code']) && $_GET['code'] == true;
@@ -32,7 +35,7 @@ if (($fromQR || $fromCod) && $tipo) {
         $partidaCont = new PartidaController();
         $idPlanta = ($idp != null) ? $idp : $planta->getIdPlanta();
         $partida = $partidaCont->buscarPartidaAndamentoPorIdUsuario($_SESSION['ID']);
-        $msgFind = $partidaCont->checarQRCode($_SESSION['PARTIDA'], $idPlanta, $_SESSION['PLANTAS_LIDAS'], $_SESSION['ID']);
+        $msgFind = $partidaCont->checarQRCode($idPlanta, $_SESSION['PLANTAS_LIDAS'], $_SESSION['ID']);
         $msgReturn = "<a href='../partidas/mainJogo.php?idp=" . $partida->getIdPartida() . "&ide=" . $partida->getIdEquipe() . "' id='voltarjogo'> Encontrou outra planta? Volte para o jogo! </a>";
     } else {
     };
@@ -211,10 +214,12 @@ $nomePopular = $especie->getNomePopular();
         <div>
 
             <div class=" text-center">
-                <p class="descricao text-center" id="pontos">
-                    Pontos: <?= $planta->getPontos(); ?>
-                </p>
-
+                <?php if($_SESSION['PARTIDA']) {
+                echo "<p class='descricao text-center' id='pontos'>";
+                echo    "Pontos:". $planta->getPontos();
+                echo "</p>";
+                }
+                ?>
                 <p class=" descricao" id="atributos">
                     <?php echo $tox; ?>
                     <?php echo $med; ?>
@@ -253,7 +258,11 @@ $nomePopular = $especie->getNomePopular();
                     <?= $planta->getZona() ?>!
                 </w>
             </div>
-
+            <div>
+                <?php
+                PlantaHTML::desenhaQuestoes($idp);
+                ?>
+                </div>
         </div>
 
         <br><br><br>
@@ -270,6 +279,9 @@ $nomePopular = $especie->getNomePopular();
 
     <?php include_once("../../bootstrap/footer.php"); ?>
 </body>
+<script>
+
+</script>
 <script>
     function atualizarDados() {
         // Verifique se a variável de sessão PARTIDA é verdadeira

@@ -192,7 +192,7 @@ class PartidaDAO
             return null;
     }
 
-    public function FindPartidaByADM($idUsuario)
+    public function findPartidaByADM($idUsuario)
     {
         $conn = conectar_db();
 

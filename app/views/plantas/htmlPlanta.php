@@ -221,13 +221,12 @@
         color: #04574d;
         margin-bottom: -8px;
     }
-
-    
 </style>
 
 <?php
 
 include_once("../../controllers/EspecieController.php");
+include_once("../../controllers/QuestaoController.php");
 
 
 class PlantaHTML
@@ -296,5 +295,56 @@ class PlantaHTML
         echo "</div>";
         echo "</div>";
     }
-}
+
+    public static function desenhaQuestoes($idPlanta) {
+        $questaoCont = new QuestaoController();
+        $idsQuestoes = $questaoCont->listarPorPlanta($idPlanta);
+        echo "<button type='button' id='imprimas' data-toggle='modal' data-target='#questaoModal' onclick=''>Imprimir</button>";
+       
+        
+          
+        echo "<div id='questaoModal' class='modal fade' role='dialog'>";
+        
+        echo "<div class='modal-dialog'>";
+        echo "<div class='modal-content'>";
+        echo "<div class='modal-header'>";
+        echo "<h4 class='modal-title text-center'>Responda corretamente as perguntas para receber pontos extras!</h4>";
+        echo "<button type='button' class='close' data-dismiss='modal'>&times;</button>";
+        echo "</div>";
+        echo "<div class='modal-body'>";
+        echo "<div id='conteudoParaImpressao'>";
+        echo "<form action='../partidas/verificarResposta.php' method='POST'";
+        echo "</div>";
+        foreach($idsQuestoes as $id) {
+            $questao = $questaoCont->buscarPorId($id->getIdQuestao());
+            $alternativas = $questaoCont->buscarAlternativa($id->getIdQuestao());
+    
+            echo "<h5>".$questao->getDescricaoQuestao()."</h5>";
+            $i = 1;
+            foreach($alternativas as $alt) {
+                echo ($i == 3) ?  "<br>" : '';
+                echo "<label class='alternativa' id='alternativa". $i ."'>".$alt->getDescricaoAlternativa();
+                echo "<input type='radio' name='question=". $id->getIdQuestao()."' value='question=". $id->getIdQuestao() ."alt=". $alt->getIdAlternativa() . "'/>";
+                echo "</label>";
+                $i++;
+            }
+            echo "<hr>";
+        }
+        echo "</div>";
+        echo "<div class='modal-footer'>";
+        echo "<button type='button' class='btn btn-default' data-dismiss='modal'>Fechar</button>";
+        echo "<button type='submit' class='btn btn-primary'>Imprimir</button>";
+        echo "</form>";
+        echo "</div>";
+        echo "</div>";
+        echo "</div>";
+        echo "</div>";
+    
+
+        echo "</div>";
+    
+        echo "</div>";
+    }
+}  
+
 ?>

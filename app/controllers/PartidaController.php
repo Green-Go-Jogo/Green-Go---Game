@@ -5,6 +5,7 @@ include_once(__DIR__."/../dao/PartidaDAO.php");
 include_once(__DIR__."/../dao/EquipeDAO.php");
 include_once(__DIR__."/../dao/PlantaDAO.php");
 include_once(__DIR__."/../dao/ZonaDAO.php");
+include_once(__DIR__."/../dao/QuestaoDAO.php");
 
 class PartidaController {
 
@@ -12,12 +13,14 @@ class PartidaController {
     private $equipeDAO;
     private $zonaDAO;
     private $plantaDAO;
+    private $questaoDAO;
 
     public function __construct() {
         $this->partidaDAO = new PartidaDAO();
         $this->plantaDAO = new PlantaDAO();
         $this->equipeDAO = new EquipeDAO();
         $this->zonaDAO = new ZonaDAO();
+        $this->questaoDAO = new QuestaoDAO();
     }
 
     public function listar() {
@@ -89,7 +92,7 @@ class PartidaController {
         return $this->partidaDAO->usuarioInEquipe($idUsuario);
     }
 
-    public function checarQRCode($statusPartida, $idPlanta, $arrayPlantas, $idUsuario) {
+    public function checarQRCode($idPlanta, $arrayPlantas, $idUsuario) {
 
         $partida = $this->partidaDAO->usuarioInEquipe($idUsuario);
 
@@ -121,6 +124,16 @@ class PartidaController {
         } else {
             return false;
         }
+    }
+
+    public function checarRespostaQuiz($idQuestao, $idAlternativa){
+        //Checa se a alternativa da questão está certa
+        $questaoCerta = $this->questaoDAO->checkQuestion($idQuestao, $idAlternativa);
+        if($questaoCerta){
+            //Adiciona pontos por ter acertado a questão
+        }
+        //retorna a resposta da questão (true ou false)
+        return $questaoCerta;
     }
 
     public function contarJogadores($idPartida) {

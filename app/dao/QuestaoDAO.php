@@ -37,6 +37,7 @@ class QuestaoDAO
             $questao->setIdPlantaQuestao($reg['idPlantaQuestao']);
             $questao->setIdPlanta($reg['idPlanta']);
             $questao->setIdQuestao($reg['idQuestao']);
+            
 
             array_push($questoes, $questao);
         endforeach;
@@ -232,6 +233,33 @@ class QuestaoDAO
         $stmtUpdate->execute([
             $questao->getDescricaoAlternativa(), $trueOrFalse, $questao->getIdAlternativa()
         ]);
+        }
+    }
+
+    public function checkQuestion($idQuestao, $idAlternativa) {
+        $conn = conectar_db();
+
+        $sql = questaoDAO::SQL_ALTERNATIVA .
+            " JOIN questao q ON q.idQuestao = a.idQuestao WHERE q.idQuestao = ? AND a.idAlternativa = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([
+            $idQuestao, $idAlternativa
+        ]);
+
+        $result = $stmt->fetchAll();
+        if ($result) {
+            // Itera sobre cada linha do resultado
+            foreach ($result as $row) {
+                // Acesse o campo 'alternativaCerta' de cada linha
+                if($row['alternativaCerta'] == 1) {
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+        } else {
+            echo "Nenhum resultado encontrado.";
         }
     }
 

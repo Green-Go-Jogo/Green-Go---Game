@@ -343,7 +343,6 @@ a.excluir:hover {
         }
         
         .modo-escuro input[type=checkbox]:checked:before {
-            content: "";
             display: block;
             position: absolute;
             width: 20px;
@@ -354,7 +353,6 @@ a.excluir:hover {
         }
         
         .modo-escuro input[type=checkbox]:checked:after {
-            content: "";
             display: block;
             width: 5px;
             height: 10px;
