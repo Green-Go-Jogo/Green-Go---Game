@@ -132,7 +132,7 @@ class PartidaController {
         if($questaoCerta){
             //Adiciona pontos por ter acertado a questão
         }
-        //retorna a resposta da questão (true ou false)
+        //retorna a resposta da questão (true - 1 ou false - 0)
         return $questaoCerta;
     }
 

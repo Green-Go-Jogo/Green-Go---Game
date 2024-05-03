@@ -214,10 +214,10 @@ $nomePopular = $especie->getNomePopular();
         <div>
 
             <div class=" text-center">
-                <?php if($_SESSION['PARTIDA']) {
-                echo "<p class='descricao text-center' id='pontos'>";
-                echo    "Pontos:". $planta->getPontos();
-                echo "</p>";
+                <?php if ($_SESSION['PARTIDA']) {
+                    echo "<p class='descricao text-center' id='pontos'>";
+                    echo    "Pontos:" . $planta->getPontos();
+                    echo "</p>";
                 }
                 ?>
                 <p class=" descricao" id="atributos">
@@ -262,7 +262,7 @@ $nomePopular = $especie->getNomePopular();
                 <?php
                 PlantaHTML::desenhaQuestoes($idp);
                 ?>
-                </div>
+            </div>
         </div>
 
         <br><br><br>
@@ -275,12 +275,61 @@ $nomePopular = $especie->getNomePopular();
 
         <br>
     </div>
-    <script src="../bootstrap/bootstrap.min.js"></script>
 
     <?php include_once("../../bootstrap/footer.php"); ?>
 </body>
 <script>
+    function enviarQuiz() {
 
+        var radios = document.querySelectorAll('input[type="radio"]');
+        var values = [];
+
+        radios.forEach(function(radio) {
+            // Verifica se o input está marcado
+            if (radio.checked) {
+                // Obtém o atributo "value" do input
+                var value = radio.getAttribute('value');
+
+                // Se o nome não estiver presente no array, adiciona-o
+                if (values.indexOf(value) === -1) {
+                    values.push(value);
+                }
+            }
+        });
+
+        console.log(values)
+        $.ajax({
+            type: "POST",
+            url: "../partidas/verificarResposta.php",
+            data: {
+                alternativas: values
+            },
+            dataType: "json", // Espera uma resposta JSON
+            success: function(userResponse) {
+                if (userResponse.isValid === true) {
+                    console.log(userResponse)
+                    var respostas = userResponse.respostas;
+                    var correcaoHTML = '<div class="correcao">';
+                    for (var i = 0; i < respostas.length; i++) {
+                        var correcaoHTML = '<div class="correcao">';
+
+                        // Adicionar texto da correção com base na resposta
+                        correcaoHTML += 'Questão: ' + (respostas[i] === true ? 'Correta' : 'Incorreta');
+
+                        correcaoHTML += '</div>';
+
+                        // Adicionar a div correcaoHTML ao documento
+                        $(correcaoHTML).insertAfter('.correcao'+i)
+                    }
+                } else {
+                    console.log("Seus pontos possivelmente foram somados, mas o servidor não conseguiu te dizer a resposta.");
+                }
+            },
+            error: function() {
+                console.log("Ocorreu um erro de requisição, contate um professor ou administrador.");
+            }
+        });
+    }
 </script>
 <script>
     function atualizarDados() {
@@ -305,7 +354,7 @@ $nomePopular = $especie->getNomePopular();
                     }
                 },
                 error: function() {
-                    console.log("Erro ao processar a requisição AJAX do usuário");
+                    console.log("O Rank ainda não foi definido!");
                 }
             });
         } else {

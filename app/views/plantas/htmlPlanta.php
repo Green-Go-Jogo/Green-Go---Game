@@ -313,8 +313,8 @@ class PlantaHTML
         echo "</div>";
         echo "<div class='modal-body'>";
         echo "<div id='conteudoParaImpressao'>";
-        echo "<form action='../partidas/verificarResposta.php' method='POST'";
         echo "</div>";
+        $q = 0;
         foreach($idsQuestoes as $id) {
             $questao = $questaoCont->buscarPorId($id->getIdQuestao());
             $alternativas = $questaoCont->buscarAlternativa($id->getIdQuestao());
@@ -328,13 +328,14 @@ class PlantaHTML
                 echo "</label>";
                 $i++;
             }
+            echo "<div class='correcao".$q."'></div>";
             echo "<hr>";
+            $q++;
         }
         echo "</div>";
         echo "<div class='modal-footer'>";
         echo "<button type='button' class='btn btn-default' data-dismiss='modal'>Fechar</button>";
-        echo "<button type='submit' class='btn btn-primary'>Imprimir</button>";
-        echo "</form>";
+        echo "<button class='btn btn-primary' onclick='enviarQuiz()'>Imprimir</button>";
         echo "</div>";
         echo "</div>";
         echo "</div>";

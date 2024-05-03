@@ -263,7 +263,7 @@ class PartidaHTML
         echo "<h1 class='modal-title text-center fs-5' id='exampleModalLabel'>Insira a senha:</h1>";
         echo "</div>";
         echo "<div class='modal-body'>";
-        echo "<form id='password-form' action='verificar_senha.php' method='POST'>";
+        echo "<form id='password-form' action='verificarSenha.php' method='POST'>";
         echo "<input type='hidden' id='partida-id' name='partidaId'>";
         echo "<div class='mb-3'>";
         echo "<label for='password' id='lab-senha' class='col-form-label'> </label>";
