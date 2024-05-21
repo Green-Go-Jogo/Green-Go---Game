@@ -104,11 +104,11 @@ class PartidaController {
             if($inZona){
             if (!in_array($idPlanta, $arrayPlantas)) {
                 $planta = $this->plantaDAO->findById($idPlanta);
-                $_SESSION["PONTOS"] += $planta->getPontos();
+                $_SESSION["PONTOS_PLANTAS"] += $planta->getPontos();
                 $arrayPlantas[] = $idPlanta;
                 $_SESSION['PLANTAS_LIDAS'] = $arrayPlantas;
 
-                $this->partidaDAO->addScore($_SESSION['PLANTAS_LIDAS'], $_SESSION['PONTOS'], $idUsuario);
+                $this->partidaDAO->addScorePlantas($_SESSION['PLANTAS_LIDAS'], $_SESSION['PONTOS'], $idUsuario);
                 $msgFind = "Parabéns, você encontrou uma nova planta! ";
                 return $msgFind;
                 
@@ -126,12 +126,25 @@ class PartidaController {
         }
     }
 
-    public function checarRespostaQuiz($idQuestao, $idAlternativa){
+    public function checarRespostaQuiz($idQuestao, $idAlternativa, $idUsuario, $arrayQuestoes){
+        $_SESSION['QUESTOES_LIDAS'] = $arrayQuestoes;
         //Checa se a alternativa da questão está certa
         $questaoCerta = $this->questaoDAO->checkQuestion($idQuestao, $idAlternativa);
-        if($questaoCerta){
+        if($questaoCerta && !in_array($idQuestao, $_SESSION['QUESTOES_LIDAS'])){
             //Adiciona pontos por ter acertado a questão
+            $questao = $this->questaoDAO->findById($idQuestao);
+            $this->partidaDAO->addScoreQuestoes($idQuestao, $questao->getPontuacaoQuestao(), $idUsuario);
+            $arrayQuestoes[] = $idQuestao;
+            $_SESSION['QUESTOES_LIDAS'] = $arrayQuestoes;
+        } else if(!in_array($idQuestao, $_SESSION['QUESTOES_LIDAS'])){
+            //Adiciona a questão à questões respondidas mesmo se errada
+            $this->partidaDAO->addQuestionsResponse($idQuestao, $idUsuario);
+            $arrayQuestoes[] = $idQuestao;
+            $_SESSION['QUESTOES_LIDAS'] = $arrayQuestoes;
+        } else {
+            
         }
+        //$questao->getPontuacaoQuestao()
         //retorna a resposta da questão (true - 1 ou false - 0)
         return $questaoCerta;
     }

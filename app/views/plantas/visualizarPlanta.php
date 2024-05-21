@@ -35,6 +35,7 @@ if (($fromQR || $fromCod) && $tipo) {
         $partidaCont = new PartidaController();
         $idPlanta = ($idp != null) ? $idp : $planta->getIdPlanta();
         $partida = $partidaCont->buscarPartidaAndamentoPorIdUsuario($_SESSION['ID']);
+        $arrayQuestoes = $partida->getQuestoesRespondidas();
         $msgFind = $partidaCont->checarQRCode($idPlanta, $_SESSION['PLANTAS_LIDAS'], $_SESSION['ID']);
         $msgReturn = "<a href='../partidas/mainJogo.php?idp=" . $partida->getIdPartida() . "&ide=" . $partida->getIdEquipe() . "' id='voltarjogo'> Encontrou outra planta? Volte para o jogo! </a>";
     } else {
@@ -260,7 +261,7 @@ $nomePopular = $especie->getNomePopular();
             </div>
             <div>
                 <?php
-                PlantaHTML::desenhaQuestoes($idp);
+                PlantaHTML::desenhaQuestoes($idp, $arrayQuestoes);
                 ?>
             </div>
         </div>
@@ -279,10 +280,50 @@ $nomePopular = $especie->getNomePopular();
     <?php include_once("../../bootstrap/footer.php"); ?>
 </body>
 <script>
+    const enviarQuizBotao = document.getElementById('submitQuiz');
+    var idUsuario = <?php echo $_SESSION['ID']?>;
+    var questoesArrayPHP = <?php
+            $arrayTemp = explode("|", $arrayQuestoes);
+            $questoesString = implode(" - ", $arrayTemp);
+            echo json_encode($questoesString);
+        ?>;
+    let arrayQuestoes = questoesArrayPHP.split("-").filter(item => item !== "").map(Number);
+
+
+    function validarQuiz() {
+        var questions = document.getElementsByClassName("pergunta");
+
+        // Verifica se pelo menos uma alternativa foi selecionada para cada pergunta
+        for (var i = 0; i < questions.length; i++) {
+            var questionRadios = questions[i].querySelectorAll("input[type=radio]");
+            var radioChecked = false;
+            for (var j = 0; j < questionRadios.length; j++) {
+                if (questionRadios[j].checked) {
+                    radioChecked = true;
+                    break;
+                }
+            }
+            if (!radioChecked) {
+                return false; // Impede o envio do formulário
+            }
+        }
+        return true; // Permite o envio do formulário
+    };
+    
+
+
     function enviarQuiz() {
 
+        //Valida se todas as questões foram respondidas
+        var valida = validarQuiz()
+        if(valida == false) {
+            return alert("Por favor, selecione uma resposta para cada pergunta.");
+        }
+
+        //Pega todos os radios marcados
         var radios = document.querySelectorAll('input[type="radio"]');
         var values = [];
+        enviarQuizBotao.setAttribute('onclick', '');
 
         radios.forEach(function(radio) {
             // Verifica se o input está marcado
@@ -298,11 +339,16 @@ $nomePopular = $especie->getNomePopular();
         });
 
         console.log(values)
+        console.log(idUsuario)
+        console.log(arrayQuestoes);
+
         $.ajax({
             type: "POST",
             url: "../partidas/verificarResposta.php",
             data: {
-                alternativas: values
+                idUsuario: idUsuario,
+                alternativas: values,
+                arrayQuestoes: arrayQuestoes
             },
             dataType: "json", // Espera uma resposta JSON
             success: function(userResponse) {
@@ -319,7 +365,7 @@ $nomePopular = $especie->getNomePopular();
                         correcaoHTML += '</div>';
 
                         // Adicionar a div correcaoHTML ao documento
-                        $(correcaoHTML).insertAfter('.correcao'+i)
+                        $(correcaoHTML).insertAfter('.correcao' + i)
                     }
                 } else {
                     console.log("Seus pontos possivelmente foram somados, mas o servidor não conseguiu te dizer a resposta.");

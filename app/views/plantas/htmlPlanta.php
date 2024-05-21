@@ -296,12 +296,15 @@ class PlantaHTML
         echo "</div>";
     }
 
-    public static function desenhaQuestoes($idPlanta) {
+    public static function desenhaQuestoes($idPlanta, $arrayQuestoes) {
         $questaoCont = new QuestaoController();
+        $arrayTemp = explode("|", $arrayQuestoes);
+        $arrayTemp = array_map('trim', $arrayTemp);
+        $questoesRespondidas = array_filter($arrayTemp, function($value){
+            return !is_null($value) && $value !== "";
+        });
         $idsQuestoes = $questaoCont->listarPorPlanta($idPlanta);
-        echo "<button type='button' id='imprimas' data-toggle='modal' data-target='#questaoModal' onclick=''>Imprimir</button>";
-       
-        
+        echo "<button type='button' id='imprimas' data-toggle='modal' data-target='#questaoModal' onclick=''>Questões!</button>";
           
         echo "<div id='questaoModal' class='modal fade' role='dialog'>";
         
@@ -317,10 +320,17 @@ class PlantaHTML
         $q = 0;
         foreach($idsQuestoes as $id) {
             $questao = $questaoCont->buscarPorId($id->getIdQuestao());
-            $alternativas = $questaoCont->buscarAlternativa($id->getIdQuestao());
+            
     
-            echo "<h5>".$questao->getDescricaoQuestao()."</h5>";
+            echo "<h5 >".$questao->getDescricaoQuestao()."</h5>";
+            
+            if(in_array($id->getIdQuestao(), $questoesRespondidas)){
+                 echo "<p> RESPONDIDA </p>";
+            } else {
+            $alternativas = $questaoCont->buscarAlternativa($id->getIdQuestao());
             $i = 1;
+            echo "<div class='pergunta'>";
+
             foreach($alternativas as $alt) {
                 echo ($i == 3) ?  "<br>" : '';
                 echo "<label class='alternativa' id='alternativa". $i ."'>".$alt->getDescricaoAlternativa();
@@ -329,13 +339,16 @@ class PlantaHTML
                 $i++;
             }
             echo "<div class='correcao".$q."'></div>";
+            echo "</div>";
+        }
             echo "<hr>";
             $q++;
+            
         }
         echo "</div>";
         echo "<div class='modal-footer'>";
-        echo "<button type='button' class='btn btn-default' data-dismiss='modal'>Fechar</button>";
-        echo "<button class='btn btn-primary' onclick='enviarQuiz()'>Imprimir</button>";
+        //echo "<button type='button' class='btn btn-default' data-dismiss='modal'>Fechar</button>";
+        echo "<button class='btn btn-primary' id='submitQuiz' onclick='enviarQuiz()'>Enviar</button>";
         echo "</div>";
         echo "</div>";
         echo "</div>";

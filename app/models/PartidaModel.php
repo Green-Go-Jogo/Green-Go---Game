@@ -14,12 +14,14 @@ Class Partida {
     private $Zonas;
     private $Equipes;
     private $plantasLidas;
+    private $QuestoesRespondidas;
     private $Senha;
     private $TempoPartida;
     private $NomePartida;
     private $StatusPartida;
     private $PontuacaoEquipe;
-    private $PontuacaoUsuario;
+    private $PontuacaoPlantas;
+    private $PontuacaoQuestoes;
 
 
     public function __toString() {
@@ -162,26 +164,6 @@ Class Partida {
     public function setPontuacaoEquipe($PontuacaoEquipe)
     {
         $this->PontuacaoEquipe = $PontuacaoEquipe;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of PontuacaoUsuario
-     */ 
-    public function getPontuacaoUsuario()
-    {
-        return $this->PontuacaoUsuario;
-    }
-
-    /**
-     * Set the value of PontuacaoUsuario
-     *
-     * @return  self
-     */ 
-    public function setPontuacaoUsuario($PontuacaoUsuario)
-    {
-        $this->PontuacaoUsuario = $PontuacaoUsuario;
 
         return $this;
     }
@@ -421,6 +403,66 @@ Class Partida {
     public function setPlantasLidas($plantasLidas)
     {
         $this->plantasLidas = $plantasLidas;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of PontuacaoPlantas
+     */ 
+    public function getPontuacaoPlantas()
+    {
+        return $this->PontuacaoPlantas;
+    }
+
+    /**
+     * Set the value of PontuacaoPlantas
+     *
+     * @return  self
+     */ 
+    public function setPontuacaoPlantas($PontuacaoPlantas)
+    {
+        $this->PontuacaoPlantas = $PontuacaoPlantas;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of PontuacaoQuestoes
+     */ 
+    public function getPontuacaoQuestoes()
+    {
+        return $this->PontuacaoQuestoes;
+    }
+
+    /**
+     * Set the value of PontuacaoQuestoes
+     *
+     * @return  self
+     */ 
+    public function setPontuacaoQuestoes($PontuacaoQuestoes)
+    {
+        $this->PontuacaoQuestoes = $PontuacaoQuestoes;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of QuestoesRespondidas
+     */ 
+    public function getQuestoesRespondidas()
+    {
+        return $this->QuestoesRespondidas;
+    }
+
+    /**
+     * Set the value of QuestoesRespondidas
+     *
+     * @return  self
+     */ 
+    public function setQuestoesRespondidas($QuestoesRespondidas)
+    {
+        $this->QuestoesRespondidas = $QuestoesRespondidas;
 
         return $this;
     }

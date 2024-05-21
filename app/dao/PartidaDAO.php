@@ -61,8 +61,10 @@ class PartidaDAO
             $partida->setDataFim($reg['dataFim']);
             $partida->setDataInicio($reg['dataInicio']);
             $partida->setPlantasLidas($reg['plantasLidas']);
+            $partida->setQuestoesRespondidas($reg['questoesRespondidas']);
             $partida->setPontuacaoEquipe($reg['pontuacaoEquipe']);
-            $partida->setPontuacaoUsuario($reg['pontuacao']);
+            $partida->setPontuacaoPlantas($reg['pontuacaoPlantas']);
+            $partida->setPontuacaoQuestoes($reg['pontuacaoQuestoes']);
 
             array_push($partidas, $partida);
         endforeach;
@@ -378,7 +380,7 @@ class PartidaDAO
     {
         $conn = conectar_db();
 
-        $sql = "UPDATE partida_equipe pe SET pe.pontuacaoEquipe = (SELECT SUM(pu.pontuacao) FROM partida_usuario pu WHERE pu.idPartidaEquipe = pe.idPartidaEquipe)";
+        $sql = "UPDATE partida_equipe pe SET pe.pontuacaoEquipe = (SELECT SUM(pu.pontuacaoPlantas) FROM partida_usuario pu WHERE pu.idPartidaEquipe = pe.idPartidaEquipe)";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
     }
@@ -480,8 +482,7 @@ class PartidaDAO
         $stmt->execute([$idPartida]);
     }
 
-
-    public function addScore($arrayPlantas, $pontos, $idUsuario)
+    public function addScorePlantas($arrayPlantas, $pontos, $idUsuario)
     {
         $conn = conectar_db();
 
@@ -492,9 +493,44 @@ class PartidaDAO
             $plantasString = implode(' | ', $arrayPlantas);
 
             // Atualize a coluna plantasLidas no banco de dados com a nova string
-            $sql = "UPDATE partida_usuario SET pontuacao = ?, plantasLidas = ? WHERE idPartidaUsuario = ?";
+            $sql = "UPDATE partida_usuario SET pontuacaoPlantas = ?, plantasLidas = ? WHERE idPartidaUsuario = ?";
             $stmt = $conn->prepare($sql);
             $stmt->execute([$pontos, $plantasString, $usuario->getIdPartidaUsuario()]);
+        } else {
+            echo 'Usuário não encontrado.';
+        }
+    }
+
+
+    public function addScoreQuestoes($idQuestao, $pontos, $idUsuario)
+    {
+        $conn = conectar_db();
+        $usuario = $this->usuarioInEquipe($idUsuario);
+
+        if ($usuario) {
+            
+            $this->addQuestionsResponse($idQuestao, $idUsuario);
+            
+            $sql = "UPDATE partida_usuario SET pontuacaoQuestoes = ? WHERE idPartidaUsuario = ?";
+            $stmt = $conn->prepare($sql);
+            $stmt->execute([$pontos, $usuario->getIdPartidaUsuario()]);
+        } else {
+            echo 'Usuário não encontrado.';
+        }
+    }
+
+    public function addQuestionsResponse($idQuestao, $idUsuario){
+
+        $conn = conectar_db();
+        $usuario = $this->usuarioInEquipe($idUsuario);
+
+        if ($usuario) {
+
+        $questoesString = $idQuestao . " | ";
+
+        $sql = "UPDATE partida_usuario SET questoesRespondidas = CONCAT(questoesRespondidas, ?) WHERE idPartidaUsuario = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([$questoesString, $usuario->getIdPartidaUsuario()]);
         } else {
             echo 'Usuário não encontrado.';
         }
