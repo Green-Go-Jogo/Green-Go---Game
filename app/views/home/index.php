@@ -598,7 +598,7 @@ if (!isset($_SESSION['TIPO'])) {
     <!-- Parte Novidades -->
     <div class="embreve">
         <div class="container text-center">
-            <img src="../../public/arvorebotao.png" id="arvore">
+            <img src="../../public/Arvorebotao.png" id="arvore">
             <div class="row" id="minis">
                 <div class="col" id="surpresa">
                     <div class="light-button">
