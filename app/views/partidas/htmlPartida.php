@@ -356,7 +356,7 @@ class PartidaHTML
     {
 
         echo "<div class='container text-center'>";
-        echo "<div class='zonaP text-right'>";
+        echo "<div class='zonaP text-right table-responsive'>";
         echo "<table class='table'>";
         echo "<thead>";
         echo "<tr>";
@@ -391,7 +391,7 @@ class PartidaHTML
     {
         $usuarioCont = new UsuarioController();
         echo "<div class='container text-center'>";
-        echo "<div class='zonaP text-right'>";
+        echo "<div class='zonaP text-right table-responsive'>";
         echo "<table class='table'>";
         echo "<thead>";
         echo "<tr>";
@@ -429,7 +429,7 @@ class PartidaHTML
     {
 
         echo "<div class='container text-center'>";
-        echo "<div class='equipeP text-right'>";
+        echo "<div class='equipeP text-right table-responsive'>";
         echo "<table class='table'>";
         echo "<thead>";
         echo "<tr>";
