@@ -521,4 +521,14 @@ a.excluir:hover {
      .modo-escuro label#texto-checkbox.form-check-label {
         color: #f0b6bc !important;
      }
+
+     .modo-escuro select#tb_conteudo_cargo {
+        background-color: #C05367;
+        border-color: #121212;
+     }
      
+
+
+     .modo-escuro td.tb_conteudo, .modo-escuro th.text-center, .modo-escuro td#tb_cargocss {
+        border-color: #121212 !important;
+     }
