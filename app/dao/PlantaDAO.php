@@ -16,7 +16,7 @@ require_once(__DIR__."/../api/phpqrcode/qrlib.php");
 class PlantaDAO {
 
     private const SQL_PLANTA = "SELECT p.*, e.idEspecie, e.nomePop, z.nomeZona, u.idUsuario, u.nomeUsuario FROM planta p".
-    " JOIN zona z ON z.idZona = p.idZona". " JOIN especie e ON e.idEspecie = p.idEspecie". " JOIN usuario u ON u.idUsuario = p.idUsuario";
+    " JOIN zona z ON z.idZona = p.idZona". " JOIN especie e ON e.idEspecie = p.idEspecie". " JOIN usuario u ON u.idUsuario = p.idUsuario WHERE p.ativo = 1";
 
     private function mapPlantas($resultSql) {
             $plantas = array();
@@ -48,7 +48,7 @@ class PlantaDAO {
 
         return $plantas;
     
-}
+    }
 
     public function list() {
         $conn = conectar_db();
@@ -67,7 +67,7 @@ class PlantaDAO {
         $conn = conectar_db();
 
         $sql = PlantaDAO::SQL_PLANTA . 
-                " WHERE z.idZona = ?";
+                " AND z.idZona = ?";
         $stm = $conn->prepare($sql);    
         $stm->execute([$idZona]);
         $result = $stm->fetchAll();
@@ -80,7 +80,7 @@ class PlantaDAO {
         $conn = conectar_db();
 
         $sql = PlantaDAO::SQL_PLANTA . 
-                " WHERE p.idPlanta = ?";
+                " AND p.idPlanta = ?";
 
         $stmt = $conn->prepare($sql);
         $stmt->execute([$idPlanta]);
@@ -102,7 +102,7 @@ class PlantaDAO {
         $conn = conectar_db();
 
         $sql = PlantaDAO::SQL_PLANTA . 
-                " WHERE p.codNumerico = ?";
+                " AND p.codNumerico = ?";
 
         $stmt = $conn->prepare($sql);
         $stmt->execute([$CodNumerico]);
@@ -124,7 +124,7 @@ class PlantaDAO {
         $conn = conectar_db();
 
         $sql = PlantaDAO::SQL_PLANTA . 
-        " WHERE codNumerico = :codNumerico";
+        " AND codNumerico = :codNumerico";
 
         $numeros = mt_rand(1000, 9999); // Gera um número aleatório de 4 dígitos
     
@@ -203,8 +203,8 @@ class PlantaDAO {
         $conn = conectar_db();
         
 
-        $sql = "DELETE FROM planta WHERE idPlanta = ?";
-        $this->deleteQuestoes($planta->getIdPlanta());
+        $sql = "UPDATE planta p SET p.ativo = 0 WHERE idPlanta = ?";
+        // $this->deleteQuestoes($planta->getIdPlanta());
         $arquivo_del = $planta->getImagemPlanta();
         if (file_exists($arquivo_del)) {
             unlink($arquivo_del);
@@ -238,9 +238,9 @@ class PlantaDAO {
 public function filter(Array $caracteristics, string $search, array $ADMs, array $zonas) {
     $conn = conectar_db();
     $sql = "SELECT p.*, e.*, z.nomeZona, u.idUsuario, u.nomeUsuario, COALESCE(NULLIF(p.nomeSocial, ''), e.nomePop) AS nomePlanta FROM planta p "
-    . "JOIN zona z ON z.idZona = p.idZona JOIN especie e ON e.idEspecie = p.idEspecie JOIN usuario u ON u.idUsuario = p.idUsuario";
+    . "JOIN zona z ON z.idZona = p.idZona JOIN especie e ON e.idEspecie = p.idEspecie JOIN usuario u ON u.idUsuario = p.idUsuario WHERE p.ativo = 1";
     if(! empty($caracteristics) or ! empty($ADMs) or $search != "" or ! empty($zonas)) {
-        $sql .= " WHERE ";
+        $sql .= " AND ";
     }
     //*  cria filtro das caracteristicas
     if(! empty($caracteristics)) {
@@ -256,7 +256,7 @@ public function filter(Array $caracteristics, string $search, array $ADMs, array
             $j++;
         }
     }
-//*  cria filtro dos adms
+    //*  cria filtro dos adms
     if(! empty($ADMs)) {
         
         if(! empty($caracteristics)) {
@@ -276,7 +276,7 @@ public function filter(Array $caracteristics, string $search, array $ADMs, array
         }
         $sql .= ")";
     }
-//*  cria filtro das zonas
+    //*  cria filtro das zonas
     if(! empty($zonas)) {
         
         if(! empty($ADMs)) {
@@ -296,7 +296,7 @@ public function filter(Array $caracteristics, string $search, array $ADMs, array
         }
         $sql .= ")";
     }
-//*  cria filtro da buscar
+    //*  cria filtro da buscar
     if($search != "") {
         if(! empty($caracteristics) or ! empty($ADMs)) {
             $sql .= " AND ";
