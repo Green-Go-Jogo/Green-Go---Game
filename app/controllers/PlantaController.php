@@ -53,6 +53,14 @@ class PlantaController {
             $this->excluir($planta);
         }  
     }
+    public function excluirPlantasDaZona(Zona $zona) {
+        $plantas = [];
+        $plantas = $this->plantaDAO->listByZona($zona->getIdZona());
+
+        foreach($plantas as $planta) {
+            $this->excluir($planta);
+        }  
+    }
 
     public function apagarImagem($idPlanta) {
         $this->plantaDAO->deleteImage($idPlanta);

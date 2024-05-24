@@ -6,7 +6,7 @@ include_once(__DIR__ . "/../models/ZonaModel.php");
 include_once(__DIR__."/../models/UsuarioModel.php");
 
 class zonaDAO {
-    private const SQL_ZONA = "SELECT * FROM zona z";
+    private const SQL_ZONA = "SELECT * FROM zona z WHERE z.ativo = 1";
     private const SQL_ZONA_PARTIDA = "SELECT z.*".
     " FROM partida_zona pz".
     " JOIN zona z ON pz.idZona = z.idZona";
@@ -33,9 +33,9 @@ class zonaDAO {
 
         $sql = "SELECT z.idZona, z.nomeZona, z.idUsuario, COUNT(p.idPlanta) AS qntPlantas, SUM(p.pontuacaoPlanta) AS pontoZona
         FROM zona z 
-        LEFT JOIN planta p ON z.idZona = p.idZona 
-        GROUP BY z.idZona, z.nomeZona
-        ORDER BY z.idZona DESC";
+        LEFT JOIN planta p ON z.idZona = p.idZona WHERE z.ativo = 1
+        GROUP BY z.idZona, z.nomeZona 
+        ORDER BY z.idZona";
         $stm = $conn->prepare($sql);    
         $stm->execute();
         $result = $stm->fetchAll();
@@ -53,7 +53,7 @@ class zonaDAO {
         $conn = conectar_db();
 
         $sql = zonaDAO::SQL_ZONA . 
-                " WHERE z.idZona = ?";
+                " AND z.idZona = ?";
 
         $stmt = $conn->prepare($sql);
         $stmt->execute([$idZona]);
@@ -130,7 +130,7 @@ class zonaDAO {
     public function delete(Zona $zona) {
     $conn = conectar_db();
 
-    $sql = "DELETE FROM zona WHERE idZona = ?";
+    $sql = "UPDATE zona z SET z.ativo = 0 WHERE z.idZona = ?";
     $stmt = $conn->prepare($sql);
     $stmt->execute([$zona->getIdZona()]);
 }
