@@ -1,4 +1,4 @@
-<?php
+x<?php
 #Classe de controller para partida
 
 include_once(__DIR__."/../dao/PartidaDAO.php");
