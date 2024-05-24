@@ -110,8 +110,8 @@ class zonaDAO {
     public function updatePlanta(Zona $zona) {
         $conn = conectar_db();
     
-        $sqlQntPlantas = "SELECT COUNT(p.idPlanta) FROM planta AS p WHERE p.idZona = ?";
-        $sqlPontoZona = "SELECT SUM(p.pontuacaoPlanta) FROM planta AS p WHERE p.idZona = ?";
+        $sqlQntPlantas = "SELECT COUNT(p.idPlanta) FROM planta AS p WHERE p.ativo = 1 AND p.idZona = ?";
+        $sqlPontoZona = "SELECT SUM(p.pontuacaoPlanta) FROM planta AS p WHERE p.ativo = 1 AND p.idZona = ?";
     
         $stmtQntPlantas = $conn->prepare($sqlQntPlantas);
         $stmtQntPlantas->execute([$zona->getIdZona()]);
