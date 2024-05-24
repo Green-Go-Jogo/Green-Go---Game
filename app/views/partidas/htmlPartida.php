@@ -263,7 +263,7 @@ class PartidaHTML
         echo "<h1 class='modal-title text-center fs-5' id='exampleModalLabel'>Insira a senha:</h1>";
         echo "</div>";
         echo "<div class='modal-body'>";
-        echo "<form id='password-form' action='verificar_senha.php' method='POST'>";
+        echo "<form id='password-form' action='verificarSenha.php' method='POST'>";
         echo "<input type='hidden' id='partida-id' name='partidaId'>";
         echo "<div class='mb-3'>";
         echo "<label for='password' id='lab-senha' class='col-form-label'> </label>";
@@ -316,7 +316,7 @@ class PartidaHTML
 
         foreach ($usuarios as $usuario) {
             $usuarioPartida = $partCont->buscarUsuarioPorIdPartida($usuario->getIdUsuario(), $partida->getIdPartida());
-            $pontos = $usuarioPartida->getPontuacaoUsuario() !== null ? $usuarioPartida->getPontuacaoUsuario() : 0;
+            $pontos = $usuarioPartida->getPontuacaoPlantas() !== null ? $usuarioPartida->getPontuacaoPlantas() : 0;
 
 
             echo "<tr>";
@@ -356,7 +356,7 @@ class PartidaHTML
     {
 
         echo "<div class='container text-center'>";
-        echo "<div class='zonaP text-right'>";
+        echo "<div class='zonaP text-right table-responsive'>";
         echo "<table class='table'>";
         echo "<thead>";
         echo "<tr>";
@@ -391,7 +391,7 @@ class PartidaHTML
     {
         $usuarioCont = new UsuarioController();
         echo "<div class='container text-center'>";
-        echo "<div class='zonaP text-right'>";
+        echo "<div class='zonaP text-right table-responsive'>";
         echo "<table class='table'>";
         echo "<thead>";
         echo "<tr>";
@@ -429,7 +429,7 @@ class PartidaHTML
     {
 
         echo "<div class='container text-center'>";
-        echo "<div class='equipeP text-right'>";
+        echo "<div class='equipeP text-right table-responsive'>";
         echo "<table class='table'>";
         echo "<thead>";
         echo "<tr>";
