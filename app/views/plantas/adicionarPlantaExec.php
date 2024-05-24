@@ -43,6 +43,10 @@ if (empty($id_especie)) {
   $errors['especie_planta'] = "O campo Espécie é obrigatório";
 } 
 
+if(empty($imagem['name'])){
+  $errors['Imagem'] = "O campo Imagem é obrigatório.";
+}
+
 if (empty($pontuacao)) {
   $errors['Pontuacao'] = "O campo Pontuação é obrigatório!";
 } elseif (!preg_match('/^\d{2}$/', $pontuacao)) {

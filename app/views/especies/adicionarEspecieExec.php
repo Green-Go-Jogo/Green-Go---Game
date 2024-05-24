@@ -37,6 +37,9 @@ if (empty($nomeCientifico)) {
     $errors['Nome_Cientifico'] = "O campo Nome Científíco contém caracteres especiais.";
   }
 
+  if(empty($imagem['name'])){
+  $errors['Imagem'] = "O campo Imagem é obrigatório.";
+}
   if (empty($descricao)) {
     $errors['Descricao'] = "O campo Descrição é obrigatório.";
   } 

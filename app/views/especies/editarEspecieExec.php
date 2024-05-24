@@ -53,7 +53,7 @@ if (!empty($errors)) {
 
 //Criar o objeto personagem
 $especie = new Especie();
-
+$especieCont = new EspecieController();
 if ($imagem['error'] === UPLOAD_ERR_NO_FILE) {
   $especie->setImagemEspecie($imagemAtual);
 } else {
@@ -84,7 +84,6 @@ $especie->setEndemica($endemica);
 $especie->setNativa($nativa);
 
 //Chamar o controler para salvar o planta
-$especieCont = new EspecieController();
 $especieCont->atualizar($especie);
 
 //Redireciona para o início
