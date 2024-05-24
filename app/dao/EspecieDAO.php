@@ -6,7 +6,7 @@ include_once(__DIR__."/../models/EspecieModel.php");
 
 class EspecieDAO {
 
-    private const SQL_ESPECIE = "SELECT e.*, u.nomeUsuario FROM especie e" . " JOIN usuario u ON u.idUsuario = e.idUsuario";
+    private const SQL_ESPECIE = "SELECT e.*, u.nomeUsuario FROM especie e" . " JOIN usuario u ON u.idUsuario = e.idUsuario WHERE e.ativo = 1";
 
     private function mapEspecies($resultSql) {
             $especies = array();
@@ -59,7 +59,7 @@ class EspecieDAO {
         $conn = conectar_db();
 
         $sql = EspecieDAO::SQL_ESPECIE . 
-                " WHERE e.idEspecie = ?";
+                " AND e.idEspecie = ?";
 
         $stmt = $conn->prepare($sql);
         $stmt->execute([$idEspecie]);
@@ -101,16 +101,17 @@ class EspecieDAO {
 
     
     public function delete(Especie $especie) {
-    $conn = conectar_db();
-    
-    $sql = "DELETE FROM especie WHERE idEspecie = ?";
-    $arquivo_del = $especie->getImagemEspecie();
-    if (file_exists($arquivo_del)) {
-        unlink($arquivo_del);
+        $conn = conectar_db();
+        
+        $sql = "UPDATE especie SET ativo = 0 WHERE idEspecie = ?";
+        $arquivo_del = $especie->getImagemEspecie();
+        if (file_exists($arquivo_del)) {
+            unlink($arquivo_del);
+        }
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([$especie->getIdEspecie()]);
     }
-    $stmt = $conn->prepare($sql);
-    $stmt->execute([$especie->getIdEspecie()]);
-}
+ 
 
 public function deleteImage($idEspecie) {
     

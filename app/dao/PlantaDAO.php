@@ -199,9 +199,20 @@ class PlantaDAO {
     }
 
     
+    public function listByEspecie(Especie $especie) {
+        $conn = conectar_db();
+
+        $sql = PlantaDAO::SQL_PLANTA . 
+                " AND e.idEspecie = ?";
+        $stm = $conn->prepare($sql);    
+        $stm->execute([$especie->getIdEspecie()]);
+        $result = $stm->fetchAll();
+
+        return $this->mapPlantas($result);
+    }
+
     public function delete(Planta $planta) {
         $conn = conectar_db();
-        
 
         $sql = "UPDATE planta p SET p.ativo = 0 WHERE idPlanta = ?";
         // $this->deleteQuestoes($planta->getIdPlanta());
@@ -216,7 +227,6 @@ class PlantaDAO {
         $stmt = $conn->prepare($sql);
         $stmt->execute([$planta->getIdPlanta()]);
     }   
-
     public function deleteQuestoes($idPlanta) {
 
         $conn = conectar_db();
@@ -224,7 +234,6 @@ class PlantaDAO {
         $stmt = $conn->prepare($sql);
         $stmt->execute([$idPlanta]);
     }
-
     public function deleteImage($idPlanta) {
     
         $planta = $this->findById($idPlanta);
@@ -233,6 +242,9 @@ class PlantaDAO {
         if (file_exists($img_del) && !str_contains($img_del, "especies")) {
             unlink($img_del);
         }
+    }
+    public function deletePlantasOfEspecie(Especie $especie) {
+     
     }
 
 public function filter(Array $caracteristics, string $search, array $ADMs, array $zonas) {
