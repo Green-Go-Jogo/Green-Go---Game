@@ -5,7 +5,7 @@ include_once(__DIR__."/../models/EquipeModel.php");
 
 class EquipeDAO {
 
-    private const SQL_EQUIPE = "SELECT * FROM equipe e";
+    private const SQL_EQUIPE = "SELECT * FROM equipe e WHERE e.ativo = 1";
     private const SQL_EQUIPE_PARTIDA = "SELECT pe.pontuacaoEquipe,e.*".
                                         " FROM partida_equipe pe".
                                         " JOIN equipe e ON pe.idEquipe = e.idEquipe";
@@ -47,7 +47,7 @@ class EquipeDAO {
         $conn = conectar_db();
 
         $sql = EquipeDAO::SQL_EQUIPE . 
-                " WHERE e.idEquipe = ?";
+                " AND e.idEquipe = ?";
 
         $stmt = $conn->prepare($sql);
         $stmt->execute([$idEquipe]);
@@ -107,7 +107,7 @@ class EquipeDAO {
     $conn = conectar_db();
     
 
-    $sql = "DELETE FROM equipe WHERE idEquipe = ?";
+    $sql = "UPDATE equipe e SET e.ativo = 0 WHERE e.idEquipe = ?";
    
     $stmt = $conn->prepare($sql);
     $stmt->execute([$equipe->getIdEquipe()]);
