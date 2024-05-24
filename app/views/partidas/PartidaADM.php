@@ -57,14 +57,15 @@ $loginCont->checarAdmPartida($idPartida, $_SESSION['ID']);
     <h1 class="text-center primeirotextoreg">SALA DE CONTROLE</h1>
 
     <div class="text-center">
-
+        <div>
         <button id="startCountdown" class="btn timer iniciar"> <i class="fa-regular fa-circle-play" id="play"> </i> </button>
 
-        <button class="btn timer"> <i class="fa-regular fa-circle-pause" id="pause"> </i> </button>
-
+        <!-- <button class="btn timer"> <i class="fa-regular fa-circle-pause" id="pause"> </i> </button> -->
+        
         <span id="minutes" class="timer-text"><?php echo $tempo; ?></span>
         <span class="timer-text">:</span>
         <span id="seconds" class="timer-text">00</span>
+        <div>
         <br>
         <a class="stop" id="encerrar"> Encerrar a partida? </a>
     </div>
