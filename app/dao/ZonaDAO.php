@@ -35,7 +35,7 @@ class zonaDAO {
         FROM zona z 
         LEFT JOIN planta p ON z.idZona = p.idZona 
         GROUP BY z.idZona, z.nomeZona
-        ORDER BY z.idZona";
+        ORDER BY z.idZona DESC";
         $stm = $conn->prepare($sql);    
         $stm->execute();
         $result = $stm->fetchAll();
