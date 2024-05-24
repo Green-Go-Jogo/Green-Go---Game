@@ -227,8 +227,8 @@ $codigo = $plantaCont->gerarCodigo();
                               <a id="carregueimagemtexto2"> <- Selecione um arquivo para a imagem da planta </a>
 
                             </div>
-                            <?php if (isset($errors) && !empty($errors) && isset($errors['planta_imagem'])) { ?>
-                              <div class="alert alert-warning"><?php echo $errors['planta_imagem']; ?></div>
+                            <?php if (isset($errors) && !empty($errors) && isset($errors['Imagem'])) { ?>
+                                        <div class="alert alert-warning" style="position: left;"><?php echo $errors['Imagem']; ?></div>
                             <?php } ?>
                           </div>
 
