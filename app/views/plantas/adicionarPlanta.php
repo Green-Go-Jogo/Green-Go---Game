@@ -335,7 +335,9 @@ $codigo = $plantaCont->gerarCodigo();
                 var paragrafo = document.createElement("p");
                 paragrafo.innerHTML = "<input name='checkbox_"+ i +"' type='checkbox' value='" + questao.idQuestao + "'/>" +
                                       "<b><span style='margin-left: 10px; color: #338a5f'>Questão:</span></b> " + questao.descricao + 
-                                      "<a><i class='fa-solid fa-circle' style='margin-left: 10px; color:" + questao.cor + "'></i></a> <br>";
+                                      "<a><i class='fa-solid fa-circle' style='margin-left: 10px; color:" + questao.cor + "'></i></a>"+
+                                      "<label for='pontuacaoQuestao'/> Pontuação: "+
+                                      "<input id='pontuacaoQuestao' name='pontuacao_"+ i +"' type='number'/><br>";
 
                 // Adicionar o parágrafo à div
                 document.getElementById("Questoes").appendChild(paragrafo);

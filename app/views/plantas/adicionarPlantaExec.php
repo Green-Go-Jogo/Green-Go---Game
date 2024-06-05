@@ -21,9 +21,23 @@ $id_zona = $_POST['zona_planta'];
 $id_especie = $_POST['especie_planta'];
 $id_usuario = $_POST['id_usuario'];
 $idQuestoes = array();
+$pontuacoes = array();
+$questoes = array();
 foreach ($_POST as $name => $value) {
   if (strpos($name, 'checkbox_') === 0) {
-      $idQuestoes[] = $value;
+    $index = substr($name, 9); // Obtém o índice a partir do nome do checkbox
+    $idQuestoes[] = $value;
+    
+    // Encontra o nome correspondente do input de pontuação
+    $pontuacaoKey = 'pontuacao_' . $index;
+
+    // Verifica se o input de pontuação existe no POST
+    if (isset($_POST[$pontuacaoKey])) {
+        $pontuacoes[] = $_POST[$pontuacaoKey];
+        $questoes[$idQuestao] = $pontuacao; //Cria array associativo com id e a pontuação da questão
+    } else {
+        $errors['questao_pontuacao'] = "Quando uma questão é selecionada sua pontuação deve ser preenchida!"; // Caso a pontuação não esteja definida, enviar erro
+    }
   } 
 }
 
