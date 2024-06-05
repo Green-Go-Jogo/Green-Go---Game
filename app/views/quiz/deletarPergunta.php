@@ -3,7 +3,8 @@
 
 include_once("../../controllers/QuestaoController.php");
 
-$idQuestao = $_GET["id"];
+$idQuestao = $_GET["idq"];
+$idEspecie =  $_GET["ide"];
 
 $questaoCont = new QuestaoController();
 $questao = $questaoCont->buscarPorId($idQuestao);
@@ -13,7 +14,7 @@ if($questao != null) {
     $questaoCont->excluir($questao);
 
     //Retornar para a página inicial
-    header("location: ../especies/listEspecies.php");
+    header("location: ../quiz/listPergunta.php?ide=".$idEspecie);
 
 } else { 
     echo "A Questão de ID ".$idQuestao." não existe.";
