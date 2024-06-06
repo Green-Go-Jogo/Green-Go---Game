@@ -304,14 +304,14 @@ class PlantaHTML
             return !is_null($value) && $value !== "";
         });
         $idsQuestoes = $questaoCont->listarPorPlanta($idPlanta);
-        echo "<button type='button' id='imprimas' data-toggle='modal' data-target='#questaoModal' onclick=''>Questões!</button>";
+        echo "<button type='button' id='responderQuiz' data-toggle='modal' data-target='#questaoModal' onclick=''><i class='fa-regular fa-circle-question' style='color: #fff; margin-right: 6px'></i>Responda às Questões!<i class='fa-regular fa-circle-question' style='color: #fff; margin-left: 6px'></i></button>";
           
         echo "<div id='questaoModal' class='modal fade' role='dialog'>";
         
         echo "<div class='modal-dialog'>";
         echo "<div class='modal-content'>";
         echo "<div class='modal-header'>";
-        echo "<h4 class='modal-title text-center'>Responda corretamente as perguntas para receber pontos extras!</h4>";
+        echo "<h4 class='modal-title text-center aviso-questao'>Responda corretamente as perguntas para receber pontos extras!</h4>";
         echo "<button type='button' class='close' data-dismiss='modal'>&times;</button>";
         echo "</div>";
         echo "<div class='modal-body'>";
@@ -322,10 +322,10 @@ class PlantaHTML
             $questao = $questaoCont->buscarPorId($id->getIdQuestao());
             
     
-            echo "<h5 >".$questao->getDescricaoQuestao()."</h5>";
+            echo "<h5 id='tituloQuestao'>".$questao->getDescricaoQuestao()."</h5>";
             
             if(in_array($id->getIdQuestao(), $questoesRespondidas)){
-                 echo "<p> RESPONDIDA </p>";
+                 echo "<p id='perguntaBloqueada'> QUESTÃO RESPONDIDA </p>";
             } else {
             $alternativas = $questaoCont->buscarAlternativa($id->getIdQuestao());
             $i = 1;
@@ -333,15 +333,14 @@ class PlantaHTML
 
             foreach($alternativas as $alt) {
                 echo ($i == 3) ?  "<br>" : '';
-                echo "<label class='alternativa' id='alternativa". $i ."'>".$alt->getDescricaoAlternativa();
-                echo "<input type='radio' name='question=". $id->getIdQuestao()."' value='question=". $id->getIdQuestao() ."alt=". $alt->getIdAlternativa() . "'/>";
-                echo "</label>";
+                echo "<input type='radio' id='radio".$alt->getIdAlternativa()."' name='question=". $id->getIdQuestao()."' value='question=". $id->getIdQuestao() ."alt=". $alt->getIdAlternativa() . "'/>";
+                echo "<label for='radio".$alt->getIdAlternativa()."' class='alternativa radio-button' id='alternativa". $i ."'>".$alt->getDescricaoAlternativa()."</label>";
                 $i++;
             }
             echo "<div class='correcao".$q."'></div>";
             echo "</div>";
         }
-            echo "<hr>";
+            echo "<hr class='linhaSepara'>";
             $q++;
             
         }

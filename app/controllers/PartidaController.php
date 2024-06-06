@@ -108,7 +108,7 @@ class PartidaController {
                 $arrayPlantas[] = $idPlanta;
                 $_SESSION['PLANTAS_LIDAS'] = $arrayPlantas;
 
-                $this->partidaDAO->addScorePlantas($_SESSION['PLANTAS_LIDAS'], $_SESSION['PONTOS'], $idUsuario);
+                $this->partidaDAO->addScorePlantas($_SESSION['PLANTAS_LIDAS'], $_SESSION['PONTOS_PLANTAS'], $idUsuario);
                 $msgFind = "Parabéns, você encontrou uma nova planta! ";
                 return $msgFind;
                 
@@ -126,13 +126,13 @@ class PartidaController {
         }
     }
 
-    public function checarRespostaQuiz($idQuestao, $idAlternativa, $idUsuario, $arrayQuestoes){
+    public function checarRespostaQuiz($idQuestao, $idAlternativa, $idUsuario, $arrayQuestoes, $idPlanta){
         $_SESSION['QUESTOES_LIDAS'] = $arrayQuestoes;
         //Checa se a alternativa da questão está certa
         $questaoCerta = $this->questaoDAO->checkQuestion($idQuestao, $idAlternativa);
         if($questaoCerta && !in_array($idQuestao, $_SESSION['QUESTOES_LIDAS'])){
             //Adiciona pontos por ter acertado a questão
-            $questao = $this->questaoDAO->findById($idQuestao);
+            $questao = $this->questaoDAO->findByIdPlantaAndIdQuestao($idPlanta, $idQuestao);
             $this->partidaDAO->addScoreQuestoes($idQuestao, $questao->getPontuacaoQuestao(), $idUsuario);
             $arrayQuestoes[] = $idQuestao;
             $_SESSION['QUESTOES_LIDAS'] = $arrayQuestoes;

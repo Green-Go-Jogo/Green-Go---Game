@@ -144,7 +144,7 @@ class PlantaDAO {
       }
     
 
-    public function save(Planta $planta, $idQuestoes) {
+    public function save(Planta $planta, $questoes) {
         $conn = conectar_db();
 
         $sql = "INSERT INTO planta (nomeSocial, codQR, codNumerico, pontuacaoPlanta, historia, imagemPlanta, idZona, idEspecie, idUsuario)".
@@ -155,10 +155,10 @@ class PlantaDAO {
         
         $idPlanta = $conn->lastInsertId();
 
-        foreach($idQuestoes as $idQuestao) {
-            $sql = "INSERT INTO planta_questao (idQuestao, idPlanta)" . " VALUES (?, ?)";
+        foreach ($questoes as $idQuestao => $pontuacaoQuestao) {
+            $sql = "INSERT INTO planta_questao (idQuestao, idPlanta, pontuacaoQuestao)" . " VALUES (?, ?, ?)";
             $stmt = $conn->prepare($sql);
-            $stmt->execute([$idQuestao, $idPlanta]);
+            $stmt->execute([$idQuestao, $idPlanta, $pontuacaoQuestao]);
         }
 
         $this->saveQrCode($idPlanta, $planta->getEspecie()->getIdEspecie(), $planta->getCodNumerico());

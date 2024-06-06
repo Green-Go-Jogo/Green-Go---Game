@@ -21,7 +21,6 @@ class QuestaoDAO
             $questao->setGrauDificuldade($reg['grauDificuldade']);
             $questao->setImagemQuestao($reg['imagemQuestao']);
             $questao->setIdEspecie($reg['idEspecie']);
-            $questao->setPontuacaoQuestao($reg['pontuacaoQuestao']);
 
             array_push($questoes, $questao);
         endforeach;
@@ -38,6 +37,7 @@ class QuestaoDAO
             $questao->setIdPlantaQuestao($reg['idPlantaQuestao']);
             $questao->setIdPlanta($reg['idPlanta']);
             $questao->setIdQuestao($reg['idQuestao']);
+            $questao->setPontuacaoQuestao($reg['pontuacaoQuestao']);
             
 
             array_push($questoes, $questao);
@@ -131,6 +131,26 @@ class QuestaoDAO
 
         die("questaoDAO.findById - Erro: mais de uma questão" .
             " encontrado para o ID " . $idQuestao);
+    }
+
+    public function findByIdPlantaAndIdQuestao($idPlanta, $idQuestao)
+    {
+        $conn = conectar_db();
+
+        $sql = "SELECT * FROM planta_questao" . " WHERE idPlanta = ? AND idQuestao = ?";
+        $stm = $conn->prepare($sql);
+        $stm->execute([$idPlanta, $idQuestao]);
+        $result = $stm->fetchAll();
+
+        $questoes = $this->mapQuestoesPlanta($result);
+
+        if (count($questoes) == 1)
+            return $questoes[0];
+        elseif (count($questoes) == 0)
+            return null;
+
+        die("questaoDAO.findById - Erro: mais de uma questão" .
+            " encontrado para o id questao " . $idQuestao. " e id planta ". $idPlanta);
     }
 
     public function findAlternativas($idQuestao)

@@ -14,7 +14,7 @@ else {
   $nomeSocial = null;
 };
 $Cod_Numerico = $_POST['Cod_Numerico'];
-$pontuacao = $_POST['Pontuacao'];
+$pontuacaoPlanta = $_POST['Pontuacao'];
 $historia = $_POST['Historia'];
 $imagem = $_FILES['imagem'];
 $id_zona = $_POST['zona_planta'];
@@ -23,26 +23,26 @@ $id_usuario = $_POST['id_usuario'];
 $idQuestoes = array();
 $pontuacoes = array();
 $questoes = array();
+$errors = array();
+
 foreach ($_POST as $name => $value) {
   if (strpos($name, 'checkbox_') === 0) {
     $index = substr($name, 9); // Obtém o índice a partir do nome do checkbox
-    $idQuestoes[] = $value;
+    $idQuestao = $value;
     
     // Encontra o nome correspondente do input de pontuação
-    $pontuacaoKey = 'pontuacao_' . $index;
+    $pontuacaoKey = 'questaop_' . $index;
 
     // Verifica se o input de pontuação existe no POST
-    if (isset($_POST[$pontuacaoKey])) {
+    if (isset($_POST[$pontuacaoKey]) && !empty($_POST[$pontuacaoKey])) {
         $pontuacoes[] = $_POST[$pontuacaoKey];
-        $questoes[$idQuestao] = $pontuacao; //Cria array associativo com id e a pontuação da questão
+        $questoes[$idQuestao] = $_POST[$pontuacaoKey]; //Cria array associativo com id e a pontuação da questão
     } else {
         $errors['questao_pontuacao'] = "Quando uma questão é selecionada sua pontuação deve ser preenchida!"; // Caso a pontuação não esteja definida, enviar erro
     }
   } 
 }
 
-//Validar dados
-$errors = array();
 
 
 if (empty($id_zona)) {
@@ -57,9 +57,9 @@ if (empty($id_especie)) {
   $errors['especie_planta'] = "O campo Espécie é obrigatório";
 } 
 
-if (empty($pontuacao)) {
+if (empty($pontuacaoPlanta)) {
   $errors['Pontuacao'] = "O campo Pontuação é obrigatório!";
-} elseif (!preg_match('/^\d{2}$/', $pontuacao)) {
+} elseif (!preg_match('/^\d{2}$/', $pontuacaoPlanta)) {
   $errors['Pontuacao'] = "O campo Pontuação deve conter 2 ou menos dígitos!";
 }
 
@@ -81,7 +81,7 @@ move_uploaded_file($imagem["tmp_name"], $caminho_imagem);
 $planta = new Planta();
 $planta->setNomeSocial($nomeSocial);
 $planta->setCodNumerico($Cod_Numerico);
-$planta->setPontos($pontuacao);
+$planta->setPontos($pontuacaoPlanta);
 $planta->setPlantaHistoria($historia);
 $planta->setImagemPlanta($caminho_imagem);
 
@@ -96,7 +96,7 @@ $planta->setUsuario($usuario);
 
 //Chamar o controler para salvar o planta
 $plantaCont = new PlantaController();
-$plantaCont->salvar($planta, $idQuestoes);
+$plantaCont->salvar($planta, $questoes);
 
 //Redireciona para o início
 header("location: listPlantas.php");

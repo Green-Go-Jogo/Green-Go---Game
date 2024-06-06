@@ -259,10 +259,12 @@ $nomePopular = $especie->getNomePopular();
                     <?= $planta->getZona() ?>!
                 </w>
             </div>
-            <div>
+            <br>
+            <br>
+            <div class="text-center">
                 <?php
-                if ($_SESSION['PARTIDA'] && strpos($msgFind, 'Essa planta não pertence à uma das zonas da sua partida!') == false){
-                PlantaHTML::desenhaQuestoes($idp, $arrayQuestoes);
+                if ($_SESSION['PARTIDA'] && strpos($msgFind, 'Essa planta não pertence à uma das zonas da sua partida!') == false) {
+                    PlantaHTML::desenhaQuestoes($idp, $arrayQuestoes);
                 }
                 ?>
             </div>
@@ -283,12 +285,13 @@ $nomePopular = $especie->getNomePopular();
 </body>
 <script>
     const enviarQuizBotao = document.getElementById('submitQuiz');
-    var idUsuario = <?php echo $_SESSION['ID']?>;
+    var idUsuario = <?php echo $_SESSION['ID'] ?>;
+    var idPlanta = <?php echo $idp ?>;
     var questoesArrayPHP = <?php
-            $arrayTemp = explode("|", $arrayQuestoes);
-            $questoesString = implode(" - ", $arrayTemp);
-            echo json_encode($questoesString);
-        ?>;
+                            $arrayTemp = explode("|", $arrayQuestoes);
+                            $questoesString = implode(" - ", $arrayTemp);
+                            echo json_encode($questoesString);
+                            ?>;
     let arrayQuestoes = questoesArrayPHP.split("-").filter(item => item !== "").map(Number);
 
 
@@ -311,14 +314,14 @@ $nomePopular = $especie->getNomePopular();
         }
         return true; // Permite o envio do formulário
     };
-    
+
 
 
     function enviarQuiz() {
 
         //Valida se todas as questões foram respondidas
         var valida = validarQuiz()
-        if(valida == false) {
+        if (valida == false) {
             return alert("Por favor, selecione uma resposta para cada pergunta.");
         }
 
@@ -350,7 +353,8 @@ $nomePopular = $especie->getNomePopular();
             data: {
                 idUsuario: idUsuario,
                 alternativas: values,
-                arrayQuestoes: arrayQuestoes
+                arrayQuestoes: arrayQuestoes,
+                idPlanta: idPlanta
             },
             dataType: "json", // Espera uma resposta JSON
             success: function(userResponse) {
@@ -359,7 +363,7 @@ $nomePopular = $especie->getNomePopular();
                     var respostas = userResponse.respostas;
                     var correcaoHTML = '<div class="correcao">';
                     for (var i = 0; i < respostas.length; i++) {
-                        var correcaoHTML = '<div class="correcao">';
+                        var correcaoHTML = '<div class="correcao" id="'+(respostas[i] === true ? 'correta' : 'incorreta')+'" >';
 
                         // Adicionar texto da correção com base na resposta
                         correcaoHTML += 'Questão: ' + (respostas[i] === true ? 'Correta' : 'Incorreta');

@@ -3,6 +3,7 @@ include_once("../../controllers/PartidaController.php");
 
 $partidaCont = new PartidaController();
 $idUsuario = $_POST['idUsuario'];
+$idPlanta = $_POST['idPlanta'];
 if(isset($_POST['arrayQuestoes'])){
  $arrayQuestoes = $_POST['arrayQuestoes'];
 } else {
@@ -24,7 +25,7 @@ if (isset($_POST['alternativas'])) {
         $idAlternativa = $parts[1]; // Obtém o número da alternativa selecionada    
 
         // Checa a resposta da questão e armazena o resultado na array de respostas
-        $resposta = $partidaCont->checarRespostaQuiz($idQuestao, $idAlternativa, $idUsuario, $arrayQuestoes);
+        $resposta = $partidaCont->checarRespostaQuiz($idQuestao, $idAlternativa, $idUsuario, $arrayQuestoes, $idPlanta);
         $respostas[] = $resposta;
     }
 
