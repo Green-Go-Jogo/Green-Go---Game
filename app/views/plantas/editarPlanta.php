@@ -34,8 +34,8 @@ if ($id !== null) {
 }
 
 $idsQuestoesEditar = array();
-foreach ($questaoPlanta as $questao){
-  $idsQuestoesEditar[] = $questao->getIdQuestao();
+foreach ($questaoPlanta as $questao) {
+  $idsQuestoesEditar[$questao->getIdQuestao()] = $questao->getPontuacaoQuestao();
 }
 
 $idsEditar = json_encode($idsQuestoesEditar)
@@ -72,6 +72,11 @@ $idsEditar = json_encode($idsQuestoesEditar)
     font-family: Poppins-semibold;
   }
 
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 
   .selectize-dropdown-content .option {
     color: #ebf0f1;
@@ -347,8 +352,8 @@ $idsEditar = json_encode($idsQuestoesEditar)
 
     function mostrarQuestoes(elemento) {
       const xhr = new XMLHttpRequest();
-        xhr.open("POST", "questoesEspecie.php", true);
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+      xhr.open("POST", "questoesEspecie.php", true);
+      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
       if (elemento.tagName === "SELECT") {
         valorCampo = elemento.options[elemento.selectedIndex].value;
@@ -357,42 +362,72 @@ $idsEditar = json_encode($idsQuestoesEditar)
       console.log(valorCampo)
 
       const parametros = "idEspecie=" + encodeURIComponent(valorCampo)
-      
+
       xhr.onreadystatechange = function() {
-          if (xhr.readyState === XMLHttpRequest.DONE) {
-            if (xhr.status === 200) {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+          if (xhr.status === 200) {
 
-              // JSON de questões
-              var JSONQuestoes = JSON.parse(xhr.response);
+            // JSON de questões
+            var JSONQuestoes = JSON.parse(xhr.response);
 
-              // Limpar o conteúdo anterior da div
-              document.getElementById("Questoes").innerHTML = "";
+            // Limpar o conteúdo anterior da div
+            document.getElementById("Questoes").innerHTML = "";
 
-              // Console
-              console.log('Resposta do servidor:', JSON.parse(xhr.response));
+            // Console
+            console.log('Resposta do servidor:', JSON.parse(xhr.response));
 
-              // Percorrer o array de questões
+            // Percorrer o array de questões
             for (var i = 0; i < JSONQuestoes.length; i++) {
-                var questao = JSONQuestoes[i];
+              var questao = JSONQuestoes[i];
 
-                // Criar um elemento de parágrafo para cada informação da questão
-                var paragrafo = document.createElement("p");
-                paragrafo.innerHTML = "<input name='checkbox_"+ i +"' type='checkbox' value='" + questao.idQuestao + "'/>" +
-                                      "<b><span style='margin-left: 10px; color: #338a5f'>Questão:</span></b> " + questao.descricao + 
-                                      "<a><i class='fa-solid fa-circle' style='margin-left: 10px; color:" + questao.cor + "'></i></a> <br>";
+              // Checa se a questão estava selecionada quando cadastrada
+              var idsEditar = <?php echo $idsEditar; ?>;
+              console.log("idsEditar:", idsEditar);
 
-                // Adicionar o parágrafo à div
-                document.getElementById("Questoes").appendChild(paragrafo);
+              var checked = false;
+              var pontuacaoValor = null; // Inicializa como null
+
+              // Converte questao.idQuestao para string
+              var idQuestaoStr = String(questao.idQuestao);
+
+              // Verifica se a questão está no array associativo idsEditar
+              if (idsEditar.hasOwnProperty(idQuestaoStr)) {
+                console.log("idQuestaoStr:", idQuestaoStr); // Para verificar a chave
+                checked = "checked";
+                pontuacaoValor = idsEditar[idQuestaoStr];
+                console.log("typeof pontuacaoValor:", typeof pontuacaoValor); // Verificar tipo de dado
+                console.log("pontuacaoValor encontrado:", pontuacaoValor); // Verificar valor encontrado
+
+                // Verifica se pontuacaoValor é uma string vazia
+                if (pontuacaoValor === "") {
+                  pontuacaoValor = null; // Define como null se for uma string vazia
+                }
+              } else {
+                console.log("idQuestaoStr não encontrado:", idQuestaoStr);
+              }
+
+              console.log("checked:", checked);
+              console.log("pontuacaoValor final:", pontuacaoValor);
+
+              // Criar um elemento de parágrafo para cada informação da questão
+              var paragrafo = document.createElement("p");
+              paragrafo.innerHTML = "<input name='checkbox_" + i + "' type='checkbox' value='" + questao.idQuestao + "' " + checked + "/>" +
+                "<b><span style='margin-left: 10px; color: #338a5f'>Questão:</span></b> " + questao.descricao +
+                "<a><i class='fa-solid fa-circle' style='margin-left: 10px; color:" + questao.cor + "'></i></a>" +
+                "<label for='pontuacaoQuestao'/> Pontuação: " +
+                "<input style='margin-left: 4px; max-width: 30px' value='" + (pontuacaoValor !== null ? pontuacaoValor : '') + "' id='pontuacaoQuestao' name='questaop_" + i + "' type='number'/><br>";
+
+              // Adicionar o parágrafo à div
+              document.getElementById("Questoes").appendChild(paragrafo);
             }
-            } else {
-              resultadoVerificacao.innerHTML = "Erro na requisição.";
-            }
+          } else {
+            resultadoVerificacao.innerHTML = "Erro na requisição.";
           }
-        };
+        }
+      };
 
-        xhr.send(parametros);
-      }
-    
+      xhr.send(parametros);
+    }
   </script>
   <!-- <script>
     document.addEventListener("DOMContentLoaded", function() {

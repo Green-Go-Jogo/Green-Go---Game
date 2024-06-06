@@ -195,3 +195,106 @@ h1 p {
     font-size: 25px;
     color: #ED8E96;
 }
+
+button#responderQuiz {
+    color: var(--branco);
+    background-color: #338A5F;
+    border-radius: 5px;
+    width: max-content !important;
+    height: max-content !important;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-family: Poppins-semibold;
+    font-size: 22px;
+    transition: 0.3s ease;
+    display: inline-block;
+    border-width: 3px ;
+    border-color: #ffffff ;
+    border: none ;
+}
+
+button#responderQuiz:hover {
+    color: #ebf0f1 !important;
+    background-color: #04574d;
+    transform: scale(1.05);
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+input[type="radio"]:checked + .radio-button {
+    background-color: #f0b6bc;
+    color: #FFF;
+}
+
+.radio-button:hover {
+    background-color: #f0b6bc;
+    color: #fff;
+}
+
+.radio-button {
+    line-break: anywhere;
+    width: 45%;
+    flex: 1;
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 5px;
+    border: 2px solid #f0b6bc;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #C05367;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.modal-content {
+    background-color: #f0f0f0;
+}
+
+#perguntaBloqueada {
+    margin-top: 5px;
+    color: #C05367;
+    font-family: Poppins-semibold;
+}
+
+#tituloQuestao {
+    font-family: Poppins-medium;
+    color: #04574d;
+    font-size: 20px;
+}
+
+#submitQuiz {
+    font-family: Poppins;
+    padding: 10px 20px;
+    margin: 5px;
+    border: 2px solid #C05367;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #C05367;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#submitQuiz:hover {
+    font-family: Poppins;
+    background-color: #C05367;
+    color: #fff;
+}
+
+.aviso-questao {
+    font-family: Poppins-semibold;
+}
+
+.correcao#incorreta{
+    font-family: Poppins;
+    color: red;
+}
+
+.linhaSepara {
+    background: #04574d;
+}

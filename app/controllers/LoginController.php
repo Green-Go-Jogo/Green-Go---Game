@@ -28,12 +28,16 @@ class LoginController {
         $inPartida = $this->partidaDAO->usuarioInEquipe($_SESSION['ID']);
         if ($inPartida) {
             $_SESSION['PARTIDA'] = true;
-            $_SESSION['PONTOS'] = $inPartida->getPontuacaoUsuario();
+            $_SESSION['PONTOS_PLANTAS'] = $inPartida->getPontuacaoPlantas();
+            $_SESSION['PONTOS_QUESTOES'] = $inPartida->getPontuacaoQuestoes();
+            $_SESSION['QUESTOES_RESPONDIDAS'] = explode('|', $inPartida->getQuestoesRespondidas());
             $_SESSION['PLANTAS_LIDAS'] = explode(' | ', $inPartida->getPlantasLidas());
         } else {
         $_SESSION['PLANTAS_LIDAS'] = array();
+        $_SESSION['QUESTOES_RESPONDIDAS'] = array();
         $_SESSION['PARTIDA'] = false;
-        $_SESSION['PONTOS'] = 0;
+        $_SESSION['PONTOS_PLANTAS'] = 0;
+        $_SESSION['PONTOS_QUESTOES'] = 0;
         }
         
         $tipo = $usuario->getTipoUsuario();
@@ -79,7 +83,8 @@ class LoginController {
         $tipoUsuario = isset($_SESSION['TIPO']) ? $_SESSION['TIPO'] : null;
         $arrayPlantas = isset($_SESSION['PLANTAS_LIDAS']) ? $_SESSION['PLANTAS_LIDAS'] : null ;
         $statusPartida = isset($_SESSION['PARTIDA']) ? $_SESSION['PARTIDA'] : null;
-        $pontosJogador = isset($_SESSION['PONTOS']) ? $_SESSION['PONTOS'] : null;
+        $pontosJogador = isset($_SESSION['PONTOS_PLANTAS']) ? $_SESSION['PONTOS_PLANTAS'] : null;
+        $pontosQuestoes = isset($_SESSION['PONTOS_QUESTOES']) ? $_SESSION['PONTOS_QUESTOES'] : null;
     }
 
     public static function sair() {

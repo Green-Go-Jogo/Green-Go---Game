@@ -43,6 +43,12 @@ $codigo = $plantaCont->gerarCodigo();
     font-family: Poppins-semibold;
   }
 
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
 
   .selectize-dropdown-content .option {
     color: #ebf0f1;
@@ -121,8 +127,6 @@ $codigo = $plantaCont->gerarCodigo();
     color: #FFFFFF;
     width: 500px;
   }
-
-  
 </style>
 <nav>
 
@@ -202,6 +206,9 @@ $codigo = $plantaCont->gerarCodigo();
 
                           <?php if (isset($errors) && !empty($errors) && isset($errors['especie_planta'])) { ?>
                             <div class="alert alert-warning"><?php echo $errors['especie_planta']; ?></div>
+                          <?php } ?>
+                          <?php if (isset($errors) && !empty($errors) && isset($errors['questao_pontuacao'])) { ?>
+                            <div class="alert alert-warning"><?php echo $errors['questao_pontuacao']; ?></div>
                           <?php } ?>
 
                           <label for="formtexto" id="txtPontos">Pontuação:</label>
@@ -305,50 +312,51 @@ $codigo = $plantaCont->gerarCodigo();
 
     function mostrarQuestoes(elemento) {
       const xhr = new XMLHttpRequest();
-        xhr.open("POST", "questoesEspecie.php", true);
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+      xhr.open("POST", "questoesEspecie.php", true);
+      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
       if (elemento.tagName === "SELECT") {
         valorCampo = elemento.options[elemento.selectedIndex].value;
       }
 
       const parametros = "idEspecie=" + encodeURIComponent(valorCampo)
-      
+
       xhr.onreadystatechange = function() {
-          if (xhr.readyState === XMLHttpRequest.DONE) {
-            if (xhr.status === 200) {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+          if (xhr.status === 200) {
 
-              // JSON de questões
-              var JSONQuestoes = JSON.parse(xhr.response);
+            // JSON de questões
+            var JSONQuestoes = JSON.parse(xhr.response);
 
-              // Limpar o conteúdo anterior da div
-              document.getElementById("Questoes").innerHTML = "";
+            // Limpar o conteúdo anterior da div
+            document.getElementById("Questoes").innerHTML = "";
 
-              // Console
-              console.log('Resposta do servidor:', JSON.parse(xhr.response));
+            // Console
+            console.log('Resposta do servidor:', JSON.parse(xhr.response));
 
-              // Percorrer o array de questões
+            // Percorrer o array de questões
             for (var i = 0; i < JSONQuestoes.length; i++) {
-                var questao = JSONQuestoes[i];
+              var questao = JSONQuestoes[i];
 
-                // Criar um elemento de parágrafo para cada informação da questão
-                var paragrafo = document.createElement("p");
-                paragrafo.innerHTML = "<input name='checkbox_"+ i +"' type='checkbox' value='" + questao.idQuestao + "'/>" +
-                                      "<b><span style='margin-left: 10px; color: #338a5f'>Questão:</span></b> " + questao.descricao + 
-                                      "<a><i class='fa-solid fa-circle' style='margin-left: 10px; color:" + questao.cor + "'></i></a> <br>";
+              // Criar um elemento de parágrafo para cada informação da questão
+              var paragrafo = document.createElement("p");
+              paragrafo.innerHTML = "<input name='checkbox_" + i + "' type='checkbox' value='" + questao.idQuestao + "'/>" +
+                "<b><span style='margin-left: 10px; color: #338a5f'>Questão:</span></b> " + questao.descricao +
+                "<a><i class='fa-solid fa-circle' style='margin-left: 10px; margin-right: 5px; color:" + questao.cor + "'></i></a>" +
+                "<label for='pontuacaoQuestao'/> Pontuação: " +
+                "<input style='margin-left: 4px; max-width: 30px' id='pontuacaoQuestao' name='questaop_" + i + "' type='number'/><br>";
 
-                // Adicionar o parágrafo à div
-                document.getElementById("Questoes").appendChild(paragrafo);
+              // Adicionar o parágrafo à div
+              document.getElementById("Questoes").appendChild(paragrafo);
             }
-            } else {
-              resultadoVerificacao.innerHTML = "Erro na requisição.";
-            }
+          } else {
+            resultadoVerificacao.innerHTML = "Erro na requisição.";
           }
-        };
+        }
+      };
 
-        xhr.send(parametros);
-      }
-    
+      xhr.send(parametros);
+    }
   </script>
   <script src="assets/js/grayscale.js"></script>
   <script type="text/javascript" src="../js/imagem.js" defer></script>
