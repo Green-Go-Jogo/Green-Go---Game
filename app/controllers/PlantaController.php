@@ -35,8 +35,8 @@ class PlantaController {
         $this->zonaDAO->updatePlanta($planta->getZona());
     }
 
-    public function atualizar($planta, $idQuestoes) {
-        $this->plantaDAO->update($planta, $idQuestoes);
+    public function atualizar($planta, $questoes) {
+        $this->plantaDAO->update($planta, $questoes);
         $this->zonaDAO->updatePlanta($planta->getZona());
     }
 
