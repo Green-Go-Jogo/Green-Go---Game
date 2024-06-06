@@ -1,14 +1,17 @@
 <?php
+
+include_once("../../controllers/LoginController.php");
+
+LoginController::manterUsuario();
+
 include_once("../../controllers/PlantaController.php");
 include_once("../../controllers/ZonaController.php");
 include_once("../../controllers/PartidaController.php");
 include_once("../../controllers/EspecieController.php");
 include_once("../zones/htmlZonaForm.php");
+include_once("../plantas/htmlPlanta.php");
 include_once("../especies/htmlEspecie.php");
 
-include_once("../../controllers/LoginController.php");
-
-LoginController::manterUsuario();
 
 $fromQR = isset($_GET['qrcode']) && $_GET['qrcode'] == true;
 $fromCod = isset($_GET['code']) && $_GET['code'] == true;
@@ -32,7 +35,8 @@ if (($fromQR || $fromCod) && $tipo) {
         $partidaCont = new PartidaController();
         $idPlanta = ($idp != null) ? $idp : $planta->getIdPlanta();
         $partida = $partidaCont->buscarPartidaAndamentoPorIdUsuario($_SESSION['ID']);
-        $msgFind = $partidaCont->checarQRCode($_SESSION['PARTIDA'], $idPlanta, $_SESSION['PLANTAS_LIDAS'], $_SESSION['ID']);
+        $arrayQuestoes = $partida->getQuestoesRespondidas();
+        $msgFind = $partidaCont->checarQRCode($idPlanta, $_SESSION['PLANTAS_LIDAS'], $_SESSION['ID']);
         $msgReturn = "<a href='../partidas/mainJogo.php?idp=" . $partida->getIdPartida() . "&ide=" . $partida->getIdEquipe() . "' id='voltarjogo'> Encontrou outra planta? Volte para o jogo! </a>";
     } else {
     };
@@ -211,10 +215,12 @@ $nomePopular = $especie->getNomePopular();
         <div>
 
             <div class=" text-center">
-                <p class="descricao text-center" id="pontos">
-                    Pontos: <?= $planta->getPontos(); ?>
-                </p>
-
+                <?php if ($_SESSION['PARTIDA']) {
+                    echo "<p class='descricao text-center' id='pontos'>";
+                    echo    "Pontos:" . $planta->getPontos();
+                    echo "</p>";
+                }
+                ?>
                 <p class=" descricao" id="atributos">
                     <?php echo $tox; ?>
                     <?php echo $med; ?>
@@ -253,7 +259,15 @@ $nomePopular = $especie->getNomePopular();
                     <?= $planta->getZona() ?>!
                 </w>
             </div>
-
+            <br>
+            <br>
+            <div class="text-center">
+                <?php
+                if ($_SESSION['PARTIDA'] && strpos($msgFind, 'Essa planta não pertence à uma das zonas da sua partida!') == false) {
+                    PlantaHTML::desenhaQuestoes($idp, $arrayQuestoes);
+                }
+                ?>
+            </div>
         </div>
 
         <br><br><br>
@@ -266,10 +280,109 @@ $nomePopular = $especie->getNomePopular();
 
         <br>
     </div>
-    <script src="../bootstrap/bootstrap.min.js"></script>
 
     <?php include_once("../../bootstrap/footer.php"); ?>
 </body>
+<script>
+    const enviarQuizBotao = document.getElementById('submitQuiz');
+    var idUsuario = <?php echo $_SESSION['ID'] ?>;
+    var idPlanta = <?php echo $idp ?>;
+    var questoesArrayPHP = <?php
+                            $arrayTemp = explode("|", $arrayQuestoes);
+                            $questoesString = implode(" - ", $arrayTemp);
+                            echo json_encode($questoesString);
+                            ?>;
+    let arrayQuestoes = questoesArrayPHP.split("-").filter(item => item !== "").map(Number);
+
+
+    function validarQuiz() {
+        var questions = document.getElementsByClassName("pergunta");
+
+        // Verifica se pelo menos uma alternativa foi selecionada para cada pergunta
+        for (var i = 0; i < questions.length; i++) {
+            var questionRadios = questions[i].querySelectorAll("input[type=radio]");
+            var radioChecked = false;
+            for (var j = 0; j < questionRadios.length; j++) {
+                if (questionRadios[j].checked) {
+                    radioChecked = true;
+                    break;
+                }
+            }
+            if (!radioChecked) {
+                return false; // Impede o envio do formulário
+            }
+        }
+        return true; // Permite o envio do formulário
+    };
+
+
+
+    function enviarQuiz() {
+
+        //Valida se todas as questões foram respondidas
+        var valida = validarQuiz()
+        if (valida == false) {
+            return alert("Por favor, selecione uma resposta para cada pergunta.");
+        }
+
+        //Pega todos os radios marcados
+        var radios = document.querySelectorAll('input[type="radio"]');
+        var values = [];
+        enviarQuizBotao.setAttribute('onclick', '');
+
+        radios.forEach(function(radio) {
+            // Verifica se o input está marcado
+            if (radio.checked) {
+                // Obtém o atributo "value" do input
+                var value = radio.getAttribute('value');
+
+                // Se o nome não estiver presente no array, adiciona-o
+                if (values.indexOf(value) === -1) {
+                    values.push(value);
+                }
+            }
+        });
+
+        console.log(values)
+        console.log(idUsuario)
+        console.log(arrayQuestoes);
+
+        $.ajax({
+            type: "POST",
+            url: "../partidas/verificarResposta.php",
+            data: {
+                idUsuario: idUsuario,
+                alternativas: values,
+                arrayQuestoes: arrayQuestoes,
+                idPlanta: idPlanta
+            },
+            dataType: "json", // Espera uma resposta JSON
+            success: function(userResponse) {
+                if (userResponse.isValid === true) {
+                    console.log(userResponse)
+                    var respostas = userResponse.respostas;
+                    var correcaoHTML = '<div class="correcao">';
+                    for (var i = 0; i < respostas.length; i++) {
+                        var correcaoHTML = '<div class="correcao" id="'+(respostas[i] === true ? 'correta' : 'incorreta')+'" >';
+
+                        // Adicionar texto da correção com base na resposta
+                        correcaoHTML += 'Questão: ' + (respostas[i] === true ? 'Correta' : 'Incorreta');
+
+                        correcaoHTML += '</div>';
+
+                        // Adicionar a div correcaoHTML ao documento
+                        $(correcaoHTML).insertAfter('.correcao' + i)
+                    }
+                } else {
+                    console.log("Seus pontos possivelmente foram somados, mas o servidor não conseguiu te dizer a resposta.");
+                }
+            },
+            error: function() {
+                console.log("Ocorreu um erro de requisição, contate um professor ou administrador.");
+            }
+        });
+    }
+</script>
 <script>
     function atualizarDados() {
         // Verifique se a variável de sessão PARTIDA é verdadeira
@@ -293,7 +406,7 @@ $nomePopular = $especie->getNomePopular();
                     }
                 },
                 error: function() {
-                    console.log("Erro ao processar a requisição AJAX do usuário");
+                    console.log("O Rank ainda não foi definido!");
                 }
             });
         } else {

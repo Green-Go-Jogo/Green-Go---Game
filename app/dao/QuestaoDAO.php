@@ -37,6 +37,8 @@ class QuestaoDAO
             $questao->setIdPlantaQuestao($reg['idPlantaQuestao']);
             $questao->setIdPlanta($reg['idPlanta']);
             $questao->setIdQuestao($reg['idQuestao']);
+            $questao->setPontuacaoQuestao($reg['pontuacaoQuestao']);
+            
 
             array_push($questoes, $questao);
         endforeach;
@@ -129,6 +131,26 @@ class QuestaoDAO
 
         die("questaoDAO.findById - Erro: mais de uma questão" .
             " encontrado para o ID " . $idQuestao);
+    }
+
+    public function findByIdPlantaAndIdQuestao($idPlanta, $idQuestao)
+    {
+        $conn = conectar_db();
+
+        $sql = "SELECT * FROM planta_questao" . " WHERE idPlanta = ? AND idQuestao = ?";
+        $stm = $conn->prepare($sql);
+        $stm->execute([$idPlanta, $idQuestao]);
+        $result = $stm->fetchAll();
+
+        $questoes = $this->mapQuestoesPlanta($result);
+
+        if (count($questoes) == 1)
+            return $questoes[0];
+        elseif (count($questoes) == 0)
+            return null;
+
+        die("questaoDAO.findById - Erro: mais de uma questão" .
+            " encontrado para o id questao " . $idQuestao. " e id planta ". $idPlanta);
     }
 
     public function findAlternativas($idQuestao)
@@ -232,6 +254,33 @@ class QuestaoDAO
         $stmtUpdate->execute([
             $questao->getDescricaoAlternativa(), $trueOrFalse, $questao->getIdAlternativa()
         ]);
+        }
+    }
+
+    public function checkQuestion($idQuestao, $idAlternativa) {
+        $conn = conectar_db();
+
+        $sql = questaoDAO::SQL_ALTERNATIVA .
+            " JOIN questao q ON q.idQuestao = a.idQuestao WHERE q.idQuestao = ? AND a.idAlternativa = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([
+            $idQuestao, $idAlternativa
+        ]);
+
+        $result = $stmt->fetchAll();
+        if ($result) {
+            // Itera sobre cada linha do resultado
+            foreach ($result as $row) {
+                // Acesse o campo 'alternativaCerta' de cada linha
+                if($row['alternativaCerta'] == 1) {
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+        } else {
+            echo "Nenhum resultado encontrado.";
         }
     }
 

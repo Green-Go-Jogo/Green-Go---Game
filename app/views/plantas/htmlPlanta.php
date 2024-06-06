@@ -221,13 +221,12 @@
         color: #04574d;
         margin-bottom: -8px;
     }
-
-    
 </style>
 
 <?php
 
 include_once("../../controllers/EspecieController.php");
+include_once("../../controllers/QuestaoController.php");
 
 
 class PlantaHTML
@@ -296,5 +295,69 @@ class PlantaHTML
         echo "</div>";
         echo "</div>";
     }
-}
+
+    public static function desenhaQuestoes($idPlanta, $arrayQuestoes) {
+        $questaoCont = new QuestaoController();
+        $arrayTemp = explode("|", $arrayQuestoes);
+        $arrayTemp = array_map('trim', $arrayTemp);
+        $questoesRespondidas = array_filter($arrayTemp, function($value){
+            return !is_null($value) && $value !== "";
+        });
+        $idsQuestoes = $questaoCont->listarPorPlanta($idPlanta);
+        echo "<button type='button' id='responderQuiz' data-toggle='modal' data-target='#questaoModal' onclick=''><i class='fa-regular fa-circle-question' style='color: #fff; margin-right: 6px'></i>Responda às Questões!<i class='fa-regular fa-circle-question' style='color: #fff; margin-left: 6px'></i></button>";
+          
+        echo "<div id='questaoModal' class='modal fade' role='dialog'>";
+        
+        echo "<div class='modal-dialog'>";
+        echo "<div class='modal-content'>";
+        echo "<div class='modal-header'>";
+        echo "<h4 class='modal-title text-center aviso-questao'>Responda corretamente as perguntas para receber pontos extras!</h4>";
+        echo "<button type='button' class='close' data-dismiss='modal'>&times;</button>";
+        echo "</div>";
+        echo "<div class='modal-body'>";
+        echo "<div id='conteudoParaImpressao'>";
+        echo "</div>";
+        $q = 0;
+        foreach($idsQuestoes as $id) {
+            $questao = $questaoCont->buscarPorId($id->getIdQuestao());
+            
+    
+            echo "<h5 id='tituloQuestao'>".$questao->getDescricaoQuestao()."</h5>";
+            
+            if(in_array($id->getIdQuestao(), $questoesRespondidas)){
+                 echo "<p id='perguntaBloqueada'> QUESTÃO RESPONDIDA </p>";
+            } else {
+            $alternativas = $questaoCont->buscarAlternativa($id->getIdQuestao());
+            $i = 1;
+            echo "<div class='pergunta'>";
+
+            foreach($alternativas as $alt) {
+                echo ($i == 3) ?  "<br>" : '';
+                echo "<input type='radio' id='radio".$alt->getIdAlternativa()."' name='question=". $id->getIdQuestao()."' value='question=". $id->getIdQuestao() ."alt=". $alt->getIdAlternativa() . "'/>";
+                echo "<label for='radio".$alt->getIdAlternativa()."' class='alternativa radio-button' id='alternativa". $i ."'>".$alt->getDescricaoAlternativa()."</label>";
+                $i++;
+            }
+            echo "<div class='correcao".$q."'></div>";
+            echo "</div>";
+        }
+            echo "<hr class='linhaSepara'>";
+            $q++;
+            
+        }
+        echo "</div>";
+        echo "<div class='modal-footer'>";
+        //echo "<button type='button' class='btn btn-default' data-dismiss='modal'>Fechar</button>";
+        echo "<button class='btn btn-primary' id='submitQuiz' onclick='enviarQuiz()'>Enviar</button>";
+        echo "</div>";
+        echo "</div>";
+        echo "</div>";
+        echo "</div>";
+    
+
+        echo "</div>";
+    
+        echo "</div>";
+    }
+}  
+
 ?>

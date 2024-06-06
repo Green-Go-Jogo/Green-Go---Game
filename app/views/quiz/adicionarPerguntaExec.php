@@ -69,6 +69,6 @@ $questaoCont = new QuestaoController();
 $questaoCont->salvar($questao);
 
 //Redireciona para o início
-header("location: listEspecies.php");
+header("location: listPergunta.php?ide=".$idEspecie);
 
 ?>

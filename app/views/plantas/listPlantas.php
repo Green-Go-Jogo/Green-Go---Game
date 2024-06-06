@@ -91,10 +91,15 @@ include_once(__DIR__ . "/htmlEspecie.php");
                     <p style="font-size: 20px;">Código Numérico: </p><p class="conteudo" style="font-size: 45px; margin-top: -20px"><b>${codNumerico}</b></p>
                 </div>
                 <div class="right">
-                    <img src="${qrCodeImagem}" alt="QR Code">
+                    <img style="width: 70%;" src="${qrCodeImagem}" alt="QR Code">
                 </div>
             </div>
         `;
+        // <div class="logos" style="display: flex;">
+        //             <img style="width: 5%;" src="../../public/unila-logo.png" alt="Logo 1">
+        //             <img style="width: 5%;" src="../../public/ifimpressao-logo.png" alt="Logo 2">
+        //             <img style="width: 5%;" src="../../public/greengoimpressao-logo.png" alt="Logo 3">
+        //         </div>
             } else {
 
                 document.getElementById('conteudoParaImpressao').innerHTML = `
