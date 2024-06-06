@@ -369,5 +369,43 @@ LoginController::manterUsuario();
   </div>
 
   <?php include_once("../../bootstrap/footer.php"); ?>
+  <script>
+    function atualizarDados() {
+        // Verifique se a variável de sessão PARTIDA é verdadeira
+        var partidaAtiva = <?php echo ($_SESSION['PARTIDA'] ? 'true' : 'false'); ?>;
+
+        if (partidaAtiva === true) {
+            // A variável de sessão PARTIDA é verdadeira
+            $.ajax({
+                type: "POST",
+                url: "../plantas/rankingExec.php",
+                dataType: "json",
+                data: {
+                    userID: <?php echo $_SESSION["ID"]; ?> // Envie o ID do usuário
+                },
+                success: function(userResponse) {
+                    if (userResponse.isValid === true) {
+                        // Redirecionar para a página se a resposta for verdadeira
+                        var mensagemRetorno = "Você não visualizou o ranking da sua última partida!"
+                        window.location.href = "../partidas/rankPartida.php?id=" + userResponse.idPartida + "&msgReturn=" + mensagemRetorno;
+                    } else {
+
+                    }
+                },
+                error: function() {
+                    console.log("O Rank ainda não foi definido!");
+                }
+            });
+        } else {
+            // A variável de sessão PARTIDA não é verdadeira
+            console.log("Partida não está ativa");
+        }
+    };
+
+    atualizarDados();
+
+    // Usar setInterval para chamar a função a cada x milissegundos.
+    setInterval(atualizarDados, 15000); // Atualizar a cada segundo (1000 ms).
+</script>
 
 </html>

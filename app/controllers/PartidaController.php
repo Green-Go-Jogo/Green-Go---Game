@@ -5,6 +5,7 @@ include_once(__DIR__."/../dao/PartidaDAO.php");
 include_once(__DIR__."/../dao/EquipeDAO.php");
 include_once(__DIR__."/../dao/PlantaDAO.php");
 include_once(__DIR__."/../dao/ZonaDAO.php");
+include_once(__DIR__."/../dao/QuestaoDAO.php");
 
 class PartidaController {
 
@@ -12,12 +13,14 @@ class PartidaController {
     private $equipeDAO;
     private $zonaDAO;
     private $plantaDAO;
+    private $questaoDAO;
 
     public function __construct() {
         $this->partidaDAO = new PartidaDAO();
         $this->plantaDAO = new PlantaDAO();
         $this->equipeDAO = new EquipeDAO();
         $this->zonaDAO = new ZonaDAO();
+        $this->questaoDAO = new QuestaoDAO();
     }
 
     public function listar() {
@@ -89,7 +92,7 @@ class PartidaController {
         return $this->partidaDAO->usuarioInEquipe($idUsuario);
     }
 
-    public function checarQRCode($statusPartida, $idPlanta, $arrayPlantas, $idUsuario) {
+    public function checarQRCode($idPlanta, $arrayPlantas, $idUsuario) {
 
         $partida = $this->partidaDAO->usuarioInEquipe($idUsuario);
 
@@ -101,11 +104,11 @@ class PartidaController {
             if($inZona){
             if (!in_array($idPlanta, $arrayPlantas)) {
                 $planta = $this->plantaDAO->findById($idPlanta);
-                $_SESSION["PONTOS"] += $planta->getPontos();
+                $_SESSION["PONTOS_PLANTAS"] += $planta->getPontos();
                 $arrayPlantas[] = $idPlanta;
                 $_SESSION['PLANTAS_LIDAS'] = $arrayPlantas;
 
-                $this->partidaDAO->addScore($_SESSION['PLANTAS_LIDAS'], $_SESSION['PONTOS'], $idUsuario);
+                $this->partidaDAO->addScorePlantas($_SESSION['PLANTAS_LIDAS'], $_SESSION['PONTOS_PLANTAS'], $idUsuario);
                 $msgFind = "Parabéns, você encontrou uma nova planta! ";
                 return $msgFind;
                 
@@ -121,6 +124,29 @@ class PartidaController {
         } else {
             return false;
         }
+    }
+
+    public function checarRespostaQuiz($idQuestao, $idAlternativa, $idUsuario, $arrayQuestoes, $idPlanta){
+        $_SESSION['QUESTOES_LIDAS'] = $arrayQuestoes;
+        //Checa se a alternativa da questão está certa
+        $questaoCerta = $this->questaoDAO->checkQuestion($idQuestao, $idAlternativa);
+        if($questaoCerta && !in_array($idQuestao, $_SESSION['QUESTOES_LIDAS'])){
+            //Adiciona pontos por ter acertado a questão
+            $questao = $this->questaoDAO->findByIdPlantaAndIdQuestao($idPlanta, $idQuestao);
+            $this->partidaDAO->addScoreQuestoes($idQuestao, $questao->getPontuacaoQuestao(), $idUsuario);
+            $arrayQuestoes[] = $idQuestao;
+            $_SESSION['QUESTOES_LIDAS'] = $arrayQuestoes;
+        } else if(!in_array($idQuestao, $_SESSION['QUESTOES_LIDAS'])){
+            //Adiciona a questão à questões respondidas mesmo se errada
+            $this->partidaDAO->addQuestionsResponse($idQuestao, $idUsuario);
+            $arrayQuestoes[] = $idQuestao;
+            $_SESSION['QUESTOES_LIDAS'] = $arrayQuestoes;
+        } else {
+            
+        }
+        //$questao->getPontuacaoQuestao()
+        //retorna a resposta da questão (true - 1 ou false - 0)
+        return $questaoCerta;
     }
 
     public function contarJogadores($idPartida) {

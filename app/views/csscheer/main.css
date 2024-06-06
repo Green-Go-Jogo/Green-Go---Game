@@ -343,7 +343,6 @@ a.excluir:hover {
         }
         
         .modo-escuro input[type=checkbox]:checked:before {
-            content: "";
             display: block;
             position: absolute;
             width: 20px;
@@ -354,7 +353,6 @@ a.excluir:hover {
         }
         
         .modo-escuro input[type=checkbox]:checked:after {
-            content: "";
             display: block;
             width: 5px;
             height: 10px;
@@ -526,9 +524,7 @@ a.excluir:hover {
         background-color: #C05367;
         border-color: #121212;
      }
-     
 
-
-     .modo-escuro td.tb_conteudo, .modo-escuro th.text-center, .modo-escuro td#tb_cargocss {
+     .modo-escuro td.tb_conteudo, .modo-escuro th.text-center, .modo-escuro td#tb_cargocss, .modo-escuro td, .modo-escuro th {
         border-color: #121212 !important;
      }
