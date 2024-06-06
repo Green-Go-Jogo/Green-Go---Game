@@ -12,8 +12,6 @@ $errors = array();
 
 if (empty($nomeZona)) {
     $errors['Nome_Zona'] = "O campo Nome Zona é obrigatório.";
-  } elseif (!preg_match('/^[a-zA-Z0-9\s]+$/', $nomeZona)) {
-    $errors['Nome_Zona'] = "O campo Nome Zona contém caracteres especiais.";
   }
   elseif (strlen($nomeZona) < 4) {
     $errors['Nome_Zona'] = "O campo Nome Zona deve conter pelo menos 4 caracteres.";
