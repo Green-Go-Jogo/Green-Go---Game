@@ -285,8 +285,25 @@ class PlantaHTML
         echo "</div>";
         echo "</div>";
         echo "<div class='modal-footer'>";
-        echo "<button type='button' class='btn btn-default' data-dismiss='modal'>Fechar</button>";
-        echo "<button type='button' class='btn btn-primary' onclick='abrirTelaDeImpressao()'>Imprimir</button>";
+        echo "<button type='button' class='btn btn-default' id='fechar' data-dismiss='modal'>Fechar</button>";
+        echo "<button type='button' class='btn btn-primary' id='imprimir' onclick='abrirTelaDeImpressao()'>Imprimir</button>";
+        echo "</div>";
+        echo "</div>";
+        echo "</div>";
+        echo "</div>";
+
+        echo "<div id='alertaModal' class='modal fade' role='dialog'>";
+        echo "<div class='modal-dialog'>";
+        echo "<div class='modal-content'>";
+        echo "<div class='modal-header'>";
+        echo "<h4 style='color: #f58c95' class='modal-title text-center'>Aviso!</h4>";
+        echo "</div>";
+        echo "<div class='modal-body'>";
+        echo "<div id='alertaModal'>";
+        echo "<p style='color: #f58c95'>Feche a pagina de impressão para continuar navegando no site!</p>";
+        echo "</div>";
+        echo "</div>";
+        echo "<div class='modal-footer'>";
         echo "</div>";
         echo "</div>";
         echo "</div>";
