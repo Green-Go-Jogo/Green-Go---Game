@@ -69,7 +69,7 @@ if (!isset($_SESSION['TIPO'])) {
                 Buscando conhecer mais a área verde que nos envolve, o projeto desenvolve, em atividades de extensão
                 voltadas
                 para a educação ambiental,
-                um sistema gamificado de identificação da flora arbórea e arborescente (árvores), bem como o conjunto
+                um sistema de identificação da flora arbórea e arborescente (árvores), bem como o conjunto
                 amplo
                 de
                 plantas alimentícias não

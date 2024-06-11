@@ -296,39 +296,25 @@ $nomePopular = $especie->getNomePopular();
 
 
     function validarQuiz() {
-        var questions = document.getElementsByClassName("pergunta");
-
-        // Verifica se pelo menos uma alternativa foi selecionada para cada pergunta
-        for (var i = 0; i < questions.length; i++) {
-            var questionRadios = questions[i].querySelectorAll("input[type=radio]");
-            var radioChecked = false;
-            for (var j = 0; j < questionRadios.length; j++) {
-                if (questionRadios[j].checked) {
-                    radioChecked = true;
-                    break;
-                }
-            }
-            if (!radioChecked) {
-                return false; // Impede o envio do formulário
-            }
-        }
-        return true; // Permite o envio do formulário
-    };
-
-
+        var questionRadios = document.querySelectorAll(".pergunta input[type=radio]");
+        var radioChecked = Array.prototype.some.call(questionRadios, function(radio) {
+            return radio.checked;
+        });
+        return radioChecked; // Retorna true se pelo menos um rádio estiver checado, caso contrário false
+    }
 
     function enviarQuiz() {
 
         //Valida se todas as questões foram respondidas
         var valida = validarQuiz()
         if (valida == false) {
-            return alert("Por favor, selecione uma resposta para cada pergunta.");
+            return alert("Por favor, selecione ao menos uma resposta para submeter o formulário.");
         }
 
         //Pega todos os radios marcados
         var radios = document.querySelectorAll('input[type="radio"]');
         var values = [];
-        enviarQuizBotao.setAttribute('onclick', '');
+        // enviarQuizBotao.setAttribute('onclick', '');
 
         radios.forEach(function(radio) {
             // Verifica se o input está marcado
@@ -336,16 +322,21 @@ $nomePopular = $especie->getNomePopular();
                 // Obtém o atributo "value" do input
                 var value = radio.getAttribute('value');
 
-                // Se o nome não estiver presente no array, adiciona-o
+                // Se o valor for "respondida", não faz nada
+                if (value === "respondida") {
+                    return; // Continua para o próximo radio
+                }
+
+                // Verifica se o valor já está no array
                 if (values.indexOf(value) === -1) {
-                    values.push(value);
+                    values.push(value); // Adiciona o valor ao array
                 }
             }
         });
 
-        console.log(values)
-        console.log(idUsuario)
-        console.log(arrayQuestoes);
+        if(values.length === 0){
+            return alert("Por favor, selecione ao menos uma resposta para submeter o formulário.");
+        }
 
         $.ajax({
             type: "POST",
@@ -359,20 +350,26 @@ $nomePopular = $especie->getNomePopular();
             dataType: "json", // Espera uma resposta JSON
             success: function(userResponse) {
                 if (userResponse.isValid === true) {
-                    console.log(userResponse)
+
                     var respostas = userResponse.respostas;
+
                     var correcaoHTML = '<div class="correcao">';
-                    for (var i = 0; i < respostas.length; i++) {
-                        var correcaoHTML = '<div class="correcao" id="'+(respostas[i] === true ? 'correta' : 'incorreta')+'" >';
+
+                    Object.keys(respostas).forEach(function(key) {
+                        var resposta = respostas[key];
+                        var correcaoHTML = '<div class="correcao" id="' + (resposta === true ? 'correta' : 'incorreta') + '" >';
 
                         // Adicionar texto da correção com base na resposta
-                        correcaoHTML += 'Questão: ' + (respostas[i] === true ? 'Correta' : 'Incorreta');
+                        correcaoHTML += 'Questão: ' + (resposta === true ? 'Correta' : 'Incorreta');
 
                         correcaoHTML += '</div>';
 
                         // Adicionar a div correcaoHTML ao documento
-                        $(correcaoHTML).insertAfter('.correcao' + i)
-                    }
+                        $(correcaoHTML).insertAfter('.correcao_' + key);
+
+                        //Tira o value das questões respondidas
+                        alterarValorRadio("question=" + key, "respondida");
+                    });
                 } else {
                     console.log("Seus pontos possivelmente foram somados, mas o servidor não conseguiu te dizer a resposta.");
                 }
@@ -381,6 +378,13 @@ $nomePopular = $especie->getNomePopular();
                 console.log("Ocorreu um erro de requisição, contate um professor ou administrador.");
             }
         });
+
+        function alterarValorRadio(name, novoValor) {
+            var radios = document.querySelectorAll('input[type=radio][name="' + name + '"]');
+            radios.forEach(function(radio) {
+                radio.value = novoValor;
+            });
+        }
     }
 </script>
 <script>

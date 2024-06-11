@@ -528,3 +528,48 @@ a.excluir:hover {
      .modo-escuro td.tb_conteudo, .modo-escuro th.text-center, .modo-escuro td#tb_cargocss, .modo-escuro td, .modo-escuro th {
         border-color: #121212 !important;
      }
+
+    .modo-escuro button#fechar {
+        color: #C05367;
+        background-color: transparent;
+        border-color: #C05367;
+    }
+    
+    .modo-escuro button#fechar:hover {
+        color: #C05367;
+        background-color: transparent;
+        border-radius: 5px;
+    }
+
+    .modo-escuro button#imprimir {
+        background-color: #04574d;
+    }
+    
+    .modo-escuro button#imprimir:hover {
+        background-color: #078071;
+    }
+
+    .modo-escuro h5#tituloQuestao, .modo-escuro h4.aviso-questao {
+        color: #078071;
+        background-color: transparent !important;
+    }
+
+    .modo-escuro .pergunta .radio-button  {
+        border: 2px solid #C05367;
+        color: #fff !important;
+        background-color: transparent;
+    }
+    
+    .modo-escuro input[type="radio"]:checked + .radio-button, .modo-escuro .radio-button:hover {
+        border: 2px solid #C05367;
+        background-color: #C05367;
+        color: #fff !important;
+    }
+
+    .modo-escuro #submitQuiz, .modo-escuro #submitQuiz:hover {
+        background-color: transparent;
+    }
+
+    .modo-escuro .linhaSepara {
+        background: #ED8E96;
+    }

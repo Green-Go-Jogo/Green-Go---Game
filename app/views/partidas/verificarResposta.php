@@ -26,7 +26,7 @@ if (isset($_POST['alternativas'])) {
 
         // Checa a resposta da questão e armazena o resultado na array de respostas
         $resposta = $partidaCont->checarRespostaQuiz($idQuestao, $idAlternativa, $idUsuario, $arrayQuestoes, $idPlanta);
-        $respostas[] = $resposta;
+        $respostas[$idQuestao] = $resposta;
     }
 
     // Cria a resposta JSON

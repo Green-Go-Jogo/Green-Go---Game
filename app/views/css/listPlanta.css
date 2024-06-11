@@ -139,10 +139,32 @@ a.editar {
     transition: 0.3s ease;
     display: inline-block;
     border-width: 3px ;
-        border-color: #ffffff ;
+    border-color: #ffffff ;
 }
 
-button#imprimas {
+button#imprimir {
+    background-color: var(--principal);
+    border-radius: 5px;
+    width: max-content !important;
+    height: max-content !important;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-family: Poppins-semibold;
+    font-size: 20px;
+    transition: 0.3s ease;
+    display: inline-block;
+    border-width: 3px ;
+    border-color: #ffffff ;
+}
+
+button#imprimir:hover {
+    transform: scale(1.05);
+}
+
+
+button#imprimas  {
     color: var(--branco);
     background-color: #338A5F;
     border-radius: 5px;
@@ -163,7 +185,7 @@ button#imprimas {
 
 button#imprimas:hover {
     color: #ebf0f1 !important;
-    background-color: #04574d;
+    background-color: #338A5F;
     transform: scale(1.05);
 }
 
@@ -232,6 +254,18 @@ a#editas:hover {
 #editas:disabled {
     color: var(--cinza);
     border: 2px solid var(--cinza);
+}
+
+button#fechar {
+    color: #C05367;
+    background-color: #fff;
+    border-color: #C05367;
+}
+
+button#fechar:hover {
+    color: #fff;
+    background-color: #C05367;
+    border-radius: 5px;
 }
 
 .primeirotextoreg {
