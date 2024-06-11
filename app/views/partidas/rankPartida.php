@@ -63,7 +63,7 @@ if ($_SESSION['PARTIDA'] == false) {
         if (isset($msgReturn)) {
             echo $msgReturn;
         }
-        echo "<b></p>"; ?>?>
+        echo "<b></p>"; ?>
         <br>
 
     </nav>
