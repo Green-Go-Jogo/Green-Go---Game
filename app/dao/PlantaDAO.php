@@ -170,7 +170,7 @@ class PlantaDAO {
 
         //Gerar o QR Code
         $qrCodeTexto = "https://www.greengoifpr.com.br/app/views/plantas/visualizarPlanta.php?idp=" . urlencode($idPlanta) . "&ide=". urlencode($idEspecie) . "&qrcode=true";
-        $qrCodeArq = "../../../../private/qrcode/qrcode_". $Cod_Numerico . ".png"; 
+        $qrCodeArq = "../../public/qrcode/qrcode_". $Cod_Numerico . ".png"; 
         QRcode::png($qrCodeTexto, $qrCodeArq, QR_ECLEVEL_L, 10); 
 
         $sql = "UPDATE planta SET codQR = ? WHERE idPlanta = ?";

@@ -61,7 +61,7 @@ if ($imagem['error'] === UPLOAD_ERR_NO_FILE) {
   // Um arquivo foi enviado, você pode processá-lo aqui
   $extensao = pathinfo($imagem['name'], PATHINFO_EXTENSION);
   $nome_imagem = md5(uniqid($imagem['name'])).".".$extensao;
-  $caminho_imagem = "../../../../private/especies/" . $nome_imagem;
+  $caminho_imagem = "../../public/especies/" . $nome_imagem;
   move_uploaded_file($imagem["tmp_name"], $caminho_imagem);
 
   $especie->setImagemEspecie($caminho_imagem);

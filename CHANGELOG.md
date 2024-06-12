@@ -3,10 +3,6 @@
 [https://keepachangelog.com/pt-BR/1.0.0/]
 [https://semver.org/lang/pt-BR/]
 
-### [0.3.0] - 12-06-2024
-# Modificado
-- Alterado a pasta de imagens salvas pelo cadastro de objetos do sistema, a fim de encerrar os problemas de exclusão de imagem no provedor de hospedagem
-
 ### [0.2.0] - 11-06-2024
 # Modificado
 - Ajustada método de resposta do quiz, além de seu front-end no dark-mode
