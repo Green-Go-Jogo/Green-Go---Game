@@ -215,7 +215,7 @@ $nomePopular = $especie->getNomePopular();
         <div>
 
             <div class=" text-center">
-                <?php if ($_SESSION['PARTIDA']) {
+                <?php if (isset($_SESSION['PARTIDA']) && $_SESSION['PARTIDA'] == true) {
                     echo "<p class='descricao text-center' id='pontos'>";
                     echo    "Pontos:" . $planta->getPontos();
                     echo "</p>";
@@ -263,7 +263,7 @@ $nomePopular = $especie->getNomePopular();
             <br>
             <div class="text-center">
                 <?php
-                if ($_SESSION['PARTIDA'] && strpos($msgFind, 'Essa planta não pertence à uma das zonas da sua partida!') == false) {
+                if (isset($_SESSION['PARTIDA']) && $_SESSION['PARTIDA'] == true && strpos($msgFind, 'Essa planta não pertence à uma das zonas da sua partida!') == false) {
                     PlantaHTML::desenhaQuestoes($idp, $arrayQuestoes);
                 }
                 ?>

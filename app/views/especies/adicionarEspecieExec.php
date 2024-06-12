@@ -52,7 +52,7 @@ if (!empty($errors)) {
 //Criar o objeto espécie
 $extensao = pathinfo($imagem['name'], PATHINFO_EXTENSION);
 $nome_imagem = md5(uniqid($imagem['name'])).".".$extensao;
-$caminho_imagem = "../../public/especies/" . $nome_imagem;
+$caminho_imagem = "../../../../private/especies/" . $nome_imagem;
 move_uploaded_file($imagem["tmp_name"], $caminho_imagem);
 
 
