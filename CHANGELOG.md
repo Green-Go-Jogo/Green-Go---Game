@@ -1,7 +1,7 @@
 # Foram utilizadas as seguintes documentações para a criação desse arquivo
 
 Para a criação do Changelog foi seguido o modelo [Mantenha um Changelog](https://keepachangelog.com/pt-BR/1.0.0/)
-E como referência as versões seguem o modelo de [Versionamento Semântico](https://semver.org/lang/pt-BR/)
+e junto do [Versionamento Semântico](https://semver.org/lang/pt-BR/)
 
 # [0.3.0] - 13-06-2024
 ### Modificado
