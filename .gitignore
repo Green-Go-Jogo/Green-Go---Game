@@ -1,4 +1,8 @@
 .htaccess
 a
 Connection.php
-/app/public
+/app/public/especie
+/app/public/plantas
+/app/public/qrcode
+/app/public/questoes
+/app/public/descricao
