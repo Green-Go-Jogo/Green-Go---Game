@@ -49,7 +49,6 @@ $codigo = $plantaCont->gerarCodigo();
     margin: 0;
   }
 
-
   .selectize-dropdown-content .option {
     color: #ebf0f1;
     background-color: #f0b6bc;
