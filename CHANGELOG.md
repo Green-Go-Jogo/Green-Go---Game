@@ -3,6 +3,10 @@
 [https://keepachangelog.com/pt-BR/1.0.0/]
 [https://semver.org/lang/pt-BR/]
 
+### [0.3.0] - 13-06-2024
+# Modificado
+- Ajustada a exclusão de imagens quando subida nova versão do git, agora as pastas contendo imagens dinâmicas é citada no arquivo .gitignore, não havendo sua alteração em novas versões
+
 ### [0.2.0] - 11-06-2024
 # Modificado
 - Ajustada método de resposta do quiz, além de seu front-end no dark-mode
