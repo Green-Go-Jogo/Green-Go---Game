@@ -128,9 +128,9 @@ include_once(__DIR__ . "/htmlEspecie.php");
                     <p class="conteudo" style="font-size: 25px;"><b>${codNumerico}</b></p>
                 </div>
                 <div class="bottom">
-                    <img style="width: 20%; display: none" src="../../public/unila-logo.png" alt="Logo 1">
-                    <img style="width: 20%; display: none" src="../../public/if-impressao-logo.png" alt="Logo 2">
-                    <img style="width: 20%; display: none" src="../../public/greengoimpressao-logo.png" alt="Logo 3">
+                    <img style="width: 25%; display: none" src="../../public/unila-logo.png" alt="Logo 1">
+                    <img style="width: 25%; display: none" src="../../public/if-impressao-logo.png" alt="Logo 2">
+                    <img style="width: 25%; display: none" src="../../public/greengoimpressao-logo.png" alt="Logo 3">
                 </div>
             </div>
         `;
@@ -185,7 +185,7 @@ include_once(__DIR__ . "/htmlEspecie.php");
                 max-height: 100%;
                 width: auto;
                 height: auto;
-                margin: 10px;
+                margin: 5px;
                 display: block !important;
             }
             .right img {
