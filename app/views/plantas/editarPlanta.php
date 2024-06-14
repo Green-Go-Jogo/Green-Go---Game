@@ -250,7 +250,7 @@ $idsEditar = json_encode($idsQuestoesEditar)
                             <span class="mensagemRetorno" id="retornoCampo3"></span>
 
                             <div class="form-group"></div>
-                            <label for="formtexto" id="txtPontos">Pontuação:</label>
+                            <label for="formtexto" id="txtPontos">Pontuação da Planta:</label>
                             <div class="w-100"> </div>
                             <input type="number" name="Pontuacao" class="form-control" id="txtCodigoForm" aria-describedby="nome-cadastro" value="<?php echo isset($_POST['Pontuacao']) ? $_POST['Pontuacao'] : $planta->getPontos(); ?>">
                             <?php if (isset($errors) && !empty($errors) && isset($errors['Pontuacao'])) { ?>
@@ -411,13 +411,14 @@ $idsEditar = json_encode($idsQuestoesEditar)
 
               // Criar um elemento de parágrafo para cada informação da questão
               var paragrafo = document.createElement("p");
-              paragrafo.innerHTML = "<input name='checkbox_" + i + "' type='checkbox' value='" + questao.idQuestao + "' " + checked + "/>" +
-                "<b><span style='margin-left: 10px; color: #338a5f'>Questão:</span></b> " + questao.descricao +
-                "<a><i class='fa-solid fa-circle' style='margin-left: 10px; color:" + questao.cor + "'></i></a>" +
-                "<label for='pontuacaoQuestao'/> Pontuação: " +
-                "<input style='margin-left: 4px; max-width: 30px' value='" + (pontuacaoValor !== null ? pontuacaoValor : '') + "' id='pontuacaoQuestao' name='questaop_" + i + "' type='number'/><br>";
-
-              // Adicionar o parágrafo à div
+              paragrafo.innerHTML = "<input class='questaoCheckbox' name='checkbox_" + i + "' type='checkbox' value='" + questao.idQuestao + "' " + checked + "/>" +
+                "<a><i class='fa-solid fa-circle' style='margin-left: 6px; margin-right: 6px; color:" + questao.cor + "'></i></a>" +
+                "<b><span class='questaoFormTitulo'>Questão:</span></b><span class='questaoFormDesc'> " + questao.descricao + "</span>" +
+                "<span style='margin-right: 6px; margin-left: 6px; color: #C05367;'>|</span>" +
+                "<label class='labelPontuacaoQuestao'  for='pontuacaoQuestao'/> Pontuação Questão: " +
+                "<input style='margin-left: 4px; max-width: 30px' value='" + (pontuacaoValor !== null ? pontuacaoValor : '') + "' class='pontuacaoQuestao' name='questaop_" + i + "' type='number'/><br>";
+              
+                // Adicionar o parágrafo à div
               document.getElementById("Questoes").appendChild(paragrafo);
             }
           } else {
