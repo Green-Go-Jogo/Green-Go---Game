@@ -130,4 +130,41 @@ $partida = $partidaCont->buscarPorId($idPartida);
     setInterval(atualizarDados, 12000); // Atualizar a cada segundo (1000 ms).
 </script>
 
+<script>
+    function checarRanking() {
+        // Verifique se a variável de sessão PARTIDA é verdadeira
+        var partidaAtiva = <?php echo ($_SESSION['PARTIDA'] ? 'true' : 'false'); ?>;
+
+        if (partidaAtiva === true) {
+            // A variável de sessão PARTIDA é verdadeira
+            $.ajax({
+                type: "POST",
+                url: "rankingExec.php",
+                dataType: "json",
+                data: {
+                    userID: <?php echo $_SESSION["ID"]; ?> // Envie o ID do usuário
+                },
+                success: function(userResponse) {
+                    if (userResponse.isValid === true) {
+                        // Redirecionar para a página se a resposta for verdadeira
+                        window.location.href = "../partidas/rankPartida.php?id=" + userResponse.idPartida;
+                    } else {
+
+                    }
+                },
+                error: function() {
+                    console.log("O Rank ainda não foi definido!");
+                }
+            });
+        } else {
+            // A variável de sessão PARTIDA não é verdadeira
+            console.log("Partida não está ativa");
+        }
+    };
+
+    checarRanking();
+
+    // Usar setInterval para chamar a função a cada x milissegundos.
+    setInterval(checarRanking, 15000); // Atualizar a cada segundo (1000 ms).
+</script>
 </html>

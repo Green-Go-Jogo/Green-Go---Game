@@ -1,7 +1,10 @@
 # Foram utilizadas as seguintes documentações para a criação desse arquivo
 
-Para a criação do Changelog foi seguido o modelo [Mantenha um Changelog](https://keepachangelog.com/pt-BR/1.0.0/)
-e junto do [Versionamento Semântico](https://semver.org/lang/pt-BR/)
+Para a criação do Changelog foi seguido o modelo [Mantenha um Changelog](https://keepachangelog.com/pt-BR/1.0.0/) junto do [Versionamento Semântico](https://semver.org/lang/pt-BR/)
+
+# [0.4.0] - 13-06-2024
+### Modificado
+- Adicionada a pontuação de quiz às telas de equipes e ranking, adicionado às páginas de verEquipe e MainJogo a função de checar se a partida foi finalizada e encaminhar o usuário a página de ranking
 
 # [0.3.0] - 13-06-2024
 ### Modificado
