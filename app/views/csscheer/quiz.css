@@ -15,33 +15,34 @@
     font-family: Poppins-regular, Roboto;
 }
 
-    @font-face {
-        font-family: 'Cooper';
-        src: url('../fontes/cooperhewitt-heavy.otf');
-    }
-    
-    @font-face {
-        font-family: 'Poppins';
-        src: url('../fontes/Poppins-ExtraBold.ttf');
-    }
-    
-    @font-face {
-        font-family: 'Poppins-regular';
-        src: url('../fontes/Poppins-Regular.ttf');
-    }
-    
-    @font-face {
-        font-family: 'Poppins-semibold';
-        src: url('../fontes/Poppins-SemiBold.ttf');
-    }
-    
-    @font-face {
-        font-family: 'Poppins-medium';
-        src: url('../fontes/Poppins-Medium.ttf');
-    }
+@font-face {
+    font-family: 'Cooper';
+    src: url('../fontes/cooperhewitt-heavy.otf');
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('../fontes/Poppins-ExtraBold.ttf');
+}
+
+@font-face {
+    font-family: 'Poppins-regular';
+    src: url('../fontes/Poppins-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Poppins-semibold';
+    src: url('../fontes/Poppins-SemiBold.ttf');
+}
+
+@font-face {
+    font-family: 'Poppins-medium';
+    src: url('../fontes/Poppins-Medium.ttf');
+}
 
 body {
-    background-color: #ebf0f1;;
+    background-color: #ebf0f1;
+    ;
 }
 
 #primeirotextoreg {
@@ -129,7 +130,7 @@ body {
 
 
 #botoesregistrar {
-    color: #ebf0f1; 
+    color: #ebf0f1;
     background-color: #338a5f;
     font-family: Poppins-regular;
     border-color: #04574d;
@@ -142,7 +143,8 @@ body {
 }
 
 #botoeslimpar {
-    color: #f0b6bc;;
+    color: #f0b6bc;
+    ;
     background-color: #ffffff;
     font-family: Poppins-regular;
     border-color: #f0b6bc;
@@ -165,11 +167,11 @@ body {
     font-family: Poppins-regular;
 }
 
-input[type=radio]{
-margin-left: 11px;
-accent-color: #04574d;
-width: 15px;
-height: 15px;
+input[type=radio] {
+    margin-left: 11px;
+    accent-color: #04574d;
+    width: 15px;
+    height: 15px;
 }
 
 
@@ -189,7 +191,7 @@ height: 15px;
     text-decoration: none;
 }
 
-#textodescritivo {     
+#textodescritivo {
     color: #338a5f;
     font-family: Poppins-semibold;
     margin-left: 8px;
@@ -201,9 +203,12 @@ height: 15px;
 .fa-camera {
     font-size: 33px;
     color: #078071;
-  }
-  
-  #alt1, #alt2, #alt3, #alt4 {
+}
+
+#alt1,
+#alt2,
+#alt3,
+#alt4 {
     background-color: #f0b6bc;
     color: #ffffff;
     font-family: Poppins-semibold;
@@ -221,6 +226,11 @@ height: 15px;
     font-family: Poppins-regular;
 }
 
-input[type=file]{
-    content-visibility:hidden;
-    }
+input[type=file] {
+    content-visibility: hidden;
+}
+
+.preview-image__img, #imgatual {
+    width: 200px;
+    height: auto;
+}

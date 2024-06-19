@@ -316,7 +316,7 @@ class PartidaHTML
 
         foreach ($usuarios as $usuario) {
             $usuarioPartida = $partCont->buscarUsuarioPorIdPartida($usuario->getIdUsuario(), $partida->getIdPartida());
-            $pontos = $usuarioPartida->getPontuacaoPlantas() !== null ? $usuarioPartida->getPontuacaoPlantas() : 0;
+            $pontos = $usuarioPartida->getPontuacaoPlantas() + $usuarioPartida->getPontuacaoQuestoes();
 
 
             echo "<tr>";

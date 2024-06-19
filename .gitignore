@@ -1,6 +1,6 @@
 .htaccess
 a
-Connection.php
+/app/connection/Connection.php
 /app/public/especie
 /app/public/plantas
 /app/public/qrcode

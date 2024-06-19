@@ -380,7 +380,7 @@ class PartidaDAO
     {
         $conn = conectar_db();
 
-        $sql = "UPDATE partida_equipe pe SET pe.pontuacaoEquipe = (SELECT SUM(pu.pontuacaoPlantas) FROM partida_usuario pu WHERE pu.idPartidaEquipe = pe.idPartidaEquipe)";
+        $sql = "UPDATE partida_equipe pe SET pe.pontuacaoEquipe = (SELECT SUM(pu.pontuacaoPlantas + pu.pontuacaoQuestoes) FROM partida_usuario pu WHERE pu.idPartidaEquipe = pe.idPartidaEquipe)";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
     }
@@ -511,7 +511,7 @@ class PartidaDAO
             
             $this->addQuestionsResponse($idQuestao, $idUsuario);
             
-            $sql = "UPDATE partida_usuario SET pontuacaoQuestoes = ? WHERE idPartidaUsuario = ?";
+            $sql = "UPDATE partida_usuario SET pontuacaoQuestoes = pontuacaoQuestoes + ? WHERE idPartidaUsuario = ?";
             $stmt = $conn->prepare($sql);
             $stmt->execute([$pontos, $usuario->getIdPartidaUsuario()]);
         } else {

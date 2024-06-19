@@ -1,7 +1,19 @@
 # Foram utilizadas as seguintes documentações para a criação desse arquivo
 
-Para a criação do Changelog foi seguido o modelo [Mantenha um Changelog](https://keepachangelog.com/pt-BR/1.0.0/)
-e junto do [Versionamento Semântico](https://semver.org/lang/pt-BR/)
+Para a criação do Changelog foi seguido o modelo [Mantenha um Changelog](https://keepachangelog.com/pt-BR/1.0.0/) junto do [Versionamento Semântico](https://semver.org/lang/pt-BR/)
+
+# [1.0.0] - 19-06-2024
+### Adicionado
+- Adicionado o Sistema de Quiz, incluindo o CRUD de questões, junto da adição de questões a uma planta. Também sendo possivelmente a função quiz durante uma partida, agregando ao conhecimento dos jogadores e aos pontos da equipe.
+
+# [0.5.0] - 19-06-2024
+### Modificado e Adicionado
+- Front-end de responder o quiz, formulário, página de listagem de questões, entre outras alterações menores
+- Verificação do formulário de quiz, possibilidade de não adicionar imagem a uma questão
+
+# [0.4.0] - 13-06-2024
+### Adicionado
+- Adicionada a pontuação de quiz às telas de equipes e ranking, adicionado às páginas de verEquipe e MainJogo a função de checar se a partida foi finalizada e encaminhar o usuário a página de ranking
 
 # [0.3.0] - 13-06-2024
 ### Modificado

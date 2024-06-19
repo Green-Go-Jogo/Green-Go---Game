@@ -40,7 +40,7 @@ if (!isset($_GET['ide'])) {
 
     .card-title {
         font-family: Poppins-semibold;
-    font-size: 25px;
+        font-size: 25px;
     }
 
     .questoesh1 {
@@ -54,6 +54,7 @@ if (!isset($_GET['ide'])) {
         margin-bottom: 10px;
         font-family: Poppins-medium;
         border-radius: 30px;
+        border: solid 3px #C05367;
         background-color: #fff;
     }
 
@@ -85,32 +86,32 @@ if (!isset($_GET['ide'])) {
     }
 
     .excluir {
-    color: #f0b6bc;
-    background-color: transparent;
-    border-radius: 5px;
-    border: 2px solid  #f0b6bc;
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    font-family: Poppins-medium;
-    font-size: 18px;
-    transition: 0.3s ease;
-    margin-left: 15px;
-    display: inline-block;
+        color: #f0b6bc;
+        background-color: transparent;
+        border-radius: 5px;
+        border: 2px solid #f0b6bc;
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        font-family: Poppins-medium;
+        font-size: 18px;
+        transition: 0.3s ease;
+        margin-left: 15px;
+        display: inline-block;
 
-}
+    }
 
-a.excluir:hover {
-    color: #ebf0f1;
+    a.excluir:hover {
+        color: #ebf0f1;
         background-color: #f0b6bc;
         border-radius: 5px;
-}
+    }
 
-.excluir:disabled {
-    color: var(--cinza);
-    border: 2px solid var(--cinza);
-}
+    .excluir:disabled {
+        color: var(--cinza);
+        border: 2px solid var(--cinza);
+    }
 
     @media (max-width: 767px) {
         .col-md-4 {
@@ -148,10 +149,19 @@ a.excluir:hover {
         }
     }
 
-    .modo-escuro a#addict,  .modo-escuro a#addict:hover {
-    background-color: transparent !important;
-    color: #ffffff !important;
-}
+    .modo-escuro a#addict,
+    .modo-escuro a#addict:hover {
+        background-color: transparent !important;
+        color: #ffffff !important;
+    }
+
+
+    #semQuestoes, .modo-escuro #semQuestoes {
+        margin-top: 6rem;
+        margin-bottom: 8rem;
+        font-family: Poppins-semibold;
+        color: #C05367 !important;
+    }
 </style>
 
 <body>
@@ -178,7 +188,9 @@ a.excluir:hover {
         <?php
         $questaoCont = new QuestaoController;
         $questoes = $questaoCont->listarPorEspecie($ide);
-
+        if (sizeof($questoes) <= 0) {
+            echo "<h1 id='semQuestoes'>Nenhuma questão foi adicionada a essa espécie!</h1>";
+        }
         foreach ($questoes as $questao) {
             $grauD = $questao->getGrauDificuldade();
             if ($grauD == "dificil") {
@@ -194,12 +206,12 @@ a.excluir:hover {
             echo "<div class='card-body' style='display: flex; flex-direction: column; align-items: center;'>";
             echo "<h1 id='tituloQuestao' class='card-title'>Questão:</h1>";
             echo "<p class='descricaoQuestao' style='text-align: center; width: 100%; color: #338a5f;'>" . $questao->getDescricaoQuestao() . "</p>";
-
+            echo "<img id='imgQuestao' src='" . $questao->getImagemQuestao() . "'/>";
             echo "<div style='width: 100%; display: flex; justify-content: center; align-items: center; flex-wrap: wrap;'>";
-            echo "<a href='editarPergunta.php?idq=" . $questao->getIdQuestao() . "' id='editas' class='btn bn-alert'>Editar</a>";
-            echo "<a href='deletarPergunta.php?idq=" . $questao->getIdQuestao() . "&ide=".$ide."' id='excluas' class='btn btn-alert excluir'>Excluir</a>";
+            echo "<a href='editarPergunta.php?idq=" . $questao->getIdQuestao() . "&ide=" . $ide . "' id='editas' class='btn bn-alert'>Editar</a>";
+            echo "<a href='deletarPergunta.php?idq=" . $questao->getIdQuestao() . "&ide=" . $ide . "' onclick='return confirm(\"Confirma a exclusão da Questão?\");' id='excluas' class='btn btn-alert excluir'>Excluir</a>";
             echo "<a style='margin: 10px; color: #04574d;'>Dificuldade: <i class='fa-solid fa-circle' style='color:" . $cor . "'></i></a>";
-            
+
             echo "</div>";
             echo "</div>";
             echo "</div>";
@@ -214,4 +226,5 @@ a.excluir:hover {
 </body>
 
 <?php include_once("../../bootstrap/footer.php"); ?>
+
 </html>
