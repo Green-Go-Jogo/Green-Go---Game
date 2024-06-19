@@ -2,6 +2,10 @@
 
 Para a criação do Changelog foi seguido o modelo [Mantenha um Changelog](https://keepachangelog.com/pt-BR/1.0.0/) junto do [Versionamento Semântico](https://semver.org/lang/pt-BR/)
 
+# [1.0.0] - 19-06-2024
+### Adicionado
+- Adicionado o Sistema de Quiz, incluindo o CRUD de questões, junto da adição de questões a uma planta. Também sendo possivelmente a função quiz durante uma partida, agregando ao conhecimento dos jogadores e aos pontos da equipe.
+
 # [0.5.0] - 19-06-2024
 ### Modificado e Adicionado
 - Front-end de responder o quiz, formulário, página de listagem de questões, entre outras alterações menores
