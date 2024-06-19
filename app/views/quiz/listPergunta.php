@@ -199,7 +199,7 @@ if (!isset($_GET['ide'])) {
             echo "<img id='imgQuestao' src='". $questao->getImagemQuestao(). "'/>";
             echo "<div style='width: 100%; display: flex; justify-content: center; align-items: center; flex-wrap: wrap;'>";
             echo "<a href='editarPergunta.php?idq=" . $questao->getIdQuestao() . "&ide=" . $ide . "' id='editas' class='btn bn-alert'>Editar</a>";
-            echo "<a href='deletarPergunta.php?idq=" . $questao->getIdQuestao() . "&ide=" . $ide . "' id='excluas' class='btn btn-alert excluir'>Excluir</a>";
+            echo "<a href='deletarPergunta.php?idq=" . $questao->getIdQuestao() . "&ide=" . $ide . "' onclick='return confirm(\"Confirma a exclusão da Questão?\");' id='excluas' class='btn btn-alert excluir'>Excluir</a>";
             echo "<a style='margin: 10px; color: #04574d;'>Dificuldade: <i class='fa-solid fa-circle' style='color:" . $cor . "'></i></a>";
 
             echo "</div>";

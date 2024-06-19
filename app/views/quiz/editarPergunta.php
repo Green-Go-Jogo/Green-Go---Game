@@ -5,6 +5,7 @@ LoginController::manterUsuario();
 LoginController::verificarAcesso([2, 3]);
 include_once("../../controllers/QuestaoController.php");
 
+
 if (!isset($_SESSION['TIPO'])) {
     $tipo = null;
 } else {
@@ -16,10 +17,20 @@ if (!isset($_GET['idq'])) {
     $idq = $_GET['idq'];
 }
 
-if (!isset($_GET['ide'])) {
-    $ide = null;
+if (isset($_GET['idq'])) {
+    $idq = $_GET['idq'];
+} else if (isset($idPlantaQuestaoValidacao)) {
+    $idq = $idPlantaQuestaoValidacao;
 } else {
+    $idq = null;
+}
+
+if (isset($_GET['ide'])) {
     $ide = $_GET['ide'];
+} else if (isset($idEspecieQuestaoValidacao)) {
+    $ide = $idEspecieQuestaoValidacao;
+} else {
+    $ide = null;
 }
 
 $questaoController = new QuestaoController;
@@ -54,6 +65,9 @@ $alternativas = $questaoController->buscarAlternativa($idq);
                             <label class="nomeAtributo" for="txtDescricaoQ" id="txtNome"> Descrição:</label>
                             <input class="form-control" type="text" id="txtDescricaoQ" name="descricao" maxlength="200" placeholder="Informe a descrição da questão" value="<?php echo isset($_POST['descricao']) ? $_POST['descricao'] : $questao->getDescricaoQuestao(); ?>" />
                         </div>
+                        <?php if (isset($errors) && !empty($errors) && isset($errors['descricao'])) { ?>
+                            <div class="alert alert-warning" style="position: left;"><?php echo $errors['descricao']; ?></div>
+                        <?php } ?>
                         <div class="form-group">
                             <label class="nomeAtributo" for="txtGrauDificuldade" id="txtNomeDificuldade"> Grau de dificuldade:</label>
                             <fieldset>
@@ -71,17 +85,22 @@ $alternativas = $questaoController->buscarAlternativa($idq);
                                     <input type="radio" id="dificil" name="grauDificuldade" value="dificil" <?php echo (null !== ($questao->getGrauDificuldade()) && $questao->getGrauDificuldade() === "dificil") ? "checked" : ""; ?>>
                                     <label class="nomeAtributo" for="dificil" id="texto-checkbox">Difícil</label>
                                 </div>
+                                <?php if (isset($errors) && !empty($errors) && isset($errors['grau_dificuldade'])) { ?>
+                                    <div class="alert alert-warning" style="position: left;"><?php echo $errors['grau_dificuldade']; ?></div>
+                                <?php } ?>
                             </fieldset>
                         </div>
 
                         <div class="col-sm" id="imagemreg">
 
                             <div class="form-group" id="imagemreg">
+                                <?php if($questao->getImagemQuestao() != null) { ?>
                                 <a id="carregueimagemtexto"> Imagem Atual:</a> <br><br>
                                 <div class="preview-image">
                                     <input type="hidden" name='imagemAtual' value="<?php echo $questao->getImagemQuestao() ?>">
                                     <img id="imgatual" src="<?php echo $questao->getImagemQuestao() ?>" />
                                 </div><br>
+                                <?php } ?>
                                 <a id="carregueimagemtexto"> Carregue uma imagem:</a> <br><br>
                                 <div class="preview-image">
                                     <img class="preview-image__img" data-image-preview />
@@ -96,19 +115,22 @@ $alternativas = $questaoController->buscarAlternativa($idq);
                             <label class="text" id="txtNomeAlternativa"> Crie as alternativas: </label> <br>
 
                             <label class="nomeAtributo" for="alt1" id="alternativa"> Alternativa 1</label>
-                            <input class="form-control" type="text" id="alt1" name="alternativa1" maxlength="200" placeholder="Informe a descrição da alternativa" value=" <?php echo $alternativas[0]->getDescricaoAlternativa(); ?>">
+                            <input class="form-control" type="text" id="alt1" name="alternativa1" maxlength="200" placeholder="Informe a descrição da alternativa" value="<?php echo $alternativas[0]->getDescricaoAlternativa(); ?>">
                         </div>
                         <div class="form-group">
                             <label class="nomeAtributo" for="alt2" id="alternativa"> Alternativa 2</label>
-                            <input class="form-control" type="text" id="alt2" name="alternativa2" maxlength="200" placeholder="Informe a descrição da alternativa" value=" <?php echo $alternativas[1]->getDescricaoAlternativa(); ?>">
+                            <input class="form-control" type="text" id="alt2" name="alternativa2" maxlength="200" placeholder="Informe a descrição da alternativa" value="<?php echo $alternativas[1]->getDescricaoAlternativa(); ?>">
                         </div>
                         <div class="form-group">
                             <label class="nomeAtributo" for="alt3" id="alternativa"> Alternativa 3</label>
-                            <input class="form-control" type="text" id="alt3" name="alternativa3" maxlength="200" placeholder="Informe a descrição da alternativa" value=" <?php echo $alternativas[2]->getDescricaoAlternativa(); ?>">
+                            <input class="form-control" type="text" id="alt3" name="alternativa3" maxlength="200" placeholder="Informe a descrição da alternativa" value="<?php echo $alternativas[2]->getDescricaoAlternativa(); ?>">
                         </div>
                         <div class="form-group">
                             <label class="nomeAtributo" for="alt4" id="alternativa"> Alternativa 4</label>
-                            <input class="form-control" type="text" id="alt4" name="alternativa4" maxlength="200" placeholder="Informe a descrição da alternativa" value=" <?php echo $alternativas[3]->getDescricaoAlternativa(); ?>">
+                            <input class="form-control" type="text" id="alt4" name="alternativa4" maxlength="200" placeholder="Informe a descrição da alternativa" value="<?php echo $alternativas[3]->getDescricaoAlternativa(); ?>">
+                            <?php if (isset($errors) && !empty($errors) && isset($errors['alternativas'])) { ?>
+                                <div class="alert alert-warning" style="position: left;"><?php echo $errors['alternativas']; ?></div>
+                            <?php } ?>
                         </div>
 
                         <div class="form-group">
@@ -128,6 +150,9 @@ $alternativas = $questaoController->buscarAlternativa($idq);
                             <div> <input type="radio" name="alternativa_correta" value="4" <?php echo (null !== ($alternativas[3]->getAlternativaCerta()) && $alternativas[3]->getAlternativaCerta() === 1) ? "checked" : ""; ?>>
                                 <label class="nomeAtributo" id="texto-checkbox">Alternativa 4</label>
                             </div>
+                            <?php if (isset($errors) && !empty($errors) && isset($errors['alternativa_correta'])) { ?>
+                                <div class="alert alert-warning" style="position: left;"><?php echo $errors['alternativa_correta']; ?></div>
+                            <?php } ?>
                         </div>
 
                         <div>

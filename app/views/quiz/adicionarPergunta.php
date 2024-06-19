@@ -5,16 +5,21 @@ LoginController::manterUsuario();
 LoginController::verificarAcesso([2, 3]);
 include_once("../../controllers/QuestaoController.php");
 
+global $idEspecieQuestaoValidacao;
+
 if (!isset($_SESSION['TIPO'])) {
     $tipo = null;
 } else {
     $tipo = $_SESSION['TIPO'];
 }
-if (!isset($_GET['ide'])) {
-    $ide = null;
-} else {
+if (isset($_GET['ide'])) {
     $ide = $_GET['ide'];
+} else if (isset($idEspecieQuestaoValidacao)) {
+    $ide = $idEspecieQuestaoValidacao;
+} else {
+    $ide = null;
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -42,8 +47,11 @@ if (!isset($_GET['ide'])) {
                     <form id="frmQuestao" action="adicionarPerguntaExec.php" method="POST" enctype="multipart/form-data">
                         <div class="form-group">
                             <label class="nomeAtributo" for="txtDescricaoQ" id="txtNome"> Descrição:</label>
-                            <input class="form-control" type="text" id="txtDescricaoQ" name="descricao" maxlength="200" value="<?php echo (isset($dados["questao"]) ? $dados["questao"]->getDescricaoQ() : ''); ?>" />
+                            <input class="form-control" type="text" id="txtDescricaoQ" name="descricao" maxlength="200" />
                         </div>
+                        <?php if (isset($errors) && !empty($errors) && isset($errors['descricao'])) { ?>
+                            <div class="alert alert-warning" style="position: left;"><?php echo $errors['descricao']; ?></div>
+                        <?php } ?>
                         <div class="form-group">
                             <label class="nomeAtributo" for="txtGrauDificuldade" id="txtNomeDificuldade"> Grau de dificuldade:</label>
                             <fieldset>
@@ -62,6 +70,9 @@ if (!isset($_GET['ide'])) {
                                     <label class="nomeAtributo" for="dificil" id="texto-checkbox">Difícil</label>
                                 </div>
                             </fieldset>
+                            <?php if (isset($errors) && !empty($errors) && isset($errors['grau_dificuldade'])) { ?>
+                                <div class="alert alert-warning" style="position: left;"><?php echo $errors['grau_dificuldade']; ?></div>
+                            <?php } ?>
                         </div> <br><br>
 
                         <div class="col-sm" id="imagemreg">
@@ -95,6 +106,9 @@ if (!isset($_GET['ide'])) {
                         <div class="form-group">
                             <label class="nomeAtributo" for="alt4" id="alternativa"> Alternativa 4: </label>
                             <input class="form-control" type="text" id="alt4" name="alternativa4" maxlength="200">
+                            <?php if (isset($errors) && !empty($errors) && isset($errors['alternativas'])) { ?>
+                                <div class="alert alert-warning" style="position: left;"><?php echo $errors['alternativas']; ?></div>
+                            <?php } ?>
                         </div>
 
                         <div class="form-group">
@@ -115,6 +129,9 @@ if (!isset($_GET['ide'])) {
                             <div> <input type="radio" name="alternativa_correta" value="4">
                                 <label class="nomeAtributo" id="texto-checkbox">Alternativa 4</label>
                             </div>
+                            <?php if (isset($errors) && !empty($errors) && isset($errors['alternativa_correta'])) { ?>
+                                <div class="alert alert-warning" style="position: left;"><?php echo $errors['alternativa_correta']; ?></div>
+                            <?php } ?>
                         </div>
                         <br>
 
@@ -152,4 +169,5 @@ if (!isset($_GET['ide'])) {
 </script>
 <?php include_once("../../bootstrap/footer.php"); ?>
 <script type="text/javascript" src="../js/imagem.js" defer></script>
+
 </html>

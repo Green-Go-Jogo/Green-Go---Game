@@ -340,7 +340,9 @@ class PlantaHTML
         foreach ($idsQuestoes as $questaoPlanta) {
             $questao = $questaoCont->buscarPorId($questaoPlanta->getIdQuestao());
 
+            if($questao->getImagemQuestao() !== null){
             echo "<img id='imgQuestao' src='" . $questao->getImagemQuestao() . "'/>";
+            }
             echo "<h5 id='tituloQuestao'>" . $questao->getDescricaoQuestao() . "</h5>";
 
             if (in_array($questaoPlanta->getIdQuestao(), $questoesRespondidas)) {
