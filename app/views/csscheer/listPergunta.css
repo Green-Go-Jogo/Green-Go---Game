@@ -16,3 +16,20 @@ height: 100%;
 
 font-family: Poppins-regular, Roboto;
 }
+
+#imgQuestao {
+    width: 55%;
+    margin-top: -8px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    border: 1px solid #C05367;
+}
+
+@media (max-width: 990px) {
+    #imgQuestao {
+        width: 80%;
+        margin-top: -8px;
+        margin-bottom: 10px;
+        border-radius: 20px;
+    }
+}

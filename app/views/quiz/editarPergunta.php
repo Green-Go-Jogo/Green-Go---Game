@@ -16,6 +16,12 @@ if (!isset($_GET['idq'])) {
     $idq = $_GET['idq'];
 }
 
+if (!isset($_GET['ide'])) {
+    $ide = null;
+} else {
+    $ide = $_GET['ide'];
+}
+
 $questaoController = new QuestaoController;
 $questao = $questaoController->buscarPorId($idq);
 $alternativas = $questaoController->buscarAlternativa($idq);
@@ -71,13 +77,17 @@ $alternativas = $questaoController->buscarAlternativa($idq);
                         <div class="col-sm" id="imagemreg">
 
                             <div class="form-group" id="imagemreg">
-
+                                <a id="carregueimagemtexto"> Imagem Atual:</a> <br><br>
+                                <div class="preview-image">
+                                    <input type="hidden" name='imagemAtual' value="<?php echo $questao->getImagemQuestao() ?>">
+                                    <img id="imgatual" src="<?php echo $questao->getImagemQuestao() ?>" />
+                                </div><br>
                                 <a id="carregueimagemtexto"> Carregue uma imagem:</a> <br><br>
                                 <div class="preview-image">
                                     <img class="preview-image__img" data-image-preview />
                                 </div><br>
                                 <label for="img" class="custom-file-upload"><img src="../../public/cameraicone.png" alt="Ícone" style="position: relative ;top: -9px ;width: 43px; height: 43px;" /></label>
-                                <input type="file" id="img" required name="imagem" id="picture__input" data-image-input accept=".png, .jpg, .jpeg" />
+                                <input type="file" id="img" name="imagem" id="picture__input" data-image-input accept=".png, .jpg, .jpeg" />
                                 <a id="carregueimagemtexto2"> <- Selecione um arquivo para a imagem da espécie </a>
                             </div>
                         </div>
@@ -121,6 +131,7 @@ $alternativas = $questaoController->buscarAlternativa($idq);
                         </div>
 
                         <div>
+                            <input type="hidden" name="id_especie" value="<?php echo $ide; ?>" />
                             <input type="hidden" name="id_questao" value="<?php echo $idq; ?>" />
                             <input type="hidden" name="ids_alternativas" value="<?php foreach ($alternativas as $alternativa) {
                                                                                     echo $alternativa->getIdAlternativa() . " ";
@@ -136,5 +147,6 @@ $alternativas = $questaoController->buscarAlternativa($idq);
     </div>
 </body>
 <?php include_once("../../bootstrap/footer.php"); ?>
+<script type="text/javascript" src="../js/imagem.js" defer></script>
 
 </html>

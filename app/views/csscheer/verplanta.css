@@ -303,3 +303,10 @@ input[type="radio"]:checked + .radio-button {
     border-bottom: 0px;
     border-top: 0px;
 }
+
+#imgQuestao {
+    width: 90%;
+    border: 2px solid #C05367;
+    border-radius: 3px;
+    margin-bottom: 10px;
+}

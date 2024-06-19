@@ -73,7 +73,7 @@ if (!isset($_GET['ide'])) {
                                     <img class="preview-image__img" data-image-preview />
                                 </div><br>
                                 <label for="img" class="custom-file-upload"><img src="../../public/cameraicone.png" alt="Ícone" style="position: relative ;top: -9px ;width: 43px; height: 43px;" /></label>
-                                <input type="file" id="img" required name="imagem" id="picture__input" data-image-input accept=".png, .jpg, .jpeg" />
+                                <input type="file" id="img" name="imagem" id="picture__input" data-image-input accept=".png, .jpg, .jpeg" />
                                 <a id="carregueimagemtexto2"> <- Selecione um arquivo para a imagem da espécie </a>
                             </div>
                         </div>
@@ -151,5 +151,5 @@ if (!isset($_GET['ide'])) {
     });
 </script>
 <?php include_once("../../bootstrap/footer.php"); ?>
-
+<script type="text/javascript" src="../js/imagem.js" defer></script>
 </html>
