@@ -56,17 +56,17 @@ if (isset($_GET['ide'])) {
                             <label class="nomeAtributo" for="txtGrauDificuldade" id="txtNomeDificuldade"> Grau de dificuldade:</label>
                             <fieldset>
                                 <div>
-                                    <input type="radio" id="facil" name="grauDificuldade" value="facil">
+                                    <input   type="radio" id="facil" name="grauDificuldade" value="facil">
                                     <label class="nomeAtributo" for="facil" id="texto-checkbox">Fácil</label>
                                 </div>
 
                                 <div>
-                                    <input type="radio" id="medio" name="grauDificuldade" value="medio">
+                                    <input  type="radio" id="medio" name="grauDificuldade" value="medio">
                                     <label class="nomeAtributo" for="medio" id="texto-checkbox">Médio</label>
                                 </div>
 
                                 <div>
-                                    <input type="radio" id="dificil" name="grauDificuldade" value="dificil">
+                                    <input  type="radio" id="dificil" name="grauDificuldade" value="dificil">
                                     <label class="nomeAtributo" for="dificil" id="texto-checkbox">Difícil</label>
                                 </div>
                             </fieldset>

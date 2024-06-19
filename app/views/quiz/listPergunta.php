@@ -154,6 +154,14 @@ if (!isset($_GET['ide'])) {
         background-color: transparent !important;
         color: #ffffff !important;
     }
+
+
+    #semQuestoes, .modo-escuro #semQuestoes {
+        margin-top: 6rem;
+        margin-bottom: 8rem;
+        font-family: Poppins-semibold;
+        color: #C05367 !important;
+    }
 </style>
 
 <body>
@@ -180,7 +188,9 @@ if (!isset($_GET['ide'])) {
         <?php
         $questaoCont = new QuestaoController;
         $questoes = $questaoCont->listarPorEspecie($ide);
-
+        if (sizeof($questoes) <= 0) {
+            echo "<h1 id='semQuestoes'>Nenhuma questão foi adicionada a essa espécie!</h1>";
+        }
         foreach ($questoes as $questao) {
             $grauD = $questao->getGrauDificuldade();
             if ($grauD == "dificil") {
@@ -196,7 +206,7 @@ if (!isset($_GET['ide'])) {
             echo "<div class='card-body' style='display: flex; flex-direction: column; align-items: center;'>";
             echo "<h1 id='tituloQuestao' class='card-title'>Questão:</h1>";
             echo "<p class='descricaoQuestao' style='text-align: center; width: 100%; color: #338a5f;'>" . $questao->getDescricaoQuestao() . "</p>";
-            echo "<img id='imgQuestao' src='". $questao->getImagemQuestao(). "'/>";
+            echo "<img id='imgQuestao' src='" . $questao->getImagemQuestao() . "'/>";
             echo "<div style='width: 100%; display: flex; justify-content: center; align-items: center; flex-wrap: wrap;'>";
             echo "<a href='editarPergunta.php?idq=" . $questao->getIdQuestao() . "&ide=" . $ide . "' id='editas' class='btn bn-alert'>Editar</a>";
             echo "<a href='deletarPergunta.php?idq=" . $questao->getIdQuestao() . "&ide=" . $ide . "' onclick='return confirm(\"Confirma a exclusão da Questão?\");' id='excluas' class='btn btn-alert excluir'>Excluir</a>";
