@@ -1,15 +1,15 @@
 :root {
-        /* Modo Escuro */
-        --principal: #078071;
-        --verdao: #04574d;
-        --cinzinha: #ebf0f1;
-        --destaque: #ED8E96;
-        --rosinha: #f0b6bc;
-        --rosão: #C05367;
-        --branquinho: #ffffff;
-        --verdinho: #7EC4BB;
-        --cinzaclaro: #272626;
-        --cinza: #1B1B1B;
+    /* Modo Escuro */
+    --principal: #078071;
+    --verdao: #04574d;
+    --cinzinha: #ebf0f1;
+    --destaque: #ED8E96;
+    --rosinha: #f0b6bc;
+    --rosão: #C05367;
+    --branquinho: #ffffff;
+    --verdinho: #7EC4BB;
+    --cinzaclaro: #272626;
+    --cinza: #1B1B1B;
 
     width: 100%;
     height: 100%;
@@ -17,50 +17,52 @@
     font-family: Poppins-regular, Roboto;
 }
 
-    @font-face {
-        font-family: 'Cooper';
-        src: url('../fontes/cooperhewitt-heavy.otf');
-    }
-    
-    @font-face {
-        font-family: 'Poppins';
-        src: url('../fontes/Poppins-ExtraBold.ttf');
-    }
-    
-    @font-face {
-        font-family: 'Poppins-regular';
-        src: url('../fontes/Poppins-Regular.ttf');
-    }
-    
-    @font-face {
-        font-family: 'Poppins-semibold';
-        src: url('../fontes/Poppins-SemiBold.ttf');
-    }
-    
-    @font-face {
-        font-family: 'Poppins-medium';
-        src: url('../fontes/Poppins-Medium.ttf');
-    }
+@font-face {
+    font-family: 'Cooper';
+    src: url('../fontes/cooperhewitt-heavy.otf');
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('../fontes/Poppins-ExtraBold.ttf');
+}
+
+@font-face {
+    font-family: 'Poppins-regular';
+    src: url('../fontes/Poppins-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Poppins-semibold';
+    src: url('../fontes/Poppins-SemiBold.ttf');
+}
+
+@font-face {
+    font-family: 'Poppins-medium';
+    src: url('../fontes/Poppins-Medium.ttf');
+}
 
 
 body {
     background-color: #ebf0f1;
     overflow-x: hidden;
 }
-.text-center{
+
+.text-center {
     color: #04574d;
 }
 
 a.excluir:hover {
     color: var(--branco);
     background-color: #f0b6bc;
-    border-radius: 5px; }
+    border-radius: 5px;
+}
 
-.modo-escuro{
+.modo-escuro {
     background-color: #1B1B1B;
 }
 
-.modo-escuro .card{
+.modo-escuro .card {
     background-color: #121212;
 }
 
@@ -79,14 +81,14 @@ a.excluir:hover {
     border-radius: 5px;
 }
 
-.modo-escuro a#editarEquipe{
+.modo-escuro a#editarEquipe {
     background-color: #121212;
     border-color: #ffffff;
     color: #ffffff;
 
 }
 
-.modo-escuro a#editarEquipe:hover{
+.modo-escuro a#editarEquipe:hover {
     background-color: #272626;
     color: #ffffff;
 }
@@ -120,21 +122,23 @@ a.excluir:hover {
     border-radius: 5px;
 }
 
-.modo-escuro a.editar, .modo-escuro button#imprimas{
+.modo-escuro a.editar,
+.modo-escuro button#imprimas {
     background-color: #04574d;
     color: #ffffff;
 }
 
-.modo-escuro a#addict{
+.modo-escuro a#addict {
     background-color: #04574d !important;
     color: #ffffff !important;
 }
 
-.modo-escuro a#addict:hover{
+.modo-escuro a#addict:hover {
     background-color: #078071 !important;
 }
 
-.modo-escuro a.editar:hover, .modo-escuro button#imprimas:hover{
+.modo-escuro a.editar:hover,
+.modo-escuro button#imprimas:hover {
     background-color: #078071;
 }
 
@@ -142,434 +146,474 @@ a.excluir:hover {
     color: #078071;
 }
 
-.modo-escuro .btn-jogar{
+.modo-escuro .btn-jogar {
     background-color: #04574d;
-    }
+}
 
-    .modo-escuro .btn-jogar:hover{
-        background-color: #078071;
-    }
+.modo-escuro .btn-jogar:hover {
+    background-color: #078071;
+}
 
-    .modo-escuro h1{
-        color: #078071 !important;
-    }
+.modo-escuro h1 {
+    color: #078071 !important;
+}
 
-    .modo-escuro h5{
-        background-color: #C05367 !important;
-    }
+.modo-escuro h5 {
+    background-color: #C05367 !important;
+}
 
-    .modo-escuro .btn-custom{
-        border-color:#f0b6bc ;
-        color:#f0b6bc;
-    }
-    .modo-escuro .btn-custom:hover {
-        color: #f0b6bc;
-        background-color: #121212;
-        border-radius: 5px;
-    }
-    .modo-escuro footer.footer {
-        background-color: #04574d;
-    }
+.modo-escuro .btn-custom {
+    border-color: #f0b6bc;
+    color: #f0b6bc;
+}
 
-    .modo-escuro a.nav-link{
-        color:#7EC4BB !important;
-    }
+.modo-escuro .btn-custom:hover {
+    color: #f0b6bc;
+    background-color: #121212;
+    border-radius: 5px;
+}
 
-    .modo-escuro p.nome-texto {
-        color: #f0b6bc;
-    }
-    
-    .modo-escuro  a.incluir{
-        color: #7EC4BB !important;
-    }
+.modo-escuro footer.footer {
+    background-color: #04574d;
+}
 
-    .modo-escuro div.dropdown-menu{
-        background-color: #121212;
-        
-        color: #f0b6bc;
-        
-       
-       }
-       .modo-escuro a.dropdown-item{
-       color: #f0b6bc;
-       
-       }
-       .modo-escuro a.dropdown-item:hover{
-       background-color: #C05367; 
-       color:#fff;
-       }
+.modo-escuro a.nav-link {
+    color: #7EC4BB !important;
+}
 
-       .modo-escuro h3.subtitulo {
-        color: #078071;
-       }
+.modo-escuro p.nome-texto {
+    color: #f0b6bc;
+}
 
-       .modo-escuro a.page-link{
-        color: #f0b6bc !important ;
-        background-color: #121212;
-        border-color: #f0b6bc; }
+.modo-escuro a.incluir {
+    color: #7EC4BB !important;
+}
 
-    .modo-escuro a.page-link:hover,
-        .page-item.active a.page-link {
-        color: #ebf0f1 ;
-        background-color: #C05367;
-        }
+.modo-escuro div.dropdown-menu {
+    background-color: #121212;
 
-    .modo-escuro b {
-        color: #C05367;
-    }
+    color: #f0b6bc;
 
-    .modo-escuro p {
-        color: #ffffff;
-    }
 
-    .modo-escuro h2.titulo {
-        color: #04574d;
-    }
+}
 
-    .modo-escuro #titulo {
-        color: #078071;
-    }
+.modo-escuro a.dropdown-item {
+    color: #f0b6bc;
 
-    .modo-escuro #welcome {
-    color:#7EC4BB;
+}
+
+.modo-escuro a.dropdown-item:hover {
+    background-color: #C05367;
+    color: #fff;
+}
+
+.modo-escuro h3.subtitulo {
+    color: #078071;
+}
+
+.modo-escuro a.page-link {
+    color: #f0b6bc !important;
+    background-color: #121212;
+    border-color: #f0b6bc;
+}
+
+.modo-escuro a.page-link:hover,
+.page-item.active a.page-link {
+    color: #ebf0f1;
+    background-color: #C05367;
+}
+
+.modo-escuro b {
+    color: #C05367;
+}
+
+.modo-escuro p {
+    color: #ffffff;
+}
+
+.modo-escuro h2.titulo {
+    color: #04574d;
+}
+
+.modo-escuro #titulo {
+    color: #078071;
+}
+
+.modo-escuro #welcome {
+    color: #7EC4BB;
 }
 
 
-    .modo-escuro button#botoesregistrar {
-        background-color: #04574d;
-        color: #ffffff;
-    }
+.modo-escuro button#botoesregistrar {
+    background-color: #04574d;
+    color: #ffffff;
+}
 
-    .modo-escuro button#botoesregistrar:hover{
-        background-color: #078071;
-    }
+.modo-escuro button#botoesregistrar:hover {
+    background-color: #078071;
+}
 
-    .modo-escuro button#botoeslimpar {
-        color: #ED8E96;
-        background-color: #1B1B1B;
-        border-color: #ED8E96;
-        border-radius: 5px;
-    }
-    
-    .modo-escuro button#botoeslimpar:hover {
-        color: #ED8E96;
-        background-color: #121212;
-        border-radius: 5px;
-    }
+.modo-escuro button#botoeslimpar {
+    color: #ED8E96;
+    background-color: #1B1B1B;
+    border-color: #ED8E96;
+    border-radius: 5px;
+}
 
-    .modo-escuro label {
-        color: #078071 !important;
-    }
+.modo-escuro button#botoeslimpar:hover {
+    color: #ED8E96;
+    background-color: #121212;
+    border-radius: 5px;
+}
 
-    .modo-escuro a#carregueimagemtexto {
-        color: #078071;
-    }
+.modo-escuro label {
+    color: #078071 !important;
+}
 
-    .modo-escuro a#carregueimagemtexto2 {
-        color: #f0b6bc;
-    }
+.modo-escuro a#carregueimagemtexto {
+    color: #078071;
+}
 
-    .modo-escuro a#textodescritivo {
-        color: #078071;
-    }
+.modo-escuro a#carregueimagemtexto2 {
+    color: #f0b6bc;
+}
 
-    .modo-escuro h1#primeirotextoreg {
-        color: #f0b6bc !important;
-    }
+.modo-escuro a#textodescritivo {
+    color: #078071;
+}
 
-
-    
-    .modo-escuro input#txtNomeForm,.modo-escuro input#txtNomeZona, .modo-escuro input#txtCodigoForm,
-    .modo-escuro input#txtNomeEquipe, .modo-escuro div.selectize-input, .modo-escuro input#txtCorForm,
-    .modo-escuro input.form-control, .modo-escuro select.form-control {
-        background-color: #121212 !important;
-        border-color: #C05367 !important;
-        border-width: 3px;
-
-    }
-
-    .modo-escuro div#partida {
-        background-color: #121212 !important;
-        border-color: #C05367 !important;
-
-    }
-    
-    .modo-escuro select#imagem{
-        background-color: #121212 !important;
-        border-color: #C05367 !important;
-        border-width: 1px;
-
-    }
+.modo-escuro h1#primeirotextoreg {
+    color: #f0b6bc !important;
+}
 
 
-    .modo-escuro .selectize-dropdown-content .option {
-        color: #ebf0f1;
-        background-color: #121212;
-        font-family: Poppins-semibold;
-      }
-      
-      .modo-escuro .selectize-dropdown-content .option:hover {
-        background-color: #C05367;
-      }
-      
-      .modo-escuro .selectize-control.single .item {
-        background-color: #121212;
-        color: #ebf0f1;
-        font-family: Poppins-semibold;
-      }
-      
-      
-      .modo-escuro .selectize-input.active {
-          background-color: #121212;
-          color: #ebf0f1;
-          font-family: Poppins-semibold;
-        }
-    
-        /* .modo-escuro input[type=checkbox] {
+
+.modo-escuro input#txtNomeForm,
+.modo-escuro input#txtNomeZona,
+.modo-escuro input#txtCodigoForm,
+.modo-escuro input#txtNomeEquipe,
+.modo-escuro div.selectize-input,
+.modo-escuro input#txtCorForm,
+.modo-escuro input.form-control,
+.modo-escuro select.form-control {
+    background-color: #121212 !important;
+    border-color: #C05367 !important;
+    border-width: 3px;
+
+}
+
+.modo-escuro div#partida {
+    background-color: #121212 !important;
+    border-color: #C05367 !important;
+
+}
+
+.modo-escuro select#imagem {
+    background-color: #121212 !important;
+    border-color: #C05367 !important;
+    border-width: 1px;
+
+}
+
+
+.modo-escuro .selectize-dropdown-content .option {
+    color: #ebf0f1;
+    background-color: #121212;
+    font-family: Poppins-semibold;
+}
+
+.modo-escuro .selectize-dropdown-content .option:hover {
+    background-color: #C05367;
+}
+
+.modo-escuro .selectize-control.single .item {
+    background-color: #121212;
+    color: #ebf0f1;
+    font-family: Poppins-semibold;
+}
+
+
+.modo-escuro .selectize-input.active {
+    background-color: #121212;
+    color: #ebf0f1;
+    font-family: Poppins-semibold;
+}
+
+/* .modo-escuro input[type=checkbox] {
             margin-left: -27px;
         } */
-        
-        .modo-escuro input[type=checkbox]:before {
-            /* content: ""; */
-            display: block;
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            top: 0;
-            left: 0;
-            background-color: #121212 ;
-            border: 1px solid #C05367;
 
-        }
-        
-        .modo-escuro input[type=checkbox]:checked:before {
-            display: block;
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            top: 0;
-            left: 0;
-            background-color: #C05367;
-        }
-        
-        .modo-escuro input[type=checkbox]:checked:after {
-            display: block;
-            width: 5px;
-            height: 10px;
-            border: solid var(--branco);
-            border-width: 0 2px 2px 0;
-            -webkit-transform: rotate(45deg);
-            -ms-transform: rotate(45deg);
-            transform: rotate(45deg);
-            position: absolute;
-            top: 4.5px;
-            left: 7.5px;
-            
-        }
+.modo-escuro input[type=checkbox]:before {
+    /* content: ""; */
+    display: block;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 0;
+    left: 0;
+    background-color: #121212;
+    border: 1px solid #C05367;
 
-        .modo-escuro img#imagemPlanta{
-            border-color:#C05367;
-        }
-
-        .modo-escuro button#addButtonZona.btn, .modo-escuro button#addButtonEquipe.btn {
-            background-color: #1B1B1B;
-        }
-
-        .modo-escuro button#botaocadastro {
-            background-color: #04574d;
-        }
-
-        .modo-escuro button#botaocadastro:hover{
-            background-color: #078071;
-        }
-
-        .modo-escuro p#jatemumaconta, .modo-escuro p#termos {
-            color: #f0b6bc;
-        }
-
-        .modo-escuro a#entrar, .modo-escuro a#termos1 {
-            color:#7EC4BB !important; 
-        }
-
-        .modo-escuro a#entrar:hover, .modo-escuro a#termos1:hover{
-            color:#078071 !important;
-        }
-
-        .modo-escuro h1#titulo {
-            color:#f0b6bc !important;
-        }
-
-        .modo-escuro h6.senha-cadastro {
-            color: #f0b6bc !important;
-        }
-
-        .modo-escuro span.titulo {
-            color: #fff;
-          }
-          
-        .modo-escuro h6.subtitulo{ 
-            color: #C05367;
-          }
-          
-        .modo-escuro span.texto {
-            color: #ED8E96;
-          }
-
-        .modo-escuro div.coisas {
-            background-color: #121212;
-          }
-
-        .modo-escuro p#subtitulo {
-            color: #C05367;
-        }
-
-        .modo-escuro p#subtituloemail {
-            color: #C05367;
-        }
-
-        .modo-escuro p#conteudo {
-            color: #7EC4BB;
-        }
-
-        .modo-escuro p#conteudoemail {
-            color: #7EC4BB;
-        }
-
-        .modo-escuro a#btn-perfil.btn.btn-custom {
-            background-color: #272626;
-            color: #f0b6bc !important;
-            border-color: #f0b6bc;
-        
-        }
-
-        .modo-escuro a#btn-perfil.btn.btn-custom:hover {
-            background-color: #121212;
-        }
-
-        .modo-escuro p#acesso {
-            color: #078071;
-        }
-
-        .modo-escuro h2#usuarionome {
-            color: #7EC4BB;
-        }
-
-        .modo-escuro p#status {
-            color: #f0b6bc;
-        }
-
-        .modo-escuro a#escolherEquipe{
-            background-color: #121212;
-            border-color: #ffffff;
-            color: #ffffff;
 }
-    
-                
-        .modo-escuro a#escolherEquipe:hover {
-            color: #ffffff;
-            background-color: #272626; }
 
-    .modo-escuro td#tabelapontos, .modo-escuro td#tabelanome {
-        color: #7EC4BB;
-    }
+.modo-escuro input[type=checkbox]:checked:before {
+    display: block;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 0;
+    left: 0;
+    background-color: #C05367;
+}
 
-    .modo-escuro p#nomezinho {
-        color: #078071;
-    }
-    .modo-escuro button#submitButton {
-        color: #C05367;
-        background-color: transparent;
-    }
-    .modo-escuro p#result {
-        color: #078071 !important;
-    }
-    .modo-escuro div.modal-content {
-        background-color: #121212;
-    }
-    .modo-escuro h5.modal-title {
-        background-color: transparent !important;
-        color: #C05367 !important;
-    }
+.modo-escuro input[type=checkbox]:checked:after {
+    display: block;
+    width: 5px;
+    height: 10px;
+    border: solid var(--branco);
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    position: absolute;
+    top: 4.5px;
+    left: 7.5px;
 
-    .modo-escuro h1#encontrartitulo, .modo-escuro h1#encontrartitulo2 {
-        color: #C05367 !important;
-    }
-    .modo-escuro div#botoes {
-        background-color: var(--verdao);
-        border-color: #078071;
-    }
-    .modo-escuro button#camerazinha {
-        background-color:var(--verdao) !important;
-    }
+}
 
-    .ck-editor__editable {
-        background-color: pink;
-      }
-      
-      /* Define a cor do texto para branco */
+.modo-escuro img#imagemPlanta {
+    border-color: #C05367;
+}
 
-      .modo-escuro label#texto-checkbox.nomeAtributo {
-       color: #f0b6bc !important;
-    }
-    
-    .modo-escuro label#alternativa.nomeAtributo {
-        color: #f0b6bc !important;
-     }
+.modo-escuro button#addButtonZona.btn,
+.modo-escuro button#addButtonEquipe.btn {
+    background-color: #1B1B1B;
+}
 
-     .modo-escuro label#texto-checkbox.form-check-label {
-        color: #f0b6bc !important;
-     }
+.modo-escuro button#botaocadastro {
+    background-color: #04574d;
+}
 
-     .modo-escuro select#tb_conteudo_cargo {
-        background-color: #C05367;
-        border-color: #121212;
-     }
+.modo-escuro button#botaocadastro:hover {
+    background-color: #078071;
+}
 
-     .modo-escuro td.tb_conteudo, .modo-escuro th.text-center, .modo-escuro td#tb_cargocss, .modo-escuro td, .modo-escuro th {
-        border-color: #121212 !important;
-     }
+.modo-escuro p#jatemumaconta,
+.modo-escuro p#termos {
+    color: #f0b6bc;
+}
 
-    .modo-escuro button#fechar {
-        color: #C05367;
-        background-color: transparent;
-        border-color: #C05367;
-    }
-    
-    .modo-escuro button#fechar:hover {
-        color: #C05367;
-        background-color: transparent;
-        border-radius: 5px;
-    }
+.modo-escuro a#entrar,
+.modo-escuro a#termos1 {
+    color: #7EC4BB !important;
+}
 
-    .modo-escuro button#imprimir {
-        background-color: #04574d;
-    }
-    
-    .modo-escuro button#imprimir:hover {
-        background-color: #078071;
-    }
+.modo-escuro a#entrar:hover,
+.modo-escuro a#termos1:hover {
+    color: #078071 !important;
+}
 
-    .modo-escuro h5#tituloQuestao, .modo-escuro h4.aviso-questao {
-        color: #078071;
-        background-color: transparent !important;
-    }
+.modo-escuro h1#titulo {
+    color: #f0b6bc !important;
+}
 
-    .modo-escuro .pergunta .radio-button  {
-        border: 2px solid #C05367;
-        color: #fff !important;
-        background-color: transparent;
-    }
-    
-    .modo-escuro input[type="radio"]:checked + .radio-button, .modo-escuro .radio-button:hover {
-        border: 2px solid #C05367;
-        background-color: #C05367;
-        color: #fff !important;
-    }
+.modo-escuro h6.senha-cadastro {
+    color: #f0b6bc !important;
+}
 
-    .modo-escuro #submitQuiz, .modo-escuro #submitQuiz:hover {
-        background-color: transparent;
-    }
+.modo-escuro span.titulo {
+    color: #fff;
+}
 
-    .modo-escuro .linhaSepara {
-        background: #ED8E96;
-    }
+.modo-escuro h6.subtitulo {
+    color: #C05367;
+}
+
+.modo-escuro span.texto {
+    color: #ED8E96;
+}
+
+.modo-escuro div.coisas {
+    background-color: #121212;
+}
+
+.modo-escuro p#subtitulo {
+    color: #C05367;
+}
+
+.modo-escuro p#subtituloemail {
+    color: #C05367;
+}
+
+.modo-escuro p#conteudo {
+    color: #7EC4BB;
+}
+
+.modo-escuro p#conteudoemail {
+    color: #7EC4BB;
+}
+
+.modo-escuro a#btn-perfil.btn.btn-custom {
+    background-color: #272626;
+    color: #f0b6bc !important;
+    border-color: #f0b6bc;
+
+}
+
+.modo-escuro a#btn-perfil.btn.btn-custom:hover {
+    background-color: #121212;
+}
+
+.modo-escuro p#acesso {
+    color: #078071;
+}
+
+.modo-escuro h2#usuarionome {
+    color: #7EC4BB;
+}
+
+.modo-escuro p#status {
+    color: #f0b6bc;
+}
+
+.modo-escuro a#escolherEquipe {
+    background-color: #121212;
+    border-color: #ffffff;
+    color: #ffffff;
+}
+
+
+.modo-escuro a#escolherEquipe:hover {
+    color: #ffffff;
+    background-color: #272626;
+}
+
+.modo-escuro td#tabelapontos,
+.modo-escuro td#tabelanome {
+    color: #7EC4BB;
+}
+
+.modo-escuro p#nomezinho {
+    color: #078071;
+}
+
+.modo-escuro button#submitButton {
+    color: #C05367;
+    background-color: transparent;
+}
+
+.modo-escuro p#result {
+    color: #078071 !important;
+}
+
+.modo-escuro div.modal-content {
+    background-color: #121212;
+}
+
+.modo-escuro h5.modal-title {
+    background-color: transparent !important;
+    color: #C05367 !important;
+}
+
+.modo-escuro h1#encontrartitulo,
+.modo-escuro h1#encontrartitulo2 {
+    color: #C05367 !important;
+}
+
+.modo-escuro div#botoes {
+    background-color: var(--verdao);
+    border-color: #078071;
+}
+
+.modo-escuro button#camerazinha {
+    background-color: var(--verdao) !important;
+}
+
+.ck-editor__editable {
+    background-color: pink;
+}
+
+/* Define a cor do texto para branco */
+
+.modo-escuro label#texto-checkbox.nomeAtributo {
+    color: #f0b6bc !important;
+}
+
+.modo-escuro label#alternativa.nomeAtributo {
+    color: #f0b6bc !important;
+}
+
+.modo-escuro label#texto-checkbox.form-check-label {
+    color: #f0b6bc !important;
+}
+
+.modo-escuro select#tb_conteudo_cargo {
+    background-color: #C05367;
+    border-color: #121212;
+}
+
+.modo-escuro td.tb_conteudo,
+.modo-escuro th.text-center,
+.modo-escuro td#tb_cargocss,
+.modo-escuro td,
+.modo-escuro th {
+    border-color: #121212 !important;
+}
+
+.modo-escuro button#fechar {
+    color: #C05367;
+    background-color: transparent;
+    border-color: #C05367;
+}
+
+.modo-escuro button#fechar:hover {
+    color: #C05367;
+    background-color: transparent;
+    border-radius: 5px;
+}
+
+.modo-escuro button#imprimir {
+    background-color: #04574d;
+}
+
+.modo-escuro button#imprimir:hover {
+    background-color: #078071;
+}
+
+.modo-escuro h5#tituloQuestao,
+.modo-escuro h4.aviso-questao {
+    color: #078071;
+    background-color: transparent !important;
+}
+
+.modo-escuro .pergunta .radio-button {
+    border: 2px solid #C05367;
+    color: #fff !important;
+    background-color: transparent;
+}
+
+.modo-escuro input[type="radio"]:checked+.radio-button,
+.modo-escuro .radio-button:hover {
+    border: 2px solid #C05367;
+    background-color: #C05367;
+    color: #fff !important;
+}
+
+.modo-escuro #submitQuiz,
+.modo-escuro #submitQuiz:hover {
+    background-color: transparent;
+}
+
+.modo-escuro .linhaSepara {
+    background: #ED8E96;
+}
+
+.modo-escuro .pontuacaoQuestao {
+    background-color: #121212 !important;
+    border-color: #C05367 !important;
+    border-width: 3px;
+}
+
+.modo-escuro .questaoFormDesc {
+    color: #ffffff;
+}

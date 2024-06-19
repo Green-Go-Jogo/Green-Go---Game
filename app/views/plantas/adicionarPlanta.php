@@ -210,7 +210,7 @@ $codigo = $plantaCont->gerarCodigo();
                             <div class="alert alert-warning"><?php echo $errors['questao_pontuacao']; ?></div>
                           <?php } ?>
 
-                          <label for="formtexto" id="txtPontos">Pontuação:</label>
+                          <label for="formtexto" id="txtPontos">Pontuação da Planta:</label>
                           <div class="w-100"> </div>
                           <input type="number" name="Pontuacao" class="form-control" id="txtCodigoForm" aria-describedby="nome-cadastro" value="<?php echo isset($_POST['Pontuacao']) ? $_POST['Pontuacao'] : ''; ?>">
                           <div class="w-100"> </div>
@@ -339,11 +339,12 @@ $codigo = $plantaCont->gerarCodigo();
 
               // Criar um elemento de parágrafo para cada informação da questão
               var paragrafo = document.createElement("p");
-              paragrafo.innerHTML = "<input name='checkbox_" + i + "' type='checkbox' value='" + questao.idQuestao + "'/>" +
-                "<b><span style='margin-left: 10px; color: #338a5f'>Questão:</span></b> " + questao.descricao +
-                "<a><i class='fa-solid fa-circle' style='margin-left: 10px; margin-right: 5px; color:" + questao.cor + "'></i></a>" +
-                "<label for='pontuacaoQuestao'/> Pontuação: " +
-                "<input style='margin-left: 4px; max-width: 30px' id='pontuacaoQuestao' name='questaop_" + i + "' type='number'/><br>";
+              paragrafo.innerHTML = "<input class='questaoCheckbox' name='checkbox_" + i + "' type='checkbox' value='" + questao.idQuestao + "'/>" +
+                "<a><i class='fa-solid fa-circle' style='margin-left: 6px; margin-right: 6px; color:" + questao.cor + "'></i></a>" +
+                "<b><span class='questaoFormTitulo'>Questão:</span></b><span class='questaoFormDesc'> " + questao.descricao + "</span>" +
+                "<span style='margin-right: 6px; margin-left: 6px; color: #C05367;'>|</span>"+
+                "<label class='labelPontuacaoQuestao'  for='pontuacaoQuestao'/> Pontuação Questão: " +
+                "<input style='margin-left: 4px; max-width: 30px' class='pontuacaoQuestao' name='questaop_" + i + "' type='number'/><br>";
 
               // Adicionar o parágrafo à div
               document.getElementById("Questoes").appendChild(paragrafo);

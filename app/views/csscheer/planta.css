@@ -15,30 +15,30 @@
     font-family: Poppins-regular, Roboto;
 }
 
-    @font-face {
-        font-family: 'Cooper';
-        src: url('../fontes/cooperhewitt-heavy.otf');
-    }
-    
-    @font-face {
-        font-family: 'Poppins';
-        src: url('../fontes/Poppins-ExtraBold.ttf');
-    }
-    
-    @font-face {
-        font-family: 'Poppins-regular';
-        src: url('../fontes/Poppins-Regular.ttf');
-    }
-    
-    @font-face {
-        font-family: 'Poppins-semibold';
-        src: url('../fontes/Poppins-SemiBold.ttf');
-    }
-    
-    @font-face {
-        font-family: 'Poppins-medium';
-        src: url('../fontes/Poppins-Medium.ttf');
-    }
+@font-face {
+    font-family: 'Cooper';
+    src: url('../fontes/cooperhewitt-heavy.otf');
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('../fontes/Poppins-ExtraBold.ttf');
+}
+
+@font-face {
+    font-family: 'Poppins-regular';
+    src: url('../fontes/Poppins-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Poppins-semibold';
+    src: url('../fontes/Poppins-SemiBold.ttf');
+}
+
+@font-face {
+    font-family: 'Poppins-medium';
+    src: url('../fontes/Poppins-Medium.ttf');
+}
 
 body {
     background-color: #ebf0f1;
@@ -136,14 +136,15 @@ body {
 }
 
 #botoeslimpar {
-    color: #f0b6bc;;
+    color: #f0b6bc;
+    ;
     background-color: #ffffff;
     font-family: Poppins-regular;
     border-color: #f0b6bc;
     width: 130px;
     height: auto;
 }
- 
+
 #botoesregistrar:hover {
     color: #ebf0f1;
     background-color: #04574d;
@@ -171,7 +172,7 @@ body {
     margin-bottom: 50px;
 }
 
-#textodescritivo {     
+#textodescritivo {
     color: #338a5f;
     font-family: Poppins-semibold;
     margin-left: 8px;
@@ -184,33 +185,33 @@ body {
 }
 
 .selectize-control.single .selectize-input,
-.selectize-control.single .selectize-input:focus, 
+.selectize-control.single .selectize-input:focus,
 .selectize-control.single .selectize-input.full {
-  width: 500px;
-  margin-top: 1px;
-  color: #ebf0f1;
-  background-color: #f0b6bc;
-  font-family: Poppins-semibold;
+    width: 500px;
+    margin-top: 1px;
+    color: #ebf0f1;
+    background-color: #f0b6bc;
+    font-family: Poppins-semibold;
 }
 
 
 .selectize-dropdown-content .option {
-  color: #ebf0f1;
-  background-color: #f0b6bc;
-  font-family: Poppins-semibold;
+    color: #ebf0f1;
+    background-color: #f0b6bc;
+    font-family: Poppins-semibold;
 }
 
 .selectize-dropdown-content .option:hover {
-  background-color: #ec737c;
+    background-color: #ec737c;
 }
 
 
 
 
 .selectize-control.single .item {
-  background-color: #f0b6bc;
-  color: #ebf0f1;
-  font-family: Poppins-semibold;
+    background-color: #f0b6bc;
+    color: #ebf0f1;
+    font-family: Poppins-semibold;
 }
 
 
@@ -218,58 +219,46 @@ body {
     background-color: #f0b6bc;
     color: #ebf0f1;
     font-family: Poppins-semibold;
-  }
+}
 
-  .fa-camera {
+.fa-camera {
     font-size: 33px;
     color: #078071;
-  }
+}
 
-  @media (max-width: 767px) {
+@media (max-width: 767px) {
 
     .selectize-control.single .selectize-input,
-    .selectize-control.single .selectize-input:focus, 
-    .selectize-control.single .selectize-input.full, #txtNomeForm, #txtZonaForm, #txtCodigoForm, .ck-editor__editable_inline {
-      width: 95% !important;
+    .selectize-control.single .selectize-input:focus,
+    .selectize-control.single .selectize-input.full,
+    #txtNomeForm,
+    #txtZonaForm,
+    #txtCodigoForm,
+    .ck-editor__editable_inline {
+        width: 95% !important;
 
     }
-   
-    
-
-  }
-
-
-  input[type=checkbox]:before {
-    display: block;
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    top: 0;
-    left: 0;
-    background-color: #f0b6bc; 
 }
 
-input[type=checkbox]:checked:before {
-    display: block;
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    top: 0;
-    left: 0;
-    background-color: #C05367;
+.pontuacaoQuestao {
+    background-color: #f0b6bc;
+    color: #ffffff;
+    font-family: Poppins-semibold;
+    border-radius: 5px;
+    max-width: 30px;
+    height: auto;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
 }
 
-input[type=checkbox]:checked:after {
-    display: block;
-    width: 5px;
-    height: 10px;
-    border: solid var(--branco);
-    border-width: 0 2px 2px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-    position: absolute;
-    top: 4.5px;
-    left: 7.5px;
+.labelPontuacaoQuestao,
+.questaoFormTitulo {
+    font-family: Poppins-semibold;
+    color: #078071;
 }
 
+.questaoFormDesc {
+    font-family: Poppins-regular;
+    font-size: 15px;
+    color: #338a5f;
+}
