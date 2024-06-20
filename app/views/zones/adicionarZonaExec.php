@@ -13,8 +13,8 @@ $errors = array();
 if (empty($nomeZona)) {
     $errors['Nome_Zona'] = "O campo Nome Zona é obrigatório.";
   }
-  elseif (strlen($nomeZona) < 4) {
-    $errors['Nome_Zona'] = "O campo Nome Zona deve conter pelo menos 4 caracteres.";
+  elseif (strlen($nomeZona) < 3) {
+    $errors['Nome_Zona'] = "O campo Nome Zona deve conter pelo menos 3 caracteres.";
   }
 
   if (!empty($errors)) {

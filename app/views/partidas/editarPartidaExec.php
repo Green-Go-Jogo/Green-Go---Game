@@ -32,20 +32,20 @@ foreach ($_POST as $name => $value) {
 }
 
 
-if (strlen($nomePartida) <= 4) {
-    $errors['Nome_Partida'] = "O nome da partida deve ter mais que 4 caracteres.";
+if (strlen($nomePartida) <= 3) {
+    $errors['Nome_Partida'] = "O nome da partida deve ter mais que 3 caracteres.";
 }
 
 if (!ctype_digit($limiteJogadores) || $limiteJogadores == '00' || strlen($limiteJogadores) > 2) {
     $errors['Limite_Jogadores'] = "O limite de jogadores pode ir até 99 e não pode ser 0.";
 }
 
-if (!ctype_digit($tempoPartida) || $tempoPartida < 5 || strlen($tempoPartida) > 3) {
-    $errors['Tempo_Partida'] = "O tempo de partida pode ir até 999 minutos e não pode ser menos que 5 minutos.";
+if (!ctype_digit($tempoPartida) || $tempoPartida < 1 || strlen($tempoPartida) > 3) {
+    $errors['Tempo_Partida'] = "O tempo de partida pode ir até 999 minutos e não pode ser menor que 1 minutos.";
 }
 
-if (strlen($senhaSala) <= 4) {
-    $errors['Senha_Sala'] = "A senha da sala deve ter mais que 4 caracteres.";
+if (strlen($senhaSala) <= 3) {
+    $errors['Senha_Sala'] = "A senha da sala deve ter mais que 3 caracteres.";
 }
 
 if ($senhaSala !== $senhaSalaConf) {
