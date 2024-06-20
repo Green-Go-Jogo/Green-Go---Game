@@ -1,8 +1,8 @@
 <?php
 #Arquivo para executar a inclusão de um personagem
 
-include_once(__DIR__."/../../models/EspecieModel.php");
-include_once(__DIR__."/../../controllers/EspecieController.php");
+include_once(__DIR__ . "/../../models/EspecieModel.php");
+include_once(__DIR__ . "/../../controllers/EspecieController.php");
 
 //Capturar os valores vindos do formulário
 $id = $_POST["id_especie"];
@@ -30,25 +30,21 @@ $errors = array();
 
 if (empty($nomePopular)) {
   $errors['Nome_Popular'] = "O campo Nome Popular é obrigatório.";
-} elseif (!preg_match('/^[a-zA-ZÀ-ÖØ-öø-ÿ0-9\s\-]+$/', $nomePopular)) {
-  $errors['Nome_Popular'] = "O campo Nome Popular contém caracteres especiais.";
 }
 
 if (empty($nomeCientifico)) {
-    $errors['Nome_Cientifico'] = "O campo Nome Científico é obrigatório.";
-  } elseif (!preg_match('/^[a-zA-ZÀ-ÖØ-öø-ÿ0-9\s\-]+$/', $nomeCientifico)) {
-    $errors['Nome_Cientifico'] = "O campo Nome Científíco contém caracteres especiais.";
-  }
+  $errors['Nome_Cientifico'] = "O campo Nome Científico é obrigatório.";
+}
 
-  if (empty($descricao)) {
-    $errors['Descricao'] = "O campo Descrição é obrigatório.";
-  } 
+if (empty($descricao)) {
+  $errors['Descricao'] = "O campo Descrição é obrigatório.";
+}
 
 if (!empty($errors)) {
-    $idEditarEspecie = $id;
-    require_once("editarEspecie.php");
-    exit;
-  }
+  $idEditarEspecie = $id;
+  require_once("editarEspecie.php");
+  exit;
+}
 
 
 //Criar o objeto personagem
@@ -60,7 +56,7 @@ if ($imagem['error'] === UPLOAD_ERR_NO_FILE) {
   $especieCont->apagarImagem($id);
   // Um arquivo foi enviado, você pode processá-lo aqui
   $extensao = pathinfo($imagem['name'], PATHINFO_EXTENSION);
-  $nome_imagem = md5(uniqid($imagem['name'])).".".$extensao;
+  $nome_imagem = md5(uniqid($imagem['name'])) . "." . $extensao;
   $caminho_imagem = "../../public/especies/" . $nome_imagem;
   move_uploaded_file($imagem["tmp_name"], $caminho_imagem);
 
@@ -88,5 +84,3 @@ $especieCont->atualizar($especie);
 
 //Redireciona para o início
 header("location: listEspecies.php");
-
-?>

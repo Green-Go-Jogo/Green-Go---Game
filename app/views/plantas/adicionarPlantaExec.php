@@ -5,6 +5,7 @@ include_once(__DIR__."/../../models/PlantaModel.php");
 include_once(__DIR__."/../../models/ZonaModel.php");
 include_once(__DIR__."/../../models/UsuarioModel.php");
 include_once(__DIR__."/../../controllers/PlantaController.php");
+include_once(__DIR__."/../../controllers/EspecieController.php");
 
 //Capturar os valores vindos do formulário
 if (isset($_POST["Nome_Social"])) {
@@ -57,10 +58,6 @@ if (empty($id_especie)) {
   $errors['especie_planta'] = "O campo Espécie é obrigatório";
 } 
 
-if(empty($imagem['name'])){
-  $errors['Imagem'] = "O campo Imagem é obrigatório.";
-}
-
 if (empty($pontuacaoPlanta)) {
   $errors['Pontuacao'] = "O campo Pontuação é obrigatório!";
 } elseif (!preg_match('/^\d{2}$/', $pontuacaoPlanta)) {
@@ -73,21 +70,30 @@ if (!empty($errors)) {
     exit;
   }
 
-//Tratar a imagem
-$extensao = pathinfo($imagem['name'], PATHINFO_EXTENSION);
-$nome_imagem = md5(uniqid($imagem['name'])).".".$extensao;
-$caminho_imagem = "../../public/plantas/" . $nome_imagem;
-move_uploaded_file($imagem["tmp_name"], $caminho_imagem);
+
 
 //Criar o objeto planta
-
-
 $planta = new Planta();
+
+//Tratar a imagem
+if ($imagem['error'] === UPLOAD_ERR_NO_FILE) {
+  $especieCont = new EspecieController();
+  $especieImagem = $especieCont->buscarPorId($id_especie);
+  $planta->setImagemPlanta($especieImagem->getImagemEspecie());
+} else {
+  // Um arquivo foi enviado, você pode processá-lo aqui
+  $extensao = pathinfo($imagem['name'], PATHINFO_EXTENSION);
+  $nome_imagem = md5(uniqid($imagem['name'])) . "." . $extensao;
+  $caminho_imagem = "../../public/plantas/" . $nome_imagem;
+  move_uploaded_file($imagem["tmp_name"], $caminho_imagem);
+
+  $planta->setImagemPlanta($caminho_imagem);
+}
+
 $planta->setNomeSocial($nomeSocial);
 $planta->setCodNumerico($Cod_Numerico);
 $planta->setPontos($pontuacaoPlanta);
 $planta->setPlantaHistoria($historia);
-$planta->setImagemPlanta($caminho_imagem);
 
 $zona = new Zona($id_zona);
 $planta->setZona($zona);
