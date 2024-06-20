@@ -230,7 +230,7 @@ class PlantaDAO {
         $planta = $this->findById($idPlanta);
         
         $img_del = $planta->getImagemPlanta();
-        if (file_exists($img_del)) {
+        if (file_exists($img_del) && !str_contains($img_del, "especies")) {
             unlink($img_del);
         }
     }
