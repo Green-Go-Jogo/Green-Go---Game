@@ -175,10 +175,9 @@ if ($ornamental == 1) {
     }
 
     #cancelar:hover {
-    color: #ED8E96;
-    font-family: Poppins-medium;
-}
-
+        color: #ED8E96;
+        font-family: Poppins-medium;
+    }
 </style>
 
 
@@ -296,6 +295,13 @@ if ($ornamental == 1) {
                                         <input type="file" id="img" name="imagem" id="picture__input" data-image-input accept=".png, .jpg, .jpeg" />
                                         <a id="carregueimagemtexto2"> <- Selecione um arquivo para a imagem da espécie </a>
                                     </div>
+
+                                    <label for="formtexto" id="txtCodigo">Autoria da Foto:</label>
+                                    <div class="w-100"></div>
+                                    <input type="text" name="Autoria_Foto" class="form-control" id="txtNomeForm" aria-describedby="nome-cadastro" value="<?php echo isset($_POST['Autoria_Foto']) ? $_POST['Autoria_Foto'] : $especie->getAutoriaImagem(); ?>">
+                                    <?php if (isset($errors) && !empty($errors) && isset($errors['Autoria_Foto'])) { ?>
+                                        <div class="alert alert-warning"><?php echo $errors['Autoria_Foto']; ?></div>
+                                    <?php } ?>
                                 </div>
 
                                 <div class="container" id="caixadetexto"> <br><br><br>
@@ -321,6 +327,13 @@ if ($ornamental == 1) {
                                         <div class="alert alert-warning"><?php echo $errors['Descricao']; ?></div>
                                     <?php } ?>
                                 </div>
+
+                                <label for="formtexto" id="txtCodigo"> Fontes(Separadas por ';'):</label>
+                                <div class="w-100"></div>
+                                <textarea name="Fontes" class="form-control" id="txtFontForm" aria-describedby="nome-cadastro" value=""><?php echo isset($_POST['Fontes']) ? $_POST['Fontes'] : $especie->getFontes(); ?></textarea>
+                                <?php if (isset($errors) && !empty($errors) && isset($errors['Fontes'])) { ?>
+                                    <div class="alert alert-warning"><?php echo $errors['Fontes']; ?></div>
+                                <?php } ?>
 
         </nav>
 

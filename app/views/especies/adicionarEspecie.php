@@ -178,6 +178,13 @@ LoginController::verificarAcesso([2, 3]);
                                     <?php } ?>
                                 </div>
 
+                                <label for="formtexto" id="txtCodigo">Autoria da Foto:</label>
+                                <div class="w-100"></div>
+                                <input type="text" name="Autoria_Foto" class="form-control" id="txtNomeForm" aria-describedby="nome-cadastro" value="<?php echo isset($_POST['Autoria_Foto']) ? $_POST['Autoria_Foto'] : ''; ?>">
+                                <?php if (isset($errors) && !empty($errors) && isset($errors['Autoria_Foto'])) { ?>
+                                    <div class="alert alert-warning"><?php echo $errors['Autoria_Foto']; ?></div>
+                                <?php } ?>
+
                                 <div class="container" id="caixadetexto"> <br><br><br>
                                     <a id="textodescritivo">Descrição:</a> <br><br>
                                     <textarea id="editor" name="Descricao" value=""></textarea>
@@ -195,11 +202,19 @@ LoginController::verificarAcesso([2, 3]);
                                                 console.error(error);
                                             });
                                     </script>
-
+                                    <br>
                                     <?php if (isset($errors) && !empty($errors) && isset($errors['Descricao'])) { ?>
-                                        <div class="alert alert-warning"><?php echo $errors['Descricao']; ?></div>
-                                    <?php } ?>
+                                    <div class="alert alert-warning"><?php echo $errors['Descricao']; ?></div>
+                                <?php } ?>
                                 </div>
+                                
+
+                                <label for="formtexto" id="txtCodigo">Fontes (Separadas por ';'):</label>
+                                <div class="w-100"></div>
+                                <textarea name="Fontes" class="form-control" id="txtFontForm" aria-describedby="nome-cadastro" value="<?php echo isset($_POST['Fontes']) ? $_POST['Fontes'] : ''; ?>"></textarea>
+                                <?php if (isset($errors) && !empty($errors) && isset($errors['Fontes'])) { ?>
+                                    <div class="alert alert-warning"><?php echo $errors['Fontes']; ?></div>
+                                <?php } ?>
 
                                 <div class="container"> <br><br>
                                     <button type="submit" class="btn btn-primary btn-lg" id="botoesregistrar"><a>Adicionar</a> </button>
