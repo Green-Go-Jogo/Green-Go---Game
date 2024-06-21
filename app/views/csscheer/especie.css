@@ -73,6 +73,19 @@ body {
     border-radius: 5px;
 }
 
+
+#txtFontForm {
+    background-color: #f0b6bc;
+    color: #ffffff;
+    font-family: Poppins-semibold;
+    margin-left: 11px;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    width: 77%;
+    height: auto;
+    border-radius: 5px;
+}
+
 #txtCodigo {
     color: #338a5f;
     font-family: Poppins-semibold;
