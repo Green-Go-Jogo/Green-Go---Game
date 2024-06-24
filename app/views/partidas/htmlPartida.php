@@ -321,7 +321,7 @@ class PartidaHTML
 
             echo "<tr>";
             echo "<td id='tabelanome'>" . $usuario->getNomeUsuario() . "</td>";
-            echo "<td id='tabelapontos' class='text-left'>" . $pontos . "</td>";
+            echo "<td id='tabelapontos' class='text-left'>" . (int)$pontos . "</td>";
             // echo "<td>";
             echo "</tr>";
         }

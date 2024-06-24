@@ -1,7 +1,7 @@
 .htaccess
 a
 /app/connection/Connection.php
-/app/public/especie
+/app/public/especies
 /app/public/plantas
 /app/public/qrcode
 /app/public/questoes
