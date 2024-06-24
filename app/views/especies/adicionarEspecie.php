@@ -191,6 +191,7 @@ LoginController::verificarAcesso([2, 3]);
                                     <script>
                                         ClassicEditor
                                             .create(document.querySelector('#editor'), {
+
                                                 ckfinder: {
                                                     uploadUrl: '../plantas/processarImagem.php'
                                                 }
@@ -204,10 +205,10 @@ LoginController::verificarAcesso([2, 3]);
                                     </script>
                                     <br>
                                     <?php if (isset($errors) && !empty($errors) && isset($errors['Descricao'])) { ?>
-                                    <div class="alert alert-warning"><?php echo $errors['Descricao']; ?></div>
-                                <?php } ?>
+                                        <div class="alert alert-warning"><?php echo $errors['Descricao']; ?></div>
+                                    <?php } ?>
                                 </div>
-                                
+
 
                                 <label for="formtexto" id="txtCodigo">Fontes (Separadas por ';'):</label>
                                 <div class="w-100"></div>
