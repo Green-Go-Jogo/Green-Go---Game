@@ -42,13 +42,13 @@ if (empty($descricao)) {
   $errors['Descricao'] = "O campo Descrição é obrigatório.";
 }
 
-if (empty($autoria)) {
-  $errors['Autoria_Foto'] = "O campo Autoria da Foto é obrigatório.";
-}
+// if (empty($autoria)) {
+//   $errors['Autoria_Foto'] = "O campo Autoria da Foto é obrigatório.";
+// }
 
-if (empty($fontes)) {
-  $errors['Fontes'] = "O campo Fontes é obrigatório.";
-}
+// if (empty($fontes)) {
+//   $errors['Fontes'] = "O campo Fontes é obrigatório.";
+// }
 
 if (!empty($errors)) {
   $idEditarEspecie = $id;

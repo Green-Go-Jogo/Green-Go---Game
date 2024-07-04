@@ -34,13 +34,13 @@ if (empty($nomeCientifico)) {
   $errors['Nome_Cientifico'] = "O campo Nome Científico é obrigatório.";
 }
 
-if (empty($autoria)) {
-  $errors['Autoria_Foto'] = "O campo Autoria da Foto é obrigatório.";
-}
+// if (empty($autoria)) {
+//   $errors['Autoria_Foto'] = "O campo Autoria da Foto é obrigatório.";
+// }
 
-if (empty($fontes)) {
-  $errors['Fontes'] = "O campo Fontes é obrigatório.";
-}
+// if (empty($fontes)) {
+//   $errors['Fontes'] = "O campo Fontes é obrigatório.";
+// }
 
 if (empty($imagem['name'])) {
   $errors['Imagem'] = "O campo Imagem é obrigatório.";
