@@ -7,6 +7,8 @@ include_once(__DIR__ . "/../../controllers/EspecieController.php");
 //Capturar os valores vindos do formulário
 $nomePopular = $_POST["Nome_Popular"];
 $nomeCientifico = $_POST['Nome_Cientifico'];
+$autoria = $_POST['Autoria_Foto'];
+$fontes = $_POST['Fontes'];
 $descricao = $_POST['Descricao'];
 $id_usuario = $_POST['id_usuario'];
 $frutifera = isset($_POST['frutifera']) && !empty($_POST['frutifera']) ? $_POST['frutifera'] : 0;
@@ -21,7 +23,6 @@ $panc = isset($_POST['panc']) && !empty($_POST['panc']) ? $_POST['panc'] : 0;
 $ornamental = isset($_POST['ornamental']) && !empty($_POST['ornamental']) ? $_POST['ornamental'] : 0;
 $imagem = $_FILES['imagem'];
 
-
 //Validar dados
 $errors = array();
 
@@ -32,6 +33,14 @@ if (empty($nomePopular)) {
 if (empty($nomeCientifico)) {
   $errors['Nome_Cientifico'] = "O campo Nome Científico é obrigatório.";
 }
+
+// if (empty($autoria)) {
+//   $errors['Autoria_Foto'] = "O campo Autoria da Foto é obrigatório.";
+// }
+
+// if (empty($fontes)) {
+//   $errors['Fontes'] = "O campo Fontes é obrigatório.";
+// }
 
 if (empty($imagem['name'])) {
   $errors['Imagem'] = "O campo Imagem é obrigatório.";
@@ -56,8 +65,10 @@ $especie = new Especie();
 $especie->setNomePopular($nomePopular);
 $especie->setNomeCientifico($nomeCientifico);
 $especie->setDescricao($descricao);
+$especie->setFontes($fontes);
 $especie->setUsuario($id_usuario);
 $especie->setImagemEspecie($caminho_imagem);
+$especie->setAutoriaImagem($autoria);
 $especie->setFrutifera($frutifera);
 $especie->setComestivel($comestivel);
 $especie->setRaridade($raridade);
