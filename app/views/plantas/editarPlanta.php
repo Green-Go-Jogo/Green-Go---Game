@@ -111,21 +111,20 @@ $idsEditar = json_encode($idsQuestoesEditar)
   }
 
   div.ck-editor__editable {
-    background-color: #f0b6bc !important;
     font-family: Poppins-Regular;
     border: 1px solid #ced4da;
-    color: #FFFFFF;
     width: 500px;
   }
 
-  div.ck-editor__editable strong {
-    color: #c05367;
+  div.ck.ck-sticky-panel__content {
+    border: none !important;
   }
+
 
   div.ck-toolbar {
     background-color: #FFFFFF !important;
     font-family: Poppins-Regular;
-    border: 1px solid #ced4da;
+    border: 1px solid #c05367 !important;
     color: #FFFFFF;
     width: 500px !important;
   }
@@ -140,11 +139,32 @@ $idsEditar = json_encode($idsQuestoesEditar)
   }
 
   .modo-escuro div.ck-editor__editable {
-    background-color: #121212 !important;
+    background-color: #1b1b1b !important;
     font-family: Poppins-Regular;
     border-color: #c05367;
     color: #FFFFFF;
     width: 500px;
+  }
+
+  .modo-escuro div.ck-toolbar {
+    font-family: Poppins-Regular;
+    border: 1px solid #c05367 !important;
+    color: #FFFFFF;
+  }
+
+  .ck-content .table table,
+  .ck-content .table table tbody,
+  .ck-content .table table td,
+  .ck-content .table table th,
+  .ck-content .table table tr,
+  .modo-escuro .ck-content .table table,
+  .modo-escuro .ck-content .table tbody,
+  .modo-escuro .ck-content .table td,
+  .modo-escuro .ck-content .table th,
+  .modo-escuro .ck-content .table tr,
+  .ck-content .table table {
+    border: 1px solid #C05367 !important;
+    background-color: #FFFFFF;
   }
 
   input[type="file"] {
@@ -417,8 +437,8 @@ $idsEditar = json_encode($idsQuestoesEditar)
                 "<span style='margin-right: 6px; margin-left: 6px; color: #C05367;'>|</span>" +
                 "<label class='labelPontuacaoQuestao'  for='pontuacaoQuestao'/> Pontuação Questão: " +
                 "<input style='margin-left: 4px; max-width: 30px' value='" + (pontuacaoValor !== null ? pontuacaoValor : '') + "' class='pontuacaoQuestao' name='questaop_" + i + "' type='number'/><br>";
-              
-                // Adicionar o parágrafo à div
+
+              // Adicionar o parágrafo à div
               document.getElementById("Questoes").appendChild(paragrafo);
             }
           } else {

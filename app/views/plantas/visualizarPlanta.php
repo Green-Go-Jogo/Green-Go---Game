@@ -240,6 +240,17 @@ $nomePopular = $especie->getNomePopular();
             <w id="nomespecie"> História da Espécie: </w>
             <h1 class="descricao" id="historiaespecie">
                 <?= $especie->getDescricao() ?>
+            </h1>
+            </h1> <br><br>
+            <w id="nomespecie"> Fontes: </w>
+            <h1 class="descricao" id="historiaespecie">
+                <div id="preview" class="ckeditor-content">
+                    <?php if (!empty($especie->getFontes())) {
+                        echo $especie->getFontes();
+                    } else {
+                        echo "<p>Nenhuma fonte para a história da espécie</p>";
+                    } ?>
+                </div>
             </h1> <br><br>
 
             <w id="nomespecie"> História da Planta: </w>
@@ -334,7 +345,7 @@ $nomePopular = $especie->getNomePopular();
             }
         });
 
-        if(values.length === 0){
+        if (values.length === 0) {
             return alert("Por favor, selecione ao menos uma resposta para submeter o formulário.");
         }
 

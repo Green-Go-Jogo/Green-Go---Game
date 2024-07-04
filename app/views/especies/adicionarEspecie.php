@@ -27,7 +27,7 @@ LoginController::verificarAcesso([2, 3]);
         width: 500px;
     }
 
-    div.ck.ck-sticky-panel__content{
+    div.ck.ck-sticky-panel__content {
         border: none !important;
     }
 
@@ -38,6 +38,20 @@ LoginController::verificarAcesso([2, 3]);
         border: 1px solid #c05367 !important;
         color: #FFFFFF;
         width: 500px !important;
+    }
+
+    .modo-escuro div.ck-editor__editable {
+        background-color: #1b1b1b !important;
+        font-family: Poppins-Regular;
+        border-color: #c05367;
+        color: #FFFFFF;
+        width: 500px;
+    }
+
+    .modo-escuro div.ck-toolbar {
+        font-family: Poppins-Regular;
+        border: 1px solid #c05367 !important;
+        color: #FFFFFF;
     }
 
     .ck-content .table table,
@@ -197,7 +211,7 @@ LoginController::verificarAcesso([2, 3]);
                                     <div class="alert alert-warning"><?php echo $errors['Autoria_Foto']; ?></div>
                                 <?php } ?>
 
-                                <div class="container" id="caixadetexto"> <br><br><br>
+                                <div class="container" id="caixadetexto"> <br>
                                     <a id="textodescritivo">Descrição:</a> <br><br>
                                     <textarea id="editor" name="Descricao" value=""></textarea>
                                     <script>
@@ -221,19 +235,35 @@ LoginController::verificarAcesso([2, 3]);
                                     <?php } ?>
                                 </div>
 
+                                <div class="container" id="caixadetexto"> <br>
+                                    <a id="textodescritivo">Fontes:</a> <br><br>
+                                    <textarea id="editorFonte" name="Fontes" value=""></textarea>
+                                    <script>
+                                        ClassicEditor
+                                            .create(document.querySelector('#editorFonte'), {
 
-                                <label for="formtexto" id="txtCodigo">Fontes (Separadas por ';'):</label>
-                                <div class="w-100"></div>
-                                <textarea name="Fontes" class="form-control" id="txtFontForm" aria-describedby="nome-cadastro" value="<?php echo isset($_POST['Fontes']) ? $_POST['Fontes'] : ''; ?>"></textarea>
-                                <?php if (isset($errors) && !empty($errors) && isset($errors['Fontes'])) { ?>
-                                    <div class="alert alert-warning"><?php echo $errors['Fontes']; ?></div>
-                                <?php } ?>
+                                                ckfinder: {
+                                                    uploadUrl: '../plantas/processarImagem.php'
+                                                }
+                                            })
+                                            .then(editor => {
 
-                                <div class="container"> <br><br>
-                                    <button type="submit" class="btn btn-primary btn-lg" id="botoesregistrar"><a>Adicionar</a> </button>
-                                    <button type="reset" class="btn btn-secondary btn-lg" id="botoeslimpar"> <a id="limpar"> Limpar</a>
-                                    </button>
+                                            })
+                                            .catch(error => {
+                                                console.error(error);
+                                            });
+                                    </script>
+                                    <?php if (isset($errors) && !empty($errors) && isset($errors['Fontes'])) { ?>
+                                        <div class="alert alert-warning"><?php echo $errors['Fontes']; ?></div>
+                                    <?php } ?>
+
+                                    <div class="container"> <br><br>
+                                        <button type="submit" class="btn btn-primary btn-lg" id="botoesregistrar"><a>Adicionar</a> </button>
+                                        <button type="reset" class="btn btn-secondary btn-lg" id="botoeslimpar"> <a id="limpar"> Limpar</a>
+                                        </button>
+                                    </div>
                                 </div>
+
                                 <input type="hidden" name="id_usuario" value="<?php echo $_SESSION['ID']; ?>" />
                             </form>
 
