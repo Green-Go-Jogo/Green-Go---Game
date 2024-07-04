@@ -192,7 +192,11 @@ $nomePopular = $especie->getNomePopular();
             <w id="nomespecie"> Fontes: </w>
             <h1 class="descricao" id="historiaespecie">
                 <div id="preview" class="ckeditor-content">
-                    <?= $especie->getFontes() ?>
+                    <?php if (!empty($especie->getFontes())) {
+                        echo $especie->getFontes();
+                    } else {
+                        echo "<p>Nenhuma fonte para a história da espécie</p>";
+                    } ?>
                 </div>
             </h1>
             <br><br>
