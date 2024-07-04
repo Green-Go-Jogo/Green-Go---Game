@@ -9,6 +9,8 @@ $id = $_POST["id_especie"];
 $nomePopular = $_POST["Nome_Popular"];
 $nomeCientifico = $_POST['Nome_Cientifico'];
 $descricao = $_POST['Descricao'];
+$autoria = $_POST['Autoria_Foto'];
+$fontes = $_POST['Fontes'];
 $id_usuario = $_POST['id_usuario'];
 $frutifera = isset($_POST['frutifera']) && !empty($_POST['frutifera']) ? $_POST['frutifera'] : 0;
 $comestivel = isset($_POST['comestivel']) && !empty($_POST['comestivel']) ? $_POST['comestivel'] : 0;
@@ -40,6 +42,14 @@ if (empty($descricao)) {
   $errors['Descricao'] = "O campo Descrição é obrigatório.";
 }
 
+// if (empty($autoria)) {
+//   $errors['Autoria_Foto'] = "O campo Autoria da Foto é obrigatório.";
+// }
+
+// if (empty($fontes)) {
+//   $errors['Fontes'] = "O campo Fontes é obrigatório.";
+// }
+
 if (!empty($errors)) {
   $idEditarEspecie = $id;
   require_once("editarEspecie.php");
@@ -66,9 +76,11 @@ if ($imagem['error'] === UPLOAD_ERR_NO_FILE) {
 $especie->setIdEspecie($id);
 $especie->setNomePopular($nomePopular);
 $especie->setNomeCientifico($nomeCientifico);
+$especie->setFontes($fontes);
 $especie->setUsuario($id_usuario);
 $especie->setDescricao($descricao);
 $especie->setFrutifera($frutifera);
+$especie->setAutoriaImagem($autoria);
 $especie->setComestivel($comestivel);
 $especie->setRaridade($raridade);
 $especie->setMedicinal($medicinal);

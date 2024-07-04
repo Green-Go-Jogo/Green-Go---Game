@@ -100,7 +100,7 @@ $nomePopular = $especie->getNomePopular();
 <!DOCTYPE html>
 <html lang="pt-br">
 <title>
-<?php if (!empty($nomeSocial)) {
+    <?php if (!empty($nomeSocial)) {
         echo $nomeSocial;
     } else {
         echo $nomePopular;
@@ -147,7 +147,7 @@ $nomePopular = $especie->getNomePopular();
                     ?>
                 </h1>
             </div> <br>
-            
+
 
             <h1 class="nome" id="nomeDois">
                 <a> Nome Científico: </a> <i style="color: #C05367; font-family: Poppins;"> <?= $especie->getNomeCientifico() ?></i>
@@ -160,6 +160,7 @@ $nomePopular = $especie->getNomePopular();
     <div class="text-center" id="imagem1Planta">
         <img id="imagemPlanta" src="<?php echo $especie->getImagemEspecie(); ?>" />
         <br> <br>
+        <span id='autoria'>Autoria: <?= $especie->getAutoriaImagem(); ?></span>
     </div>
     <div class="container">
         <div>
@@ -184,9 +185,20 @@ $nomePopular = $especie->getNomePopular();
             <br>
             <w id="nomespecie"> História da Espécie: </w>
             <h1 class="descricao" id="historiaespecie">
-                <?= $especie->getDescricao() ?>
+                <div id="preview" class="ckeditor-content">
+                    <?= $especie->getDescricao() ?>
+                </div>
             </h1> <br><br>
-
+            <w id="nomespecie"> Fontes: </w>
+            <h1 class="descricao" id="historiaespecie">
+                <div id="preview" class="ckeditor-content">
+                    <?php if (!empty($especie->getFontes())) {
+                        echo $especie->getFontes();
+                    } else {
+                        echo "<p>Nenhuma fonte para a história da espécie</p>";
+                    } ?>
+                </div>
+            </h1>
             <br><br>
 
 
@@ -200,6 +212,38 @@ $nomePopular = $especie->getNomePopular();
         <br>
     </div>
     <script src="../bootstrap/bootstrap.min.js"></script>
+    <script src="../js/responsiveTable.js"></script>
+    <script>
+        function updatePreview(content) {
+            const iframe = document.getElementById('preview');
+            const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+
+            // Write the CKEditor content to the iframe
+            iframeDoc.open();
+            iframeDoc.write(`
+                <html>
+                    <head>
+                        <style>
+                            /* Add CKEditor content styles here */
+                            body {
+                                font-family: Arial, sans-serif;
+                                margin: 10px;
+                                padding: 10px;
+                            }
+                            /* Add more styles as needed to match CKEditor output */
+                        </style>
+                    </head>
+                    <body>${content}</body>
+                </html>
+            `);
+            iframeDoc.close();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const initialContent = `<?= $especie->getDescricao() ?>`;
+            updatePreview(initialContent);
+        });
+    </script>
 
     <?php include_once("../../bootstrap/footer.php"); ?>
 </body>

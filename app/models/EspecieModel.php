@@ -15,6 +15,10 @@ class Especie implements JsonSerializable {
 	private $Raridade;
 	private $Medicinal;
 	private $Comestivel;
+	private $DataCriacao;
+	private $DataAtualizacao;
+	private $AutoriaImagem;
+	private $Fontes;
 	private $Usuario;
 	private $caracteristicas = array();
 
@@ -371,6 +375,86 @@ class Especie implements JsonSerializable {
 	public function setUsuario($Usuario)
 	{
 		$this->Usuario = $Usuario;
+
+		return $this;
+	}
+
+	/**
+	 * Get the value of DataCriacao
+	 */ 
+	public function getDataCriacao()
+	{
+		return $this->DataCriacao;
+	}
+
+	/**
+	 * Set the value of DataCriacao
+	 *
+	 * @return  self
+	 */ 
+	public function setDataCriacao($DataCriacao)
+	{
+		$this->DataCriacao = $DataCriacao;
+
+		return $this;
+	}
+
+	/**
+	 * Get the value of AutoriaImagem
+	 */ 
+	public function getAutoriaImagem()
+	{
+		return $this->AutoriaImagem;
+	}
+
+	/**
+	 * Set the value of AutoriaImagem
+	 *
+	 * @return  self
+	 */ 
+	public function setAutoriaImagem($AutoriaImagem)
+	{
+		$this->AutoriaImagem = $AutoriaImagem;
+
+		return $this;
+	}
+
+	/**
+	 * Get the value of Fontes
+	 */ 
+	public function getFontes()
+	{
+		return $this->Fontes;
+	}
+
+	/**
+	 * Set the value of Fontes
+	 *
+	 * @return  self
+	 */ 
+	public function setFontes($Fontes)
+	{
+		$this->Fontes = $Fontes;
+
+		return $this;
+	}
+
+	/**
+	 * Get the value of DataAtualizacao
+	 */ 
+	public function getDataAtualizacao()
+	{
+		return $this->DataAtualizacao;
+	}
+
+	/**
+	 * Set the value of DataAtualizacao
+	 *
+	 * @return  self
+	 */ 
+	public function setDataAtualizacao($DataAtualizacao)
+	{
+		$this->DataAtualizacao = $DataAtualizacao;
 
 		return $this;
 	}

@@ -124,23 +124,51 @@ if ($ornamental == 1) {
     }
 
     div.ck-editor__editable {
-        background-color: #f0b6bc !important;
         font-family: Poppins-Regular;
         border: 1px solid #ced4da;
-        color: #FFFFFF;
         width: 500px;
     }
 
-    div.ck-editor__editable strong {
-        color: #c05367;
+    div.ck.ck-sticky-panel__content {
+        border: none !important;
     }
+
 
     div.ck-toolbar {
         background-color: #FFFFFF !important;
         font-family: Poppins-Regular;
-        border: 1px solid #ced4da;
+        border: 1px solid #c05367 !important;
         color: #FFFFFF;
         width: 500px !important;
+    }
+
+    .ck-content .table table,
+    .ck-content .table table tbody,
+    .ck-content .table table td,
+    .ck-content .table table th,
+    .ck-content .table table tr,
+    .modo-escuro .ck-content .table table,
+    .modo-escuro .ck-content .table tbody,
+    .modo-escuro .ck-content .table td,
+    .modo-escuro .ck-content .table th,
+    .modo-escuro .ck-content .table tr,
+    .ck-content .table table {
+        border: 1px solid #C05367 !important;
+        background-color: #FFFFFF;
+    }
+
+    .modo-escuro div.ck-editor__editable {
+        background-color: #1b1b1b !important;
+        font-family: Poppins-Regular;
+        border-color: #c05367;
+        color: #FFFFFF;
+        width: 500px;
+    }
+
+    .modo-escuro div.ck-toolbar {
+        font-family: Poppins-Regular;
+        border: 1px solid #c05367 !important;
+        color: #FFFFFF;
     }
 
     .ck.ck-editor__main>.ck-editor__editable:not(.ck-focused) {
@@ -153,11 +181,9 @@ if ($ornamental == 1) {
     }
 
     .modo-escuro div.ck-editor__editable {
-        background-color: #121212 !important;
         font-family: Poppins-Regular;
         border-color: #c05367;
-        color: #FFFFFF;
-        width: 500px
+        width: 500px;
     }
 
     input[type="file"] {
@@ -175,10 +201,9 @@ if ($ornamental == 1) {
     }
 
     #cancelar:hover {
-    color: #ED8E96;
-    font-family: Poppins-medium;
-}
-
+        color: #ED8E96;
+        font-family: Poppins-medium;
+    }
 </style>
 
 
@@ -296,9 +321,16 @@ if ($ornamental == 1) {
                                         <input type="file" id="img" name="imagem" id="picture__input" data-image-input accept=".png, .jpg, .jpeg" />
                                         <a id="carregueimagemtexto2"> <- Selecione um arquivo para a imagem da espécie </a>
                                     </div>
+
+                                    <label for="formtexto" id="txtCodigo">Autoria da Foto:</label>
+                                    <div class="w-100"></div>
+                                    <input type="text" name="Autoria_Foto" class="form-control" id="txtNomeForm" aria-describedby="nome-cadastro" value="<?php echo isset($_POST['Autoria_Foto']) ? $_POST['Autoria_Foto'] : $especie->getAutoriaImagem(); ?>">
+                                    <?php if (isset($errors) && !empty($errors) && isset($errors['Autoria_Foto'])) { ?>
+                                        <div class="alert alert-warning"><?php echo $errors['Autoria_Foto']; ?></div>
+                                    <?php } ?>
                                 </div>
 
-                                <div class="container" id="caixadetexto"> <br><br><br>
+                                <div class="container" id="caixadetexto"> <br>
                                     <a id="textodescritivo">Descrição:</a> <br><br>
                                     <textarea id="editor" name="Descricao" value=""></textarea>
                                     <script>
@@ -319,6 +351,30 @@ if ($ornamental == 1) {
                                     </script>
                                     <?php if (isset($errors) && !empty($errors) && isset($errors['Descricao'])) { ?>
                                         <div class="alert alert-warning"><?php echo $errors['Descricao']; ?></div>
+                                    <?php } ?>
+                                </div>
+
+                                <div class="container" id="caixadetexto"> <br>
+                                    <a id="textodescritivo">Fontes:</a> <br><br>
+                                    <textarea id="editorFonte" name="Fontes" value=""></textarea>
+                                    <script>
+                                        ClassicEditor
+                                            .create(document.querySelector('#editorFonte'), {
+                                                ckfinder: {
+                                                    uploadUrl: '../plantas/processarImagem.php'
+                                                }
+                                            })
+                                            .then(editor => {
+                                                const historiaContent = `<?php echo $especie->getFontes() ?>`;
+
+                                                editor.setData(historiaContent);
+                                            })
+                                            .catch(error => {
+                                                console.error(error);
+                                            });
+                                    </script>
+                                    <?php if (isset($errors) && !empty($errors) && isset($errors['Fontes'])) { ?>
+                                        <div class="alert alert-warning"><?php echo $errors['Fontes']; ?></div>
                                     <?php } ?>
                                 </div>
 

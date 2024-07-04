@@ -22,23 +22,51 @@ LoginController::verificarAcesso([2, 3]);
     }
 
     div.ck-editor__editable {
-        background-color: #f0b6bc !important;
         font-family: Poppins-Regular;
         border: 1px solid #ced4da;
-        color: #FFFFFF;
         width: 500px;
     }
 
-    div.ck-editor__editable strong {
-        color: #c05367;
+    div.ck.ck-sticky-panel__content {
+        border: none !important;
     }
+
 
     div.ck-toolbar {
         background-color: #FFFFFF !important;
         font-family: Poppins-Regular;
-        border: 1px solid #ced4da;
+        border: 1px solid #c05367 !important;
         color: #FFFFFF;
         width: 500px !important;
+    }
+
+    .modo-escuro div.ck-editor__editable {
+        background-color: #1b1b1b !important;
+        font-family: Poppins-Regular;
+        border-color: #c05367;
+        color: #FFFFFF;
+        width: 500px;
+    }
+
+    .modo-escuro div.ck-toolbar {
+        font-family: Poppins-Regular;
+        border: 1px solid #c05367 !important;
+        color: #FFFFFF;
+    }
+
+    .ck-content .table table,
+    .ck-content .table table tbody,
+    .ck-content .table table td,
+    .ck-content .table table th,
+    .ck-content .table table tr,
+    .modo-escuro .ck-content .table table,
+    .modo-escuro .ck-content .table tbody,
+    .modo-escuro .ck-content .table td,
+    .modo-escuro .ck-content .table th,
+    .modo-escuro .ck-content .table tr,
+    .ck-content .table table {
+        border: 1px solid #C05367 !important;
+        background-color: #FFFFFF;
     }
 
     .ck.ck-editor__main>.ck-editor__editable:not(.ck-focused) {
@@ -51,10 +79,8 @@ LoginController::verificarAcesso([2, 3]);
     }
 
     .modo-escuro div.ck-editor__editable {
-        background-color: #121212 !important;
         font-family: Poppins-Regular;
         border-color: #c05367;
-        color: #FFFFFF;
         width: 500px;
     }
 
@@ -178,12 +204,20 @@ LoginController::verificarAcesso([2, 3]);
                                     <?php } ?>
                                 </div>
 
-                                <div class="container" id="caixadetexto"> <br><br><br>
+                                <label for="formtexto" id="txtCodigo">Autoria da Foto:</label>
+                                <div class="w-100"></div>
+                                <input type="text" name="Autoria_Foto" class="form-control" id="txtNomeForm" aria-describedby="nome-cadastro" value="<?php echo isset($_POST['Autoria_Foto']) ? $_POST['Autoria_Foto'] : ''; ?>">
+                                <?php if (isset($errors) && !empty($errors) && isset($errors['Autoria_Foto'])) { ?>
+                                    <div class="alert alert-warning"><?php echo $errors['Autoria_Foto']; ?></div>
+                                <?php } ?>
+
+                                <div class="container" id="caixadetexto"> <br>
                                     <a id="textodescritivo">Descrição:</a> <br><br>
                                     <textarea id="editor" name="Descricao" value=""></textarea>
                                     <script>
                                         ClassicEditor
                                             .create(document.querySelector('#editor'), {
+
                                                 ckfinder: {
                                                     uploadUrl: '../plantas/processarImagem.php'
                                                 }
@@ -195,17 +229,41 @@ LoginController::verificarAcesso([2, 3]);
                                                 console.error(error);
                                             });
                                     </script>
-
+                                    <br>
                                     <?php if (isset($errors) && !empty($errors) && isset($errors['Descricao'])) { ?>
                                         <div class="alert alert-warning"><?php echo $errors['Descricao']; ?></div>
                                     <?php } ?>
                                 </div>
 
-                                <div class="container"> <br><br>
-                                    <button type="submit" class="btn btn-primary btn-lg" id="botoesregistrar"><a>Adicionar</a> </button>
-                                    <button type="reset" class="btn btn-secondary btn-lg" id="botoeslimpar"> <a id="limpar"> Limpar</a>
-                                    </button>
+                                <div class="container" id="caixadetexto"> <br>
+                                    <a id="textodescritivo">Fontes:</a> <br><br>
+                                    <textarea id="editorFonte" name="Fontes" value=""></textarea>
+                                    <script>
+                                        ClassicEditor
+                                            .create(document.querySelector('#editorFonte'), {
+
+                                                ckfinder: {
+                                                    uploadUrl: '../plantas/processarImagem.php'
+                                                }
+                                            })
+                                            .then(editor => {
+
+                                            })
+                                            .catch(error => {
+                                                console.error(error);
+                                            });
+                                    </script>
+                                    <?php if (isset($errors) && !empty($errors) && isset($errors['Fontes'])) { ?>
+                                        <div class="alert alert-warning"><?php echo $errors['Fontes']; ?></div>
+                                    <?php } ?>
+
+                                    <div class="container"> <br><br>
+                                        <button type="submit" class="btn btn-primary btn-lg" id="botoesregistrar"><a>Adicionar</a> </button>
+                                        <button type="reset" class="btn btn-secondary btn-lg" id="botoeslimpar"> <a id="limpar"> Limpar</a>
+                                        </button>
+                                    </div>
                                 </div>
+
                                 <input type="hidden" name="id_usuario" value="<?php echo $_SESSION['ID']; ?>" />
                             </form>
 

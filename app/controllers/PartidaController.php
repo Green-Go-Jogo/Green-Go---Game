@@ -132,8 +132,10 @@ class PartidaController {
         $questaoCerta = $this->questaoDAO->checkQuestion($idQuestao, $idAlternativa);
         if($questaoCerta && !in_array($idQuestao, $_SESSION['QUESTOES_LIDAS'])){
             //Adiciona pontos por ter acertado a questão
+            $partida = $this->buscarPartidaAndamentoPorIdUsuario($idUsuario);
+            $jogadoresEquipe = $this->contarJogadoresEquipe($partida->getIdPartida(), $partida->getIdEquipe());
             $questao = $this->questaoDAO->findByIdPlantaAndIdQuestao($idPlanta, $idQuestao);
-            $this->partidaDAO->addScoreQuestoes($idQuestao, $questao->getPontuacaoQuestao(), $idUsuario);
+            $this->partidaDAO->addScoreQuestoes($idQuestao, $questao->getPontuacaoQuestao() / $jogadoresEquipe, $idUsuario);
             $arrayQuestoes[] = $idQuestao;
             $_SESSION['QUESTOES_LIDAS'] = $arrayQuestoes;
         } else if(!in_array($idQuestao, $_SESSION['QUESTOES_LIDAS'])){
