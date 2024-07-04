@@ -117,22 +117,6 @@ $nomePopular = $especie->getNomePopular();
     body {
         overflow-x: hidden !important;
     }
-
-    .ckeditor-content {
-        font-family: inherit;
-        color: inherit;
-    }
-
-    .ckeditor-content * {
-        font-family: inherit;
-        color: inherit;
-    }
-
-    .ckeditor-content p {
-        /* Example for <p> tags */
-        margin: 0;
-        padding: 0;
-    }
 </style>
 
 <nav>
@@ -176,6 +160,7 @@ $nomePopular = $especie->getNomePopular();
     <div class="text-center" id="imagem1Planta">
         <img id="imagemPlanta" src="<?php echo $especie->getImagemEspecie(); ?>" />
         <br> <br>
+        <span id='autoria'>Autoria: <?= $especie->getAutoriaImagem(); ?></span>
     </div>
     <div class="container">
         <div>
@@ -204,7 +189,12 @@ $nomePopular = $especie->getNomePopular();
                     <?= $especie->getDescricao() ?>
                 </div>
             </h1> <br><br>
-
+            <w id="nomespecie"> Fontes: </w>
+            <h1 class="descricao" id="historiaespecie">
+                <div id="preview" class="ckeditor-content">
+                    <?= $especie->getFontes() ?>
+                </div>
+            </h1>
             <br><br>
 
 

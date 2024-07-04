@@ -129,7 +129,7 @@ if ($ornamental == 1) {
         width: 500px;
     }
 
-    div.ck.ck-sticky-panel__content{
+    div.ck.ck-sticky-panel__content {
         border: none !important;
     }
 
@@ -155,6 +155,20 @@ if ($ornamental == 1) {
     .ck-content .table table {
         border: 1px solid #C05367 !important;
         background-color: #FFFFFF;
+    }
+
+    .modo-escuro div.ck-editor__editable {
+        background-color: #1b1b1b !important;
+        font-family: Poppins-Regular;
+        border-color: #c05367;
+        color: #FFFFFF;
+        width: 500px;
+    }
+
+    .modo-escuro div.ck-toolbar {
+        font-family: Poppins-Regular;
+        border: 1px solid #c05367 !important;
+        color: #FFFFFF;
     }
 
     .ck.ck-editor__main>.ck-editor__editable:not(.ck-focused) {
@@ -316,7 +330,7 @@ if ($ornamental == 1) {
                                     <?php } ?>
                                 </div>
 
-                                <div class="container" id="caixadetexto"> <br><br><br>
+                                <div class="container" id="caixadetexto"> <br>
                                     <a id="textodescritivo">Descrição:</a> <br><br>
                                     <textarea id="editor" name="Descricao" value=""></textarea>
                                     <script>
@@ -340,12 +354,29 @@ if ($ornamental == 1) {
                                     <?php } ?>
                                 </div>
 
-                                <label for="formtexto" id="txtCodigo"> Fontes(Separadas por ';'):</label>
-                                <div class="w-100"></div>
-                                <textarea name="Fontes" class="form-control" id="txtFontForm" aria-describedby="nome-cadastro" value=""><?php echo isset($_POST['Fontes']) ? $_POST['Fontes'] : $especie->getFontes(); ?></textarea>
-                                <?php if (isset($errors) && !empty($errors) && isset($errors['Fontes'])) { ?>
-                                    <div class="alert alert-warning"><?php echo $errors['Fontes']; ?></div>
-                                <?php } ?>
+                                <div class="container" id="caixadetexto"> <br>
+                                    <a id="textodescritivo">Fontes:</a> <br><br>
+                                    <textarea id="editorFonte" name="Fontes" value=""></textarea>
+                                    <script>
+                                        ClassicEditor
+                                            .create(document.querySelector('#editorFonte'), {
+                                                ckfinder: {
+                                                    uploadUrl: '../plantas/processarImagem.php'
+                                                }
+                                            })
+                                            .then(editor => {
+                                                const historiaContent = `<?php echo $especie->getFontes() ?>`;
+
+                                                editor.setData(historiaContent);
+                                            })
+                                            .catch(error => {
+                                                console.error(error);
+                                            });
+                                    </script>
+                                    <?php if (isset($errors) && !empty($errors) && isset($errors['Fontes'])) { ?>
+                                        <div class="alert alert-warning"><?php echo $errors['Fontes']; ?></div>
+                                    <?php } ?>
+                                </div>
 
         </nav>
 

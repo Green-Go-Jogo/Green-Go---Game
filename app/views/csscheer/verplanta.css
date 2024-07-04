@@ -342,3 +342,104 @@ table img {
 td figure {
     width: 100% !important;
 }
+
+figure {
+    width: 100% !important;
+}
+
+
+@media (min-width: 900px) {
+    figure img {
+        display: flex;
+        justify-content: center;
+        width: 40% !important;
+    }
+
+    .image>figcaption {
+        display: block;
+        width: 40%;
+    }
+}
+
+@media (max-width: 899px) {
+    figure img {
+        display: flex;
+        justify-content: center;
+        width: 100% !important;
+    }
+
+
+    .image>figcaption {
+        display: block;
+        width: 100%;
+    }
+}
+
+figure.image {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.image>figcaption {
+    text-align: center;
+    display: block;
+    border-radius: 2px;
+    border-bottom: 1px solid #f0b6bc;
+    border-left: 1px solid #f0b6bc;
+    border-right: 1px solid #f0b6bc;
+    background-color: #ebf0f1;
+    caption-side: bottom;
+    color: #078071;
+    font-size: .30em;
+    outline-offset: -1px;
+    padding: .6em;
+    word-break: break-word
+}
+
+.modo-escuro .image>figcaption {
+    text-align: center;
+    display: block;
+    border-radius: 2px;
+    border-bottom: 1px solid #C05367;
+    border-left: 1px solid #C05367;
+    border-right: 1px solid #C05367;
+    background-color: #1B1B1B;
+    caption-side: bottom;
+    color: #f0b6bc;
+    font-size: .30em;
+    outline-offset: -1px;
+    padding: .6em;
+    word-break: break-word
+}
+
+figure img {
+    width: 100%;
+    height: auto;
+}
+
+p a {
+    word-break: break-all;
+}
+
+.ckeditor-content ul,
+.ckeditor-content li {
+    font-size: 20px;
+}
+
+#autoria {
+    color: #C05367;
+    margin-top: -30px;
+    display: flex;
+    justify-content: center;
+}
+
+.modo-escuro #autoria {
+    color: #078071;
+    margin-top: -30px;
+    display: flex;
+    justify-content: center;
+}

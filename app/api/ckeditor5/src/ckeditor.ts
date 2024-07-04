@@ -31,9 +31,9 @@ import { List } from '@ckeditor/ckeditor5-list';
 import { MediaEmbed } from '@ckeditor/ckeditor5-media-embed';
 import { Paragraph } from '@ckeditor/ckeditor5-paragraph';
 import { RemoveFormat } from '@ckeditor/ckeditor5-remove-format';
-import { 
-	SpecialCharacters, 
-	SpecialCharactersLatin, 
+import {
+	SpecialCharacters,
+	SpecialCharactersLatin,
 	SpecialCharactersArrows,
 	SpecialCharactersCurrency,
 	SpecialCharactersEssentials,
@@ -134,9 +134,7 @@ class Editor extends ClassicEditor {
 			toolbar: [
 				'imageTextAlternative',
 				'toggleImageCaption',
-				'imageStyle:inline',
-				'imageStyle:block',
-				'imageStyle:side'
+				'imageStyle:block'
 			]
 		},
 		table: {
