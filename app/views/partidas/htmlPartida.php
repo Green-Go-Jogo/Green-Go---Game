@@ -246,6 +246,7 @@ class PartidaHTML
                 echo "<button type='button' class='btn entrar-btn'>Fechada!</button>";
             } else if ($Open = "ADM") {
                 echo "<a href='PartidaADM.php?id=" . $partida->getIdPartida() . "'><button type='button' class='btn entrar-btn'>Administrar</button></a>";
+                echo "<br><a href='deletarPartida.php?id=" . $partida->getIdPartida() . "'><button type='button' class='btn deletar-btn'>Excluir</button></a>";
             }
             echo "<br>";
             echo "</div>";
