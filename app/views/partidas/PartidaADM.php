@@ -17,6 +17,10 @@ if (isset($_GET['id'])) {
 }
 
 $partida = $partidaCont->buscarPorId($idPartida);
+if($partida === null) {
+    echo "<p class='text-center'>A partida não existe mais! <a style='color: #C05367' href='../home/indexADM.php'>Clique aqui</a> para a retornar à página inicial!</p>";
+    exit;
+}
 $dataInicio = $partida->getDataInicio();
 $dataFim = $partida->getDataFim();
 $tempo = $partida->getTempoPartida();
