@@ -64,8 +64,8 @@ LoginController::verificarAcesso([2, 3]);
                             <img src="../../public/icon/arvore_icon.png" alt="" id="previewImagem" style="width: 300px; height: 300px"> <br><br>
                             <div class="container">
                             <button type="submit" class="btn btn-primary btn-lg" id="botoesregistrar"><a>Adicionar</a> </button>
-                            <button type="reset" class="btn btn-secondary btn-lg" id="botoeslimpar"> <a id="limpar"> Limpar</a>
-                            </button>
+                            <button type="reset" class="btn btn-secondary btn-lg" id="botoeslimpar"> <a id="limpar"> Limpar</a></button>
+                            <a class="btn btn-secondary btn-lg" id="botoescancelar" href="../../views/equipes/listEquipes.php">Cancelar e Voltar</a>
                             </div>
                             <br><br>
 

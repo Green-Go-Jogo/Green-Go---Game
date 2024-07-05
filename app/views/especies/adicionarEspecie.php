@@ -259,8 +259,8 @@ LoginController::verificarAcesso([2, 3]);
 
                                     <div class="container"> <br><br>
                                         <button type="submit" class="btn btn-primary btn-lg" id="botoesregistrar"><a>Adicionar</a> </button>
-                                        <button type="reset" class="btn btn-secondary btn-lg" id="botoeslimpar"> <a id="limpar"> Limpar</a>
-                                        </button>
+                                        <button type="reset" class="btn btn-secondary btn-lg" id="botoeslimpar"> <a id="limpar"> Limpar</a></button>
+                                        <a class="btn btn-secondary btn-lg" id="botoescancelar" href="../../views/especies/listEspecies.php">Cancelar e Voltar</a>
                                     </div>
                                 </div>
 

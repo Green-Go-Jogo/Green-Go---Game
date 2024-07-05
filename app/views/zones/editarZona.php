@@ -113,10 +113,8 @@ if ($id !== null) {
 
                                                     <div class="container">
                                                         <button type="submit" class="btn btn-primary btn-lg" id="botoesregistrar"><a>Salvar</a> </button>
-                                                        <button type="reset" class="btn btn-secondary btn-lg" id="botoeslimpar"> <a id="limpar"> Limpar</a>
-                                                        </button> <br>
-
-                                                        <a class="text-center" id="cancelar" href="../../views/zones/listZonas.php"> Cancelar e Voltar </a>
+                                                        <button type="reset" class="btn btn-secondary btn-lg" id="botoeslimpar"> <a id="limpar"> Limpar</a></button> 
+                                                        <a class="btn btn-secondary btn-lg" id="botoescancelar" href="../../views/zones/listZonas.php">Cancelar e Voltar</a>
 
                                                     </div>
 

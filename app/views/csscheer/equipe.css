@@ -7,7 +7,7 @@
     --rosão: #C05367;
     --cinza: #586660;
     --cinzinha: #d3dadb;
-    --branquinho #ffffff;
+    --branquinho: #ffffff;
 
     width: 100%;
     height: 100%;
@@ -95,8 +95,6 @@ body {
     background-color: #338a5f;
     font-family: Poppins-regular;
     border-color: #04574d;
-    margin-bottom: 35px;
-    margin-top: 25px;
     width: 130px;
     height: auto;
     margin-left: 3px;
@@ -107,8 +105,6 @@ body {
     background-color: #ffffff;
     font-family: Poppins-regular;
     border-color: #f0b6bc;
-    margin-bottom: 35px;
-    margin-top: 25px;
     width: 130px;
     height: auto;
 }
@@ -134,4 +130,19 @@ body {
 
     }
 
+}
+
+#botoescancelar {
+    color: #ebf0f1;
+    background-color: #f0b6bc;
+    font-family: Poppins-regular;
+    border-color: #f0b6bc;
+    width: 210px;
+    height: auto;
+}
+
+#botoescancelar:hover {
+    color: #ebf0f1;
+    background-color: #C05367;
+    font-family: Poppins-regular;
 }
