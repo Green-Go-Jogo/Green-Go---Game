@@ -2,6 +2,10 @@
 
 Para a criação do Changelog foi seguido o modelo [Mantenha um Changelog](https://keepachangelog.com/pt-BR/1.0.0/) junto do [Versionamento Semântico](https://semver.org/lang/pt-BR/)
 
+# [1.0.1] - 05-07-2024
+### Modificado
+- Modificado exclusão do sistema, agora todos os objetos são excluídos logicamente.
+
 # [1.0.0] - 19-06-2024
 ### Adicionado
 - Adicionado o Sistema de Quiz, incluindo o CRUD de questões, junto da adição de questões a uma planta. Também sendo possivelmente a função quiz durante uma partida, agregando ao conhecimento dos jogadores e aos pontos da equipe.
