@@ -12,16 +12,16 @@ include_once(__DIR__ . "/../models/UsuarioModel.php");
 class PartidaDAO
 {
 
-    private const SQL_PARTIDA = "SELECT p.* FROM partida p";
+    private const SQL_PARTIDA = "SELECT p.* FROM partida p WHERE p.ativo = 1";
 
     private const SQL_USUARIO_PARTIDA = "SELECT pe.pontuacaoEquipe,p.dataFim,p.dataInicio,pe.idPartida,pe.idEquipe, pu.* FROM partida_usuario pu 
     JOIN partida_equipe pe ON pu.idPartidaEquipe = pe.idPartidaEquipe 
-    JOIN partida p ON pe.idPartida = p.idPartida";
+    JOIN partida p ON pe.idPartida = p.idPartida WHERE p.ativo = 1";
 
     private const SQL_PLANTA_ZONA = "SELECT plant.*,pz.* FROM partida_zona pz 
     JOIN partida part ON part.idPartida = pz.idPartida 
     JOIN zona z ON z.idZona = pz.idZona 
-    JOIN planta plant ON plant.idZona = z.idZona";
+    JOIN planta plant ON plant.idZona = z.idZona WHERE part.ativo = 1";
 
     private const SQL_EQUIPE_PARTIDA = "SELECT pe.pontuacaoEquipe,p.dataFim,p.dataInicio,pe.idPartida,e.* FROM equipe e 
     JOIN partida_equipe pe ON e.idEquipe = pe.idEquipe 
@@ -92,7 +92,7 @@ class PartidaDAO
         $conn = conectar_db();
 
         $sql = PartidaDAO::SQL_PARTIDA .
-            " WHERE p.idPartida = ?";
+            " AND p.idPartida = ?";
 
         $stmt = $conn->prepare($sql);
         $stmt->execute([$idPartida]);
@@ -111,7 +111,7 @@ class PartidaDAO
     {
         $conn = conectar_db();
 
-        $sql = PartidaDAO::SQL_USUARIO_PARTIDA . " WHERE pu.idPartida = ?";
+        $sql = PartidaDAO::SQL_USUARIO_PARTIDA . " AND pu.idPartida = ?";
         $stmt = $conn->prepare($sql);
         $stmt->execute([
             $idPartida
@@ -126,7 +126,7 @@ class PartidaDAO
     {
         $conn = conectar_db();
 
-        $sql = PartidaDAO::SQL_USUARIO_PARTIDA . " WHERE pu.idUsuario = ?";
+        $sql = PartidaDAO::SQL_USUARIO_PARTIDA . " AND pu.idUsuario = ?";
         $stmt = $conn->prepare($sql);
         $stmt->execute([
             $idUsuario
@@ -152,7 +152,7 @@ class PartidaDAO
     {
         $conn = conectar_db();
 
-        $sql = PartidaDAO::SQL_USUARIO_PARTIDA . " WHERE pu.idUsuario = ?";
+        $sql = PartidaDAO::SQL_USUARIO_PARTIDA . " AND pu.idUsuario = ?";
         $stmt = $conn->prepare($sql);
         $stmt->execute([
             $idUsuario
@@ -178,7 +178,7 @@ class PartidaDAO
     {
         $conn = conectar_db();
 
-        $sql = PartidaDAO::SQL_USUARIO_PARTIDA . " WHERE pu.idUsuario = ? AND p.idPartida = ?";
+        $sql = PartidaDAO::SQL_USUARIO_PARTIDA . " AND pu.idUsuario = ? AND p.idPartida = ?";
         $stmt = $conn->prepare($sql);
         $stmt->execute([
             $idUsuario, $idPartida
@@ -198,7 +198,7 @@ class PartidaDAO
     {
         $conn = conectar_db();
 
-        $sql = "SELECT * FROM partida WHERE idUsuario = ?";
+        $sql = "SELECT * FROM partida WHERE idUsuario = ? AND ativo = 1";
         $stmt = $conn->prepare($sql);
         $stmt->execute([
             $idUsuario
@@ -279,8 +279,6 @@ class PartidaDAO
 
     public function saveUsuarioEquipe($idPartidaEquipe, $idUsuario)
     {
-
-        var_dump($idPartidaEquipe);
         $conn = conectar_db();
 
         $sql = "INSERT INTO partida_usuario (idPartidaEquipe, idUsuario) VALUES (?, ?)";
@@ -319,7 +317,7 @@ class PartidaDAO
     {
         $conn = conectar_db();
 
-        $sql = PartidaDAO::SQL_USUARIO_PARTIDA . " WHERE pu.idUsuario = ?";
+        $sql = PartidaDAO::SQL_USUARIO_PARTIDA . " AND pu.idUsuario = ?";
         $stmt = $conn->prepare($sql);
         $stmt->execute([
             $idUsuario
@@ -349,7 +347,7 @@ class PartidaDAO
     public function findByLoginSenha(string $IdPartida, string $Senha)
     {
         $conn = conectar_db();
-        $sql = PartidaDAO::SQL_PARTIDA . " WHERE idPartida = ? AND senhaPartida = ?";
+        $sql = PartidaDAO::SQL_PARTIDA . " AND idPartida = ? AND senhaPartida = ?";
         $stmt = $conn->prepare($sql);
         $stmt->execute([$IdPartida, $Senha]);
         $result = $stmt->fetchAll();
@@ -540,7 +538,7 @@ class PartidaDAO
     {
         $conn = conectar_db();
 
-        $sql = PartidaDAO::SQL_PLANTA_ZONA . " WHERE plant.idPlanta = ? AND part.idPartida = ?";
+        $sql = PartidaDAO::SQL_PLANTA_ZONA . " AND plant.idPlanta = ? AND part.idPartida = ?";
         $stmt = $conn->prepare($sql);
         $stmt->execute([$idPlanta, $idPartida]);
 
@@ -551,5 +549,14 @@ class PartidaDAO
         } else {
             return false;
         }
+    }
+
+    public function delete(Partida $partida)
+    {
+        $conn = conectar_db();
+
+        $sql = "UPDATE partida p SET p.ativo = 0 WHERE idPartida = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([$partida->getIdPartida()]);
     }
 }

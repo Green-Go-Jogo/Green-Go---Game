@@ -45,6 +45,23 @@ class PlantaController {
         $this->zonaDAO->updatePlanta($planta->getZona());
     }
 
+    public function excluirPlantasDaEspecie($especie) {
+        $plantas = [];
+        $plantas = $this->plantaDAO->listByEspecie($especie);
+
+        foreach($plantas as $planta) {
+            $this->excluir($planta);
+        }  
+    }
+    public function excluirPlantasDaZona(Zona $zona) {
+        $plantas = [];
+        $plantas = $this->plantaDAO->listByZona($zona->getIdZona());
+
+        foreach($plantas as $planta) {
+            $this->excluir($planta);
+        }  
+    }
+
     public function apagarImagem($idPlanta) {
         $this->plantaDAO->deleteImage($idPlanta);
     }
@@ -52,6 +69,7 @@ class PlantaController {
     public function filtrar(Array $caracteristicas, string $busca, array $ADMs, array $zonas) {
         return $this->plantaDAO->filter($caracteristicas, $busca, $ADMs, $zonas);        
      }
+
 }
 
 ?>
