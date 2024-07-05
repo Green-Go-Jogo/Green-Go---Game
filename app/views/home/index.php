@@ -13,9 +13,14 @@ if (!isset($_SESSION['TIPO'])) {
     <?php include_once("../../bootstrap/header.php");
     ?>
     <!-- Primary Meta Tags -->
-    <title>Green Go Jogo Etnobotânico sobre as Plantas do IFPR</title>
-    <meta name="title" content="Green Go Jogo Etnobotânico sobre as Plantas do IFPR" />
-    <meta name="description" content="Tem como objetivo catalogar todas as plantas do IFPR, junto de uma atividade dinâmica e ativa com um jogo de caça às plantas e um quiz educativo." />
+    <title>Green Go: Jogo Etnobotânico sobre as plantas do IFPR</title>
+    <meta name="description" content="Tem como objetivo catalogar todas as plantas do IFPR, junto de uma atividade dinâmica e ativa com um jogo de caça às plantas e um quiz educativo.">
+    <meta name="keywords" content="Plantas, Flora, PANCs, IFPR, Arvores, Natureza, ODS, Sustentabilidade, Educacional, Educação, Jogo, Jogo de plantas, Catalogação, Informativo, GreenGo, Green Go, Green Go IFPR, Tecnologia e Sustentabilidade">
+    <meta name="robots" content="">
+    <meta name="revisit-after" content="7 day">
+    <meta name="language" content="Portuguese">
+    <meta name="generator" content="N/A">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
