@@ -25,6 +25,11 @@ $partidaCont = new PartidaController();
 $partida = $partidaCont->buscarPorId($idPartida);
 
 $partida = $partidaCont->buscarPorId($_GET['idp']);
+if($partida === null) {
+  $_SESSION['PARTIDA'] == false;
+  echo "<p class='text-center'>A partida não existe mais! <a style='color: #C05367' href='../home/indexJOG.php'>Clique aqui</a> para a retornar à página inicial!</p>";
+  exit;
+}
 $dataInicio = $partida->getDataInicio();
 $dataFim = $partida->getDataFim();
 $tempo = $partida->getTempoPartida();

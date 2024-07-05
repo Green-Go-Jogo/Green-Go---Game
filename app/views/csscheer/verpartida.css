@@ -99,6 +99,22 @@ body {
     border-radius: 5px; 
 }
 
+.btn.deletar-btn {
+    border-color: #f0b6bc;
+    margin-top: 4px;
+    background-color: #ffffff;
+    color: #f0b6bc;
+    font-family: Poppins-semibold;
+    font-size: 20px;
+    transition: 0.3s ease;
+}
+
+.btn.deletar-btn:hover {
+    color: var(--branco);
+    background-color: #f0b6bc;
+    border-radius: 5px; 
+}
+
 .alert-warning {
     color: #ffffff;
     background-color: #7EC4BB;
