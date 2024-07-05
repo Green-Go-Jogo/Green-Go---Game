@@ -244,9 +244,13 @@ class PartidaHTML
                 echo "<a href='rankPartida.php?id=" . $partida->getIdPartida() . "'><button type='button' class='btn entrar-btn'>Resultado</button></a>";
             } else if ($Open == "NO") {
                 echo "<button type='button' class='btn entrar-btn'>Fechada!</button>";
-            } else if ($Open = "ADM") {
+            }
+            else if ($Open = "ADM") {
                 echo "<a href='PartidaADM.php?id=" . $partida->getIdPartida() . "'><button type='button' class='btn entrar-btn'>Administrar</button></a>";
-                echo "<br><a href='deletarPartida.php?id=" . $partida->getIdPartida() . "'><button type='button' class='btn deletar-btn'>Excluir</button></a>";
+            }
+
+            if ($partida->getIdAdm() == $_SESSION['ID']) {
+                echo "<br><a href='deletarPartida.php?id=" . $partida->getIdPartida() . "' onclick='return confirm(\"Confirma a exclusão da Partida? Todos os jogadores nela serão expulsos e o progresso será perdido\");'><button type='button' class='btn deletar-btn'>Excluir</button></a>";
             }
             echo "<br>";
             echo "</div>";
@@ -303,6 +307,11 @@ class PartidaHTML
 
     public static function desenhaEquipe($usuarios, $partida, $idEquipe)
     {
+        if($partida === null) {
+            $_SESSION['PARTIDA'] = false;
+            echo "<p class='text-center'>A partida que você fazia parte não existe mais! <a style='color: #C05367' href='../home/indexJOG.php'>Clique aqui</a> para a retornar à página inicial!</p>";
+            exit;
+        }
         $partCont = new PartidaController();
 
         echo "<div class='text-center'>";

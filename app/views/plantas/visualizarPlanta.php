@@ -35,6 +35,11 @@ if (($fromQR || $fromCod) && $tipo) {
         $partidaCont = new PartidaController();
         $idPlanta = ($idp != null) ? $idp : $planta->getIdPlanta();
         $partida = $partidaCont->buscarPartidaAndamentoPorIdUsuario($_SESSION['ID']);
+        if($partida === null) {
+            $_SESSION['PARTIDA'] == false;
+            echo "<p class='text-center'>A partida não existe mais! <a style='color: #C05367' href='../home/indexJOG.php'>Clique aqui</a> para a retornar à página inicial!</p>";
+            exit;
+          }
         $arrayQuestoes = $partida->getQuestoesRespondidas();
         $msgFind = $partidaCont->checarQRCode($idPlanta, $_SESSION['PLANTAS_LIDAS'], $_SESSION['ID']);
         $msgReturn = "<a href='../partidas/mainJogo.php?idp=" . $partida->getIdPartida() . "&ide=" . $partida->getIdEquipe() . "' id='voltarjogo'> Encontrou outra planta? Volte para o jogo! </a>";
