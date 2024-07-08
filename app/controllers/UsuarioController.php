@@ -1,59 +1,68 @@
 <?php
 #Classe de controller para especie
 
-include_once(__DIR__."/../dao/UsuarioDAO.php");
+include_once(__DIR__ . "/../dao/UsuarioDAO.php");
 
-class UsuarioController {
+class UsuarioController
+{
 
     private $usuarioDAO;
 
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->usuarioDAO = new UsuarioDAO();
     }
 
-    public function listar() {
+    public function listar()
+    {
         return $this->usuarioDAO->list();
     }
 
-    public function buscarPorId($idUsuario) {
+    public function buscarPorId($idUsuario)
+    {
         return $this->usuarioDAO->findById($idUsuario);
     }
 
-    public function manterSessaoADM($nomeADM) {
+    public function manterSessaoADM($nomeADM)
+    {
         $this->usuarioDAO->manterSessaoADM($nomeADM);
     }
 
-    public function buscarUsuarios($idEquipe, $idPartida) {
-       return $this->usuarioDAO->findUsers($idEquipe, $idPartida);
+    public function buscarUsuarios($idEquipe, $idPartida)
+    {
+        return $this->usuarioDAO->findUsers($idEquipe, $idPartida);
     }
 
-    public function sair($nomeADM) {
+    public function sair($nomeADM)
+    {
         $this->usuarioDAO->logout($nomeADM);
     }
 
-    public function salvar($usuario) {
+    public function salvar($usuario)
+    {
         $this->usuarioDAO->save($usuario);
     }
 
-    public function atualizar($usuario) {
+    public function atualizar($usuario)
+    {
         $this->usuarioDAO->update($usuario);
     }
 
-    public function atualizarAcesso($usuario) {
+    public function atualizarAcesso($usuario)
+    {
         $this->usuarioDAO->updateAcess($usuario);
     }
 
-    public function excluir($usuario) {
+    public function excluir($usuario)
+    {
         $this->usuarioDAO->delete($usuario);
     }
-    public function buscarUsuarioPorTipo($tipo) {
+    public function buscarUsuarioPorTipo($tipo)
+    {
         return $this->usuarioDAO->findUserByType($tipo);
-        
+    }
+    public function checarSenhaPorIdUsuario($idUsuario, $senha) {
+        return $this->usuarioDAO->checkSenhaByIdUser($idUsuario, $senha);
     }
 }
-
-?>
-
-
-
