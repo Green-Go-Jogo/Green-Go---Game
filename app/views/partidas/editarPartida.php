@@ -200,8 +200,8 @@ if ($id !== null) {
 
                                                         <div class="container">
                                                             <button type="submit" class="btn btn-primary btn-lg" id="botoesregistrar"><a>Criar</a> </button>
-                                                            <button type="reset" class="btn btn-secondary btn-lg" id="botoeslimpar"> <a id="limpar"> Limpar</a>
-                                                            </button>
+                                                            <button type="reset" class="btn btn-secondary btn-lg" id="botoeslimpar"> <a id="limpar">Limpar</a></button>
+                                                            <a class="btn btn-secondary btn-lg" id="botoescancelar" href="../../views/partidas/listPartidas.php">Cancelar e Voltar</a>
                                                             <br>
                                                             <br>
                                                         </div>

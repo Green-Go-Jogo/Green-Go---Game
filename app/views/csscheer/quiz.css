@@ -144,14 +144,12 @@ body {
 
 #botoeslimpar {
     color: #f0b6bc;
-    ;
     background-color: #ffffff;
     font-family: Poppins-regular;
     border-color: #f0b6bc;
     width: 130px;
     height: auto;
     font-size: 21px;
-    margin-left: 11px;
     margin-bottom: 17px;
 }
 
@@ -233,4 +231,20 @@ input[type=file] {
 .preview-image__img, #imgatual {
     width: 200px;
     height: auto;
+}
+
+#botoescancelar {
+    color: #ebf0f1;
+    background-color: #f0b6bc;
+    font-family: Poppins-regular;
+    border-color: #f0b6bc;
+    width: 210px;
+    height: auto;
+    margin-bottom: 17px;
+}
+
+#botoescancelar:hover {
+    color: #ebf0f1;
+    background-color: #C05367;
+    font-family: Poppins-regular;
 }

@@ -163,6 +163,7 @@ $alternativas = $questaoController->buscarAlternativa($idq);
                                                                                 } ?>" />
                             <button type="submit" class="btn btn-secondary botaoGravar" id="botoesregistrar">Adicionar</button>
                             <button type="reset" class="btn btn-secondary botaoLimpar" id="botoeslimpar">Limpar</button>
+                            <a class="btn btn-secondary btn-lg" id="botoescancelar" href="../../views/quiz/listPergunta.php?ide=<?= $ide ?>">Cancelar e Voltar</a>
                         </div>
                     </form>
                 </div>
