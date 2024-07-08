@@ -382,9 +382,8 @@ if ($ornamental == 1) {
 
         <div class="container"> <br><br>
             <button type="submit" class="btn btn-primary btn-lg" id="botoesregistrar"><a>Salvar</a> </button>
-            <button type="reset" class="btn btn-secondary btn-lg" id="botoeslimpar"> <a id="limpar"> Limpar</a>
-            </button>
-            <br> <a class="text-center" id="cancelar" href="../../views/especies/listEspecies.php"> Cancelar e Voltar </a>
+            <button type="reset" class="btn btn-secondary btn-lg" id="botoeslimpar"> <a id="limpar"> Limpar</a></button>
+            <a class="btn btn-secondary btn-lg" id="botoescancelar" href="../../views/especies/listEspecies.php">Cancelar e Voltar</a>
         </div>
 
         <input type="hidden" name="id_especie" value="<?php echo $especie->getIdEspecie(); ?>" />

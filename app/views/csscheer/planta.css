@@ -145,6 +145,21 @@ body {
     height: auto;
 }
 
+#botoescancelar {
+    color: #ebf0f1;
+    background-color: #f0b6bc;
+    font-family: Poppins-regular;
+    border-color: #f0b6bc;
+    width: 210px;
+    height: auto;
+}
+
+#botoescancelar:hover {
+    color: #ebf0f1;
+    background-color: #C05367;
+    font-family: Poppins-regular;
+}
+
 #botoesregistrar:hover {
     color: #ebf0f1;
     background-color: #04574d;

@@ -225,4 +225,20 @@ input[type=checkbox]:checked:after {
     font-size: 33px;
     color: #078071;
   }
+
+  #botoescancelar {
+    color: #ebf0f1;
+    background-color: #f0b6bc;
+    font-family: Poppins-regular;
+    border-color: #f0b6bc;
+    width: 210px;
+    height: auto;
+}
+
+#botoescancelar:hover {
+    color: #ebf0f1;
+    background-color: #C05367;
+    font-family: Poppins-regular;
+}
+
   

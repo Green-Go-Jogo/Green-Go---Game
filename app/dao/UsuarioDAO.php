@@ -1,20 +1,22 @@
 <?php
 #Classe DAO para o model de personagem
 #Classe DAO para o model de Personagem
-include_once(__DIR__."/../connection/Connection.php");
-include_once(__DIR__."/../models/UsuarioModel.php");
-class UsuarioDAO {
+include_once(__DIR__ . "/../connection/Connection.php");
+include_once(__DIR__ . "/../models/UsuarioModel.php");
+class UsuarioDAO
+{
     private const SQL_USUARIO = "SELECT * FROM usuario u";
     private const SQL_EQUIPE_USUARIO = "SELECT e.idEquipe,pe.idPartida, usuario.* FROM partida_usuario pu 
     JOIN usuario ON pu.idUsuario = usuario.idUsuario 
     JOIN partida_equipe pe ON pu.idPartidaEquipe = pe.idPartidaEquipe 
     JOIN equipe e ON pe.idEquipe = e.idEquipe";
 
-    private function mapUsuarios($resultSql) {
-            $usuarios = array();
-            foreach ($resultSql as $reg):
-            
-            $usuario = new Usuario();  
+    private function mapUsuarios($resultSql)
+    {
+        $usuarios = array();
+        foreach ($resultSql as $reg) :
+
+            $usuario = new Usuario();
             $usuario->setIdUsuario($reg['idUsuario']);
             $usuario->setLogin($reg['loginUsuario']);
             $usuario->setNomeUsuario($reg['nomeUsuario']);
@@ -24,43 +26,45 @@ class UsuarioDAO {
             $usuario->setSenha($reg['senha']);
             $usuario->setTipoUsuario($reg['tipoUsuario']);
             array_push($usuarios, $usuario);
-    endforeach;
+        endforeach;
         return $usuarios;
-    
-}
+    }
 
-    public function list() {
+    public function list()
+    {
         $conn = conectar_db();
-        $sql = UsuarioDAO::SQL_USUARIO . 
-                " ORDER BY u.nomeUsuario";
-        $stm = $conn->prepare($sql);    
+        $sql = UsuarioDAO::SQL_USUARIO .
+            " ORDER BY u.nomeUsuario";
+        $stm = $conn->prepare($sql);
         $stm->execute();
         $result = $stm->fetchAll();
         return $this->mapUsuarios($result);
     }
 
-    public function findById($idUsuario) {
+    public function findById($idUsuario)
+    {
         $conn = conectar_db();
-        $sql = UsuarioDAO::SQL_USUARIO . 
-                " WHERE u.idUsuario = ?";
+        $sql = UsuarioDAO::SQL_USUARIO .
+            " WHERE u.idUsuario = ?";
         $stmt = $conn->prepare($sql);
         $stmt->execute([$idUsuario]);
         $result = $stmt->fetchAll();
         //Criar o objeto Planta
         $usuarios = $this->mapUsuarios($result);
-        if(count($usuarios) == 1)
+        if (count($usuarios) == 1)
             return $usuarios[0];
-        elseif(count($usuarios) == 0)
+        elseif (count($usuarios) == 0)
             return null;
-        die("UsuarioDAO.findById - Erro: mais de um usuario".
-                " encontrado para o ID ".$idUsuario);
+        die("UsuarioDAO.findById - Erro: mais de um usuario" .
+            " encontrado para o ID " . $idUsuario);
     }
 
-    public function findUsers($idEquipe, $idPartida) {
+    public function findUsers($idEquipe, $idPartida)
+    {
         $conn = conectar_db();
 
-        $sql = UsuarioDAO::SQL_EQUIPE_USUARIO. 
-                " WHERE e.idEquipe = ? AND pe.idPartida = ?";
+        $sql = UsuarioDAO::SQL_EQUIPE_USUARIO .
+            " WHERE e.idEquipe = ? AND pe.idPartida = ?";
 
         $stmt = $conn->prepare($sql);
         $stmt->execute([$idEquipe, $idPartida]);
@@ -71,11 +75,12 @@ class UsuarioDAO {
         return $usuarios;
     }
 
-    public function findPartida($idEquipe) {
+    public function findPartida($idEquipe)
+    {
         $conn = conectar_db();
 
-        $sql = UsuarioDAO::SQL_EQUIPE_USUARIO. 
-                " WHERE e.idEquipe = ?";
+        $sql = UsuarioDAO::SQL_EQUIPE_USUARIO .
+            " WHERE e.idEquipe = ?";
 
         $stmt = $conn->prepare($sql);
         $stmt->execute([$idEquipe]);
@@ -86,113 +91,141 @@ class UsuarioDAO {
         return $usuarios;
     }
 
-    public function findUserByType($tipo) {
+    public function findUserByType($tipo)
+    {
         $conn = conectar_db();
-        $sql = UsuarioDAO::SQL_USUARIO . 
-                " WHERE u.tipoUsuario = ?";
-        $stm = $conn->prepare($sql);    
-        $stm->execute([$tipo]); 
+        $sql = UsuarioDAO::SQL_USUARIO .
+            " WHERE u.tipoUsuario = ?";
+        $stm = $conn->prepare($sql);
+        $stm->execute([$tipo]);
         $result = $stm->fetchAll();
         return $this->mapUsuarios($result);
     }
 
-    public function findByLoginSenha(string $login, string $senha) {
+    public function findByLoginSenha(string $login, string $senha)
+    {
         $conn = conectar_db();
         $sql = UsuarioDAO::SQL_USUARIO . " WHERE (email = ? OR loginUsuario = ?)";
         $stmt = $conn->prepare($sql);
         $stmt->execute([$login, $login]);
         $result = $stmt->fetchAll();
-        
+
         $usuarios = $this->mapUsuarios($result);
         foreach ($usuarios as $usuario) {
             $hashSenhaArmazenada = $usuario->getSenha();
             if (password_verify($senha, $hashSenhaArmazenada)) {
                 return $usuarios[0];
-            }
-            else {
+            } else {
                 return null;;
             }
-        }}
+        }
+    }
 
-    public function logon(Usuario $usuario){
-            $email_or_login = $usuario->getLogin();
-            $senha = $usuario->getSenha();
+    public function checkSenhaByIdUser(string $idUsuario, string $senha)
+    {
+        $conn = conectar_db();
+        $sql = UsuarioDAO::SQL_USUARIO . " WHERE idUsuario = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([$idUsuario]);
+        $result = $stmt->fetchAll();
 
-            $usuario = $this->findByLoginSenha($email_or_login, $senha);
-
-            if ($usuario == null) {
-                $aviso = "E-mail ou Senha incorretos!!!";
-                header('location: login.php?aviso=' . urlencode($aviso));
-                exit;
-            }
-            else {
-                return $usuario;
+        $usuarios = $this->mapUsuarios($result);
+        foreach ($usuarios as $usuario) {
+            $hashSenhaArmazenada = $usuario->getSenha();
+            if (password_verify($senha, $hashSenhaArmazenada)) {
+                return true;
+            } else {
+                return false;
             }
         }
-    
+    }
 
-    public function manterSessaoADM($nomeADM){
+    public function logon(Usuario $usuario)
+    {
+        $email_or_login = $usuario->getLogin();
+        $senha = $usuario->getSenha();
+
+        $usuario = $this->findByLoginSenha($email_or_login, $senha);
+
+        if ($usuario == null) {
+            $aviso = "E-mail ou Senha incorretos!!!";
+            header('location: login.php?aviso=' . urlencode($aviso));
+            exit;
+        } else {
+            return $usuario;
+        }
+    }
+
+
+    public function manterSessaoADM($nomeADM)
+    {
         session_start();
 
-    if(isset($_SESSION['adm'])){
-    $nomeADM = $_SESSION['adm'];
-    } 
-    else if(isset($_SESSION['normal'])){
-    header("location: users/login.php");
-    }
-    else if (!isset($_SESSION['adm']) && !isset($_SESSION['normal'])) {
-    header("Location: users/login.php");
-    exit;
-    }
+        if (isset($_SESSION['adm'])) {
+            $nomeADM = $_SESSION['adm'];
+        } else if (isset($_SESSION['normal'])) {
+            header("location: users/login.php");
+        } else if (!isset($_SESSION['adm']) && !isset($_SESSION['normal'])) {
+            header("Location: users/login.php");
+            exit;
+        }
     }
 
-    public function logoutInd($nomeADM){
+    public function logoutInd($nomeADM)
+    {
         session_start();
 
         session_destroy();
-        header("Location: users/login.php");       
+        header("Location: users/login.php");
     }
-    
-    public function logout($nomeADM){
+
+    public function logout($nomeADM)
+    {
         session_start();
 
         session_destroy();
-        header("Location: ../users/login.php");       
+        header("Location: ../users/login.php");
     }
 
-    public function save(Usuario $usuario) {
+    public function save(Usuario $usuario)
+    {
         $conn = conectar_db();
-        $sql = "INSERT INTO usuario (nomeUsuario, loginUsuario, senha, email, genero, tipoUsuario, escolaridade)".
-        " VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO usuario (nomeUsuario, loginUsuario, senha, email, genero, tipoUsuario, escolaridade)" .
+            " VALUES (?, ?, ?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
-        $stmt->execute([$usuario->getNomeUsuario(),$usuario->getLogin(), $usuario->getSenha(), $usuario->getEmail(), 
-                        $usuario->getGenero(), $usuario->getTipoUsuario(), $usuario->getEscolaridade()]);
+        $stmt->execute([
+            $usuario->getNomeUsuario(), $usuario->getLogin(), $usuario->getSenha(), $usuario->getEmail(),
+            $usuario->getGenero(), $usuario->getTipoUsuario(), $usuario->getEscolaridade()
+        ]);
     }
 
-    public function update(Usuario $usuario) {
+    public function update(Usuario $usuario)
+    {
         $conn = conectar_db();
-    
-        $sql = "UPDATE usuario SET nomeUsuario = ?, loginUsuario = ?, senha = ?, email = ?, genero = ?, tipoUsuario = ?, escolaridade = ? WHERE idUsuario = ?";
+
+        $sql = "UPDATE usuario SET nomeUsuario = ?, loginUsuario = ?, email = ?, genero = ?, escolaridade = ? WHERE idUsuario = ?";
         $stmt = $conn->prepare($sql);
-        $stmt->execute([$usuario->getNomeUsuario(), $usuario->getLogin(), $usuario->getSenha(), $usuario->getEmail(), 
-        $usuario->getGenero(), $usuario->getTipoUsuario(), $usuario->getEscolaridade(), $usuario->getIdUsuario()]);
+        $stmt->execute([
+            $usuario->getNomeUsuario(), $usuario->getLogin(), $usuario->getEmail(),
+            $usuario->getGenero(), $usuario->getEscolaridade(), $usuario->getIdUsuario()
+        ]);
     }
 
-    public function updateAcess(Usuario $usuario) {
+    public function updateAcess(Usuario $usuario)
+    {
         $conn = conectar_db();
-    
+
         $sql = "UPDATE usuario SET tipoUsuario = ? WHERE idUsuario = ?";
         $stmt = $conn->prepare($sql);
         $stmt->execute([$usuario->getTipoUsuario(), $usuario->getIdUsuario()]);
     }
-    
-    public function delete(Usuario $usuario) {
-    $conn = conectar_db();
-    
-    $sql = "DELETE FROM usuario WHERE idUsuario = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->execute([$usuario->getIdUsuario()]);
+
+    public function delete(Usuario $usuario)
+    {
+        $conn = conectar_db();
+
+        $sql = "DELETE FROM usuario WHERE idUsuario = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([$usuario->getIdUsuario()]);
+    }
 }
-    
-}
-?>
