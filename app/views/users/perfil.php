@@ -76,45 +76,125 @@ $usuario = $usuarioCont->buscarPorId($id);
     <div class="column">
         <div class="btn-perfil">
             <p>
-                <a id="btn-perfil" class="btn btn-custom" href='editarUsuario.php'>Editar a conta </a>
-                <br><br>
-                <a id="btn-perfil" class="btn btn-custom" href='#'>Alterar a senha </a>
-                <br><br>
-                <a id="btn-perfil" class="btn btn-custom" href="" onclick="return showCustomConfirm('Tem certeza que deseja apagar seu usuário?');"> Excluir a conta</a>
+                <a id="btn-perfil" class="btn btn-custom" href='' onclick="return alterarSenhaModal(null);">Alterar a senha </a>
+            <div id="alterarSenhaDiv" class="custom-dialog" style="display: none;">
+                <h3>Alterar Senha</h3>
+                <p id="alterarSenhaMensagem"></p>
+                <label for="campoSenha">Senha atual:</label>
+                <input type="password" id='senhaAtual' autocomplete="off">
+                <label for="campoSenha">Nova senha:</label>
+                <input type="password" id='senhaNova' autocomplete="off">
+                <label for="campoSenha">Confirmação de senha:</label>
+                <input type="password" id='senhaNovaConf' autocomplete="off">
+                <div class="custom-dialog-buttons">
+                    <a href="#" onclick="customConfirm(true, 'alterarSenhaDiv'); return false;">OK</a>
+                    <a href="#" onclick="customConfirm(false, 'alterarSenhaDiv'); return false;">Cancelar</a>
+                </div>
+            </div>
+            <br><br>
+            <a id="btn-perfil" class="btn btn-custom" href='editarUsuario.php'>Editar a conta </a>
+            <br><br>
+            <a id="btn-perfil" class="btn btn-custom" href="" onclick="return deletarUsuarioModal('Tem certeza que deseja apagar seu usuário?');"> Excluir a conta</a>
+            <div id="deletarUsuarioDiv" class="custom-dialog" style="display: none;">
+                <h3>Confirmação</h3>
+                <p id="deletarUsuarioMensagem"></p>
+                <label for="campoSenha">Insira sua senha:</label>
+                <input type="password" id='senhaAtualDel' autocomplete="off">
+                <p id="erroInvalidoDeletar"></p>
+                <div class="custom-dialog-buttons">
+                    <a href="#" onclick="customConfirm(true, 'deletarUsuarioDiv'); return false;">OK</a>
+                    <a href="#" onclick="customConfirm(false, 'deletarUsuarioDiv'); return false;">Cancelar</a>
+                </div>
+            </div>
         </div>
         </p>
     </div>
 </div>
 
-<div id="custom-dialog" class="custom-dialog" style="display: none;">
-    <h3>Confirmação</h3>
-    <p id="custom-dialog-message"></p>
-    <div class="custom-dialog-buttons">
-        <a href="#" onclick="customConfirm(true); return false;">OK</a>
-        <a href="#" onclick="customConfirm(false); return false;">Cancelar</a>
-    </div>
-</div>
+
 <br><br><br>
 </body>
 <script>
-    function showCustomConfirm(message) {
+    function deletarUsuarioModal(message) {
+
+        var status = document.getElementById('deletarUsuarioDiv').style.display;
+        if (status === 'block') {
+            customConfirm(false, 'deletarUsuarioDiv');
+            return false;
+        }
+
         // Exibe o diálogo de confirmação personalizado
-        document.getElementById('custom-dialog-message').textContent = message;
-        document.getElementById('custom-dialog').style.display = 'block';
+        document.getElementById('deletarUsuarioMensagem').textContent = message;
+        document.getElementById('deletarUsuarioDiv').style.display = 'block';
         return false; // Evita que o link seja seguido
     }
 
-    function customConfirm(result) {
+    function alterarSenhaModal(message) {
+
+        var status = document.getElementById('alterarSenhaDiv').style.display;
+        if (status === 'block') {
+            customConfirm(false, 'alterarSenhaDiv');
+            return false;
+        }
+
+        // Exibe o diálogo de confirmação personalizado
+        document.getElementById('alterarSenhaMensagem').textContent = message;
+        document.getElementById('alterarSenhaDiv').style.display = 'block';
+        return false; // Evita que o link seja seguido
+    }
+
+    function customConfirm(result, id) {
+
+
         // Esta função é chamada quando um botão no diálogo é clicado
         if (result) {
             // Ação a ser realizada se o usuário clicar em "OK"
-            alert('Ação confirmada! Implemente o comportamento desejado aqui.');
+            var confirmacao = confirm('Tem certeza que deseja excluir sua conta? Essa ação é irreversível e todos os seus dados serão perdidos.');
+            if (confirmacao) {
+                deletarConta();
+                return false;
+            }
         } else {
             // Ação a ser realizada se o usuário clicar em "Cancelar"
+            // Fecha o diálogo
+            document.getElementById(id).style.display = 'none';
         }
 
-        // Fecha o diálogo
-        document.getElementById('custom-dialog').style.display = 'none';
+    }
+
+    function deletarConta() {
+        var senha = $('#senhaAtualDel').val();
+
+        $.ajax({
+            url: 'checarSenha.php',
+            type: 'POST',
+            data: {
+                idUsuario: <?php echo json_encode($usuario->getIdUsuario()); ?>,
+                senha: senha
+            },
+            success: function(response) {
+                if (response == 'valid') {
+                    // Enviar requisição AJAX para excluir a conta
+                    $.ajax({
+                        url: 'excluirConta.php',
+                        type: 'POST',
+                        data: {
+                            idUsuario: <?php echo json_encode($usuario->getIdUsuario()); ?>
+                        },
+                        success: function(response) {
+                            if (response == 'deleted') {
+                                alert('Conta excluída com sucesso.');
+                                window.location.href = '../home/index.php'; // Redireciona para logout ou outra página
+                            } else {
+                                $('#erroInvalidoDeletar').text('Erro ao excluir a conta.');
+                            }
+                        }
+                    });
+                } else {
+                    $('#erroInvalidoDeletar').text('Senha incorreta.');
+                }
+            }
+        });
     }
 </script>
 <?php include_once("../../bootstrap/footer.php") ?>

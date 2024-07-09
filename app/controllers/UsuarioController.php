@@ -34,9 +34,9 @@ class UsuarioController
         return $this->usuarioDAO->findUsers($idEquipe, $idPartida);
     }
 
-    public function sair($nomeADM)
+    public function sair()
     {
-        $this->usuarioDAO->logout($nomeADM);
+        $this->usuarioDAO->logout();
     }
 
     public function salvar($usuario)
@@ -54,9 +54,11 @@ class UsuarioController
         $this->usuarioDAO->updateAcess($usuario);
     }
 
-    public function excluir($usuario)
+    public function excluir($idUsuario)
     {
-        $this->usuarioDAO->delete($usuario);
+        $this->usuarioDAO->delete($idUsuario);
+        $this->sair();
+        return true;
     }
     public function buscarUsuarioPorTipo($tipo)
     {
