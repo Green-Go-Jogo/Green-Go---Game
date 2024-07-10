@@ -81,14 +81,17 @@ $usuario = $usuarioCont->buscarPorId($id);
                 <h3>Alterar Senha</h3>
                 <p id="alterarSenhaMensagem"></p>
                 <label for="campoSenha">Senha atual:</label>
-                <input type="password" id='senhaAtual' autocomplete="off">
+                <input type="password" id='senhaAtualAlt' autocomplete="off">
+                <p id="erroInvalidoAlterar"></p>
                 <label for="campoSenha">Nova senha:</label>
                 <input type="password" id='senhaNova' autocomplete="off">
+                <p class="erroSenhaNaoCorresponde"></p>
                 <label for="campoSenha">Confirmação de senha:</label>
                 <input type="password" id='senhaNovaConf' autocomplete="off">
+                <p class="erroSenhaNaoCorresponde"></p>
                 <div class="custom-dialog-buttons">
-                    <a href="#" onclick="customConfirm(true, 'alterarSenhaDiv'); return false;">OK</a>
-                    <a href="#" onclick="customConfirm(false, 'alterarSenhaDiv'); return false;">Cancelar</a>
+                    <a href="#" onclick="alterarConfirmacao(true, 'alterarSenhaDiv'); return false;">OK</a>
+                    <a href="#" onclick="alterarConfirmacao(false, 'alterarSenhaDiv'); return false;">Cancelar</a>
                 </div>
             </div>
             <br><br>
@@ -102,8 +105,8 @@ $usuario = $usuarioCont->buscarPorId($id);
                 <input type="password" id='senhaAtualDel' autocomplete="off">
                 <p id="erroInvalidoDeletar"></p>
                 <div class="custom-dialog-buttons">
-                    <a href="#" onclick="customConfirm(true, 'deletarUsuarioDiv'); return false;">OK</a>
-                    <a href="#" onclick="customConfirm(false, 'deletarUsuarioDiv'); return false;">Cancelar</a>
+                    <a href="#" onclick="deletarConfirmacao(true, 'deletarUsuarioDiv'); return false;">OK</a>
+                    <a href="#" onclick="deletarConfirmacao(false, 'deletarUsuarioDiv'); return false;">Cancelar</a>
                 </div>
             </div>
         </div>
@@ -119,7 +122,7 @@ $usuario = $usuarioCont->buscarPorId($id);
 
         var status = document.getElementById('deletarUsuarioDiv').style.display;
         if (status === 'block') {
-            customConfirm(false, 'deletarUsuarioDiv');
+            document.getElementById('deletarUsuarioDiv').style.display = 'none';
             return false;
         }
 
@@ -133,7 +136,7 @@ $usuario = $usuarioCont->buscarPorId($id);
 
         var status = document.getElementById('alterarSenhaDiv').style.display;
         if (status === 'block') {
-            customConfirm(false, 'alterarSenhaDiv');
+            document.getElementById('alterarSenhaDiv').style.display = 'none';
             return false;
         }
 
@@ -143,15 +146,47 @@ $usuario = $usuarioCont->buscarPorId($id);
         return false; // Evita que o link seja seguido
     }
 
-    function customConfirm(result, id) {
+    function alterarConfirmacao(result, id) {
 
+        var senhaNova = $('#senhaNova').val();
+        var senhaNovaConf = $('#senhaNovaConf').val();
+
+        //Valida senha
+        if (!senhaValida(senhaNova)) {
+            $('.erroSenhaNaoCorresponde').text('Senha não atende aos critérios minímos.');
+            return false;
+        }
+
+        // Esta função é chamada quando um botão no diálogo é clicado
+        if (result) {
+            // Ação a ser realizada se o usuário clicar em "OK"
+            if (senhaNova == senhaNovaConf) {
+                $('.erroSenhaNaoCorresponde').text('');
+                checarSenha('alterar', $('#senhaAtualAlt').val());
+                return false;
+            } else {
+                $('.erroSenhaNaoCorresponde').text('Senhas não correspondem.');
+            }
+        } else {
+            // Ação a ser realizada se o usuário clicar em "Cancelar"
+            // Fecha o diálogo
+            document.getElementById(id).style.display = 'none';
+        }
+    }
+
+    function senhaValida(password) {
+        var regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+        return regex.test(password);
+    }
+
+    function deletarConfirmacao(result, id) {
 
         // Esta função é chamada quando um botão no diálogo é clicado
         if (result) {
             // Ação a ser realizada se o usuário clicar em "OK"
             var confirmacao = confirm('Tem certeza que deseja excluir sua conta? Essa ação é irreversível e todos os seus dados serão perdidos.');
             if (confirmacao) {
-                deletarConta();
+                checarSenha('excluir', $('#senhaAtualDel').val());
                 return false;
             }
         } else {
@@ -159,11 +194,9 @@ $usuario = $usuarioCont->buscarPorId($id);
             // Fecha o diálogo
             document.getElementById(id).style.display = 'none';
         }
-
     }
 
-    function deletarConta() {
-        var senha = $('#senhaAtualDel').val();
+    function checarSenha(metodo, senha) {
 
         $.ajax({
             url: 'checarSenha.php',
@@ -174,24 +207,56 @@ $usuario = $usuarioCont->buscarPorId($id);
             },
             success: function(response) {
                 if (response == 'valid') {
-                    // Enviar requisição AJAX para excluir a conta
-                    $.ajax({
-                        url: 'excluirConta.php',
-                        type: 'POST',
-                        data: {
-                            idUsuario: <?php echo json_encode($usuario->getIdUsuario()); ?>
-                        },
-                        success: function(response) {
-                            if (response == 'deleted') {
-                                alert('Conta excluída com sucesso.');
-                                window.location.href = '../home/index.php'; // Redireciona para logout ou outra página
-                            } else {
-                                $('#erroInvalidoDeletar').text('Erro ao excluir a conta.');
-                            }
-                        }
-                    });
+                    if (metodo == 'excluir') {
+                        deletarConta();
+                    } else if (metodo == 'alterar') {
+                        alterarSenha();
+                    }
                 } else {
-                    $('#erroInvalidoDeletar').text('Senha incorreta.');
+                    if (metodo == 'excluir') {
+                        $('#erroInvalidoDeletar').text('Senha incorreta.');
+                    } else if (metodo == 'alterar') {
+                        $('#erroInvalidoAlterar').text('Senha incorreta.');
+                    }
+                }
+            }
+        });
+    }
+
+    function alterarSenha() {
+        var senhaNova = $('#senhaNova').val();
+
+        $.ajax({
+            url: 'alterarSenha.php',
+            type: 'POST',
+            data: {
+                idUsuario: <?php echo json_encode($usuario->getIdUsuario()); ?>,
+                senhaNova: senhaNova
+            },
+            success: function(response) {
+                if (response == 'updated') {
+                    alert('Senha alterada com sucesso.');
+                    document.getElementById('alterarSenhaDiv').style.display = 'none';
+                } else {
+                    $('#erroInvalidoDeletar').text('Erro ao alterar senha.');
+                }
+            }
+        });
+    }
+
+    function deletarConta() {
+        $.ajax({
+            url: 'excluirConta.php',
+            type: 'POST',
+            data: {
+                idUsuario: <?php echo json_encode($usuario->getIdUsuario()); ?>
+            },
+            success: function(response) {
+                if (response == 'deleted') {
+                    alert('Conta excluída com sucesso.');
+                    window.location.href = '../home/index.php'; // Redireciona para logout ou outra página
+                } else {
+                    $('#erroInvalidoDeletar').text('Erro ao excluir a conta.');
                 }
             }
         });

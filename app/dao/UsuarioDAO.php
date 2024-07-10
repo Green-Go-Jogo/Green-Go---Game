@@ -218,6 +218,14 @@ class UsuarioDAO
         $stmt->execute([$usuario->getTipoUsuario(), $usuario->getIdUsuario()]);
     }
 
+    public function updateSenha($idUsuario, $senhaNovaHash) {
+        $conn = conectar_db();
+
+        $sql = "UPDATE usuario SET senha = ? WHERE idUsuario = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([$senhaNovaHash, $idUsuario]);
+    }
+
     public function delete($idUsuario)
     {
         $conn = conectar_db();

@@ -67,4 +67,9 @@ class UsuarioController
     public function checarSenhaPorIdUsuario($idUsuario, $senha) {
         return $this->usuarioDAO->checkSenhaByIdUser($idUsuario, $senha);
     }
+
+    public function alterarSenha($idUsuario, $senhaNovaHash) {
+        $this->usuarioDAO->updateSenha($idUsuario, $senhaNovaHash);
+        return true;
+    }
 }
