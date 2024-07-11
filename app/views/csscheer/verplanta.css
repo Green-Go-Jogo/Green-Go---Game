@@ -443,3 +443,17 @@ p a {
     display: flex;
     justify-content: center;
 }
+
+#publicacao {
+    font-family: Poppins-semibold;
+    color: #C05367;
+}
+
+#nomePub {
+    font-family: Poppins;
+    font-style: italic;
+}
+
+#dataPub {
+    text-decoration: underline;
+}

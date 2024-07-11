@@ -5,13 +5,14 @@
 import { ClassicEditor } from '@ckeditor/ckeditor5-editor-classic';
 import { Alignment } from '@ckeditor/ckeditor5-alignment';
 import { Autoformat } from '@ckeditor/ckeditor5-autoformat';
-import { Bold, Italic, Underline } from '@ckeditor/ckeditor5-basic-styles';
+import { Bold, Italic, Underline, Strikethrough, Subscript, Superscript } from '@ckeditor/ckeditor5-basic-styles';
 import { BlockQuote } from '@ckeditor/ckeditor5-block-quote';
 import { CodeBlock } from '@ckeditor/ckeditor5-code-block';
 import type { EditorConfig } from '@ckeditor/ckeditor5-core';
+import { SourceEditing } from '@ckeditor/ckeditor5-source-editing';
 import { Essentials } from '@ckeditor/ckeditor5-essentials';
 import { FindAndReplace } from '@ckeditor/ckeditor5-find-and-replace';
-import { FontColor, FontFamily, FontSize } from '@ckeditor/ckeditor5-font';
+import { FontColor, FontFamily, FontSize, FontBackgroundColor } from '@ckeditor/ckeditor5-font';
 import { Heading } from '@ckeditor/ckeditor5-heading';
 import { HorizontalLine } from '@ckeditor/ckeditor5-horizontal-line';
 import { AutoImage, Image, ImageCaption, ImageResize, ImageStyle, ImageToolbar, ImageUpload } from '@ckeditor/ckeditor5-image';
@@ -29,7 +30,7 @@ import { WordCount } from '@ckeditor/ckeditor5-word-count';
 import { CKFinder } from '@ckeditor/ckeditor5-ckfinder';
 import { CKFinderUploadAdapter } from '@ckeditor/ckeditor5-adapter-ckfinder';
 declare class Editor extends ClassicEditor {
-    static builtinPlugins: (typeof Alignment | typeof Autoformat | typeof BlockQuote | typeof Bold | typeof CKFinderUploadAdapter | typeof CKFinder | typeof CodeBlock | typeof Essentials | typeof FindAndReplace | typeof FontColor | typeof FontFamily | typeof FontSize | typeof Heading | typeof HorizontalLine | typeof AutoImage | typeof Image | typeof ImageCaption | typeof ImageResize | typeof ImageStyle | typeof ImageToolbar | typeof ImageUpload | typeof Indent | typeof Italic | typeof Link | typeof List | typeof MediaEmbed | typeof Paragraph | typeof RemoveFormat | typeof SpecialCharacters | typeof SpecialCharactersLatin | typeof SpecialCharactersArrows | typeof SpecialCharactersEssentials | typeof SpecialCharactersMathematical | typeof SpecialCharactersCurrency | typeof SpecialCharactersText | typeof Table | typeof TableToolbar | typeof TextTransformation | typeof Underline | typeof Undo | typeof WordCount)[];
+    static builtinPlugins: (typeof Alignment | typeof Autoformat | typeof BlockQuote | typeof Bold | typeof CKFinderUploadAdapter | typeof CKFinder | typeof Strikethrough | typeof Subscript | typeof Superscript | typeof CodeBlock | typeof Essentials | typeof FindAndReplace | typeof FontColor | typeof FontFamily | typeof FontSize | typeof FontBackgroundColor | typeof Heading | typeof HorizontalLine | typeof AutoImage | typeof Image | typeof ImageCaption | typeof ImageResize | typeof ImageStyle | typeof ImageToolbar | typeof ImageUpload | typeof Indent | typeof Italic | typeof Link | typeof List | typeof MediaEmbed | typeof Paragraph | typeof RemoveFormat | typeof SpecialCharacters | typeof SpecialCharactersLatin | typeof SpecialCharactersArrows | typeof SpecialCharactersEssentials | typeof SpecialCharactersMathematical | typeof SpecialCharactersCurrency | typeof SpecialCharactersText | typeof SourceEditing | typeof Table | typeof TableToolbar | typeof TextTransformation | typeof Underline | typeof Undo | typeof WordCount)[];
     static defaultConfig: EditorConfig;
 }
 export default Editor;

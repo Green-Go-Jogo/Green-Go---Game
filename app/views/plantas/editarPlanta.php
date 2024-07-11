@@ -113,7 +113,7 @@ $idsEditar = json_encode($idsQuestoesEditar)
   div.ck-editor__editable {
     font-family: Poppins-Regular;
     border: 1px solid #ced4da;
-    width: 500px;
+    width: 600px;
   }
 
   div.ck.ck-sticky-panel__content {
@@ -126,7 +126,7 @@ $idsEditar = json_encode($idsQuestoesEditar)
     font-family: Poppins-Regular;
     border: 1px solid #c05367 !important;
     color: #FFFFFF;
-    width: 500px !important;
+    width: 600px !important;
   }
 
   .ck.ck-editor__main>.ck-editor__editable:not(.ck-focused) {
@@ -143,7 +143,7 @@ $idsEditar = json_encode($idsQuestoesEditar)
     font-family: Poppins-Regular;
     border-color: #c05367;
     color: #FFFFFF;
-    width: 500px;
+    width: 600px;
   }
 
   .modo-escuro div.ck-toolbar {
