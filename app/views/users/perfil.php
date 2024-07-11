@@ -76,37 +76,41 @@ $usuario = $usuarioCont->buscarPorId($id);
     <div class="column">
         <div class="btn-perfil">
             <p>
-                <a id="btn-perfil" class="btn btn-custom" href='' onclick="return alterarSenhaModal(null);">Alterar a senha </a>
+                <a id="btn-perfil" class="btn btn-custom" href='' onclick="return alterarSenhaModal();">Alterar a senha </a>
             <div id="alterarSenhaDiv" class="custom-dialog" style="display: none;">
                 <h3>Alterar Senha</h3>
-                <p id="alterarSenhaMensagem"></p>
-                <label for="campoSenha">Senha atual:</label>
-                <input type="password" id='senhaAtualAlt' autocomplete="off">
+                <br>
+                <label class="dialogLabel" for="campoSenha">Senha atual:</label>
+                <input class="dialogInput" type="password" id='senhaAtualAlt' autocomplete="off">
                 <p id="erroInvalidoAlterar"></p>
-                <label for="campoSenha">Nova senha:</label>
-                <input type="password" id='senhaNova' autocomplete="off">
+                <br>
+                <label class="dialogLabel" for="campoSenha">Nova senha:</label>
+                <input class="dialogInput" type="password" id='senhaNova' autocomplete="off">
                 <p class="erroSenhaNaoCorresponde"></p>
-                <label for="campoSenha">Confirmação de senha:</label>
-                <input type="password" id='senhaNovaConf' autocomplete="off">
+                <br>
+                <label class="dialogLabel" for="campoSenha">Confirmação de senha:</label>
+                <input class="dialogInput" type="password" id='senhaNovaConf' autocomplete="off">
                 <p class="erroSenhaNaoCorresponde"></p>
+                <br>
                 <div class="custom-dialog-buttons">
-                    <a href="#" onclick="alterarConfirmacao(true, 'alterarSenhaDiv'); return false;">OK</a>
-                    <a href="#" onclick="alterarConfirmacao(false, 'alterarSenhaDiv'); return false;">Cancelar</a>
+                    <a id="botaoConfirmar" href="#" onclick="alterarConfirmacao(true, 'alterarSenhaDiv'); return false;">Confirmar</a>
+                    <a id="botaoCancelar" href="#" onclick="alterarSenhaModal(); return false;">Cancelar</a>
                 </div>
             </div>
             <br><br>
             <a id="btn-perfil" class="btn btn-custom" href='editarUsuario.php'>Editar a conta </a>
             <br><br>
-            <a id="btn-perfil" class="btn btn-custom" href="" onclick="return deletarUsuarioModal('Tem certeza que deseja apagar seu usuário?');"> Excluir a conta</a>
+            <a id="btn-perfil" class="btn btn-custom" href="" onclick="return deletarUsuarioModal();"> Excluir a conta</a>
             <div id="deletarUsuarioDiv" class="custom-dialog" style="display: none;">
-                <h3>Confirmação</h3>
-                <p id="deletarUsuarioMensagem"></p>
-                <label for="campoSenha">Insira sua senha:</label>
-                <input type="password" id='senhaAtualDel' autocomplete="off">
+                <h3>Excluir a conta</h3>
+                <br>
+                <label class="dialogLabel" for="campoSenha">Insira sua senha:</label>
+                <input class="dialogInput" type="password" id='senhaAtualDel' autocomplete="off">
                 <p id="erroInvalidoDeletar"></p>
+                <br>
                 <div class="custom-dialog-buttons">
-                    <a href="#" onclick="deletarConfirmacao(true, 'deletarUsuarioDiv'); return false;">OK</a>
-                    <a href="#" onclick="deletarConfirmacao(false, 'deletarUsuarioDiv'); return false;">Cancelar</a>
+                    <a id='botaoConfirmar' href="#" onclick="deletarConfirmacao(true, 'deletarUsuarioDiv'); return false;">Confirmar</a>
+                    <a id='botaoCancelar' href="#" onclick="deletarUsuarioModal(); return false;">Cancelar</a>
                 </div>
             </div>
         </div>
@@ -118,7 +122,7 @@ $usuario = $usuarioCont->buscarPorId($id);
 <br><br><br>
 </body>
 <script>
-    function deletarUsuarioModal(message) {
+    function deletarUsuarioModal() {
 
         var status = document.getElementById('deletarUsuarioDiv').style.display;
         if (status === 'block') {
@@ -127,12 +131,12 @@ $usuario = $usuarioCont->buscarPorId($id);
         }
 
         // Exibe o diálogo de confirmação personalizado
-        document.getElementById('deletarUsuarioMensagem').textContent = message;
+        // document.getElementById('deletarUsuarioMensagem').textContent = message;
         document.getElementById('deletarUsuarioDiv').style.display = 'block';
         return false; // Evita que o link seja seguido
     }
 
-    function alterarSenhaModal(message) {
+    function alterarSenhaModal() {
 
         var status = document.getElementById('alterarSenhaDiv').style.display;
         if (status === 'block') {
@@ -141,7 +145,7 @@ $usuario = $usuarioCont->buscarPorId($id);
         }
 
         // Exibe o diálogo de confirmação personalizado
-        document.getElementById('alterarSenhaMensagem').textContent = message;
+        // document.getElementById('alterarSenhaMensagem').textContent = message;
         document.getElementById('alterarSenhaDiv').style.display = 'block';
         return false; // Evita que o link seja seguido
     }

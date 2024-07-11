@@ -85,21 +85,66 @@ body {
 
 
 .custom-dialog {
-    background-color: white;
+    margin-top: 10px;
+    background-color: #ffffff;
     border-radius: 5px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     padding: 20px;
     max-width: 300px;
-    margin: 0 auto;
+    justify-content: center;
+}
+
+.modo-escuro .custom-dialog {
+    background-color: #272626;
+}
+
+.modo-escuro .custom-dialog h3 {
+    color: #C05367;
 }
 
 .custom-dialog h3 {
+    font-family: Poppins-semibold;
+    color: #04574d;
     margin-top: 0;
+}
+
+.modo-escuro .dialogLabel{
+    color: #f0b6bc;
 }
 
 .custom-dialog-buttons {
     display: flex;
     justify-content: space-between;
+}
+
+.dialogLabel {
+    color: #078071;
+    font-family: Poppins-regular;
+}
+
+.modo-escuro .dialogLabel {
+    color: #7EC4BB !important;
+}
+
+.modo-escuro .dialogInput {
+    background-color: #1B1B1B;
+}
+
+.dialogInput {
+    color: #ffffff;
+    background-color: #f0b6bc;
+    border-radius: 4px;
+    border: 1px solid #C05367;
+}
+
+.modo-escuro #erroInvalidoDeletar, .modo-escuro #erroInvalidoAlterar, p.erroSenhaNaoCorresponde {
+    color: #ffffff;
+}
+
+#erroInvalidoDeletar, #erroInvalidoAlterar, p.erroSenhaNaoCorresponde {
+    text-align: left !important;
+    color: #C05367;
+    font-family: Poppins-semibold;
 }
 
 #subtitulo {
@@ -184,4 +229,90 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+#botaoConfirmar {
+    font-size: 18px;
+    color: #078071;
+    text-align: center;
+    background-color: #ffffff;
+    font-family: Poppins-regular;
+    border-radius: 5px;
+    border: 1px solid #078071;
+    width: auto;
+    transition: 0.3s ease;
+    padding: 5px;
+    height: auto;
+}
+
+#botaoConfirmar:hover {
+    color: #ebf0f1;
+    text-decoration: none;
+    background-color: #078071;
+    font-family: Poppins-regular;
+}
+
+
+#botaoCancelar {
+    font-size: 18px;
+    color: #f0b6bc;
+    text-align: center;
+    background-color: #ffffff;
+    font-family: Poppins-regular;
+    border-radius: 5px;
+    border: 1px solid #f0b6bc;
+    width: auto;
+    transition: 0.3s ease;
+    padding: 5px;
+    height: auto;
+}
+
+#botaoCancelar:hover {
+    color: #ebf0f1;
+    text-decoration: none;
+    background-color: #f0b6bc;
+    font-family: Poppins-regular;
+}
+
+.modo-escuro #botaoConfirmar {
+    font-size: 18px;
+    color: #f0b6bc;
+    text-align: center;
+    background-color: #1B1B1B;
+    font-family: Poppins-regular;
+    border-radius: 5px;
+    border: 1px solid #f0b6bc;
+    width: auto;
+    transition: 0.3s ease;
+    padding: 5px;
+    height: auto;
+}
+
+.modo-escuro #botaoConfirmar:hover {
+    color: #272626;
+    text-decoration: none;
+    background-color: #f0b6bc;
+    font-family: Poppins-regular;
+}
+
+
+.modo-escuro #botaoCancelar {
+    font-size: 18px;
+    color: #C05367;
+    text-align: center;
+    background-color: #1B1B1B;
+    font-family: Poppins-regular;
+    border-radius: 5px;
+    border: 1px solid #C05367;
+    width: auto;
+    transition: 0.3s ease;
+    padding: 5px;
+    height: auto;
+}
+
+.modo-escuro #botaoCancelar:hover {
+    color: #272626;
+    text-decoration: none;
+    background-color: #C05367;
+    font-family: Poppins-regular;
 }
