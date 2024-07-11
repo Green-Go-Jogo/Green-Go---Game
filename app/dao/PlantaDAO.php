@@ -17,7 +17,7 @@ class PlantaDAO
 {
 
     private const SQL_PLANTA = "SELECT p.*, e.idEspecie, e.nomePop, z.nomeZona, u.idUsuario, u.nomeUsuario FROM planta p" .
-        " JOIN zona z ON z.idZona = p.idZona" . " JOIN especie e ON e.idEspecie = p.idEspecie" . " JOIN usuario u ON u.idUsuario = p.idUsuario WHERE p.ativo = 1";
+        " JOIN zona z ON z.idZona = p.idZona" . " JOIN especie e ON e.idEspecie = p.idEspecie" . " JOIN usuario u ON u.idUsuario = p.idUsuario WHERE p.ativo = 1 AND u.ativo = 1";
 
     private function mapPlantas($resultSql)
     {

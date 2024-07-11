@@ -7,13 +7,14 @@ import { ClassicEditor } from '@ckeditor/ckeditor5-editor-classic';
 
 import { Alignment } from '@ckeditor/ckeditor5-alignment';
 import { Autoformat } from '@ckeditor/ckeditor5-autoformat';
-import { Bold, Italic, Underline } from '@ckeditor/ckeditor5-basic-styles';
+import { Bold, Italic, Underline, Strikethrough, Subscript, Superscript } from '@ckeditor/ckeditor5-basic-styles';
 import { BlockQuote } from '@ckeditor/ckeditor5-block-quote';
 import { CodeBlock } from '@ckeditor/ckeditor5-code-block';
-import type { EditorConfig } from '@ckeditor/ckeditor5-core';
+import type { EditorConfig  } from '@ckeditor/ckeditor5-core';
+import {SourceEditing } from '@ckeditor/ckeditor5-source-editing';
 import { Essentials } from '@ckeditor/ckeditor5-essentials';
 import { FindAndReplace } from '@ckeditor/ckeditor5-find-and-replace';
-import { FontColor, FontFamily, FontSize } from '@ckeditor/ckeditor5-font';
+import { FontColor, FontFamily, FontSize, FontBackgroundColor } from '@ckeditor/ckeditor5-font';
 import { Heading } from '@ckeditor/ckeditor5-heading';
 import { HorizontalLine } from '@ckeditor/ckeditor5-horizontal-line';
 import {
@@ -58,12 +59,16 @@ class Editor extends ClassicEditor {
 		Bold,
 		CKFinderUploadAdapter,
 		CKFinder,
+		Strikethrough, 
+		Subscript, 
+		Superscript,
 		CodeBlock,
 		Essentials,
 		FindAndReplace,
 		FontColor,
 		FontFamily,
 		FontSize,
+		FontBackgroundColor,
 		Heading,
 		HorizontalLine,
 		AutoImage,
@@ -87,6 +92,7 @@ class Editor extends ClassicEditor {
 		SpecialCharactersMathematical,
 		SpecialCharactersCurrency,
 		SpecialCharactersText,
+		SourceEditing,
 		Table,
 		TableToolbar,
 		TextTransformation,
@@ -102,16 +108,20 @@ class Editor extends ClassicEditor {
 				'redo',
 				'|',
 				'heading',
+				'sourceEditing',
 				'|',
 				'bold',
 				'italic',
 				'underline',
+				'strikethrough',
+				'subscript',
+				'superscript',
 				'specialCharacters',
 				'link',
+				'|',
 				'bulletedList',
 				'numberedList',
 				'horizontalLine',
-				'|',
 				'outdent',
 				'indent',
 				'alignment',
@@ -119,6 +129,7 @@ class Editor extends ClassicEditor {
 				'fontSize',
 				'fontColor',
 				'fontFamily',
+				'fontBackgroundColor',
 				'removeFormat',
 				'|',
 				'blockQuote',
@@ -127,7 +138,8 @@ class Editor extends ClassicEditor {
 				'mediaEmbed',
 				'codeBlock',
 				'findAndReplace'
-			]
+			],
+			shouldNotGroupWhenFull: true
 		},
 		language: 'pt-br',
 		image: {
