@@ -98,9 +98,13 @@ $usuario = $usuarioCont->buscarPorId($id);
                 </div>
             </div>
             <br><br>
+            <?php if($_SESSION['PARTIDA'] == false) { ?>
             <a id="btn-perfil" class="btn btn-custom" href='editarUsuario.php'>Editar a conta </a>
+            <?php } ?>
             <br><br>
+            <?php if($_SESSION['PARTIDA'] == false) { ?>
             <a id="btn-perfil" class="btn btn-custom" href="" onclick="return deletarUsuarioModal();"> Excluir a conta</a>
+            <?php } ?>
             <div id="deletarUsuarioDiv" class="custom-dialog" style="display: none;">
                 <h3>Excluir a conta</h3>
                 <br>
