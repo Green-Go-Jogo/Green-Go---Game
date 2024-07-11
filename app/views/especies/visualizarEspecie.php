@@ -201,6 +201,25 @@ $nomePopular = $especie->getNomePopular();
             </h1>
             <br><br>
 
+            <div class="descricao">
+                <p id="publicacao">Publicado por <?php echo "<span id='nomePub'>" . $especie->getUsuario()->getNomeUsuario() . "</span>"; ?>
+                    em <?php
+                        if (!empty($especie->getDataAtualizacao())) {
+                            $dataOriginal = $especie->getDataAtualizacao();
+                            $data = new DateTime($dataOriginal);
+                            $dataFormatada = $data->format('d/m/y \à\s H:i');
+                            echo "<span id='dataPub'>" . $dataFormatada . "</span>";
+                        } else {
+                            $dataOriginal = $especie->getDataCriacao();
+                            $data = new DateTime($dataOriginal);
+                            $dataFormatada = $data->format('d/m/y \à\s H:i');
+                            echo "<span id='dataPub'>" . $dataFormatada . "</span>";
+                        }
+
+                        ?>
+                </p>
+            </div>
+
 
 
         </div>
@@ -213,37 +232,6 @@ $nomePopular = $especie->getNomePopular();
     </div>
     <script src="../bootstrap/bootstrap.min.js"></script>
     <script src="../js/responsiveTable.js"></script>
-    <script>
-        function updatePreview(content) {
-            const iframe = document.getElementById('preview');
-            const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-
-            // Write the CKEditor content to the iframe
-            iframeDoc.open();
-            iframeDoc.write(`
-                <html>
-                    <head>
-                        <style>
-                            /* Add CKEditor content styles here */
-                            body {
-                                font-family: Arial, sans-serif;
-                                margin: 10px;
-                                padding: 10px;
-                            }
-                            /* Add more styles as needed to match CKEditor output */
-                        </style>
-                    </head>
-                    <body>${content}</body>
-                </html>
-            `);
-            iframeDoc.close();
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const initialContent = `<?= $especie->getDescricao() ?>`;
-            updatePreview(initialContent);
-        });
-    </script>
 
     <?php include_once("../../bootstrap/footer.php"); ?>
 </body>

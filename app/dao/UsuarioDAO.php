@@ -5,11 +5,11 @@ include_once(__DIR__ . "/../connection/Connection.php");
 include_once(__DIR__ . "/../models/UsuarioModel.php");
 class UsuarioDAO
 {
-    private const SQL_USUARIO = "SELECT * FROM usuario u";
+    private const SQL_USUARIO = "SELECT * FROM usuario u WHERE u.ativo = 1";
     private const SQL_EQUIPE_USUARIO = "SELECT e.idEquipe,pe.idPartida, usuario.* FROM partida_usuario pu 
     JOIN usuario ON pu.idUsuario = usuario.idUsuario 
     JOIN partida_equipe pe ON pu.idPartidaEquipe = pe.idPartidaEquipe 
-    JOIN equipe e ON pe.idEquipe = e.idEquipe";
+    JOIN equipe e ON pe.idEquipe = e.idEquipe WHERE usuario.ativo = 1";
 
     private function mapUsuarios($resultSql)
     {
@@ -45,7 +45,7 @@ class UsuarioDAO
     {
         $conn = conectar_db();
         $sql = UsuarioDAO::SQL_USUARIO .
-            " WHERE u.idUsuario = ?";
+            " AND u.idUsuario = ?";
         $stmt = $conn->prepare($sql);
         $stmt->execute([$idUsuario]);
         $result = $stmt->fetchAll();
@@ -64,7 +64,7 @@ class UsuarioDAO
         $conn = conectar_db();
 
         $sql = UsuarioDAO::SQL_EQUIPE_USUARIO .
-            " WHERE e.idEquipe = ? AND pe.idPartida = ?";
+            " AND e.idEquipe = ? AND pe.idPartida = ?";
 
         $stmt = $conn->prepare($sql);
         $stmt->execute([$idEquipe, $idPartida]);
@@ -80,7 +80,7 @@ class UsuarioDAO
         $conn = conectar_db();
 
         $sql = UsuarioDAO::SQL_EQUIPE_USUARIO .
-            " WHERE e.idEquipe = ?";
+            " AND e.idEquipe = ?";
 
         $stmt = $conn->prepare($sql);
         $stmt->execute([$idEquipe]);
@@ -95,7 +95,7 @@ class UsuarioDAO
     {
         $conn = conectar_db();
         $sql = UsuarioDAO::SQL_USUARIO .
-            " WHERE u.tipoUsuario = ?";
+            " AND u.tipoUsuario = ?";
         $stm = $conn->prepare($sql);
         $stm->execute([$tipo]);
         $result = $stm->fetchAll();
@@ -105,7 +105,7 @@ class UsuarioDAO
     public function findByLoginSenha(string $login, string $senha)
     {
         $conn = conectar_db();
-        $sql = UsuarioDAO::SQL_USUARIO . " WHERE (email = ? OR loginUsuario = ?)";
+        $sql = UsuarioDAO::SQL_USUARIO . " AND (email = ? OR loginUsuario = ?)";
         $stmt = $conn->prepare($sql);
         $stmt->execute([$login, $login]);
         $result = $stmt->fetchAll();
@@ -118,13 +118,14 @@ class UsuarioDAO
             } else {
                 return null;;
             }
+            
         }
     }
 
     public function checkSenhaByIdUser(string $idUsuario, string $senha)
     {
         $conn = conectar_db();
-        $sql = UsuarioDAO::SQL_USUARIO . " WHERE idUsuario = ?";
+        $sql = UsuarioDAO::SQL_USUARIO . " AND idUsuario = ?";
         $stmt = $conn->prepare($sql);
         $stmt->execute([$idUsuario]);
         $result = $stmt->fetchAll();
@@ -144,9 +145,7 @@ class UsuarioDAO
     {
         $email_or_login = $usuario->getLogin();
         $senha = $usuario->getSenha();
-
         $usuario = $this->findByLoginSenha($email_or_login, $senha);
-
         if ($usuario == null) {
             $aviso = "E-mail ou Senha incorretos!!!";
             header('location: login.php?aviso=' . urlencode($aviso));
@@ -179,12 +178,11 @@ class UsuarioDAO
         header("Location: users/login.php");
     }
 
-    public function logout($nomeADM)
+    public function logout()
     {
         session_start();
 
         session_destroy();
-        header("Location: ../users/login.php");
     }
 
     public function save(Usuario $usuario)
@@ -220,12 +218,20 @@ class UsuarioDAO
         $stmt->execute([$usuario->getTipoUsuario(), $usuario->getIdUsuario()]);
     }
 
-    public function delete(Usuario $usuario)
+    public function updateSenha($idUsuario, $senhaNovaHash) {
+        $conn = conectar_db();
+
+        $sql = "UPDATE usuario SET senha = ? WHERE idUsuario = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([$senhaNovaHash, $idUsuario]);
+    }
+
+    public function delete($idUsuario)
     {
         $conn = conectar_db();
 
-        $sql = "DELETE FROM usuario WHERE idUsuario = ?";
+        $sql = "UPDATE usuario SET ativo = 0 WHERE idUsuario = ?";
         $stmt = $conn->prepare($sql);
-        $stmt->execute([$usuario->getIdUsuario()]);
+        $stmt->execute([$idUsuario]);
     }
 }

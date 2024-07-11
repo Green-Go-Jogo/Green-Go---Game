@@ -6,7 +6,7 @@ include_once(__DIR__."/../models/EspecieModel.php");
 
 class EspecieDAO {
 
-    private const SQL_ESPECIE = "SELECT e.*, u.nomeUsuario FROM especie e" . " JOIN usuario u ON u.idUsuario = e.idUsuario WHERE e.ativo = 1";
+    private const SQL_ESPECIE = "SELECT e.*, u.nomeUsuario FROM especie e" . " JOIN usuario u ON u.idUsuario = e.idUsuario WHERE e.ativo = 1 AND u.ativo = 1";
 
     private function mapEspecies($resultSql) {
             $especies = array();
