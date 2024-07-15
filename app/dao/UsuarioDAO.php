@@ -234,4 +234,21 @@ class UsuarioDAO
         $stmt = $conn->prepare($sql);
         $stmt->execute([$idUsuario]);
     }
+
+    public function generateSenhaCodigo($email)
+    {
+        $conn = conectar_db();
+        
+        $codigo = mt_rand(10000, 999999); // Gera um número aleatório de 6 dígitos
+
+        $sql = "UPDATE usuario SET codigo = ? WHERE email = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([$codigo, $email]);
+
+        if ($stmt->rowCount() == 0) {
+            return "E-mail incorreto ou inexistente!";
+        }
+
+        return $codigo;
+    }
 }

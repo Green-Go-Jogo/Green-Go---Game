@@ -11,6 +11,7 @@
         private $genero;
         private $escolaridade;
         private $tipoUsuario;
+        private $codigo;
 
         #[\ReturnTypeWillChange]
         public function jsonSerialize() {
@@ -193,6 +194,26 @@
         public function setLogin($login)
         {
                 $this->login = $login;
+
+                return $this;
+        }
+
+        /**
+         * Get the value of codigo
+         */ 
+        public function getCodigo()
+        {
+                return $this->codigo;
+        }
+
+        /**
+         * Set the value of codigo
+         *
+         * @return  self
+         */ 
+        public function setCodigo($codigo)
+        {
+                $this->codigo = $codigo;
 
                 return $this;
         }

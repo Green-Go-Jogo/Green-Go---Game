@@ -72,4 +72,8 @@ class UsuarioController
         $this->usuarioDAO->updateSenha($idUsuario, $senhaNovaHash);
         return true;
     }
+
+    public function gerarSenhaCodigoRecuperacao($email){
+        return $this->usuarioDAO->generateSenhaCodigo($email);
+    }
 }
