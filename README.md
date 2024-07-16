@@ -1,5 +1,5 @@
 # Green-Go---Game
-
+### resumo
 O projeto Green Go: Jogo visa desenvolver um jogo que une diversão e conhecimento ambiental, incentivando os usuários a conhecerem e se engajarem em práticas ecológicas. Esse projeto é uma continuação do Green Go 2022, feito pelas alunas do 4° de Informática do Instituto Federal do Paraná. A intenção é utilizar a tecnologia de QR code, possibilitando assim a leitura de códigos espalhados em diferentes plantas, que concederão pontos ao usuário.
 O jogo oferecerá duas modalidades: solo e equipe, para que o usuário possa optar pelo desafio que mais lhe agrade. Na modalidade solo, o usuário poderá percorrer a trilha sozinho, buscando coletar a maior quantidade de pontos possível. Já na modalidade em equipe, será possível jogar em grupo, estimulando a interação social e a cooperação entre os jogadores. Também existe a possibilidade do modo competitivo, onde o ganhador será determinado por quem fizer mais pontos durante todo o percurso.
 
