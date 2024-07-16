@@ -2,12 +2,16 @@
 
 Para a criação do Changelog foi seguido o modelo [Mantenha um Changelog](https://keepachangelog.com/pt-BR/1.0.0/) junto do [Versionamento Semântico](https://semver.org/lang/pt-BR/)
 
+# [1.4.2] - 16-07-2024
+### Corrigido
+- Ajustado verificaçao de da alteração de senhas, que não estava permitindo caracteres especiais
+
 # [1.4.1] - 16-07-2024
-### Adiiconado
+### Corrigido
 - Ajuste das dependencias que não estavam funcionando na hospedagem.
 
 # [1.4.0] - 16-07-2024
-### Adiiconado
+### Adicionado
 - Recuperação de senha via código enviado por email, usando a biblioteca PHPMailer com composer
 
 # [1.3.0] - 10-07-2024

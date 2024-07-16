@@ -183,7 +183,7 @@ $usuario = $usuarioCont->buscarPorId($id);
     }
 
     function senhaValida(password) {
-        var regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+        var regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@.#$!%*?&]{8,}$/;
         return regex.test(password);
     }
 
