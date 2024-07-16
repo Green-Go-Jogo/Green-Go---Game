@@ -68,8 +68,21 @@ class UsuarioController
         return $this->usuarioDAO->checkSenhaByIdUser($idUsuario, $senha);
     }
 
-    public function alterarSenha($idUsuario, $senhaNovaHash) {
-        $this->usuarioDAO->updateSenha($idUsuario, $senhaNovaHash);
+    public function alterarSenhaPorId($idUsuario, $senhaNovaHash) {
+        $this->usuarioDAO->updateSenhaById($idUsuario, $senhaNovaHash);
         return true;
+    }
+
+    public function alterarSenhaPorEmail($email, $senhaNovaHash) {
+        $this->usuarioDAO->updateSenhaByEmail($email, $senhaNovaHash);
+        return true;
+    }
+
+    public function gerarSenhaCodigoRecuperacao($email){
+        return $this->usuarioDAO->generateSenhaCodigo($email);
+    }
+
+    public function checarCodigo($email, $codigo){
+        return $this->usuarioDAO->checkCodigo($email, $codigo);
     }
 }
