@@ -46,9 +46,9 @@ try {
 
     $mail->send();
 
-    echo json_encode(array('status' => 'success', 'message' => 'E-mail enviado com sucesso!'));
+    echo json_encode(array('status' => 'success', 'message' => 'E-mail enviado com sucesso! Por favor cheque sua caixa de correio.'));
 } catch (Exception $e) {
-    echo json_encode(array('status' => 'mail-error', 'message' => "Erro ao enviar e-mail!"));
+    echo json_encode(array('status' => 'mail-error', 'message' => "Erro ao enviar e-mail! Entre em contato com um administrador."));
     // echo $mail->ErrorInfo;
 }
 

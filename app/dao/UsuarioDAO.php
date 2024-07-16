@@ -218,12 +218,20 @@ class UsuarioDAO
         $stmt->execute([$usuario->getTipoUsuario(), $usuario->getIdUsuario()]);
     }
 
-    public function updateSenha($idUsuario, $senhaNovaHash) {
+    public function updateSenhaById($idUsuario, $senhaNovaHash) {
         $conn = conectar_db();
 
         $sql = "UPDATE usuario SET senha = ? WHERE idUsuario = ?";
         $stmt = $conn->prepare($sql);
         $stmt->execute([$senhaNovaHash, $idUsuario]);
+    }
+    
+    public function updateSenhaByEmail($email, $senhaNovaHash) {
+        $conn = conectar_db();
+
+        $sql = "UPDATE usuario SET senha = ? WHERE email = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([$senhaNovaHash, $email]);
     }
 
     public function delete($idUsuario)
@@ -239,7 +247,7 @@ class UsuarioDAO
     {
         $conn = conectar_db();
         
-        $codigo = mt_rand(10000, 999999); // Gera um número aleatório de 6 dígitos
+        $codigo = mt_rand(100000, 999999); // Gera um número aleatório de 6 dígitos
 
         $sql = "UPDATE usuario SET codigo = ? WHERE email = ?";
         $stmt = $conn->prepare($sql);
@@ -250,5 +258,18 @@ class UsuarioDAO
         }
 
         return $codigo;
+    }
+
+    public function checkCodigo($email, $codigo) {
+        $conn = conectar_db();
+
+        $sql = UsuarioDAO::SQL_USUARIO . " AND u.codigo = ? AND u.email = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([$codigo, $email]);
+        if ($stmt->rowCount() == 0) {
+            return false;
+        } else {
+            return true;
+        }
     }
 }
