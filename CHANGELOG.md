@@ -2,6 +2,18 @@
 
 Para a criação do Changelog foi seguido o modelo [Mantenha um Changelog](https://keepachangelog.com/pt-BR/1.0.0/) junto do [Versionamento Semântico](https://semver.org/lang/pt-BR/)
 
+# [1.0.4] - 16-07-2024
+### Adiiconado
+- Recuperação de senha via código enviado por email, usando a biblioteca PHPMailer com composer
+
+# [1.0.3] - 10-07-2024
+### Adicionado
+- Adição da exclusão, edição e alteração de senha do usuário via página de perfil.
+
+# [1.0.2] - 10-07-2024
+### Modificado
+- Alterado geração do ediotor de texto via node.js, usando das bibliotecas e plugins fornecidos gratuitamente pelo CKEditor.
+
 # [1.0.1] - 05-07-2024
 ### Modificado
 - Modificado exclusão do sistema, agora todos os objetos são excluídos logicamente.

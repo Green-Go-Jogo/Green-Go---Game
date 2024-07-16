@@ -133,6 +133,37 @@ body {
     font-size: 25px;
 }
 
+#botaovoltar {
+    color: #ffffff;
+    background-color: #f0b6bc;
+    font-family: Poppins-regular;
+    margin-left: 11px;
+    margin-bottom: 10px;
+    font-size: 25px;
+}
+
+#botaovoltar:hover {
+    color: #ffffff;
+    background-color: #C05367;
+    font-family: Poppins-regular;
+    margin-left: 11px;
+    margin-bottom: 10px;
+    font-size: 25px;
+}
+
+.modo-escuro #botaovoltar {
+    color: #ffffff;
+    background-color: #C05367;
+    font-family: Poppins-regular;
+    margin-left: 11px;
+    margin-bottom: 10px;
+    font-size: 25px;
+}
+
+#botaovoltar:hover {
+    opacity: .80;
+}
+
 #jatemumaconta {
     color: #C05367;
     font-family: Poppins-semibold;
@@ -233,4 +264,23 @@ body {
     color: #C05367;
     font-family: Poppins-semibold;
     margin-left: 11px;
+}
+
+#botaoReenviar {
+    background-color: #C05367;
+    color: #ffffff !important;
+    font-family: Poppins;
+    font-size: 18px;
+    width: 17rem;
+    height: auto
+}
+
+#botaoReenviar:disabled {
+    background-color: #f0b6bc;
+    opacity: .30;
+    border-color: #C05367;
+}
+
+#complemento {
+    font-family: "Poppins-regular";
 }

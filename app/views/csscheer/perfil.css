@@ -155,6 +155,21 @@ body {
     font-size: 20px;
 }
 
+.modo-escuro #subtitulo {
+    color: #078071
+}
+
+#subtituloRec {
+    color: #04574d;
+    font-family: Poppins-semibold;
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+
+.modo-escuro #subtituloRec {
+    color: #f0b6bc;
+}
+
 #subtituloemail {
     color: #04574d;
     font-family: Poppins-semibold;
@@ -219,13 +234,13 @@ body {
 }
 
 
-.btn-perfil p {
+.btn-perfil p, .senhaNovaDiv p {
     margin: 0;
     text-align: center;
     justify-content: center;
 }
 
-.btn-perfil {
+.btn-perfil, .senhaNovaDiv {
     display: flex;
     flex-direction: column;
     align-items: center;

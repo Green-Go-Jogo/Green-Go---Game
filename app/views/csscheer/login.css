@@ -48,7 +48,7 @@ body {
 
 .img-top {
     width: auto;
-    height:  40%;
+    height: 40%;
     position: fixed;
     right: 0.5%;
     top: 0.5%;
@@ -56,6 +56,7 @@ body {
 }
 
 .img-bottom {
+    z-index: -1;
     width: auto;
     height: 40%;
     position: fixed;
@@ -65,16 +66,15 @@ body {
 }
 
 #login {
-        position: absolute;
-        margin-top: 2%;
-        top: 27.5%;
-    }
+    position: absolute;
+    margin-top: 2%;
+    top: 27.5%;
+}
 
 .form-control {
     background-color: #f0b6bc !important;
     color: #ffffff !important;
     font-family: Poppins-semibold;
-    margin-bottom: 25px;
     border-radius: 5px;
     width: 80%;
     height: auto;
@@ -85,9 +85,9 @@ body {
     margin-top: -5px;
     position: relative;
     z-index: 2;
-    }
+}
 
-    #labels {
+#labels {
     color: #04574d;
     font-family: Poppins;
     margin-bottom: 10px;
@@ -96,9 +96,9 @@ body {
     margin-top: 5px;
     position: relative;
     z-index: 3;
-    }
+}
 
-    #botaologin {
+#botaologin {
     background-color: #338a5f;
     position: relative;
     z-index: 4;
@@ -108,17 +108,31 @@ body {
     font-size: 25px;
     border-width: 5px;
     border-color: #04574d;
-    }
+}
 
-    .novoporaqui {
+.novoporaqui {
     color: #04574d;
     font-family: Poppins-semibold;
     right: 15%;
     position: absolute;
-    }
+}
 
-    #cadastro {
-        color: #C05367;
-        font-size: 17px;
-        text-decoration: underline;
-    }
+#cadastro {
+    color: #C05367;
+    font-size: 17px;
+    text-decoration: underline;
+}
+
+#esqueciSenha {
+    z-index: 0;
+    margin-top: -15px;
+    color: #C05367;
+    margin-left: 10%;
+    font-family: Poppins-semibold;
+    text-decoration: underline;
+}
+
+#email-login {
+
+    margin-bottom: 25px;
+}
