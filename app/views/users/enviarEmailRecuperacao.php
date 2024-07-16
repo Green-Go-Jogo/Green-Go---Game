@@ -1,6 +1,6 @@
 <?php
 
-require '../../api/vendor/autoload.php';
+require __DIR__.'../../api/vendor/autoload.php';
 include_once("../../controllers/UsuarioController.php");
 
 use PHPMailer\PHPMailer\PHPMailer;
