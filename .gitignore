@@ -4,3 +4,7 @@
 /app/public/qrcode
 /app/public/questoes
 /app/public/descricao
+/app/api/vendor
+/app/api/composer.json
+/app/api/composer.phar
+/app/api/composer.lock
