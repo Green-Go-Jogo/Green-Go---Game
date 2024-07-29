@@ -305,7 +305,7 @@ class PartidaHTML
         echo "</div>";
     }
 
-    public static function desenhaEquipe($usuarios, $partida, $idEquipe)
+    public static function desenhaEquipe($usuarios, $partida, $idEquipe, $idUsuarioAtual)
     {
         if($partida === null) {
             $_SESSION['PARTIDA'] = false;
@@ -332,7 +332,6 @@ class PartidaHTML
             echo "<tr>";
             echo "<td id='tabelanome'>" . $usuario->getNomeUsuario() . "</td>";
             echo "<td id='tabelapontos' class='text-left'>" . (int)$pontos . "</td>";
-            // echo "<td>";
             echo "</tr>";
         }
 
@@ -355,7 +354,18 @@ class PartidaHTML
         }
 
         echo "<p class='text-center'>" . $Status . "</p>";
-
+        
+        if($Open) {
+            echo '<br>';
+            echo '<br>';
+            echo '<br>';
+            echo "<a class='container sair' href='sairPartida.php?idu=" . $idUsuarioAtual. "&idp=". $partida->getIdPartida() ."'>";
+            echo "<i class='fa-solid fa-person-running'></i>";
+            echo "<p class='text-center'>Sair da Partida</p>";
+            echo "</a>";
+            echo "<br>";
+            echo "<br>";
+        }
         if (!empty($link)) {
             echo "<p class='text-center'>" . $link . "</p>";
         }
