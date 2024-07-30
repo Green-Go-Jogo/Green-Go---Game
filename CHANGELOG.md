@@ -2,6 +2,10 @@
 
 Para a criação deste Changelog foi seguido o modelo [Mantenha um Changelog](https://keepachangelog.com/pt-BR/1.0.0/) junto do [Versionamento Semântico](https://semver.org/lang/pt-BR/)
 
+# [1.6.0] - 30-07-2024
+### Adicionado
+- Novos icones de equipe
+
 # [1.5.0] - 30-07-2024
 ### Adicionado
 - Função de sair da partida e tabela de usuários por equipe na visão de administrador
