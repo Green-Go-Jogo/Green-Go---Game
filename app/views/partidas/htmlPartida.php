@@ -460,17 +460,15 @@ class PartidaHTML
         echo "<th class='text-center' scope='col' id='nomeadm'>Nome</th>";
         echo "<th class='text-center' scope='col' id='nomeadm'>Cor</th>";
         echo "<th class='text-center' scope='col' id='nomeadm'>Icon</th>";
-        echo "<th class='text-center' scope='col' id='nomeadm'>Alunos</th>";
         echo "</tr>";
         echo "</thead>";
         echo "<tbody>";
 
         foreach ($partida->getEquipes() as $equipe) {
             echo "<tr>";
-            echo "<td class='text-center' id='nomeequipeadm'>" . $equipe->getNomeEquipe() . "</td>";
+            echo "<td class='text-center' id='nomeequipeadm'> <button type='button btn-info' id='info' data-toggle='modal' data-target='#infoModal' onclick='atualizarDadosEquipes(" . $equipe->getIdEquipe() . ")'>" . $equipe->getNomeEquipe() . "</button></td>";
             echo "<td class='text-center' id='coradm' style='background-color: " . $equipe->getCorEquipe() . "'></td>";
             echo "<td class='text-center' style='color: #338a5f;'> <img style='width: 60px;' src='" . $equipe->getIconeEquipe() . "'></td>";
-            echo "<td class='text-center' style='color: #338a5f;'> <button type='button btn-info' id='info' data-toggle='modal' data-target='#infoModal' onclick='atualizarDadosEquipes(" . $equipe->getIdEquipe() . ")'>Ver Alunos</button></td>";
             echo "</tr>";
         }
 
