@@ -339,7 +339,6 @@ class PartidaHTML
         echo "</tbody>";
         echo "</table>";
         echo "</div><br>";
-
         if (!is_null($partida->getDataFim())) {
             $Status = "Essa partida acabou!";
             $Open = "CLOSE";
@@ -355,10 +354,22 @@ class PartidaHTML
         }
 
         echo "<p class='text-center'>" . $Status . "</p>";
-
         if (!empty($link)) {
             echo "<p class='text-center'>" . $link . "</p>";
         }
+
+        if ($Open == 'OPEN') {
+            echo '<br>';
+            echo '<br>';
+            echo '<br>';
+            echo "<a class='container sair'  onclick='return confirm(\"Tem certeza que deseja sair da partida?\");' href='sairPartida.php?idu=" . $idUsuarioAtual . "&idp=" . $partida->getIdPartida() . "'>";
+            echo "<i style='color: #04574d' class='fa-solid fa-person-running'></i>";
+            echo "<p class='text-center'>Sair da Partida</p>";
+            echo "</a>";
+            echo "<br>";
+            echo "<br>";
+        }
+        
     }
 
 
