@@ -244,8 +244,7 @@ class PartidaHTML
                 echo "<a href='rankPartida.php?id=" . $partida->getIdPartida() . "'><button type='button' class='btn entrar-btn'>Resultado</button></a>";
             } else if ($Open == "NO") {
                 echo "<button type='button' class='btn entrar-btn'>Fechada!</button>";
-            }
-            else if ($Open = "ADM") {
+            } else if ($Open = "ADM") {
                 echo "<a href='PartidaADM.php?id=" . $partida->getIdPartida() . "'><button type='button' class='btn entrar-btn'>Administrar</button></a>";
             }
 
@@ -307,7 +306,7 @@ class PartidaHTML
 
     public static function desenhaEquipe($usuarios, $partida, $idEquipe, $idUsuarioAtual)
     {
-        if($partida === null) {
+        if ($partida === null) {
             $_SESSION['PARTIDA'] = false;
             echo "<p class='text-center'>A partida que você fazia parte não existe mais! <a style='color: #C05367' href='../home/indexJOG.php'>Clique aqui</a> para a retornar à página inicial!</p>";
             exit;
@@ -354,13 +353,13 @@ class PartidaHTML
         }
 
         echo "<p class='text-center'>" . $Status . "</p>";
-        
-        if($Open) {
+
+        if ($Open) {
             echo '<br>';
             echo '<br>';
             echo '<br>';
-            echo "<a class='container sair' href='sairPartida.php?idu=" . $idUsuarioAtual. "&idp=". $partida->getIdPartida() ."'>";
-            echo "<i class='fa-solid fa-person-running'></i>";
+            echo "<a class='container sair'  onclick='return confirm(\"Tem certeza que deseja sair da partida?\");' href='sairPartida.php?idu=" . $idUsuarioAtual . "&idp=" . $partida->getIdPartida() . "'>";
+            echo "<i style='color: #04574d' class='fa-solid fa-person-running'></i>";
             echo "<p class='text-center'>Sair da Partida</p>";
             echo "</a>";
             echo "<br>";
@@ -447,7 +446,7 @@ class PartidaHTML
 
     public static function desenhaPartidaEquipe($partida)
     {
-
+        $usuarioCont = new UsuarioController();
         echo "<div class='container text-center'>";
         echo "<div class='equipeP text-right table-responsive'>";
         echo "<table class='table'>";
@@ -461,6 +460,7 @@ class PartidaHTML
         echo "<th class='text-center' scope='col' id='nomeadm'>Nome</th>";
         echo "<th class='text-center' scope='col' id='nomeadm'>Cor</th>";
         echo "<th class='text-center' scope='col' id='nomeadm'>Icon</th>";
+        echo "<th class='text-center' scope='col' id='nomeadm'>Alunos</th>";
         echo "</tr>";
         echo "</thead>";
         echo "<tbody>";
@@ -470,12 +470,33 @@ class PartidaHTML
             echo "<td class='text-center' id='nomeequipeadm'>" . $equipe->getNomeEquipe() . "</td>";
             echo "<td class='text-center' id='coradm' style='background-color: " . $equipe->getCorEquipe() . "'></td>";
             echo "<td class='text-center' style='color: #338a5f;'> <img style='width: 60px;' src='" . $equipe->getIconeEquipe() . "'></td>";
+            echo "<td class='text-center' style='color: #338a5f;'> <button type='button btn-info' id='info' data-toggle='modal' data-target='#infoModal' onclick='atualizarDadosEquipes(" . $equipe->getIdEquipe() . ")'>Ver Alunos</button></td>";
             echo "</tr>";
         }
 
         echo "</tbody>";
         echo "</table>";
         echo "</div>"; // Feche a div com a classe zonaP
+        echo "</div>";
+
+        // Modal Info
+        echo "<div id='infoModal' class='modal fade' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>";
+        echo "<div class='modal-dialog'>";
+        echo "<div class='modal-content'>";
+        echo "<div class='modal-header justify-content-center'>";
+        echo "<h4 class='modal-title d-flex text-center'>Informações da Equipe</h4>";
+        echo "</div>";
+        echo "<div class='modal-body'>";
+        echo "<div id='informacoes'>";
+        echo "</div>";
+        echo "</div>";
+        echo "<div class='modal-footer'>";
+        echo "<button type='button' class='btn cancel btn-secondary' data-dismiss='modal' id='fecharpassword'>Fechar</button>";
+        echo "</div>";
+        echo "</div>";
+        echo "</div>";
+        echo "</div>";
+        echo "</div>";
         echo "</div>";
     }
 
@@ -556,7 +577,7 @@ class PartidaHTML
 
                 echo "<div class='posicao' style='background-color: " . $equipe->getCorEquipe() . "; width: {$width}%;'>";
                 echo "<br>";
-                
+
                 // Adiciona a medalha apenas para os 3 primeiros lugares
                 if ($lugar <= 3) {
                     echo "<a id='lugarzinho'> <div class='d-flex justify-content-center' id='lugarzinho1'>" . $medalhas[$lugar - 1] . " " . $lugar . "º Lugar </a></div>";
