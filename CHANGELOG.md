@@ -1,14 +1,6 @@
 # Foram utilizadas as seguintes documentações para a criação desse arquivo
 
-Para a criação deste Changelog foi seguido o modelo [Mantenha um Changelog](https://keepachangelog.com/pt-BR/1.0.0/) junto do [Versionamento Semântico](https://semver.org/lang/pt-BR/)
-
-# [1.5.0] - 30-07-2024
-### Adicionado
-- Função de sair da partida e tabela de usuários por equipe na visão de administrador
-
-# [1.4.3] - 30-07-2024
-### Modificado
-- Ajuste de labels e ajuste verificação de senha
+Para a criação do Changelog foi seguido o modelo [Mantenha um Changelog](https://keepachangelog.com/pt-BR/1.0.0/) junto do [Versionamento Semântico](https://semver.org/lang/pt-BR/)
 
 # [1.4.2] - 16-07-2024
 ### Corrigido
