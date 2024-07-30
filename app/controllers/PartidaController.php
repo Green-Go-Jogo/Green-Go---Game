@@ -185,9 +185,4 @@ class PartidaController
     {
         $this->partidaDAO->delete($partida);
     }
-
-    public function sairPartida($idPartida, $idUsuario) {
-        $this->partidaDAO->leavePartida($idPartida, $idUsuario);
-        $_SESSION['PARTIDA'] == false;
-    }
 }
