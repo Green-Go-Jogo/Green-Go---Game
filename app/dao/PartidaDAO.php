@@ -559,23 +559,4 @@ class PartidaDAO
         $stmt = $conn->prepare($sql);
         $stmt->execute([$partida->getIdPartida()]);
     }
-
-    public function leavePartida($idPartida, $idUsuario){
-        $conn = conectar_db();
-        if($this->findPartidaAndamentoByIdUsuario($idUsuario)){
-            return 'error';
-            exit;
-        }
-
-        $sql = "DELETE pu FROM partida_usuario pu
-                JOIN partida_equipe pe ON pu.idPartidaEquipe = pe.idPartidaEquipe
-                JOIN partida p ON pe.idPartida = p.idPartida
-                WHERE p.ativo = 1 AND pu.idUsuario = ? AND p.idPartida = ?;";
-        $stmt = $conn->prepare($sql);
-        $stmt->execute([
-            $idUsuario, $idPartida
-        ]);
-
-        return 'success';
-    }
 }
