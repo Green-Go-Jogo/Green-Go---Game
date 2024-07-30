@@ -92,8 +92,6 @@ $usuario = $usuarioCont->buscarPorId($id);
                 <input class="dialogInput" type="password" id='senhaNovaConf' autocomplete="off">
                 <p class="erroSenhaNaoCorresponde"></p>
                 <br>
-                <p class="text-center" id="complemento">A senha deve ter no mínimo 5 dígitos com letras e números</p>
-                <br>
                 <div class="custom-dialog-buttons">
                     <a id="botaoConfirmar" href="#" onclick="alterarConfirmacao(true, 'alterarSenhaDiv'); return false;">Confirmar</a>
                     <a id="botaoCancelar" href="#" onclick="alterarSenhaModal(); return false;">Cancelar</a>
@@ -185,7 +183,7 @@ $usuario = $usuarioCont->buscarPorId($id);
     }
 
     function senhaValida(password) {
-        var regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@.#$!%*?&]{5,}$/;
+        var regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@.#$!%*?&]{8,}$/;
         return regex.test(password);
     }
 
@@ -259,8 +257,7 @@ $usuario = $usuarioCont->buscarPorId($id);
             url: 'excluirConta.php',
             type: 'POST',
             data: {
-                idUsuario: <?php echo json_encode($usuario->getIdUsuario());?>,
-                autoDelete: true 
+                idUsuario: <?php echo json_encode($usuario->getIdUsuario()); ?>
             },
             success: function(response) {
                 if (response == 'deleted') {

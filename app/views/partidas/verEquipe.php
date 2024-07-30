@@ -1,10 +1,7 @@
-<?php 
+<?php
 include_once("../../controllers/LoginController.php");
 LoginController::manterUsuario();
 LoginController::verificarAcesso([1, 2, 3]);
-if(!$_SESSION['PARTIDA']){
-    echo "<script>location.href='listPartidas.php';</script>";
-}
 include_once(__DIR__ . "/../../controllers/PartidaController.php");
 include_once(__DIR__ . "/../../controllers/EquipeController.php");
 include_once(__DIR__ . "/../../controllers/UsuarioController.php");
@@ -18,16 +15,16 @@ $idPartida = $_GET['idp'];
 if (isset($_GET['error'])) {
     $error = $_GET['error'];
 }
+
 $usuarioCont = new UsuarioController();
 $usuarios = $usuarioCont->buscarUsuarios($idEquipe, $idPartida);
+
 $equipeCont = new EquipeController();
 $equipe = $equipeCont->buscarPorId($idEquipe);
 
 $partidaCont = new PartidaController();
 $partida = $partidaCont->buscarPorId($idPartida);
 
-
-$idUsuarioAtual = $_SESSION['ID'];
 ?>
 
 <!DOCTYPE html>
@@ -91,9 +88,22 @@ $idUsuarioAtual = $_SESSION['ID'];
     <p><br><br>
 
     <div id="conteudo">
-        <?php PartidaHTML::desenhaEquipe($usuarios, $partida, $idEquipe, $idUsuarioAtual); ?>
+        <?php PartidaHTML::desenhaEquipe($usuarios, $partida, $idEquipe); ?>
 
     </div>
+
+
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <a class="container sair" href="<?php echo "sairPartida.php?id=" . $_SESSION['ID']; ?>">
+        <i class="fa-solid fa-person-running"></i>
+        <p class="text-center">Sair da Partida</p>
+    </a>
+    <br>
+    <br>
 
 
     <?php include_once("../../bootstrap/footer.php"); ?>
@@ -109,7 +119,7 @@ $idUsuarioAtual = $_SESSION['ID'];
                 document.getElementById("conteudo").innerHTML = this.responseText;
             }
         };
-        xhttp.open("GET", "atualizarEquipe.php?ide=<?php echo $idEquipe; ?>&idp=<?php echo $idPartida; ?>&idu=<?=$idUsuarioAtual?>", true);
+        xhttp.open("GET", "atualizarEquipe.php?ide=<?php echo $idEquipe; ?>&idp=<?php echo $idPartida; ?>", true);
         xhttp.send();
     }
 

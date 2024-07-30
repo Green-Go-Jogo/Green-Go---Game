@@ -21,7 +21,6 @@ class QuestaoDAO
             $questao->setGrauDificuldade($reg['grauDificuldade']);
             $questao->setImagemQuestao($reg['imagemQuestao']);
             $questao->setIdEspecie($reg['idEspecie']);
-            $questao->setPontuacaoQuestao($reg['pontuacaoQuestao']);
 
             array_push($questoes, $questao);
         endforeach;
