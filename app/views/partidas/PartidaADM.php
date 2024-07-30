@@ -17,7 +17,7 @@ if (isset($_GET['id'])) {
 }
 
 $partida = $partidaCont->buscarPorId($idPartida);
-if($partida === null) {
+if ($partida === null) {
     echo "<p class='text-center'>A partida não existe mais! <a style='color: #C05367' href='../home/indexADM.php'>Clique aqui</a> para a retornar à página inicial!</p>";
     exit;
 }
@@ -62,30 +62,30 @@ $loginCont->checarAdmPartida($idPartida, $_SESSION['ID']);
 
     <div class="text-center">
         <div>
-        <button id="startCountdown" class="btn timer iniciar"> <i class="fa-regular fa-circle-play" id="play"> </i> </button>
+            <button id="startCountdown" class="btn timer iniciar"> <i class="fa-regular fa-circle-play" id="play"> </i> </button>
 
-        <!-- <button class="btn timer"> <i class="fa-regular fa-circle-pause" id="pause"> </i> </button> -->
-        
-        <span id="minutes" class="timer-text"><?php echo $tempo; ?></span>
-        <span class="timer-text">:</span>
-        <span id="seconds" class="timer-text">00</span>
-        <div>
-        <br>
-        <a class="stop" id="encerrar"> Encerrar a partida? </a>
-    </div>
-    </div>
+            <!-- <button class="btn timer"> <i class="fa-regular fa-circle-pause" id="pause"> </i> </button> -->
 
-    <br><br>
-    <div class="text-center">
-        <?php echo "<a href='editarPartida.php?id=" . $idPartida . "' class='btn btn-primary editar text-center' id='editaradm'>Editar</a>"; ?>
+            <span id="minutes" class="timer-text"><?php echo $tempo; ?></span>
+            <span class="timer-text">:</span>
+            <span id="seconds" class="timer-text">00</span>
+            <div>
+                <br>
+                <a class="stop" id="encerrar"> Encerrar a partida? </a>
+            </div>
+        </div>
+
         <br><br>
+        <div class="text-center">
+            <?php echo "<a href='editarPartida.php?id=" . $idPartida . "' class='btn btn-primary editar text-center' id='editaradm'>Editar</a>"; ?>
+            <br><br>
 
-    </div>
-
-    <?php
-    PartidaHTML::desenhaPartidaEquipe($partida);
-    ?>
-
+        </div>
+        <div id="equipes">
+            <?php
+            PartidaHTML::desenhaPartidaEquipe($partida);
+            ?>
+        </div>
 
     </div>
     </div> <br>
@@ -127,6 +127,22 @@ $loginCont->checarAdmPartida($idPartida, $_SESSION['ID']);
 
     // Usar setInterval para chamar a função a cada x milissegundos.
     setInterval(atualizarDados, 12000); // Atualizar a cada segundo (1000 ms).
+</script>
+<script>
+    function atualizarDadosEquipes(idEquipe) {
+        document.getElementById('informacoes').innerHTML = "";
+        // Fazer uma requisição AJAX para atualizar os dados
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                
+                var data = JSON.parse(this.responseText);
+                mostrarInfo(data);
+            }
+        };
+        xhttp.open("GET", "atualizarEquipes.php?idp=<?php echo $idPartida; ?>&ide="+ idEquipe+"", true);
+        xhttp.send();
+    }
 </script>
 
 <script>
@@ -230,6 +246,37 @@ $loginCont->checarAdmPartida($idPartida, $_SESSION['ID']);
                 console.log("Erro ao salvar tempo: " + error);
             }
         });
+    }
+</script>
+<script>
+    function mostrarInfo(data) {
+        const { usuarios, equipe } = data;
+        document.getElementById('informacoes').innerHTML = `
+    <div class="container">
+        <h1 style="font-size: 20px;">Equipe - ${equipe.NomeEquipe}<br></h1>
+        <br>
+        <h1 style="font-size: 20px;">Usuários: </h1>
+        <div class='table-responsive'>
+        <table class='table'>
+            <thead>
+                <tr>
+                    <th class='text-center' scope='col' id='nomeadm'>Nome</th>
+                    <th class='text-center' scope='col' id='nomeadm'>Login</th>
+                    <th class='text-center' scope='col' id='nomeadm'>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                ${usuarios.map(usuarios => `
+                    <tr>
+                        <td class='text-center' id='nomeequipeadm' data-label="Nome">${usuarios.nomeUsuario}</td>
+                        <td class='text-center' id='nomeequipeadm' data-label="Login">${usuarios.login}</td>
+                        <td class='text-center' id='nomeequipeadm' data-label="Email">${usuarios.email}</td>
+                    </tr>
+                `).join('')}
+            </tbody>
+        </table>
+        </div>
+    </div>`;
     }
 </script>
 
