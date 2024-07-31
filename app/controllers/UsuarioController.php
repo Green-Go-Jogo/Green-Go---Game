@@ -57,7 +57,6 @@ class UsuarioController
     public function excluir($idUsuario)
     {
         $this->usuarioDAO->delete($idUsuario);
-        $this->sair();
         return true;
     }
     public function buscarUsuarioPorTipo($tipo)

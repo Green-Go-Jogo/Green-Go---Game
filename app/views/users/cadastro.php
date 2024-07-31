@@ -51,7 +51,7 @@
             <br>
             <input type="password" class="form-control" id="senha-cadastro" autocomplete="off" name="field_password" required>
             <p class="mensagemRetorno" id="retornoCampo4"></p> <br>
-            <h6 class="senha-cadastro">8 caracteres contendo letras e números</h6>
+            <h6 class="senha-cadastro">5 caracteres contendo letras e números</h6>
 
             <label for="senha-cadastro" id="cadastrosenha">Confirmação de Senha:</label>
             <br>
