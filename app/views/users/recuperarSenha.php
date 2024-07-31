@@ -230,7 +230,7 @@
   }
 
   function senhaValida(password) {
-    var regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@.#$!%*?&]{8,}$/;
+    var regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@.#$!%*?&]{5,}$/;
     return regex.test(password);
   }
 
@@ -306,7 +306,7 @@
 
           document.querySelector('.password').style.display = 'none';
           document.querySelector('#botaoReenviar').style.display = 'none';
-          document.querySelector('#complemento').innerHTML = 'A senha deve ter no mínimo 8 dígitos com letras e números';
+          document.querySelector('#complemento').innerHTML = 'A senha deve ter no mínimo 5 dígitos com letras e números';
         } else if (response.status === "false") {
           document.getElementById('subtituloRec').innerHTML = 'Código inválido, tente novamente ou reenvie o código';
         } else {

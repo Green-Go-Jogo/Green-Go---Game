@@ -12,30 +12,11 @@ if (!isset($_SESSION['TIPO'])) {
 <head>
     <?php include_once("../../bootstrap/header.php");
     ?>
-    <!-- Primary Meta Tags -->
-    <title>Green Go: Jogo Etnobotânico sobre as plantas do IFPR</title>
-    <meta name="description" content="Tem como objetivo catalogar todas as plantas do IFPR, junto de uma atividade dinâmica e ativa com um jogo de caça às plantas e um quiz educativo.">
-    <meta name="keywords" content="Plantas, Flora, PANCs, IFPR, Arvores, Natureza, ODS, Sustentabilidade, Educacional, Educação, Jogo, Jogo de plantas, Catalogação, Informativo, GreenGo, Green Go, Green Go IFPR, Tecnologia e Sustentabilidade">
-    <meta name="robots" content="">
-    <meta name="revisit-after" content="7 day">
-    <meta name="language" content="Portuguese">
-    <meta name="generator" content="N/A">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.greengoifpr.com.br/" />
-    <meta property="og:title" content="Green Go Jogo Etnobotânico sobre as Plantas do IFPR" />
-    <meta property="og:description" content="Tem como objetivo catalogar todas as plantas do IFPR, junto de uma atividade dinâmica e ativa com um jogo de caça às plantas e um quiz educativo." />
-    <meta property="og:image" content="https://www.greengoifpr.com.br/app/public/clorofila.webp" />
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://www.greengoifpr.com.br/" />
-    <meta property="twitter:title" content="Green Go Jogo Etnobotânico sobre as Plantas do IFPR" />
-    <meta property="twitter:description" content="Tem como objetivo catalogar todas as plantas do IFPR, junto de uma atividade dinâmica e ativa com um jogo de caça às plantas e um quiz educativo." />
-    <meta property="twitter:image" content="https://www.greengoifpr.com.br/app/public/clorofila.webp" />
-    
+    <meta name="description" content="Catálogo de plantas do IFPR com um jogo educacional sobre o meio ambiente. Explore a flora local e aprenda sobre a natureza do nosso campus.">
+    <meta name="keywords" content="GreenGo, GreenGoIFPR, greengoifpr, Catálogo de Plantas, IFPR, Jogo Educativo, Meio Ambiente, Flora">
+    <meta name="author" content="Green Go Team">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.greengoifpr.com.br/">
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../csscheer/footer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
