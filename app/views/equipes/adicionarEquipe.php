@@ -58,6 +58,10 @@ LoginController::verificarAcesso([2, 3]);
                             <option value="../../public/icon/cacto_icon.png" data-imagem="../../public/icon/cacto_icon.png">Cacto</option>
                             <option value="../../public/icon/flor_icon.png" data-imagem="../../public/icon/flor_icon.png">Flor</option>
                             <option value="../../public/icon/samambaia_icon.png" data-imagem="../../public/icon/samambaia_icon.png">Caladium</option>
+                            <option value="../../public/icon/alocasia_icon.png" data-imagem="../../public/icon/alocasia_icon.png">Alocasia</option>
+                            <option value="../../public/icon/frangipane_icon.png" data-imagem="../../public/icon/frangipane_icon.png">Frangipane</option>
+                            <option value="../../public/icon/bosque_icon.png" data-imagem="../../public/icon/bosque_icon.png">Bosque</option>
+                            <option value="../../public/icon/borboleta_icon.png" data-imagem="../../public/icon/borboleta_icon.png">Borboleta</option>
                             </select>
                             <br><br>
                             <div id="imagemSelecionada">

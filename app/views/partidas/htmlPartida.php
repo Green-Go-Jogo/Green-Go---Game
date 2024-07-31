@@ -337,7 +337,6 @@ class PartidaHTML
         echo "</tbody>";
         echo "</table>";
         echo "</div><br>";
-
         if (!is_null($partida->getDataFim())) {
             $Status = "Essa partida acabou!";
             $Open = "CLOSE";
@@ -353,8 +352,11 @@ class PartidaHTML
         }
 
         echo "<p class='text-center'>" . $Status . "</p>";
+        if (!empty($link)) {
+            echo "<p class='text-center'>" . $link . "</p>";
+        }
 
-        if ($Open) {
+        if ($Open == 'OPEN') {
             echo '<br>';
             echo '<br>';
             echo '<br>';
@@ -365,11 +367,8 @@ class PartidaHTML
             echo "<br>";
             echo "<br>";
         }
-        if (!empty($link)) {
-            echo "<p class='text-center'>" . $link . "</p>";
-        }
+        
     }
-
 
     public static function desenhaPartidaZona($partida)
     {
