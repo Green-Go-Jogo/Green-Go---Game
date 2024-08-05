@@ -142,18 +142,18 @@ LoginController::verificarAcesso([2, 3]);
                                                         <div class="form-group form-check" id="formfrut">
                                                             <input type="checkbox" name="frutifera" class="form-check-input" id="botaocheck3" value="1">
 
-                                                            <label class="form-check-label" for="botaocheck3" id="texto-checkbox">Frutífera</label>
+                                                            <label class="form-check-label" for="botaocheck3" id="texto-checkbox">Frutos Comestíveis</label>
                                                         </div>
                                                         <div class="form-group form-check" id="formmed">
                                                             <input type="checkbox" name="medicinal" class="form-check-input" id="botaocheck4" value="1">
 
                                                             <label class="form-check-label" for="botaocheck4" id="texto-checkbox">Medicinal</label>
                                                         </div>
-                                                        <div class="form-group form-check" id="formrara">
+                                                        <!-- <div class="form-group form-check" id="formrara">
                                                             <input type="checkbox" name="raridade" class="form-check-input" id="botaocheck5" value="1">
 
                                                             <label class="form-check-label" for="botaocheck5" id="texto-checkbox">Rara</label>
-                                                        </div>
+                                                        </div> -->
                                                         <div class="form-group form-check" id="formtoxi">
                                                             <input type="checkbox" name="toxidade" class="form-check-input" id="botaocheck6" value="1">
 

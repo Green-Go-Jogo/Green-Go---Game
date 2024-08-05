@@ -22,7 +22,6 @@ class EspecieDAO {
             $especie->setImagemEspecie($reg['imagemEspecie']);
             $especie->setFrutifera($reg['frutifera']);
             $especie->setComestivel($reg['comestivel']);
-            $especie->setRaridade($reg['raridade']);
             $especie->setMedicinal($reg['medicinal']);
             $especie->setToxidade($reg['toxicidade']);
             $especie->setExotica($reg['exotica']);
@@ -81,21 +80,21 @@ class EspecieDAO {
     public function save(Especie $especie) {
         $conn = conectar_db();
         $especie->setDataCriacao(new DateTime("now", new DateTimeZone('America/Sao_Paulo')));
-        $sql = "INSERT INTO especie (nomePop, nomeCie, descricao, imagemEspecie, frutifera, comestivel, raridade, medicinal, toxicidade, exotica, nativa, endemica, ornamental, panc, dataCriacao, fontes, autoriaImagem, idUsuario)".
-        " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO especie (nomePop, nomeCie, descricao, imagemEspecie, frutifera, comestivel, medicinal, toxicidade, exotica, nativa, endemica, ornamental, panc, dataCriacao, fontes, autoriaImagem, idUsuario)".
+        " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
         $stmt->execute([$especie->getNomePopular(), $especie->getNomeCientifico(), $especie->getDescricao(), $especie->getImagemEspecie(),
-                $especie->getFrutifera(), $especie->getComestivel(), $especie->getRaridade(), $especie->getMedicinal(), $especie->getToxidade(), $especie->getExotica(), $especie->getNativa(),
+                $especie->getFrutifera(), $especie->getComestivel(), $especie->getMedicinal(), $especie->getToxidade(), $especie->getExotica(), $especie->getNativa(),
                 $especie->getEndemica(), $especie->getOrnamental(), $especie->getPanc(), $especie->getDataCriacao()->format('Y-m-d H:i:s'), $especie->getFontes(), $especie->getAutoriaImagem(), $especie->getUsuario()]);
     }
 
     public function update(Especie $especie) {
         $conn = conectar_db();
         $especie->setDataAtualizacao(new DateTime("now", new DateTimeZone('America/Sao_Paulo')));
-        $sql = "UPDATE especie SET nomePop = ?, nomeCie = ?, descricao = ?, imagemEspecie = ?, frutifera = ?, comestivel = ?, raridade = ?, medicinal = ?, toxicidade = ?, exotica = ?, nativa = ?, endemica = ?, ornamental = ?, panc = ?, fontes = ?, autoriaImagem = ?, dataAtualizacao = ?, idUsuario = ? WHERE idEspecie = ?";
+        $sql = "UPDATE especie SET nomePop = ?, nomeCie = ?, descricao = ?, imagemEspecie = ?, frutifera = ?, comestivel = ?, medicinal = ?, toxicidade = ?, exotica = ?, nativa = ?, endemica = ?, ornamental = ?, panc = ?, fontes = ?, autoriaImagem = ?, dataAtualizacao = ?, idUsuario = ? WHERE idEspecie = ?";
         $stmt = $conn->prepare($sql);
         $stmt->execute([$especie->getNomePopular(), $especie->getNomeCientifico(), $especie->getDescricao(), $especie->getImagemEspecie(),
-        $especie->getFrutifera(), $especie->getComestivel(), $especie->getRaridade(), $especie->getMedicinal(), $especie->getToxidade(), $especie->getExotica(), $especie->getNativa(),
+        $especie->getFrutifera(), $especie->getComestivel(), $especie->getMedicinal(), $especie->getToxidade(), $especie->getExotica(), $especie->getNativa(),
         $especie->getEndemica(), $especie->getOrnamental(), $especie->getPanc(), $especie->getFontes(), $especie->getAutoriaImagem(), $especie->getDataAtualizacao()->format('Y-m-d H:i:s'), $especie->getUsuario(), $especie->getIdEspecie()]);
     }
 

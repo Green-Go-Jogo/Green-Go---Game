@@ -159,17 +159,12 @@ class EspecieHTML
 
             $frutifera = $especie->getFrutifera();
             if ($frutifera == 1) {
-                $caracteristicas[] = "Frutífera";
+                $caracteristicas[] = "Frutos Com.";
             }
 
             $exotica = $especie->getExotica();
             if ($exotica == 1) {
                 $caracteristicas[] = "Exótica";
-            }
-
-            $raridade = $especie->getRaridade();
-            if ($raridade == 1) {
-                $caracteristicas[] = "Rara";
             }
 
             $toxidade = $especie->getToxidade();
