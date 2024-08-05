@@ -59,7 +59,7 @@ if ($idp !== null) {
 
 $frutifera = $especie->getFrutifera();
 if ($frutifera == 1) {
-    $frut = "<br>" . "Frutífera";
+    $frut = "<br>" . "Frutos Comestíveis";
 } else {
     $frut = "";
 };
@@ -69,13 +69,6 @@ if ($exotica == 1) {
     $exot = "<br>" . "Exótica";
 } else {
     $exot = "";
-};
-
-$raridade = $especie->getRaridade();
-if ($raridade == 1) {
-    $rara = "<br>" . "Rara";
-} else {
-    $rara = "";
 };
 
 $toxidade = $especie->getToxidade();
@@ -233,7 +226,6 @@ $nomePopular = $especie->getNomePopular();
                     <?php echo $come; ?>
                     <?php echo $exot; ?>
                     <?php echo $frut; ?>
-                    <?php echo $rara; ?>
                     <?php echo $pan; ?>
                     <?php echo $ende; ?>
                     <?php echo $orn; ?>

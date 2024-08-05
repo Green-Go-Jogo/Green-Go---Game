@@ -164,11 +164,12 @@ class ZonaHTML
         foreach ($plantas as $planta) :
             $especie = $especieCont->buscarPorId($planta->getEspecie()->getIdEspecie());
             $nomePlanta = !empty($planta->getNomeSocial()) ? $planta->getNomeSocial() : $especie->getNomePopular();
+            $imagemPlanta = !empty($planta->getImagemPlanta()) ? $planta->getImagemPlanta() : $especie->getImagemEspecie();
 
             echo "<tr>";
             echo "<td>";
             echo "<a href='../plantas/visualizarPlanta.php?idp=" . $planta->getIdPlanta() . "&ide=" . $planta->getEspecie()->getIdEspecie() . "'>";
-            echo "<img src='" . $planta->getImagemPlanta() . "' style='width: 80%; height: 80%; border-radius: 15px;' class='card-img-top mais text-center' alt='...'>";
+            echo "<img src='" . $imagemPlanta . "' style='width: 80%; height: 80%; border-radius: 15px;' class='card-img-top mais text-center' alt='...'>";
             echo "</a>";
             echo "</td>";
             echo "<td>";
