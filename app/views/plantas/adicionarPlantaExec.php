@@ -77,9 +77,7 @@ $planta = new Planta();
 
 //Tratar a imagem
 if ($imagem['error'] === UPLOAD_ERR_NO_FILE) {
-  $especieCont = new EspecieController();
-  $especieImagem = $especieCont->buscarPorId($id_especie);
-  $planta->setImagemPlanta($especieImagem->getImagemEspecie());
+  $planta->setImagemPlanta(null);
 } else {
   // Um arquivo foi enviado, você pode processá-lo aqui
   $extensao = pathinfo($imagem['name'], PATHINFO_EXTENSION);

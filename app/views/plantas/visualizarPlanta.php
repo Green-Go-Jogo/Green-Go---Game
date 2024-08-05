@@ -213,8 +213,9 @@ $nomePopular = $especie->getNomePopular();
 
 
     <div class="text-center" id="imagem1Planta">
-        <img id="imagemPlanta" src="<?php echo $planta->getImagemPlanta(); ?>" />
+        <img id="imagemPlanta" src="<?= $imagemPlanta = !empty($planta->getImagemPlanta()) ? $planta->getImagemPlanta() : $especie->getImagemEspecie(); ?>" />
         <br> <br>
+        <span id='autoria'>Autoria da Foto: <?= $especie->getAutoriaImagem(); ?></span>
     </div>
     <div class="container">
         <div>
@@ -285,6 +286,25 @@ $nomePopular = $especie->getNomePopular();
                 ?>
             </div>
         </div>
+        <br>
+        <div class="descricao">
+                <p id="publicacao">Publicado por <?php echo "<span id='nomePub'>" . $especie->getUsuario()->getNomeUsuario() . "</span>"; ?>
+                    em <?php
+                        if (!empty($especie->getDataAtualizacao())) {
+                            $dataOriginal = $especie->getDataAtualizacao();
+                            $data = new DateTime($dataOriginal);
+                            $dataFormatada = $data->format('d/m/y \à\s H:i');
+                            echo "<span id='dataPub'>" . $dataFormatada . "</span>";
+                        } else {
+                            $dataOriginal = $especie->getDataCriacao();
+                            $data = new DateTime($dataOriginal);
+                            $dataFormatada = $data->format('d/m/y \à\s H:i');
+                            echo "<span id='dataPub'>" . $dataFormatada . "</span>";
+                        }
+
+                        ?>
+                </p>
+            </div>
 
         <br><br><br>
         <div class="text-center">

@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+<?php include_once("../../controllers/LoginController.php");
 
+LoginController::manterUsuario();
+if (!isset($_SESSION['TIPO'])) {
+    $tipo = null;
+} else {
+    $tipo = $_SESSION['TIPO'];
+} ?>
 <head>
     <title>Acesso Negado!</title>
     <?php include_once("../../bootstrap/header.php");?>
@@ -39,7 +46,7 @@
 
 </style>
 
-<?php include_once("../../bootstrap/nav.php");?>
+<?php LoginController::navBar($tipo); ?>
 
 <body>
 

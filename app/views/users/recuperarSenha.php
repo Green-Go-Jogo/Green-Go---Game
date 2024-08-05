@@ -125,7 +125,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
   let timer;
-  let countdown = 60;
+  let countdown = 300;
   let modalAberto = false;
 
   function voltarLogin(){
@@ -331,7 +331,7 @@
       document.getElementById('botaoReenviar').innerText = `Enviar (${countdown}s)`;
     } else {
       clearInterval(timer);
-      countdown = 60;
+      countdown = 300;
       document.getElementById('botaoReenviar').innerText = 'Enviar';
       document.getElementById('botaoReenviar').disabled = false;
     }
