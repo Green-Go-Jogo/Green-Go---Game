@@ -356,6 +356,9 @@ class PlantaDAO
             $planta->setNomeSocial($reg['nomeSocial']);
             $planta->setPontos($reg['pontuacaoPlanta']);
             $planta->setImagemPlanta($reg['imagemPlanta']);
+            if (!isset($reg['imagemPlanta'])) {
+                $planta->setImagemPlanta($reg['imagemEspecie']);
+            }
             $planta->setCodNumerico($reg['codNumerico']);
             $planta->setPlantaHistoria($reg['historia']);
             $planta->setQrCode($reg['codQR']);

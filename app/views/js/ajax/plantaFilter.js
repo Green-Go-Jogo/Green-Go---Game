@@ -100,8 +100,6 @@ function mapString(str) {
             return "Tóxica";
         case "Endemica":
             return "Endêmica";
-        case "Raridade":
-            return "Rara";
         case "Frutifera":
             return "Frutífera";
         case "Exotica":
