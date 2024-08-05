@@ -109,7 +109,7 @@ class LoginController {
         $tipoUsuario = $_SESSION['TIPO'];
     
         if (!in_array($tipoUsuario, $allowedTypes)) {
-            header("location: ../home/erro.php");
+            header("location: ../home/acessonegado.php");
             exit;
         }
     }

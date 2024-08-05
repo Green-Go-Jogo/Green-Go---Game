@@ -69,9 +69,9 @@ $loginCont->checarAdmPartida($idPartida, $_SESSION['ID']);
             <span id="minutes" class="timer-text"><?php echo $tempo; ?></span>
             <span class="timer-text">:</span>
             <span id="seconds" class="timer-text">00</span>
-            <div>
+            <div id="statusDiv">
                 <br>
-                <a class="stop" id="encerrar"> Encerrar a partida? </a>
+                <a class="stop" id="encerrar">Aguardando a partida ser iniciada!</a>
             </div>
         </div>
 
@@ -79,7 +79,6 @@ $loginCont->checarAdmPartida($idPartida, $_SESSION['ID']);
         <div class="text-center">
             <?php echo "<a href='editarPartida.php?id=" . $idPartida . "' class='btn btn-primary editar text-center' id='editaradm'>Editar</a>"; ?>
             <br><br>
-
         </div>
         <div id="equipes">
             <?php
@@ -155,6 +154,9 @@ $loginCont->checarAdmPartida($idPartida, $_SESSION['ID']);
 
     if (!isNaN(dataFim) && dataFim !== null) {
         document.getElementById("startCountdown").classList.remove("iniciar");
+        document.getElementById("startCountdown").setAttribute('disabled', true)
+        document.getElementById("editaradm").setAttribute('href', "#");
+        document.getElementById("editaradm").innerHTML = "Não é mais possível editar a partida!";
         document.getElementById("startCountdown").classList.add("desativado");
         document.getElementById("minutes").innerHTML = "00";
         document.getElementById("seconds").innerHTML = "00";
@@ -171,6 +173,10 @@ $loginCont->checarAdmPartida($idPartida, $_SESSION['ID']);
         isCountdownRunning = timerBool;
 
         document.getElementById("startCountdown").classList.remove("iniciar");
+        document.getElementById("editaradm").setAttribute('href', "#");
+        document.getElementById("editaradm").innerHTML = "Não é mais possível editar a partida!";
+        document.getElementById("startCountdown").setAttribute('disabled', true)
+        document.getElementById("encerrar").innerHTML = "Clique aqui para encerrar a partida!";
         document.getElementById("encerrar").classList.add("encerrar");
         // document.getElementById("countdownMessage").innerHTML = "Countdown in progress...";
 
@@ -184,6 +190,10 @@ $loginCont->checarAdmPartida($idPartida, $_SESSION['ID']);
                 if (confirmar) {
                     saveTime(partidaId, 'endTime', Math.floor(Date.now() / 1000));
                     document.getElementById("encerrar").innerHTML = "Partida Encerrada!";
+                    document.getElementById("encerrar").classList.remove("encerrar");
+                    document.getElementById("encerrar").remove();
+                    document.getElementById("statusDiv").innerHTML = '<br><a class="stop" id="encerrar">Partida Encerrada!</a>';
+                    encerrarButton == null;
                     stopCountdown();
                 }
             });

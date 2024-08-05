@@ -19,10 +19,14 @@ $partida = $partidaCont->buscarPorId($idPartida);
 
 if ($_SESSION['PARTIDA'] == false) {
     unset($_SESSION['PLANTAS_LIDAS']);
-    unset($_SESSION['PONTOS']);
+    unset($_SESSION['PONTOS_PLANTAS']);
+    unset($_SESSION['PONTOS_QUESTOES']);
+    unset($_SESSION['QUESTOES_RESPONDIDAS']);
 
     $_SESSION['PLANTAS_LIDAS'] = array();
-    $_SESSION['PONTOS'] = 0;
+    $_SESSION['QUESTOES_RESPONDIDAS'] = array();
+    $_SESSION['PONTOS_PLANTAS'] = 0;
+    $_SESSION['PONTOS_QUESTOES'] = 0;
 }
 
 ?>

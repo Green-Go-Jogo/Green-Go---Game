@@ -364,7 +364,7 @@ $tempo = $partida->getTempoPartida();
             // A variável de sessão PARTIDA é verdadeira
             $.ajax({
                 type: "POST",
-                url: "rankingExec.php",
+                url: "../plantas/rankingExec.php",
                 dataType: "json",
                 data: {
                     userID: <?php echo $_SESSION["ID"]; ?> // Envie o ID do usuário

@@ -445,6 +445,7 @@ p a {
 }
 
 #publicacao {
+    margin-left: 11px;
     font-family: Poppins-semibold;
     color: #C05367;
 }

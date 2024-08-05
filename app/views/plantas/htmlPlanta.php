@@ -245,10 +245,15 @@ class PlantaHTML
         foreach ($plantas as $planta) :
             $especie = $especieCont->buscarPorId($planta->getEspecie()->getIdEspecie());
             $nomePlanta = !empty($planta->getNomeSocial()) ? 1 : 0;
+            $imagemPlanta = !empty($planta->getImagemPlanta()) ? 1 : 0;
             echo "<div class='card-kid col-md-4'>";
             echo "<br>";
             echo "<div class='card card-darkmode' style=' width: 22rem;'>";
-            echo "<a href='visualizarPlanta.php?idp=" . $planta->getIdPlanta() . "&ide=" . $planta->getEspecie()->getIdEspecie() . "'><img src='" . $planta->getImagemPlanta() . "' style='width: 90%; height: 90%; margin-right: 10px; border-radius: 5px;'class='card-img-top mais' alt='...'></a>";
+            if ($imagemPlanta == 1) {
+                echo "<a href='visualizarPlanta.php?idp=" . $planta->getIdPlanta() . "&ide=" . $planta->getEspecie()->getIdEspecie() . "'><img src='" . $planta->getImagemPlanta() . "' style='width: 90%; height: 90%; margin-right: 10px; border-radius: 5px;'class='card-img-top mais' alt='...'></a>";
+            } else {
+                echo "<a href='visualizarPlanta.php?idp=" . $planta->getIdPlanta() . "&ide=" . $planta->getEspecie()->getIdEspecie() . "'><img src='" . $especie->getImagemEspecie() . "' style='width: 90%; height: 90%; margin-right: 10px; border-radius: 5px;'class='card-img-top mais' alt='...'></a>";
+            }
             echo "<div class='card-body'>";
             if ($nomePlanta == 1) {
                 echo "<h5 id='nomePlanta' class='card-title nome-soc'>" . $planta->getNomeSocial() . "</h5>" . "<br>";
