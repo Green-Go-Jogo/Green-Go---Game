@@ -360,8 +360,14 @@ function createCards(plantas) {
         a1 = document.createElement('a');
         a1.href = "visualizarPlanta.php?idp=" + element['IdPlanta'] + "&ide=" + element['Especie']['IdEspecie'];
 
+        if(element['ImagemPlanta'] == null){
+            imagem = element['Especie']["ImagemEspecie"];
+        } else {
+            imagem = element['ImagemPlanta'];  
+        }
+        console.log(imagem);
         img = document.createElement('img');
-        img.src = element['ImagemPlanta'];
+        img.src = imagem;
         img.style = "width: 90%; height: 90%; margin-right: 10px; border-radius: 5px;";
         img.className = 'card-img-top mais';
         img.alt = '...';

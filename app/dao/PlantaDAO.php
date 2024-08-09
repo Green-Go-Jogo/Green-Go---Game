@@ -356,9 +356,6 @@ class PlantaDAO
             $planta->setNomeSocial($reg['nomeSocial']);
             $planta->setPontos($reg['pontuacaoPlanta']);
             $planta->setImagemPlanta($reg['imagemPlanta']);
-            if (!isset($reg['imagemPlanta'])) {
-                $planta->setImagemPlanta($reg['imagemEspecie']);
-            }
             $planta->setCodNumerico($reg['codNumerico']);
             $planta->setPlantaHistoria($reg['historia']);
             $planta->setQrCode($reg['codQR']);
@@ -371,6 +368,7 @@ class PlantaDAO
             $especie->setNomeCientifico($reg['nomeCie']);
             $especie->setNomePopular($reg['nomePop']);
             $especie->setIdEspecie($reg['idEspecie']);
+            $especie->setImagemEspecie($reg['imagemEspecie']);
             $planta->setEspecie($especie);
 
             $zona = new Zona($reg['idZona'], $reg['nomeZona']);
