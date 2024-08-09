@@ -120,7 +120,10 @@ class PartidaController
                     $arrayPlantas[] = $idPlanta;
                     $_SESSION['PLANTAS_LIDAS'] = $arrayPlantas;
 
-                    $this->partidaDAO->addScorePlantas($_SESSION['PLANTAS_LIDAS'], $_SESSION['PONTOS_PLANTAS'], $idUsuario);
+                    $partida = $this->buscarPartidaAndamentoPorIdUsuario($idUsuario);
+                    $jogadoresEquipe = $this->contarJogadoresEquipe($partida->getIdPartida(), $partida->getIdEquipe());
+
+                    $this->partidaDAO->addScorePlantas($_SESSION['PLANTAS_LIDAS'], $_SESSION['PONTOS_PLANTAS'] / $jogadoresEquipe, $idUsuario);
                     $msgFind = "Parabéns, você encontrou uma nova planta! ";
                     return $msgFind;
                 } else {
@@ -142,11 +145,14 @@ class PartidaController
         //Checa se a alternativa da questão está certa
         $questaoCerta = $this->questaoDAO->checkQuestion($idQuestao, $idAlternativa);
         if ($questaoCerta && !in_array($idQuestao, $_SESSION['QUESTOES_LIDAS'])) {
+
             //Adiciona pontos por ter acertado a questão
             $partida = $this->buscarPartidaAndamentoPorIdUsuario($idUsuario);
             $jogadoresEquipe = $this->contarJogadoresEquipe($partida->getIdPartida(), $partida->getIdEquipe());
+
             $questao = $this->questaoDAO->findByIdPlantaAndIdQuestao($idPlanta, $idQuestao);
             $this->partidaDAO->addScoreQuestoes($idQuestao, $questao->getPontuacaoQuestao() / $jogadoresEquipe, $idUsuario);
+
             $arrayQuestoes[] = $idQuestao;
             $_SESSION['QUESTOES_LIDAS'] = $arrayQuestoes;
         } else if (!in_array($idQuestao, $_SESSION['QUESTOES_LIDAS'])) {

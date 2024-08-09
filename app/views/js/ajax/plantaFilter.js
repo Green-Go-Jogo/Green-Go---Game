@@ -360,7 +360,7 @@ function createCards(plantas) {
         a1 = document.createElement('a');
         a1.href = "visualizarPlanta.php?idp=" + element['IdPlanta'] + "&ide=" + element['Especie']['IdEspecie'];
 
-        if(element['ImagemPlanta'] == null){
+        if (element['ImagemPlanta'] == null || element['ImagemPlanta'] === "") {
             imagem = element['Especie']["ImagemEspecie"];
         } else {
             imagem = element['ImagemPlanta'];  
