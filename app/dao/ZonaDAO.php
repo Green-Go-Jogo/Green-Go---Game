@@ -33,7 +33,7 @@ class zonaDAO {
 
         $sql = "SELECT z.idZona, z.nomeZona, z.idUsuario, COUNT(p.idPlanta) AS qntPlantas, SUM(p.pontuacaoPlanta) AS pontoZona
         FROM zona z 
-        LEFT JOIN planta p ON z.idZona = p.idZona WHERE z.ativo = 1
+        LEFT JOIN planta p ON z.idZona = p.idZona WHERE z.ativo = 1 AND p.ativo = 1
         GROUP BY z.idZona, z.nomeZona 
         ORDER BY z.idZona";
         $stm = $conn->prepare($sql);    
@@ -110,8 +110,8 @@ class zonaDAO {
     public function updatePlanta(Zona $zona) {
         $conn = conectar_db();
     
-        $sqlQntPlantas = "SELECT COUNT(p.idPlanta) FROM planta AS p WHERE p.ativo = 1 AND p.idZona = ?";
-        $sqlPontoZona = "SELECT SUM(p.pontuacaoPlanta) FROM planta AS p WHERE p.ativo = 1 AND p.idZona = ?";
+        $sqlQntPlantas = "SELECT COUNT(p.idPlanta) FROM planta p WHERE p.ativo = 1 AND p.idZona = ?";
+        $sqlPontoZona = "SELECT SUM(p.pontuacaoPlanta) FROM planta p WHERE p.ativo = 1 AND p.idZona = ?";
     
         $stmtQntPlantas = $conn->prepare($sqlQntPlantas);
         $stmtQntPlantas->execute([$zona->getIdZona()]);

@@ -48,8 +48,10 @@ class PlantaController {
     public function excluirPlantasDaEspecie($especie) {
         $plantas = [];
         $plantas = $this->plantaDAO->listByEspecie($especie);
+        
 
         foreach($plantas as $planta) {
+            $this->zonaDAO->updatePlanta($planta->getZona());
             $this->excluir($planta);
         }  
     }
@@ -58,6 +60,7 @@ class PlantaController {
         $plantas = $this->plantaDAO->listByZona($zona->getIdZona());
 
         foreach($plantas as $planta) {
+            $this->zonaDAO->updatePlanta($planta->getZona());
             $this->excluir($planta);
         }  
     }

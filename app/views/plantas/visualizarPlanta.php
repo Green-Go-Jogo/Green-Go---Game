@@ -250,11 +250,33 @@ $nomePopular = $especie->getNomePopular();
                     } ?>
                 </div>
             </h1> <br><br>
+            
 
+            <?php if (!empty($planta->getPlantaHistoria())) { ?>
             <w id="nomespecie"> História da Planta: </w>
             <h1 class="descricao" id="historiaplanta">
                 <?= $planta->getPlantaHistoria() ?>
-            </h1> <br><br>
+            </h1> 
+            <?php } ?>
+            <br><br>
+            <div class="descricao">
+                <p id="publicacao">Publicado por <?php echo "<span id='nomePub'>" . $especie->getUsuario()->getNomeUsuario() . "</span>"; ?>
+                    em <?php
+                        if (!empty($especie->getDataAtualizacao())) {
+                            $dataOriginal = $especie->getDataAtualizacao();
+                            $data = new DateTime($dataOriginal);
+                            $dataFormatada = $data->format('d/m/y \à\s H:i');
+                            echo "<span id='dataPub'>" . $dataFormatada . "</span>";
+                        } else {
+                            $dataOriginal = $especie->getDataCriacao();
+                            $data = new DateTime($dataOriginal);
+                            $dataFormatada = $data->format('d/m/y \à\s H:i');
+                            echo "<span id='dataPub'>" . $dataFormatada . "</span>";
+                        }
+
+                        ?>
+                </p>
+            </div>
 
             <div class="text-center">
                 <img id="mapa" src="../../public/mapa.png">
@@ -279,24 +301,7 @@ $nomePopular = $especie->getNomePopular();
             </div>
         </div>
         <br>
-        <div class="descricao">
-                <p id="publicacao">Publicado por <?php echo "<span id='nomePub'>" . $especie->getUsuario()->getNomeUsuario() . "</span>"; ?>
-                    em <?php
-                        if (!empty($especie->getDataAtualizacao())) {
-                            $dataOriginal = $especie->getDataAtualizacao();
-                            $data = new DateTime($dataOriginal);
-                            $dataFormatada = $data->format('d/m/y \à\s H:i');
-                            echo "<span id='dataPub'>" . $dataFormatada . "</span>";
-                        } else {
-                            $dataOriginal = $especie->getDataCriacao();
-                            $data = new DateTime($dataOriginal);
-                            $dataFormatada = $data->format('d/m/y \à\s H:i');
-                            echo "<span id='dataPub'>" . $dataFormatada . "</span>";
-                        }
-
-                        ?>
-                </p>
-            </div>
+        
 
         <br><br><br>
         <div class="text-center">
