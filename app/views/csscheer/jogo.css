@@ -7,7 +7,7 @@
     --rosão: #C05367;
     --cinza: #586660;
     --cinzinha: #d3dadb;
-    --branquinho #ffffff;
+    --branquinho: #ffffff;
 
     width: 100%;
     height: 100%;
@@ -15,30 +15,30 @@
     font-family: Poppins-regular, Roboto;
 }
 
-    @font-face {
-        font-family: 'Cooper';
-        src: url('../fontes/cooperhewitt-heavy.otf');
-    }
-    
-    @font-face {
-        font-family: 'Poppins';
-        src: url('../fontes/Poppins-ExtraBold.ttf');
-    }
-    
-    @font-face {
-        font-family: 'Poppins-regular';
-        src: url('../fontes/Poppins-Regular.ttf');
-    }
-    
-    @font-face {
-        font-family: 'Poppins-semibold';
-        src: url('../fontes/Poppins-SemiBold.ttf');
-    }
-    
-    @font-face {
-        font-family: 'Poppins-medium';
-        src: url('../fontes/Poppins-Medium.ttf');
-    }
+@font-face {
+    font-family: 'Cooper';
+    src: url('../fontes/cooperhewitt-heavy.otf');
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('../fontes/Poppins-ExtraBold.ttf');
+}
+
+@font-face {
+    font-family: 'Poppins-regular';
+    src: url('../fontes/Poppins-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Poppins-semibold';
+    src: url('../fontes/Poppins-SemiBold.ttf');
+}
+
+@font-face {
+    font-family: 'Poppins-medium';
+    src: url('../fontes/Poppins-Medium.ttf');
+}
 
 body {
     background-color: #ebf0f1;
@@ -134,7 +134,8 @@ body {
     height: auto;
 }
 
-#zona, #equipe {
+#zona,
+#equipe {
     width: 65px;
     height: auto;
     margin-top: 15px;
@@ -142,16 +143,42 @@ body {
 }
 
 .camerazinha {
-background-color: #338a5f;
+    background-color: #338a5f;
 }
 
 #submitButton {
     font-family: Poppins-medium;
-    color:#04574d;
+    color: #04574d;
     font-size: 20px;
     text-decoration: underline;
 }
 
-.submitButton:focus, .submitButton:active{
+.submitButton:focus,
+.submitButton:active {
     box-shadow: none;
+}
+
+#html5-qrcode-anchor-scan-type-change,
+#html5-qrcode-anchor-scan-type-change {
+    display: none !important;
+}
+
+#html5-qrcode-button-camera-permission,
+#html5-qrcode-button-camera-stop,
+#html5-qrcode-button-camera-start {
+    font-family: Poppins-medium;
+    margin-top: 10px;
+    color: #ebf0f1;
+    background-color: #f0b6bc;
+    font-family: Poppins-regular;
+    border-color: #C05367;
+    border-style: dashed;
+    border-width: 7.5px;
+}
+
+#html5-qrcode-select-camera {
+    color: #ebf0f1;
+    background-color: #f0b6bc;
+    border-color: #C05367;
+    font-family: Poppins-semibold;
 }

@@ -25,7 +25,7 @@ $partidaCont = new PartidaController();
 $partida = $partidaCont->buscarPorId($idPartida);
 
 $partida = $partidaCont->buscarPorId($_GET['idp']);
-if($partida === null) {
+if ($partida === null) {
   $_SESSION['PARTIDA'] == false;
   echo "<p class='text-center'>A partida não existe mais! <a style='color: #C05367' href='../home/indexJOG.php'>Clique aqui</a> para a retornar à página inicial!</p>";
   exit;
@@ -156,9 +156,9 @@ $tempo = $partida->getTempoPartida();
   <div class="text-center" id="timercor">
     <img src="../../public/botaotimer.png" id="botaotimer"> </img>
     <div class="circulo" id="timer">
-      <span id="minutes" ><?php echo $tempo; ?></span>
-      <span >:</span>
-      <span id="seconds" >00</span>
+      <span id="minutes"><?php echo $tempo; ?></span>
+      <span>:</span>
+      <span id="seconds">00</span>
     </div>
   </div>
 
@@ -234,7 +234,39 @@ $tempo = $partida->getTempoPartida();
 <!-- CAMERA DO QRCODE -->
 <script src="https://cdn.jsdelivr.net/npm/jsqr/dist/jsQR.min.js"></script>
 <script src="../js/camera.js"></script>
+<script>
 
+function updateButtonTexts() {
+    var permissionButton = document.getElementById('html5-qrcode-button-camera-permission');
+    var stopButton = document.getElementById('html5-qrcode-button-camera-stop');
+    var startButton = document.getElementById('html5-qrcode-button-camera-start');
+
+    // Alterar o texto do botão de permissão
+    if (permissionButton) {
+        permissionButton.innerHTML = "Permitir acesso à câmera";
+    }
+
+    // Alterar o texto do botão de parar
+    if (stopButton) {
+        stopButton.innerHTML = "Parar câmera";
+    }
+
+    // Alterar o texto do botão de iniciar
+    if (startButton) {
+        startButton.innerHTML = "Iniciar câmera";
+    }
+
+    // Se todos os botões foram encontrados e modificados, parar a verificação
+    if (permissionButton && stopButton && startButton) {
+        clearInterval(intervalId);
+    }
+}
+
+// Verifica a cada 100ms se os botões já foram criados
+var intervalId = setInterval(updateButtonTexts, 100);
+
+
+</script>
 <!-- INPUT DE CÓDIGO -->
 <script>
   const resultDiv = $("#result");
@@ -356,40 +388,41 @@ $tempo = $partida->getTempoPartida();
 </script>
 
 <script>
-    function atualizarDados() {
-        // Verifique se a variável de sessão PARTIDA é verdadeira
-        var partidaAtiva = <?php echo ($_SESSION['PARTIDA'] ? 'true' : 'false'); ?>;
+  function atualizarDados() {
+    // Verifique se a variável de sessão PARTIDA é verdadeira
+    var partidaAtiva = <?php echo ($_SESSION['PARTIDA'] ? 'true' : 'false'); ?>;
 
-        if (partidaAtiva === true) {
-            // A variável de sessão PARTIDA é verdadeira
-            $.ajax({
-                type: "POST",
-                url: "../plantas/rankingExec.php",
-                dataType: "json",
-                data: {
-                    userID: <?php echo $_SESSION["ID"]; ?> // Envie o ID do usuário
-                },
-                success: function(userResponse) {
-                    if (userResponse.isValid === true) {
-                        // Redirecionar para a página se a resposta for verdadeira
-                        window.location.href = "../partidas/rankPartida.php?id=" + userResponse.idPartida;
-                    } else {
+    if (partidaAtiva === true) {
+      // A variável de sessão PARTIDA é verdadeira
+      $.ajax({
+        type: "POST",
+        url: "../plantas/rankingExec.php",
+        dataType: "json",
+        data: {
+          userID: <?php echo $_SESSION["ID"]; ?> // Envie o ID do usuário
+        },
+        success: function(userResponse) {
+          if (userResponse.isValid === true) {
+            // Redirecionar para a página se a resposta for verdadeira
+            window.location.href = "../partidas/rankPartida.php?id=" + userResponse.idPartida;
+          } else {
 
-                    }
-                },
-                error: function() {
-                    console.log("O Rank ainda não foi definido!");
-                }
-            });
-        } else {
-            // A variável de sessão PARTIDA não é verdadeira
-            console.log("Partida não está ativa");
+          }
+        },
+        error: function() {
+          console.log("O Rank ainda não foi definido!");
         }
-    };
+      });
+    } else {
+      // A variável de sessão PARTIDA não é verdadeira
+      console.log("Partida não está ativa");
+    }
+  };
 
-    atualizarDados();
+  atualizarDados();
 
-    // Usar setInterval para chamar a função a cada x milissegundos.
-    setInterval(atualizarDados, 15000); // Atualizar a cada segundo (1000 ms).
+  // Usar setInterval para chamar a função a cada x milissegundos.
+  setInterval(atualizarDados, 15000); // Atualizar a cada segundo (1000 ms).
 </script>
+
 </html>
