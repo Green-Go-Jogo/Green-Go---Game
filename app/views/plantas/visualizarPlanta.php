@@ -294,7 +294,7 @@ $nomePopular = $especie->getNomePopular();
             <br>
             <div class="text-center">
                 <?php
-                if (isset($_SESSION['PARTIDA']) && $_SESSION['PARTIDA'] == true && strpos($msgFind, 'Essa planta não pertence à uma das zonas da sua partida!') == false) {
+                if (isset($_SESSION['PARTIDA']) && $_SESSION['PARTIDA'] == true && strpos($msgFind, 'Essa planta não pertence à uma das zonas da sua partida!') === false) {
                     PlantaHTML::desenhaQuestoes($idp, $arrayQuestoes);
                 }
                 ?>
