@@ -77,7 +77,7 @@ class PartidaDAO
         $conn = conectar_db();
 
         $sql = PartidaDAO::SQL_PARTIDA .
-            " AND p.dataInicio = null ORDER BY p.nomePartida";
+            " ORDER BY p.nomePartida";
         $stm = $conn->prepare($sql);
         $stm->execute();
         $result = $stm->fetchAll();
