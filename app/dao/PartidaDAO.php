@@ -85,7 +85,44 @@ class PartidaDAO
         return $this->mapPartidas($result);
     }
 
+    public function listByPartidaNotStarted()
+    {
+        $conn = conectar_db();
 
+        $sql = PartidaDAO::SQL_PARTIDA .
+            " AND p.dataInicio IS NULL ORDER BY p.nomePartida";
+        $stm = $conn->prepare($sql);
+        $stm->execute();
+        $result = $stm->fetchAll();
+
+        return $this->mapPartidas($result);
+    }
+
+    public function listByPartidaStarted()
+    {
+        $conn = conectar_db();
+
+        $sql = PartidaDAO::SQL_PARTIDA .
+            " AND p.dataFim IS NULL AND p.dataInicio IS NOT NULL ORDER BY p.nomePartida";
+        $stm = $conn->prepare($sql);
+        $stm->execute();
+        $result = $stm->fetchAll();
+
+        return $this->mapPartidas($result);
+    }
+
+    public function listByPartidaFinished()
+    {
+        $conn = conectar_db();
+
+        $sql = PartidaDAO::SQL_PARTIDA .
+            " AND p.dataFim IS NOT NULL ORDER BY p.nomePartida";
+        $stm = $conn->prepare($sql);
+        $stm->execute();
+        $result = $stm->fetchAll();
+
+        return $this->mapPartidas($result);
+    }
 
     public function findById($idPartida)
     {
