@@ -149,3 +149,12 @@ body {
     color: #7EC4BB;
 }
 
+.row.linha {
+    background-color: #C05367;
+    width: 150%;
+    height: 3px;
+}
+
+.tituloPartidas {
+    text-decoration: underline dotted;
+}

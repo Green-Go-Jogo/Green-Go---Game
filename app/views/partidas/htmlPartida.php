@@ -195,13 +195,125 @@ include_once("../../controllers/UsuarioController.php");
 class PartidaHTML
 {
 
-    public static function desenhaPartida($partidas)
+    // public static function desenhaPartida($partidas)
+    // {
+    //     $partCont = new PartidaController();
+    //     $usuarioCont = new UsuarioController();
+    //     echo "<div class='container text-center'>";
+    //     echo "<div class='row row-cols-4'>";
+
+    //     foreach ($partidas as $partida) {
+
+    //         $usuario = $usuarioCont->buscarPorId($partida->getIdAdm());
+    //         $nomeAdm = $usuario->getNomeUsuario();
+    //         $numEquipes = count($partida->getEquipes());
+    //         $jogadores = $partCont->contarJogadores($partida->getIdPartida());
+    //         $maxJogadores = $partida->getLimiteJogadores() * $numEquipes;
+
+    //         if (null !== ($partida->getDataFim())) {
+    //             $Status = "Finalizada";
+    //             $Open = "END";
+    //         } else if ($partida->getIdAdm() == $_SESSION['ID']) {
+    //             $Status = "Administrador";
+    //             $Open = "ADM";
+    //         } else if (null !== ($partida->getDataInicio())) {
+    //             $Status = "Em andamento";
+    //             $Open = "NO";
+    //         } else if ($maxJogadores == $jogadores) {
+    //             $Status = "Cheia";
+    //             $Open = "FULL";
+    //         } else {
+    //             $Status = "Aguardando";
+    //             $Open = "YES";
+    //         }
+    //         echo "<div class='col-md-4'>";
+    //         echo "<br>";
+    //         echo "<div class='card' style='width: 22rem;'>";
+    //         echo "<div class='card-body'>";
+    //         echo "<h5 class='card-title' id='nomepartida'>" . $partida->getNomePartida() . "</h5>" . "<br>";
+    //         echo "<p class='card-text nome-texto'> Jogadores: " . $jogadores . "/" . $maxJogadores . "<br></p>";
+    //         echo "<p class='card-text nome-texto' id='status'> Status: " . $Status . "<br></p>";
+    //         echo "<button type='button btn-info' id='info' data-toggle='modal' data-target='#infoModal' onclick='mostrarInfo(" . json_encode($partida->getZonas()) . "," . json_encode($partida->getEquipes()) . ")'>Informações</button>";
+    //         echo "<br><br><p class='card-text nome-texto' id='criador'> Criado por: <br>" . $nomeAdm . " <br>" . "</p>";
+
+    //         if ($Open == "FULL") {
+    //             echo "<button type='button' class='btn entrar-btn'>Partida Cheia!</button>";
+    //         } else if ($Open == "YES") {
+    //             echo "<button type='button' class='btn entrar-btn' data-bs-toggle='modal' data-bs-target='#senhaModal' data-partida-id='" . $partida->getIdPartida() . "'>Entrar</button>";
+    //         } else if ($Open == "END") {
+    //             echo "<a href='rankPartida.php?id=" . $partida->getIdPartida() . "'><button type='button' class='btn entrar-btn'>Resultado</button></a>";
+    //         } else if ($Open == "NO") {
+    //             echo "<button type='button' class='btn entrar-btn'>Fechada!</button>";
+    //         } else if ($Open = "ADM") {
+    //             echo "<a href='PartidaADM.php?id=" . $partida->getIdPartida() . "'><button type='button' class='btn entrar-btn'>Administrar</button></a>";
+    //         }
+
+    //         if ($partida->getIdAdm() == $_SESSION['ID']) {
+    //             echo "<br><a href='deletarPartida.php?id=" . $partida->getIdPartida() . "' onclick='return confirm(\"Confirma a exclusão da Partida? Todos os jogadores nela serão expulsos e o progresso será perdido\");'><button type='button' class='btn deletar-btn'>Excluir</button></a>";
+    //         }
+    //         echo "<br>";
+    //         echo "</div>";
+    //         echo "</div>";
+    //         echo "</div>";
+    //     }
+
+    //     echo "</div>";
+
+    //     // Modal Senha
+    //     echo "<div class='modal fade' id='senhaModal' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>";
+    //     echo "<div class='modal-dialog'>";
+    //     echo "<div class='modal-content'>";
+    //     echo "<div class='modal-header'>";
+    //     echo "<h1 class='modal-title text-center fs-5' id='exampleModalLabel'>Insira a senha:</h1>";
+    //     echo "</div>";
+    //     echo "<div class='modal-body'>";
+    //     echo "<form id='password-form' action='verificarSenha.php' method='POST'>";
+    //     echo "<input type='hidden' id='partida-id' name='partidaId'>";
+    //     echo "<div class='mb-3'>";
+    //     echo "<label for='password' id='lab-senha' class='col-form-label'> </label>";
+    //     echo "<input type='password' autocomplete='off' class='form-control' id='password' name='password'>";
+    //     echo "</div>";
+    //     echo "</div>";
+    //     echo "<div class='modal-footer'>";
+    //     echo "<button type='button' class='btn cancel btn-secondary' data-bs-dismiss='modal' id='fecharpassword'>Fechar</button>";
+    //     echo "<button type='submit' class='btn submit btn-primary' id='submit-password'>Entrar</button>";
+    //     echo "</div>";
+    //     echo "</form>";
+    //     echo "</div>";
+    //     echo "</div>";
+    //     echo "</div>";
+
+    //     // Modal Info
+    //     echo "<div id='infoModal' class='modal fade' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>";
+    //     echo "<div class='modal-dialog'>";
+    //     echo "<div class='modal-content'>";
+    //     echo "<div class='modal-header justify-content-center'>";
+    //     echo "<h4 class='modal-title d-flex text-center'>Informações</h4>";
+    //     echo "</div>";
+    //     echo "<div class='modal-body'>";
+    //     echo "<div id='informacoes'>";
+    //     echo "</div>";
+    //     echo "</div>";
+    //     echo "<div class='modal-footer'>";
+    //     echo "<button type='button' class='btn cancel btn-secondary' data-dismiss='modal' id='fecharpassword'>Fechar</button>";
+    //     echo "</div>";
+    //     echo "</div>";
+    //     echo "</div>";
+    //     echo "</div>";
+    //     echo "</div>";
+    //     echo "</div>";
+    // }
+
+    public static function desenhaPartidaNaoIniciada($partidas)
     {
         $partCont = new PartidaController();
         $usuarioCont = new UsuarioController();
         echo "<div class='container text-center'>";
+        echo "<h2 class='tituloPartidas'>Partidas abertas</h2>";
+        if(empty($partidas)){
+            echo "<br><br><h3>Não foram encontradas partidas abertas nesse momento!</h3><br><br>";
+        }
         echo "<div class='row row-cols-4'>";
-
         foreach ($partidas as $partida) {
 
             $usuario = $usuarioCont->buscarPorId($partida->getIdAdm());
@@ -209,16 +321,10 @@ class PartidaHTML
             $numEquipes = count($partida->getEquipes());
             $jogadores = $partCont->contarJogadores($partida->getIdPartida());
             $maxJogadores = $partida->getLimiteJogadores() * $numEquipes;
-
-            if (null !== ($partida->getDataFim())) {
-                $Status = "Finalizada";
-                $Open = "END";
-            } else if ($partida->getIdAdm() == $_SESSION['ID']) {
+            
+            if ($partida->getIdAdm() == $_SESSION['ID']) {
                 $Status = "Administrador";
                 $Open = "ADM";
-            } else if (null !== ($partida->getDataInicio())) {
-                $Status = "Em andamento";
-                $Open = "NO";
             } else if ($maxJogadores == $jogadores) {
                 $Status = "Cheia";
                 $Open = "FULL";
@@ -226,6 +332,7 @@ class PartidaHTML
                 $Status = "Aguardando";
                 $Open = "YES";
             }
+
             echo "<div class='col-md-4'>";
             echo "<br>";
             echo "<div class='card' style='width: 22rem;'>";
@@ -240,17 +347,14 @@ class PartidaHTML
                 echo "<button type='button' class='btn entrar-btn'>Partida Cheia!</button>";
             } else if ($Open == "YES") {
                 echo "<button type='button' class='btn entrar-btn' data-bs-toggle='modal' data-bs-target='#senhaModal' data-partida-id='" . $partida->getIdPartida() . "'>Entrar</button>";
-            } else if ($Open == "END") {
-                echo "<a href='rankPartida.php?id=" . $partida->getIdPartida() . "'><button type='button' class='btn entrar-btn'>Resultado</button></a>";
-            } else if ($Open == "NO") {
-                echo "<button type='button' class='btn entrar-btn'>Fechada!</button>";
-            } else if ($Open = "ADM") {
+            }  else if ($Open = "ADM") {
                 echo "<a href='PartidaADM.php?id=" . $partida->getIdPartida() . "'><button type='button' class='btn entrar-btn'>Administrar</button></a>";
             }
 
             if ($partida->getIdAdm() == $_SESSION['ID']) {
                 echo "<br><a href='deletarPartida.php?id=" . $partida->getIdPartida() . "' onclick='return confirm(\"Confirma a exclusão da Partida? Todos os jogadores nela serão expulsos e o progresso será perdido\");'><button type='button' class='btn deletar-btn'>Excluir</button></a>";
             }
+
             echo "<br>";
             echo "</div>";
             echo "</div>";
@@ -303,6 +407,148 @@ class PartidaHTML
         echo "</div>";
         echo "</div>";
     }
+
+    public static function desenhaPartidaEmAndamento($partidas)
+    {
+        $partCont = new PartidaController();
+        $usuarioCont = new UsuarioController(); 
+        echo "<div class='row linha'></div><br>";
+        echo "<div class='container text-center'>";
+        echo "<h2 class='tituloPartidas'>Partidas em andamento</h2>";
+        if(empty($partidas)){
+            echo "<br><br><h3>Não foram encontradas partidas em andamento nesse momento!</h3><br><br>";
+        }
+        echo "<div class='row row-cols-4'>";
+        
+        foreach ($partidas as $partida) {
+
+            $usuario = $usuarioCont->buscarPorId($partida->getIdAdm());
+            $nomeAdm = $usuario->getNomeUsuario();
+            $numEquipes = count($partida->getEquipes());
+            $jogadores = $partCont->contarJogadores($partida->getIdPartida());
+            $maxJogadores = $partida->getLimiteJogadores() * $numEquipes;
+            
+            if ($partida->getIdAdm() == $_SESSION['ID']) {
+                $Status = "Administrador";
+                $Open = "ADM";
+            } else if (null !== ($partida->getDataInicio())) {
+                $Status = "Em andamento";
+                $Open = "NO";
+            } 
+
+            echo "<div class='col-md-4'>";
+            echo "<br>";
+            echo "<div class='card' style='width: 22rem;'>";
+            echo "<div class='card-body'>";
+            echo "<h5 class='card-title' id='nomepartida'>" . $partida->getNomePartida() . "</h5>" . "<br>";
+            echo "<p class='card-text nome-texto'> Jogadores: " . $jogadores . "/" . $maxJogadores . "<br></p>";
+            echo "<p class='card-text nome-texto' id='status'> Status: " . $Status . "<br></p>";
+            echo "<button type='button btn-info' id='info' data-toggle='modal' data-target='#infoModal' onclick='mostrarInfo(" . json_encode($partida->getZonas()) . "," . json_encode($partida->getEquipes()) . ")'>Informações</button>";
+            echo "<br><br><p class='card-text nome-texto' id='criador'> Criado por: <br>" . $nomeAdm . " <br>" . "</p>";
+
+            if ($Open = "ADM") {
+                echo "<a href='PartidaADM.php?id=" . $partida->getIdPartida() . "'><button type='button' class='btn entrar-btn'>Administrar</button></a>";
+            } else if ($Open == "NO") {
+                echo "<button type='button' class='btn entrar-btn'>Fechada!</button>";
+            } 
+
+            if ($partida->getIdAdm() == $_SESSION['ID']) {
+                echo "<br><a href='deletarPartida.php?id=" . $partida->getIdPartida() . "' onclick='return confirm(\"Confirma a exclusão da Partida? Todos os jogadores nela serão expulsos e o progresso será perdido\");'><button type='button' class='btn deletar-btn'>Excluir</button></a>";
+            }
+            
+            echo "<br>";
+            echo "</div>";
+            echo "</div>";
+            echo "</div>";
+        }
+
+        echo "</div>";
+
+        // Modal Info
+        echo "<div id='infoModal' class='modal fade' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>";
+        echo "<div class='modal-dialog'>";
+        echo "<div class='modal-content'>";
+        echo "<div class='modal-header justify-content-center'>";
+        echo "<h4 class='modal-title d-flex text-center'>Informações</h4>";
+        echo "</div>";
+        echo "<div class='modal-body'>";
+        echo "<div id='informacoes'>";
+        echo "</div>";
+        echo "</div>";
+        echo "<div class='modal-footer'>";
+        echo "<button type='button' class='btn cancel btn-secondary' data-dismiss='modal' id='fecharpassword'>Fechar</button>";
+        echo "</div>";
+        echo "</div>";
+        echo "</div>";
+        echo "</div>";
+        echo "</div>";
+        echo "</div>";
+        
+    }
+
+    public static function desenhaPartidaFinalizada($partidas)
+    {
+        $partCont = new PartidaController();
+        $usuarioCont = new UsuarioController(); 
+        echo "<div class='row linha'></div><br>";
+        echo "<div class='container text-center'>";
+        echo "<h2 class='tituloPartidas'>Partidas finalizadas</h2>";
+        if(empty($partidas)){
+            echo "<br><br><h3>Não foram encontradas partidas finalizadas</h3><br><br>";
+        }
+        echo "<div class='row row-cols-4'>";
+
+        foreach ($partidas as $partida) {
+
+            $usuario = $usuarioCont->buscarPorId($partida->getIdAdm());
+            $nomeAdm = $usuario->getNomeUsuario();
+            $numEquipes = count($partida->getEquipes());
+            $jogadores = $partCont->contarJogadores($partida->getIdPartida());
+            $maxJogadores = $partida->getLimiteJogadores() * $numEquipes;
+
+            echo "<div class='col-md-4'>";
+            echo "<br>";
+            echo "<div class='card' style='width: 22rem;'>";
+            echo "<div class='card-body'>";
+            echo "<h5 class='card-title' id='nomepartida'>" . $partida->getNomePartida() . "</h5>" . "<br>";
+            echo "<p class='card-text nome-texto'> Jogadores: " . $jogadores . "/" . $maxJogadores . "<br></p>";
+            echo "<p class='card-text nome-texto' id='status'> Status: Finalizada<br></p>";
+            echo "<button type='button btn-info' id='info' data-toggle='modal' data-target='#infoModal' onclick='mostrarInfo(" . json_encode($partida->getZonas()) . "," . json_encode($partida->getEquipes()) . ")'>Informações</button>";
+            echo "<br><br><p class='card-text nome-texto' id='criador'> Criado por: <br>" . $nomeAdm . " <br>" . "</p>";
+            echo "<a href='rankPartida.php?id=" . $partida->getIdPartida() . "'><button type='button' class='btn entrar-btn'>Resultado</button></a>";
+            
+            if ($partida->getIdAdm() == $_SESSION['ID']) {
+                echo "<br><a href='deletarPartida.php?id=" . $partida->getIdPartida() . "' onclick='return confirm(\"Confirma a exclusão da Partida? Todos os jogadores nela serão expulsos e o progresso será perdido\");'><button type='button' class='btn deletar-btn'>Excluir</button></a>";
+            }
+            echo "<br>";
+            echo "</div>";
+            echo "</div>";
+            echo "</div>";
+        }
+
+        echo "</div>";
+
+        // Modal Info
+        echo "<div id='infoModal' class='modal fade' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>";
+        echo "<div class='modal-dialog'>";
+        echo "<div class='modal-content'>";
+        echo "<div class='modal-header justify-content-center'>";
+        echo "<h4 class='modal-title d-flex text-center'>Informações</h4>";
+        echo "</div>";
+        echo "<div class='modal-body'>";
+        echo "<div id='informacoes'>";
+        echo "</div>";
+        echo "</div>";
+        echo "<div class='modal-footer'>";
+        echo "<button type='button' class='btn cancel btn-secondary' data-dismiss='modal' id='fecharpassword'>Fechar</button>";
+        echo "</div>";
+        echo "</div>";
+        echo "</div>";
+        echo "</div>";
+        echo "</div>";
+        echo "</div>";
+    }
+
 
     public static function desenhaEquipe($usuarios, $partida, $idEquipe, $idUsuarioAtual)
     {
