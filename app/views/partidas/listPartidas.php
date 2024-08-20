@@ -40,10 +40,13 @@ include_once(__DIR__ . "/htmlPartida.php");
     <div id='partidas'>
         <?php
         $partidaCont = new PartidaController();
-        $partidas = $partidaCont->listar();
-
-
-        PartidaHTML::desenhaPartida($partidas);
+        $partidasNaoIniciada = $partidaCont->listarPorPartidaNaoIniciada();
+        $partidasEmAndamento = $partidaCont->listarPorPartidaIniciada();
+        $partidasFinalizadas = $partidaCont->listarPorPartidaFinalizada();
+        
+        PartidaHTML::desenhaPartidaNaoIniciada($partidasNaoIniciada);
+        PartidaHTML::desenhaPartidaEmAndamento($partidasEmAndamento);
+        PartidaHTML::desenhaPartidaFinalizada($partidasFinalizadas);
         ?>
     </div>
 

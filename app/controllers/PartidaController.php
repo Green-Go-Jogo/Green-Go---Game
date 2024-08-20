@@ -39,6 +39,48 @@ class PartidaController
         return $partidas;
     }
 
+    public function listarPorPartidaNaoIniciada()
+    {
+        $partidas = $this->partidaDAO->listByPartidaNotStarted();
+        foreach ($partidas as $partida) {
+            $idPartida = $partida->getIdPartida();
+            $zonas = $this->zonaDAO->listByPartida($idPartida);
+            $equipes = $this->equipeDAO->listByPartida($idPartida);
+            $partida->setEquipes($equipes);
+            $partida->setZonas($zonas);
+        }
+
+        return $partidas;
+    }
+
+    public function listarPorPartidaIniciada()
+    {
+        $partidas = $this->partidaDAO->listByPartidaStarted();
+        foreach ($partidas as $partida) {
+            $idPartida = $partida->getIdPartida();
+            $zonas = $this->zonaDAO->listByPartida($idPartida);
+            $equipes = $this->equipeDAO->listByPartida($idPartida);
+            $partida->setEquipes($equipes);
+            $partida->setZonas($zonas);
+        }
+
+        return $partidas;
+    }
+
+    public function listarPorPartidaFinalizada()
+    {
+        $partidas = $this->partidaDAO->listByPartidaFinished();
+        foreach ($partidas as $partida) {
+            $idPartida = $partida->getIdPartida();
+            $zonas = $this->zonaDAO->listByPartida($idPartida);
+            $equipes = $this->equipeDAO->listByPartida($idPartida);
+            $partida->setEquipes($equipes);
+            $partida->setZonas($zonas);
+        }
+
+        return $partidas;
+    }
+
     public function buscarPorId($idPartida)
     {
         $partida = $this->partidaDAO->findById($idPartida);
