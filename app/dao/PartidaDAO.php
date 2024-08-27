@@ -604,7 +604,6 @@ class PartidaDAO
         $conn = conectar_db();
         if ($this->findPartidaAndamentoByIdUsuario($idUsuario)) {
             return 'error';
-            exit;
         }
 
         $sql = "DELETE pu FROM partida_usuario pu
