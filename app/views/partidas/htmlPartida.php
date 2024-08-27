@@ -192,6 +192,7 @@
 <?php
 include_once("../../controllers/PartidaController.php");
 include_once("../../controllers/UsuarioController.php");
+include_once("../../controllers/ZonaController.php");
 class PartidaHTML
 {
 
@@ -308,6 +309,7 @@ class PartidaHTML
     {
         $partCont = new PartidaController();
         $usuarioCont = new UsuarioController();
+        $zonaCont = new ZonaController();    
         echo "<div class='container text-center'>";
         echo "<h2 class='tituloPartidas'>Partidas abertas</h2>";
         if(empty($partidas)){
@@ -618,7 +620,7 @@ class PartidaHTML
 
     public static function desenhaPartidaZona($partida)
     {
-
+        $zonaCont = new ZonaController();
         echo "<div class='container text-center'>";
         echo "<div class='zonaP text-right table-responsive'>";
         echo "<table class='table'>";
@@ -631,6 +633,7 @@ class PartidaHTML
         echo "<tr>";
         echo "<th scope='col' class='text-center' id='nomeadm'>Nome</th>";
         echo "<th scope='col' class='text-center' id='quantidadeadm'>Qntd Plantas</th>";
+        echo "<th scope='col' class='text-center' id='quantidadeadm'>Pontos Quiz</th>";
         echo "<th scope='col' class='text-center' id='nomeadm'>Pontos Totais</th>";
         echo "</tr>";
         echo "</thead>";
@@ -638,10 +641,12 @@ class PartidaHTML
 
         foreach ($partida->getZonas() as $zona) {
 
+            $pontosQuestoesZona = $zonaCont->buscarPontosQuestoesZona($zona->getIdZona());
             echo "<tr>";
             echo "<td class='text-center' id='nomeequipeadm'>" . $zona->getNomeZona() . "</td>";
             echo "<td class='text-center' id='plantaadm'>" . $zona->getQntdPlanta() . "</td>";
-            echo "<td class='text-center' id='nomeequipeadm'>" . $zona->getPontosTotais() . "</td>";
+            echo "<td class='text-center' id='plantaadm'>" . $pontosQuestoesZona . "</td>";
+            echo "<td class='text-center' id='nomeequipeadm'>" . $zona->getPontosTotais() + $pontosQuestoesZona . "</td>";
             echo "</tr>";
         }
 

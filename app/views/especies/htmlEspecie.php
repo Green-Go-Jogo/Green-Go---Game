@@ -106,32 +106,32 @@
     }
 
     a#addict {
-    color: var(--branco);
-    background-color: #338A5F;
-    border-radius: 5px;
-    width: max-content !important;
-    height: max-content !important;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    font-family: Poppins-semibold;
-    font-size: 20px;
-    transition: 0.3s ease;
-    display: inline-block;
-    border-width: 3px ;
-    border-color: #ffffff ;
-    margin-bottom: 25px;
+        color: var(--branco);
+        background-color: #338A5F;
+        border-radius: 5px;
+        width: max-content !important;
+        height: max-content !important;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        font-family: Poppins-semibold;
+        font-size: 20px;
+        transition: 0.3s ease;
+        display: inline-block;
+        border-width: 3px;
+        border-color: #ffffff;
+        margin-bottom: 25px;
 
-}
+    }
 
-a#addict:hover {
-    color: #ebf0f1 !important;
-    background-color: #04574d;
-    transform: scale(1.05);
-}
+    a#addict:hover {
+        color: #ebf0f1 !important;
+        background-color: #04574d;
+        transform: scale(1.05);
+    }
 
-p#nomezinho {
+    p#nomezinho {
         margin-bottom: 25px;
     }
 </style>
@@ -143,7 +143,6 @@ class EspecieHTML
     public static function desenhaEspecie($especies)
     {
 
-
         echo "<div class='container text-center'>";
         echo "<div class='container text-right'>";
         echo "<a class='btn incluir' href='adicionarEspecie.php' id='botaomais'>
@@ -153,7 +152,7 @@ class EspecieHTML
     </a>";
         echo "<div class='row row-cols-4'>"; // inicie a div row fora do loop
 
-        foreach ($especies as $especie) :
+        foreach ($especies as $especie):
 
             $caracteristicas = array();
 
@@ -206,20 +205,21 @@ class EspecieHTML
             echo "<div class='col-md-4'>";
             echo "<br>";
             echo "<div class='card' style='width: 22rem; '>";
-            echo "<a href='visualizarEspecie.php?id=". $especie->getIdEspecie() ."'><img src='" . $especie->getImagemEspecie() . "' style='width: 90%; height: 90%; margin-left: 18px; border-radius: 5px;'class='card-img-top mais' alt='...'><a>";
+            echo "<a href='visualizarEspecie.php?id=" . $especie->getIdEspecie() . "'><img src='" . $especie->getImagemEspecie() . "' style='width: 90%; height: 90%; margin-left: 18px; border-radius: 5px;'class='card-img-top mais' alt='...'><a>";
             echo "<div class='card-body'>";
             echo "<h5 id='nomeEspecie' class='card-title nome-soc'>" . $especie->getNomePopular() . "</h5>";
             echo "<p class='card-text nome-texto' id='atributos'>";
-            $count = count($caracteristicas); 
+            $count = count($caracteristicas);
             for ($i = 0; $i < $count; $i++) {
                 echo $caracteristicas[$i];
-            
+
                 if ($i < $count - 1 && ($i + 1) % 2 == 0) {
                     echo "<br>";
                 } else {
                     echo "&nbsp;&nbsp;";
                 }
-            } echo "</p>";
+            }
+            echo "</p>";
             echo "<p class='card-text nome-texto' id='atualização' >Última edição por:";
             echo "<p class='card-text nome-texto' id='nomezinho' >" . $especie->getUsuario()->getNomeUsuario() . "</p>";
             echo "<button type='button' id='imprimas' data-toggle='modal' data-target='#imprimirModal' onclick='prepararImpressao(\"" . htmlspecialchars(addslashes($especie->getNomePopular()), ENT_QUOTES) . "\", \"" . htmlspecialchars(addslashes($especie->getNomeCientifico()), ENT_QUOTES) . "\", \"" . htmlspecialchars(addslashes($especie->getQrCode()), ENT_QUOTES) . "\")'>Imprimir</button><br><br>";
