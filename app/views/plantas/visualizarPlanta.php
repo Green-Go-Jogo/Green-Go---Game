@@ -347,7 +347,8 @@ $nomePopular = $especie->getNomePopular();
         //Pega todos os radios marcados
         var radios = document.querySelectorAll('input[type="radio"]');
         var values = [];
-        // enviarQuizBotao.setAttribute('onclick', '');
+        enviarQuizBotao.setAttribute('onclick', '');
+        enviarQuizBotao.innerHTML = "Resposta enviada!"
 
         radios.forEach(function(radio) {
             // Verifica se o input está marcado
@@ -404,7 +405,7 @@ $nomePopular = $especie->getNomePopular();
                         alterarValorRadio("question=" + key, "respondida");
                     });
                 } else {
-                    console.log("Seus pontos possivelmente foram somados, mas o servidor não conseguiu te dizer a resposta.");
+                    console.log("Seus pontos possivelmente foram somados, mas o servidor não conseguiu te devolver a resposta.");
                 }
             },
             error: function() {
