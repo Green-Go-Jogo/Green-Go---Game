@@ -158,8 +158,15 @@ class PlantaDAO
             " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
         $stmt->execute([
-            $planta->getNomeSocial(), $planta->getQrCode(), $planta->getCodNumerico(),
-            $planta->getPontos(), $planta->getPlantaHistoria(), $planta->getImagemPlanta(), $planta->getZona()->getIdZona(), $planta->getEspecie()->getIdEspecie(), $planta->getUsuario()->getIdUsuario()
+            $planta->getNomeSocial(),
+            $planta->getQrCode(),
+            $planta->getCodNumerico(),
+            $planta->getPontos(),
+            $planta->getPlantaHistoria(),
+            $planta->getImagemPlanta(),
+            $planta->getZona()->getIdZona(),
+            $planta->getEspecie()->getIdEspecie(),
+            $planta->getUsuario()->getIdUsuario()
         ]);
 
         $idPlanta = $conn->lastInsertId();
@@ -194,8 +201,16 @@ class PlantaDAO
         $sql = "UPDATE planta SET nomeSocial = ?, codQR = ?, codNumerico = ?, pontuacaoPlanta = ?, historia = ?, imagemPlanta = ?, idZona = ?, idEspecie = ?, idUsuario = ? WHERE idPlanta = ?";
         $stmt = $conn->prepare($sql);
         $stmt->execute([
-            $planta->getNomeSocial(), $planta->getQrCode(), $planta->getCodNumerico(),
-            $planta->getPontos(), $planta->getPlantaHistoria(), $planta->getImagemPlanta(), $planta->getZona()->getIdZona(), $planta->getEspecie()->getIdEspecie(), $planta->getUsuario()->getIdUsuario(), $planta->getIdPlanta()
+            $planta->getNomeSocial(),
+            $planta->getQrCode(),
+            $planta->getCodNumerico(),
+            $planta->getPontos(),
+            $planta->getPlantaHistoria(),
+            $planta->getImagemPlanta(),
+            $planta->getZona()->getIdZona(),
+            $planta->getEspecie()->getIdEspecie(),
+            $planta->getUsuario()->getIdUsuario(),
+            $planta->getIdPlanta()
         ]);
 
         $idPlanta = $planta->getIdPlanta();
@@ -260,10 +275,8 @@ class PlantaDAO
             unlink($img_del);
         }
     }
-    
-    public function deletePlantasOfEspecie(Especie $especie)
-    {
-    }
+
+    public function deletePlantasOfEspecie(Especie $especie) {}
 
     public function filter(array $caracteristics, string $search, array $ADMs, array $zonas)
     {

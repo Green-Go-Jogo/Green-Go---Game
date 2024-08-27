@@ -38,7 +38,7 @@ class QuestaoDAO
             $questao->setIdPlanta($reg['idPlanta']);
             $questao->setIdQuestao($reg['idQuestao']);
             $questao->setPontuacaoQuestao($reg['pontuacaoQuestao']);
-            
+
 
             array_push($questoes, $questao);
         endforeach;
@@ -47,7 +47,7 @@ class QuestaoDAO
     }
 
     private function mapAlternativas($resultSql)
-    {        
+    {
         $questoes = array();
         foreach ($resultSql as $reg) :
 
@@ -150,7 +150,7 @@ class QuestaoDAO
             return null;
 
         die("questaoDAO.findById - Erro: mais de uma questão" .
-            " encontrado para o id questao " . $idQuestao. " e id planta ". $idPlanta);
+            " encontrado para o id questao " . $idQuestao . " e id planta " . $idPlanta);
     }
 
     public function findAlternativas($idQuestao)
@@ -227,44 +227,51 @@ class QuestaoDAO
         $sql = "UPDATE questao SET descricaoQuestao = ?, grauDificuldade = ?, imagemQuestao = ? WHERE idQuestao = ?";
         $stmtUpdate = $conn->prepare($sql);
         $stmtUpdate->execute([
-            $questao->getDescricaoQuestao(), $questao->getGrauDificuldade(), $questao->getImagemQuestao(),
+            $questao->getDescricaoQuestao(),
+            $questao->getGrauDificuldade(),
+            $questao->getImagemQuestao(),
             $questao->getIdQuestao()
         ]);
 
         $this->updateAlternativa($questao);
     }
 
-    public function updateAlternativa(Questao $questao) {
+    public function updateAlternativa(Questao $questao)
+    {
         $conn = conectar_db();
 
-            for ($i = 1; $i < 5; $i++) {
-                $alternativas = $questao->getAlternativas();
-                
-                $idsArray = $questao->getIdsArray();
-                if ($i == $questao->getAlternativaCerta()) {
-                    $trueOrFalse = 1;
-                } else {
-                    $trueOrFalse = 0;
-                }
-                $questao->setDescricaoAlternativa($alternativas[$i]);
-                $questao->setIdAlternativa($idsArray[$i]);
+        for ($i = 1; $i < 5; $i++) {
+            $alternativas = $questao->getAlternativas();
 
-        $sql = "UPDATE alternativa SET descricaoAlternativa = ?, alternativaCerta = ? WHERE idAlternativa = ?";
-        $stmtUpdate = $conn->prepare($sql);
-        $stmtUpdate->execute([
-            $questao->getDescricaoAlternativa(), $trueOrFalse, $questao->getIdAlternativa()
-        ]);
+            $idsArray = $questao->getIdsArray();
+            if ($i == $questao->getAlternativaCerta()) {
+                $trueOrFalse = 1;
+            } else {
+                $trueOrFalse = 0;
+            }
+            $questao->setDescricaoAlternativa($alternativas[$i]);
+            $questao->setIdAlternativa($idsArray[$i]);
+
+            $sql = "UPDATE alternativa SET descricaoAlternativa = ?, alternativaCerta = ? WHERE idAlternativa = ?";
+            $stmtUpdate = $conn->prepare($sql);
+            $stmtUpdate->execute([
+                $questao->getDescricaoAlternativa(),
+                $trueOrFalse,
+                $questao->getIdAlternativa()
+            ]);
         }
     }
 
-    public function checkQuestion($idQuestao, $idAlternativa) {
+    public function checkQuestion($idQuestao, $idAlternativa)
+    {
         $conn = conectar_db();
 
         $sql = questaoDAO::SQL_ALTERNATIVA .
             " JOIN questao q ON q.idQuestao = a.idQuestao WHERE q.idQuestao = ? AND a.idAlternativa = ?";
         $stmt = $conn->prepare($sql);
         $stmt->execute([
-            $idQuestao, $idAlternativa
+            $idQuestao,
+            $idAlternativa
         ]);
 
         $result = $stmt->fetchAll();
@@ -272,10 +279,9 @@ class QuestaoDAO
             // Itera sobre cada linha do resultado
             foreach ($result as $row) {
                 // Acesse o campo 'alternativaCerta' de cada linha
-                if($row['alternativaCerta'] == 1) {
+                if ($row['alternativaCerta'] == 1) {
                     return true;
-                }
-                else {
+                } else {
                     return false;
                 }
             }
