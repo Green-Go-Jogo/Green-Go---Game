@@ -118,7 +118,6 @@ class UsuarioDAO
             } else {
                 return null;;
             }
-            
         }
     }
 
@@ -192,8 +191,13 @@ class UsuarioDAO
             " VALUES (?, ?, ?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
         $stmt->execute([
-            $usuario->getNomeUsuario(), $usuario->getLogin(), $usuario->getSenha(), $usuario->getEmail(),
-            $usuario->getGenero(), $usuario->getTipoUsuario(), $usuario->getEscolaridade()
+            $usuario->getNomeUsuario(),
+            $usuario->getLogin(),
+            $usuario->getSenha(),
+            $usuario->getEmail(),
+            $usuario->getGenero(),
+            $usuario->getTipoUsuario(),
+            $usuario->getEscolaridade()
         ]);
     }
 
@@ -204,8 +208,12 @@ class UsuarioDAO
         $sql = "UPDATE usuario SET nomeUsuario = ?, loginUsuario = ?, email = ?, genero = ?, escolaridade = ? WHERE idUsuario = ?";
         $stmt = $conn->prepare($sql);
         $stmt->execute([
-            $usuario->getNomeUsuario(), $usuario->getLogin(), $usuario->getEmail(),
-            $usuario->getGenero(), $usuario->getEscolaridade(), $usuario->getIdUsuario()
+            $usuario->getNomeUsuario(),
+            $usuario->getLogin(),
+            $usuario->getEmail(),
+            $usuario->getGenero(),
+            $usuario->getEscolaridade(),
+            $usuario->getIdUsuario()
         ]);
     }
 
@@ -218,15 +226,17 @@ class UsuarioDAO
         $stmt->execute([$usuario->getTipoUsuario(), $usuario->getIdUsuario()]);
     }
 
-    public function updateSenhaById($idUsuario, $senhaNovaHash) {
+    public function updateSenhaById($idUsuario, $senhaNovaHash)
+    {
         $conn = conectar_db();
 
         $sql = "UPDATE usuario SET senha = ? WHERE idUsuario = ?";
         $stmt = $conn->prepare($sql);
         $stmt->execute([$senhaNovaHash, $idUsuario]);
     }
-    
-    public function updateSenhaByEmail($email, $senhaNovaHash) {
+
+    public function updateSenhaByEmail($email, $senhaNovaHash)
+    {
         $conn = conectar_db();
 
         $sql = "UPDATE usuario SET senha = ? WHERE email = ?";
@@ -246,7 +256,7 @@ class UsuarioDAO
     public function generateSenhaCodigo($email)
     {
         $conn = conectar_db();
-        
+
         $codigo = mt_rand(100000, 999999); // Gera um número aleatório de 6 dígitos
 
         $sql = "UPDATE usuario SET codigo = ? WHERE email = ?";
@@ -260,7 +270,8 @@ class UsuarioDAO
         return $codigo;
     }
 
-    public function checkCodigo($email, $codigo) {
+    public function checkCodigo($email, $codigo)
+    {
         $conn = conectar_db();
 
         $sql = UsuarioDAO::SQL_USUARIO . " AND u.codigo = ? AND u.email = ?";

@@ -2,6 +2,17 @@
 
 Para a criação deste Changelog foi seguido o modelo [Mantenha um Changelog](https://keepachangelog.com/pt-BR/1.0.0/) junto do [Versionamento Semântico](https://semver.org/lang/pt-BR/)
 
+# [1.7.0] - 27-08-2024
+### Adicionado
+- Impressão de etiqueta de espécie com qrcode
+
+# [1.6.1] - 01-08-2024 - 27/08/2024
+### Corrigido
+- Bugs de pontuação
+- Responder questão de plantas que não estão na zona
+- Verificação de senhas
+- Ajustes de label e correções menores
+
 # [1.6.0] - 30-07-2024
 ### Adicionado
 - Novos icones de equipe

@@ -222,6 +222,7 @@ class EspecieHTML
             } echo "</p>";
             echo "<p class='card-text nome-texto' id='atualização' >Última edição por:";
             echo "<p class='card-text nome-texto' id='nomezinho' >" . $especie->getUsuario()->getNomeUsuario() . "</p>";
+            echo "<button type='button' id='imprimas' data-toggle='modal' data-target='#imprimirModal' onclick='prepararImpressao(\"" . htmlspecialchars(addslashes($especie->getNomePopular()), ENT_QUOTES) . "\", \"" . htmlspecialchars(addslashes($especie->getNomeCientifico()), ENT_QUOTES) . "\", \"" . htmlspecialchars(addslashes($especie->getQrCode()), ENT_QUOTES) . "\")'>Imprimir</button><br><br>";
             if (($_SESSION['TIPO'] == 3 && $_SESSION['NOME'] == $especie->getUsuario()->getNomeUsuario()) || $_SESSION['TIPO'] == 2) {
                 echo "<a href='../quiz/listPergunta.php?ide=" . $especie->getIdEspecie() . "' id='addict' class='btn-primary'>Questões</a><br>";
                 echo "<a href='editarEspecie.php?id=" . $especie->getIdEspecie() . "' id='editas' class='btn btn-primary editar'>Editar</a>";
@@ -234,6 +235,45 @@ class EspecieHTML
         endforeach;
 
         echo "</div>"; // feche a div row
+        echo "</div>";
+
+        echo "<div id='imprimirModal' class='modal fade' role='dialog'>";
+        echo "<div class='modal-dialog'>";
+        echo "<div class='modal-content'>";
+        echo "<div class='modal-header'>";
+        echo "<h4 class='modal-title text-center'>Imprimir Planta</h4>";
+        echo "<button type='button' class='close' data-dismiss='modal'>&times;</button>";
+        echo "</div>";
+        echo "<div class='modal-body'>";
+        echo "<div id='conteudoParaImpressao'>";
+        echo "</div>";
+        echo "</div>";
+        echo "<div class='modal-footer'>";
+        echo "<button type='button' class='btn btn-default' id='fechar' data-dismiss='modal'>Fechar</button>";
+        echo "<button type='button' class='btn btn-primary' id='imprimir' onclick='abrirTelaDeImpressao()'>Imprimir</button>";
+        echo "</div>";
+        echo "</div>";
+        echo "</div>";
+        echo "</div>";
+
+        echo "<div id='alertaModal' class='modal fade' role='dialog'>";
+        echo "<div class='modal-dialog'>";
+        echo "<div class='modal-content'>";
+        echo "<div class='modal-header'>";
+        echo "<h4 style='color: #f58c95' class='modal-title text-center'>Aviso!</h4>";
+        echo "</div>";
+        echo "<div class='modal-body'>";
+        echo "<div id='alertaModal'>";
+        echo "<p style='color: #f58c95'>Feche a pagina de impressão para continuar navegando no site!</p>";
+        echo "</div>";
+        echo "</div>";
+        echo "<div class='modal-footer'>";
+        echo "</div>";
+        echo "</div>";
+        echo "</div>";
+        echo "</div>";
+
+        echo "</div>";
         echo "</div>";
     }
 }
