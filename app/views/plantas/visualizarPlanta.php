@@ -347,8 +347,6 @@ $nomePopular = $especie->getNomePopular();
         //Pega todos os radios marcados
         var radios = document.querySelectorAll('input[type="radio"]');
         var values = [];
-        enviarQuizBotao.setAttribute('onclick', '');
-        enviarQuizBotao.innerHTML = "Resposta enviada!"
 
         radios.forEach(function(radio) {
             // Verifica se o input está marcado
@@ -371,6 +369,9 @@ $nomePopular = $especie->getNomePopular();
         if (values.length === 0) {
             return alert("Por favor, selecione ao menos uma resposta para submeter o formulário.");
         }
+        
+        enviarQuizBotao.setAttribute('onclick', '');
+        enviarQuizBotao.innerHTML = "Resposta enviada!"
 
         $.ajax({
             type: "POST",
