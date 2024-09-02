@@ -347,7 +347,6 @@ $nomePopular = $especie->getNomePopular();
         //Pega todos os radios marcados
         var radios = document.querySelectorAll('input[type="radio"]');
         var values = [];
-        // enviarQuizBotao.setAttribute('onclick', '');
 
         radios.forEach(function(radio) {
             // Verifica se o input está marcado
@@ -370,6 +369,9 @@ $nomePopular = $especie->getNomePopular();
         if (values.length === 0) {
             return alert("Por favor, selecione ao menos uma resposta para submeter o formulário.");
         }
+        
+        enviarQuizBotao.setAttribute('onclick', '');
+        enviarQuizBotao.innerHTML = "Resposta enviada!"
 
         $.ajax({
             type: "POST",
@@ -404,7 +406,7 @@ $nomePopular = $especie->getNomePopular();
                         alterarValorRadio("question=" + key, "respondida");
                     });
                 } else {
-                    console.log("Seus pontos possivelmente foram somados, mas o servidor não conseguiu te dizer a resposta.");
+                    console.log("Seus pontos possivelmente foram somados, mas o servidor não conseguiu te devolver a resposta.");
                 }
             },
             error: function() {

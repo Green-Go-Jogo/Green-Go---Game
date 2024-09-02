@@ -117,9 +117,6 @@ $nomePopular = $especie->getNomePopular();
     <?php LoginController::navBar($tipo);
     echo "<br>";
     echo "<p class='text-center' id='msg'><b>";
-    if (isset($msgFind)) {
-        echo $msgFind;
-    }
     echo "<b></p>"; ?>
 </nav>
 

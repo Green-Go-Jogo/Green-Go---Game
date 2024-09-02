@@ -2,6 +2,7 @@
 class Especie implements JsonSerializable {
 	private $IdEspecie;
 	private $ImagemEspecie;
+	private $QrCode;
 	private $Descricao;
 	private $NomePopular;
 	private $NomeCientifico;
@@ -455,6 +456,26 @@ class Especie implements JsonSerializable {
 	public function setDataAtualizacao($DataAtualizacao)
 	{
 		$this->DataAtualizacao = $DataAtualizacao;
+
+		return $this;
+	}
+
+	/**
+	 * Get the value of QrCode
+	 */ 
+	public function getQrCode()
+	{
+		return $this->QrCode;
+	}
+
+	/**
+	 * Set the value of QrCode
+	 *
+	 * @return  self
+	 */ 
+	public function setQrCode($QrCode)
+	{
+		$this->QrCode = $QrCode;
 
 		return $this;
 	}

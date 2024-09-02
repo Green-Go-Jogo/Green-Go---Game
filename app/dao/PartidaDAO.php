@@ -218,7 +218,8 @@ class PartidaDAO
         $sql = PartidaDAO::SQL_USUARIO_PARTIDA . " AND pu.idUsuario = ? AND p.idPartida = ?";
         $stmt = $conn->prepare($sql);
         $stmt->execute([
-            $idUsuario, $idPartida
+            $idUsuario,
+            $idPartida
         ]);
 
         $result = $stmt->fetchAll();
@@ -543,9 +544,9 @@ class PartidaDAO
         $usuario = $this->usuarioInEquipe($idUsuario);
 
         if ($usuario) {
-            
+
             $this->addQuestionsResponse($idQuestao, $idUsuario);
-            
+
             $sql = "UPDATE partida_usuario SET pontuacaoQuestoes = pontuacaoQuestoes + ? WHERE idPartidaUsuario = ?";
             $stmt = $conn->prepare($sql);
             $stmt->execute([$pontos, $usuario->getIdPartidaUsuario()]);
@@ -554,18 +555,19 @@ class PartidaDAO
         }
     }
 
-    public function addQuestionsResponse($idQuestao, $idUsuario){
+    public function addQuestionsResponse($idQuestao, $idUsuario)
+    {
 
         $conn = conectar_db();
         $usuario = $this->usuarioInEquipe($idUsuario);
 
         if ($usuario) {
 
-        $questoesString = $idQuestao . " | ";
+            $questoesString = $idQuestao . " | ";
 
-        $sql = "UPDATE partida_usuario SET questoesRespondidas = CONCAT(questoesRespondidas, ?) WHERE idPartidaUsuario = ?";
-        $stmt = $conn->prepare($sql);
-        $stmt->execute([$questoesString, $usuario->getIdPartidaUsuario()]);
+            $sql = "UPDATE partida_usuario SET questoesRespondidas = CONCAT(questoesRespondidas, ?) WHERE idPartidaUsuario = ?";
+            $stmt = $conn->prepare($sql);
+            $stmt->execute([$questoesString, $usuario->getIdPartidaUsuario()]);
         } else {
             echo 'Usuário não encontrado.';
         }
@@ -597,11 +599,11 @@ class PartidaDAO
         $stmt->execute([$partida->getIdPartida()]);
     }
 
-    public function leavePartida($idPartida, $idUsuario){
+    public function leavePartida($idPartida, $idUsuario)
+    {
         $conn = conectar_db();
-        if($this->findPartidaAndamentoByIdUsuario($idUsuario)){
+        if ($this->findPartidaAndamentoByIdUsuario($idUsuario)) {
             return 'error';
-            exit;
         }
 
         $sql = "DELETE pu FROM partida_usuario pu
@@ -610,7 +612,8 @@ class PartidaDAO
                 WHERE p.ativo = 1 AND pu.idUsuario = ? AND p.idPartida = ?;";
         $stmt = $conn->prepare($sql);
         $stmt->execute([
-            $idUsuario, $idPartida
+            $idUsuario,
+            $idPartida
         ]);
 
         return 'success';

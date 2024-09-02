@@ -1,6 +1,6 @@
 <?php
 #Arquivo para executar a inclusão de uma espécie
-
+require __DIR__."/../../api/phpqrcode/qrlib.php";
 include_once(__DIR__ . "/../../models/EspecieModel.php");
 include_once(__DIR__ . "/../../controllers/EspecieController.php");
 
