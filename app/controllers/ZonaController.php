@@ -38,4 +38,8 @@ class ZonaController {
     public function excluir($zona) {
         $this->zonaDAO->delete($zona);
     }
+
+    public function buscarPontosQuestoesZona($idZona) {
+        return $this->zonaDAO->getPontosQuestoesZona($idZona);
+    }
 }

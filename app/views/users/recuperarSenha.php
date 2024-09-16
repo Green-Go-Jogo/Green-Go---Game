@@ -230,7 +230,7 @@
   }
 
   function senhaValida(password) {
-    var regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@.#$!%*?&]{5,}$/;
+    var regex = /.{5,}$/; // Aceita qualquer caractere (.) com 5 ou mais ocorrências
     return regex.test(password);
   }
 
@@ -297,16 +297,25 @@
         if (response.status === "true") {
           document.getElementById('subtituloRec').innerHTML = 'Código validado, preencha com sua nova senha nos campos abaixo.';
           document.querySelector('.senhaNovaDiv').innerHTML = '<label class="dialogLabel" for="campoSenha">Nova senha:</label>' +
-            '<input class="dialogInput" type="password" id="senhaNova" autocomplete="off">' +
+            '<div style="position: relative;">' +
+            '<input class="dialogInput" type="password" id="senhaNova password" autocomplete="off">' +
+            '<i class="fa-regular fa-eye toggle-password" id="verSenha"' +
+            'style="position: absolute; right: 5%; top: 50%; transform: translateY(-50%); cursor: pointer; z-index: 2;"></i>' +
+            '</div>' +
             '<p class="erroSenhaNaoCorresponde"></p>' +
             '<br>' +
             '<label class="dialogLabel" for="campoSenha">Confirmação de senha:</label>' +
-            '<input class="dialogInput" type="password" id="senhaNovaConf" autocomplete="off"> ' +
+            '<div style="position: relative;">'+
+            '<input class="dialogInput" type="password" id="senhaNovaConf password1" autocomplete="off"> ' +
+            '<i class="fa-regular fa-eye toggle-password" id="verSenha"' +
+            'style="position: absolute; right: 5%; top: 50%; transform: translateY(-50%); cursor: pointer; z-index: 2;"></i>' +
+            '</div>' +
             '<p class="erroSenhaNaoCorresponde"></p>'
 
           document.querySelector('.password').style.display = 'none';
           document.querySelector('#botaoReenviar').style.display = 'none';
-          document.querySelector('#complemento').innerHTML = 'A senha deve ter no mínimo 5 dígitos com letras e números';
+          document.querySelector('#complemento').innerHTML = 'A senha deve ter no mínimo 5 caracteres';
+          recarregarScript("../js/verSenha.js");
         } else if (response.status === "false") {
           document.getElementById('subtituloRec').innerHTML = 'Código inválido, tente novamente ou reenvie o código';
         } else {
@@ -336,6 +345,24 @@
       document.getElementById('botaoReenviar').disabled = false;
     }
   }
-</script>
 
+  function recarregarScript(src) {
+    // Encontrar o script existente pelo atributo 'src'
+    var script = document.querySelector(`script[src="${src}"]`);
+    
+    // Se o script for encontrado, removê-lo
+    if (script) {
+        script.remove();
+    }
+
+    // Criar um novo elemento script
+    var newScript = document.createElement('script');
+    newScript.src = src;
+    newScript.type = 'text/javascript';
+    newScript.defer = true; // Manter o comportamento 'defer' como no original
+    
+    // Adicionar o novo script ao <head> ou <body>
+    document.head.appendChild(newScript);
+}
+</script>
 </html>

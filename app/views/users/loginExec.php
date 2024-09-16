@@ -8,7 +8,7 @@ $email = $_POST['email'];
 $senha = $_POST['senha'];
 
 $usuario = new Usuario;
-$usuario->setLogin($email);
+$usuario->setEmail($email);
 $usuario->setSenha($senha);
 
 $loginCont = new LoginController;

@@ -49,20 +49,16 @@ $usuario = $usuarioCont->buscarPorId($id);
         <div>
           <label for="nome-cadastro" id="cadastronome">Nome Completo:</label>
           <br>
-          <input type="text" class="form-control" id="nome-cadastro" autocomplete="off" name="field_nome" value="<?= $usuario->getNomeUsuario() ?>">
+          <input type="text" class="form-control" id="nome-cadastro" autocomplete="off" name="field_nome"
+            value="<?= $usuario->getNomeUsuario() ?>">
           <?php if (isset($errors) && !empty($errors) && isset($errors['nomeUsuario'])) { ?>
             <div class="alert alert-warning"><?php echo $errors['nomeUsuario']; ?></div>
           <?php } ?>
 
-          <label for="email-cadastro" id="cadastrousuario">Nome de Usuário:</label>
-          <br>
-          <input type="text" class="form-control" id="login-cadastro" autocomplete="off" name='field_login' value="<?= $usuario->getLogin() ?>">
-          <?php if (isset($errors) && !empty($errors) && isset($errors['login'])) { ?>
-            <div class="alert alert-warning"><?php echo $errors['login']; ?></div>
-          <?php } ?>
           <label for="email-cadastro" id="cadastroemail">E-mail:</label>
           <br>
-          <input type="email" class="form-control" id="email-cadastro" autocomplete="off" name='field_email' value="<?= $usuario->getEmail() ?>">
+          <input type="email" class="form-control" id="email-cadastro" autocomplete="off" name='field_email'
+            value="<?= $usuario->getEmail() ?>">
           <?php if (isset($errors) && !empty($errors) && isset($errors['email'])) { ?>
             <div class="alert alert-warning"><?php echo $errors['email']; ?></div>
           <?php } ?>
@@ -70,8 +66,10 @@ $usuario = $usuarioCont->buscarPorId($id);
           <label for="caixinha-cad" id="cadastrogenero">Gênero:</label>
           <br>
           <select name="field_genero" class="form-control"> <br>
-            <option value="Feminino" <?php echo ($usuario->getGenero() === "Feminino") ? 'selected' : ''; ?>>Feminino</option>
-            <option value="Masculino" <?php echo ($usuario->getGenero() === "Masculino") ? 'selected' : ''; ?>>Masculino</option>
+            <option value="Feminino" <?php echo ($usuario->getGenero() === "Feminino") ? 'selected' : ''; ?>>Feminino
+            </option>
+            <option value="Masculino" <?php echo ($usuario->getGenero() === "Masculino") ? 'selected' : ''; ?>>Masculino
+            </option>
             <option value="Outro" <?php echo ($usuario->getGenero() === "Outro") ? 'selected' : ''; ?>>Outro</option>
           </select>
           <?php if (isset($errors) && !empty($errors) && isset($errors['genero'])) { ?>
@@ -94,18 +92,24 @@ $usuario = $usuarioCont->buscarPorId($id);
           <br>
           <br>
 
-          <input type="hidden" class="form-control" id="tipo-aluno" autocomplete="off" name="aluno" value="<?= $usuario->getTipoUsuario() ?>">
+          <input type="hidden" class="form-control" id="tipo-aluno" autocomplete="off" name="aluno"
+            value="<?= $usuario->getTipoUsuario() ?>">
 
 
           <label for="senha-cadastro" id="cadastrosenha">Insira sua senha para confirmar a alteração:</label>
           <br>
-          <input type="password" class="form-control" id="senha-confirmacao" autocomplete="off" name="field_password">
+          <div style="position: relative;">
+            <input type="password" class="form-control pass" id="senha-confirmacao password" autocomplete="off" name="field_password">
+            <i class="fa-regular fa-eye toggle-password" id="verSenha"
+              style="position: absolute; right: 22%; top: 50%; transform: translateY(-50%); cursor: pointer; z-index: 2;"></i>
+          </div>
           <p id='erroInvalido'></p>
           <br>
           <div class="container"> <br><br>
             <button type="submit" class="btn btn-primary btn-lg" id="botoesregistrar"><a>Salvar</a> </button>
             <button type="reset" class="btn btn-secondary btn-lg" id="botoeslimpar"> <a id="limpar">Limpar</a> </button>
-            <a class="btn btn-secondary btn-lg" id="botoescancelar" href="../../views/users/perfil.php">Cancelar e Voltar</a>
+            <a class="btn btn-secondary btn-lg" id="botoescancelar" href="../../views/users/perfil.php">Cancelar e
+              Voltar</a>
           </div>
         </div>
     </div>
@@ -121,12 +125,14 @@ $usuario = $usuarioCont->buscarPorId($id);
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="js/registro.js"></script>
 <script type="text/javascript" src="../js/imagem.js" defer></script>
+<script type="text/javascript" src="../js/verSenha.js" defer></script>
 <script>
-  $(document).ready(function() {
-    $('#cadastroForm').on('submit', function(event) {
+  $(document).ready(function () {
+    $('#cadastroForm').on('submit', function (event) {
       event.preventDefault();
 
-      var senha = $('#senha-confirmacao').val();
+      var field = document.getElementsByClassName("pass")[0];
+      var senha = field.value;
 
       $.ajax({
         url: 'checarSenha.php',
@@ -135,7 +141,7 @@ $usuario = $usuarioCont->buscarPorId($id);
           idUsuario: <?= $usuario->getIdUsuario() ?>,
           senha: senha
         },
-        success: function(response) {
+        success: function (response) {
           if (response == 'valid') {
             $('#cadastroForm').off('submit').submit();
           } else {

@@ -24,8 +24,8 @@ try {
     $mail->isSMTP();
     $mail->Host = 'smtp.greengoifpr.com.br'; // Substitua pelo host SMTP do KingHost
     $mail->SMTPAuth = true;
-    $mail->Username = 'no-reply@greengoifpr.com.br'; // Substitua pelo seu e-mail
-    $mail->Password = 'GreenGo!BOT'; // Substitua pela sua senha
+    $mail->Username = getenv("SMTP_MAIL");
+    $mail->Password = getenv("SMTP_PASS"); 
     $mail->SMTPSecure = false;
     $mail->SMTPAutoTLS = false;
     $mail->Port = 587;
@@ -48,6 +48,8 @@ try {
 
     echo json_encode(array('status' => 'success', 'message' => 'E-mail enviado com sucesso! Por favor cheque sua caixa de correio.'));
 } catch (Exception $e) {
+    echo ($e->getMessage()
+);
     echo json_encode(array('status' => 'mail-error', 'message' => "Erro ao enviar e-mail! Entre em contato com um administrador."));
     // echo $mail->ErrorInfo;
 }

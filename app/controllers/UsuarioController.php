@@ -84,4 +84,8 @@ class UsuarioController
     public function checarCodigo($email, $codigo){
         return $this->usuarioDAO->checkCodigo($email, $codigo);
     }
+
+    public function checarEmailExiste($email){
+        return $this->usuarioDAO->checkEmailExists($email);
+    }
 }

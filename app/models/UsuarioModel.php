@@ -6,7 +6,6 @@
         private $idUsuario;
         private $nomeUsuario;
         private $email;
-        private $login;
         private $senha;
         private $genero;
         private $escolaridade;
@@ -20,7 +19,6 @@
                 'idUsuario' => $this->idUsuario,
                 'nomeUsuario' => $this->nomeUsuario,
                 'email' => $this->email,
-                'login' => $this->login,
                 'senha' =>$this->senha,
                 'genero' => $this->genero,
                 'escolaridade' => $this->escolaridade,
@@ -33,6 +31,7 @@
         $this->idUsuario = $id;
         $this->nomeUsuario = $nome;
     }
+    
     
         public function __toString() {
                 return $this->nomeUsuario;
@@ -174,26 +173,6 @@
         public function setIdUsuario($idUsuario)
         {
                 $this->idUsuario = $idUsuario;
-
-                return $this;
-        }
-
-        /**
-         * Get the value of login
-         */ 
-        public function getLogin()
-        {
-                return $this->login;
-        }
-
-        /**
-         * Set the value of login
-         *
-         * @return  self
-         */ 
-        public function setLogin($login)
-        {
-                $this->login = $login;
 
                 return $this;
         }
