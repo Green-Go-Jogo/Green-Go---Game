@@ -55,13 +55,6 @@ $usuario = $usuarioCont->buscarPorId($id);
             <div class="alert alert-warning"><?php echo $errors['nomeUsuario']; ?></div>
           <?php } ?>
 
-          <label for="email-cadastro" id="cadastrousuario">Nome de Usuário:</label>
-          <br>
-          <input type="text" class="form-control" id="login-cadastro" autocomplete="off" name='field_login'
-            value="<?= $usuario->getLogin() ?>">
-          <?php if (isset($errors) && !empty($errors) && isset($errors['login'])) { ?>
-            <div class="alert alert-warning"><?php echo $errors['login']; ?></div>
-          <?php } ?>
           <label for="email-cadastro" id="cadastroemail">E-mail:</label>
           <br>
           <input type="email" class="form-control" id="email-cadastro" autocomplete="off" name='field_email'
@@ -106,7 +99,7 @@ $usuario = $usuarioCont->buscarPorId($id);
           <label for="senha-cadastro" id="cadastrosenha">Insira sua senha para confirmar a alteração:</label>
           <br>
           <div style="position: relative;">
-            <input type="password" class="form-control" id="senha-confirmacao password" autocomplete="off" name="field_password">
+            <input type="password" class="form-control pass" id="senha-confirmacao password" autocomplete="off" name="field_password">
             <i class="fa-regular fa-eye toggle-password" id="verSenha"
               style="position: absolute; right: 22%; top: 50%; transform: translateY(-50%); cursor: pointer; z-index: 2;"></i>
           </div>
@@ -138,7 +131,8 @@ $usuario = $usuarioCont->buscarPorId($id);
     $('#cadastroForm').on('submit', function (event) {
       event.preventDefault();
 
-      var senha = $('#senha-confirmacao').val();
+      var field = document.getElementsByClassName("pass")[0];
+      var senha = field.value;
 
       $.ajax({
         url: 'checarSenha.php',

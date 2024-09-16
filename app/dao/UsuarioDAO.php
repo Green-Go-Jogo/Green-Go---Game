@@ -18,7 +18,6 @@ class UsuarioDAO
 
             $usuario = new Usuario();
             $usuario->setIdUsuario($reg['idUsuario']);
-            $usuario->setLogin($reg['loginUsuario']);
             $usuario->setNomeUsuario($reg['nomeUsuario']);
             $usuario->setGenero($reg['genero']);
             $usuario->setEmail($reg['email']);
@@ -105,9 +104,9 @@ class UsuarioDAO
     public function findByLoginSenha(string $login, string $senha)
     {
         $conn = conectar_db();
-        $sql = UsuarioDAO::SQL_USUARIO . " AND (email = ? OR loginUsuario = ?)";
+        $sql = UsuarioDAO::SQL_USUARIO . " AND email = ?";
         $stmt = $conn->prepare($sql);
-        $stmt->execute([$login, $login]);
+        $stmt->execute([$login]);
         $result = $stmt->fetchAll();
 
         $usuarios = $this->mapUsuarios($result);
@@ -142,9 +141,9 @@ class UsuarioDAO
 
     public function logon(Usuario $usuario)
     {
-        $email_or_login = $usuario->getLogin();
+        $email = $usuario->getEmail();
         $senha = $usuario->getSenha();
-        $usuario = $this->findByLoginSenha($email_or_login, $senha);
+        $usuario = $this->findByLoginSenha($email, $senha);
         if ($usuario == null) {
             $aviso = "E-mail ou Senha incorretos!!!";
             header('location: login.php?aviso=' . urlencode($aviso));
@@ -187,12 +186,12 @@ class UsuarioDAO
     public function save(Usuario $usuario)
     {
         $conn = conectar_db();
-        $sql = "INSERT INTO usuario (nomeUsuario, loginUsuario, senha, email, genero, tipoUsuario, escolaridade)" .
-            " VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO usuario (nomeUsuario, senha, email, genero, tipoUsuario, escolaridade)" .
+            " VALUES (?, ?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
         $stmt->execute([
             $usuario->getNomeUsuario(),
-            $usuario->getLogin(),
+            // $usuario->getLogin(),
             $usuario->getSenha(),
             $usuario->getEmail(),
             $usuario->getGenero(),
@@ -205,11 +204,11 @@ class UsuarioDAO
     {
         $conn = conectar_db();
 
-        $sql = "UPDATE usuario SET nomeUsuario = ?, loginUsuario = ?, email = ?, genero = ?, escolaridade = ? WHERE idUsuario = ?";
+        $sql = "UPDATE usuario SET nomeUsuario = ?, email = ?, genero = ?, escolaridade = ? WHERE idUsuario = ?";
         $stmt = $conn->prepare($sql);
         $stmt->execute([
             $usuario->getNomeUsuario(),
-            $usuario->getLogin(),
+            // $usuario->getLogin(),
             $usuario->getEmail(),
             $usuario->getGenero(),
             $usuario->getEscolaridade(),

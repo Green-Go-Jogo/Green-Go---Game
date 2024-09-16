@@ -271,7 +271,6 @@ $loginCont->checarAdmPartida($idPartida, $_SESSION['ID']);
             <thead>
                 <tr>
                     <th class='text-center' scope='col' id='nomeadm'>Nome</th>
-                    <th class='text-center' scope='col' id='nomeadm'>Login</th>
                     <th class='text-center' scope='col' id='nomeadm'>Email</th>
                 </tr>
             </thead>
@@ -279,7 +278,6 @@ $loginCont->checarAdmPartida($idPartida, $_SESSION['ID']);
                 ${usuarios.map(usuarios => `
                     <tr>
                         <td class='text-center' id='nomeequipeadm' data-label="Nome">${usuarios.nomeUsuario}</td>
-                        <td class='text-center' id='nomeequipeadm' data-label="Login">${usuarios.login}</td>
                         <td class='text-center' id='nomeequipeadm' data-label="Email">${usuarios.email}</td>
                     </tr>
                 `).join('')}

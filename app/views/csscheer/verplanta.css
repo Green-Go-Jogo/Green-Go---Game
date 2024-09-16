@@ -285,6 +285,14 @@ input[type="radio"]:checked+.radio-button {
     color: #fff;
 }
 
+#submitQuiz:hover:disabled {
+    font-family: Poppins;
+    background-color: #fff;
+    color: #C05367;
+    cursor: default;
+    transform: none;
+}
+
 .aviso-questao {
     font-family: Poppins-semibold;
 }

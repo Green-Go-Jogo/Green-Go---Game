@@ -49,8 +49,8 @@
           <br>
           <p>
           <div style="position: relative;">
-            <input type="password" class="form-control password" id="senha-cadastro" autocomplete="off" name="field_password"required">
-            <i class="fa-regular fa-eye" id="verSenha" style="position: absolute; right: 22%; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
+            <input type="password" class="form-control" id="senha-cadastro password" autocomplete="off" name="field_password"required">
+            <i class="fa-regular fa-eye toggle-password" id="verSenha" style="position: absolute; right: 22%; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
           </div>
           </p>
 

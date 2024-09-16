@@ -670,7 +670,6 @@ class PartidaHTML
         echo "</tr>";
         echo "<tr>";
         echo "<th scope='col' class='text-center' id='nomeadm'>Nome</th>";
-        echo "<th scope='col' class='text-center' id='quantidadeadm'>Login</th>";
         echo "<th scope='col' class='text-center' id='nomeadm'>E-mail</th>";
         echo "</tr>";
         echo "</thead>";
@@ -682,7 +681,6 @@ class PartidaHTML
             foreach ($usuarios as $usuario) {
                 echo "<tr>";
                 echo "<td class='text-center' id='nomeequipeadm'>" . $usuario->getNomeUsuario() . "</td>";
-                echo "<td class='text-center' id='plantaadm'>" . $usuario->getLogin() . "</td>";
                 echo "<td class='text-center' id='nomeequipeadm'>" . $usuario->getEmail() . "</td>";
                 echo "</tr>";
             }
