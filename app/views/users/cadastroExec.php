@@ -2,9 +2,10 @@
 
 include_once(__DIR__."/../../models/UsuarioModel.php");
 include_once(__DIR__."/../../controllers/UsuarioController.php");
+include_once(__DIR__."/../../controllers/LoginController.php");
 
 $nomeUsuario = $_POST["field_nome"];
-$login = $_POST['field_login'];
+// $login = $_POST['field_login'];
 $email = $_POST['field_email'];
 $senha = $_POST['field_password'];
 $genero = $_POST['field_genero'];
@@ -15,7 +16,6 @@ $hashSenha = password_hash($senha, PASSWORD_DEFAULT);
 
 $usuario = new Usuario();
 $usuario->setNomeUsuario($nomeUsuario);
-$usuario->setLogin($login);
 $usuario->setEmail($email);
 $usuario->setSenha($hashSenha);
 $usuario->setGenero($genero);
@@ -25,5 +25,9 @@ $usuario->setTipoUsuario($tipoUsuario);
 $usuarioCont = new UsuarioController();
 $usuarioCont->salvar($usuario);
 
-header("location: login.php");
+$usuario->setSenha($senha);
+
+$loginCont = new LoginController();
+$loginCont->logar($usuario);
+
 ?>

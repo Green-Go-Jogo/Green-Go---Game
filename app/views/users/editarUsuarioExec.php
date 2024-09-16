@@ -6,7 +6,6 @@ $usuarioCont = new UsuarioController();
 
 $idUsuario = $_POST['id_usuario'];
 $nomeUsuario = $_POST["field_nome"];
-$login = $_POST['field_login'];
 $email = $_POST['field_email'];
 $senha = $_POST['field_password'];
 $genero = $_POST['field_genero'];
@@ -16,10 +15,6 @@ $errors = array();
 
 if (empty($nomeUsuario)) {
   $errors['nomeUsuario'] = "O campo Nome Completo é obrigatório";
-} 
-
-if (empty($login)) {
-  $errors['login'] = "O campo Nome de Usuário é obrigatório";
 } 
 
 if (empty($email)) {
@@ -42,7 +37,6 @@ if (!empty($errors)) {
 $usuario = new Usuario();
 $usuario->setIdUsuario($idUsuario);
 $usuario->setNomeUsuario($nomeUsuario);
-$usuario->setLogin($login);
 $usuario->setEmail($email);
 $usuario->setGenero($genero);
 $usuario->setEscolaridade($escolaridade);

@@ -617,3 +617,7 @@ a.excluir:hover {
 .modo-escuro .questaoFormDesc {
     color: #ffffff;
 }
+
+.modo-escuro #verSenha {
+    color: #C05367;
+}

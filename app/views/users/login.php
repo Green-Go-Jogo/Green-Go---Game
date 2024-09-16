@@ -29,13 +29,16 @@
 
 
     <form class="form-login" id="loginform" name="loginform" method="post" action="loginExec.php">
-        <label for="email-login" id="labels">E-mail ou Nome de Usuário</label>
+        <label for="email-login" id="labels">E-mail</label>
         <br>
         <input type="text" class="form-control" id="email-login" name='email' value="">
 
         <label for="senha-login" id="labels">Senha</label>
         <br>
-        <input type="password" class="form-control" id="senha-login" name="senha" value="">
+        <div style="position: relative;">
+        <input type="password" class="form-control" id="senha-login password" name="senha" value="">
+        <i class="fa-regular fa-eye toggle-password" id="verSenha" style="position: absolute; right: 12.5%; top: 50%; transform: translateY(-50%); cursor: pointer; z-index: 2;"></i>
+        </div>
         <a id='esqueciSenha' class="text-center" id="cadastro" href="recuperarSenha.php">Esqueci minha senha</a>
         <br>
         <br>
@@ -102,4 +105,5 @@
 
 </body>
 
+<script type="text/javascript" src="../js/verSenha.js" defer></script>
 </html>
