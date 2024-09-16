@@ -259,7 +259,7 @@ class UsuarioDAO
 
         $codigo = mt_rand(100000, 999999); // Gera um número aleatório de 6 dígitos
 
-        $sql = "UPDATE usuario SET codigo = ? WHERE email = ?";
+        $sql = "UPDATE usuario u SET u.codigo = ? WHERE u.email = ? AND u.ativo = 1";
         $stmt = $conn->prepare($sql);
         $stmt->execute([$codigo, $email]);
 
@@ -268,6 +268,20 @@ class UsuarioDAO
         }
 
         return $codigo;
+    }
+
+    public function checkEmailExists($email){
+        $conn = conectar_db();
+
+        $sql = "SELECT * FROM usuario u WHERE u.email = ? AND u.ativo = 1";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([$email]);
+
+        if ($stmt->rowCount() == 0) {
+            return false;
+        }
+
+        return true;
     }
 
     public function checkCodigo($email, $codigo)

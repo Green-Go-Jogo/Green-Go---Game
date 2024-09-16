@@ -371,6 +371,7 @@ $nomePopular = $especie->getNomePopular();
         }
         
         enviarQuizBotao.setAttribute('onclick', '');
+        enviarQuizBotao.disabled = true;
         enviarQuizBotao.innerHTML = "Resposta enviada!"
 
         $.ajax({

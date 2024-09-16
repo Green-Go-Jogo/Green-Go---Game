@@ -35,7 +35,10 @@
 
         <label for="senha-login" id="labels">Senha</label>
         <br>
-        <input type="password" class="form-control" id="senha-login" name="senha" value="">
+        <div style="position: relative;">
+        <input type="password" class="form-control password" id="senha-login" name="senha" value="">
+        <i class="fa-regular fa-eye" id="verSenha" style="position: absolute; right: 12.5%; top: 50%; transform: translateY(-50%); cursor: pointer; z-index: 2;"></i>
+        </div>
         <a id='esqueciSenha' class="text-center" id="cadastro" href="recuperarSenha.php">Esqueci minha senha</a>
         <br>
         <br>
@@ -102,4 +105,5 @@
 
 </body>
 
+<script type="text/javascript" src="../js/verSenha.js" defer></script>
 </html>
