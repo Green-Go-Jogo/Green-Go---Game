@@ -1,17 +1,15 @@
-const togglePassword = document.querySelector("#verSenha");
-const password = document.querySelector(".password");
+const togglePasswordIcons = document.querySelectorAll(".toggle-password");
 
-togglePassword.addEventListener("click", function () {
-    // toggle the type attribute
-    const type = password.getAttribute("type") === "password" ? "text" : "password";
-    password.setAttribute("type", type);
-    
-    // toggle the icon
-    this.classList.toggle("fa-eye-slash");
+togglePasswordIcons.forEach((icon) => {
+    icon.addEventListener("click", function () {
+        // Seleciona o campo de senha correspondente (campo irmão do ícone)
+        const passwordField = this.previousElementSibling;
+        
+        // Alterna o atributo 'type' entre 'password' e 'text'
+        const type = passwordField.getAttribute("type") === "password" ? "text" : "password";
+        passwordField.setAttribute("type", type);
+        
+        // Alterna o ícone (fa-eye/fa-eye-slash)
+        this.classList.toggle("fa-eye-slash");
+    });
 });
-
-// // prevent form submit
-// const form = document.querySelector("form");
-// form.addEventListener('submit', function (e) {
-//     e.preventDefault();
-// });

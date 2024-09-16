@@ -37,13 +37,13 @@ $usuario = $usuarioCont->buscarPorId($id);
     </h2>
     <div class="text-center">
         <p id="acesso"> <?php $acesso = $usuario->getTipoUsuario();
-                        if ($acesso == 1) {
-                            echo "Aluno";
-                        } else if ($acesso == 2) {
-                            echo "Administrador";
-                        } else {
-                            echo "Professor";
-                        } ?> </p>
+        if ($acesso == 1) {
+            echo "Aluno";
+        } else if ($acesso == 2) {
+            echo "Administrador";
+        } else {
+            echo "Professor";
+        } ?> </p>
         </p>
 
         <br> <br>
@@ -76,36 +76,51 @@ $usuario = $usuarioCont->buscarPorId($id);
     <div class="column">
         <div class="btn-perfil">
             <p>
-                <a id="btn-perfil" class="btn btn-custom" href='' onclick="return alterarSenhaModal();">Alterar a senha </a>
+                <a id="btn-perfil" class="btn btn-custom" href='' onclick="return alterarSenhaModal();">Alterar a senha
+                </a>
             <div id="alterarSenhaDiv" class="custom-dialog" style="display: none;">
                 <h3>Alterar Senha</h3>
                 <br>
                 <label class="dialogLabel" for="campoSenha">Senha atual:</label>
-                <input class="dialogInput" type="password" id='senhaAtualAlt' autocomplete="off">
+                <div style="position: relative;">
+                    <input class="dialogInput password" type="password" id='senhaAtualAlt password' autocomplete="off">
+                    <i class="fa-regular fa-eye toggle-password" id="verSenha"
+                        style="position: absolute; right: 12.5%; top: 50%; transform: translateY(-50%); cursor: pointer; z-index: 2;"></i>
+                </div>
                 <p id="erroInvalidoAlterar"></p>
                 <br>
                 <label class="dialogLabel" for="campoSenha">Nova senha:</label>
-                <input class="dialogInput" type="password" id='senhaNova' autocomplete="off">
+                <div style="position: relative;">
+                    <input class="dialogInput password" type="password" id='senhaNova password2' autocomplete="off">
+                    <i class="fa-regular fa-eye toggle-password" id="verSenha"
+                        style="position: absolute; right: 12.5%; top: 50%; transform: translateY(-50%); cursor: pointer; z-index: 2;"></i>
+                </div>
                 <p class="erroSenhaNaoCorresponde"></p>
                 <br>
                 <label class="dialogLabel" for="campoSenha">Confirmação de senha:</label>
-                <input class="dialogInput" type="password" id='senhaNovaConf' autocomplete="off">
+                <div style="position: relative;">
+                    <input class="dialogInput password" type="password" id='senhaNovaConf password2' autocomplete="off">
+                    <i class="fa-regular fa-eye toggle-password" id="verSenha"
+                        style="position: absolute; right: 12.5%; top: 50%; transform: translateY(-50%); cursor: pointer; z-index: 2;"></i>
+                </div>
                 <p class="erroSenhaNaoCorresponde"></p>
                 <br>
-                <p class="text-center" id="complemento">A senha deve ter no mínimo 5 dígitos com letras e números</p>
+                <p class="text-center" id="complemento">A senha deve ter no mínimo 5 dígitos</p>
                 <br>
                 <div class="custom-dialog-buttons">
-                    <a id="botaoConfirmar" href="#" onclick="alterarConfirmacao(true, 'alterarSenhaDiv'); return false;">Confirmar</a>
+                    <a id="botaoConfirmar" href="#"
+                        onclick="alterarConfirmacao(true, 'alterarSenhaDiv'); return false;">Confirmar</a>
                     <a id="botaoCancelar" href="#" onclick="alterarSenhaModal(); return false;">Cancelar</a>
                 </div>
             </div>
             <br><br>
-            <?php if($_SESSION['PARTIDA'] == false) { ?>
-            <a id="btn-perfil" class="btn btn-custom" href='editarUsuario.php'>Editar a conta </a>
+            <?php if ($_SESSION['PARTIDA'] == false) { ?>
+                <a id="btn-perfil" class="btn btn-custom" href='editarUsuario.php'>Editar a conta </a>
             <?php } ?>
             <br><br>
-            <?php if($_SESSION['PARTIDA'] == false) { ?>
-            <a id="btn-perfil" class="btn btn-custom" href="" onclick="return deletarUsuarioModal();"> Excluir a conta</a>
+            <?php if ($_SESSION['PARTIDA'] == false) { ?>
+                <a id="btn-perfil" class="btn btn-custom" href="" onclick="return deletarUsuarioModal();"> Excluir a
+                    conta</a>
             <?php } ?>
             <div id="deletarUsuarioDiv" class="custom-dialog" style="display: none;">
                 <h3>Excluir a conta</h3>
@@ -115,7 +130,8 @@ $usuario = $usuarioCont->buscarPorId($id);
                 <p id="erroInvalidoDeletar"></p>
                 <br>
                 <div class="custom-dialog-buttons">
-                    <a id='botaoConfirmar' href="#" onclick="deletarConfirmacao(true, 'deletarUsuarioDiv'); return false;">Confirmar</a>
+                    <a id='botaoConfirmar' href="#"
+                        onclick="deletarConfirmacao(true, 'deletarUsuarioDiv'); return false;">Confirmar</a>
                     <a id='botaoCancelar' href="#" onclick="deletarUsuarioModal(); return false;">Cancelar</a>
                 </div>
             </div>
@@ -127,6 +143,7 @@ $usuario = $usuarioCont->buscarPorId($id);
 
 <br><br><br>
 </body>
+<script type="text/javascript" src="../js/verSenha.js" defer></script>
 <script>
     function deletarUsuarioModal() {
 
@@ -185,9 +202,10 @@ $usuario = $usuarioCont->buscarPorId($id);
     }
 
     function senhaValida(password) {
-        var regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@.#$!%*?&]{5,}$/;
+        var regex = /.{5,}$/; // Aceita qualquer caractere (.) com 5 ou mais ocorrências
         return regex.test(password);
     }
+
 
     function deletarConfirmacao(result, id) {
 
@@ -215,7 +233,7 @@ $usuario = $usuarioCont->buscarPorId($id);
                 idUsuario: <?php echo json_encode($usuario->getIdUsuario()); ?>,
                 senha: senha
             },
-            success: function(response) {
+            success: function (response) {
                 if (response == 'valid') {
                     if (metodo == 'excluir') {
                         deletarConta();
@@ -243,7 +261,7 @@ $usuario = $usuarioCont->buscarPorId($id);
                 idUsuario: <?php echo json_encode($usuario->getIdUsuario()); ?>,
                 senhaNova: senhaNova
             },
-            success: function(response) {
+            success: function (response) {
                 if (response == 'updated') {
                     alert('Senha alterada com sucesso.');
                     document.getElementById('alterarSenhaDiv').style.display = 'none';
@@ -259,10 +277,10 @@ $usuario = $usuarioCont->buscarPorId($id);
             url: 'excluirConta.php',
             type: 'POST',
             data: {
-                idUsuario: <?php echo json_encode($usuario->getIdUsuario());?>,
-                autoDelete: true 
+                idUsuario: <?php echo json_encode($usuario->getIdUsuario()); ?>,
+                autoDelete: true
             },
-            success: function(response) {
+            success: function (response) {
                 if (response == 'deleted') {
                     alert('Conta excluída com sucesso.');
                     window.location.href = '../home/index.php'; // Redireciona para logout ou outra página
