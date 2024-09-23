@@ -1,16 +1,14 @@
 <?php
 #Arquivo: conexao.php
 #Finalidade: criar uma conexão com a base de dados
+require __DIR__.'/../api/vendor/autoload.php';
 
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__.'/../../');
+$dotenv->load();
 /*Verificar as variáveis globais abaixo para configurar 
 a conexão com o banco de dados compatível com a sua máquina*/
-$HOST = "mysql.greengoifpr.com.br";
-$NOME_BANCO = "greengoifpr01";
-$USUARIO = "greengoifpr01";
-$SENHA = "GreenGoDBHOM21";
 
 function conectar_db() {
-    global $HOST, $NOME_BANCO, $USUARIO, $SENHA;
 
     $options = array(
         //Define o charset da conexão
@@ -21,11 +19,11 @@ function conectar_db() {
         //(campo => valor)
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC);
 
-    $str_conn = "mysql:host=" .$HOST. ";dbname=" .$NOME_BANCO;
+    $str_conn = "mysql:host=" .$_ENV["HOST"]. ";dbname=" .$_ENV["NOME_BANCO"];
     
     try {
         $conn = new PDO($str_conn,
-                    $USUARIO, $SENHA, $options);
+                    $_ENV["USUARIO"], $_ENV["SENHA"], $options);
     } catch(PDOException $e) {
         echo "Falha ao conectar na base de dados: " . $e->getMessage();
     }   
