@@ -1,4 +1,3 @@
-/app/connection/Connection.php
 /app/public/especies
 /app/public/plantas
 /app/public/qrcode
@@ -8,3 +7,4 @@
 /app/api/composer.json
 /app/api/composer.phar
 /app/api/composer.lock
+.env
