@@ -6,6 +6,7 @@ include_once("../../controllers/UsuarioController.php");
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
+
 header('Content-Type: application/json');
 
 $emailUsuario = $_POST['email'];
@@ -24,8 +25,8 @@ try {
     $mail->isSMTP();
     $mail->Host = 'smtp.greengoifpr.com.br'; // Substitua pelo host SMTP do KingHost
     $mail->SMTPAuth = true;
-    $mail->Username = getenv("SMTP_MAIL");
-    $mail->Password = getenv("SMTP_PASS"); 
+    $mail->Username = $_ENV["SMTP_MAIL"];
+    $mail->Password = $_ENV["SMTP_PASS"]; 
     $mail->SMTPSecure = false;
     $mail->SMTPAutoTLS = false;
     $mail->Port = 587;
