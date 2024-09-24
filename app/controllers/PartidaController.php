@@ -199,7 +199,7 @@ class PartidaController
             $_SESSION['QUESTOES_LIDAS'] = $arrayQuestoes;
         } else if (!in_array($idQuestao, $_SESSION['QUESTOES_LIDAS'])) {
             //Adiciona a questão à questões respondidas mesmo se errada
-            $this->partidaDAO->addQuestionsResponse($idQuestao, $idUsuario);
+            $this->partidaDAO->addQuestionsResponse($idQuestao, $idUsuario, 0);
             $arrayQuestoes[] = $idQuestao;
             $_SESSION['QUESTOES_LIDAS'] = $arrayQuestoes;
         } else {

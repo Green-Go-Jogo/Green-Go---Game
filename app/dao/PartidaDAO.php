@@ -545,7 +545,7 @@ class PartidaDAO
 
         if ($usuario) {
 
-            $this->addQuestionsResponse($idQuestao, $idUsuario);
+            $this->addQuestionsResponse($idQuestao, $idUsuario, true);
 
             $sql = "UPDATE partida_usuario SET pontuacaoQuestoes = pontuacaoQuestoes + ? WHERE idPartidaUsuario = ?";
             $stmt = $conn->prepare($sql);
@@ -555,7 +555,7 @@ class PartidaDAO
         }
     }
 
-    public function addQuestionsResponse($idQuestao, $idUsuario)
+    public function addQuestionsResponse($idQuestao, $idUsuario, $certa)
     {
 
         $conn = conectar_db();
@@ -563,7 +563,7 @@ class PartidaDAO
 
         if ($usuario) {
 
-            $questoesString = $idQuestao . " | ";
+            $questoesString = $idQuestao . "=>". $certa ." | ";
 
             $sql = "UPDATE partida_usuario SET questoesRespondidas = CONCAT(questoesRespondidas, ?) WHERE idPartidaUsuario = ?";
             $stmt = $conn->prepare($sql);
