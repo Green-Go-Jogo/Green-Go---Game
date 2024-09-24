@@ -238,4 +238,8 @@ class PartidaController
         $this->partidaDAO->leavePartida($idPartida, $idUsuario);
         $_SESSION['PARTIDA'] == false;
     }
+
+    public function listarZonasPorPartida($idPartida){
+        return $this->zonaDAO->listByPartida($idPartida);
+    }
 }
