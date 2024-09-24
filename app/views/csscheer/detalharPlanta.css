@@ -1,0 +1,88 @@
+:root {
+    --principal: #078071;
+    --verdao: #04574d;
+    --cinzinha: #ebf0f1;
+    --destaque: #ED8E96;
+    --rosinha: #f0b6bc;
+    --rosão: #C05367;
+    --branquinho: #ffffff;
+    --verdinho: #7EC4BB;
+    --cinzaclaro: #272626;
+    --cinza: #1B1B1B;
+
+    width: 100%;
+    height: 100%;
+
+    font-family: Poppins-regular, Roboto;
+}
+
+@font-face {
+    font-family: 'Cooper';
+    src: url('../fontes/cooperhewitt-heavy.otf');
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('../fontes/Poppins-ExtraBold.ttf');
+}
+
+@font-face {
+    font-family: 'Poppins-regular';
+    src: url('../fontes/Poppins-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Poppins-semibold';
+    src: url('../fontes/Poppins-SemiBold.ttf');
+}
+
+@font-face {
+    font-family: 'Poppins-medium';
+    src: url('../fontes/Poppins-Medium.ttf');
+}
+
+#img {
+    width: 50%;
+}
+
+.fundo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('../../public/testeee.png');
+    background-size: 300px;
+    background-repeat: repeat;
+    background-position: center center;  
+    opacity: 0.7; /* Ajuste a opacidade conforme necessário */
+    z-index: -1; /* Fica abaixo do conteúdo */
+}
+
+.nomeZona {
+    font-size: 40px;
+    text-decoration: underline dotted;
+    font-family: 'Poppins-semibold';
+}
+
+.msgClique{
+    font-size: 36px;
+    text-decoration: underline dotted;
+    font-family: 'Poppins-regular';
+}
+
+.plantasEncontradas {
+    font-size: 40px;
+    font-family: 'Poppins-semibold';
+}
+
+.card-body,
+.card {
+    position: relative;
+    border-radius: 15px;
+    z-index: 1;   
+}
+
+@media (max-width: 992px) {
+    
+}

@@ -51,7 +51,7 @@ if (!isset($_GET['idp'])) {
 
     <div>
 
-    <h1 class="text-center primeirotextoreg"><b>DETALHAMENTOS DAS ZONAS </b></h1>
+    <h1 class="text-center primeirotextoreg"><b>DETALHAMENTOS DAS ZONAS</b></h1>
 
     </div>
     <br>
