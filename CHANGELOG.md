@@ -2,6 +2,14 @@
 
 Para a criação deste Changelog foi seguido o modelo [Mantenha um Changelog](https://keepachangelog.com/pt-BR/1.0.0/) junto do [Versionamento Semântico](https://semver.org/lang/pt-BR/)
 
+# [1.9.0] - 26-09-2024
+### Adicionado
+- Detalhamento individual de plantas encontradas por zona, progresso e somatório de pontuações
+
+# [1.8.0] - 23-09-2024
+### Adicionado
+- Ajuste diversos de cadastro e login de usuários, adicionada variavéis de ambiente
+
 # [1.7.0] - 27-08-2024
 ### Adicionado
 - Impressão de etiqueta de espécie com qrcode

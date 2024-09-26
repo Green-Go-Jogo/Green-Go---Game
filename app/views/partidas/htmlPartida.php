@@ -309,10 +309,10 @@ class PartidaHTML
     {
         $partCont = new PartidaController();
         $usuarioCont = new UsuarioController();
-        $zonaCont = new ZonaController();    
+        $zonaCont = new ZonaController();
         echo "<div class='container text-center'>";
         echo "<h2 class='tituloPartidas'>Partidas abertas</h2>";
-        if(empty($partidas)){
+        if (empty($partidas)) {
             echo "<br><br><h3>Não foram encontradas partidas abertas nesse momento!</h3><br><br>";
         }
         echo "<div class='row row-cols-4'>";
@@ -323,7 +323,7 @@ class PartidaHTML
             $numEquipes = count($partida->getEquipes());
             $jogadores = $partCont->contarJogadores($partida->getIdPartida());
             $maxJogadores = $partida->getLimiteJogadores() * $numEquipes;
-            
+
             if ($partida->getIdAdm() == $_SESSION['ID']) {
                 $Status = "Administrador";
                 $Open = "ADM";
@@ -349,7 +349,7 @@ class PartidaHTML
                 echo "<button type='button' class='btn entrar-btn'>Partida Cheia!</button>";
             } else if ($Open == "YES") {
                 echo "<button type='button' class='btn entrar-btn' data-bs-toggle='modal' data-bs-target='#senhaModal' data-partida-id='" . $partida->getIdPartida() . "'>Entrar</button>";
-            }  else if ($Open = "ADM") {
+            } else if ($Open = "ADM") {
                 echo "<a href='PartidaADM.php?id=" . $partida->getIdPartida() . "'><button type='button' class='btn entrar-btn'>Administrar</button></a>";
             }
 
@@ -413,15 +413,15 @@ class PartidaHTML
     public static function desenhaPartidaEmAndamento($partidas)
     {
         $partCont = new PartidaController();
-        $usuarioCont = new UsuarioController(); 
+        $usuarioCont = new UsuarioController();
         echo "<div class='row linha'></div><br>";
         echo "<div class='container text-center'>";
         echo "<h2 class='tituloPartidas'>Partidas em andamento</h2>";
-        if(empty($partidas)){
+        if (empty($partidas)) {
             echo "<br><br><h3>Não foram encontradas partidas em andamento nesse momento!</h3><br><br>";
         }
         echo "<div class='row row-cols-4'>";
-        
+
         foreach ($partidas as $partida) {
 
             $usuario = $usuarioCont->buscarPorId($partida->getIdAdm());
@@ -429,14 +429,14 @@ class PartidaHTML
             $numEquipes = count($partida->getEquipes());
             $jogadores = $partCont->contarJogadores($partida->getIdPartida());
             $maxJogadores = $partida->getLimiteJogadores() * $numEquipes;
-            
+
             if ($partida->getIdAdm() == $_SESSION['ID']) {
                 $Status = "Administrador";
                 $Open = "ADM";
             } else if (null !== ($partida->getDataInicio())) {
                 $Status = "Em andamento";
                 $Open = "NO";
-            } 
+            }
 
             echo "<div class='col-md-4'>";
             echo "<br>";
@@ -452,12 +452,12 @@ class PartidaHTML
                 echo "<a href='PartidaADM.php?id=" . $partida->getIdPartida() . "'><button type='button' class='btn entrar-btn'>Administrar</button></a>";
             } else if ($Open == "NO") {
                 echo "<button type='button' class='btn entrar-btn'>Fechada!</button>";
-            } 
+            }
 
             if ($partida->getIdAdm() == $_SESSION['ID']) {
                 echo "<br><a href='deletarPartida.php?id=" . $partida->getIdPartida() . "' onclick='return confirm(\"Confirma a exclusão da Partida? Todos os jogadores nela serão expulsos e o progresso será perdido\");'><button type='button' class='btn deletar-btn'>Excluir</button></a>";
             }
-            
+
             echo "<br>";
             echo "</div>";
             echo "</div>";
@@ -485,17 +485,17 @@ class PartidaHTML
         echo "</div>";
         echo "</div>";
         echo "</div>";
-        
+
     }
 
     public static function desenhaPartidaFinalizada($partidas)
     {
         $partCont = new PartidaController();
-        $usuarioCont = new UsuarioController(); 
+        $usuarioCont = new UsuarioController();
         echo "<div class='row linha'></div><br>";
         echo "<div class='container text-center'>";
         echo "<h2 class='tituloPartidas'>Partidas finalizadas</h2>";
-        if(empty($partidas)){
+        if (empty($partidas)) {
             echo "<br><br><h3>Não foram encontradas partidas finalizadas</h3><br><br>";
         }
         echo "<div class='row row-cols-4'>";
@@ -518,7 +518,7 @@ class PartidaHTML
             echo "<button type='button btn-info' id='info' data-toggle='modal' data-target='#infoModal' onclick='mostrarInfo(" . json_encode($partida->getZonas()) . "," . json_encode($partida->getEquipes()) . ")'>Informações</button>";
             echo "<br><br><p class='card-text nome-texto' id='criador'> Criado por: <br>" . $nomeAdm . " <br>" . "</p>";
             echo "<a href='rankPartida.php?id=" . $partida->getIdPartida() . "'><button type='button' class='btn entrar-btn'>Resultado</button></a>";
-            
+
             if ($partida->getIdAdm() == $_SESSION['ID']) {
                 echo "<br><a href='deletarPartida.php?id=" . $partida->getIdPartida() . "' onclick='return confirm(\"Confirma a exclusão da Partida? Todos os jogadores nela serão expulsos e o progresso será perdido\");'><button type='button' class='btn deletar-btn'>Excluir</button></a>";
             }
@@ -578,7 +578,7 @@ class PartidaHTML
 
             echo "<tr>";
             echo "<td id='tabelanome'>" . $usuario->getNomeUsuario() . "</td>";
-            echo "<td id='tabelapontos' class='text-left'>" . (int)$pontos . "</td>";
+            echo "<td id='tabelapontos' class='text-left'>" . (int) $pontos . "</td>";
             echo "</tr>";
         }
 
@@ -615,7 +615,7 @@ class PartidaHTML
             echo "<br>";
             echo "<br>";
         }
-        
+
     }
 
     public static function desenhaPartidaZona($partida)
@@ -754,7 +754,7 @@ class PartidaHTML
 
         $idPartida = $partida->getIdPartida();
 
-        foreach ($partida->getEquipes() as $equipe) :
+        foreach ($partida->getEquipes() as $equipe):
 
             $jogadores = $partCont->contarJogadoresEquipe($partida->getIdPartida(), $equipe->getIdEquipe());
             $maxJogadores = $partida->getLimiteJogadores();
@@ -795,7 +795,7 @@ class PartidaHTML
         // Verifica se todas as pontuações são zero
         $todasPontuacoesZero = true;
         foreach ($equipes as $equipe) {
-            if ((int)$equipe->getPontuacaoEquipe() != 0) {
+            if ((int) $equipe->getPontuacaoEquipe() != 0) {
                 $todasPontuacoesZero = false;
                 break;
             }
@@ -810,15 +810,15 @@ class PartidaHTML
         } else {
             // Classifique as equipes com base na pontuação final (em ordem decrescente)
             usort($equipes, function ($a, $b) {
-                $pontuacaoA = (int)$a->getPontuacaoEquipe();  // Convertendo para inteiro
-                $pontuacaoB = (int)$b->getPontuacaoEquipe();  // Convertendo para inteiro
+                $pontuacaoA = (int) $a->getPontuacaoEquipe();  // Convertendo para inteiro
+                $pontuacaoB = (int) $b->getPontuacaoEquipe();  // Convertendo para inteiro
                 return $pontuacaoB - $pontuacaoA;  // Realizando a comparação
             });
 
             $lugar = 1;
             $medalhas = ["🥇", "🥈", "🥉"];
             foreach ($equipes as $equipe) {
-                $pontosEquipe = (int)$equipe->getPontuacaoEquipe();
+                $pontosEquipe = (int) $equipe->getPontuacaoEquipe();
                 $width = ($lugar <= 4) ? (100 - ($lugar * 8)) : 68;
 
                 echo "<div class='posicao' style='background-color: " . $equipe->getCorEquipe() . "; width: {$width}%;'>";
@@ -843,6 +843,221 @@ class PartidaHTML
 
         echo "</div>"; // Feche a div com a classe zonaP
         echo "</div>";
+    }
+
+    public static function desenhaPlantasEncontradas($plantas, $idsPlantasEncontradas, $questoesUsuario)
+    {
+        include_once("../../controllers/EspecieController.php");
+        include_once("../../controllers/QuestaoController.php");
+        $especieCont = new EspecieController();
+        $questaoCont = new QuestaoController();
+
+        foreach ($plantas as $planta) {
+            if (in_array($planta->getIdPlanta(), $idsPlantasEncontradas)) {
+
+                $especie = $especieCont->buscarPorId($planta->getEspecie()->getIdEspecie());
+                $nomePlanta = !empty($planta->getNomeSocial()) ? $planta->getNomeSocial() : $especie->getNomePopular();
+                $nomeCientifico = $especie->getNomeCientifico();
+                $imagemPlanta = !empty($planta->getImagemPlanta()) ? $planta->getImagemPlanta() : $especie->getImagemEspecie();
+
+                echo "<div class='card'>";
+                echo "<div class='card-body'>";
+                echo "<div class='fundo'></div>";
+                $modalId = "modalExemplo_" . $planta->getIdPlanta();
+                echo "<div class='abinha' data-bs-toggle='modal' data-bs-target='#" . $modalId . "'>
+                <div>S</div>
+                <div>O</div>
+                <div>M</div>
+                <div>A</div>
+                </div>";
+
+                echo "<div class='esquerda'>";
+                echo "<img src='" . $imagemPlanta . "' id='img'>";
+                echo "<h5 class='card-title text-center plantaNome'>" . $nomePlanta . "</h5>";
+                echo "<h5 class='card-title text-center plantaNome' style='font-style: italic;'>" . $nomeCientifico . "</h5>";
+                echo "<p class='card-text text-center plantaPontos'>Pontuação: " . $planta->getPontos() . "</p>";
+                echo "</div>";
+
+                echo "<div class='direita'>";
+                echo "<h5 class='card-title text-center plantaPontos'>Questões</h5>";
+                $questoesPlanta = $questaoCont->listarPorPlanta($planta->getIdPlanta());
+
+                if (count($questoesPlanta) > 0) {
+                    echo "<div class='questoes-container'>";
+                    $contador = 1;
+                    foreach ($questoesPlanta as $questao) {
+                        $idQuestao = $questao->getIdQuestao();
+                        $encontrado = array_key_exists($idQuestao, $questoesUsuario);
+
+                        $icone = "";
+                        $classe = "";
+
+                        if ($encontrado) {
+                            // A questão foi respondida
+                            if ($questoesUsuario[$idQuestao]) {
+                                $icone = "<i class='fa-solid fa-check'></i>"; // Certa
+                                $classe = "certa"; // Classe para certa
+                            } else {
+                                $icone = "<i class='fa-solid fa-xmark'></i>"; // Errada
+                                $classe = "errada"; // Classe para errada
+                            }
+                        } else {
+                            // Definir o símbolo e a classe de fundo com base na resposta
+                            $icone = "<i class='fa-solid fa-ellipsis'></i>"; // Inicializa o símbolo
+                            $classe = "nao-respondida"; // Classe padrão
+                        }
+
+                        // Exibir a questão com o número e o símbolo
+                        echo "<div class='questao $classe'>"; // Adiciona a classe correspondente
+                        echo "<div class='numero'>$contador</div>"; // Número da questão
+                        echo "<div class='resultado'>$icone</div>"; // Resultado
+                        echo "</div>";
+
+                        // Incrementar o contador
+                        $contador++;
+                    }
+                } else {
+                    echo "<div>";
+                    echo "<h5 class='semQuestoes'>A Clorofila disse que essa planta não tem questões!</h5>";
+                    echo "<img src='../../public/clorofila.png' style='width: 100%'>";
+                    echo "</div>";
+                }
+
+                echo "</div>";
+                echo "</div>";
+
+                echo "</div>";
+                echo "</div><br>";
+
+                // Modal
+                echo "<div class='modal fade' id='" . $modalId . "' tabindex='-1' aria-labelledby='modalLabel' aria-hidden='true'>";
+                echo "<div class='modal-dialog'>";
+                echo "<div class='modal-content'>";
+                echo "<div class='modal-header'>";
+                echo "<h5 class='modal-title' id='modalLabel'>Informações de Pontuação</h5>";
+                echo "</div>";
+                echo "<div class='modal-body'>";
+
+                if (count($questoesPlanta) > 0) {
+                    $somaPontuacao = 0;
+                    echo "<h6 class='text-center sum'>Somatória de Pontuações</h6>";
+                    echo "<ul class='list-group'>";
+                    $contador = 1;
+                    foreach ($questoesPlanta as $questao) {
+                        $idQuestao = $questao->getIdQuestao();
+                        $pontuacaoQuestao = $questao->getPontuacaoQuestao();
+                        $encontrado = array_key_exists($idQuestao, $questoesUsuario);
+
+                        // Usar um span para alinhar labels e pontuações
+                        echo "<li class='list-group-item d-flex justify-content-between align-items-center'>";
+                        echo "Questão $contador:";
+                        if ($encontrado) {
+                            if ($questoesUsuario[$idQuestao]) {
+                                echo "<span> +$pontuacaoQuestao</span>";
+                                $somaPontuacao += $pontuacaoQuestao;
+                            } else {
+                                echo "<span> 0</span>";
+                            }
+                        } else {
+                            echo "<span> Não Respondida</span>";
+                        }
+                        echo "</li>";
+                        $contador++;
+                    }
+                    echo "<li class='list-group-item d-flex justify-content-between align-items-center'>";
+                    echo "Pontos da Planta:";
+                    echo "<span> +" . $planta->getPontos() . "</span>";
+                    $somaPontuacao += $planta->getPontos();
+                    echo "</li>";
+                    echo "<li class='list-group-item d-flex justify-content-between align-items-center'>";
+                    echo "Total";
+                    echo "<span>" . $somaPontuacao . "</span>";
+                    echo "</li>";
+                    echo "</ul>";
+                } else {
+                    $somaPontuacao = 0;
+                    echo "<h6 class='text-center sum'>Somatória de Pontuações</h6>";
+                    echo "<ul class='list-group'>";
+                    echo "<li class='list-group-item d-flex justify-content-between align-items-center'>";
+                    echo "Pontos da Planta:";
+                    echo "<span> +" . $planta->getPontos() . "</span>";
+                    $somaPontuacao += $planta->getPontos();
+                    echo "</li>";
+                    echo "<li class='list-group-item d-flex justify-content-between align-items-center'>";
+                    echo "Total";
+                    echo "<span>" . $somaPontuacao . "</span>";
+                    echo "</li>";
+                    echo "</ul>";
+                }
+
+                echo "</div>";
+                echo "<div class='modal-footer'>";
+                echo "<button type='button' class='btn btn-secondary' id='fechar' data-bs-dismiss='modal'>Fechar</button>";
+                echo "</div>";
+                echo "</div>";
+                echo "</div>";
+                echo "</div>";
+
+            } else {
+                $especie = $especieCont->buscarPorId($planta->getEspecie()->getIdEspecie());
+                $nomePlanta = !empty($planta->getNomeSocial()) ? $planta->getNomeSocial() : $especie->getNomePopular();
+                $nomeCientifico = $especie->getNomeCientifico();
+                $imagemPlanta = !empty($planta->getImagemPlanta()) ? $planta->getImagemPlanta() : $especie->getImagemEspecie();
+
+                echo "<div class='card'>";
+                echo "<div class='card-body'>";
+                echo "<div class='fundo'></div>";
+
+                echo "<div class='esquerda'>";
+                echo "<div class='imgBloq'>";
+                // Mantém o estilo com largura, borda e arredondamento
+                echo "<img src='" . $imagemPlanta . "' id='img' style='visibility:hidden; width:100%; border-radius:7px;'>";
+                // Imagem invisível, mas mantendo o tamanho e o estilo do border-radius
+                echo "<div style='position:absolute; top:0; left:0; width:100%; height:100%; background-color:black; border-radius:7px; display:flex; align-items:center; justify-content:center;'>";
+                // Div preta que cobre a imagem invisível, com border-radius para combinar
+                echo "<i class='fa-solid fa-lock' style='color:white; font-size:24px;'></i>";
+                // Ícone centralizado no meio da área preta
+                echo "</div>";
+                echo "</div>";
+                echo "<h5 class='card-title text-center plantaNome' style='text-decoration: line-through;'>" . $nomePlanta . "</h5>";
+                echo "<h5 class='card-title text-center plantaNome'  style='text-decoration: line-through; font-style: italic;'>" . $nomeCientifico . "</h5>";
+                echo "<p class='card-text text-center plantaPontos' style='text-decoration: line-through;'>Pontuação: ???</p>"; 
+                echo "</div>";
+
+
+                echo "<div class='direita'>";
+                echo "<h5 class='card-title text-center plantaPontos'>Questões</h5>";
+                $questoesPlanta = $questaoCont->listarPorPlanta($planta->getIdPlanta());
+                if (count($questoesPlanta) > 0) {
+                    $contador = 1;
+                    foreach ($questoesPlanta as $questao) {
+                        $idQuestao = $questao->getIdQuestao();
+
+                        $icone = "<i class='fa-solid fa-ellipsis'></i>"; // Inicializa o símbolo
+                        $classe = "nao-respondida"; // Classe padrão
+
+
+                        // Exibir a questão com o número e o símbolo
+                        echo "<div class='questao $classe'>"; // Adiciona a classe correspondente
+                        echo "<div class='numero'>$contador</div>"; // Número da questão
+                        echo "<div class='resultado'>$icone</div>"; // Resultado
+                        echo "</div>";
+
+                        $contador++;
+                    }
+                } else {
+                    echo "<div>";
+                    echo "<h5 class='semQuestoes'>A Clorofila disse que essa planta não tem questões!</h5>";
+                    echo "<img src='../../public/clorofila.png' style='width: 100%'>";
+                    echo "</div>";
+                }
+
+                echo "</div>";
+
+                echo "</div>";
+                echo "</div><br>";
+            }
+        }
     }
 }
 ?>

@@ -73,6 +73,16 @@ class PlantaController {
         return $this->plantaDAO->filter($caracteristicas, $busca, $ADMs, $zonas);        
      }
 
+     public function pegarArrayIdsZona($idZona){
+        $plantasId = array();
+        $plantas = $this->plantaDAO->listByZona($idZona);
+
+        foreach($plantas as $planta) {
+         $plantasId[] = $planta->getIdPlanta();   
+        }
+        
+        return $plantasId;
+     }
 }
 
 ?>

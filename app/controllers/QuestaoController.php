@@ -42,6 +42,7 @@ class QuestaoController {
     public function excluir($questao) {
         $this->questao->delete($questao);
     }
+    
 
     // public function apagarImagem($idQuestao) {
     //     $this->questao->deleteImage($idQuestao);

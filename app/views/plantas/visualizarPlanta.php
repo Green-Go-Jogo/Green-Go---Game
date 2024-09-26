@@ -35,16 +35,17 @@ if (($fromQR || $fromCod) && $tipo) {
         $partidaCont = new PartidaController();
         $idPlanta = ($idp != null) ? $idp : $planta->getIdPlanta();
         $partida = $partidaCont->buscarPartidaAndamentoPorIdUsuario($_SESSION['ID']);
-        if($partida === null) {
+        if ($partida === null) {
             $_SESSION['PARTIDA'] == false;
             echo "<p class='text-center'>A partida não existe mais! <a style='color: #C05367' href='../home/indexJOG.php'>Clique aqui</a> para a retornar à página inicial!</p>";
             exit;
-          }
+        }
         $arrayQuestoes = $partida->getQuestoesRespondidas();
         $msgFind = $partidaCont->checarQRCode($idPlanta, $_SESSION['PLANTAS_LIDAS'], $_SESSION['ID']);
         $msgReturn = "<a href='../partidas/mainJogo.php?idp=" . $partida->getIdPartida() . "&ide=" . $partida->getIdEquipe() . "' id='voltarjogo'> Encontrou outra planta? Volte para o jogo! </a>";
     } else {
-    };
+    }
+    ;
 }
 
 if ($ide !== null) {
@@ -62,63 +63,72 @@ if ($frutifera == 1) {
     $frut = "<br>" . "Frutos Comestíveis";
 } else {
     $frut = "";
-};
+}
+;
 
 $exotica = $especie->getExotica();
 if ($exotica == 1) {
     $exot = "<br>" . "Exótica";
 } else {
     $exot = "";
-};
+}
+;
 
 $toxidade = $especie->getToxidade();
 if ($toxidade == 1) {
     $tox = "<br>" . "Tóxica";
 } else {
     $tox = "";
-};
+}
+;
 
 $medicinal = $especie->getMedicinal();
 if ($medicinal == 1) {
     $med = "<br>" . "Medicinal";
 } else {
     $med = "";
-};
+}
+;
 
 $comestivel = $especie->getComestivel();
 if ($comestivel == 1) {
     $come = "<br>" . "Comestível";
 } else {
     $come = "";
-};
+}
+;
 
 $nativa = $especie->getNativa();
 if ($nativa == 1) {
     $nat = "<br>" . "Nativa";
 } else {
     $nat = "";
-};
+}
+;
 
 $endemica = $especie->getEndemica();
 if ($endemica == 1) {
     $ende = "<br>" . "Endêmica";
 } else {
     $ende = "";
-};
+}
+;
 
 $panc = $especie->getPanc();
 if ($panc == 1) {
     $pan = "<br>" . "PANC";
 } else {
     $pan = "";
-};
+}
+;
 
 $ornamental = $especie->getOrnamental();
 if ($ornamental == 1) {
     $orn = "<br>" . "Ornamental";
 } else {
     $orn = "";
-};
+}
+;
 
 if ($planta == null) {
     echo "Planta não encontrado!<br>";
@@ -189,11 +199,13 @@ $nomePopular = $especie->getNomePopular();
 
             <?php if (!empty($nomeSocial)) { ?>
                 <h1 class="nome" id="nomeUm">
-                    <a> Nome Popular: </a> <a style="color: #C05367; font-family: Poppins;"> <?= $especie->getNomePopular() ?> </a>
+                    <a> Nome Popular: </a> <a style="color: #C05367; font-family: Poppins;">
+                        <?= $especie->getNomePopular() ?> </a>
                 </h1>
             <?php } ?>
             <h1 class="nome" id="nomeDois">
-                <a> Nome Científico: </a> <i style="color: #C05367; font-family: Poppins;"> <?= $especie->getNomeCientifico() ?></i>
+                <a> Nome Científico: </a> <i style="color: #C05367; font-family: Poppins;">
+                    <?= $especie->getNomeCientifico() ?></i>
             </h1>
         </div>
 
@@ -206,7 +218,8 @@ $nomePopular = $especie->getNomePopular();
 
 
     <div class="text-center" id="imagem1Planta">
-        <img id="imagemPlanta" src="<?= $imagemPlanta = !empty($planta->getImagemPlanta()) ? $planta->getImagemPlanta() : $especie->getImagemEspecie(); ?>" />
+        <img id="imagemPlanta"
+            src="<?= $imagemPlanta = !empty($planta->getImagemPlanta()) ? $planta->getImagemPlanta() : $especie->getImagemEspecie(); ?>" />
         <br> <br>
         <span id='autoria'>Autoria da Foto: <?= $especie->getAutoriaImagem(); ?></span>
     </div>
@@ -216,7 +229,7 @@ $nomePopular = $especie->getNomePopular();
             <div class=" text-center">
                 <?php if (isset($_SESSION['PARTIDA']) && $_SESSION['PARTIDA'] == true) {
                     echo "<p class='descricao text-center' id='pontos'>";
-                    echo    "Pontos:" . $planta->getPontos();
+                    echo "Pontos:" . $planta->getPontos();
                     echo "</p>";
                 }
                 ?>
@@ -250,31 +263,32 @@ $nomePopular = $especie->getNomePopular();
                     } ?>
                 </div>
             </h1> <br><br>
-            
+
 
             <?php if (!empty($planta->getPlantaHistoria())) { ?>
-            <w id="nomespecie"> História da Planta: </w>
-            <h1 class="descricao" id="historiaplanta">
-                <?= $planta->getPlantaHistoria() ?>
-            </h1> 
+                <w id="nomespecie"> História da Planta: </w>
+                <h1 class="descricao" id="historiaplanta">
+                    <?= $planta->getPlantaHistoria() ?>
+                </h1>
             <?php } ?>
             <br><br>
             <div class="descricao">
-                <p id="publicacao">Publicado por <?php echo "<span id='nomePub'>" . $especie->getUsuario()->getNomeUsuario() . "</span>"; ?>
+                <p id="publicacao">Publicado por
+                    <?php echo "<span id='nomePub'>" . $especie->getUsuario()->getNomeUsuario() . "</span>"; ?>
                     em <?php
-                        if (!empty($especie->getDataAtualizacao())) {
-                            $dataOriginal = $especie->getDataAtualizacao();
-                            $data = new DateTime($dataOriginal);
-                            $dataFormatada = $data->format('d/m/y \à\s H:i');
-                            echo "<span id='dataPub'>" . $dataFormatada . "</span>";
-                        } else {
-                            $dataOriginal = $especie->getDataCriacao();
-                            $data = new DateTime($dataOriginal);
-                            $dataFormatada = $data->format('d/m/y \à\s H:i');
-                            echo "<span id='dataPub'>" . $dataFormatada . "</span>";
-                        }
+                    if (!empty($especie->getDataAtualizacao())) {
+                        $dataOriginal = $especie->getDataAtualizacao();
+                        $data = new DateTime($dataOriginal);
+                        $dataFormatada = $data->format('d/m/y \à\s H:i');
+                        echo "<span id='dataPub'>" . $dataFormatada . "</span>";
+                    } else {
+                        $dataOriginal = $especie->getDataCriacao();
+                        $data = new DateTime($dataOriginal);
+                        $dataFormatada = $data->format('d/m/y \à\s H:i');
+                        echo "<span id='dataPub'>" . $dataFormatada . "</span>";
+                    }
 
-                        ?>
+                    ?>
                 </p>
             </div>
 
@@ -301,7 +315,7 @@ $nomePopular = $especie->getNomePopular();
             </div>
         </div>
         <br>
-        
+
 
         <br><br><br>
         <div class="text-center">
@@ -321,16 +335,33 @@ $nomePopular = $especie->getNomePopular();
     var idUsuario = <?php echo $_SESSION['ID'] ?>;
     var idPlanta = <?php echo $idp ?>;
     var questoesArrayPHP = <?php
-                            $arrayTemp = explode("|", $arrayQuestoes);
-                            $questoesString = implode(" - ", $arrayTemp);
-                            echo json_encode($questoesString);
-                            ?>;
-    let arrayQuestoes = questoesArrayPHP.split("-").filter(item => item !== "").map(Number);
+    $questoesAssociativas = [];
+    $arrayTemp = explode("|", $arrayQuestoes); // Divide a string em partes
+    
+    foreach ($arrayTemp as $item) {
+        // Divide o item em partes
+        $partes = array_map('trim', explode("=>", $item));
+
+        // Verifica se temos exatamente 2 partes
+        if (count($partes) === 2) {
+            list($id, $status) = $partes;
+
+            // O status é tratado como booleano, comparando com '1' ou 'true'
+            $questoesAssociativas[(int) $id] = ($status === '1');
+        }
+    }
+
+    echo json_encode($questoesAssociativas);
+    ?>;
+
+    let arrayQuestoes = questoesArrayPHP; // Não precisa de JSON.parse
+    console.log(arrayQuestoes);
+
 
 
     function validarQuiz() {
         var questionRadios = document.querySelectorAll(".pergunta input[type=radio]");
-        var radioChecked = Array.prototype.some.call(questionRadios, function(radio) {
+        var radioChecked = Array.prototype.some.call(questionRadios, function (radio) {
             return radio.checked;
         });
         return radioChecked; // Retorna true se pelo menos um rádio estiver checado, caso contrário false
@@ -348,7 +379,7 @@ $nomePopular = $especie->getNomePopular();
         var radios = document.querySelectorAll('input[type="radio"]');
         var values = [];
 
-        radios.forEach(function(radio) {
+        radios.forEach(function (radio) {
             // Verifica se o input está marcado
             if (radio.checked) {
                 // Obtém o atributo "value" do input
@@ -369,7 +400,7 @@ $nomePopular = $especie->getNomePopular();
         if (values.length === 0) {
             return alert("Por favor, selecione ao menos uma resposta para submeter o formulário.");
         }
-        
+
         enviarQuizBotao.setAttribute('onclick', '');
         enviarQuizBotao.disabled = true;
         enviarQuizBotao.innerHTML = "Resposta enviada!"
@@ -384,14 +415,14 @@ $nomePopular = $especie->getNomePopular();
                 idPlanta: idPlanta
             },
             dataType: "json", // Espera uma resposta JSON
-            success: function(userResponse) {
+            success: function (userResponse) {
                 if (userResponse.isValid === true) {
 
                     var respostas = userResponse.respostas;
 
                     var correcaoHTML = '<div class="correcao">';
 
-                    Object.keys(respostas).forEach(function(key) {
+                    Object.keys(respostas).forEach(function (key) {
                         var resposta = respostas[key];
                         var correcaoHTML = '<div class="correcao" id="' + (resposta === true ? 'correta' : 'incorreta') + '" >';
 
@@ -410,14 +441,14 @@ $nomePopular = $especie->getNomePopular();
                     console.log("Seus pontos possivelmente foram somados, mas o servidor não conseguiu te devolver a resposta.");
                 }
             },
-            error: function() {
+            error: function () {
                 console.log("Ocorreu um erro de requisição, contate um professor ou administrador.");
             }
         });
 
         function alterarValorRadio(name, novoValor) {
             var radios = document.querySelectorAll('input[type=radio][name="' + name + '"]');
-            radios.forEach(function(radio) {
+            radios.forEach(function (radio) {
                 radio.value = novoValor;
             });
         }
@@ -437,7 +468,7 @@ $nomePopular = $especie->getNomePopular();
                 data: {
                     userID: <?php echo $_SESSION["ID"]; ?> // Envie o ID do usuário
                 },
-                success: function(userResponse) {
+                success: function (userResponse) {
                     if (userResponse.isValid === true) {
                         // Redirecionar para a página se a resposta for verdadeira
                         window.location.href = "../partidas/rankPartida.php?id=" + userResponse.idPartida;
@@ -445,7 +476,7 @@ $nomePopular = $especie->getNomePopular();
 
                     }
                 },
-                error: function() {
+                error: function () {
                     console.log("O Rank ainda não foi definido!");
                 }
             });

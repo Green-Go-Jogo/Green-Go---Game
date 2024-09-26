@@ -191,8 +191,8 @@ $tempo = $partida->getTempoPartida();
 
   <div class="text-center" id="botoes">
 
-    <a class="btn" href="zona.php">
-      <img src="../../public/botaozona.png" id="zona"> </img></a>
+    <?php echo "<a class='btn' href='detalharZonas.php?idu=" . $_SESSION['ID'] . '&idp=' . $idPartida . "'>
+      <img src='../../public/botaozona.png' id='zona'> </img></a>" ?>
 
     <button type="button" class="btn camerazinha" id="camerazinha" data-toggle="modal" data-target="#qrScannerModal">
       <img src="../../public/botaocamera.png" id="camera"> </img> </button>
