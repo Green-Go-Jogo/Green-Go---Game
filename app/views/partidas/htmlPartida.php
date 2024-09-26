@@ -845,10 +845,12 @@ class PartidaHTML
         echo "</div>";
     }
 
-    public static function desenhaPlantasEncontradas($plantas, $idsPlantasEncontradas)
+    public static function desenhaPlantasEncontradas($plantas, $idsPlantasEncontradas, $questoesUsuario)
     {
         include_once("../../controllers/EspecieController.php");
+        include_once("../../controllers/QuestaoController.php");
         $especieCont = new EspecieController();
+        $questaoCont = new QuestaoController();
 
         foreach ($plantas as $planta) {
             if (in_array($planta->getIdPlanta(), $idsPlantasEncontradas)) {
@@ -860,14 +862,55 @@ class PartidaHTML
                 echo "<div class='card'>";
                 echo "<div class='card-body'>";
                 echo "<div class='fundo'></div>";
-                
+
                 echo "<div class='esquerda'>";
                 echo "<img src='" . $imagemPlanta . "' id='img'>";
-                echo "<h5 class='card-title text-center'>" . $nomePlanta . "</h5>"; // Nome da planta
-                echo "<p class='card-text text-center'>Pontuação: " . $planta->getPontos() . "</p>"; // Pontuação da planta
+                echo "<h5 class='card-title text-center plantaNome'>" . $nomePlanta . "</h5>";
+                echo "<p class='card-text text-center plantaPontos'>Pontuação: " . $planta->getPontos() . "</p>";
                 echo "</div>";
 
                 echo "<div class='direita'>";
+                echo "<h5 class='card-title text-center plantaPontos'>Questões</h5>";
+                $questoesPlanta = $questaoCont->listarPorPlanta($planta->getIdPlanta());
+
+                if(count( $questoesPlanta) > 0) {
+                echo "<div class='questoes-container'>";
+                $contador = 1;
+                foreach ($questoesPlanta as $questao) {
+                    $idQuestao = $questao->getIdQuestao();
+                    $encontrado = array_key_exists($idQuestao, $questoesUsuario);
+
+                    $icone = "";
+                    $classe = "";
+
+                    if ($encontrado) {
+                        // A questão foi respondida
+                        if ($questoesUsuario[$idQuestao]) {
+                            $icone = "<i class='fa-solid fa-check'></i>"; // Certa
+                            $classe = "certa"; // Classe para certa
+                        } else {
+                            $icone = "<i class='fa-solid fa-xmark'></i>"; // Errada
+                            $classe = "errada"; // Classe para errada
+                        }
+                    } else {
+                        // Definir o símbolo e a classe de fundo com base na resposta
+                        $icone = "<i class='fa-solid fa-ellipsis'></i>"; // Inicializa o símbolo
+                        $classe = "nao-respondida"; // Classe padrão
+                    }
+
+                    // Exibir a questão com o número e o símbolo
+                    echo "<div class='questao $classe'>"; // Adiciona a classe correspondente
+                    echo "<div class='numero'>$contador</div>"; // Número da questão
+                    echo "<div class='resultado'>$icone</div>"; // Resultado
+                    echo "</div>";
+
+                    // Incrementar o contador
+                    $contador++;
+                }
+            } else {
+            }
+
+                echo "</div>";
                 echo "</div>";
 
                 echo "</div>";
@@ -875,7 +918,61 @@ class PartidaHTML
 
 
             } else {
-                echo "banana";
+                $especie = $especieCont->buscarPorId($planta->getEspecie()->getIdEspecie());
+                $nomePlanta = !empty($planta->getNomeSocial()) ? $planta->getNomeSocial() : $especie->getNomePopular();
+                $imagemPlanta = !empty($planta->getImagemPlanta()) ? $planta->getImagemPlanta() : $especie->getImagemEspecie();
+
+                echo "<div class='card'>";
+                echo "<div class='card-body'>";
+                echo "<div class='fundo'></div>";
+
+                echo "<div class='esquerda'>";
+                echo "<div class='imgBloq'>";
+                // Mantém o estilo com largura, borda e arredondamento
+                echo "<img src='" . $imagemPlanta . "' id='img' style='visibility:hidden; width:100%; border-radius:7px;'>";
+                // Imagem invisível, mas mantendo o tamanho e o estilo do border-radius
+                echo "<div style='position:absolute; top:0; left:0; width:100%; height:100%; background-color:black; border-radius:7px; display:flex; align-items:center; justify-content:center;'>";
+                // Div preta que cobre a imagem invisível, com border-radius para combinar
+                echo "<i class='fa-solid fa-lock' style='color:white; font-size:24px;'></i>";
+                // Ícone centralizado no meio da área preta
+                echo "</div>";
+                echo "</div>";
+                echo "<h5 class='card-title text-center plantaNome' style='text-decoration: line-through;'>" . $nomePlanta . "</h5>"; // Nome riscado
+                echo "<p class='card-text text-center plantaPontos' style='text-decoration: line-through;'>Pontuação: ???</p>"; // Pontuação riscada
+                echo "</div>";
+
+
+                echo "<div class='direita'>";
+                echo "<h5 class='card-title text-center plantaPontos'>Questões</h5>";
+                $questoesPlanta = $questaoCont->listarPorPlanta($planta->getIdPlanta());
+                if (count($questoesPlanta) > 0) {
+                    $contador = 1;
+                    foreach ($questoesPlanta as $questao) {
+                        $idQuestao = $questao->getIdQuestao();
+
+                        $icone = "<i class='fa-solid fa-ellipsis'></i>"; // Inicializa o símbolo
+                        $classe = "nao-respondida"; // Classe padrão
+
+
+                        // Exibir a questão com o número e o símbolo
+                        echo "<div class='questao $classe'>"; // Adiciona a classe correspondente
+                        echo "<div class='numero'>$contador</div>"; // Número da questão
+                        echo "<div class='resultado'>$icone</div>"; // Resultado
+                        echo "</div>";
+
+                        $contador++;
+                    }
+                } else {
+                    echo "<div>";
+                    echo "<h5 class='semQuestoes'>A Clorofila disse que essa planta não tem questões!</h5>";
+                    echo "<img src='../../public/clorofila.png' style='width: 100%'>";
+                    echo "</div>";
+                }
+
+                echo "</div>";
+
+                echo "</div>";
+                echo "</div><br>";
             }
         }
     }

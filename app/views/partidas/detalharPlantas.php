@@ -4,6 +4,7 @@ include_once("../../controllers/LoginController.php");
 LoginController::manterUsuario();
 LoginController::verificarAcesso([1, 2, 3]);
 include_once("../../controllers/ZonaController.php");
+include_once("../../controllers/PartidaController.php");
 include_once("./htmlPartida.php");
 
 $idZona = $_GET["idz"];
@@ -11,8 +12,31 @@ $idUsuario = $_GET["idu"];
 $idPartida = $_GET["idp"];
 
 $zonaCont = new ZonaController();
+$partidaCont = new PartidaController();
 $zona = $zonaCont->buscarPorId($idZona);
 $plantas = $zonaCont->buscarPlantasZona($idZona);
+
+$arrayQuestoes = $partidaCont->listarQuestoesRespondidas($idPartida, $idUsuario);
+$questoesAssociativas = [];
+$arrayTemp = explode("|", trim($arrayQuestoes)); // Remover espaços em branco ao redor
+
+$questoesAssociativas = [];
+$arrayTemp = explode("|", trim($arrayQuestoes)); // Remover espaços em branco ao redor
+
+foreach ($arrayTemp as $item) {
+    $item = trim($item); // Remover espaços em branco do item atual
+    
+    // Verificar se o item não está vazio antes de processá-lo
+    if (!empty($item)) {
+        $partes = array_map('trim', explode("=>", $item));
+        
+        // Verificar se temos exatamente duas partes e que o primeiro elemento não é vazio
+        if (count($partes) === 2 && !empty($partes[0])) {
+            list($id, $status) = $partes;
+            $questoesAssociativas[(int)$id] = ($status === '1');
+        }
+    }
+}
 ?>
 <html lang="en">
 
@@ -90,7 +114,7 @@ $plantas = $zonaCont->buscarPlantasZona($idZona);
     <div class="container text-center"><br>
     <div class="col-md-12 text-center">
     <div>
-        <?php PartidaHTML::desenhaPlantasEncontradas($plantas, $_SESSION['PLANTAS_LIDAS'])?>
+        <?php PartidaHTML::desenhaPlantasEncontradas($plantas, $_SESSION['PLANTAS_LIDAS'], $questoesAssociativas)?>
     </div>
     </div>
     </div>

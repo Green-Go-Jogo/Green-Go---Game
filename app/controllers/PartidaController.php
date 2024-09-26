@@ -242,4 +242,8 @@ class PartidaController
     public function listarZonasPorPartida($idPartida){
         return $this->zonaDAO->listByPartida($idPartida);
     }
+
+    public function listarQuestoesRespondidas($idPartida, $idUsuario){
+        return $this->partidaDAO->listQuestionsAnswer($idPartida, $idUsuario);
+    }
 }

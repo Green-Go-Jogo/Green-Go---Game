@@ -42,7 +42,17 @@
 }
 
 #img {
-    width: 50%;
+    border-radius: 7px;
+    border: #C05367 1px solid;
+    width: 90%;
+}
+
+.imgBloq {
+    position:relative; 
+    display:inline-block; 
+    width:90%; 
+    border-radius:7px; 
+    border:#C05367 1px solid;
 }
 
 .fundo {
@@ -78,11 +88,82 @@
 
 .card-body,
 .card {
+    display: flex;
     position: relative;
     border-radius: 15px;
     z-index: 1;   
 }
 
+.direita, .esquerda {
+    width: 48%;
+}
+
+.questoes-container {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: space-between;  
+}
+
+.questao {
+    display: flex;
+    align-items: center;
+    border: 1px solid #C05367; 
+    border-radius: 5px;
+    padding: 10px;
+    width: 40%; 
+    justify-content: space-between;
+    margin-bottom: 10px; /* Espaçamento entre as linhas de questões */
+    padding: 10px; /* Espaçamento interno para cada questão */
+    text-align: center; /* Centraliza o texto dentro da questão */
+}
+
+.numero {
+    font-weight: bold; /* Número em negrito */
+}
+
+.resultado {
+    font-size: 20px; /* Tamanho do símbolo */
+}
+
+/* Classes de fundo */
+.certa {
+    background-color: #7EC4BB; /* Fundo verde para respostas certas */
+    color: white; /* Cor do texto para melhor contraste */
+}
+
+.errada {
+    background-color: #C05367; /* Fundo vermelho para respostas erradas */
+    color: white; /* Cor do texto para melhor contraste */
+}
+
+.nao-respondida {
+    background-color: #ffffff; /* Fundo cinza para respostas não respondidas */
+    color: black; /* Cor do texto para melhor contraste */
+}
+
+.plantaNome {
+    font-size: 21px;
+    font-family: 'Poppins-regular';
+}
+
+.plantaPontos {
+    font-size: 18px;
+    font-family: 'Poppins';
+}
+
+.semQuestoes{
+    font-family: 'Poppins-Medium';
+    font-size: 25px;
+    margin-top: 15px;
+}
+
 @media (max-width: 992px) {
-    
+    .semQuestoes{
+        font-size: 18px;
+    }
+}
+
+.modo-escuro h5 {
+    background-color: transparent !important;
+    color: #ED8E96;
 }

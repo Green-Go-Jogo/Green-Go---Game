@@ -618,4 +618,20 @@ class PartidaDAO
 
         return 'success';
     }
+
+    public function listQuestionsAnswer($idPartida, $idUsuario){
+        $conn = conectar_db();
+        $sql = PartidaDAO::SQL_USUARIO_PARTIDA . " AND p.idPartida = ? AND pu.idUsuario = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([$idPartida, $idUsuario]);
+
+        $result = $stmt->fetchAll();
+        $usuario = $this->mapUsuarioPartida($result);
+        
+        if(count($usuario) == 1){
+            return $usuario[0]->getQuestoesRespondidas();
+        } else {
+            echo "Mais de um usuário encontrado!";
+        }
+    }
 }
