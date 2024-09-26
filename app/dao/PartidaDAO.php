@@ -545,7 +545,7 @@ class PartidaDAO
 
         if ($usuario) {
 
-            $this->addQuestionsResponse($idQuestao, $idUsuario);
+            $this->addQuestionsResponse($idQuestao, $idUsuario, true);
 
             $sql = "UPDATE partida_usuario SET pontuacaoQuestoes = pontuacaoQuestoes + ? WHERE idPartidaUsuario = ?";
             $stmt = $conn->prepare($sql);
@@ -555,7 +555,7 @@ class PartidaDAO
         }
     }
 
-    public function addQuestionsResponse($idQuestao, $idUsuario)
+    public function addQuestionsResponse($idQuestao, $idUsuario, $certa)
     {
 
         $conn = conectar_db();
@@ -563,7 +563,7 @@ class PartidaDAO
 
         if ($usuario) {
 
-            $questoesString = $idQuestao . " | ";
+            $questoesString = $idQuestao . "=>". $certa ." | ";
 
             $sql = "UPDATE partida_usuario SET questoesRespondidas = CONCAT(questoesRespondidas, ?) WHERE idPartidaUsuario = ?";
             $stmt = $conn->prepare($sql);
@@ -617,5 +617,21 @@ class PartidaDAO
         ]);
 
         return 'success';
+    }
+
+    public function listQuestionsAnswer($idPartida, $idUsuario){
+        $conn = conectar_db();
+        $sql = PartidaDAO::SQL_USUARIO_PARTIDA . " AND p.idPartida = ? AND pu.idUsuario = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([$idPartida, $idUsuario]);
+
+        $result = $stmt->fetchAll();
+        $usuario = $this->mapUsuarioPartida($result);
+        
+        if(count($usuario) == 1){
+            return $usuario[0]->getQuestoesRespondidas();
+        } else {
+            echo "Mais de um usuário encontrado!";
+        }
     }
 }
