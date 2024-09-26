@@ -348,14 +348,14 @@ class PlantaHTML
     echo "<hr class='linhaSepara' style='margin-top: -10px'>";
     echo "<div id='conteudoParaImpressao'>";
     echo "</div>";
-    
+    $contador = 1;
     foreach ($idsQuestoes as $questaoPlanta) {
         $questao = $questaoCont->buscarPorId($questaoPlanta->getIdQuestao());
 
         if ($questao->getImagemQuestao() !== null) {
             echo "<img id='imgQuestao' src='" . $questao->getImagemQuestao() . "'/>";
         }
-        echo "<h5 id='tituloQuestao'>" . $questao->getDescricaoQuestao() . "</h5>";
+        echo "<h5 id='tituloQuestao'>". $contador .". " . $questao->getDescricaoQuestao() . "</h5>";
 
         // Verifica se a questão foi respondida com base no array associativo
         if (isset($questoesAssociativas[$questaoPlanta->getIdQuestao()])) {
@@ -375,6 +375,8 @@ class PlantaHTML
             echo "</div>";
         }
         echo "<hr class='linhaSepara'>";
+
+        $contador++;
     }
     
     echo "</div>";

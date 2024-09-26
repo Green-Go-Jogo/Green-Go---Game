@@ -92,6 +92,7 @@
     position: relative;
     border-radius: 15px;
     z-index: 1;   
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .direita, .esquerda {
@@ -166,4 +167,77 @@
 .modo-escuro h5 {
     background-color: transparent !important;
     color: #ED8E96;
+}
+
+.modo-escuro .abinha {
+    background-color: #C05367;
+}
+
+.abinha {
+    position: absolute; /* Posiciona a abinha em relação ao card */
+    top: 7px; /* Ajuste conforme necessário */
+    right: -24px; /* Ajusta a posição horizontal da abinha */
+    background-color: #7EC4BB; /* Cor do fundo */
+    color: white; /* Cor do texto */
+    border-radius: 5px; /* Para arredondar os cantos */
+    padding: 2px; /* Tamanho do botão */
+    cursor: pointer; /* Mão ao passar o mouse */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para destaque */
+    display: flex;
+    flex-direction: column; /* Organiza as letras verticalmente */
+    align-items: center; /* Centraliza as letras */
+    z-index: -1;
+    font-family: 'Poppins';
+}
+
+.abinha div {
+    writing-mode: vertical-rl; /* Muda a orientação do texto para vertical */
+    transform: rotate(360deg); /* Inverte a direção do texto */
+    text-align: center; /* Centraliza o texto */
+}
+
+.list-group-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modo-escuro .list-group-item {
+    color: #f0b6bc;
+    background-color: #272626;
+}
+
+.sum{
+    color: #078071;
+    font-family: 'Poppins';
+}
+
+.modo-escuro .sum{
+    color: #C05367;
+    font-family: 'Poppins';
+}
+
+.text-center {
+    text-align: center;
+}
+
+.modal {
+    font-family: 'Poppins-regular';
+}
+
+button#fechar {
+    color: #C05367;
+    background-color: #fff;
+    border-color: #C05367;
+}
+
+button#fechar:hover {
+    color: #fff;
+    background-color: #C05367;
+    border-radius: 5px;
+}
+
+.modal-header, .modal-footer {
+    border-bottom: none;
+    border-top: none;
 }

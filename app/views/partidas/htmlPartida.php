@@ -857,15 +857,24 @@ class PartidaHTML
 
                 $especie = $especieCont->buscarPorId($planta->getEspecie()->getIdEspecie());
                 $nomePlanta = !empty($planta->getNomeSocial()) ? $planta->getNomeSocial() : $especie->getNomePopular();
+                $nomeCientifico = $especie->getNomeCientifico();
                 $imagemPlanta = !empty($planta->getImagemPlanta()) ? $planta->getImagemPlanta() : $especie->getImagemEspecie();
 
                 echo "<div class='card'>";
                 echo "<div class='card-body'>";
                 echo "<div class='fundo'></div>";
+                $modalId = "modalExemplo_" . $planta->getIdPlanta();
+                echo "<div class='abinha' data-bs-toggle='modal' data-bs-target='#" . $modalId . "'>
+                <div>S</div>
+                <div>O</div>
+                <div>M</div>
+                <div>A</div>
+                </div>";
 
                 echo "<div class='esquerda'>";
                 echo "<img src='" . $imagemPlanta . "' id='img'>";
                 echo "<h5 class='card-title text-center plantaNome'>" . $nomePlanta . "</h5>";
+                echo "<h5 class='card-title text-center plantaNome' style='font-style: italic;'>" . $nomeCientifico . "</h5>";
                 echo "<p class='card-text text-center plantaPontos'>Pontuação: " . $planta->getPontos() . "</p>";
                 echo "</div>";
 
@@ -873,42 +882,46 @@ class PartidaHTML
                 echo "<h5 class='card-title text-center plantaPontos'>Questões</h5>";
                 $questoesPlanta = $questaoCont->listarPorPlanta($planta->getIdPlanta());
 
-                if(count( $questoesPlanta) > 0) {
-                echo "<div class='questoes-container'>";
-                $contador = 1;
-                foreach ($questoesPlanta as $questao) {
-                    $idQuestao = $questao->getIdQuestao();
-                    $encontrado = array_key_exists($idQuestao, $questoesUsuario);
+                if (count($questoesPlanta) > 0) {
+                    echo "<div class='questoes-container'>";
+                    $contador = 1;
+                    foreach ($questoesPlanta as $questao) {
+                        $idQuestao = $questao->getIdQuestao();
+                        $encontrado = array_key_exists($idQuestao, $questoesUsuario);
 
-                    $icone = "";
-                    $classe = "";
+                        $icone = "";
+                        $classe = "";
 
-                    if ($encontrado) {
-                        // A questão foi respondida
-                        if ($questoesUsuario[$idQuestao]) {
-                            $icone = "<i class='fa-solid fa-check'></i>"; // Certa
-                            $classe = "certa"; // Classe para certa
+                        if ($encontrado) {
+                            // A questão foi respondida
+                            if ($questoesUsuario[$idQuestao]) {
+                                $icone = "<i class='fa-solid fa-check'></i>"; // Certa
+                                $classe = "certa"; // Classe para certa
+                            } else {
+                                $icone = "<i class='fa-solid fa-xmark'></i>"; // Errada
+                                $classe = "errada"; // Classe para errada
+                            }
                         } else {
-                            $icone = "<i class='fa-solid fa-xmark'></i>"; // Errada
-                            $classe = "errada"; // Classe para errada
+                            // Definir o símbolo e a classe de fundo com base na resposta
+                            $icone = "<i class='fa-solid fa-ellipsis'></i>"; // Inicializa o símbolo
+                            $classe = "nao-respondida"; // Classe padrão
                         }
-                    } else {
-                        // Definir o símbolo e a classe de fundo com base na resposta
-                        $icone = "<i class='fa-solid fa-ellipsis'></i>"; // Inicializa o símbolo
-                        $classe = "nao-respondida"; // Classe padrão
+
+                        // Exibir a questão com o número e o símbolo
+                        echo "<div class='questao $classe'>"; // Adiciona a classe correspondente
+                        echo "<div class='numero'>$contador</div>"; // Número da questão
+                        echo "<div class='resultado'>$icone</div>"; // Resultado
+                        echo "</div>";
+
+                        // Incrementar o contador
+                        $contador++;
                     }
-
-                    // Exibir a questão com o número e o símbolo
-                    echo "<div class='questao $classe'>"; // Adiciona a classe correspondente
-                    echo "<div class='numero'>$contador</div>"; // Número da questão
-                    echo "<div class='resultado'>$icone</div>"; // Resultado
+                } else {
+                    echo "<div>";
+                    echo "<h5 class='semQuestoes'>A Clorofila disse que essa planta não tem questões!</h5>";
+                    echo "<img src='../../public/clorofila.png' style='width: 100%'>";
                     echo "</div>";
-
-                    // Incrementar o contador
-                    $contador++;
                 }
-            } else {
-            }
 
                 echo "</div>";
                 echo "</div>";
@@ -916,10 +929,79 @@ class PartidaHTML
                 echo "</div>";
                 echo "</div><br>";
 
+                // Modal
+                echo "<div class='modal fade' id='" . $modalId . "' tabindex='-1' aria-labelledby='modalLabel' aria-hidden='true'>";
+                echo "<div class='modal-dialog'>";
+                echo "<div class='modal-content'>";
+                echo "<div class='modal-header'>";
+                echo "<h5 class='modal-title' id='modalLabel'>Informações de Pontuação</h5>";
+                echo "</div>";
+                echo "<div class='modal-body'>";
+
+                if (count($questoesPlanta) > 0) {
+                    $somaPontuacao = 0;
+                    echo "<h6 class='text-center sum'>Somatória de Pontuações</h6>";
+                    echo "<ul class='list-group'>";
+                    $contador = 1;
+                    foreach ($questoesPlanta as $questao) {
+                        $idQuestao = $questao->getIdQuestao();
+                        $pontuacaoQuestao = $questao->getPontuacaoQuestao();
+                        $encontrado = array_key_exists($idQuestao, $questoesUsuario);
+
+                        // Usar um span para alinhar labels e pontuações
+                        echo "<li class='list-group-item d-flex justify-content-between align-items-center'>";
+                        echo "Questão $contador:";
+                        if ($encontrado) {
+                            if ($questoesUsuario[$idQuestao]) {
+                                echo "<span> +$pontuacaoQuestao</span>";
+                                $somaPontuacao += $pontuacaoQuestao;
+                            } else {
+                                echo "<span> 0</span>";
+                            }
+                        } else {
+                            echo "<span> Não Respondida</span>";
+                        }
+                        echo "</li>";
+                        $contador++;
+                    }
+                    echo "<li class='list-group-item d-flex justify-content-between align-items-center'>";
+                    echo "Pontos da Planta:";
+                    echo "<span> +" . $planta->getPontos() . "</span>";
+                    $somaPontuacao += $planta->getPontos();
+                    echo "</li>";
+                    echo "<li class='list-group-item d-flex justify-content-between align-items-center'>";
+                    echo "Total";
+                    echo "<span>" . $somaPontuacao . "</span>";
+                    echo "</li>";
+                    echo "</ul>";
+                } else {
+                    $somaPontuacao = 0;
+                    echo "<h6 class='text-center sum'>Somatória de Pontuações</h6>";
+                    echo "<ul class='list-group'>";
+                    echo "<li class='list-group-item d-flex justify-content-between align-items-center'>";
+                    echo "Pontos da Planta:";
+                    echo "<span> +" . $planta->getPontos() . "</span>";
+                    $somaPontuacao += $planta->getPontos();
+                    echo "</li>";
+                    echo "<li class='list-group-item d-flex justify-content-between align-items-center'>";
+                    echo "Total";
+                    echo "<span>" . $somaPontuacao . "</span>";
+                    echo "</li>";
+                    echo "</ul>";
+                }
+
+                echo "</div>";
+                echo "<div class='modal-footer'>";
+                echo "<button type='button' class='btn btn-secondary' id='fechar' data-bs-dismiss='modal'>Fechar</button>";
+                echo "</div>";
+                echo "</div>";
+                echo "</div>";
+                echo "</div>";
 
             } else {
                 $especie = $especieCont->buscarPorId($planta->getEspecie()->getIdEspecie());
                 $nomePlanta = !empty($planta->getNomeSocial()) ? $planta->getNomeSocial() : $especie->getNomePopular();
+                $nomeCientifico = $especie->getNomeCientifico();
                 $imagemPlanta = !empty($planta->getImagemPlanta()) ? $planta->getImagemPlanta() : $especie->getImagemEspecie();
 
                 echo "<div class='card'>";
@@ -937,8 +1019,9 @@ class PartidaHTML
                 // Ícone centralizado no meio da área preta
                 echo "</div>";
                 echo "</div>";
-                echo "<h5 class='card-title text-center plantaNome' style='text-decoration: line-through;'>" . $nomePlanta . "</h5>"; // Nome riscado
-                echo "<p class='card-text text-center plantaPontos' style='text-decoration: line-through;'>Pontuação: ???</p>"; // Pontuação riscada
+                echo "<h5 class='card-title text-center plantaNome' style='text-decoration: line-through;'>" . $nomePlanta . "</h5>";
+                echo "<h5 class='card-title text-center plantaNome'  style='text-decoration: line-through; font-style: italic;'>" . $nomeCientifico . "</h5>";
+                echo "<p class='card-text text-center plantaPontos' style='text-decoration: line-through;'>Pontuação: ???</p>"; 
                 echo "</div>";
 
 
