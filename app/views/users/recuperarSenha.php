@@ -298,7 +298,7 @@
           document.getElementById('subtituloRec').innerHTML = 'Código validado, preencha com sua nova senha nos campos abaixo.';
           document.querySelector('.senhaNovaDiv').innerHTML = '<label class="dialogLabel" for="campoSenha">Nova senha:</label>' +
             '<div style="position: relative;">' +
-            '<input class="dialogInput" type="password" id="senhaNova password" autocomplete="off">' +
+            '<input class="dialogInput" type="password" id="senhaNova" autocomplete="off">' +
             '<i class="fa-regular fa-eye toggle-password" id="verSenha"' +
             'style="position: absolute; right: 5%; top: 50%; transform: translateY(-50%); cursor: pointer; z-index: 2;"></i>' +
             '</div>' +
@@ -306,7 +306,7 @@
             '<br>' +
             '<label class="dialogLabel" for="campoSenha">Confirmação de senha:</label>' +
             '<div style="position: relative;">'+
-            '<input class="dialogInput" type="password" id="senhaNovaConf password1" autocomplete="off"> ' +
+            '<input class="dialogInput" type="password" id="senhaNovaConf" autocomplete="off"> ' +
             '<i class="fa-regular fa-eye toggle-password" id="verSenha"' +
             'style="position: absolute; right: 5%; top: 50%; transform: translateY(-50%); cursor: pointer; z-index: 2;"></i>' +
             '</div>' +
